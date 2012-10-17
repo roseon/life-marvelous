@@ -1,0 +1,40 @@
+GunZ Ultimate Source Compilation.
+
+Features:
+	- Anti-Lead : The latest revision of my anti-lead with damage reduction built straight in.
+	- Custom File System : You will no longer have any MRS files at all, you will know use my custom file system GFS which is based on 7-zip.
+	- Anti-Cheat : I have taken custom measures to ensure all of your data is protected and your cheat free.
+	- ZItem Server-Sided : Your zitem will now be sent to the client in a custom packet stopping others form abusing the usage of it.
+	- Common Exploits Fixed : Exploits such as the sprintf("%s") bug are fixed as well as joining clan wars.
+	- Commands : There are a few custom commands implemented into the source.
+		- /display - Will display your current HP/AP in the status bar at the top left.
+		- /cwdisplay <name> - Will display your teamates HP/AP to the right of your status bar (name not required).
+		- /damage - Enables the damage log.
+		- /report <name> - Reports the player to all staff online and inserts a log of it.
+		- /ignore <name> - Custom ignore list built into the client.
+		- /admin_cban - Chat bans the player.
+		- /admin_esp - Name ESP (logged by the server).
+		- /admin_follow - Follows player to specified room.
+		- /admin_stop - Stops the player from moving, alias is /admin_freeze.
+		- /admin_notice - Admin-wall that sends a pop-up notice.
+		- /admin_hwban  - Bans player based on their hardware.
+	- Shotbot Detection : I have placed a custom method of blocking shotbot and if it's detected the client will notify staff.
+	- Underclock Detection : I have attempted to block all possible methods except hardware wise (impossible =/).
+	- Game Types : The following gametypes are currently added into this revisio.
+		- Deathmatch / Team Deathmatch / Team Deathmatch Extreme.
+		- Gladiator  / Team Gladiator.
+		- Training
+		- Duel
+		- Assassination
+		- Quest / Survival.
+		- Berserker
+		- Duel Tournament
+		- Classic / Team Classic
+		- Capture The Flag
+		- Deity - The berserker gains a damage increase upon killing others.
+		- Reverse Berserker - Instead of losing health they gain it.
+		
+	- Widescreen Support : All widescreen resolutions are now supported.
+	- Hardware Banning : You can ban any client based on their hardware now.
+	
+	
