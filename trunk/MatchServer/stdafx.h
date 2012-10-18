@@ -3,7 +3,7 @@
 // 들어 있는 포함 파일입니다.
 
 #pragma once
-
+#pragma comment(lib, "windowscodecs.lib")
 /*	// for debug publish
 #define _HAS_ITERATOR_DEBUGGING 0
 #define _SECURE_SCL 0 
