@@ -9,7 +9,7 @@
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
-
+#define POINTER_64 __ptr64
 // ¿©±â´Ù include
 
 #endif

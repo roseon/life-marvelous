@@ -11,6 +11,7 @@
 #endif // _MSC_VER > 1000
 
 // ¿©±â´Ù include
+#define POINTER_64 __ptr64
 #include <afxdb.h>
 #include <afxtempl.h>
 #include <afxdtctl.h>
