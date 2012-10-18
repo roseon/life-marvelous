@@ -1094,7 +1094,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>../CML/Lib/zlib.lib;fmodvc.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>../sdk/dx9/lib/x86;../RealSound/Lib;Lib;../sdk/cryptopp;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../sdk/dx9/lib/;../RealSound/Lib;Lib;../sdk/crypto;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libc.lib;libci.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)theduel.pdb</ProgramDatabaseFile>
