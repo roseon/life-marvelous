@@ -4,7 +4,7 @@
 //
 
 #pragma once
-
+#define POINTER_64 __ptr64
 // Windows 헤더 파일입니다.
 #include <afxdb.h>
 #include <afxtempl.h>
