@@ -45,6 +45,8 @@ void ZClanListBox::OnDraw( MDrawContext* pDC )
 				pDC->Draw(0, y , (int)(fRatio * m_pRoomFrame->GetWidth()), (int)(fRatio * m_pRoomFrame->GetHeight()));
 
 				// 클랜 emblem
+				//antidodge
+				/*
 				MBitmap *pBitmap = ZGetEmblemInterface()->GetClanEmblem( pInfo->nClanEmblemID);
 				if(pBitmap) {
 					int nSize = (int)(.95f * fRatio * m_pRoomFrame->GetHeight());
@@ -56,7 +58,7 @@ void ZClanListBox::OnDraw( MDrawContext* pDC )
 				// 대기중인 클랜 이름
 				pDC->SetColor(MCOLOR(0xffffffff));
 				pDC->Text((int)(fRatio*40) , (int)(y + fRatio*10) , pInfo->szClanName);
-
+				*/
 				// 대기중인 사람 수 ( x명 대기중 )
 				char szBuffer[256];
 				sprintf(szBuffer,ZMsg( MSG_LOBBY_WAITING ),pInfo->nPlayers );
