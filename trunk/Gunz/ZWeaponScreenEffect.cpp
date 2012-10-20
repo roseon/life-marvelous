@@ -3,7 +3,7 @@
 #include "ZGame.h"
 #include "ZMyInfo.h"
 #include "ZMyItemList.h"
-
+#include "ZConfiguration.h"
 ZWeaponScreenEffect::ZWeaponScreenEffect()
 {
 	m_nWeaponType = MWT_NONE;
@@ -12,12 +12,18 @@ ZWeaponScreenEffect::ZWeaponScreenEffect()
 
 ZWeaponScreenEffect::~ZWeaponScreenEffect()
 {
+	//return;
 
+	if (m_pSniferPanel)
+	{
+		delete m_pSniferPanel;
+		m_pSniferPanel = NULL;
+	}
 }
 
 void ZWeaponScreenEffect::Draw(MDrawContext* pDC)
 {
-	return;
+	//return;
 
 	switch (m_nWeaponType)
 	{
@@ -36,13 +42,15 @@ void ZWeaponScreenEffect::Draw(MDrawContext* pDC)
 
 void ZWeaponScreenEffect::InitWeapon(MMatchWeaponType nWeaponType)
 {
-	return;
+	//return;
 
 	switch (nWeaponType)
 	{
 	case MWT_SNIFER:
 		{
+			PrevMouseSens = Z_MOUSE_SENSITIVITY;
 			g_fFOV = (12.0f / 180.0f * pi);
+			ZGetConfiguration()->SetMouseSensitivityInFloat(ZGetConfiguration()->GetMouseSensitivityInFloat() / 10.0f);
 		}
 		break;
 	}
@@ -51,13 +59,14 @@ void ZWeaponScreenEffect::InitWeapon(MMatchWeaponType nWeaponType)
 
 void ZWeaponScreenEffect::FinalWeapon(MMatchWeaponType nWeaponType)
 {
-	return;
+	//return;
 
 	switch (nWeaponType)
 	{
 	case MWT_SNIFER:
 		{
 			g_fFOV = (70.0f / 180.0f * pi);
+			ZGetConfiguration()->SetMouseSensitivityInFloat(ZGetConfiguration()->GetMouseSensitivityInFloat() * 10.0f);
 		}
 		break;
 	}
@@ -65,7 +74,7 @@ void ZWeaponScreenEffect::FinalWeapon(MMatchWeaponType nWeaponType)
 
 void ZWeaponScreenEffect::OnGadget(MMatchWeaponType nWeaponType)
 {
-	return;
+	//return;
 
 	if (m_nWeaponType == nWeaponType) return;
 	if (m_nWeaponType != MWT_NONE) OnGadgetOff();
@@ -76,7 +85,7 @@ void ZWeaponScreenEffect::OnGadget(MMatchWeaponType nWeaponType)
 
 void ZWeaponScreenEffect::OnGadgetOff()
 {
-	return;
+	//return;
 
 	FinalWeapon(m_nWeaponType);
 	m_nWeaponType = MWT_NONE;
@@ -84,7 +93,7 @@ void ZWeaponScreenEffect::OnGadgetOff()
 
 void ZWeaponScreenEffect::Create()
 {
-	return;
+	//return;
 
 	MMatchWeaponType nPrimaryWeaponType = MWT_NONE, 
 					 nSecondaryWeaponType = MWT_NONE, 
@@ -118,16 +127,17 @@ void ZWeaponScreenEffect::Create()
 	{
 		if (m_pSniferPanel) delete m_pSniferPanel;
 		m_pSniferPanel = new MBitmapR2;
-		((MBitmapR2*)m_pSniferPanel)->Create("snifer.png", RGetDevice(), "interface/snifer.png");
+		((MBitmapR2*)m_pSniferPanel)->Create("snifer.png", RGetDevice(), "CUSTOM/snifer.png");
 	}
 }
 
 void ZWeaponScreenEffect::Destroy()
 {
-	return;
+	//return;
 
 	if (m_pSniferPanel)
 	{
+		ZGetConfiguration()->SetMouseSensitivityInFloat(PrevMouseSens);
 		delete m_pSniferPanel;
 		m_pSniferPanel = NULL;
 	}
