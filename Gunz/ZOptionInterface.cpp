@@ -351,6 +351,22 @@ void ZOptionInterface::InitInterfaceOption(void)
 		{
 			pWidget->SetCheck(Z_JOYSTICK_INVERT);
 		}
+		//No se me ocurrió otro sitio para ponerlos xdq
+		pWidget = (MButton*)pResource->FindWidget("DisableSpecial");
+		if(pWidget)
+		{
+			pWidget->SetCheck(Z_ETC_DISABLESPECIAL);
+		}
+		pWidget = (MButton*)pResource->FindWidget("WheelLock");
+		if(pWidget)
+		{
+			pWidget->SetCheck(Z_ETC_WHEELLOCK);
+		}
+		pWidget = (MButton*)pResource->FindWidget("NoNumbers");
+		if(pWidget)
+		{
+			pWidget->SetCheck(Z_ETC_NONUMBERS);
+		}
 	}
 
 	// Etc
@@ -891,6 +907,40 @@ bool ZOptionInterface::SaveInterfaceOption(void)
 					ZGetGameClient()->SetRejectInvite(false);
 				ZPostUserOption();
 			}
+		}
+
+		//Otra vez no se me ocurrió otro espacio para ponerlos xdd
+		MButton* pDisableSpecial = (MButton*)pResource->FindWidget("DisableSpecial");
+		if(pDisableSpecial)
+		{
+			Z_ETC_DISABLESPECIAL = pDisableSpecial->GetCheck();
+
+				if (Z_ETC_DISABLESPECIAL)
+					ZGetConfiguration()->GetEtc()->bDisableSpecial = true;
+				else
+					ZGetConfiguration()->GetEtc()->bDisableSpecial = false;
+		}
+
+		MButton* pWheelLock = (MButton*)pResource->FindWidget("WheelLock");
+		if(pWheelLock)
+		{
+			Z_ETC_WHEELLOCK = pWheelLock->GetCheck();
+
+			if(Z_ETC_WHEELLOCK)
+				ZGetConfiguration()->GetEtc()->bWheelLock = true;
+			else
+				ZGetConfiguration()->GetEtc()->bWheelLock = false;
+		}
+
+		MButton* pNoNumbers = (MButton*)pResource->FindWidget("NoNumbers");
+		if(pNoNumbers)
+		{
+			Z_ETC_NONUMBERS = pNoNumbers->GetCheck();
+
+			if(Z_ETC_NONUMBERS)
+				ZGetConfiguration()->GetEtc()->bNoNumbers = true;
+			else
+				ZGetConfiguration()->GetEtc()->bNoNumbers = false;
 		}
 
 		MComboBox* pComboBox = (MComboBox*)pResource->FindWidget("CrossHairComboBox");

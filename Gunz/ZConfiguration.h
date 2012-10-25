@@ -128,6 +128,11 @@ struct ZCONFIG_ETC{
 										// 오직 클랜채팅, 채팅 명령어만 허용함.
 	char		szLanguage[32];			// 현재 선택된 언어
 	int			nFrameLimit_perSecond;
+
+	//Opciones para deshabilitar los cambios de arma/items especiales
+	bool		bDisableSpecial;
+	bool		bWheelLock;
+	bool		bNoNumbers;
 };
 
 /// 로케일과 관련된 설정값
@@ -447,6 +452,10 @@ ZLanguageSetting_forNHNUSA* ZGetLanguageSetting_forNHNUSA();
 #define Z_ETC_CROSSHAIR			(ZGetConfiguration()->GetEtc()->nCrossHair)
 #define Z_ETC_FRAMELIMIT_PERSECOND	(ZGetConfiguration()->GetEtc()->nFrameLimit_perSecond)
 
+//Las opciones de deshabilitar cambios de item :D
+#define Z_ETC_DISABLESPECIAL	(ZGetConfiguration()->GetEtc()->bDisableSpecial)
+#define Z_ETC_NONUMBERS			(ZGetConfiguration()->GetEtc()->bNoNumbers)
+#define Z_ETC_WHEELLOCK			(ZGetConfiguration()->GetEtc()->bWheelLock)
 
 #define Z_LOCALE_DEFAULT_FONT	(ZGetConfiguration()->GetLocale()->szDefaultFont)
 #define Z_LOCALE_XML_HEADER		(ZGetConfiguration()->GetLocale()->szXmlHeader)

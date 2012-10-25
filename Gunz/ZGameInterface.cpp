@@ -3806,6 +3806,7 @@ void ZGameInterface::ChangeWeapon(ZChangeWeaponType nType)
 		return;
 	}
 */
+
 	bool bWheel = false;		// 휠로 작동했을때는 캔슬되지 않는다
 	if ((nType == ZCWT_PREV) || (nType == ZCWT_NEXT))
 	{
@@ -3816,47 +3817,58 @@ void ZGameInterface::ChangeWeapon(ZChangeWeaponType nType)
 		int ItemQueue[MMCIP_END];
 
 		// 가진 아이템 목록을 만들고, 현재 들고있는 넘을 찾는다
-		for(int i = MMCIP_MELEE; i < MMCIP_CUSTOM2 + 1; i++)
-		{
-			if (!pChar->GetItems()->GetItem((MMatchCharItemParts)i)->IsEmpty())
-			{
-				if(pChar->GetItems()->GetSelectedWeaponParts() == i)
-					nPos = nHasItemCount;
 
-				ItemQueue[nHasItemCount++] = i;
+		//Disable special item on mouse scrolling :D
+		if(ZGetConfiguration()->GetEtc()->bDisableSpecial)
+		{
+			for(int i = MMCIP_MELEE; i < MMCIP_CUSTOM2 + 1; i++)
+			{
+				if (!pChar->GetItems()->GetItem((MMatchCharItemParts)i)->IsEmpty())
+				{
+					if(pChar->GetItems()->GetSelectedWeaponParts() == i)
+						nPos = nHasItemCount;
+					
+					ItemQueue[nHasItemCount++] = i;
+				}
 			}
 		}
-
+		
 		if (nPos < 0) return;
 
 		if (nType == ZCWT_PREV)
 		{
-			if (nHasItemCount <= 1) return;
-
-			int nNewPos = nPos - 1;
-			int nCount = 0;
-			if (nNewPos < 0) nNewPos = nHasItemCount-1;
-			while ( nNewPos != nPos)
+			if(ZGetConfiguration()->GetEtc()->bWheelLock)
+				return;
+			else
 			{
-				MMatchCharItemParts nPart = (MMatchCharItemParts)ItemQueue[ nNewPos];
-				if ( (nPart == MMCIP_CUSTOM1) || (nPart == MMCIP_CUSTOM2) ) {
-					ZItem* pItem = ZGetGame()->m_pMyCharacter->GetItems()->GetItem(nPart);
-					if (pItem && pItem->GetBulletCurrMagazine() > 0) { break; }
-				} else { break; }
-
-				nNewPos = nNewPos - 1;
+				if (nHasItemCount <= 1) return;
+				
+				int nNewPos = nPos - 1;
+				int nCount = 0;
 				if (nNewPos < 0) nNewPos = nHasItemCount-1;
-
-				nCount++;
-				if ( nCount > (nHasItemCount * 2))
-					return;
+				while ( nNewPos != nPos)
+				{
+					MMatchCharItemParts nPart = (MMatchCharItemParts)ItemQueue[ nNewPos];
+					if ( (nPart == MMCIP_CUSTOM1) || (nPart == MMCIP_CUSTOM2) ) {
+						ZItem* pItem = ZGetGame()->m_pMyCharacter->GetItems()->GetItem(nPart);
+						if (pItem && pItem->GetBulletCurrMagazine() > 0) { break; }
+					} else { break; }
+					
+					nNewPos = nNewPos - 1;
+					if (nNewPos < 0) nNewPos = nHasItemCount-1;
+					
+					nCount++;
+					if ( nCount > (nHasItemCount * 2))
+						return;
+				}
+				nPos = nNewPos;
 			}
-			nPos = nNewPos;
-
 		}
 		else if (nType == ZCWT_NEXT)
 		{
-			if (nHasItemCount <= 1) return;
+			if(ZGetConfiguration()->GetEtc()->bWheelLock)
+				return;
+			else if (nHasItemCount <= 1) return;
 
 			int nNewPos = nPos + 1;
 			if (nNewPos >= nHasItemCount) nNewPos = 0;
@@ -3876,6 +3888,8 @@ void ZGameInterface::ChangeWeapon(ZChangeWeaponType nType)
 
 		nParts = ItemQueue[nPos];
 	}
+	else if(ZGetConfiguration()->GetEtc()->bNoNumbers)
+		return;
 	else
 	{
 		switch (nType)
