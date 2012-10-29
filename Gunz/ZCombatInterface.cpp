@@ -2682,7 +2682,7 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 	}
 
 	/////////// miPing //////
-	if(total > 1)
+	if(total > 2)
 		MiPing /= total;
 	ZGetGameClient()->MiPing = MiPing;
 	///////////////////////
