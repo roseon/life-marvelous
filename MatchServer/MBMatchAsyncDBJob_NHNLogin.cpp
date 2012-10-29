@@ -59,6 +59,8 @@ void MBMatchAsyncDBJob_NHNLogin::Run( void* pContext )
 		// }
 
 		// 지금은 다른 userid외에는 알수 있는 방법이 없어서 임시로 이렇게 한다.
+		/*
+		No debe crearse la cuenta si no se encuentra >.<
 		pDBMgr->CreateAccount(
             	m_strUserID.c_str(),	// user id
 				"",						// password
@@ -66,7 +68,7 @@ void MBMatchAsyncDBJob_NHNLogin::Run( void* pContext )
 				"",						// name
 				0,						// age
 				0);						//sex
-		
+		*/
 		pDBMgr->GetLoginInfo(m_strUserID.c_str(), &m_nAID, szDBPassword);
 	}
 
