@@ -255,7 +255,8 @@ public:
 	static bool UDPSocketRecvEvent(DWORD dwIP, WORD wRawPort, char* pPacket, DWORD dwSize);
 
 	/*Get MiPing*/
-	int MiPing = 0;
+	int MiPing;
+
 
 public:
 	void SetAgentAddr(const char* szIP, int nPort)	{ 
