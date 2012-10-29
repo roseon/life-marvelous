@@ -2239,9 +2239,9 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 		TextRelative( pDC, x, y, szText);
 		y -= linespace2;
 		if ( ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_CTF)
-		sprintf( szText, "%s : %d", "Captures", ZGetGame()->GetMatch()->GetRoundCount());
+			sprintf( szText, "%s : %d", "Captures", ZGetGame()->GetMatch()->GetRoundCount());
 		else
-		sprintf( szText, "%s : %d", ZMsg( MSG_WORD_ENDKILL), ZGetGame()->GetMatch()->GetRoundCount());
+			sprintf( szText, "%s : %d", ZMsg( MSG_WORD_ENDKILL), ZGetGame()->GetMatch()->GetRoundCount());
 
 	}
 	TextRelative( pDC, x, y, szText);
@@ -2451,7 +2451,7 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 	}
 
 	int nCount = 0;
-	
+	int MiPing = 0, total = 0;
 	for(i=items.begin();i!=items.end();i++)
 	{
 		ZScoreBoardItem *pItem=*i;
@@ -2651,8 +2651,25 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 		sprintf(szText,"%d",pItem->nDeaths);
 		TextRelative(pDC,x,texty,szText,true);
 
+		//////////
+		int p = pItem->nPing;
+		if(p <= 110)
+			pDC->SetColor(0, 255, 0);
+		else if(p <= 210)
+			pDC->SetColor(255, 255, 0);
+		else
+			pDC->SetColor(255, 0, 0);
+		if(p != 999 && p > 0 && pItem->uidUID == ZGetGameClient()->GetUID())
+		{
+			MiPing += p;
+			total++;
+		}
+		if(pItem->uidUID == ZGetGameClient()->GetUID())
+			pItem->nPing = ZGetGameClient()->MiPing;
+		//////////
+
 		x=ITEM_XPOS[9];
-		sprintf(szText,"%d",pItem->nPing);
+		sprintf(szText,"%d",pItem->nPing);		
 		TextRelative(pDC,x,texty,szText,true);
 		
 /*		x=ITEM_XPOS[7];
@@ -2663,6 +2680,12 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 
 //		y+=linespace;
 	}
+
+	/////////// miPing //////
+	if(total > 1)
+		MiPing /= total;
+	ZGetGameClient()->MiPing = MiPing;
+	///////////////////////
 
 	while(!items.empty())
 	{
