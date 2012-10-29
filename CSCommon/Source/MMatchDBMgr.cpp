@@ -27,11 +27,11 @@
 // UserID, Password, Cert, Name, Age, Sex 
 TCHAR g_szDB_CREATE_ACCOUNT[] = _T("{CALL spInsertAccount ('%s', '%s', %d, '%s', %d, %d)}");
 TCHAR g_szDB_CREATE_ACCOUNT_NETMARBLE[] = _T("{CALL spInsertAccount_Netmarble ('%s', '%s', %d, %d, %d)}");
-TCHAR g_szDB_CREATE_Hwid[] = _T("{CALL spInsertHwid ('%s', '%s')}"); //Steven: Hwid
+TCHAR g_szDB_CREATE_Hwid[] = _T("{CALL spUPDATEPC ('%s', %d)}"); //Steven: Hwid
 // 계정 로그인 정보 받아오기
 // UserID
 TCHAR g_szDB_GET_LOGININFO[] = _T("{CALL spGetLoginInfo ('%s')}");
-TCHAR g_szDB_GET_HwidINFO[] = _T("{CALL spGetHwidInfo ('%s', '%s')}");//Steven Hwid
+TCHAR g_szDB_GET_HwidINFO[] = _T("{CALL spCheckBanPC ('%s')}");//Steven Hwid
 // 계정 로그인 정보 받아오기 - 넷마블 전용
 // @UserID, @UserCn
 TCHAR g_szDB_GET_LOGININFO_NETMARBLE[] = _T("{CALL spGetLoginInfo_Netmarble ('%s', '%s')}");
@@ -580,13 +580,13 @@ void MMatchDBMgr::LogCallback( const string& strLog )
 	mlog( strLog.c_str() );
 }
 
-bool MMatchDBMgr::GetHwidInfo(const TCHAR* szUserID, unsigned int* Status, const TCHAR* szHwid)
+bool MMatchDBMgr::GetHwidInfo(unsigned int* Status, const TCHAR* szHwid)
 {
 	_STATUS_DB_START;
 	if (!CheckOpen()) return false;
 
 	CString strSQL;
-	strSQL.Format(g_szDB_GET_HwidINFO, szUserID, szHwid);
+	strSQL.Format(g_szDB_GET_HwidINFO, szHwid);
 
 	CODBCRecordset rs(&m_DB);
 
@@ -605,11 +605,11 @@ bool MMatchDBMgr::GetHwidInfo(const TCHAR* szUserID, unsigned int* Status, const
 	}
 
 	_STATUS_DB_END(0);
-	*Status = rs.Field("Status").AsInt();
+	*Status = rs.Field("Total").AsInt();
 	return true;
 }
 
-bool MMatchDBMgr::CreateHwid(const TCHAR* szUserID,  const TCHAR* szHwid)
+bool MMatchDBMgr::CreateHwid(const int AID,  const TCHAR* szHwid)
 {
 	_STATUS_DB_START;
 	if (!CheckOpen()) return false;	
@@ -617,7 +617,7 @@ bool MMatchDBMgr::CreateHwid(const TCHAR* szUserID,  const TCHAR* szHwid)
 	CString strSQL;
 
 	try {		
-		strSQL.Format(g_szDB_CREATE_Hwid, szUserID, szHwid);
+		strSQL.Format(g_szDB_CREATE_Hwid, szHwid, AID);
 		m_DB.ExecuteSQL( strSQL );
 	} 
 	catch(CDBException* e) {		
