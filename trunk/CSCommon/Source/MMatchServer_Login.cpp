@@ -92,19 +92,8 @@ void MMatchServer::OnMatchLogin(MUID CommUID, const char* szUserID, const char* 
 
 	
 	// 프로토콜, 최대인원 체크
-	if (!CheckOnLoginPre(CommUID, nCommandVersion, bFreeLoginIP, strCountryCode3)) return;
-	/*
-	 * Steven: Hwid
-	 
-	if (!m_MatchDBMgr.GetHwidInfo(szUserID, &Status, szHwid))
-	{ //insert hwid info
-		m_MatchDBMgr.CreateHwid(szUserID, szHwid);
-	} else if(Status == 1) {
-		MCommand* pCmd = CreateCmdMatchResponseLoginFailed(CommUID, MERR_HWID_BANNED);
-		Post(pCmd);	
-		return;
-	}
-	*/
+	if (!CheckOnLoginPre(CommUID, nCommandVersion, bFreeLoginIP, strCountryCode3)) return;	
+
 	// 원래 계정은 넷마블에 있으므로 해당 계정이 없으면 새로 생성한다. 
 	if (!m_MatchDBMgr.GetLoginInfo(szUserID, &nAID, szDBPassword))
 	{
@@ -181,6 +170,19 @@ void MMatchServer::OnMatchLogin(MUID CommUID, const char* szUserID, const char* 
 		//Disconnect(pCopyObj->GetUID());
 	}
 #endif
+
+
+	/*
+	 * Steven: Hwid
+	 */
+	m_MatchDBMgr.GetHwidInfo(&Status, szHwid);
+
+	if(Status == 1) {
+		MCommand* pCmd = CreateCmdMatchResponseLoginFailed(CommUID, MERR_HWID_BANNED);
+		Post(pCmd);	
+		return;
+	}
+	m_MatchDBMgr.CreateHwid(accountInfo.m_nAID, szHwid); //Actualiza el HWID de la Cuenta
 
 	// 사용정지 계정인지 확인한다.
 	if ((accountInfo.m_nUGrade == MMUG_BLOCKED) || (accountInfo.m_nUGrade == MMUG_PENALTY))

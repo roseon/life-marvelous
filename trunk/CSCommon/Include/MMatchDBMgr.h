@@ -65,11 +65,11 @@ private:
 public:
 	// 계정, 캐릭터 관리 관련
 	bool GetLoginInfo(const TCHAR* szUserID, unsigned int* poutnAID, TCHAR* poutPassword);
-	bool GetHwidInfo(const TCHAR* szUserID, unsigned int* Status, const TCHAR* szHwid);//Steven: Hwid
+	bool GetHwidInfo(unsigned int* Status, const TCHAR* szHwid);//Steven: Hwid
 	bool GetLoginInfo_Netmarble(const TCHAR* szUserID, unsigned int* poutnAID, unsigned int* poutCCode, TCHAR* poutPassword);
 
 	bool UpdateLastConnDate(const TCHAR* szUserID, const TCHAR* szIP);
-	bool CreateHwid(const TCHAR* szUserID, const TCHAR* szHwid); //Steven: Hwid
+	bool CreateHwid(const int AID, const TCHAR* szHwid); //Steven: Hwid
 	bool CreateAccount(const TCHAR* szUserID,					// 사용자ID
 		const TCHAR* szPassword,					// 패스워드
 		const int nCert,							// 실명인증
