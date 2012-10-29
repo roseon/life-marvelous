@@ -367,7 +367,24 @@ void MMatchServer::OnStop(const MUID& uidSender, const char* pName)
 		LogCommand("stop", pObj->GetCharInfo()->m_szName, "");
 	}
 }
-void MMatchServer::OnHwBan(const MUID& uidSender, const char* pName, const char* pReason){}
+void MMatchServer::OnHwBan(const MUID& uidSender, const char* pName, const char* pReason)
+{
+	MMatchObject* pObj = GetObject(uidSender);
+
+	if (pObj && IsAdminGrade(pObj))
+	{
+		char message[512];
+		if (strstr(pName, "%") || strstr(pReason, "%")) return;
+		MMatchObject* pTarget = GetPlayerByName(pName);
+		if(pTarget)
+		{
+			m_MatchDBMgr.spBanPC(pTarget->GetAccountInfo()->m_nAID, pReason);
+			Disconnect(pTarget->GetUID());
+			sprintf(message, "%s - %s", pTarget->GetAccountName(), pReason);
+			LogCommand("banpc", pObj->GetCharInfo()->m_szName, message);
+		}
+	}
+}
 void MMatchServer::OnReport(const MUID& uidSender, const char* pName, const char* pReason)
 {
 	MMatchObject* pObj = GetObject(uidSender);

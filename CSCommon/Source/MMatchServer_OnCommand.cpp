@@ -1791,6 +1791,17 @@ bool MMatchServer::OnCommand(MCommand* pCommand)
 				OnStop(pCommand->GetSenderUID(), szName);
 				break;
 			}
+		case MC_ADMIN_HWBAN:
+			{
+				char szName[64];
+				char szReason[64];
+
+				pCommand->GetParameter(szName, 0, MPT_STR, 64);
+				pCommand->GetParameter(szReason, 1, MPT_STR, 64);
+
+				OnHwBan(pCommand->GetSenderUID(), szName, szReason);
+				break;
+			}
 		case MC_REPORT_USER:
 			{
 				char szName[64];
