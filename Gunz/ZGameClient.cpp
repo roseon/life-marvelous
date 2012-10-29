@@ -1391,7 +1391,7 @@ int ZGameClient::OnConnected(SOCKET sock, MUID* pTargetUID, MUID* pAllocUID, uns
 			 * Steven: Hwid
 			 */
 			char szHwid[MAX_HWID_LEN];
-			//GetHwidValue(szHwid);
+			GetHwidValue(szHwid);
 
 			// 접속되면 바로 로그인한다
 			// Gunz.exe 실행파일의 MD5 값을 구해서 암호화하여 패킷에 담아 보낸다.			// update sgk 0724
@@ -1404,7 +1404,7 @@ int ZGameClient::OnConnected(SOCKET sock, MUID* pTargetUID, MUID* pAllocUID, uns
 								const_cast<char*>(((ZNHN_USAAuthInfo*)ZGetLocale()->GetAuthInfo())->GetAuthStr()), 
 								nChecksum, szEncryptMD5Value);
 #else
-			ZPostLogin(szID, szPassword, nChecksum, szEncryptMD5Value, "");
+			ZPostLogin(szID, szPassword, nChecksum, szEncryptMD5Value, szHwid);
 #endif
 
 
@@ -1443,7 +1443,7 @@ void ZGameClient::GetHwidValue(char* szHwid)
 		MACData[i - 2] = uuid.Data4[i];
     }
 	sprintf(Hwid,"%u-%02X%02X%02X%02X%02X%02X", cpuid, MACData[0], MACData[1], MACData[2], MACData[3], MACData[4], MACData[5]);
-	mlog("Hwid: %s", Hwid);
+	//mlog("Hwid: %s", Hwid);
 	memcpy(szHwid, Hwid, MAX_HWID_LEN);
 }
 
