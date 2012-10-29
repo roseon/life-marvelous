@@ -2659,12 +2659,12 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 			pDC->SetColor(255, 255, 0);
 		else
 			pDC->SetColor(255, 0, 0);
-		if(p != 999 && p > 0 && pItem->uidUID != ZGetGameClient()->GetUID())
+		if(p != 999 && p > 0 && pItem->uidUID != ZGetGameClient()->GetPlayerUID())
 		{
 			MiPing += p;
 			total++;
 		}
-		if(pItem->uidUID == ZGetGameClient()->GetUID())
+		if(pItem->uidUID == ZGetGameClient()->GetPlayerUID())
 			pItem->nPing = ZGetGameClient()->MiPing;
 		//////////
 

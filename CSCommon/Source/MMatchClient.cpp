@@ -174,7 +174,7 @@ MMatchClient::MMatchClient()
 	m_nServerMode = MSM_NORMALS;
 	m_bEnabledSurvivalMode = false;
 	m_bEnabledDuelTournament = false;
-
+	MiPing = 0;
 //	m_SafeUDP.Create(true, MATCHCLIENT_DEFAULT_UDP_PORT);
 }
 
