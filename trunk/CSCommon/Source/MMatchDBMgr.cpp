@@ -32,6 +32,7 @@ TCHAR g_szDB_CREATE_Hwid[] = _T("{CALL spUPDATEPC ('%s', %d)}"); //Steven: Hwid
 // UserID
 TCHAR g_szDB_GET_LOGININFO[] = _T("{CALL spGetLoginInfo ('%s')}");
 TCHAR g_szDB_GET_HwidINFO[] = _T("{CALL spCheckBanPC ('%s')}");//Steven Hwid
+TCHAR g_szDB_Ban_Hwid[] = _T("{CALL spInsertBanPC (%d, '%s')}");// s00rk
 // 계정 로그인 정보 받아오기 - 넷마블 전용
 // @UserID, @UserCn
 TCHAR g_szDB_GET_LOGININFO_NETMARBLE[] = _T("{CALL spGetLoginInfo_Netmarble ('%s', '%s')}");
@@ -578,6 +579,26 @@ void MMatchDBMgr::ExceptionHandler(CString strSQL, CDBException* e)
 void MMatchDBMgr::LogCallback( const string& strLog )
 {
 	mlog( strLog.c_str() );
+}
+
+bool MMatchDBMgr::spBanPC(const int AID, const TCHAR* pReason)
+{
+	_STATUS_DB_START;
+	if (!CheckOpen()) return false;	
+
+	CString strSQL;
+
+	try {		
+		strSQL.Format(g_szDB_Ban_Hwid, AID, pReason);
+		m_DB.ExecuteSQL( strSQL );
+	} 
+	catch(CDBException* e) {		
+		ExceptionHandler(strSQL, e);
+		return false;
+	}
+
+	_STATUS_DB_END(1);
+	return true;
 }
 
 bool MMatchDBMgr::GetHwidInfo(unsigned int* Status, const TCHAR* szHwid)
