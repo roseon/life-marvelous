@@ -457,6 +457,16 @@ void MMatchServer::LoadColors()
 
 	fclose(file);
 }
+void MMatchServer::ReloadConfig(const MUID& uidAdmin, const char* szFile)
+{
+	if (!stricmp (szFile, "shop.xml"))
+	{
+		auto instance = MMatchShop::GetInstance();
+		instance->Clear();
+		instance->Reload();
+		MMatchServer::GetInstance()->OnAdminAnnounce(uidAdmin, "^2[NOTICE]:^1 Tienda Recargada!", 0);
+	}
+}
 void MMatchServer::LogCommand(const char* command, const char* admin, const char* reason)
 {
 	FILE *f = fopen("commands log.txt", "a");
