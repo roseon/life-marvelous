@@ -681,7 +681,7 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType);
 #define MC_ADMIN_AIMBOT								50018
 #define MC_REQUEST_COLOR							50019
 #define MC_RESPONSE_COLOR							50020
-#define MC_ADMIN_RELOAD_COLOR						50021
+#define MC_ADMIN_RELOAD_COLORS						50021
 #define MC_ADMIN_RELOAD_CONFIG						50022
 
 #define MC_MATCH_FLAG_EFFECT	50019	///< 버프 소모성 아이템 사용 요청(C -> S)

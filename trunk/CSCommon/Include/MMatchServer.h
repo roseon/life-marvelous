@@ -615,6 +615,7 @@ protected:
 	void OnAimfix(const MUID& uidSender);
 	void OnRequestColors(const MUID& uidSender, bool bAll = false);
 	void LoadColors();
+	void ReloadConfig(const char* szFile);
 
 
 	void LogCommand(const char* command, const char* admin, const char* reason);

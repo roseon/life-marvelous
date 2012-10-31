@@ -1726,7 +1726,7 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType)
 	C(MC_RESPONSE_COLOR, "Server.ResponseColors", "Response Color", MCDT_MACHINE2MACHINE)
 		P(MPT_BLOB, "ColorInfo")
 
-	C(MC_ADMIN_RELOAD_COLOR, "Server.ReloadColors", "Reload Color", MCDT_MACHINE2MACHINE)
+	C(MC_ADMIN_RELOAD_COLORS, "Server.ReloadColors", "Reload Color", MCDT_MACHINE2MACHINE)
 
 	C(MC_ADMIN_RELOAD_CONFIG, "Server.ReloadConfig", "Reload Config", MCDT_MACHINE2MACHINE)
 		P(MPT_STR, "szFile")
