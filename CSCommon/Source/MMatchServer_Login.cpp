@@ -124,7 +124,7 @@ void MMatchServer::OnMatchLogin(MUID CommUID, const char* szUserID, const char* 
 
 	unsigned char md5[16];
 	char szPassMd5[64];
-
+	/*
 	MMD5 m;
 	m.md5_string((unsigned char*)szPassword, strlen(szPassword), md5);
 
@@ -134,7 +134,8 @@ void MMatchServer::OnMatchLogin(MUID CommUID, const char* szUserID, const char* 
 
 	// 패스워드가 틀렸을 경우 처리
 	
-	if (strcmp(szDBPassword, szPassMd5))
+	if (strcmp(szDBPassword, szPassMd5))*/
+	if(strcmp(szDBPassword, szPassword))
 	{
 		MCommand* pCmd = CreateCmdMatchResponseLoginFailed(CommUID, MERR_CLIENT_WRONG_PASSWORD);
 		Post(pCmd);	
