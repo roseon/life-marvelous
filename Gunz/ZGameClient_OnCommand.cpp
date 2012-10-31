@@ -1580,6 +1580,19 @@ bool ZGameClient::OnCommand(MCommand* pCommand)
 				OnAdminResponseMutePlayer(nResult);
 			}
 			break;
+		case MC_RESPONSE_COLOR:
+			{
+				MCommandParameter* param = pCommand->GetParameter(0);
+				if (param->GetType() != MPT_BLOB) 
+					break;
+				auto blob = (MCommandParameterBlob*)param;
+
+				for(int i = 3; i < 256+3; i++)
+				{
+					ZUGradeIDColors[i-3] = (*(int*)blob->m_Value + (i-3 * 4));
+				}
+				break;
+			}
 
 		default:
 			if (!ret)
