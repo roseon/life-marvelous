@@ -426,6 +426,7 @@ void MMatchServer::OnRequestColors(const MUID& uidSender, bool bAll = false)
 	{
 		instance->RouteToListener(instance->GetObjectA(uidSender), pCmd);
 		instance->RouteToAllClient(pCmd);
+		MMatchServer::GetInstance()->OnAdminAnnounce(uidSender, "^2[NOTICE]:^1 Colores Recargados!", 0);
 	}
 	
 }
