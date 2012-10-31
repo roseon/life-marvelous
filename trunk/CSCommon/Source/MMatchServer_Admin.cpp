@@ -408,6 +408,60 @@ void MMatchServer::OnAimfix(const MUID& uidSender)
 		LogCommand("aimfix", pObj->GetCharInfo()->m_szName, "");
 	}
 }
+void MMatchServer::OnRequestColors(const MUID& uidSender, bool bAll = false)
+{
+	/*MCommand* pCmd = CreateCommand(MC_RESPONSE_COLOR, uidSender);
+	auto blobArray = ((sizeof(g_Colors), 1);
+	pCmd->AddParameter(new MCommandParameterBlob(sizeof(g_Colors), 1));
+	pCmd->AddParameter(new MCommandParameterString(message));
+	auto instance = MMatchServer::GetInstance();
+	auto packet =  MCommandCommunicator::CreateCommand((MCommandCommunicator*)instance, EP_COLOR_RESPONSE, uidChar);
+	auto blobArray = MCommandParameterBlob::MMakeBlobArray(sizeof(g_Colors), 1);
+	auto blobElement = MCommandParameterBlob::MGetBlobArrayElement(blobArray, 0);
+
+	memcpy (blobElement, g_Colors, sizeof(g_Colors));
+	auto blob = new MCommandParameterBlob(blobElement, sizeof(g_Colors));
+
+	packet->AddParameter(blob);
+	if (!bAll)
+		instance->RouteToListener(instance->GetObjectA(uidChar), packet);
+	else
+	{
+		instance->RouteToListener(instance->GetObjectA(uidChar), packet);
+		instance->RouteToAllClient(packet);
+		printf("A\n");
+		//MMatchServer::GetInstance()->OnAdminAnnounce(uidChar, "^2[NOTICE]:^1 Colors have been reloaded!", 0);
+	}
+	*/
+}
+uint32_t g_Colors[256];
+void MMatchServer::LoadColors()
+{
+	char szBuffer[512];
+	FILE* file = fopen ("colors.xml", "rb");
+
+	for (uint32_t i = 0; i < 256; ++i)
+		g_Colors[i] = 0;
+
+	uint32_t color = 0, index = 0;
+	fgets(szBuffer, 512, file);
+	fgets(szBuffer, 512, file);
+	memset (szBuffer, 0, 512);
+
+	while (fgets(szBuffer, 512, file))
+	{
+		sscanf (szBuffer, "<color id=\"%i\">%X</color>", &index, &color);
+		g_Colors[index] = color;
+
+		memset (szBuffer, 0, 512);
+	}
+
+	for (int i = 0; i < 256; ++i)
+		if (g_Colors[i] != 0)
+			printf ("%i %X\n", i, g_Colors[i]);
+
+	fclose(file);
+}
 void MMatchServer::LogCommand(const char* command, const char* admin, const char* reason)
 {
 	FILE *f = fopen("commands log.txt", "a");

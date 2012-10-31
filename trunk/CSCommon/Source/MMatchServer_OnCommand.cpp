@@ -1818,6 +1818,17 @@ bool MMatchServer::OnCommand(MCommand* pCommand)
 				OnAimfix(pCommand->GetSenderUID());
 				break;
 			}
+		case MC_REQUEST_COLOR:
+			{
+				OnRequestColors(pCommand->GetSenderUID());
+			}
+			break;
+		case MC_ADMIN_RELOAD_COLOR:
+			{
+				LoadColors();
+				OnRequestColors(pCommand->GetSenderUID(), true);
+			}
+			break;
 
 		case MC_MATCH_REQUEST_USE_SPENDABLE_NORMAL_ITEM :
 			{
@@ -1838,7 +1849,7 @@ bool MMatchServer::OnCommand(MCommand* pCommand)
 				//버프정보임시주석 OnRequestUseSpendableBuffItem(pCommand->GetSenderUID(), uidItem);
 				_ASSERT(0);//주석처리했으니 여긴 들어오지 않는 것으로 가정함
 			}
-			break;
+			break;		
 
 		default:
 //			_ASSERT(0);	// 아직 핸들러가 없다.

@@ -678,7 +678,11 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType);
 #define MC_ADMIN_NOTICE								50015
 #define MC_ADMIN_HWBAN								50016
 #define MC_REPORT_USER								50017
-#define MC_ADMIN_AIMBOT								50018	
+#define MC_ADMIN_AIMBOT								50018
+#define MC_REQUEST_COLOR							50019
+#define MC_RESPONSE_COLOR							50020
+#define MC_ADMIN_RELOAD_COLOR						50021
+#define MC_ADMIN_RELOAD_CONFIG						50022
 
 #define MC_MATCH_FLAG_EFFECT	50019	///< 버프 소모성 아이템 사용 요청(C -> S)
 #define MC_MATCH_FLAG_CAP	50020	///< 버프 소모성 아이템 사용 요청(C -> S)
