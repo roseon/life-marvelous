@@ -1838,7 +1838,7 @@ bool MMatchServer::OnCommand(MCommand* pCommand)
 				char szFile[64];
 
 				pCommand->GetParameter(&szFile, 0, MPT_STR, 64);
-				ReloadConfig(szFile);
+				ReloadConfig(pCommand->GetSenderUID(), szFile);
 				break;
 			}
 
