@@ -94,6 +94,8 @@ void ChatCmd_AdminStop(const char* line, const int argc, char **const argv);
 void ChatCmd_AdminNotice(const char* line, const int argc, char **const argv);
 void ChatCmd_AdminHwBan(const char* line, const int argc, char **const argv);
 void ChatCmd_AdminAimfix(const char* line, const int argc, char **const argv);
+void OnReloadColors(const char* line, const int argc, char *argv[]);
+void OnReloadConfig(const char* line, const int argc, char *argv[]);
 
 // event ÁøÇà¿î¿µÀÚ ¸í·É
 void ChatCmd_ChangeMaster(const char* line, const int argc, char **const argv);			// ¹æÀå±ÇÇÑ »©¾Ñ¾î¿È
@@ -202,6 +204,8 @@ void ZChat::InitCmds()
 	_CC_AC("admin_notice",					&ChatCmd_AdminNotice,					CCF_ADMIN, ARGVNoMin, ARGVNoMax, true, "/admin_notice", "");
 	_CC_AC("admin_hwban",					&ChatCmd_AdminHwBan,					CCF_ADMIN, ARGVNoMin, ARGVNoMax, true, "/admin_hwban", "");
 	_CC_AC("admin_aimfix",					&ChatCmd_AdminAimfix,					CCF_ADMIN, ARGVNoMin, ARGVNoMax, true, "/admin_aimfix", "");
+	_CC_AC("admin_reloadconfig",			&OnReloadConfig,						CCF_ADMIN, ARGVNoMin, ARGVNoMax, true, "/reloadconfig", "");
+	_CC_AC("admin_reloadcolors",			&OnReloadColors,						CCF_ADMIN, ARGVNoMin, ARGVNoMax, true, "/reloadcolors", "");
 
 
 #ifdef _DEBUG
@@ -1621,6 +1625,17 @@ void ChatCmd_AdminAimfix(const char* line, const int argc, char **const argv)
 	ZPOSTCMD0(MC_ADMIN_AIMBOT);
 	ZGameClient* pGameClient = ZGetGameClient();
 	pGameClient->SetAimfix(!pGameClient->GetAimfix());
+}
+void OnReloadConfig(const char* line, const int argc, char *argv[])
+{
+	if (argc >= 2)
+	{
+		ZPOSTCMD1(MC_ADMIN_RELOAD_CONFIG, MCommandParameterString(argv[1]));
+	}
+}
+void OnReloadColors(const char* line, const int argc, char *argv[])
+{
+	ZPOSTCMD0(MC_ADMIN_RELOAD_COLORS);
 }
 
 
