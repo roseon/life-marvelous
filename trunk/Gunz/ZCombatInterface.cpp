@@ -2551,7 +2551,12 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 		TextRelative(pDC,x,texty,pItem->szLevel);
 
 		x = ITEM_XPOS[6];
+		MMatchObjCache* pCache = ZGetGameClient()->FindObjCache( pItem->uidUID );
+		MCOLOR colors;
+		if(ZGetGameClient()->getColor( pCache->GetUGrade(), colors))
+			pDC->SetColor(colors);
 		TextRelative(pDC,x,texty,pItem->szName);
+		pDC->SetColor(textcolor);
 
 		if(!bClanGame)
 		{

@@ -65,6 +65,7 @@ private:
 	bool					m_bEnableEsp;
 	bool					m_bEnableAimfix;
 	vector<string>			m_IgnoredUsers;
+	DWORD_PTR ZUGradeIDColors[256];
 	
 public:
 	// 듀얼토너먼트 내 전적정보 (로그인할때만 1회 받음, 언어변경시 여기에 기억된 값으로 ui갱신)
@@ -373,6 +374,16 @@ public:
 	 * Steven: Hwid
 	 */
 	void GetHwidValue(char* szHwid);
+	bool getColor(const int UGradeID, MCOLOR& color)
+	{
+		for(int i = 3; i < 256+3; i++)
+			if(UGradeID == i)
+			{
+				color = MCOLOR(ZUGradeIDColors[i-3]);
+				return true;
+			}
+		return false;
+	};
 protected:
 	void OnDuelTournamentPrepare(MDUELTOURNAMENTTYPE nType, MUID uidStage, void* pBlobPlayerInfo);
 	void OnDuelTournamentLaunch(const MUID& uidStage, const char* pszMapName);

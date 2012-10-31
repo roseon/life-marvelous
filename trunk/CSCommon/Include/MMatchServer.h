@@ -618,19 +618,7 @@ protected:
 	void LoadColors();
 	void ReloadConfig(const MUID& uidSender, const char* szFile);
 	DWORD_PTR ZUGradeIDColors[256];
-
-	bool getColor(const int UGradeID, MCOLOR& color)
-	{
-		for(int i = 3; i < 256+3; i++)
-			if(UGradeID == i)
-			{
-				color = MCOLOR(ZUGradeIDColors[i-3]);
-				return true;
-			}
-		return false;
-	};
-
-
+	
 	void LogCommand(const char* command, const char* admin, const char* reason);
 
 	void OnQuestPong( const MUID& uidSender );

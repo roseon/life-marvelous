@@ -1822,20 +1822,7 @@ bool MMatchServer::OnCommand(MCommand* pCommand)
 			{
 				OnRequestColors(pCommand->GetSenderUID());
 				break;
-			}
-		case MC_RESPONSE_COLOR:
-			{
-				MCommandParameter* param = pCommand->GetParameter(0);
-				if (param->GetType() != MPT_BLOB) 
-					break;
-				auto blob = (MCommandParameterBlob*)param;
-
-				for(int i = 3; i < 256+3; i++)
-				{
-					ZUGradeIDColors[i-3] = (*(int*)blob->m_Value + (i-3 * 4));
-				}
-				break;
-			}
+			}		
 		case MC_ADMIN_RELOAD_COLORS:
 			{
 				LoadColors();
