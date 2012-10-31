@@ -408,7 +408,7 @@ void MMatchServer::OnAimfix(const MUID& uidSender)
 		LogCommand("aimfix", pObj->GetCharInfo()->m_szName, "");
 	}
 }
-void MMatchServer::OnRequestColors(const MUID& uidSender, bool bAll = false)
+void MMatchServer::OnRequestColors(const MUID& uidSender, const bool bAll = false)
 {
 	MCommand* pCmd = CreateCommand(MC_RESPONSE_COLOR, uidSender);
 
@@ -430,7 +430,7 @@ void MMatchServer::OnRequestColors(const MUID& uidSender, bool bAll = false)
 	}
 	
 }
-uint32_t g_Colors[256];
+
 void MMatchServer::LoadColors()
 {
 	char szBuffer[512];
