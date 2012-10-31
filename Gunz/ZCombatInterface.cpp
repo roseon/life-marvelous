@@ -1624,9 +1624,11 @@ void ZCombatInterface::SetPickTarget(bool bPick, ZCharacter* pCharacter)
 			m_CrossHair.SetState(ZCS_PICKENEMY);
 			m_pTargetLabel->SetTextColor(0xffff0000);
 		}
-
+		MCOLOR colors;
 		if(pCharacter->IsAdminName())
 			m_pTargetLabel->SetTextColor(ZCOLOR_ADMIN_NAME);
+		else if(ZGetGameClient()->getColor( pCharacter->GetUserGrade(), colors))
+			m_pTargetLabel->SetTextColor(colors);
 
 		if (!bFriend == true && !pCharacter->IsDie()) 
 		{			
@@ -1751,7 +1753,11 @@ void ZCombatInterface::DrawFriendName(MDrawContext* pDC)
 				}
 				else {
 					pFont = MFontManager::Get("FONTa12_O1Blr");
-					pDC->SetColor(MCOLOR(0xFF00FF00));
+					MCOLOR colors;
+					if(ZGetGameClient()->getColor( pCharacter->GetUserGrade(), colors))
+						pDC->SetColor(colors);
+					else
+						pDC->SetColor(MCOLOR(0xFF00FF00));
 				}
 
 				pDC->SetBitmap(NULL);
@@ -1807,6 +1813,9 @@ void ZCombatInterface::DrawEnemyName(MDrawContext* pDC)
 					pFont = MFontManager::Get("FONTa12_O1Org");
 				}
 				else {
+					MCOLOR colors;
+					if(ZGetGameClient()->getColor( pPickedCharacter->GetUserGrade(), colors))
+						pDC->SetColor(colors);
 					pFont = MFontManager::Get("FONTa12_O1Red");
 				}
 
@@ -1863,7 +1872,11 @@ void ZCombatInterface::DrawAllPlayerName(MDrawContext* pDC)
 				else
 					pFont = MFontManager::Get("FONTa12_O1Blr");
 
-				pDC->SetColor(MCOLOR(0xFF00FF00));
+				MCOLOR colors;
+				if(ZGetGameClient()->getColor( pCharacter->GetUserGrade(), colors))
+					pDC->SetColor(colors);
+				else
+					pDC->SetColor(MCOLOR(0xFF00FF00));
 			}
 
 			pDC->SetBitmap(NULL);
@@ -2365,9 +2378,12 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 
 		ZScoreBoardItem *pItem=new ZScoreBoardItem;
 
-		if(pCharacter->IsAdminName()) {
-			pItem->SetColor(ZCOLOR_ADMIN_NAME);
-		}
+		MCOLOR colors;
+		if(pCharacter->IsAdminName())
+			m_pTargetLabel->SetTextColor(ZCOLOR_ADMIN_NAME);
+		else if(ZGetGameClient()->getColor( pCharacter->GetUserGrade(), colors))
+			m_pTargetLabel->SetTextColor(colors);
+
 		sprintf(pItem->szLevel,"%d%s",pCharacter->GetProperty()->nLevel, ZMsg(MSG_CHARINFO_LEVELMARKER));
 		sprintf(pItem->szName,"%s", pCharacter->GetProperty()->GetName());
 		memcpy(pItem->szClan,pCharacter->GetProperty()->GetClanName(),CLAN_NAME_LENGTH);
@@ -2551,12 +2567,8 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 		TextRelative(pDC,x,texty,pItem->szLevel);
 
 		x = ITEM_XPOS[6];
-		MMatchObjCache* pCache = ZGetGameClient()->FindObjCache( pItem->uidUID );
-		MCOLOR colors;
-		if(ZGetGameClient()->getColor( pCache->GetUGrade(), colors))
-			pDC->SetColor(colors);
+		
 		TextRelative(pDC,x,texty,pItem->szName);
-		pDC->SetColor(textcolor);
 
 		if(!bClanGame)
 		{
