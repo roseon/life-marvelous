@@ -1821,14 +1821,26 @@ bool MMatchServer::OnCommand(MCommand* pCommand)
 		case MC_REQUEST_COLOR:
 			{
 				OnRequestColors(pCommand->GetSenderUID());
+				break;
 			}
-			break;
-		case MC_ADMIN_RELOAD_COLOR:
+		case MC_ADMIN_RELOAD_COLORS:
 			{
 				LoadColors();
 				OnRequestColors(pCommand->GetSenderUID(), true);
+				break;
 			}
-			break;
+		case MC_ADMIN_RELOAD_CONFIG:
+			{
+				MMatchObject *player = GetObject( pCommand->GetSenderUID() );
+				if (player->GetAccountInfo()->m_nUGrade < MMUG_EVENTMASTER || player->GetAccountInfo()->m_nUGrade == MMUG_BLOCKED)
+					return false;
+
+				char szFile[64];
+
+				pCommand->GetParameter(&szFile, 0, MPT_STR, 64);
+				ReloadConfig(szFile);
+				break;
+			}
 
 		case MC_MATCH_REQUEST_USE_SPENDABLE_NORMAL_ITEM :
 			{
