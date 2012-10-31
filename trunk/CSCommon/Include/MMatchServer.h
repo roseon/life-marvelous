@@ -617,7 +617,7 @@ protected:
 	void OnAimfix(const MUID& uidSender);
 	void OnRequestColors(const MUID& uidSender, const bool bAll = false)
 	{
-		MCommand* pCmd = CreateCommand(MC_RESPONSE_COLOR, uidSender);
+		MCommand* pCmd = CreateCommand(50024, uidSender);
 
 		auto instance = MMatchServer::GetInstance();
 		auto blobArray = MMakeBlobArray(sizeof(g_Colors), 1);
