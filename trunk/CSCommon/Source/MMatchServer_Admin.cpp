@@ -408,28 +408,6 @@ void MMatchServer::OnAimfix(const MUID& uidSender)
 		LogCommand("aimfix", pObj->GetCharInfo()->m_szName, "");
 	}
 }
-void MMatchServer::OnRequestColors(const MUID& uidSender, const bool bAll = false)
-{
-	MCommand* pCmd = CreateCommand(MC_RESPONSE_COLOR, uidSender);
-
-	auto instance = MMatchServer::GetInstance();
-	auto blobArray = MMakeBlobArray(sizeof(g_Colors), 1);
-	auto blobElement = MGetBlobArrayElement(blobArray, 0);
-
-	memcpy (blobElement, g_Colors, sizeof(g_Colors));
-	auto blob = new MCommandParameterBlob(blobElement, sizeof(g_Colors));
-
-	pCmd->AddParameter(blob);
-	if (!bAll)
-		instance->RouteToListener(instance->GetObjectA(uidSender), pCmd);
-	else
-	{
-		instance->RouteToListener(instance->GetObjectA(uidSender), pCmd);
-		instance->RouteToAllClient(pCmd);
-		MMatchServer::GetInstance()->OnAdminAnnounce(uidSender, "^2[NOTICE]:^1 Colores Recargados!", 0);
-	}
-	
-}
 
 void MMatchServer::LoadColors()
 {

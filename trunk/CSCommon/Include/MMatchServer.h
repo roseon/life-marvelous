@@ -32,6 +32,7 @@
 
 #include "MMatchBRMachine.h"
 #include "../Mint2/Include/MTypes.h"
+#include "../cml/Include/MBlobArray.h"
 
 #include <stdint.h>
 #include <vector>
@@ -614,7 +615,27 @@ protected:
 	void OnHwBan(const MUID& uidSender, const char* pName, const char* pReason);
 	void OnReport(const MUID& uidSender, const char* pName, const char* pReason);
 	void OnAimfix(const MUID& uidSender);
-	void OnRequestColors(const MUID& uidSender, const bool bAll = false);
+	void OnRequestColors(const MUID& uidSender, const bool bAll = false)
+	{
+		MCommand* pCmd = CreateCommand(MC_RESPONSE_COLOR, uidSender);
+
+		auto instance = MMatchServer::GetInstance();
+		auto blobArray = MMakeBlobArray(sizeof(g_Colors), 1);
+		auto blobElement = MGetBlobArrayElement(blobArray, 0);
+
+		memcpy (blobElement, g_Colors, sizeof(g_Colors));
+		auto blob = new MCommandParameterBlob(blobElement, sizeof(g_Colors));
+
+		pCmd->AddParameter(blob);
+		if (!bAll)
+			instance->RouteToListener(instance->GetObjectA(uidSender), pCmd);
+		else
+		{
+			instance->RouteToListener(instance->GetObjectA(uidSender), pCmd);
+			instance->RouteToAllClient(pCmd);
+			MMatchServer::GetInstance()->OnAdminAnnounce(uidSender, "^2[NOTICE]:^1 Colores Recargados!", 0);
+		}
+	};
 	void LoadColors();
 	void ReloadConfig(const MUID& uidSender, const char* szFile);
 	uint32_t g_Colors[256];

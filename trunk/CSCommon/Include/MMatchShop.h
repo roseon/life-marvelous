@@ -54,7 +54,7 @@ public:
 	ShopItemNode* GetSellItemByItemID(int nItemID);				// 샵에서 팔고 있는 nItemID 아이템 명세 반환
 	
 	static MMatchShop* GetInstance();
-	bool Reload() { ReadXml("shop.xml"); };
+	bool Reload() { return ReadXml("shop.xml"); };
 
 #ifdef _DEBUG
 	void MakeShopXML();
