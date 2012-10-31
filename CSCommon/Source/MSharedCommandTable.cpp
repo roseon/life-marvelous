@@ -1721,6 +1721,15 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType)
 			P(MPT_INT, "nState")
 			P(MPT_UID, "uidCarrier")
 
+	C(MC_REQUEST_COLOR, "Server.RequestColors", "Request Color", MCDT_MACHINE2MACHINE)
+	
+	C(MC_RESPONSE_COLOR, "Server.ResponseColors", "Response Color", MCDT_MACHINE2MACHINE)
+		P(MPT_BLOB, "ColorInfo")
+
+	C(MC_ADMIN_RELOAD_COLOR, "Server.ReloadColors", "Reload Color", MCDT_MACHINE2MACHINE)
+
+	C(MC_ADMIN_RELOAD_CONFIG, "Server.ReloadConfig", "Reload Config", MCDT_MACHINE2MACHINE)
+		P(MPT_STR, "szFile")
 
 	END_CMD_DESC();
 }

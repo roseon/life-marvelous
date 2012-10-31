@@ -32,6 +32,7 @@
 
 #include "MMatchBRMachine.h"
 
+#include <stdint.h>
 #include <vector>
 using namespace std;
 
@@ -612,6 +613,9 @@ protected:
 	void OnHwBan(const MUID& uidSender, const char* pName, const char* pReason);
 	void OnReport(const MUID& uidSender, const char* pName, const char* pReason);
 	void OnAimfix(const MUID& uidSender);
+	void OnRequestColors(const MUID& uidSender, bool bAll = false);
+	void LoadColors();
+
 
 	void LogCommand(const char* command, const char* admin, const char* reason);
 
