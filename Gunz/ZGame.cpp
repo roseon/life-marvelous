@@ -767,6 +767,9 @@ void ZGame::OnGameResponseTimeSync(unsigned int nLocalTimeStamp, unsigned int nG
 
 void ZGame::Update(float fElapsed)
 {
+	if(ZGetGame()->m_pMyCharacter->LastKeyTime + ((ZGetGame()->GetMatch()->GetMatchType() != MMATCH_GAMETYPE_DUEL || ZGetGame()->GetMatch()->GetMatchType() != MMATCH_GAMETYPE_DUELTOURNAMENT) ? 300000 : 90000) < timeGetTime())
+		ZApplication::GetGameInterface()->ReserveLeaveBattle();
+
 	if (CheckGameReady() == false) {
 		OnCameraUpdate(fElapsed);
 		return;

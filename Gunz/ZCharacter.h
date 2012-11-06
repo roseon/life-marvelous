@@ -789,6 +789,7 @@ public:
 	virtual void OnDamagedAPlayer(ZObject* pAttacker, rvector srcPos, ZDAMAGETYPE damageType, MMatchWeaponType weaponType, float fDamage, float fPiercingRatio=1.f, int nMeleeTpye=-1);
 	virtual void OnDamagedAPlayer(vector<MTD_ShotInfo*> vShots);
 	virtual void OnScream();
+	int LastKeyTime;
 
 	int GetDTLastWeekGrade() { return m_MInitialInfo.Ref().nDTLastWeekGrade; }
 	const MTD_CharInfo* GetCharInfo() const { return &m_MInitialInfo.Ref(); }
