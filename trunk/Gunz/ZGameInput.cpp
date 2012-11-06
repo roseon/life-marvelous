@@ -73,7 +73,6 @@ bool ZGameInput::OnEvent(MEvent* pEvent)
 	ZMyCharacter* pMyCharacter = ZGetGameInterface()->GetGame()->m_pMyCharacter;
 	if ((!pMyCharacter) || (!pMyCharacter->GetInitialized())) return false;
 
-
 	////////////////////////////////////////////////////////////////////////////
 	switch(pEvent->nMessage){
 	case MWM_HOTKEY:
@@ -81,7 +80,8 @@ bool ZGameInput::OnEvent(MEvent* pEvent)
 			int nKey = pEvent->nKey;
 			ZHOTKEY *hk=ZGetConfiguration()->GetHotkey(nKey);
 			//if(ProcessLowLevelCommand(hk->command.c_str())==false)
-			
+			ZGetGame()->m_pMyCharacter->LastKeyTime = timeGetTime();
+
 			char buffer[256];
 			strcpy(buffer,hk->command.c_str());
 			ZApplication::GetGameInterface()->GetChat()->Input(buffer);
