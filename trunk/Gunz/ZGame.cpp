@@ -767,7 +767,11 @@ void ZGame::OnGameResponseTimeSync(unsigned int nLocalTimeStamp, unsigned int nG
 
 void ZGame::Update(float fElapsed)
 {
-	if(ZGetGame()->m_pMyCharacter->LastKeyTime + ((ZGetGame()->GetMatch()->GetMatchType() != MMATCH_GAMETYPE_DUEL || ZGetGame()->GetMatch()->GetMatchType() != MMATCH_GAMETYPE_DUELTOURNAMENT) ? 300000 : 90000) < timeGetTime())
+	int time = 300000; //5 mins
+	if( ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DUEL || ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DUELTOURNAMENT )
+		time = 90000; // 1 minuto y 30 segundos
+
+	if( (ZGetGame()->m_pMyCharacter->LastKeyTime + time) < timeGetTime() )
 		ZApplication::GetGameInterface()->ReserveLeaveBattle();
 
 	if (CheckGameReady() == false) {
