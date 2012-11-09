@@ -2657,11 +2657,26 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 					pDC->SetColor( 120, 0, 0);
 			}
 
+
+			if(pItem->nKills == pItem->nDeaths)
+				pDC->SetColor(255, 191, 0);
+			else if(pItem->nKills > pItem->nDeaths)
+				pDC->SetColor(0, 255, 0);
+			else
+				pDC->SetColor(255, 0, 0);
+
 			x=ITEM_XPOS[3];
 			sprintf(szText,"%d",pItem->nKills);
 			TextRelative(pDC,x,texty,szText,true);
 
-			pDC->SetColor( color);
+			if(pItem->nKills == pItem->nDeaths)
+				pDC->SetColor(255, 191, 0);
+			else if(pItem->nKills < pItem->nDeaths)
+				pDC->SetColor(0, 255, 0);
+			else if(pItem->nKills > pItem->nDeaths)
+				pDC->SetColor(255, 0, 0);
+			else
+				pDC->SetColor( color);
 		}
 
 		x=ITEM_XPOS[4];
