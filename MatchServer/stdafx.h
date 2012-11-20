@@ -34,7 +34,7 @@
 #define _WIN32_IE 0x0700        // Change this to the appropriate value to target other versions of IE.
 #endif
 
-
+#define POINTER_64 __ptr64
 #define _ATL_CSTRING_EXPLICIT_CONSTRUCTORS	// 일부 CString 생성자는 명시적으로 선언됩니다.
 
 // MFC의 공통 부분과 무시 가능한 경고 메시지에 대한 숨기기를 해제합니다.
