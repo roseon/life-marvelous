@@ -569,7 +569,8 @@ RRESULT OnError(void *pParam)
 void SetModeParams()
 {
 #ifdef _PUBLISH
-	g_ModeParams.bFullScreen = true;
+	//g_ModeParams.bFullScreen = true;
+	g_ModeParams.bFullScreen = false;
 #else
 	#ifdef _DEBUG
 		g_ModeParams.bFullScreen = false;

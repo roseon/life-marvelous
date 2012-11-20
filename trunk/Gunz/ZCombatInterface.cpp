@@ -458,7 +458,7 @@ void ZCombatInterface::OnDestroy()
 
 
 	m_pWeaponScreenEffect->Destroy();
-	SAFE_DELETE(m_pWeaponScreenEffect);
+	//SAFE_DELETE(m_pWeaponScreenEffect);
 
 	ZScoreBoardItem::Release();
 }
