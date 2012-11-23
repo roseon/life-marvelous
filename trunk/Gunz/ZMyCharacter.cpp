@@ -2912,8 +2912,8 @@ void ZMyCharacter::OnDashAttacked(rvector &dir)
 	//jintriple3 디버그 레지스터 해킹 and 슈드 엔진...
 	if(uStatus.m_bBlast || uStatus.m_bBlastDrop || uStatus.m_bBlastStand )
 		return;
-	bool bForDebugRegister = ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DEATHMATCH_TEAM2;
-	if(ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DEATHMATCH_TEAM2)
+	bool bForDebugRegister = ZGetGameTypeManager()->IsTeamExtremeGame(ZGetGameClient()->GetMatchStageSetting()->GetGameType());
+       if(ZGetGameTypeManager()->IsTeamExtremeGame(ZGetGame()->GetMatch()->GetMatchType()))
 		PROTECT_DEBUG_REGISTER(bForDebugRegister)
 			if(isInvincible())
 				return;

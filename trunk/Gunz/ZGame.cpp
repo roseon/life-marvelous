@@ -75,6 +75,7 @@
 #include "ZGameConst.h"
 
 #include "ZRuleDuel.h"
+#include "ZRuleDeathMatch.h"
 #include "ZMyCharacter.h"
 #include "MMatchCRC32XORCache.h"
 #include "MMatchObjCache.h"
@@ -772,7 +773,11 @@ void ZGame::Update(float fElapsed)
 		time = 90000; // 1 minuto y 30 segundos
 
 	if( (ZGetGame()->m_pMyCharacter->LastKeyTime + time) < timeGetTime() )
-		ZApplication::GetGameInterface()->ReserveLeaveBattle();
+		{	
+			int test= 0;
+			test= 33;
+			//ZApplication::GetGameInterface()->ReserveLeaveBattle();
+		}
 
 	if (CheckGameReady() == false) {
 		OnCameraUpdate(fElapsed);
@@ -5544,7 +5549,7 @@ void ZGame::OnPeerSpawn(MUID& uid, rvector& pos, rvector& dir)
 	OutputDebugString(szLog);
 #endif
 
-	if (GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DEATHMATCH_TEAM2)
+	 if (ZGetGameTypeManager()->IsTeamExtremeGame(GetMatch()->GetMatchType()))
 		pCharacter->SetInvincibleTime( 5000);
 }
 
@@ -6451,9 +6456,15 @@ void ZGame::AddEffectRoundState(MMATCH_ROUNDSTATE nRoundState, int nArg)
 		}
 		break;
 	case MMATCH_ROUNDSTATE_PLAY:
-		{
-			ZGetScreenEffectManager()->AddRock();
-		}
+                {
+                        if (GetMatch()->GetMatchType() == MMATCH_GAMETYPE_CTF)
+                        {
+                        ZGetGameInterface()->PlayVoiceSound( VOICE_CTF, 1600);
+                        ZGetScreenEffectManager()->AddScreenEffect("ctf_splash");
+                        }
+                        else
+                        ZGetScreenEffectManager()->AddRock();
+                }
 		break;
 	case MMATCH_ROUNDSTATE_FINISH:
 		{
@@ -6468,7 +6479,7 @@ void ZGame::AddEffectRoundState(MMATCH_ROUNDSTATE nRoundState, int nArg)
 				}
 				else if (nArg == MMATCH_ROUNDRESULT_DRAW )
 				{
-					if (GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DEATHMATCH_TEAM2)
+					 if (ZGetGameTypeManager()->IsTeamExtremeGame(GetMatch()->GetMatchType()))
 					{
 						MMatchTeam nMyTeam = (MMatchTeam)m_pMyCharacter->GetTeamID();
 						MMatchTeam nEnemyTeam = (nMyTeam == MMT_BLUE ? MMT_RED : MMT_BLUE);
@@ -6804,6 +6815,19 @@ void ZGame::StartRecording()
 		nWritten = zfwrite(&pDuel->QInfo,sizeof(MTD_DuelQueueInfo),1,m_pReplayFile);
 		if(nWritten==0) goto RECORDING_FAIL;
 	}
+	if(IsGameRuleCTF(ZGetGameClient()->GetMatchStageSetting()->GetGameType()))
+        {
+                ZRuleTeamCTF* pTeamCTF = (ZRuleTeamCTF*)ZGetGameInterface()->GetGame()->GetMatch()->GetRule();
+                nWritten = zfwrite(&pTeamCTF->GetRedCarrier(),sizeof(MUID),1,m_pReplayFile);
+                nWritten = zfwrite(&pTeamCTF->GetBlueCarrier(),sizeof(MUID),1,m_pReplayFile);
+                nWritten = zfwrite(&pTeamCTF->GetRedFlagPos(),sizeof(rvector),1,m_pReplayFile);
+                nWritten = zfwrite(&pTeamCTF->GetBlueFlagPos(),sizeof(rvector),1,m_pReplayFile);
+                int nRedFlagState = (int)pTeamCTF->GetRedFlagState();
+                int nBlueFlagState = (int)pTeamCTF->GetBlueFlagState();
+                nWritten = zfwrite(&nRedFlagState,sizeof(int),1,m_pReplayFile);
+                nWritten = zfwrite(&nBlueFlagState,sizeof(int),1,m_pReplayFile);
+                if(nWritten==0) goto RECORDING_FAIL;
+        }
 	else if (ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_DUELTOURNAMENT)
 	{
 		int nType = (int)ZGetGameInterface()->GetDuelTournamentType();
@@ -7614,6 +7638,9 @@ bool ZGame::OnRuleCommand(MCommand* pCommand)
 	{
 	case MC_MATCH_ASSIGN_COMMANDER:
 	case MC_MATCH_ASSIGN_BERSERKER:
+	case MC_MATCH_FLAG_EFFECT:
+    case MC_MATCH_FLAG_CAP:
+    case MC_MATCH_FLAG_STATE:
 	case MC_MATCH_ASSIGN_DEITY:
 	case MC_MATCH_ASSIGN_REVERSE_BERSERKER:
 	case MC_MATCH_GAME_DEAD:

@@ -319,15 +319,17 @@ public:
 #define VOICE_BERSERKER_DOWN		"NAR28"		// 1.3  추가 완료
 #define VOICE_GOT_BERSERKER			"NAR29"		// 1.6  추가 완료
 #define VOICE_QUEST_START_FAIL		"NAR22"		// 2.8  추가 완료
+#define VOICE_FIGHT					""
+#define VOICE_NEW_INTRUDER			"NAR17"		// 1.3
+#define VOICE_NEW_CHALLENGER		"NAR18"		// 1.6
+#define VOICE_CTF					"nar/NAR30" // 1.3
+#define VOICE_NEW_CHALLENGER		"nar/NAR18"		// 1.6
 #define VOICE_RED_HAS_FLAG			"nar/NAR32"
 #define VOICE_BLUE_HAS_FLAG			"nar/NAR31"
 #define VOICE_RED_FLAG_RETURN		"nar/NAR34"
 #define VOICE_BLUE_FLAG_RETURN		"nar/NAR33"
 #define VOICE_RED_TEAM_SCORE		"nar/NAR36"
 #define VOICE_BLUE_TEAM_SCORE		"nar/NAR35"
-#define VOICE_FIGHT					""
-#define VOICE_NEW_INTRUDER			"NAR17"		// 1.3
-#define VOICE_NEW_CHALLENGER		"NAR18"		// 1.6
 #define VOICE_FIRST_KILL			""
 #define VOICE_DOUBLE_KILL			""
 #define VOICE_MULTI_KILL			""
@@ -352,6 +354,7 @@ public:
 #define VOICE_DEFEND				""
 #define VOICE_NEGATIVE				""
 #define VOICE_AFFIRMATIVE			""
+
 
 #define VOICE_MAX					45
 

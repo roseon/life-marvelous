@@ -1,19 +1,20 @@
 #ifndef _ZREPLAY_H
 #define _ZREPLAY_H
 
-struct REPLAY_STAGE_SETTING_NODE 
+struct REPLAY_STAGE_SETTING_NODE
 {
-	MUID				uidStage;
-	char				szMapName[MAPNAME_LENGTH];	// 맵이름
-	char				nMapIndex;					// 맵인덱스
-	MMATCH_GAMETYPE		nGameType;					// 게임타입
-	int					nRoundMax;					// 라운드
-	int					nLimitTime;					// 제한시간(1 - 1분)
-	int					nLimitLevel;				// 제한레벨
-	int					nMaxPlayers;				// 최대인원
-	bool				bTeamKillEnabled;			// 팀킬여부
-	bool				bTeamWinThePoint;			// 선승제 여부
-	bool				bForcedEntryEnabled;		// 게임중 참가 여부
+        MUID                            uidStage;
+        char                            szMapName[MAPNAME_LENGTH];      // 맵이름
+        char                            nMapIndex;                                      // 맵인덱스
+        MMATCH_GAMETYPE         nGameType;                                      // 게임타입
+        int                                     nRoundMax;                                      // 라운드
+        int                                     nLimitTime;                                     // 제한시간(1 - 1분)
+        int                                     nLimitLevel;                            // 제한레벨
+        int                                     nMaxPlayers;                            // 최대인원
+        bool                            bTeamKillEnabled;                       // 팀킬여부
+        bool                            bTeamWinThePoint;                       // 선승제 여부
+        bool                            bForcedEntryEnabled;            // 게임중 참가 여부
+        char                            szStageName[64];
 };
 
 void ConvertStageSettingNodeForReplay(const REPLAY_STAGE_SETTING_NODE* pSource, MSTAGE_SETTING_NODE* pTarget);
@@ -30,7 +31,7 @@ void ConvertCharInfo(MTD_CharInfo* currCharInfo, void* oldCharInfo, int nVerOld)
 // version 4 : duel 모드의 현재 상태 저장이 추가되었습니다.
 // version 5 : duel_tournament용 정보가 추가되었습니다. (MTD_CharInfo에 지난주 랭킹등급 정보 추가, 듀얼토너먼트용 게임 상태 저장)
 // version 6 : 장착 아이템에 갯수정보가 추가되었습니다. (소모성 아이템용)
-#define GUNZ_REC_FILE_VERSION	6
+#define GUNZ_REC_FILE_VERSION	7
 #define GUNZ_REC_FILE_EXT		"gzr"
 
 class ZReplay

@@ -1635,7 +1635,7 @@ void ZScreenEffectManager::UpdateDuelEffects()
 
 void ZScreenEffectManager::DrawTDMEffects()
 {
-	if (ZGetGameClient()->GetMatchStageSetting()->GetGameType() != MMATCH_GAMETYPE_DEATHMATCH_TEAM2) return;
+	if (ZGetGameTypeManager()->IsTeamExtremeGame(ZGetGameClient()->GetMatchStageSetting()->GetGameType())) return;
 
 	unsigned int nNowTime = timeGetTime();
 

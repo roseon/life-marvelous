@@ -91,8 +91,13 @@ bool InitMaps(MWidget *pWidget)
 //#endif
 
 		bool bDuelMode = false;
-		if ( ZGetGameClient() && (ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_DUEL))
-			bDuelMode = true;
+                bool bCTFMode = false;
+        if ( ZGetGameClient() && (ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_DUEL))
+                        bDuelMode = true;
+        if ( ZGetGameClient() && (ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_CTF))
+                        bCTFMode = true;
+ 
+         bool UseThisMap = true;
 
 		// 릴레이맵을 젤위에 넣어준다.
 		if(!bRelayMapInsert)
@@ -109,9 +114,18 @@ bool InitMaps(MWidget *pWidget)
 			}
 		}
 
-		if ( pRule->CheckMap( MGetMapDescMgr()->GetMapName(i), bDuelMode))
-			if(strcmp(MMATCH_MAPNAME_RELAYMAP, MGetMapDescMgr()->GetMapName(i)) != 0)
-				pCombo->Add(MGetMapDescMgr()->GetMapName(i));
+		if(bCTFMode)
+		{
+                        if ( pRule->CheckCTFMap( MGetMapDescMgr()->GetMapName(i)))
+                        {
+                                if(strcmp(MMATCH_MAPNAME_RELAYMAP, MGetMapDescMgr()->GetMapName(i)) != 0)
+                                        pCombo->Add(MGetMapDescMgr()->GetMapName(i));
+                        }
+                }
+ 
+                if ( pRule->CheckMap( MGetMapDescMgr()->GetMapName(i), bDuelMode) && !bCTFMode)
+                        if(strcmp(MMATCH_MAPNAME_RELAYMAP, MGetMapDescMgr()->GetMapName(i)) != 0)
+                                pCombo->Add(MGetMapDescMgr()->GetMapName(i));
 	}
 
 	return true;

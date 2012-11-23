@@ -439,6 +439,8 @@ bool ZEffectManager::Create(void)
 	m_pChatIcon = m_pEffectMeshMgr->Get("ef_chat.elu");
 
 	m_pBerserkerEffect	= m_pEffectMeshMgr->Get("ef_berserker");
+	m_pRedFlagEffect = m_pEffectMeshMgr->Get("capturer");
+    m_pBlueFlagEffect = m_pEffectMeshMgr->Get("captureb");
 
 //	m_pLighteningEffect = m_pEffectMeshMgr->Get("ef_lightening");
 	m_pBlizzardEffect = m_pEffectMeshMgr->Get("ef_blizzard");
@@ -2899,6 +2901,24 @@ void ZEffectManager::AddBerserkerIcon(ZObject* pObj)
 	}
 }
 
+void ZEffectManager::AddBlueFlagIcon(ZObject* pObj)
+{
+    ZEffect* pNew;
+    pNew = new ZEffectBerserkerIconLoop(m_pBlueFlagEffect,pObj);
+    ((ZEffectIconLoop*)pNew)->SetAlignType(1);
+    ((ZEffectIconLoop*)pNew)->m_type = eq_parts_pos_info_Spine2;
+    Add(pNew);
+   
+}
+ 
+void ZEffectManager::AddRedFlagIcon(ZObject* pObj)
+{
+    ZEffect* pNew;
+    pNew = new ZEffectBerserkerIconLoop(m_pRedFlagEffect,pObj);
+    ((ZEffectIconLoop*)pNew)->SetAlignType(1);
+    ((ZEffectIconLoop*)pNew)->m_type = eq_parts_pos_info_Spine2;
+    Add(pNew);
+}  
 void ZEffectManager::AddCommanderIcon(ZObject* pObj,int nTeam)
 {
 	if(nTeam<0 || nTeam>=2) return;

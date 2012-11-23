@@ -49,6 +49,8 @@ bool ZWorldItem::ApplyWorldItem( ZCharacter* pCharacter )
 	{
 	case WIT_QUEST:
 		break;
+	 case WIT_FLAG:
+        break;
 	case WIT_HP:
 		pCharacter->SetHP( min(	 pCharacter->GetHP() + m_fAmount, pCharacter->GetMaxHP() ) );
 		break;
@@ -124,6 +126,7 @@ ZWorldItem::ZWorldItem()
 	m_pVMesh			= NULL;
 
 	m_dwStartTime		 = 0.f;
+	m_dwFlagObtainTime   = 0.f;
 	m_dwToggleBackupTime = 0.f;
 
 	m_bToggle			= true;
@@ -266,7 +269,10 @@ void ZWorldItemManager::update()
 
 			if( D3DXVec3Length( &(charPos - itemPos)) <= WORLD_ITEM_RADIUS )
 			{
-				OnOptainWorldItem(pItem);
+				if(!(ZGetGame()->IsReplay() && pItem->GetType() == WIT_FLAG))
+                                {
+                                OnOptainWorldItem(pItem);
+                                }
 			}			
 		}
 		++iter;

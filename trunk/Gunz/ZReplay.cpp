@@ -259,76 +259,95 @@ void ConvertCharInfo(MTD_CharInfo* currCharInfo, void* oldCharInfo, int nVerOld)
 
 bool ZReplayLoader::LoadCharInfo(ZFile* file)
 {
-	int nRead;
-
-	// character info
-	int nCharacterCount;
-	zfread(&nCharacterCount, sizeof(nCharacterCount), 1, file);
-
-	for(int i = 0; i < nCharacterCount; i++)
-	{
-		bool bHero;
-		nRead = zfread(&bHero, sizeof(bHero), 1, file);
-		if(nRead != 1) return false;
-
-		MTD_CharInfo info;
-
-		switch (m_nVersion)
-		{
-		case 0: case 1:
-			{
-				MTD_CharInfo_v0 old;
-				nRead = zfread(&old, sizeof(old), 1, file);
-				if(nRead != 1) return false;
-				ConvertCharInfo(&info, &old, m_nVersion);
-			}
-			break;
-		case 2: case 3: case 4:
-			{
-				MTD_CharInfo_v2 old;
-				nRead = zfread(&old, sizeof(old), 1, file);
-				if(nRead != 1) return false;
-				ConvertCharInfo(&info, &old, m_nVersion);
-			}
-			break;
-		case 5:
-			{
-				MTD_CharInfo_v5 old;
-				nRead = zfread(&old, sizeof(old), 1, file);
-				if(nRead != 1) return false;
-				ConvertCharInfo(&info, &old, m_nVersion);
-			}
-			break;
-		case GUNZ_REC_FILE_VERSION:
-			{
-				nRead = zfread(&info, sizeof(info), 1, file);
-				if(nRead != 1) return false;
-			}
-		}
-
-		ZCharacter* pChar=NULL;
-		if(bHero)
-		{
-			ZGetGame()->m_pMyCharacter = new ZMyCharacter;			
-			ZGetGame()->CreateMyCharacter(&info/*, NULL*/);			///< TodoH(상) - 리플레이 관련..
-			pChar=ZGetGame()->m_pMyCharacter;
-			pChar->Load(file,m_nVersion);
-		}else
-		{
-			pChar=new ZNetCharacter;
-			pChar->Load(file,m_nVersion);
-			pChar->Create(&info/*, NULL*/);							///< TodoH(상) - 리플레이 관련..
-		}
-		ZGetCharacterManager()->Add(pChar);
-
-		pChar->SetVisible(true);
+        int nRead;
+ 
+        // character info
+        int nCharacterCount;
+        zfread(&nCharacterCount, sizeof(nCharacterCount), 1, file);
+ 
+        for(int i = 0; i < nCharacterCount; i++)
+        {
+                bool bHero;
+                nRead = zfread(&bHero, sizeof(bHero), 1, file);
+                if(nRead != 1) return false;
+ 
+                MTD_CharInfo info;
+ 
+                switch (m_nVersion)
+                {
+                case 0: case 1:
+                        {
+                                MTD_CharInfo_v0 old;
+                                nRead = zfread(&old, sizeof(old), 1, file);
+                                if(nRead != 1) return false;
+                                ConvertCharInfo(&info, &old, m_nVersion);
+                        }
+                        break;
+                case 2: case 3: case 4:
+                        {
+                                MTD_CharInfo_v2 old;
+                                nRead = zfread(&old, sizeof(old), 1, file);
+                                if(nRead != 1) return false;
+                                ConvertCharInfo(&info, &old, m_nVersion);
+                        }
+                        break;
+                case 5:
+                        {
+                                MTD_CharInfo_v5 old;
+                                nRead = zfread(&old, sizeof(old), 1, file);
+                                if(nRead != 1) return false;
+                                ConvertCharInfo(&info, &old, m_nVersion);
+                        }
+                        break;
+                case GUNZ_REC_FILE_VERSION:
+                        {
+                                nRead = zfread(&info, sizeof(info), 1, file);
+                                if(nRead != 1) return false;
+                        }
+                }
+ 
+                ZCharacter* pChar=NULL;
+                if(bHero)
+                {
+                        ZGetGame()->m_pMyCharacter = new ZMyCharacter;                 
+                        ZGetGame()->CreateMyCharacter(&info/*, NULL*/);                 ///< TodoH(상) - 리플레이 관련..
+                        pChar=ZGetGame()->m_pMyCharacter;
+                        pChar->Load(file,m_nVersion);
+                }else
+                {
+                        pChar=new ZNetCharacter;
+                        pChar->Load(file,m_nVersion);
+                        pChar->Create(&info/*, NULL*/);                                                 ///< TodoH(상) - 리플레이 관련..
+                }
+                ZGetCharacterManager()->Add(pChar);
+ 
+                pChar->SetVisible(true);
 #ifdef _REPLAY_TEST_LOG
-		mlog("[Add Character %s(%d)]\n", pChar->GetUserName());
+                mlog("[Add Character %s(%d)]\n", pChar->GetUserName());
 #endif
-
-	}
-
-	return true;
+ 
+        }
+ 
+        //assign CTF berserker state after we're in the clear
+ 
+        if(IsGameRuleCTF(m_StageSetting.nGameType))
+        {
+                ZRuleTeamCTF* pTeamCTF = (ZRuleTeamCTF*)ZGetGameInterface()->GetGame()->GetMatch()->GetRule();
+                for (ZCharacterManager::iterator itor = ZGetGame()->m_CharacterManager.begin();
+                itor != ZGetGame()->m_CharacterManager.end(); ++itor)
+                {
+                ZCharacter* pCharacter = (*itor).second;
+                if(pCharacter)
+                        {
+                                        if(pCharacter->GetUID() == pTeamCTF->GetBlueCarrier() || pCharacter->GetUID() == pTeamCTF->GetRedCarrier())
+                                        {
+                                                ZGetEffectManager()->AddBerserkerIcon(pCharacter);
+                                                pCharacter->SetTagger(true);
+                                        }
+                        }
+                }
+        }
+        return true;
 }
 
 bool ZReplayLoader::LoadCommandStream(ZFile* file)

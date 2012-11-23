@@ -2567,6 +2567,12 @@ bool ZGameInterface::OnCreate(ZLoadingProgress *pLoadingProgress)
 	ZGetGameTypeManager()->SetGameTypeStr( MMATCH_GAMETYPE_DEATHMATCH_TEAM2, ZMsg( MSG_MT_DEATHMATCH_TEAM2));
 	ZGetGameTypeManager()->SetGameTypeStr( MMATCH_GAMETYPE_DUEL, ZMsg( MSG_MT_DUEL));
 	ZGetGameTypeManager()->SetGameTypeStr( MMATCH_GAMETYPE_DUELTOURNAMENT, ZMsg( MSG_MT_DUELTOURNAMENT));
+	//custom lex
+	ZGetGameTypeManager()->SetGameTypeStr( MMATCH_GAMETYPE_CLASSIC_SOLO,  "Classic");
+	ZGetGameTypeManager()->SetGameTypeStr( MMATCH_GAMETYPE_CLASSIC_TEAM,  "Team Classic");
+	ZGetGameTypeManager()->SetGameTypeStr( MMATCH_GAMETYPE_DEITY,  "Deity");
+	ZGetGameTypeManager()->SetGameTypeStr( MMATCH_GAMETYPE_REVERSE_BERSERKER, "Reverse Berserker");
+	ZGetGameTypeManager()->SetGameTypeStr( MMATCH_GAMETYPE_CTF,  "Capture the Flag");
 
 #ifndef _DEBUG
 	MWidget* pWidget = m_IDLResource.FindWidget( "MonsterBookCaller");
