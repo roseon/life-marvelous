@@ -6670,7 +6670,10 @@ void ZGameInterface::OnVoiceSound()
 void ZGameInterface::PlayVoiceSound( char* pszSoundName, DWORD time)
 {
 	if ( !Z_AUDIO_NARRATIONSOUND)
-		return;
+		{
+			mlog("sonido deshabilitado pff\n");
+			return;
+		}
 
 
 	if ( strcmp( pszSoundName, m_szCurrVoice) != 0)
