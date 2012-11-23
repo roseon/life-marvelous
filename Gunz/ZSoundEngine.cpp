@@ -1472,11 +1472,11 @@ bool ZSoundEngine::LoadResource( char* pFileName_ ,ZLoadingProgress *pLoading )
 			m_SoundEffectSource2D.insert(SESMAP::value_type(szSoundName, pSS ) );
 		}
 
-#ifdef _DEBUG
+//#ifdef _DEBUG
 		if(pFS==NULL && pFS2==NULL) {
 			mlog("cannot create sound : %s\n",szSoundName);
 		}
-#endif
+//#endif
 	}
 	strcpy( m_SoundFileName, pFileName_ );
 	return true;
