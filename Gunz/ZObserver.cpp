@@ -569,7 +569,7 @@ void ZObserver::OnDraw(MDrawContext* pDC)
 			_ASSERT(0);
 		pDC->SetFont( pFont);
 
-		if ( ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DEATHMATCH_TEAM2)
+		if(ZGetGameTypeManager()->IsTeamExtremeGame(ZGetGame()->GetMatch()->GetMatchType()))
 			TextRelative( pDC, 0.5f, 75.0f/800.0f, szName, true);
 		else
 			TextRelative( pDC, 0.5f, 50.0f/800.0f, szName, true);
@@ -593,7 +593,7 @@ void ZObserver::OnDraw(MDrawContext* pDC)
 
 
 	// Admin 옵져버일 경우에 남은 인원수 표시
-	if ( ZGetMyInfo()->IsAdminGrade() && (ZGetGameClient()->GetMatchStageSetting()->GetGameType() != MMATCH_GAMETYPE_DEATHMATCH_TEAM2))
+	if ( ZGetMyInfo()->IsAdminGrade() && !ZGetGameTypeManager()->IsTeamExtremeGame(ZGetGame()->GetMatch()->GetMatchType()))
 	{
 		// 인원수 구하기
 		int nNumOfTotal=0, nNumOfRedTeam=0, nNumOfBlueTeam=0;

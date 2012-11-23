@@ -228,7 +228,7 @@ bool ZCombatInterface::OnCreate()
 	MWidget* pWidget = ZApplication::GetGameInterface()->GetIDLResource()->FindWidget( "CombatTDMInfo");
 	if ( pWidget)
 	{
-		if ( ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DEATHMATCH_TEAM2)
+		 if ( ZGetGameTypeManager()->IsTeamExtremeGame(ZGetGame()->GetMatch()->GetMatchType()))
 		{
 			int nMargin[ BMNUM_NUMOFCHARSET] = { 13,9,13,13,13,13,13,13,13,13,8,10,8 };
 
@@ -1036,7 +1036,7 @@ void ZCombatInterface::DrawScore(MDrawContext* pDC)
 		}
 	}
 
-	if (ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DEATHMATCH_TEAM2)
+	if (ZGetGameTypeManager()->IsTeamExtremeGame(ZGetGame()->GetMatch()->GetMatchType()))
 	{
 		DrawTDMScore(pDC);
 	}
@@ -2072,7 +2072,7 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 		}
 		else
 		{
-			if (ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DEATHMATCH_TEAM2) // 팀전일때 무한데스매치만 예외가 많이 발생합니다 =_=;
+			if (ZGetGameTypeManager()->IsTeamExtremeGame(ZGetGame()->GetMatch()->GetMatchType())) // 팀전일때 무한데스매치만 예외가 많이 발생합니다 =_=;
 				sprintf(szText, "%s : %d(Red) vs %d(Blue)",  ZGetGameTypeManager()->GetGameTypeStr(ZGetGame()->GetMatch()->GetMatchType()),
 															ZGetGame()->GetMatch()->GetTeamKills(MMT_RED), 
 															ZGetGame()->GetMatch()->GetTeamKills(MMT_BLUE));
@@ -3297,7 +3297,7 @@ void ZCombatInterface::GetResultInfo( void)
 
 		// 이미지 설정
 		MPicture* pPicture;
-		if ( ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DEATHMATCH_TEAM2)		// 으아아아악
+		if (ZGetGameTypeManager()->IsTeamExtremeGame(ZGetGame()->GetMatch()->GetMatchType()))	// 으아아아악
 		{
 			pPicture = (MPicture*)ZApplication::GetGameInterface()->GetIDLResource()->FindWidget( "CombatResult_Finish");
 			if ( pPicture)

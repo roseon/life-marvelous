@@ -280,6 +280,8 @@ protected:
 	RMesh*	m_pChatIcon;
 
 	RMesh*	m_pBerserkerEffect;
+    RMesh*  m_pBlueFlagEffect;
+    RMesh*  m_pRedFlagEffect;
 
 	ZEffectWeaponEnchant* m_pWeaponEnchant[ZC_ENCHANT_END];
 
@@ -409,6 +411,8 @@ public:
 	void AddCharacterIcon(ZObject* pObj,int nIcon);
 	void AddCommanderIcon(ZObject* pObj,int nTeam);
 	void AddBerserkerIcon(ZObject* pObj);
+	void AddBlueFlagIcon(ZObject* pObj);
+    void AddRedFlagIcon(ZObject* pObj);
 
 	void AddChatIcon(ZObject* pObj);
 	void AddLostConIcon(ZObject* pObj);

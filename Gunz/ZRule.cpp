@@ -108,6 +108,12 @@ ZRule* ZRule::CreateRule(ZMatch* pMatch, MMATCH_GAMETYPE nGameType)
 		}
 		break;
 
+	case MMATCH_GAMETYPE_CTF:
+		{
+			return (new ZRuleTeamCTF(pMatch));
+		}
+		break;
+
 	case MMATCH_GAMETYPE_DEITY:
 		{
 			return (new ZRuleDeity(pMatch));

@@ -468,7 +468,11 @@ void ZStageInterface::OnStageInterfaceSettup( void)
 			break;
 
 		case MMATCH_GAMETYPE_DEATHMATCH_TEAM:
+		case MMATCH_GAMETYPE_CLASSIC_TEAM:
 		case MMATCH_GAMETYPE_DEATHMATCH_TEAM2:
+		case MMATCH_GAMETYPE_CTF:
+                        color = TDM_COLOR;
+                        break;
 			color = TDM_COLOR;
 			break;
 
@@ -623,7 +627,8 @@ void ZStageInterface::ChangeStageGameSetting( const MSTAGE_SETTING_NODE* pSettin
 	else if ( (pSetting->nGameType == MMATCH_GAMETYPE_DEATHMATCH_TEAM) ||		// 데쓰매치 팀전이거나...
 		(pSetting->nGameType == MMATCH_GAMETYPE_DEATHMATCH_TEAM2) ||			// 무한데스매치 팀전이거나...
 		 (pSetting->nGameType == MMATCH_GAMETYPE_GLADIATOR_TEAM) ||				// 칼전 팀전이거나...
-		 (pSetting->nGameType == MMATCH_GAMETYPE_ASSASSINATE))					// 암살전 이면...
+		 (pSetting->nGameType == MMATCH_GAMETYPE_ASSASSINATE)  ||
+          (pSetting->nGameType == MMATCH_GAMETYPE_CTF))  // 암살전 이면...
 	{
 		// 맵 이름 배경 이미지 변환
 		if ( pAniMapImg)

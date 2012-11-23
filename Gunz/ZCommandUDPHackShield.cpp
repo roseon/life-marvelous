@@ -396,6 +396,9 @@ void ZCommandUDPHackShield::Init()
 	AddDeniedCommand(MC_MATCH_NEW_MONSTER_INFO);
 	AddDeniedCommand(MC_MATCH_REQUEST_MONSTER_BIBLE_INFO);
 	AddDeniedCommand(MC_MATCH_RESPONSE_MONSTER_BIBLE_INFO);
+	AddDeniedCommand(MC_MATCH_FLAG_EFFECT);
+    AddDeniedCommand(MC_MATCH_FLAG_CAP);
+    AddDeniedCommand(MC_MATCH_FLAG_STATE);
 }
 
 void ZCommandUDPHackShield::AddDeniedCommand(int nCommandID)
