@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" ?>
+<XML>
+	<XMLHEADER>version="1.0"</XMLHEADER>
+
+	<SKIN>Default</SKIN>
+
+	<DEFFONT>Arial</DEFFONT>
+
+	<IME>false</IME>
+
+	<BAREPORT>
+		<ADDR>www.battlearena.com</ADDR>
+		<DIR>incoming/gunz_US</DIR>
+	</BAREPORT>
+
+	<EMBLEM_URL>http://gunz.abbygamerz.net/emblems/</EMBLEM_URL>
+	<TEMBLEM_URL>http://gunz.abbygamerz.net/emblems/</TEMBLEM_URL>
+
+	<CASHSHOP_URL>http://gunz.abbygamerz.net/index.php?do=shop</CASHSHOP_URL>
+
+	<HOMEPAGE>
+	    <URL>http://gunz.abbygamerz.net</URL>
+	    <TITLE>Abby Gunz</TITLE>
+	</HOMEPAGE>
+
+	<LOCATORLIST>
+		<LOCATOR id="1" IP="127.0.0.1" />
+	</LOCATORLIST>
+
+	<TLOCATORLIST>
+		<LOCATOR id="1" IP="127.0.0.1" />
+	</TLOCATORLIST>
+</XML>
