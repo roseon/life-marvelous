@@ -673,6 +673,7 @@ void MBMatchServer::OnAsyncGetCpuUsage(MAsyncJob* pJobResult)
 #endif
 }
 
+
 void MBMatchServer::OnAsyncBuyBountyItem( MAsyncJob* pJobResult )
 {
 	MBMatchAsyncDBJob_BuyBountyItem* pJob = (MBMatchAsyncDBJob_BuyBountyItem*)(pJobResult);
@@ -690,6 +691,9 @@ void MBMatchServer::OnAsyncBuyBountyItem( MAsyncJob* pJobResult )
 
 	MMatchCharInfo* pCharInfo = pObj->GetCharInfo();
 	if( NULL == pCharInfo ) return;
+
+	MMatchAccountInfo* pAccountInfo = pObj->GetAccountInfo();
+	if( NULL == pAccountInfo ) return;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// 아이템 지급
@@ -744,7 +748,10 @@ void MBMatchServer::OnAsyncBuyBountyItem( MAsyncJob* pJobResult )
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// 오브젝트에 바운티 깎는다.
-	pCharInfo->m_nBP -= dwPrice;
+	if (pJob->GetBuyMode() == 1) 
+		pAccountInfo->m_nECoins -= dwPrice;
+	else
+		pCharInfo->m_nBP -= dwPrice;
 	
 	UpdateCharDBCachingData(pObj);		///< XP, BP, KillCount, DeathCount 캐슁 업데이트
 	UpdateCharItemDBCachingData(pObj);	///< Character Item에서 업데이트가 필요한 것들 업데이트

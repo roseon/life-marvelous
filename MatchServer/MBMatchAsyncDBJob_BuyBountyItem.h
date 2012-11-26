@@ -22,21 +22,25 @@ public :
 
 	void Input( const MUID& uidPlaeyr 
 		, const unsigned long nCID
+		, const unsigned long nAID
 		, const unsigned long nItemID
 		, const int nItemCount
 		, const DWORD dwPrice
 		, const WORD wRehtHourPeriod
 		, const bool bIsGambleItem
-		, const bool bIsSpendableItem )
+		, const bool bIsSpendableItem
+		, int nBuyMode)
 	{
 		m_uidPlayer			= uidPlaeyr;
 		m_nCID				= nCID;
+		m_nAID				= nAID;
 		m_nItemID			= nItemID;
 		m_nItemCount		= nItemCount;
 		m_dwPrice			= dwPrice;
 		m_wRentHourPeriod	= wRehtHourPeriod;
 		m_bIsGambleItem		= bIsGambleItem;
 		m_bIsSpendableItem  = bIsSpendableItem;
+		m_nBuyMode			= nBuyMode;
 	}
 
 	void Run( void* pContext );
@@ -48,16 +52,19 @@ public :
 	const WORD			GetRentHourPeriod()	{ return m_wRentHourPeriod; }
 	const bool			IsGambleItem()		{ return m_bIsGambleItem; }
 	const DWORD			GetNewCIID()		{ return m_dwCIID; }
-
+	const int			GetBuyMode()		{ return m_nBuyMode; }
+	
 private :
 	MUID			m_uidPlayer;
 	unsigned long	m_nCID;
+	unsigned long	m_nAID;
 	unsigned int	m_nItemID;
 	int				m_nItemCount;
 	DWORD			m_dwPrice;
 	WORD			m_wRentHourPeriod;
 	bool			m_bIsGambleItem;
 	bool			m_bIsSpendableItem;
+	int				m_nBuyMode;
 
 	DWORD			m_dwCIID;
 };

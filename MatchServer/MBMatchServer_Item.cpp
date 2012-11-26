@@ -222,7 +222,6 @@ MCommandParameterBlob* MBMatchServer::MakeShopItemListBlob( const int nFirstItem
 	return pItemListBlob;
 }
 
-
 void MBMatchServer::OnRequestBuyItem(const MUID& uidPlayer, const unsigned long int nItemID, const int nItemCount)
 {
 	MMatchObject* pObj = GetObject(uidPlayer);
@@ -235,6 +234,7 @@ void MBMatchServer::OnRequestBuyItem(const MUID& uidPlayer, const unsigned long 
 	WORD	nRentHourPeriod	= RENT_PERIOD_UNLIMITED;
 	bool	bIsGambleItem	= false;
 	bool	bIsSpendableItem = false;
+	int		nBuyMode = 0;
 
 	// Shop에서 판매하는지 먼저 검사하고 GambleItem인지 한번더 검사 한다.
 	if( MGetMatchShop()->IsSellItem(nItemID) )
@@ -248,6 +248,14 @@ void MBMatchServer::OnRequestBuyItem(const MUID& uidPlayer, const unsigned long 
 
 		if( pItemDesc->IsSpendableItem() ) {
 			bIsSpendableItem = true;
+		}
+
+		if( pItemDesc->IsCashItem() ) {
+			nBuyMode = 1;
+		}
+
+		if( pItemDesc->IsStaffItem() ) {
+			nBuyMode = 2;
 		}
 
 		dwPrice = pItemDesc->m_nBountyPrice.Ref() * nItemCount;
@@ -278,26 +286,27 @@ void MBMatchServer::OnRequestBuyItem(const MUID& uidPlayer, const unsigned long 
 		bIsSpendableItem = true;
 	}
 
-	if( !CheckUserCanBuyItem(pObj, nItemID, nItemCount, dwPrice) ) { return; }
+	if( !CheckUserCanBuyItem(pObj, nItemID, nItemCount, dwPrice, nBuyMode) ) { return; }
 
-	ResponseBuyItem( pObj, nItemID, nItemCount, bIsGambleItem, dwPrice, nRentHourPeriod, bIsSpendableItem);
+	ResponseBuyItem( pObj, nItemID, nItemCount, bIsGambleItem, dwPrice, nRentHourPeriod, bIsSpendableItem, nBuyMode);
 }
-
 bool MBMatchServer::ResponseBuyItem( MMatchObject* pObj, const unsigned long int nItemID, const int nItemCount
-									, const bool bIsGambleItem, const DWORD dwPrice, const WORD wRentHourPeriod, const bool bIsSpendableItem )
+									, const bool bIsGambleItem, const DWORD dwPrice, const WORD wRentHourPeriod, const bool bIsSpendableItem, int nBuyMode)
 {
 	MMatchCharInfo* pCharInfo = pObj->GetCharInfo();
+	MMatchAccountInfo* pAccountInfo = pObj->GetAccountInfo();
 
 	MBMatchAsyncDBJob_BuyBountyItem* pBuyBountyItemJob = new MBMatchAsyncDBJob_BuyBountyItem(pObj->GetUID());
 	if( NULL == pBuyBountyItemJob ) { return false; }
 
-	pBuyBountyItemJob->Input( pObj->GetUID(), pCharInfo->m_nCID, nItemID
-		, nItemCount, dwPrice, wRentHourPeriod, bIsGambleItem, bIsSpendableItem );
+	pBuyBountyItemJob->Input( pObj->GetUID(), pCharInfo->m_nCID, pAccountInfo->m_nAID, nItemID
+		, nItemCount, dwPrice, wRentHourPeriod, bIsGambleItem, bIsSpendableItem, nBuyMode );
 
 	pObj->m_DBJobQ.DBJobQ.push_back( pBuyBountyItemJob );
 
 	return true;
 }
+
 
 // TodoH(하) - 추후에 다시 체크체크!
 const bool MBMatchServer::CheckUserCanBuyItem( MMatchObject* pObj, const int nItemID, const int nItemCnt, const DWORD dwPrice )
