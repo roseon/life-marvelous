@@ -129,7 +129,7 @@ public:
 		const unsigned long int nItemID);
 	bool ClearAllEquipedItem(const unsigned long nCID);
 
-	bool BuyBountyItem(const unsigned int nCID, int nItemID, int nItemCount, int nPrice, const DWORD dwRentHourPeriod, const bool bIsSpendableItem, unsigned long int* poutCIID);
+	bool BuyBountyItem(const unsigned int nCID, const unsigned int nAID, int nItemID, int nItemCount, int nPrice, const DWORD dwRentHourPeriod, const bool bIsSpendableItem, unsigned long int* poutCIID, int nBuyMode);
 
 	bool SellingItemToBounty(int nCID, int nCIID, int nSellItemID, int nSellPrice, int nCharBP);
 	bool SellingSpendableItemToBounty(int nCID, int nCIID, int nSellItemID, int nSellItemCnt, int nSellPrice, int nCharBP);
