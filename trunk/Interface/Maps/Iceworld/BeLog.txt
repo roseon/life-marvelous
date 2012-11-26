@@ -1,0 +1,27 @@
+Starting BSP Export...
+object VBSP_Object_model_0 : VBSP_Object_model_0: 1586 ver / 348 face 
+RSBsp Info : 348 faces
+Scene Dimension ( 2980.6 2929.0 506.2 )
+Export Objects.
+Export description.. 
+Saving Source Data.
+CSG union - 1 objects
+construct object subtree VBSP_Object_model_0 ( 348 source polygon ) : total 274 faces splitted 161 leaf nodes 565 nodes 1325 polygons
+0 faces eliminated. (solid)
+348 source polygons remain
+optimized 302 polygons remain
+Generating Convex polygons...
+Optimize Polygon 348 -> 302 
+Constructing Collision BspTree. ( 302 source polygons )
+Collision Bsp Info : total 1324 faces splitted 157 leaf nodes 1855 nodes 2964 polygons
+Constructing OcTree. ( 302 source polygons )
+Octree Info : total 16 faces splitted 2 leaf nodes 3 nodes 318 polygons
+Constructing BspTree. ( 302 source polygons )
+RSBsp Info : total 228 faces splitted 139 leaf nodes 277 nodes 530 polygons
+Constructing Bsp Bounding Volumes.
+Saving Bsp information.
+C:\mapa\icewworld\luces\Iceworld.RS file saved
+C:\mapa\icewworld\luces\Iceworld.RS.bsp file saved
+C:\mapa\icewworld\luces\Iceworld.RS.col file saved
+Exporting takes 0 minutes and      5 seconds.
+Done.
