@@ -411,7 +411,7 @@ TCHAR g_szDB_INSERT_DISTRIBUTE_ITEM[] = _T("{CALL spInsertDistributeItem(%d, %d,
 //			@ItemID			INT
 //			@RentHourPeriod INT
 
-TCHAR g_szDB_BUY_BOUNTY_ITEM[] = _T("{CALL spBuyBountyItem (%d, %d, %d, %d, %d, %d)}");			
+TCHAR g_szDB_BUY_BOUNTY_ITEM[] = _T("{CALL spBuyBountyItem (%d, %d, %d, %d, %d, %d, %d, %d)}");			
 // Desc  : 상점에서 아이템 구매
 // Param :	@AID	INT
 //			@CID	INT
@@ -1176,7 +1176,7 @@ bool MMatchDBMgr::SimpleUpdateCharInfo(MMatchCharInfo* pCharInfo)
 
 }
 
-bool MMatchDBMgr::BuyBountyItem(const unsigned int nCID, int nItemID, int nItemCount, int nPrice, const DWORD dwRentHourPeriod, const bool bIsSpendableItem, unsigned long int* poutCIID)
+bool MMatchDBMgr::BuyBountyItem(const unsigned int nCID, const unsigned int nAID, int nItemID, int nItemCount, int nPrice, const DWORD dwRentHourPeriod, const bool bIsSpendableItem, unsigned long int* poutCIID, int nBuyMode)
 {
 	_STATUS_DB_START;
 	if (!CheckOpen()) return false;
@@ -1185,7 +1185,7 @@ bool MMatchDBMgr::BuyBountyItem(const unsigned int nCID, int nItemID, int nItemC
 	CODBCRecordset rs(&m_DB);
 
 	try {
-		strSQL.Format(g_szDB_BUY_BOUNTY_ITEM, nCID, nItemID, nItemCount, nPrice, bIsSpendableItem, dwRentHourPeriod);
+		strSQL.Format(g_szDB_BUY_BOUNTY_ITEM, nCID, nAID, nItemID, nItemCount, nPrice, bIsSpendableItem, dwRentHourPeriod, nBuyMode);
 		rs.Open(strSQL, CRecordset::forwardOnly, CRecordset::readOnly);
 	} 
 	catch(CDBException* e) {
@@ -1211,7 +1211,6 @@ bool MMatchDBMgr::BuyBountyItem(const unsigned int nCID, int nItemID, int nItemC
 	*poutCIID = rs.Field("ORDERCIID").AsLong();	
 	return true;
 }
-
 bool MMatchDBMgr::GetCharItemInfo(MMatchCharInfo* pCharInfo)
 {
 	_STATUS_DB_START;
