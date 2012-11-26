@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<XML ID="StageList">
+	<Schema xmlns="MaietData" xmlns:dt="MaietDataTypes" />
+	<FRAME item="StageCreateFrame">
+		<FRAMELOOK>NullFrameLook</FRAMELOOK>
+		<BOUNDS>
+			<X>0</X>
+			<Y>0</Y>
+			<W>299</W>
+			<H>137</H>
+		</BOUNDS>
+		<ALIGN>
+			<HALIGN>center</HALIGN>
+			<VALIGN>center</VALIGN>
+		</ALIGN>
+		<RESIZABLE>false</RESIZABLE>
+		<VISIBLE>false</VISIBLE>
+		<TEXT>STR:UI_SCF_01</TEXT> <!-- 게임 생성 -->
+	</FRAME>
+
+	<PICTURE item="creacionsala" parent="StageCreateFrame">
+		<BOUNDS>
+			<X>0</X>
+			<Y>0</Y>
+			<W>299</W>
+			<H>137</H>
+		</BOUNDS>
+		<STRETCH/>
+		<BITMAP>creacionsala.png</BITMAP>
+	</PICTURE>
+	
+	<EDIT item="StageName" parent="StageCreateFrame">
+		<EDITLOOK>NullEditLook</EDITLOOK>
+		<BOUNDS>
+			<X>25</X>
+			<Y>57</Y>
+			<W>113</W>
+			<H>23</H>
+		</BOUNDS>
+		<TEXT>STR:UI_SCF_04</TEXT> <!-- 신나는 건즈 한판 어때요?? -->
+		<MAXLENGTH>32</MAXLENGTH>
+	</EDIT>
+	<EDIT item="StagePassword" parent="StageCreateFrame">
+		<EDITLOOK>NullEditLook</EDITLOOK>
+		<BOUNDS>
+			<X>165</X>
+			<Y>57</Y>
+			<W>113</W>
+			<H>23</H>
+		</BOUNDS>
+		<TEXT></TEXT>
+		<MAXLENGTH>32</MAXLENGTH>
+	</EDIT>
+	<BUTTON item="StageCreateBtn" parent="StageCreateFrame">
+		<BUTTONLOOK>DefaultButtonLook</BUTTONLOOK>
+		<ANCHORS>
+			<LEFT>true</LEFT>
+			<TOP>true</TOP>
+			<RIGHT>true</RIGHT>
+			<BOTTOM>true</BOTTOM>
+		</ANCHORS>
+		<BOUNDS>
+			<X>10</X>
+			<Y>90</Y>
+			<W>61</W>
+			<H>42</H>
+		</BOUNDS>
+		<TEXT>Aceptar</TEXT> <!-- 확인(&amp;O) -->
+		<DEFAULTKEY>ENTER</DEFAULTKEY>
+	</BUTTON>
+	<BUTTON item="ParentClose" parent="StageCreateFrame">
+		<BUTTONLOOK>DefaultButtonLook</BUTTONLOOK>
+		<ANCHORS>
+			<LEFT>true</LEFT>
+			<TOP>true</TOP>
+			<RIGHT>true</RIGHT>
+			<BOTTOM>true</BOTTOM>
+		</ANCHORS>
+		<BOUNDS>
+			<X>232</X>
+			<Y>90</Y>
+			<W>61</W>
+			<H>42</H>
+		</BOUNDS>
+		<TEXT>STR:UI_COMMON_CANCEL</TEXT> <!-- 취소(&amp;C) -->
+		<DEFAULTKEY>ESC</DEFAULTKEY>
+	</BUTTON>
+</XML>

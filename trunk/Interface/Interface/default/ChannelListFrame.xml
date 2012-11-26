@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<XML ID="ChannelList">
+	<Schema xmlns="MaietData" xmlns:dt="MaietDataTypes" />
+	<FRAME item="ChannelListFrame">
+		<FRAMELOOK>NullFrameLook</FRAMELOOK>
+		<BOUNDS>
+			<X>0</X>
+			<Y>150</Y>
+			<W>434</W>
+			<H>435</H>
+		</BOUNDS>
+		<ALIGN>
+			<HALIGN>center</HALIGN>
+			<VALIGN>center</VALIGN>
+		</ALIGN>
+		<RESIZABLE>false</RESIZABLE>
+		<VISIBLE>false</VISIBLE>
+		<TEXT>STR:UI_CLF_01</TEXT> <!-- 채널 리스트 -->
+	</FRAME>
+
+	<PICTURE item="C_Frame" parent="ChannelListFrame">
+		<BOUNDS>
+			<X>0</X>
+			<Y>0</Y>
+			<W>434</W>
+			<H>435</H>
+		</BOUNDS>
+		<STRETCH/>
+		<BITMAP>cframe.png</BITMAP>
+	</PICTURE>
+	
+	<BUTTON item="ChannelList_Normal" parent="ChannelListFrame">	
+		<BUTTONLOOK>BotonCustom</BUTTONLOOK>
+		<ANCHORS>
+			<LEFT>true</LEFT>
+			<TOP>true</TOP>
+			<RIGHT>true</RIGHT>
+			<BOTTOM>true</BOTTOM>
+		</ANCHORS>
+		<BOUNDS>
+			<X>7</X>
+			<Y>45</Y>
+			<W>104</W>
+			<H>46</H>
+		</BOUNDS>
+		<TEXT>Generales</TEXT>
+		<GROUP>ChannelList</GROUP>
+	</BUTTON>
+
+	<BUTTON item="ChannelList_Private" parent="ChannelListFrame">	
+		<BUTTONLOOK>BotonCustom</BUTTONLOOK>
+		<ANCHORS>
+			<LEFT>true</LEFT>
+			<TOP>true</TOP>
+			<RIGHT>true</RIGHT>
+			<BOTTOM>true</BOTTOM>
+		</ANCHORS>
+		<BOUNDS>
+			<X>111</X>
+			<Y>45</Y>
+			<W>106</W>
+			<H>46</H>
+		</BOUNDS>
+		<TEXT>Privados</TEXT>
+		<GROUP>ChannelList</GROUP>
+	</BUTTON>
+
+	<BUTTON item="ChannelList_Clan" parent="ChannelListFrame">	
+		<BUTTONLOOK>BotonCustom</BUTTONLOOK>
+		<ANCHORS>
+			<LEFT>true</LEFT>
+			<TOP>true</TOP>
+			<RIGHT>true</RIGHT>
+			<BOTTOM>true</BOTTOM>
+		</ANCHORS>
+		<BOUNDS>
+			<X>217</X>
+			<Y>45</Y>
+			<W>75</W>
+			<H>46</H>
+		</BOUNDS>
+		<TEXT>Clanes</TEXT>
+		<GROUP>ChannelList</GROUP>
+	</BUTTON>
+	
+	<BUTTON item="ChannelList_DuelTournament" parent="ChannelListFrame">	
+		<BUTTONLOOK>BotonCustom</BUTTONLOOK>
+		<ANCHORS>
+			<LEFT>true</LEFT>
+			<TOP>true</TOP>
+			<RIGHT>true</RIGHT>
+			<BOTTOM>true</BOTTOM>
+		</ANCHORS>
+		<BOUNDS>
+			<X>293</X>
+			<Y>45</Y>
+			<W>136</W>
+			<H>46</H>
+		</BOUNDS>
+		<TEXT>Duel Tournament</TEXT>
+		<GROUP>ChannelList</GROUP>
+	</BUTTON>
+			
+	<LISTBOX item="ChannelList" parent="ChannelListFrame">
+		<LISTBOXLOOK>NullListBoxLook</LISTBOXLOOK>
+		<FONT>FONTa9</FONT>
+		<TEXTCOLOR>
+			<R>205</R>
+			<G>205</G>
+			<B>205</B>
+		</TEXTCOLOR>
+		<ANCHORS>
+			<LEFT>true</LEFT>
+			<TOP>true</TOP>
+			<RIGHT>true</RIGHT>
+			<BOTTOM>true</BOTTOM>
+		</ANCHORS>
+		<BOUNDS>
+			<X>10</X>
+			<Y>99</Y>
+			<W>412</W>
+			<H>283</H>
+		</BOUNDS>
+		<ITEMHEIGHT>20</ITEMHEIGHT>
+		<TEXTALIGN>
+			<VALIGN>center</VALIGN>
+		</TEXTALIGN>
+	</LISTBOX>
+	<BUTTON item="ChannelJoin" parent="ChannelListFrame">
+		<BUTTONLOOK>BotonCustom</BUTTONLOOK>
+		<ANCHORS>
+			<LEFT>true</LEFT>
+			<TOP>true</TOP>
+			<RIGHT>true</RIGHT>
+			<BOTTOM>true</BOTTOM>
+		</ANCHORS>
+		<BOUNDS>
+			<X>235</X>
+			<Y>387</Y>
+			<W>85</W>
+			<H>46</H>
+		</BOUNDS>
+		<TEXT>Entrar</TEXT> <!-- 확인(&amp;O) -->
+		<DEFAULTKEY>ENTER</DEFAULTKEY>
+	</BUTTON>
+	<BUTTON item="ChannelListClose" parent="ChannelListFrame">	
+		<BUTTONLOOK>BotonCustom</BUTTONLOOK>
+		<ANCHORS>
+			<LEFT>true</LEFT>
+			<TOP>true</TOP>
+			<RIGHT>true</RIGHT>
+			<BOTTOM>true</BOTTOM>
+		</ANCHORS>
+		<BOUNDS>
+			<X>326</X>
+			<Y>387</Y>
+			<W>97</W>
+			<H>46</H>
+		</BOUNDS>
+		<TEXT>Salir</TEXT> <!-- 취소(&amp;C) -->
+		<DEFAULTKEY>ESC</DEFAULTKEY>
+	</BUTTON>
+	
+	<EDIT item="PrivateChannelInput" parent="ChannelListFrame">
+		<FONT>FONTa9</FONT>
+		<TEXTCOLOR>
+			<R>205</R>
+			<G>205</G>
+			<B>205</B>
+		</TEXTCOLOR>
+		<BOUNDS>
+			<X>10</X>
+			<Y>393</Y>
+			<W>220</W>
+			<H>31</H>
+		</BOUNDS>
+		<MAXLENGTH>128</MAXLENGTH>
+		<VISIBLE>false</VISIBLE>
+	</EDIT>
+	<BUTTON item="PrivateChannelEnter" parent="ChannelListFrame">	
+		<BUTTONLOOK>BotonCustom</BUTTONLOOK>
+		<ANCHORS>
+			<LEFT>true</LEFT>
+			<TOP>true</TOP>
+			<RIGHT>true</RIGHT>
+			<BOTTOM>true</BOTTOM>
+		</ANCHORS>
+		<BOUNDS>
+			<X>328</X>
+			<Y>340</Y>
+			<W>89</W>
+			<H>28</H>
+		</BOUNDS>
+		<TEXT>Crear Privado</TEXT> <!-- 입장 -->
+		<DEFAULTKEY>ESC</DEFAULTKEY>
+		<VISIBLE>false</VISIBLE>
+	</BUTTON>
+
+	<BUTTON item="MyClanChannel" parent="ChannelListFrame">
+			<BUTTONLOOK>BotonCustom</BUTTONLOOK>
+		<BOUNDS>
+			<X>10</X>
+			<Y>393</Y>
+			<W>220</W>
+			<H>31</H>
+		</BOUNDS>
+		<TEXT>Ir al canal de mi clan</TEXT> <!-- 내 클랜 채널로 이동 -->
+		<VISIBLE>false</VISIBLE>
+	</BUTTON>
+		
+</XML>

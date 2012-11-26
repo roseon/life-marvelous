@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML ID="StageList">
+	<Schema xmlns="MaietData" xmlns:dt="MaietDataTypes" />
+	<FRAME item="PrivateStageJoinFrame">
+		<FRAMELOOK>NullFrameLook</FRAMELOOK>
+		<BOUNDS>
+			<X>0</X>
+			<Y>0</Y>
+			<W>299</W>
+			<H>137</H>
+		</BOUNDS>
+		<ALIGN>
+			<HALIGN>center</HALIGN>
+			<VALIGN>center</VALIGN>
+		</ALIGN>
+		<RESIZABLE>false</RESIZABLE>
+		<VISIBLE>false</VISIBLE>
+	</FRAME>
+	
+	<PICTURE item="salaconpass" parent="PrivateStageJoinFrame">
+		<BOUNDS>
+			<X>0</X>
+			<Y>0</Y>
+			<W>299</W>
+			<H>137</H>
+		</BOUNDS>
+		<STRETCH/>
+		<BITMAP>salaconpass.png</BITMAP>
+	</PICTURE>
+
+	<EDIT item="PrivateStagePassword" parent="PrivateStageJoinFrame">
+		<BOUNDS>
+			<X>84</X>
+			<Y>103</Y>
+			<W>123</W>
+			<H>24</H>
+		</BOUNDS>
+		<TEXT></TEXT>
+		<MAXLENGTH>32</MAXLENGTH>
+	</EDIT>
+	<BUTTON item="PrivateStageJoinBtn" parent="PrivateStageJoinFrame">
+		<BUTTONLOOK>DefaultButtonLook</BUTTONLOOK>
+		<ANCHORS>
+			<LEFT>true</LEFT>
+			<TOP>true</TOP>
+			<RIGHT>true</RIGHT>
+			<BOTTOM>true</BOTTOM>
+		</ANCHORS>
+		<BOUNDS>
+			<X>8</X>
+			<Y>89</Y>
+			<W>60</W>
+			<H>40</H>
+		</BOUNDS>
+		<TEXT>Aceptar</TEXT> <!-- 확인(&amp;O) -->
+		<DEFAULTKEY>ENTER</DEFAULTKEY>
+	</BUTTON>
+	<BUTTON item="ParentClose" parent="PrivateStageJoinFrame">
+		<BUTTONLOOK>DefaultButtonLook</BUTTONLOOK>
+		<ANCHORS>
+			<LEFT>true</LEFT>
+			<TOP>true</TOP>
+			<RIGHT>true</RIGHT>
+			<BOTTOM>true</BOTTOM>
+		</ANCHORS>
+		<BOUNDS>
+			<X>229</X>
+			<Y>89</Y>
+			<W>60</W>
+			<H>40</H>
+		</BOUNDS>
+		<TEXT>Cancelar</TEXT> <!-- 취소(&amp;C) -->
+		<DEFAULTKEY>ESC</DEFAULTKEY>
+	</BUTTON>
+</XML>
