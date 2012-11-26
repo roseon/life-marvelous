@@ -1,0 +1,35 @@
+Starting BSP Export...
+object VBSP_Object_model_0 : VBSP_Object_model_0: 6424 ver / 1358 face 
+object VBSP_Object_model_instance_0_Body_metalladder002_reference_smd_mesh_0 : VBSP_Object_model_instance_0_Body_metalladder002_reference_smd_mesh_0: 454 ver / 400 face 
+object VBSP_Object_model_instance_1_Body_metalladder002_reference_smd_mesh_0 : VBSP_Object_model_instance_1_Body_metalladder002_reference_smd_mesh_0: 454 ver / 400 face 
+object VBSP_Object_model_instance_2_Body_metalladder002_reference_smd_mesh_0 : VBSP_Object_model_instance_2_Body_metalladder002_reference_smd_mesh_0: 454 ver / 400 face 
+object VBSP_Object_model_instance_3_Body_metalladder002_reference_smd_mesh_0 : VBSP_Object_model_instance_3_Body_metalladder002_reference_smd_mesh_0: 454 ver / 400 face 
+RSBsp Info : 3014 faces
+Scene Dimension ( 3381.6 6564.3 3182.7 )
+Export Objects.
+Export description.. 
+Saving Source Data.
+CSG union - 5 objects
+construct object subtree VBSP_Object_model_0 ( 1414 source polygon ) : total 1117 faces splitted 691 leaf nodes 1898 nodes 5562 polygons
+construct object subtree VBSP_Object_model_instance_0_Body_metalladder002_reference_smd_mesh_0 ( 400 source polygon ) : total 2382 faces splitted 1043 leaf nodes 2114 nodes 5019 polygons
+construct object subtree VBSP_Object_model_instance_1_Body_metalladder002_reference_smd_mesh_0 ( 400 source polygon ) : total 2382 faces splitted 1043 leaf nodes 2114 nodes 5019 polygons
+construct object subtree VBSP_Object_model_instance_2_Body_metalladder002_reference_smd_mesh_0 ( 400 source polygon ) : total 2382 faces splitted 1043 leaf nodes 2114 nodes 5019 polygons
+construct object subtree VBSP_Object_model_instance_3_Body_metalladder002_reference_smd_mesh_0 ( 400 source polygon ) : total 2382 faces splitted 1043 leaf nodes 2114 nodes 5019 polygons
+0 faces eliminated. (solid)
+3240 source polygons remain
+optimized 2071 polygons remain
+Generating Convex polygons...
+Optimize Polygon 3014 -> 1997 
+Constructing Collision BspTree. ( 2071 source polygons )
+Collision Bsp Info : total 28429 faces splitted 4580 leaf nodes 15237 nodes 29155 polygons
+Constructing OcTree. ( 1997 source polygons )
+Octree Info : total 556 faces splitted 28 leaf nodes 55 nodes 2553 polygons
+Constructing BspTree. ( 1997 source polygons )
+RSBsp Info : total 5456 faces splitted 3284 leaf nodes 6567 nodes 7453 polygons
+Constructing Bsp Bounding Volumes.
+Saving Bsp information.
+C:\mapas awp\AWP SUMMER\Hot_Summer\Hot_Summer.RS file saved
+C:\mapas awp\AWP SUMMER\Hot_Summer\Hot_Summer.RS.bsp file saved
+C:\mapas awp\AWP SUMMER\Hot_Summer\Hot_Summer.RS.col file saved
+Exporting takes 0 minutes and     23 seconds.
+Done.

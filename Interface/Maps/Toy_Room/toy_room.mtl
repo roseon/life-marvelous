@@ -1,0 +1,552 @@
+# max
+newmtl material_0
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_0.tga
+
+# buro1
+newmtl material_1
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_1.tga
+
+# boit
+newmtl material_2
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_2.tga
+
+# v
+newmtl material_3
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_3.tga
+
+# mur
+newmtl material_4
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_4.tga
+
+# spa_pwall02c
+newmtl material_5
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_5.tga
+
+# r
+newmtl material_6
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_6.tga
+
+# spa_pwall02a
+newmtl material_7
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_7.tga
+
+# ll
+newmtl material_8
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_8.tga
+
+# tablo
+newmtl material_9
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_9.tga
+
+# cri
+newmtl material_10
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_10.tga
+
+# black
+newmtl material_11
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_11.tga
+
+# table1
+newmtl material_12
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_12.tga
+
+# boit1
+newmtl material_13
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_13.tga
+
+# floorwood01
+newmtl material_14
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_14.tga
+
+# plainte
+newmtl material_15
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_15.tga
+
+# b1
+newmtl material_16
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_16.tga
+
+# cadredragonrou
+newmtl material_17
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_17.tga
+
+# publ1
+newmtl material_18
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_18.tga
+
+# qwak1
+newmtl material_19
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_19.tga
+
+# publ3
+newmtl material_20
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_20.tga
+
+# cre
+newmtl material_21
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_21.tga
+
+# porte0
+newmtl material_22
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_22.tga
+
+# m
+newmtl material_23
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_23.tga
+
+# cv
+newmtl material_24
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_24.tga
+
+# j
+newmtl material_25
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_25.tga
+
+# poli
+newmtl material_26
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_26.tga
+
+# tunnel_wall
+newmtl material_27
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_27.tga
+
+# b2
+newmtl material_28
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_28.tga
+
+# carton5
+newmtl material_29
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_29.tga
+
+# berge3
+newmtl material_30
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_30.tga
+
+# 3dm_terras01
+newmtl material_31
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_31.tga
+
+# dla1
+newmtl material_32
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_32.tga
+
+# money_stack1
+newmtl material_33
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_33.tga
+
+# mp_cardboard09a
+newmtl material_34
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_34.tga
+
+# carton1
+newmtl material_35
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_35.tga
+
+# carte1
+newmtl material_36
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_36.tga
+
+# cr
+newmtl material_37
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_37.tga
+
+# cn
+newmtl material_38
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_38.tga
+
+# cb
+newmtl material_39
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_39.tga
+
+# table
+newmtl material_40
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_40.tga
+
+# 3dm_lampske01
+newmtl material_41
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_41.tga
+
+# buro
+newmtl material_42
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_42.tga
+
+# pv
+newmtl material_43
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_43.tga
+
+# carte
+newmtl material_44
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_44.tga
+
+# a3
+newmtl material_45
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_45.tga
+
+# li7
+newmtl material_46
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_46.tga
+
+# li4
+newmtl material_47
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_47.tga
+
+# li5
+newmtl material_48
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_48.tga
+
+# li8
+newmtl material_49
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_49.tga
+
+# li2
+newmtl material_50
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_50.tga
+
+# li12
+newmtl material_51
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_51.tga
+
+# rope
+newmtl material_52
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_52.tga
+
+# bb
+newmtl material_53
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_53.tga
+
+# re
+newmtl material_54
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_54.tga
+
+# pizz
+newmtl material_55
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_55.tga
+
+# scop2
+newmtl material_56
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_56.tga
+
+# fb5
+newmtl material_57
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_57.tga
+
+# tele1
+newmtl material_58
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_58.tga
+
+# telep
+newmtl material_59
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_59.tga
+
+# scop1
+newmtl material_60
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_60.tga
+
+# ta
+newmtl material_61
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_61.tga
+
+# poubelle3
+newmtl material_62
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_62.tga
+
+# li11
+newmtl material_63
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_63.tga
+
+# porte1
+newmtl material_64
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_64.tga
+
+# repond
+newmtl material_65
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_65.tga
+
+# fb1
+newmtl material_66
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_66.tga
+
+# fb3
+newmtl material_67
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_67.tga
+
+# fb2
+newmtl material_68
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_68.tga
+
+# fl
+newmtl material_69
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_69.tga
+
+# poubelle
+newmtl material_70
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_70.tga
+
+# canap1
+newmtl material_71
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_71.tga
+
+# berge
+newmtl material_72
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_72.tga
+
+# berge1
+newmtl material_73
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_73.tga
+
+# berge2
+newmtl material_74
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_74.tga
+
+# li10
+newmtl material_75
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_75.tga
+
+# wood15
+newmtl material_76
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_76.tga
+
+# a4
+newmtl material_77
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_77.tga
+
+# a1
+newmtl material_78
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_78.tga
+
+# li1
+newmtl material_79
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_79.tga
+
+# li3
+newmtl material_80
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_80.tga
+
+# {polo1
+newmtl material_81
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_81.tga
+
+# {echelle3
+newmtl material_82
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_82.tga
+
+# {blue
+newmtl material_83
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_83.tga
+
+# aaatrigger
+newmtl material_84
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_84.tga
+
+# {money_pile1
+newmtl material_85
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_85.tga
+
+# {clutter_01
+newmtl material_86
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_86.tga
+
+# {siteA
+newmtl material_87
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_87.tga
+
+# ba
+newmtl material_88
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_88.tga
+
+# {siteB
+newmtl material_89
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_89.tga
+
+# {blinds_horiz01
+newmtl material_90
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_90.tga
+
+# {zftarget2
+newmtl material_91
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd toy_room_material_91.tga
+
