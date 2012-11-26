@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XML >
+	<AddXml name="goblin" 	filename="model/goblin.xml" autoload = "false">  </AddXml>
+	<AddXml name="goblinG" 	filename="model/goblinG.xml" autoload = "false">  </AddXml>
+	<AddXml name="goblinW" filename="model/goblinW.xml" autoload = "false">  </AddXml>
+	<AddXml name="goblinH" 	filename="model/goblinH.xml" autoload = "false">  </AddXml>
+	<AddXml name="goblinC" 	filename="model/goblinc.xml" autoload = "false">  </AddXml>
+	<AddXml name="goblinK" 	filename="model/goblinK.xml" autoload = "false">  </AddXml>
+	<AddXml name="goblinE" 	filename="model/goblinE.xml" autoload = "false">  </AddXml>
+	<AddXml name="goblinKB" 	filename="model/goblinKB.xml" autoload = "false">  </AddXml>
+
+	<AddXml name="palmpoa" 	  filename="model/palmpoa.xml" autoload = "false">  </AddXml>
+	<AddXml name="palmpoaH" 	filename="model/palmpoaH.xml" autoload = "false">  </AddXml>
+	<AddXml name="palmpou" 	  filename="model/palmpou.xml" autoload = "false">  </AddXml>
+	<AddXml name="cpalmpoa" 	filename="model/cpalmpoa.xml" autoload = "false">  </AddXml>
+	<AddXml name="palmpou_baby" 	filename="model/palmpou_baby.xml" autoload = "false">  </AddXml>
+
+	<AddXml name="skeleton" 	filename="model/skeleton.xml" autoload = "false">  </AddXml>
+	<AddXml name="skeletonM" 	filename="model/skeletonM.xml" autoload = "false">  </AddXml>
+	<AddXml name="skeletonC" 	filename="model/skeletonC.xml" autoload = "false">  </AddXml>
+	<AddXml name="skeletonB" 	filename="model/skeletonB.xml" autoload = "false">  </AddXml>
+	<AddXml name="theUnholy" 	filename="model/theUnholy.xml" autoload = "false">  </AddXml>
+	<AddXml name="Lich" 	        filename="model/Lich.xml" autoload = "false">  </AddXml>
+	
+	<AddXml name="kobolt" 	filename="model/kobolt.xml" autoload = "false">  </AddXml>
+	<AddXml name="kobold_shaman" 	filename="model/kobold_shaman.xml" autoload = "false">  </AddXml>	
+	<AddXml name="koboltC" 	filename="model/koboltC.xml" autoload = "false">  </AddXml>
+	<AddXml name="koboltK" 	filename="model/koboltK.xml" autoload = "false">  </AddXml>
+
+	<AddXml name="golem" 	filename="model/golem.xml" autoload = "false">  </AddXml>
+	
+	<AddXml name="Scrider" 	filename="model/Scrider.xml" autoload = "false">  </AddXml>
+	
+</XML>
