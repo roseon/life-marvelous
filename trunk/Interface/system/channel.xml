@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML id="channel">
+	<DEFAULTCHANNELNAME name="STR:CHANNEL_DEFAULT_NAME"/>
+	<DEFAULTRULENAME name="novice"/>
+
+	<CHANNEL name="Canal libre 1" maxplayers="200" rule="elite" levelmin='1' levelmax="99"/>
+        <CHANNEL name="Canal libre 2" maxplayers="200" rule="elite" levelmin='1' levelmax="99"/>
+        <CHANNEL name="Lead" maxplayers="200" rule="elite" levelmin='1' levelmax="99"/>
+   	<CHANNEL name="Canal Principiante (LV 1-31)" maxplayers="200" rule="novice" levelmin='1' levelmax="31"/>
+	<CHANNEL name="Canal Intermedio  (LV 32-61)" maxplayers="200" rule="novice" levelmin='32' levelmax="61"/>
+	<CHANNEL name="Canal Experto (LV 62-99)" maxplayers="200" rule="elite" levelmin='62' levelmax="99"/>
+        <CHANNEL name="Canal solo para LatinoAmerica" maxplayers="200" rule="elite" levelmin='1' levelmax="99"/>
+        <CHANNEL name="Canal solo para Eventos" maxplayers="200" rule="elite" IsEvent="true" levelmin='1' levelmax="99"/>
+	<CHANNEL name="Canal solo para Staff" maxplayers="200" rule="elite" levelmin='200' levelmax="300"/>
+	<CHANNEL name="Canal Duel Tournament 1" maxplayers="200" rule="dueltournament" IsDuelTournament="true"/>
+        <CHANNEL name="Lead" maxplayers="200" rule="dueltournament" IsDuelTournament="true"/>
+</XML>
