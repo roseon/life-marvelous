@@ -137,7 +137,7 @@ bool MMapDesc::Initialize(MZFileSystem* pFileSystem, const char* szFileName)
 			aChild.GetAttribute(&m_MapVectors[num].fExpRatio , MMAP_EXPRATIO);
 			aChild.GetAttribute(&m_MapVectors[num].nMaxPlayers , MMAP_MAXPLAYERS);
 			aChild.GetAttribute(&m_MapVectors[num].bOnlyDuelMap , MMAP_ONLYDUELMAP);
-			
+			aChild.GetAttribute(&m_MapVectors[num].bIsCTFMap , MMAP_ISCTFMAP);
 			num++;
 		}
 	}

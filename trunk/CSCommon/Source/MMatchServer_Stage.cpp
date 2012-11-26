@@ -1509,8 +1509,13 @@ void MMatchServer::OnStageSetting(const MUID& uidPlayer, const MUID& uidStage, v
 			bool bCTFMode = false;
 
 			if ( pNode->nGameType == MMATCH_GAMETYPE_DUEL)
-				bDuelMode = true;
+			{
+					bDuelMode = true;
+			}
 
+			if ( pNode->nGameType == MMATCH_GAMETYPE_CTF){
+                 bCTFMode = true;
+			}
 
 			if (!pRule->CheckCTFMap(pNode->nMapIndex) && bCTFMode)
 			{
