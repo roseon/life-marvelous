@@ -90,7 +90,9 @@ struct MMatchAccountInfo
 
 	int						m_nCCode;
 
-	MMatchAccountInfo() : m_nAID(-1), m_nUGrade(MMUG_FREE), m_nPGrade(MMPG_FREE), m_nCCode(0)
+	int						m_nECoins;
+
+	MMatchAccountInfo() : m_nAID(-1), m_nUGrade(MMUG_FREE), m_nPGrade(MMPG_FREE), m_nCCode(0), m_nECoins(0)
 	{
 		m_HackingType				= MMHT_NO;
 		m_dwHackingBlockEndTimeMS	= 0;
@@ -100,7 +102,6 @@ struct MMatchAccountInfo
 		memset(m_szUserID, 0, MAX_USERID_STRING_LEN);
 	}
 };
-
 
 struct MAccountItemNode
 {
