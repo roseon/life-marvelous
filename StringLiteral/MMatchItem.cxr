@@ -145,6 +145,7 @@
 #define MICTOK_WEIGHT			_CXR("weight")
 #define MICTOK_BOUNTY_PRICE		_CXR("bt_price")
 #define MICTOK_ISCASHITEM		_CXR("iscashitem")
+#define MICTOK_ISSTAFFITEM		_CXR("isstaffitem")
 #define MICTOK_DELAY			_CXR("delay")
 #define MICTOK_EFFECT_ID		_CXR("effect_id")
 #define MICTOK_CONTROLLABILITY	_CXR("ctrl_ability")

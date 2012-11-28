@@ -128,7 +128,7 @@ protected :
 		, const WORD dwRentHourPeriod
 		, const bool bIsSpendableItem
 		, int nBuyMode);
-	const bool CheckUserCanBuyItem( MMatchObject* pObj, const int nItemID, const int nItemCnt, const DWORD dwPrice );
+	const bool CheckUserCanBuyItem( MMatchObject* pObj, const int nItemID, const int nItemCnt, const DWORD dwPrice, int nBuyMode );
 	bool CheckUserCanDistributeRewardItem( MMatchObject* pObj);
 	void OnRequestCharacterItemList(const MUID& uidPlayer);
 	void OnRequestCharacterItemListForce(const MUID& uidPlayer);
