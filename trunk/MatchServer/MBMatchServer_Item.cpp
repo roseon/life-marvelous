@@ -290,6 +290,8 @@ void MBMatchServer::OnRequestBuyItem(const MUID& uidPlayer, const unsigned long 
 
 	ResponseBuyItem( pObj, nItemID, nItemCount, bIsGambleItem, dwPrice, nRentHourPeriod, bIsSpendableItem, nBuyMode);
 }
+
+
 bool MBMatchServer::ResponseBuyItem( MMatchObject* pObj, const unsigned long int nItemID, const int nItemCount
 									, const bool bIsGambleItem, const DWORD dwPrice, const WORD wRentHourPeriod, const bool bIsSpendableItem, int nBuyMode)
 {
@@ -309,12 +311,16 @@ bool MBMatchServer::ResponseBuyItem( MMatchObject* pObj, const unsigned long int
 
 
 // TodoH(하) - 추후에 다시 체크체크!
-const bool MBMatchServer::CheckUserCanBuyItem( MMatchObject* pObj, const int nItemID, const int nItemCnt, const DWORD dwPrice )
+const bool MBMatchServer::CheckUserCanBuyItem( MMatchObject* pObj, const int nItemID, const int nItemCnt, const DWORD dwPrice, int nBuyMode )
 {
 	if( NULL == pObj ) return false;
 
 	MMatchCharInfo* pCharInfo = pObj->GetCharInfo();
+	MMatchAccountInfo* pAccountInfo = pObj->GetAccountInfo();
 	if( NULL == pCharInfo ) return false;
+	if( NULL == pAccountInfo ) return false;
+
+	bool bIsCashItem = (nBuyMode == 1);
 
 	MMatchItem* pItem = pCharInfo->m_ItemList.GetItemByItemID(nItemID);
 	if( pItem != NULL )
@@ -359,7 +365,7 @@ const bool MBMatchServer::CheckUserCanBuyItem( MMatchObject* pObj, const int nIt
 	}
 
 	// 아이템을 살 수 있는 자격이 되는지 판정
-	if (static_cast<DWORD>(pCharInfo->m_nBP) < dwPrice)
+	if ((!bIsCashItem) && (static_cast<DWORD>(pCharInfo->m_nBP) < dwPrice))
 	{
 		MCommand* pNew = CreateCommand( MC_MATCH_RESPONSE_BUY_ITEM, pObj->GetUID() );
 		pNew->AddParameter(new MCmdParamInt(MERR_TOO_EXPENSIVE_BOUNTY));
@@ -367,6 +373,16 @@ const bool MBMatchServer::CheckUserCanBuyItem( MMatchObject* pObj, const int nIt
 
 		return false;
 	}
+	else if ((bIsCashItem) && (static_cast<DWORD>(pAccountInfo->m_nECoins) < dwPrice))
+	{
+		MCommand* pNew = CreateCommand( MC_MATCH_RESPONSE_BUY_ITEM, pObj->GetUID() );
+		pNew->AddParameter(new MCmdParamInt(MERR_TOO_EXPENSIVE_BOUNTY));
+		PostSafeQueue( pNew );
+
+		return false;
+	}
+
+	if ((nBuyMode == 2) && !((pAccountInfo->m_nUGrade == MMUG_ADMIN) || (pAccountInfo->m_nUGrade == MMUG_DEVELOPER))) return false;
 
 	return true;
 }

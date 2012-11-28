@@ -12,7 +12,7 @@ MUID MMatchItemMap::m_uidGenerate = MUID(0,0);
 MCriticalSection MMatchItemMap::m_csUIDGenerateLock;
 
 MMatchItemDesc::MMatchItemDesc() : m_nID(0), m_nSlot(MMIST_NONE), m_pEffect(NULL), m_bSlugOutput(0), 
-	m_nColor(0xFFFFFFFF), m_nImageID(0), m_nBulletImageID(0), m_nMagazineImageID(0), m_bIsCashItem(false), m_bIsSpendableItem(false)
+	m_nColor(0xFFFFFFFF), m_nImageID(0), m_nBulletImageID(0), m_nMagazineImageID(0), m_bIsCashItem(false), m_bIsStaffItem(false), m_bIsSpendableItem(false)
 {
 	m_nTotalPoint.Set_MakeCrc(0);
 	m_nType.Set_MakeCrc(MMIT_MELEE);
@@ -42,6 +42,7 @@ MMatchItemDesc::MMatchItemDesc() : m_nID(0), m_nSlot(MMIST_NONE), m_pEffect(NULL
 	m_nLimitWall.Set_MakeCrc(0);
 	m_nEffectLevel.Set_MakeCrc(0);
 	m_nMaxRentPeriod.Set_MakeCrc(0);
+	//m_nPelletCount.Set_MakeCrc(0);
 
 	m_nDamage.Set_MakeCrc(0);
 	m_nItemPower.Set_MakeCrc(0);
@@ -706,13 +707,13 @@ MMatchItemDesc* MMatchItemDescMgr::GetItemDesc(unsigned long int nID)
 }
 
 
-
 bool MMatchItemDescMgr::ParseItem(MXmlElement& element)
 {
 	MMatchItemDesc* pNewDesc = new MMatchItemDesc;
 
 	// default °ª ÀÔ·Â
 	pNewDesc->m_bIsCashItem = false;
+	pNewDesc->m_bIsStaffItem = false;
 	pNewDesc->m_nLimitSpeed.Set_MakeCrc(100);
 	pNewDesc->m_nRange.Set_MakeCrc(DEFAULT_MELEE_WEAPON_RANGE);
 	pNewDesc->m_nColor = 0xFFFFFFFF;
@@ -895,6 +896,11 @@ bool MMatchItemDescMgr::ParseItem(MXmlElement& element)
 			if (!stricmp(szAttrValue, MICTOK_TRUE)) 	pNewDesc->m_bIsCashItem = true;
 			else										pNewDesc->m_bIsCashItem = false;
 		}
+		else if (!stricmp(szAttrName, MICTOK_ISSTAFFITEM))
+		{
+			if (!stricmp(szAttrValue, MICTOK_TRUE)) 	pNewDesc->m_bIsStaffItem = true;
+			else										pNewDesc->m_bIsStaffItem = false;
+		}
 		else if (!stricmp(szAttrName, MICTOK_EFFECT_ID))
 		{
 			pNewDesc->m_nEffectId = (MMatchItemEffectId)atoi(szAttrValue);
@@ -904,6 +910,11 @@ bool MMatchItemDescMgr::ParseItem(MXmlElement& element)
 			pNewDesc->m_nDelay.Set( atoi(szAttrValue));
 			pNewDesc->m_nDelay.MakeCrc();
 		}
+	/*	else if (!stricmp(szAttrName, MICTOK_PELLET_COUNT))
+		{
+			pNewDesc->m_nPelletCount.Set( atoi(szAttrValue));
+			pNewDesc->m_nPelletCount.MakeCrc();
+		}*/
 		else if (!stricmp(szAttrName, MICTOK_CONTROLLABILITY))
 		{
 			pNewDesc->m_nControllability.Set( atoi(szAttrValue));
@@ -1152,6 +1163,7 @@ bool MMatchItemDescMgr::ParseItem(MXmlElement& element)
 	insert(value_type(pNewDesc->m_nID, pNewDesc));
 	return true;
 }
+
 
 
 MMatchItemDescMgr* MMatchItemDescMgr::GetInstance()
