@@ -800,10 +800,10 @@ bool ZConfiguration::SaveToFile(const char *szFileName, const char* szHeader)
 		aElement.SetContents(temp);
 
 		parentElement.AppendText("\n\t\t");
-		aElement = parentElement.CreateChildElement(ZTOK_VIDEO_FULLSCREEN);
-		if(m_Video.bFullScreen==true) strcpy(temp, "TRUE");
-		else strcpy(temp, "FALSE");
-		aElement.SetContents(temp);
+        aElement = parentElement.CreateChildElement(ZTOK_VIDEO_FULLSCREEN);
+        if(m_Video.bFullScreen==true) strcpy(temp, "true");
+        else strcpy(temp, "false");
+        aElement.SetContents(temp);
 
 		parentElement.AppendText("\n\t\t");
 		aElement = parentElement.CreateChildElement(ZTOK_VIDEO_REFLECTION);

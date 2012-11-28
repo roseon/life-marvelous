@@ -346,7 +346,7 @@ ZLanguageSetting_forNHNUSA* ZGetLanguageSetting_forNHNUSA();
 #define ZTOK_AUDIO						"AUDIO"
 #define ZTOK_VIDEO_WIDTH				"WIDTH"
 #define ZTOK_VIDEO_HEIGHT				"HEIGHT"
-#define ZTOK_VIDEO_FULLSCREEN			"FULLSCREEN"
+#define ZTOK_VIDEO_FULLSCREEN           "FULLSCREEN"
 #define ZTOK_VIDEO_COLORBITS			"COLORBITS"
 #define ZTOK_VIDEO_GAMMA				"GAMMA"
 #define ZTOK_VIDEO_REFLECTION			"REFLECTION"
@@ -435,8 +435,8 @@ ZLanguageSetting_forNHNUSA* ZGetLanguageSetting_forNHNUSA();
 #define Z_VIDEO_REFLECTION		(ZGetConfiguration()->GetVideo()->bReflection)
 #define Z_VIDEO_LIGHTMAP		(ZGetConfiguration()->GetVideo()->bLightMap)
 #define Z_VIDEO_DYNAMICLIGHT	(ZGetConfiguration()->GetVideo()->bDynamicLight)
+#define Z_VIDEO_FULLSCREEN      (ZGetConfiguration()->GetVideo()->bFullScreen)
 #define Z_VIDEO_SHADER			(ZGetConfiguration()->GetVideo()->bShader)
-#define Z_VIDEO_FULLSCREEN		(ZGetConfiguration()->GetVideo()->bFullScreen )
 #define Z_VIDEO_WIDTH			(ZGetConfiguration()->GetVideo()->nWidth )
 #define Z_VIDEO_HEIGHT			(ZGetConfiguration()->GetVideo()->nHeight )
 #define Z_VIDEO_BPP				(ZGetConfiguration()->GetVideo()->nColorBits )

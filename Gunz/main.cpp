@@ -568,17 +568,7 @@ RRESULT OnError(void *pParam)
 
 void SetModeParams()
 {
-#ifdef _PUBLISH
-	//g_ModeParams.bFullScreen = true;
-	g_ModeParams.bFullScreen = false;
-#else
-	#ifdef _DEBUG
-		g_ModeParams.bFullScreen = false;
-	#else
-		g_ModeParams.bFullScreen = ZGetConfiguration()->GetVideo()->bFullScreen;
-	#endif
-#endif
-
+	g_ModeParams.bFullScreen = true;
 	g_ModeParams.nWidth = ZGetConfiguration()->GetVideo()->nWidth;
 	g_ModeParams.nHeight = ZGetConfiguration()->GetVideo()->nHeight;
 	ZGetConfiguration()->GetVideo()->nColorBits == 32 ? 
