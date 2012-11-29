@@ -80,6 +80,9 @@
 #include "ZShop.h"
 #include "ZGambleItemDefine.h"
 
+#include "ZLoading.h"
+#include "ZMiniMap.h"
+
 #ifdef _XTRAP
 #include "./XTrap/Xtrap_C_Interface.h"				// Update sgk 0702
 #endif
@@ -1115,7 +1118,8 @@ bool ZGameInterface::OnGameCreate(void)
 	// 로딩 이미지 로드
 	char szFileName[256];
 	int nBitmap = rand() % 9;
-	switch ( nBitmap)
+	//Map loading screems
+	/*switch ( nBitmap)
 	{
 		case ( 0) :
 			strcpy( szFileName, "interface/loading_dash.jpg");
@@ -1162,11 +1166,20 @@ bool ZGameInterface::OnGameCreate(void)
 		strcpy( szFileName, "interface/loading_3.jpg");
 		break;
 	}
-#endif
+#endif*/
+char strN[256];
+strcpy(strN,"Interface/Default/Loading/loading_");
+strcat(strN, ZGetGameClient()->GetMatchStageSetting()->GetMapName());
+strcat(strN, ".jpg");
+
+char strN2[256];
+strcpy(strN2,"Interface/Default/Loading/loading_Complete_");
+strcat(strN2, ZGetGameClient()->GetMatchStageSetting()->GetMapName());
+strcat(strN2, ".jpg");
 
 	if ( !ZGetInitialLoading()->AddBitmap( 0, szFileName))
-		ZGetInitialLoading()->AddBitmap( 0, "interface/loading_teen.jpg");
-	ZGetInitialLoading()->AddBitmapBar( "interface/loading.bmp" );
+		ZGetInitialLoading()->AddBitmap( 0, strN);
+	ZGetInitialLoading()->AddBitmapBar( strN2 );
 	ZGetInitialLoading()->SetTipNum( nBitmap);
 
 #ifndef _FASTDEBUG
@@ -1368,6 +1381,7 @@ void ZGameInterface::OnLoginCreate(void)
 		delete m_pLoginBG;
 		m_pLoginBG = NULL;
 	}
+#ifndef _MAPLOGIN
 	m_pLoginBG = new MBitmapR2;
 	bool bRead = false;
 	
@@ -1397,6 +1411,7 @@ void ZGameInterface::OnLoginCreate(void)
 		if ( pPicture)
 			pPicture->SetBitmap( m_pLoginBG->GetSourceBitmap());
 	}
+#endif
 
 
     // 패널 이미지 로딩
@@ -2615,6 +2630,9 @@ bool ZGameInterface::OnCreate(ZLoadingProgress *pLoadingProgress)
 	pCharView = (ZCharacterView*)m_IDLResource.FindWidget( "EquipmentInformationShop");
 	if ( pCharView)
 		pCharView->EnableAutoRotate( true);
+	pCharView = (ZCharacterView*)m_IDLResource.FindWidget( "EquipmentInformationLobby");
+	if ( pCharView)
+		pCharView->EnableAutoRotate( true);
 
 	// 듀얼토너먼트 로비 전적UI에 설명 툴팁 추가
 	char szTooltip[256];
@@ -2936,7 +2954,7 @@ void ZGameInterface::OnDrawStateLogin(MDrawContext* pDC)
         int nCount = ( timeGetTime() / 800) % 4;
 		for ( int i = 0;  i < nCount;  i++)
 			szMsg[ i] = '<';
-		sprintf( szMsg, "%s %s ", szMsg, "Connecting");
+		sprintf( szMsg, "%s %s ", szMsg, "Connectsndo a AbbyGamerz GunZ");
 		for ( int i = 0;  i < nCount;  i++)
 			strcat( szMsg, ">");
 
@@ -2984,6 +3002,17 @@ void ZGameInterface::OnDrawStateLogin(MDrawContext* pDC)
 			pConnectingLabel->Show( false);
 	}
 
+	if ( m_pBackground)
+	{
+		m_pBackground->LoadMesh();
+		m_pBackground->SetScene(LOGIN_ROAMING);
+		m_pBackground->Draw();
+		// Draw effects(smoke, cloud)
+		ZGetEffectManager()->Draw( timeGetTime());
+		// Draw maiet logo effect
+		ZGetScreenEffectManager()->DrawEffects();
+	}
+	
 	// Fade in
 	if ( m_nLoginState == LOGINSTATE_FADEIN)
 	{
@@ -3047,6 +3076,11 @@ void ZGameInterface::OnDrawStateLogin(MDrawContext* pDC)
 
 		if ( dwCurrTime >= m_dwLoginTimer)
 		{
+			float newMulti = m_pBackground->GetFogMulti() - 0.05f;
+			if (newMulti < 0.f)
+				newMulti = 0.f;
+			m_pBackground->SetFogMulti(newMulti);
+			
 			int nOpacity = pPicture->GetOpacity() - 3;
 			if ( nOpacity < 0)
 				nOpacity = 0;
@@ -3062,6 +3096,7 @@ void ZGameInterface::OnDrawStateLogin(MDrawContext* pDC)
 			
 			m_nLoginState = LOGINSTATE_STANDBY;
 			m_nState = GUNZ_CHARSELECTION;
+			m_pBackground->SetScene(LOGIN_SCENE_FIXEDCHAR);
 			OnCharSelectionCreate();
 		}
 	}
@@ -6832,4 +6867,3 @@ void ZGameInterface::UpdateDuelTournamantMyCharInfoPreviousUI()
 		pNumLabel->SetText(szOutput);
 	}
 }
-

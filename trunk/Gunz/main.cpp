@@ -168,7 +168,8 @@ RRESULT OnCreate(void *pParam)
 	//	mlog("main : VideoCard support Vertex Shader...\n");
 	//}
 
-	sprintf( cstrReleaseDate, "Version : %d", ZGetSVNRevision());
+	//sprintf( cstrReleaseDate, "Version : %d", ZGetSVNRevision());
+	strcpy(cstrReleaseDate, "Abby GunZ");
 	mlog(cstrReleaseDate); mlog("\n");
 	g_DInput.Create(g_hWnd, FALSE, FALSE);
 	g_pInput = new ZInput(&g_DInput);
@@ -232,6 +233,7 @@ RRESULT OnCreate(void *pParam)
 	g_pDC = new MDrawContextR2(RGetDevice());
 
 #ifndef _FASTDEBUG
+#ifndef _LUCAS_LOADING
 	if( ZGetInitialLoading()->IsUseEnable() )
 	{
 		if( ZGetLocale()->IsTeenMode() )
@@ -250,6 +252,15 @@ RRESULT OnCreate(void *pParam)
 		ZGetInitialLoading()->SetPercentage( 0.0f );
 		ZGetInitialLoading()->Draw( MODE_FADEIN, 0 , true );
 	}
+#else
+if( ZGetInitialLoading()->IsUseEnable() )
+	{		
+		ZGetInitialLoading()->AddBitmap( 0, "Interface/LoadingBg.tga" );
+		ZGetInitialLoading()->AddBitmapBar( "Interface/LoadingCover.tga" );
+		ZGetInitialLoading()->SetPercentage( 0.0f );
+		ZGetInitialLoading()->Draw( MODE_FADEIN, 0 , true );
+	}
+#endif
 #endif
 
 //	ZGetInitialLoading()->SetPercentage( 10.0f );

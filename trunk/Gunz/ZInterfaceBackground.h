@@ -8,6 +8,7 @@ using namespace RealSpace2;
 #define LOGIN_SCENE_FALLDOWN	1			// 카메라 내려오면서 로고 보임
 #define LOGIN_SCENE_FIXEDCHAR	2			// 캐릭터한테 카메라 고정
 #define LOGIN_SCENE_SELECTCHAR	3			// 캐릭터 선택 후
+#define LOGIN_ROAMING			4			// Login background
 
 class ZInterfaceBackground{
 private:
@@ -27,6 +28,8 @@ private:
 
 	DWORD		m_dwClock;
 
+	float		m_fFogMulti;
+
 //	bool		m_bShowMaietLogo;			// Maiet logo 보임
 
 
@@ -41,6 +44,8 @@ public:
 	RBspObject*	GetChurchEnd() { return m_pLogin; }
 	int GetScene() { return m_nSceneNumber; }
 	void SetScene(int nSceneNumber);
+	float GetFogMulti() { return m_fFogMulti; }
+	void SetFogMulti(float fFogMulti) { m_fFogMulti = fFogMulti; }
 
 	void LoadMesh( void);
 	void Free(void);

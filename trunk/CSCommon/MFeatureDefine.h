@@ -12,3 +12,6 @@
 #if 0
 #	define _SELL_CASHITEM	// 캐쉬 아이템 되팔기 기능
 #endif
+
+#define _MAPLOGIN 1
+#define _LUCAS_LOADING 1

@@ -9,6 +9,24 @@
 
 #define DIR_LOGIN	"interface"
 
+#define D3DPAIR std::pair<D3DXVECTOR3, D3DXVECTOR3>
+static int mapIndex = 0;
+static std::vector<D3DPAIR> mapVecs;
+#define MAPPAIR(x1, x2, x3, y1, y2, y3) mapVecs.push_back(D3DPAIR(D3DXVECTOR3(x1, x2, x3), D3DXVECTOR3(y1, y2, y3)))
+
+void initMapVecs() {
+	if (mapVecs.empty()) {
+		
+		MAPPAIR(-26.f, -2812.f, 796.f, -35.f, -408.f, 1062.f);
+		
+		MAPPAIR(1957.f, -2033.f, 895.f, 8.f, 406.f, 950.f);
+		
+		MAPPAIR(-2010.f, -1904.f, 858.f, -161.f, -651.f, 1203.f);
+		
+		MAPPAIR(-1680.f, -1789.f, 1035.f, -216.f, 1677.f, 955.f);
+		
+	}
+}
 
 ZInterfaceBackground::ZInterfaceBackground( void)
 {
