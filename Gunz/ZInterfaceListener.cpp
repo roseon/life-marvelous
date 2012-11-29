@@ -756,8 +756,20 @@ END_IMPLEMENT_LISTENER()
 
 
 BEGIN_IMPLEMENT_LISTENER(ZGetShopCallerButtonListener, MBTN_CLK_MSG)
+	ZGetShop()->m_ShopMode = zshop_mode_normal;
 	ZGetGameInterface()->ShowShopDialog();
 END_IMPLEMENT_LISTENER()
+
+BEGIN_IMPLEMENT_LISTENER(ZGetCashShopCallerButtonListener, MBTN_CLK_MSG)
+	ZGetShop()->m_ShopMode = zshop_mode_cash;
+	ZGetGameInterface()->ShowShopDialog();
+END_IMPLEMENT_LISTENER()
+
+BEGIN_IMPLEMENT_LISTENER(ZGetStaffShopCallerButtonListener, MBTN_CLK_MSG)
+	ZGetShop()->m_ShopMode = zshop_mode_staff;
+	ZGetGameInterface()->ShowShopDialog();
+END_IMPLEMENT_LISTENER()
+
 
 BEGIN_IMPLEMENT_LISTENER(ZGetShopCloseButtonListener, MBTN_CLK_MSG)
 	ZGetGameInterface()->ShowShopDialog(false);

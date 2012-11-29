@@ -5,6 +5,12 @@
 #include <vector>
 using namespace std;
 
+enum {
+	zshop_mode_normal = 0,
+	zshop_mode_cash,
+	zshop_mode_staff,
+};
+
 class ZShop
 {
 private:
@@ -16,6 +22,7 @@ protected:
 
 public:
 	int m_ListFilter;
+	int m_ShopMode;
 
 public:
 	ZShop();

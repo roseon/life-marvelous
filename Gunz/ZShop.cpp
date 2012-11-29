@@ -46,6 +46,7 @@ enum {
 ZShop::ZShop() : m_nPage(0), m_bCreated(false)
 {
 	m_ListFilter = zshop_item_filter_all;
+	m_ShopMode = zshop_mode_normal;
 }
 
 ZShop::~ZShop()
@@ -122,6 +123,7 @@ void ZShop::Serialize()
 		{
 			const ZGambleItemDefine* pDesc = ZGetGambleItemDefineMgr().GetGambleItemDefine( m_vGItemList[i]->nItemID );
 			if (pDesc == NULL) { _ASSERT(0); continue; }
+			if (m_ShopMode != zshop_mode_normal) continue;
 
 			ZShopEquipItem_Gamble* pGItem = new ZShopEquipItem_Gamble(pDesc);
 			ZShopEquipItemHandle_PurchaseGamble* pHandle = 
@@ -142,6 +144,9 @@ void ZShop::Serialize()
 		{
 			if (CheckTypeWithListFilter(pDesc->m_nSlot, pDesc->IsEnchantItem()) == false) continue;
 			if (pDesc->m_nResSex.Ref() != -1 && pDesc->m_nResSex.Ref() != int(ZGetMyInfo()->GetSex())) continue;
+			if (pDesc->IsCashItem() && m_ShopMode != zshop_mode_cash) continue;
+			if (pDesc->IsStaffItem() && m_ShopMode != zshop_mode_staff) continue;
+			if (!pDesc->IsCashItem() && !pDesc->IsStaffItem() && m_ShopMode != zshop_mode_normal) continue;
 
 			ZShopEquipItem_Match* pMItem = new ZShopEquipItem_Match(pDesc);
 			ZShopEquipItemHandle_PurchaseMatch* pHandle = 
@@ -152,6 +157,7 @@ void ZShop::Serialize()
 		else if (MQuestItemDesc* pDesc = GetQuestItemDescMgr().FindQItemDesc( m_vShopItem[i]->nItemID))
 		{
 			if (m_ListFilter != zshop_item_filter_all && m_ListFilter != zshop_item_filter_quest) continue;
+			if (m_ShopMode != zshop_mode_normal) continue;
 
 			MUID uidItem = MUID(0, i+1);
 			ZShopEquipItem_Quest* pQItem = new ZShopEquipItem_Quest(pDesc);
