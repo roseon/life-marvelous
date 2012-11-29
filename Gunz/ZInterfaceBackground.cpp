@@ -8,6 +8,8 @@
 #include "ZScreenEffectManager.h"
 
 #define DIR_LOGIN	"interface"
+#define DIR_LOGIN_SEX	"interface/login"
+
 
 #define D3DPAIR std::pair<D3DXVECTOR3, D3DXVECTOR3>
 static int mapIndex = 0;
@@ -268,6 +270,16 @@ void ZInterfaceBackground::Draw(void)
 			vCamPos = m_vCamPosEd;
 			vCamDir = m_vCamDirEd;
 
+
+			#define FADE_IN_TIME 500
+			DWORD dwClock = ( timeGetTime() - m_dwClock);
+
+			float fGain = ((float)dwClock / (float)FADE_IN_TIME);
+			if (fGain > 1.0f)
+				fGain = 1.0f;
+
+			SetFogMulti(fGain);
+
 			// Cleared fog
 			fForgDensity = 50000.0f;
 			break;
@@ -278,8 +290,10 @@ void ZInterfaceBackground::Draw(void)
 			// Get current clock
 			DWORD dwClock = ( timeGetTime() - m_dwClock);
 			float fGain = ( cos( dwClock * 0.0012f) + 1.0f) / 2.0f;
-			vCamPos = m_vCamPosEd + ( m_vCamPosSt - m_vCamPosEd) * fGain;
-			vCamDir = m_vCamDirEd + ( m_vCamDirSt - m_vCamDirEd) * fGain;
+			//vCamPos = m_vCamPosEd + ( m_vCamPosSt - m_vCamPosEd) * fGain;
+			//vCamDir = m_vCamDirEd + ( m_vCamDirSt - m_vCamDirEd) * fGain;
+			vCamPos = m_vCamPosSt;
+			vCamDir = m_vCamDirSt;
 
 			MPicture* pPicture = (MPicture*)ZApplication::GetGameInterface()->GetIDLResource()->FindWidget( "CharSel_TopScreen");
 			if ( pPicture)
@@ -302,7 +316,52 @@ void ZInterfaceBackground::Draw(void)
 			fForgDensity = 50000.0f;
 			break;
 		}
+
+		case  LOGIN_ROAMING :
+		{
+			#define ROAM_SPEED 10000
+			DWORD dwClock = ( timeGetTime() - m_dwClock);
+
+			/*if (GetAsyncKeyState(VK_NUMPAD2) & 0x8000)
+				off.y -= 1.0f;
+			if (GetAsyncKeyState(VK_NUMPAD8) & 0x8000)
+				off.y += 1.0f;
+			if (GetAsyncKeyState(VK_NUMPAD4) & 0x8000)
+				off.x += 1.0f;
+			if (GetAsyncKeyState(VK_NUMPAD6) & 0x8000)
+				off.x -= 1.0f;
+			if (GetAsyncKeyState(VK_NUMPAD7) & 0x8000)
+				off.z -= 1.0f;
+			if (GetAsyncKeyState(VK_NUMPAD9) & 0x8000)
+				off.z += 1.0f;
+
+			vCamPos = m_vCamPosEd + off;
+			vCamDir = m_vCamDirEd;
+
+			// Cleared fog
+			fForgDensity = 50000.0f;*/
+
+			float fGain = ((float)dwClock / (float)ROAM_SPEED);
+			if (fGain > 1.0f)
+				fGain = 1.0f;
+			//vCamDir = mapVecs[mapIndex].second - mapVecs[mapIndex].first;
+			vCamDir = m_vCamDirEd;
+			vCamPos = mapVecs[mapIndex].first + ((mapVecs[mapIndex].second - mapVecs[mapIndex].first) * fGain) + D3DXVECTOR3(0.f,-100.f,0.f);
+
+			if (dwClock > ROAM_SPEED) {
+				m_dwClock = timeGetTime();				
+				mapIndex = rand() % mapVecs.size();
+			}
+
+			//fForgDensity = 50000.0f; //Clear
+			fForgDensity = ((-4 * fGain * fGain) + (4 * fGain)) * 20000.f;
+
+			break;
+		}
 	}
+
+	//Fog adjust
+	fForgDensity *= m_fFogMulti;
 
 	// Set camera
 	RSetCamera( vCamPos, (vCamPos + vCamDir), rvector( 0, 0, 1));
@@ -358,12 +417,12 @@ void ZInterfaceBackground::SetScene( int nSceneNumber)
 	if ( nSceneNumber == m_nSceneNumber)
 		return;
 
-	if ( (nSceneNumber == LOGIN_SCENE_FALLDOWN) || (nSceneNumber == LOGIN_SCENE_SELECTCHAR))
+	if ( (nSceneNumber == LOGIN_SCENE_FALLDOWN) || (nSceneNumber == LOGIN_SCENE_SELECTCHAR) || (nSceneNumber == LOGIN_SCENE_FIXEDCHAR) || (nSceneNumber == LOGIN_ROAMING)  )
 		m_dwClock = timeGetTime();
 
 	// 로고를 뿌려준다
-	if( nSceneNumber == LOGIN_SCENE_FALLDOWN)
-		ZGetScreenEffectManager()->AddScreenEffect( "maiet_logo");
+	//if( nSceneNumber == LOGIN_SCENE_FALLDOWN)
+		//ZGetScreenEffectManager()->AddScreenEffect( "maiet_logo");
 
 	if ( nSceneNumber == LOGIN_SCENE_SELECTCHAR)
 	{
