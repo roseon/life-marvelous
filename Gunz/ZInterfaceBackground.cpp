@@ -35,6 +35,10 @@ ZInterfaceBackground::ZInterfaceBackground( void)
 	m_pLogin = NULL;
 	m_pMapDesc = NULL;
 //	m_bShowMaietLogo = false;
+	m_fFogMulti = 1.0f;
+
+	initMapVecs();
+	mapIndex = 0;
 }
 
 
