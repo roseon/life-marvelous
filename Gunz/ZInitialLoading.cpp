@@ -96,7 +96,9 @@ bool ZInitialLoading::AddBitmap( int index_, const char* bitmapName_ )
 		return false;
 	}
 	char Buff[64];
+#ifndef _LUCAS_LOADING
 	sprintf( Buff, "Scene%d", index_ );
+#endif
 	if( !mBitmaps[index_].Create( Buff, RGetDevice(), bitmapName_ ) )
 	{
 		mlog("Fail to create Bitmap for Initial loading\n" );
@@ -248,14 +250,21 @@ void	ZInitialLoading::Draw( LOADING_SCENE_MODE mode_ /* = MODE_DEFAULT */, int d
 
 	//	if( mode_ == MODE_FADEOUT )
 		{
+#ifndef _LUCAS_LOADING
 			DrawBar( (float)(RGetScreenWidth() * 0.276), (float)(RGetScreenHeight() * 0.925f), 
 				(float)(RGetScreenWidth() * 0.4482), (float)(RGetScreenHeight() * 0.018f),  mPercentage* 0.01f ); 
+#else
+			DrawBar( (float)(RGetScreenWidth() * 0.0), (float)(RGetScreenHeight() * 0.0f), 
+				(float)(RGetScreenWidth() * 1.0), (float)(RGetScreenHeight() * 1.0f),  mPercentage* 0.01f ); 
+#endif
 		}
 
 		// 로딩 이름
 		if(m_pLoadingStr && mpDC ) {
 			char buffer[256];
+#ifndef _LUCAS_LOADING
 			sprintf(buffer,"Loading %s ...",m_pLoadingStr);
+#endif
 			int nWidth = mpDC->m_Font.GetTextWidth(buffer);
 			int x = (int)(RGetScreenWidth() * 0.5) - nWidth/2;
 			int y = (int)(RGetScreenHeight() * 0.9f);
@@ -263,7 +272,8 @@ void	ZInitialLoading::Draw( LOADING_SCENE_MODE mode_ /* = MODE_DEFAULT */, int d
 		}
 
 	// 청소년 자율 규제 적용안(쓰벌쓰벌쓰벌...)...
-#ifdef LOCALE_KOREA
+#if defined(LOCALE_KOREA) || defined(_LUCAS_LOADING)
+
 		if (mpDC)
 		{
 			int nWidth = mpDC->m_Font.GetTextWidth( m_szNotice);
@@ -302,12 +312,30 @@ void ZInitialLoading::DrawBar( float x_, float y_, float w_, float h_, float per
 	if( !mbBitmapBar ) return;
 	if( percent_ > 1.0f ) return;
 
+#ifndef _LUCAS_LOADING
 	CUSTOMVERTEX Sprite[4] = {
 		{x_ - ADJUST_SIZE, y_ - ADJUST_SIZE, 0, 1.0f, 0, 0 },
 		{x_ + ( w_ * percent_ ) - ADJUST_SIZE2, y_ - ADJUST_SIZE, 0, 1.0f, w_/h_ * percent_, 0 },
 		{x_ + ( w_ * percent_ ) - ADJUST_SIZE2, y_ + h_ - ADJUST_SIZE2, 0, 1.0f, w_/h_ * percent_, 1 },
 		{x_ - ADJUST_SIZE, y_ + h_ - ADJUST_SIZE2, 0, 1.0f, 0, 1 },
 	};
+#else
+	/*	
+	//LOL WTF WAS LUCAS THINKING
+	CUSTOMVERTEX Sprite[4] = {
+		{y_ + ADJUST_SIZE, x_ + ADJUST_SIZE, 0, 1.0f, 0, 0 },
+		{x_ + ADJUST_SIZE, y_ + ( h_ * percent_ ) - ADJUST_SIZE2, 0, 1.0f, h_/h_ * percent_, 0 },
+		{x_ + w_ - ADJUST_SIZE2, y_ + ( h_ * percent_ ) - ADJUST_SIZE2, 0, 1.0f, w_/w_ * percent_, 1 },
+		{x_ + w_ - ADJUST_SIZE2, y_ - ADJUST_SIZE, 0, 1.0f, 0, 1 },
+	};
+	*/
+	CUSTOMVERTEX Sprite[4] = {
+		{y_ - ADJUST_SIZE, x_ - ADJUST_SIZE, 0, 1.0f, 0, 0 },
+		{x_ - ADJUST_SIZE, y_ + ( h_ * percent_ ) - ADJUST_SIZE2, 0, 1.0f, 0, percent_ },
+		{x_ + w_ - ADJUST_SIZE2, y_ + ( h_ * percent_ ) - ADJUST_SIZE2, 0, 1.0f, 1, percent_ },
+		{x_ + w_ - ADJUST_SIZE2, y_ - ADJUST_SIZE, 0, 1.0f, 1, 0 },
+	};
+#endif
 
 	RGetDevice()->SetRenderState( D3DRS_ZENABLE , D3DZB_FALSE );
 
@@ -359,6 +387,7 @@ void ZInitialLoading::DrawGrade(float blendFactor)
 		msw2 = (float)Floorer2PowerSize((int)msw);
 		msh2 = (float)Floorer2PowerSize((int)msh);
 	}
+#ifndef _LUCAS_LOADING
 
 	CUSTOMVERTEX Sprite[4] = {
 		{mx      - ADJUST_SIZE , my      - ADJUST_SIZE , 0, 1.0f, (msx)/ftw       , (msy)/fth },
@@ -366,6 +395,14 @@ void ZInitialLoading::DrawGrade(float blendFactor)
 		{mx + mw - ADJUST_SIZE2, my + mh - ADJUST_SIZE2, 0, 1.0f, (msx + msw2)/ftw, (msy + msh2)/fth },
 		{mx      - ADJUST_SIZE , my + mh - ADJUST_SIZE2, 0, 1.0f, (msx)/ftw       , (msy + msh2)/fth},
 	};
+#else
+	CUSTOMVERTEX Sprite[4] = {
+		{mx      - ADJUST_SIZE2 , my      - ADJUST_SIZE2 , 0, 1.0f, (msx)/ftw       , (msy)/fth },
+		{mx + mw - ADJUST_SIZE	, my      - ADJUST_SIZE2 , 0, 1.0f, (msx + msw2)/ftw, (msy)/fth },
+		{mx + mw - ADJUST_SIZE	, my + mh - ADJUST_SIZE, 0, 1.0f, (msx + msw2)/ftw, (msy + msh2)/fth },
+		{mx      - ADJUST_SIZE2 , my + mh - ADJUST_SIZE, 0, 1.0f, (msx)/ftw       , (msy + msh2)/fth},
+	};
+#endif
 	RGetDevice()->SetRenderState( D3DRS_ALPHABLENDENABLE, TRUE );
 	RGetDevice()->SetRenderState( D3DRS_SRCBLEND,D3DBLEND_SRCALPHA );	
 	RGetDevice()->SetRenderState( D3DRS_DESTBLEND,D3DBLEND_INVSRCALPHA );
