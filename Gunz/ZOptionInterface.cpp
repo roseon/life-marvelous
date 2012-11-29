@@ -283,21 +283,9 @@ void ZOptionInterface::InitInterfaceOption(void)
 
 		//Window Mode
 		pWidget = (MButton*)pResource->FindWidget("FullScreen");
-        if(pWidget)
+        if( pWidget )
         {
-            Z_VIDEO_FULLSCREEN = pWidget->GetCheck();
-            RMODEPARAMS ModeParams={ RGetScreenWidth(),RGetScreenHeight(),RIsFullScreen(),RGetPixelFormat() };
-
-            if(!pWidget->GetCheck() && ModeParams.bFullScreen == true)
-            {
-                ModeParams.bFullScreen = false;
-                RResetDevice(&ModeParams);
-            }
-            else if(pWidget->GetCheck() && ModeParams.bFullScreen == false)
-            {
-                ModeParams.bFullScreen = true;
-                RResetDevice(&ModeParams);
-            }
+            pWidget->SetCheck(ZGetConfiguration()->GetVideo()->bFullScreen);
         }
 
 		pWidget = (MButton*)pResource->FindWidget("Shader");
@@ -754,9 +742,21 @@ bool ZOptionInterface::SaveInterfaceOption(void)
 
 		//Window Mode
 		pWidget = (MButton*)pResource->FindWidget("FullScreen");
-        if( pWidget )
+        if(pWidget)
         {
-            pWidget->SetCheck(ZGetConfiguration()->GetVideo()->bFullScreen);
+            Z_VIDEO_FULLSCREEN = pWidget->GetCheck();
+            RMODEPARAMS ModeParams={ RGetScreenWidth(),RGetScreenHeight(),RIsFullScreen(),RGetPixelFormat() };
+
+            if(!pWidget->GetCheck() && ModeParams.bFullScreen == true)
+            {
+                ModeParams.bFullScreen = false;
+                RResetDevice(&ModeParams);
+            }
+            else if(pWidget->GetCheck() && ModeParams.bFullScreen == false)
+            {
+                ModeParams.bFullScreen = true;
+                RResetDevice(&ModeParams);
+            }
         }
 
 		pWidget = (MButton*)pResource->FindWidget("Shader");

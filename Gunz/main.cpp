@@ -579,11 +579,21 @@ RRESULT OnError(void *pParam)
 
 void SetModeParams()
 {
+#ifdef _PUBLISH
 	g_ModeParams.bFullScreen = true;
+#else
+	#ifdef _DEBUG
+		g_ModeParams.bFullScreen = false;
+	#else
+		g_ModeParams.bFullScreen = ZGetConfiguration()->GetVideo()->bFullScreen;
+	#endif
+#endif
+
+	g_ModeParams.bFullScreen = ZGetConfiguration()->GetVideo()->bFullScreen;
 	g_ModeParams.nWidth = ZGetConfiguration()->GetVideo()->nWidth;
 	g_ModeParams.nHeight = ZGetConfiguration()->GetVideo()->nHeight;
 	ZGetConfiguration()->GetVideo()->nColorBits == 32 ? 
-	g_ModeParams.PixelFormat = D3DFMT_X8R8G8B8 : g_ModeParams.PixelFormat = D3DFMT_R5G6B5 ;
+		g_ModeParams.PixelFormat = D3DFMT_X8R8G8B8 : g_ModeParams.PixelFormat = D3DFMT_R5G6B5 ;
 
 }
 
