@@ -832,8 +832,10 @@ bool ZGameInterface::InitInterfaceListener()
 	SetListenerWidget("Optimization",ZSetOptimizationListener());
 
 	//======================================================================================================
-	// »óÁ¡
+	// botones tiendas
 	SetListenerWidget("ShopCaller", ZGetShopCallerButtonListener());
+	SetListenerWidget("CashShopCaller", ZGetCashShopCallerButtonListener());
+	SetListenerWidget("StaffShopCaller", ZGetStaffShopCallerButtonListener());
 	SetListenerWidget("ShopClose", ZGetShopCloseButtonListener());
 
 	SetListenerWidget("EquipmentCaller", ZGetEquipmentCallerButtonListener());
@@ -1768,6 +1770,10 @@ void ZGameInterface::OnLobbyCreate(void)
 	SetRoomNoLight(1);
 	ZGetGameClient()->RequestOnLobbyCreated();
 	
+	if (ZGetMyInfo()->IsAdminGrade())
+		ShowWidget("StaffShopCaller", true);
+	else
+		ShowWidget("StaffShopCaller", false);
 
 	ShowWidget("CombatMenuFrame", false);
 	ShowWidget("Lobby", true);
