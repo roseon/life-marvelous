@@ -342,6 +342,8 @@ public:
 	bool ReadXmlElement(MXmlElement* pNode,char* Path);
 
 	bool ReadElu(char* fname);
+	bool ReadNewElu(MZFile* mzf, char* fname);
+	bool ReadOldElu(MZFile* mzf, ex_hd_t* fname);
 	bool SaveElu(char* fname);
 
 	void RenderFrame();

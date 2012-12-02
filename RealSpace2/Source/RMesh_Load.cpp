@@ -741,10 +741,539 @@ void RMesh::CheckNameToType(RMeshNode* pMeshNode)
 
 }
 
+bool RMesh::ReadNewElu(MZFile* mzf, char* fname) {
+#define MZF_READ(x,y) { if(!mzf->Read((x),(y))) return false; }
+#define MZF_READ_XOR(x,y) { if(!mzf->Read((x),(y))) return false; }
+#define MZF_READ_XOR_SPECIAL(x,y) { if(!mzf->Read((x),(y))) return false; for (int i = 0; i < y; ++i) *(BYTE*)(x + i) ^= 0; }
+  int i;
+    unsigned short count_mesh = 0;
+    MZF_READ_XOR(&count_mesh, 2);
+
+  for(i=0; i < count_mesh; i++)
+  {
+
+    char Name[256];
+    memset(Name, 0, sizeof(Name));
+
+    unsigned short count_name = 0;
+    unsigned short count_name_Parent = 0;
+    MZF_READ_XOR(&count_name, 2);
+    MZF_READ_XOR(Name  ,count_name );
+    MZF_READ_XOR(&count_name_Parent, 2);
+    RMeshNode* pMeshNode = new RMeshNode;
+    D3DXMatrixIdentity(&pMeshNode->m_mat_base);
+    pMeshNode->m_id = m_data_num;
+    memset(pMeshNode->m_Parent, 0, sizeof(pMeshNode->m_Parent));
+    pMeshNode->m_pParentMesh = this;
+    pMeshNode->m_pBaseMesh = this;
+    pMeshNode->SetName(Name);
+    MZF_READ_XOR(pMeshNode->m_Parent, count_name_Parent );
+    MZF_READ_XOR(pMeshNode->m_axis_scale,sizeof(D3DXVECTOR3) );
+    MZF_READ_XOR(pMeshNode->m_mat_etc,sizeof(D3DXMATRIX) );
+    MZF_READ_XOR(pMeshNode->m_mat_ref,sizeof(D3DXMATRIX) );
+    MZF_READ_XOR(pMeshNode->m_mat_inv,sizeof(D3DXMATRIX) );
+    MZF_READ_XOR(&pMeshNode->m_axis_rot_angle,sizeof(float) );
+    MZF_READ_XOR(pMeshNode->m_mat_base,sizeof(D3DXMATRIX) );
+    MZF_READ_XOR(pMeshNode->m_mat_ref_inv,sizeof(D3DXMATRIX) );
+    MZF_READ_XOR(pMeshNode->m_axis_rot,sizeof(D3DXVECTOR3) );
+    MZF_READ_XOR(&pMeshNode->m_axis_scale_angle,sizeof(float) );
+    MZF_READ_XOR(pMeshNode->m_mat_local,sizeof(D3DXMATRIX) );
+    MZF_READ_XOR(pMeshNode->m_mat_result,sizeof(D3DXMATRIX) );
+    MZF_READ_XOR(pMeshNode->m_mat_scale,sizeof(D3DXMATRIX) );
+    MZF_READ_XOR(pMeshNode->m_ap_scale,sizeof(D3DXVECTOR3) );
+    MZF_READ_XOR(pMeshNode->m_mat_flip,sizeof(D3DXMATRIX) );
+    
+    CheckNameToType(pMeshNode);
+    MZF_READ_XOR(&pMeshNode->m_point_num,4 );
+
+    if(pMeshNode->m_point_num != 0) {
+    
+      pMeshNode->m_point_list = new D3DXVECTOR3[pMeshNode->m_point_num];
+      memset(pMeshNode->m_point_list,0,pMeshNode->m_point_num * sizeof(D3DXVECTOR3));
+      int p = 0;
+      for (p = 0; p < pMeshNode->m_point_num; p++)
+      {
+      MZF_READ_XOR(pMeshNode->m_point_list[p],sizeof(D3DXVECTOR3));
+      }
+      pMeshNode->CalcLocalBBox();
+    }
+
+    //tex uv 까지 포함
+
+    MZF_READ_XOR(&pMeshNode->m_face_num,4 );
+
+
+    if(pMeshNode->m_face_num) {
+
+      pMeshNode->m_face_list = new RFaceInfo[pMeshNode->m_face_num];
+      pMeshNode->m_face_normal_list = new RFaceNormalInfo[pMeshNode->m_face_num];
+
+      memset(pMeshNode->m_face_list, 0, pMeshNode->m_face_num * sizeof(RFaceInfo));
+
+        MZF_READ(pMeshNode->m_face_list,sizeof(RFaceInfo)*pMeshNode->m_face_num);
+        MZF_READ(pMeshNode->m_face_normal_list,sizeof(RFaceNormalInfo)*pMeshNode->m_face_num);
+
+    }
+    /*
+    if(pMeshNode->m_face_num) {
+
+      pMeshNode->m_face_list = new RFaceInfo[pMeshNode->m_face_num];
+      pMeshNode->m_face_normal_list = new RFaceNormalInfo[pMeshNode->m_face_num];
+
+      memset(pMeshNode->m_face_list, 0, pMeshNode->m_face_num * sizeof(RFaceInfo));
+
+      int p = 0;
+      for (p = 0; p < pMeshNode->m_face_num; p++)
+      {
+      MZF_READ_XOR(&pMeshNode->m_face_list[p],sizeof(RFaceInfo));
+      }
+      int e = 0;
+      for (e = 0; e < pMeshNode->m_face_num; e++)
+      {
+      MZF_READ_XOR(&pMeshNode->m_face_normal_list[e],sizeof(RFaceNormalInfo));
+      }
+      //MZF_READ_XOR(pMeshNode->m_face_list,sizeof(RFaceInfo)*pMeshNode->m_face_num);
+      //MZF_READ_XOR(pMeshNode->m_face_normal_list,sizeof(RFaceNormalInfo)*pMeshNode->m_face_num);
+    }*/
+    
+    MZF_READ_XOR(&pMeshNode->m_point_color_num,4 );
+
+    if(pMeshNode->m_point_color_num) {
+        pMeshNode->m_point_color_list = new D3DXVECTOR3 [pMeshNode->m_point_color_num];
+        MZF_READ_XOR(pMeshNode->m_point_color_list,sizeof(D3DXVECTOR3)*pMeshNode->m_point_color_num);
+    }
+
+    if( (pMeshNode->m_point_num==0) || (pMeshNode->m_face_num==0) ) {
+      pMeshNode->m_isDummyMesh = true;
+    }
+
+    MZF_READ_XOR(&pMeshNode->m_mtrl_id,4 );
+
+    MZF_READ_XOR(&pMeshNode->m_physique_num,4 );
+
+    if(pMeshNode->m_physique_num) {
+      
+      m_isPhysiqueMesh = true;
+      pMeshNode->m_physique = new RPhysiqueInfo[pMeshNode->m_physique_num];
+      ZeroMemory(pMeshNode->m_physique,pMeshNode->m_physique_num * sizeof(RPhysiqueInfo));
+      
+      for(int j=0;j<pMeshNode->m_physique_num;j++) {
+        int infcount = 0;
+        MZF_READ_XOR(&infcount,1 );
+        pMeshNode->m_physique[j].m_num = infcount;
+        for (int k=0; k<infcount;k++)
+        {
+          int countiname = 0;
+          MZF_READ_XOR(&pMeshNode->m_physique[j].m_parent_id[k], 4);
+          MZF_READ_XOR(&pMeshNode->m_physique[j].m_weight[k], 4);
+          MZF_READ_XOR(&pMeshNode->m_physique[j].m_offset[k], 12);
+          MZF_READ_XOR(&countiname,2 );  
+          MZF_READ_XOR(&pMeshNode->m_physique[j].m_parent_name[k], countiname);
+          
+        }
+      }
+    }
+    if(pMeshNode->m_point_color_num>0 && pMeshNode->m_PartsType == eq_parts_chest )
+      pMeshNode->m_isClothMeshNode = true;
+
+    m_list.PushBack(pMeshNode);
+    
+    m_data.push_back( pMeshNode );
+    m_data_num++;
+
+    if( MAX_MESH_NODE_TABLE != (int)m_data.capacity() )
+    {
+      mlog( "m_data number is not quite right..! (%d)\n", (int)m_data.capacity());
+      return false;
+    }
+  }
+  unsigned short count_mtrl;
+  MZF_READ_XOR(&count_mtrl, 2);
+  i = 0;
+
+  if(count_mtrl)
+  {
+  for(i=0;i<count_mtrl;i++) {
+
+    RMtrl* node = new RMtrl;
+
+      MZF_READ_XOR(&node->m_mtrl_id    ,4 );
+    MZF_READ_XOR(&node->m_sub_mtrl_id,4 );
+
+    MZF_READ_XOR(&node->m_ambient ,sizeof(D3DXCOLOR) );
+    MZF_READ_XOR(&node->m_diffuse ,sizeof(D3DXCOLOR) );
+    MZF_READ_XOR(&node->m_specular,sizeof(D3DXCOLOR) );
+
+    MZF_READ_XOR(&node->m_power,4 );
+    MZF_READ_XOR(&node->m_sub_mtrl_num,4 );
+    unsigned short count_name;
+    unsigned short count_opa_name;
+
+    MZF_READ_XOR(&count_name, 2 );
+    memset(node->m_name, 0, sizeof(node->m_name));
+    MZF_READ_XOR(node->m_name    , count_name  );
+    memset(node->m_opa_name, 0, sizeof(node->m_opa_name));
+    MZF_READ_XOR(&count_opa_name, 2 );
+    MZF_READ_XOR(node->m_opa_name, count_opa_name );
+    char twoside=0;
+      MZF_READ_XOR(&twoside,sizeof(char) );
+      node->m_bTwoSided = twoside ? false : true;
+    char additive = 0;
+      MZF_READ_XOR(&additive,sizeof(char) );
+	  node->m_bAdditive = additive ? false : true;
+   int alpha_test = 0;
+      MZF_READ_XOR(&alpha_test,sizeof(int) );
+      node->m_nAlphaTestValue = alpha_test;
+      node->m_bAlphaTestMap = alpha_test != 0;  
+  char diffuse = 0;
+      MZF_READ_XOR(&diffuse,sizeof(char) );
+	  node->m_bDiffuseMap = diffuse ? false : true;
+  char alpha_map = 0;
+      MZF_READ_XOR(&alpha_map,sizeof(char) );
+      node->m_bAlphaMap = alpha_map ? false : true;
+
+
+
+    node->CheckAniTexture();
+
+    m_mtrl_list_ex.Add(node);
+  }
+  }
+
+  return true;
+#undef MZF_READ
+
+}
+
+bool RMesh::ReadOldElu(MZFile* mzf, ex_hd_t* m_phd_t) {
+
+#define MZF_READ(x,y) { if(!mzf->Read((x),(y))) return false; }
+
+
+		int i,j,k;
+	// sub mtrl 까지 포함한 갯수
+	for(i=0;i<m_phd_t->mtrl_num;i++) {
+
+		RMtrl* node = new RMtrl;
+
+		MZF_READ(&node->m_mtrl_id    ,4 );
+		MZF_READ(&node->m_sub_mtrl_id,4 );
+
+		MZF_READ(&node->m_ambient ,sizeof(D3DXCOLOR) );
+		MZF_READ(&node->m_diffuse ,sizeof(D3DXCOLOR) );
+		MZF_READ(&node->m_specular,sizeof(D3DXCOLOR) );
+
+		MZF_READ(&node->m_power,4 );
+
+		node->m_power *= 100.f;
+
+		if(m_phd_t->ver <= EXPORTER_MESH_VER3)
+			if(node->m_power == 2000.f)
+				node->m_power = 0.f;
+
+//		node->m_power = 80.f;
+
+		MZF_READ(&node->m_sub_mtrl_num,4 );
+
+		if(m_phd_t->ver < EXPORTER_MESH_VER7) {
+			MZF_READ(&node->m_name    ,MAX_NAME_LEN );
+			MZF_READ(&node->m_opa_name,MAX_NAME_LEN );
+		}
+		else {
+			MZF_READ(&node->m_name    ,MAX_PATH_NAME_LEN );
+			MZF_READ(&node->m_opa_name,MAX_PATH_NAME_LEN );
+		}
+
+		if(m_phd_t->ver > EXPORTER_MESH_VER2) {//ver3 부터
+			int twoside=0;
+			MZF_READ(&twoside,sizeof(int) );
+			node->m_bTwoSided = twoside ? true : false;
+		}
+
+		if(m_phd_t->ver > EXPORTER_MESH_VER4) {
+			int additive = 0;
+			MZF_READ(&additive,sizeof(int) );
+			node->m_bAdditive = additive ? true : false;
+		}
+
+		if(m_phd_t->ver > EXPORTER_MESH_VER7 )//ver8 부터
+		{
+			int alpha_test = 0;
+			MZF_READ(&alpha_test,sizeof(int) );
+			node->m_bAlphaTestMap = alpha_test ? true : false;
+			node->m_nAlphaTestValue = alpha_test;
+		}
+		
+		if( node->m_name[0] ) {
+
+			int	 len = strlen(node->m_name);
+			char _temp[5];
+
+			strncpy(_temp,&node->m_name[len-4],4);
+
+			_temp[4] = 0;
+
+			if( stricmp(_temp,".tga")==0 ) {
+				node->m_bDiffuseMap = true;
+			}
+
+			if( node->m_opa_name[0] ) {
+				node->m_bAlphaMap	= true;
+				node->m_bDiffuseMap = false;
+			}
+		}
+
+		if( node->m_bAlphaTestMap ) {
+			node->m_bAlphaMap	= false;
+			node->m_bDiffuseMap = false;
+		}
+
+		node->CheckAniTexture();
+
+		m_mtrl_list_ex.Add(node);
+	}
+
+	bool bNeedScaleMat = false;
+	D3DXMATRIX smat;
+
+	for(i=0;i<m_phd_t->mesh_num;i++) {
+
+		bNeedScaleMat = false;
+
+		RMeshNode* pMeshNode = new RMeshNode;
+
+//		memset( pMeshNode, 0, sizeof(RMeshNode));
+//		pMeshNode->m_mtrl_id = -1;
+		D3DXMatrixIdentity(&pMeshNode->m_mat_base);
+
+		pMeshNode->m_id = m_data_num;//last id
+		pMeshNode->m_pParentMesh = this;
+		pMeshNode->m_pBaseMesh = this;
+
+		char Name[256];
+		Name[0] = NULL;
+
+		MZF_READ(Name  ,MAX_NAME_LEN );
+//		MZF_READ(pMeshNode->m_Name  ,MAX_NAME_LEN );
+		MZF_READ(pMeshNode->m_Parent,MAX_NAME_LEN );
+		MZF_READ(&pMeshNode->m_mat_base,sizeof(D3DXMATRIX) );//mat
+
+#ifdef _DEBUG
+		char name[256];
+		sprintf(name, Name);
+		TrimStr(name, name);
+#endif
+		pMeshNode->SetName( Name );
+
+		pMeshNode->m_mat_ref = pMeshNode->m_mat_base;
+		D3DXMatrixInverse( &pMeshNode->m_mat_ref_inv , 0, &pMeshNode->m_mat_ref );
+		
+		if(m_phd_t->ver >= EXPORTER_MESH_VER2) {
+			MZF_READ(&pMeshNode->m_ap_scale,sizeof(D3DXVECTOR3) );//mat
+		}
+		else  {
+			pMeshNode->m_ap_scale.x = 1.f;
+			pMeshNode->m_ap_scale.y = 1.f;
+			pMeshNode->m_ap_scale.z = 1.f;
+		}
+
+		///////////////////////////////////////////////
+
+		if(m_phd_t->ver >= EXPORTER_MESH_VER4) {
+
+			MZF_READ(&pMeshNode->m_axis_rot,sizeof(D3DXVECTOR3) );
+			MZF_READ(&pMeshNode->m_axis_rot_angle,sizeof(float) );
+
+			MZF_READ(&pMeshNode->m_axis_scale,sizeof(D3DXVECTOR3) );
+			MZF_READ(&pMeshNode->m_axis_scale_angle,sizeof(float) );
+
+			MZF_READ(&pMeshNode->m_mat_etc,sizeof(D3DXMATRIX) );//mat
+
+			D3DXMATRIX scalemat;
+			D3DXMATRIX scalepivot;
+			D3DXMATRIX scalepivotinv;
+			D3DXMATRIX flipmat;
+
+			D3DXMatrixScaling( &scalemat, pMeshNode->m_ap_scale.x, pMeshNode->m_ap_scale.y, pMeshNode->m_ap_scale.z );
+			D3DXMatrixRotationAxis( &scalepivot, &pMeshNode->m_axis_scale, pMeshNode->m_axis_scale_angle );
+			D3DXMatrixInverse( &scalepivotinv, NULL, &scalepivot );
+
+			D3DXMatrixIdentity(&flipmat);
+
+			pMeshNode->m_mat_flip = flipmat;
+
+//			result_mat2 = scalepivotinv * scalemat * scalepivot;
+			pMeshNode->m_mat_etc = scalepivotinv * scalemat * scalepivot;
+
+		}
+		else {
+
+			D3DXMatrixIdentity(&pMeshNode->m_mat_etc);
+			D3DXMatrixIdentity(&pMeshNode->m_mat_flip);
+		}
+
+		memcpy(&pMeshNode->m_mat_local,&pMeshNode->m_mat_base,sizeof(D3DXMATRIX));
+
+		pMeshNode->m_mat_result = pMeshNode->m_mat_base;
+
+		D3DXMatrixScaling(&pMeshNode->m_mat_scale, pMeshNode->m_ap_scale.x, pMeshNode->m_ap_scale.y, pMeshNode->m_ap_scale.z);
+
+		RMatInv(pMeshNode->m_mat_inv,pMeshNode->m_mat_local);
+
+		CheckNameToType(pMeshNode);
+
+		MZF_READ(&pMeshNode->m_point_num,4 );
+
+		if(pMeshNode->m_point_num) {
+		
+			pMeshNode->m_point_list = new D3DXVECTOR3[pMeshNode->m_point_num];
+			memset(pMeshNode->m_point_list,0,pMeshNode->m_point_num * sizeof(D3DXVECTOR3));
+
+			MZF_READ(pMeshNode->m_point_list,sizeof(D3DXVECTOR3)*pMeshNode->m_point_num);
+
+			pMeshNode->CalcLocalBBox();
+		}
+
+		//tex uv 까지 포함
+
+		MZF_READ(&pMeshNode->m_face_num,4 );
+
+		if(pMeshNode->m_face_num) {
+
+			pMeshNode->m_face_list = new RFaceInfo[pMeshNode->m_face_num];
+			pMeshNode->m_face_normal_list = new RFaceNormalInfo[pMeshNode->m_face_num];
+
+			memset(pMeshNode->m_face_list, 0, pMeshNode->m_face_num * sizeof(RFaceInfo));
+
+			if(m_phd_t->ver >= EXPORTER_MESH_VER6 ) {//ver 6
+
+				MZF_READ(pMeshNode->m_face_list,sizeof(RFaceInfo)*pMeshNode->m_face_num);
+				MZF_READ(pMeshNode->m_face_normal_list,sizeof(RFaceNormalInfo)*pMeshNode->m_face_num);
+
+			}
+			else if(m_phd_t->ver > EXPORTER_MESH_VER2) {//ver3 부터
+
+				MZF_READ(pMeshNode->m_face_list,sizeof(RFaceInfo)*pMeshNode->m_face_num);
+			}
+			else {									//ver3 이하
+
+				RFaceInfoOld* pInfo = new RFaceInfoOld[pMeshNode->m_face_num];
+				MZF_READ(pInfo,sizeof(RFaceInfoOld)*pMeshNode->m_face_num);
+
+				ConvertOldFaceInfo(pMeshNode->m_face_list,pInfo,pMeshNode->m_face_num);
+
+				delete[] pInfo;
+			}
+		}
+
+		if( m_phd_t->ver >= EXPORTER_MESH_VER6 ) {
+		
+			MZF_READ(&pMeshNode->m_point_color_num,4 );
+
+			if(pMeshNode->m_point_color_num) {
+				pMeshNode->m_point_color_list = new D3DXVECTOR3 [pMeshNode->m_point_color_num];
+				MZF_READ(pMeshNode->m_point_color_list,sizeof(D3DXVECTOR3)*pMeshNode->m_point_color_num);
+			}
+		}
+
+		if( (pMeshNode->m_point_num==0) || (pMeshNode->m_face_num==0) ) {
+			pMeshNode->m_isDummyMesh = true;
+		}
+
+		//////////////////////////////////////////////
+		
+		MZF_READ(&pMeshNode->m_mtrl_id,4 );
+
+		MZF_READ(&pMeshNode->m_physique_num,4 );
+
+		if(pMeshNode->m_physique_num) {
+			
+			m_isPhysiqueMesh = true;
+
+			pMeshNode->m_physique = new RPhysiqueInfo[pMeshNode->m_physique_num];
+			ZeroMemory(pMeshNode->m_physique,pMeshNode->m_physique_num * sizeof(RPhysiqueInfo));
+
+			for(int j=0;j<pMeshNode->m_physique_num;j++) {
+
+				MZF_READ( &pMeshNode->m_physique[j],sizeof(RPhysiqueInfo) );
+			}
+		}
+
+		D3DXPLANE	plane;
+		D3DXVECTOR3	vv[3];
+
+		if( m_phd_t->ver < EXPORTER_MESH_VER6 ) {
+
+			if(pMeshNode->m_face_num) {
+			
+				for(int a=0;a<pMeshNode->m_face_num;a++) {
+
+					vv[0] = pMeshNode->m_point_list[pMeshNode->m_face_list[a].m_point_index[0]];
+					vv[1] = pMeshNode->m_point_list[pMeshNode->m_face_list[a].m_point_index[1]];
+					vv[2] = pMeshNode->m_point_list[pMeshNode->m_face_list[a].m_point_index[2]];
+
+					D3DXPlaneFromPoints(&plane,&vv[0],&vv[1],&vv[2]);
+					D3DXPlaneNormalize(&plane,&plane);
+
+					pMeshNode->m_face_normal_list[a].m_normal.x = plane.a;
+					pMeshNode->m_face_normal_list[a].m_normal.y = plane.b;
+					pMeshNode->m_face_normal_list[a].m_normal.z = plane.c;
+				}
+			}
+
+			if(pMeshNode->m_point_num&&pMeshNode->m_point_num) 
+			{
+				D3DXVECTOR3* pPointNormal = new D3DXVECTOR3 [pMeshNode->m_point_num];
+				memset(pPointNormal,0,sizeof(D3DXVECTOR3)*pMeshNode->m_point_num);
+			
+
+				for(k=0;k<pMeshNode->m_face_num;k++) {
+					for(j=0;j<3;j++) {
+						pPointNormal[ pMeshNode->m_face_list[k].m_point_index[j] ] =
+							pPointNormal[pMeshNode->m_face_list[k].m_point_index[j]] + pMeshNode->m_face_normal_list[k].m_normal;
+					}
+				}
+
+				for(k=0;k<pMeshNode->m_point_num;k++) {
+					pPointNormal[k] = pPointNormal[k]/3.f;
+					D3DXVec3Normalize(&pPointNormal[k],&pPointNormal[k]);
+				}
+
+				for(k=0;k<pMeshNode->m_face_num;k++) {
+					for(j=0;j<3;j++) {
+						pMeshNode->m_face_normal_list[k].m_pointnormal[j] = pPointNormal[ pMeshNode->m_face_list[k].m_point_index[j] ];
+					}
+				}
+
+				delete [] pPointNormal;
+
+			}
+		}
+
+		if(pMeshNode->m_point_color_num>0 && pMeshNode->m_PartsType == eq_parts_chest )
+			pMeshNode->m_isClothMeshNode = true;
+
+		m_list.PushBack(pMeshNode);
+		
+		m_data.push_back( pMeshNode );
+		m_data_num++;
+
+		if( MAX_MESH_NODE_TABLE != (int)m_data.capacity() )
+		{
+			mlog( "m_data number is not quite right..! (%d)\n", (int)m_data.capacity());
+		}
+	}
+
+return true;
+
+#undef MZF_READ
+
+}
+
 bool RMesh::ReadElu(char* fname)
 {
-#define MZF_READ(x,y) { if(!mzf.Read((x),(y))) return false; }
 
+#define MZF_READ(x,y) { if(!mzf.Read((x),(y))) return false; }
 	__BP(2009,"RMesh::ReadElu");
 
 	char Path[256];
@@ -816,318 +1345,17 @@ bool RMesh::ReadElu(char* fname)
 		mlog("%s elu file 파일 식별 실패.\n",fname);
 		return false;
 	}
+
+
+	if(t_hd.mesh_num != -1 && t_hd.mtrl_num != -1) {
+		if(!ReadOldElu(&mzf, &t_hd))
+			return false;
+	}
+	else
+	{
+	ReadNewElu(&mzf, fname);
+	}
 	
-	int i,j,k;
-	// sub mtrl 까지 포함한 갯수
-	for(i=0;i<t_hd.mtrl_num;i++) {
-
-		RMtrl* node = new RMtrl;
-
-		MZF_READ(&node->m_mtrl_id    ,4 );
-		MZF_READ(&node->m_sub_mtrl_id,4 );
-
-		MZF_READ(&node->m_ambient ,sizeof(D3DXCOLOR) );
-		MZF_READ(&node->m_diffuse ,sizeof(D3DXCOLOR) );
-		MZF_READ(&node->m_specular,sizeof(D3DXCOLOR) );
-
-		MZF_READ(&node->m_power,4 );
-
-		node->m_power *= 100.f;
-
-		if(t_hd.ver <= EXPORTER_MESH_VER3)
-			if(node->m_power == 2000.f)
-				node->m_power = 0.f;
-
-//		node->m_power = 80.f;
-
-		MZF_READ(&node->m_sub_mtrl_num,4 );
-
-		if(t_hd.ver< EXPORTER_MESH_VER7) {
-			MZF_READ(&node->m_name    ,MAX_NAME_LEN );
-			MZF_READ(&node->m_opa_name,MAX_NAME_LEN );
-		}
-		else {
-			MZF_READ(&node->m_name    ,MAX_PATH_NAME_LEN );
-			MZF_READ(&node->m_opa_name,MAX_PATH_NAME_LEN );
-		}
-
-		if(t_hd.ver > EXPORTER_MESH_VER2) {//ver3 부터
-			int twoside=0;
-			MZF_READ(&twoside,sizeof(int) );
-			node->m_bTwoSided = twoside ? true : false;
-		}
-
-		if(t_hd.ver > EXPORTER_MESH_VER4) {
-			int additive = 0;
-			MZF_READ(&additive,sizeof(int) );
-			node->m_bAdditive = additive ? true : false;
-		}
-
-		if(t_hd.ver > EXPORTER_MESH_VER7 )//ver8 부터
-		{
-			int alpha_test = 0;
-			MZF_READ(&alpha_test,sizeof(int) );
-			node->m_bAlphaTestMap = alpha_test ? true : false;
-			node->m_nAlphaTestValue = alpha_test;
-		}
-		
-		if( node->m_name[0] ) {
-
-			int	 len = strlen(node->m_name);
-			char _temp[5];
-
-			strncpy(_temp,&node->m_name[len-4],4);
-
-			_temp[4] = 0;
-
-			if( stricmp(_temp,".tga")==0 ) {
-				node->m_bDiffuseMap = true;
-			}
-
-			if( node->m_opa_name[0] ) {
-				node->m_bAlphaMap	= true;
-				node->m_bDiffuseMap = false;
-			}
-		}
-
-		if( node->m_bAlphaTestMap ) {
-			node->m_bAlphaMap	= false;
-			node->m_bDiffuseMap = false;
-		}
-
-		node->CheckAniTexture();
-
-		m_mtrl_list_ex.Add(node);
-	}
-
-	bool bNeedScaleMat = false;
-	D3DXMATRIX smat;
-
-	for(i=0;i<t_hd.mesh_num;i++) {
-
-		bNeedScaleMat = false;
-
-		RMeshNode* pMeshNode = new RMeshNode;
-
-//		memset( pMeshNode, 0, sizeof(RMeshNode));
-//		pMeshNode->m_mtrl_id = -1;
-		D3DXMatrixIdentity(&pMeshNode->m_mat_base);
-
-		pMeshNode->m_id = m_data_num;//last id
-		pMeshNode->m_pParentMesh = this;
-		pMeshNode->m_pBaseMesh = this;
-
-		MZF_READ(Name  ,MAX_NAME_LEN );
-//		MZF_READ(pMeshNode->m_Name  ,MAX_NAME_LEN );
-		MZF_READ(pMeshNode->m_Parent,MAX_NAME_LEN );
-		MZF_READ(&pMeshNode->m_mat_base,sizeof(D3DXMATRIX) );//mat
-
-#ifdef _DEBUG
-		char name[256];
-		sprintf(name, Name);
-		TrimStr(name, name);
-#endif
-		pMeshNode->SetName( Name );
-
-		pMeshNode->m_mat_ref = pMeshNode->m_mat_base;
-		D3DXMatrixInverse( &pMeshNode->m_mat_ref_inv , 0, &pMeshNode->m_mat_ref );
-		
-		if(t_hd.ver >= EXPORTER_MESH_VER2) {
-			MZF_READ(&pMeshNode->m_ap_scale,sizeof(D3DXVECTOR3) );//mat
-		}
-		else  {
-			pMeshNode->m_ap_scale.x = 1.f;
-			pMeshNode->m_ap_scale.y = 1.f;
-			pMeshNode->m_ap_scale.z = 1.f;
-		}
-
-		///////////////////////////////////////////////
-
-		if(t_hd.ver >= EXPORTER_MESH_VER4) {
-
-			MZF_READ(&pMeshNode->m_axis_rot,sizeof(D3DXVECTOR3) );
-			MZF_READ(&pMeshNode->m_axis_rot_angle,sizeof(float) );
-
-			MZF_READ(&pMeshNode->m_axis_scale,sizeof(D3DXVECTOR3) );
-			MZF_READ(&pMeshNode->m_axis_scale_angle,sizeof(float) );
-
-			MZF_READ(&pMeshNode->m_mat_etc,sizeof(D3DXMATRIX) );//mat
-
-			D3DXMATRIX scalemat;
-			D3DXMATRIX scalepivot;
-			D3DXMATRIX scalepivotinv;
-			D3DXMATRIX flipmat;
-
-			D3DXMatrixScaling( &scalemat, pMeshNode->m_ap_scale.x, pMeshNode->m_ap_scale.y, pMeshNode->m_ap_scale.z );
-			D3DXMatrixRotationAxis( &scalepivot, &pMeshNode->m_axis_scale, pMeshNode->m_axis_scale_angle );
-			D3DXMatrixInverse( &scalepivotinv, NULL, &scalepivot );
-
-			D3DXMatrixIdentity(&flipmat);
-
-			pMeshNode->m_mat_flip = flipmat;
-
-//			result_mat2 = scalepivotinv * scalemat * scalepivot;
-			pMeshNode->m_mat_etc = scalepivotinv * scalemat * scalepivot;
-
-		}
-		else {
-
-			D3DXMatrixIdentity(&pMeshNode->m_mat_etc);
-			D3DXMatrixIdentity(&pMeshNode->m_mat_flip);
-		}
-
-		memcpy(&pMeshNode->m_mat_local,&pMeshNode->m_mat_base,sizeof(D3DXMATRIX));
-
-		pMeshNode->m_mat_result = pMeshNode->m_mat_base;
-
-		D3DXMatrixScaling(&pMeshNode->m_mat_scale, pMeshNode->m_ap_scale.x, pMeshNode->m_ap_scale.y, pMeshNode->m_ap_scale.z);
-
-		RMatInv(pMeshNode->m_mat_inv,pMeshNode->m_mat_local);
-
-		CheckNameToType(pMeshNode);
-
-		MZF_READ(&pMeshNode->m_point_num,4 );
-
-		if(pMeshNode->m_point_num) {
-		
-			pMeshNode->m_point_list = new D3DXVECTOR3[pMeshNode->m_point_num];
-			memset(pMeshNode->m_point_list,0,pMeshNode->m_point_num * sizeof(D3DXVECTOR3));
-
-			MZF_READ(pMeshNode->m_point_list,sizeof(D3DXVECTOR3)*pMeshNode->m_point_num);
-
-			pMeshNode->CalcLocalBBox();
-		}
-
-		//tex uv 까지 포함
-
-		MZF_READ(&pMeshNode->m_face_num,4 );
-
-		if(pMeshNode->m_face_num) {
-
-			pMeshNode->m_face_list = new RFaceInfo[pMeshNode->m_face_num];
-			pMeshNode->m_face_normal_list = new RFaceNormalInfo[pMeshNode->m_face_num];
-
-			memset(pMeshNode->m_face_list, 0, pMeshNode->m_face_num * sizeof(RFaceInfo));
-
-			if( t_hd.ver >= EXPORTER_MESH_VER6 ) {//ver 6
-
-				MZF_READ(pMeshNode->m_face_list,sizeof(RFaceInfo)*pMeshNode->m_face_num);
-				MZF_READ(pMeshNode->m_face_normal_list,sizeof(RFaceNormalInfo)*pMeshNode->m_face_num);
-
-			}
-			else if(t_hd.ver > EXPORTER_MESH_VER2) {//ver3 부터
-
-				MZF_READ(pMeshNode->m_face_list,sizeof(RFaceInfo)*pMeshNode->m_face_num);
-			}
-			else {									//ver3 이하
-
-				RFaceInfoOld* pInfo = new RFaceInfoOld[pMeshNode->m_face_num];
-				MZF_READ(pInfo,sizeof(RFaceInfoOld)*pMeshNode->m_face_num);
-
-				ConvertOldFaceInfo(pMeshNode->m_face_list,pInfo,pMeshNode->m_face_num);
-
-				delete[] pInfo;
-			}
-		}
-
-		if( t_hd.ver >= EXPORTER_MESH_VER6 ) {
-		
-			MZF_READ(&pMeshNode->m_point_color_num,4 );
-
-			if(pMeshNode->m_point_color_num) {
-				pMeshNode->m_point_color_list = new D3DXVECTOR3 [pMeshNode->m_point_color_num];
-				MZF_READ(pMeshNode->m_point_color_list,sizeof(D3DXVECTOR3)*pMeshNode->m_point_color_num);
-			}
-		}
-
-		if( (pMeshNode->m_point_num==0) || (pMeshNode->m_face_num==0) ) {
-			pMeshNode->m_isDummyMesh = true;
-		}
-
-		//////////////////////////////////////////////
-		
-		MZF_READ(&pMeshNode->m_mtrl_id,4 );
-
-		MZF_READ(&pMeshNode->m_physique_num,4 );
-
-		if(pMeshNode->m_physique_num) {
-			
-			m_isPhysiqueMesh = true;
-
-			pMeshNode->m_physique = new RPhysiqueInfo[pMeshNode->m_physique_num];
-			ZeroMemory(pMeshNode->m_physique,pMeshNode->m_physique_num * sizeof(RPhysiqueInfo));
-
-			for(int j=0;j<pMeshNode->m_physique_num;j++) {
-
-				MZF_READ( &pMeshNode->m_physique[j],sizeof(RPhysiqueInfo) );
-			}
-		}
-
-		D3DXPLANE	plane;
-		D3DXVECTOR3	vv[3];
-
-		if( t_hd.ver < EXPORTER_MESH_VER6 ) {
-
-			if(pMeshNode->m_face_num) {
-			
-				for(int a=0;a<pMeshNode->m_face_num;a++) {
-
-					vv[0] = pMeshNode->m_point_list[pMeshNode->m_face_list[a].m_point_index[0]];
-					vv[1] = pMeshNode->m_point_list[pMeshNode->m_face_list[a].m_point_index[1]];
-					vv[2] = pMeshNode->m_point_list[pMeshNode->m_face_list[a].m_point_index[2]];
-
-					D3DXPlaneFromPoints(&plane,&vv[0],&vv[1],&vv[2]);
-					D3DXPlaneNormalize(&plane,&plane);
-
-					pMeshNode->m_face_normal_list[a].m_normal.x = plane.a;
-					pMeshNode->m_face_normal_list[a].m_normal.y = plane.b;
-					pMeshNode->m_face_normal_list[a].m_normal.z = plane.c;
-				}
-			}
-
-			if(pMeshNode->m_point_num&&pMeshNode->m_point_num) 
-			{
-				D3DXVECTOR3* pPointNormal = new D3DXVECTOR3 [pMeshNode->m_point_num];
-				memset(pPointNormal,0,sizeof(D3DXVECTOR3)*pMeshNode->m_point_num);
-			
-
-				for(k=0;k<pMeshNode->m_face_num;k++) {
-					for(j=0;j<3;j++) {
-						pPointNormal[ pMeshNode->m_face_list[k].m_point_index[j] ] =
-							pPointNormal[pMeshNode->m_face_list[k].m_point_index[j]] + pMeshNode->m_face_normal_list[k].m_normal;
-					}
-				}
-
-				for(k=0;k<pMeshNode->m_point_num;k++) {
-					pPointNormal[k] = pPointNormal[k]/3.f;
-					D3DXVec3Normalize(&pPointNormal[k],&pPointNormal[k]);
-				}
-
-				for(k=0;k<pMeshNode->m_face_num;k++) {
-					for(j=0;j<3;j++) {
-						pMeshNode->m_face_normal_list[k].m_pointnormal[j] = pPointNormal[ pMeshNode->m_face_list[k].m_point_index[j] ];
-					}
-				}
-
-				delete [] pPointNormal;
-
-			}
-		}
-
-		if(pMeshNode->m_point_color_num>0 && pMeshNode->m_PartsType == eq_parts_chest )
-			pMeshNode->m_isClothMeshNode = true;
-
-		m_list.PushBack(pMeshNode);
-		
-		m_data.push_back( pMeshNode );
-		m_data_num++;
-
-		if( MAX_MESH_NODE_TABLE != (int)m_data.capacity() )
-		{
-			mlog( "m_data number is not quite right..! (%d)\n", (int)m_data.capacity());
-		}
-	}
-
 	// 안경(가면) - type 도 추가되어야 함..파츠용 더미..
 	// 가방
 
@@ -1222,6 +1450,488 @@ bool RMesh::ReadElu(char* fname)
 
 	return true;
 }
+
+//bool RMesh::ReadElu(char* fname)
+//{
+//#define MZF_READ(x,y) { if(!mzf.Read((x),(y))) return false; }
+//
+//	__BP(2009,"RMesh::ReadElu");
+//
+//	char Path[256];
+//	char Name[256];
+//
+//	Path[0] = NULL;
+//	Name[0] = NULL;
+//
+//	// 이펙트 모델이라면 자동으로 옵션켠다.
+//
+//	GetPath(fname,Path);
+//
+//	int len = strlen(Path);
+//
+//	if(strncmp(&fname[len],"ef_",3)==0) {
+//		m_bEffectSort = true;
+//		m_LitVertexModel = true;
+//	}
+//	else {//이펙트가 아니라면 텍스쳐 해상도 옵션의 영향을 받음.
+//		m_mtrl_list_ex.SetObjectTexture(true);
+//	}
+//
+//	SetFileName(fname);
+//
+//	m_data_num = 0;
+//
+////	char *buffer;
+//	MZFile mzf;
+//
+//	if(g_pFileSystem) {
+//		if(!mzf.Open(fname,g_pFileSystem)) {
+//			if(!mzf.Open(fname)) {
+//				mlog("----------> in zip ( %s ) file not found!! \n ", fname );
+//				return false;
+//			}
+//		}
+//	} else {
+//		if(!mzf.Open(fname)) {
+//			mlog("----------> %s file not found!! \n ", fname );
+//			return false;
+//		}
+//	}
+//
+////	buffer = new char[mzf.GetLength()+1];
+////	buffer[mzf.GetLength()] = 0;
+//
+////	mzf.Read(buffer,mzf.GetLength());
+//
+////	if(!XmlDoc.LoadFromMemory(buffer))
+////		return false;
+//
+////	delete[] buffer;
+//
+////	FILE *fp;
+////	fp  = fopen(fname, "rb");
+//
+////	if(!fp) return false;
+//
+//	ex_hd_t t_hd;
+//
+//	MZF_READ(&t_hd,sizeof(ex_hd_t) );
+///*
+//	if(t_hd.ver != EXPORTER_VER) {
+//		mlog("%s elu file 버젼이 틀림.\n",fname);
+//		return false;
+//	}
+//*/
+//	if(t_hd.sig != EXPORTER_SIG) {
+//		mlog("%s elu file 파일 식별 실패.\n",fname);
+//		return false;
+//	}
+//	
+//	int i,j,k;
+//	// sub mtrl 까지 포함한 갯수
+//	for(i=0;i<t_hd.mtrl_num;i++) {
+//
+//		RMtrl* node = new RMtrl;
+//
+//		MZF_READ(&node->m_mtrl_id    ,4 );
+//		MZF_READ(&node->m_sub_mtrl_id,4 );
+//
+//		MZF_READ(&node->m_ambient ,sizeof(D3DXCOLOR) );
+//		MZF_READ(&node->m_diffuse ,sizeof(D3DXCOLOR) );
+//		MZF_READ(&node->m_specular,sizeof(D3DXCOLOR) );
+//
+//		MZF_READ(&node->m_power,4 );
+//
+//		node->m_power *= 100.f;
+//
+//		if(t_hd.ver <= EXPORTER_MESH_VER3)
+//			if(node->m_power == 2000.f)
+//				node->m_power = 0.f;
+//
+////		node->m_power = 80.f;
+//
+//		MZF_READ(&node->m_sub_mtrl_num,4 );
+//
+//		if(t_hd.ver< EXPORTER_MESH_VER7) {
+//			MZF_READ(&node->m_name    ,MAX_NAME_LEN );
+//			MZF_READ(&node->m_opa_name,MAX_NAME_LEN );
+//		}
+//		else {
+//			MZF_READ(&node->m_name    ,MAX_PATH_NAME_LEN );
+//			MZF_READ(&node->m_opa_name,MAX_PATH_NAME_LEN );
+//		}
+//
+//		if(t_hd.ver > EXPORTER_MESH_VER2) {//ver3 부터
+//			int twoside=0;
+//			MZF_READ(&twoside,sizeof(int) );
+//			node->m_bTwoSided = twoside ? true : false;
+//		}
+//
+//		if(t_hd.ver > EXPORTER_MESH_VER4) {
+//			int additive = 0;
+//			MZF_READ(&additive,sizeof(int) );
+//			node->m_bAdditive = additive ? true : false;
+//		}
+//
+//		if(t_hd.ver > EXPORTER_MESH_VER7 )//ver8 부터
+//		{
+//			int alpha_test = 0;
+//			MZF_READ(&alpha_test,sizeof(int) );
+//			node->m_bAlphaTestMap = alpha_test ? true : false;
+//			node->m_nAlphaTestValue = alpha_test;
+//		}
+//		
+//		if( node->m_name[0] ) {
+//
+//			int	 len = strlen(node->m_name);
+//			char _temp[5];
+//
+//			strncpy(_temp,&node->m_name[len-4],4);
+//
+//			_temp[4] = 0;
+//
+//			if( stricmp(_temp,".tga")==0 ) {
+//				node->m_bDiffuseMap = true;
+//			}
+//
+//			if( node->m_opa_name[0] ) {
+//				node->m_bAlphaMap	= true;
+//				node->m_bDiffuseMap = false;
+//			}
+//		}
+//
+//		if( node->m_bAlphaTestMap ) {
+//			node->m_bAlphaMap	= false;
+//			node->m_bDiffuseMap = false;
+//		}
+//
+//		node->CheckAniTexture();
+//
+//		m_mtrl_list_ex.Add(node);
+//	}
+//
+//	bool bNeedScaleMat = false;
+//	D3DXMATRIX smat;
+//
+//	for(i=0;i<t_hd.mesh_num;i++) {
+//
+//		bNeedScaleMat = false;
+//
+//		RMeshNode* pMeshNode = new RMeshNode;
+//
+////		memset( pMeshNode, 0, sizeof(RMeshNode));
+////		pMeshNode->m_mtrl_id = -1;
+//		D3DXMatrixIdentity(&pMeshNode->m_mat_base);
+//
+//		pMeshNode->m_id = m_data_num;//last id
+//		pMeshNode->m_pParentMesh = this;
+//		pMeshNode->m_pBaseMesh = this;
+//
+//		MZF_READ(Name  ,MAX_NAME_LEN );
+////		MZF_READ(pMeshNode->m_Name  ,MAX_NAME_LEN );
+//		MZF_READ(pMeshNode->m_Parent,MAX_NAME_LEN );
+//		MZF_READ(&pMeshNode->m_mat_base,sizeof(D3DXMATRIX) );//mat
+//
+//#ifdef _DEBUG
+//		char name[256];
+//		sprintf(name, Name);
+//		TrimStr(name, name);
+//#endif
+//		pMeshNode->SetName( Name );
+//
+//		pMeshNode->m_mat_ref = pMeshNode->m_mat_base;
+//		D3DXMatrixInverse( &pMeshNode->m_mat_ref_inv , 0, &pMeshNode->m_mat_ref );
+//		
+//		if(t_hd.ver >= EXPORTER_MESH_VER2) {
+//			MZF_READ(&pMeshNode->m_ap_scale,sizeof(D3DXVECTOR3) );//mat
+//		}
+//		else  {
+//			pMeshNode->m_ap_scale.x = 1.f;
+//			pMeshNode->m_ap_scale.y = 1.f;
+//			pMeshNode->m_ap_scale.z = 1.f;
+//		}
+//
+//		///////////////////////////////////////////////
+//
+//		if(t_hd.ver >= EXPORTER_MESH_VER4) {
+//
+//			MZF_READ(&pMeshNode->m_axis_rot,sizeof(D3DXVECTOR3) );
+//			MZF_READ(&pMeshNode->m_axis_rot_angle,sizeof(float) );
+//
+//			MZF_READ(&pMeshNode->m_axis_scale,sizeof(D3DXVECTOR3) );
+//			MZF_READ(&pMeshNode->m_axis_scale_angle,sizeof(float) );
+//
+//			MZF_READ(&pMeshNode->m_mat_etc,sizeof(D3DXMATRIX) );//mat
+//
+//			D3DXMATRIX scalemat;
+//			D3DXMATRIX scalepivot;
+//			D3DXMATRIX scalepivotinv;
+//			D3DXMATRIX flipmat;
+//
+//			D3DXMatrixScaling( &scalemat, pMeshNode->m_ap_scale.x, pMeshNode->m_ap_scale.y, pMeshNode->m_ap_scale.z );
+//			D3DXMatrixRotationAxis( &scalepivot, &pMeshNode->m_axis_scale, pMeshNode->m_axis_scale_angle );
+//			D3DXMatrixInverse( &scalepivotinv, NULL, &scalepivot );
+//
+//			D3DXMatrixIdentity(&flipmat);
+//
+//			pMeshNode->m_mat_flip = flipmat;
+//
+////			result_mat2 = scalepivotinv * scalemat * scalepivot;
+//			pMeshNode->m_mat_etc = scalepivotinv * scalemat * scalepivot;
+//
+//		}
+//		else {
+//
+//			D3DXMatrixIdentity(&pMeshNode->m_mat_etc);
+//			D3DXMatrixIdentity(&pMeshNode->m_mat_flip);
+//		}
+//
+//		memcpy(&pMeshNode->m_mat_local,&pMeshNode->m_mat_base,sizeof(D3DXMATRIX));
+//
+//		pMeshNode->m_mat_result = pMeshNode->m_mat_base;
+//
+//		D3DXMatrixScaling(&pMeshNode->m_mat_scale, pMeshNode->m_ap_scale.x, pMeshNode->m_ap_scale.y, pMeshNode->m_ap_scale.z);
+//
+//		RMatInv(pMeshNode->m_mat_inv,pMeshNode->m_mat_local);
+//
+//		CheckNameToType(pMeshNode);
+//
+//		MZF_READ(&pMeshNode->m_point_num,4 );
+//
+//		if(pMeshNode->m_point_num) {
+//		
+//			pMeshNode->m_point_list = new D3DXVECTOR3[pMeshNode->m_point_num];
+//			memset(pMeshNode->m_point_list,0,pMeshNode->m_point_num * sizeof(D3DXVECTOR3));
+//
+//			MZF_READ(pMeshNode->m_point_list,sizeof(D3DXVECTOR3)*pMeshNode->m_point_num);
+//
+//			pMeshNode->CalcLocalBBox();
+//		}
+//
+//		//tex uv 까지 포함
+//
+//		MZF_READ(&pMeshNode->m_face_num,4 );
+//
+//		if(pMeshNode->m_face_num) {
+//
+//			pMeshNode->m_face_list = new RFaceInfo[pMeshNode->m_face_num];
+//			pMeshNode->m_face_normal_list = new RFaceNormalInfo[pMeshNode->m_face_num];
+//
+//			memset(pMeshNode->m_face_list, 0, pMeshNode->m_face_num * sizeof(RFaceInfo));
+//
+//			if( t_hd.ver >= EXPORTER_MESH_VER6 ) {//ver 6
+//
+//				MZF_READ(pMeshNode->m_face_list,sizeof(RFaceInfo)*pMeshNode->m_face_num);
+//				MZF_READ(pMeshNode->m_face_normal_list,sizeof(RFaceNormalInfo)*pMeshNode->m_face_num);
+//
+//			}
+//			else if(t_hd.ver > EXPORTER_MESH_VER2) {//ver3 부터
+//
+//				MZF_READ(pMeshNode->m_face_list,sizeof(RFaceInfo)*pMeshNode->m_face_num);
+//			}
+//			else {									//ver3 이하
+//
+//				RFaceInfoOld* pInfo = new RFaceInfoOld[pMeshNode->m_face_num];
+//				MZF_READ(pInfo,sizeof(RFaceInfoOld)*pMeshNode->m_face_num);
+//
+//				ConvertOldFaceInfo(pMeshNode->m_face_list,pInfo,pMeshNode->m_face_num);
+//
+//				delete[] pInfo;
+//			}
+//		}
+//
+//		if( t_hd.ver >= EXPORTER_MESH_VER6 ) {
+//		
+//			MZF_READ(&pMeshNode->m_point_color_num,4 );
+//
+//			if(pMeshNode->m_point_color_num) {
+//				pMeshNode->m_point_color_list = new D3DXVECTOR3 [pMeshNode->m_point_color_num];
+//				MZF_READ(pMeshNode->m_point_color_list,sizeof(D3DXVECTOR3)*pMeshNode->m_point_color_num);
+//			}
+//		}
+//
+//		if( (pMeshNode->m_point_num==0) || (pMeshNode->m_face_num==0) ) {
+//			pMeshNode->m_isDummyMesh = true;
+//		}
+//
+//		//////////////////////////////////////////////
+//		
+//		MZF_READ(&pMeshNode->m_mtrl_id,4 );
+//
+//		MZF_READ(&pMeshNode->m_physique_num,4 );
+//
+//		if(pMeshNode->m_physique_num) {
+//			
+//			m_isPhysiqueMesh = true;
+//
+//			pMeshNode->m_physique = new RPhysiqueInfo[pMeshNode->m_physique_num];
+//			ZeroMemory(pMeshNode->m_physique,pMeshNode->m_physique_num * sizeof(RPhysiqueInfo));
+//
+//			for(int j=0;j<pMeshNode->m_physique_num;j++) {
+//
+//				MZF_READ( &pMeshNode->m_physique[j],sizeof(RPhysiqueInfo) );
+//			}
+//		}
+//
+//		D3DXPLANE	plane;
+//		D3DXVECTOR3	vv[3];
+//
+//		if( t_hd.ver < EXPORTER_MESH_VER6 ) {
+//
+//			if(pMeshNode->m_face_num) {
+//			
+//				for(int a=0;a<pMeshNode->m_face_num;a++) {
+//
+//					vv[0] = pMeshNode->m_point_list[pMeshNode->m_face_list[a].m_point_index[0]];
+//					vv[1] = pMeshNode->m_point_list[pMeshNode->m_face_list[a].m_point_index[1]];
+//					vv[2] = pMeshNode->m_point_list[pMeshNode->m_face_list[a].m_point_index[2]];
+//
+//					D3DXPlaneFromPoints(&plane,&vv[0],&vv[1],&vv[2]);
+//					D3DXPlaneNormalize(&plane,&plane);
+//
+//					pMeshNode->m_face_normal_list[a].m_normal.x = plane.a;
+//					pMeshNode->m_face_normal_list[a].m_normal.y = plane.b;
+//					pMeshNode->m_face_normal_list[a].m_normal.z = plane.c;
+//				}
+//			}
+//
+//			if(pMeshNode->m_point_num&&pMeshNode->m_point_num) 
+//			{
+//				D3DXVECTOR3* pPointNormal = new D3DXVECTOR3 [pMeshNode->m_point_num];
+//				memset(pPointNormal,0,sizeof(D3DXVECTOR3)*pMeshNode->m_point_num);
+//			
+//
+//				for(k=0;k<pMeshNode->m_face_num;k++) {
+//					for(j=0;j<3;j++) {
+//						pPointNormal[ pMeshNode->m_face_list[k].m_point_index[j] ] =
+//							pPointNormal[pMeshNode->m_face_list[k].m_point_index[j]] + pMeshNode->m_face_normal_list[k].m_normal;
+//					}
+//				}
+//
+//				for(k=0;k<pMeshNode->m_point_num;k++) {
+//					pPointNormal[k] = pPointNormal[k]/3.f;
+//					D3DXVec3Normalize(&pPointNormal[k],&pPointNormal[k]);
+//				}
+//
+//				for(k=0;k<pMeshNode->m_face_num;k++) {
+//					for(j=0;j<3;j++) {
+//						pMeshNode->m_face_normal_list[k].m_pointnormal[j] = pPointNormal[ pMeshNode->m_face_list[k].m_point_index[j] ];
+//					}
+//				}
+//
+//				delete [] pPointNormal;
+//
+//			}
+//		}
+//
+//		if(pMeshNode->m_point_color_num>0 && pMeshNode->m_PartsType == eq_parts_chest )
+//			pMeshNode->m_isClothMeshNode = true;
+//
+//		m_list.PushBack(pMeshNode);
+//		
+//		m_data.push_back( pMeshNode );
+//		m_data_num++;
+//
+//		if( MAX_MESH_NODE_TABLE != (int)m_data.capacity() )
+//		{
+//			mlog( "m_data number is not quite right..! (%d)\n", (int)m_data.capacity());
+//		}
+//	}
+//
+//	// 안경(가면) - type 도 추가되어야 함..파츠용 더미..
+//	// 가방
+//
+//	// 더미추가 - 모델은 무기처럼 찾아서 붙이고..
+//
+//	//--------------------------------------------------
+//
+//	if( m_isCharacterMesh ) {
+//
+//		rmatrix _pbm;
+//
+//		// 썬그라스 기본장비 위치..
+//
+//		_pbm._11 = 0.f;
+//		_pbm._12 = 1.f;
+//		_pbm._13 = 0.f;
+//		_pbm._14 = 0.f;
+//
+//		_pbm._21 = 0.1504f;
+//		_pbm._22 = -0.f;
+//		_pbm._23 = 0.9886f;
+//		_pbm._24 = 0.f;
+//
+//		_pbm._31 = 0.9886f;
+//		_pbm._32 = 0.f;
+//		_pbm._33 = -0.1504f;
+//		_pbm._34 = 0.f;
+//
+//		_pbm._41 = 9.0528f;
+//		_pbm._42 = 0.f;
+//		_pbm._43 = 9.8982f;
+//		_pbm._44 = 1.f;
+//
+//		AddNode("eq_sunglass","Bip01 Head",_pbm);
+//
+//	}
+//
+//	//<------------------------------------------------
+//
+////	fclose (fp);
+//	mzf.Close();
+//
+//	ConnectMatrix();
+//
+//	///////////////////////////////////////////
+//	//mtrl list load
+//
+////	char Path[256];
+////	GetPath(fname,Path);
+////	m_mtrl_list_ex.Restore(RGetDevice(),Path);
+//	// map object 라면 마음대로 올리면 안됨...구분필요...
+//
+//	if( m_is_map_object ) {
+//		ClearVoidMtrl();//연결안된 빈 mtrl 을 지운다...
+//	}
+//
+//	if( m_mtrl_auto_load ) {
+//		m_mtrl_list_ex.Restore(RGetDevice(),Path);
+//	}
+//
+//	ConnectMtrl();// Mtrl 연결..
+//
+//	if(m_bEffectSort) {
+//
+//		m_list.sort(e_sort_str);
+//
+//		RMeshNodeHashList_Iter it_obj =  m_list.begin();
+//
+//		int cnt = 0;
+//
+//		while (it_obj !=  m_list.end()) {
+//
+//			RMeshNode* pMeshNode = (*it_obj);
+//
+//			m_data[cnt] = pMeshNode;
+//			pMeshNode->m_id = cnt;
+//
+//			cnt++;
+//			it_obj++;
+//		}
+//	}
+//
+//	CheckNodeAlphaMtrl();// 각노드 alpha mtrl 인가 체크..
+//
+//	MakeAllNodeVertexBuffer();
+//
+////	mlog("elu file ( %s ) load... \n",fname);
+//
+//	__EP(2009);
+//
+//	m_isMeshLoaded = true;
+//
+//	return true;
+//}
 
 // old interface
 // read + set 
