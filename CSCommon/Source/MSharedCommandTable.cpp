@@ -78,6 +78,7 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType)
 			P(MPT_STR,	"AccountID")
 			P(MPT_UCHAR, "UGradeID")
 			P(MPT_UCHAR, "PGradeID")
+			P(MPT_INT,	"ECoins")
 			P(MPT_UID,	"uidPlayer")
 			P(MPT_BOOL,	"bEnabledSurvivalMode")
 			P(MPT_BOOL,	"bEnabledDuelTournament")
@@ -548,6 +549,7 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType)
 
 		C(MC_MATCH_RESPONSE_CHARACTER_ITEMLIST, "Match.ResponseCharacterItemList", "Response Character Item List", MCDT_MACHINE2MACHINE)
 			P(MPT_INT, "Bounty")
+			P(MPT_INT, "ECoins")
 			P(MPT_BLOB, "EquipItemList")		// 장비하고 있는 아이템
 			P(MPT_BLOB, "ItemList");			// 장비한 아이템까지 포함한 갖고있는 아이템
 			P(MPT_BLOB, "GambleItemList")		// 겜블 아이템 목록

@@ -1078,6 +1078,8 @@ bool MMatchDBMgr::GetAccountInfo( const unsigned long int nAID, MMatchAccountInf
 	poutAccountInfo->m_nPGrade		= MMPG_FREE;
 	strcpy(poutAccountInfo->m_szUserID, (LPCTSTR)rs.Field("UserID").AsString());
 
+	poutAccountInfo->m_nECoins		= (unsigned long)rs.Field("euCoins").AsLong();
+
 	poutAccountInfo->m_bIsPowerLevelingHacker = (1 == rs.Field("IsPowerLevelingHacker").AsInt());
 	if( poutAccountInfo->m_bIsPowerLevelingHacker )
 	{
@@ -1095,7 +1097,7 @@ bool MMatchDBMgr::GetAccountInfo( const unsigned long int nAID, MMatchAccountInf
 	else 
 	{
 		poutAccountInfo->m_HackingType = static_cast< MMatchHackingType >( rs.Field("HackingType").AsInt() );
-		if( MMHT_NO != poutAccountInfo->m_HackingType && MMHT_SLEEP_ACCOUNT != poutAccountInfo->m_HackingType )
+		if( MMHT_NO != poutAccountInfo->m_HackingType || MMHT_SLEEP_ACCOUNT != poutAccountInfo->m_HackingType )
 		{
 			poutAccountInfo->m_EndBlockDate.wYear	= static_cast<WORD>(rs.Field("HackBlockYear").AsShort());
 			poutAccountInfo->m_EndBlockDate.wMonth	= static_cast<WORD>(rs.Field("HackBlockMonth").AsShort());
@@ -1112,7 +1114,6 @@ bool MMatchDBMgr::GetAccountInfo( const unsigned long int nAID, MMatchAccountInf
 	_STATUS_DB_END(5);
 
 	return true;
-
 }
 
 bool MMatchDBMgr::DeleteCharacter(const int nAID, const int nCharIndex, const TCHAR* szCharName)

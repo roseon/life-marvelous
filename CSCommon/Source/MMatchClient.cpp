@@ -282,6 +282,7 @@ bool MMatchClient::OnCommand(MCommand* pCommand)
 				int nResult;
 				char nServerMode;
 				unsigned char nUGradeID, nPGradeID;
+				int nECoins;
 				MUID uidPlayer;
 				char szServerName[256];
 				char szAccountID[MAX_USERID_STRING_LEN];
@@ -294,9 +295,10 @@ bool MMatchClient::OnCommand(MCommand* pCommand)
 				pCommand->GetParameter(szAccountID,		3, MPT_STR, MAX_USERID_STRING_LEN );
 				pCommand->GetParameter(&nUGradeID,		4, MPT_UCHAR);
 				pCommand->GetParameter(&nPGradeID,		5, MPT_UCHAR);
-				pCommand->GetParameter(&uidPlayer,		6, MPT_UID);
-				pCommand->GetParameter(&bEnabledSurvivalMode,	7, MPT_BOOL);
-				pCommand->GetParameter(&bEnabledDuelTournament,	8, MPT_BOOL);
+				pCommand->GetParameter(&nECoins,		6, MPT_INT);
+				pCommand->GetParameter(&uidPlayer,		7, MPT_UID);
+				pCommand->GetParameter(&bEnabledSurvivalMode,	8, MPT_BOOL);
+				pCommand->GetParameter(&bEnabledDuelTournament,	9, MPT_BOOL);
 //				pCommand->GetParameter(szRandomValue,	7, MPT_STR, sizeof(szRandomValue) );
 
 //				MCommandParameter* pParam1 = pCommand->GetParameter(7);
@@ -307,7 +309,7 @@ bool MMatchClient::OnCommand(MCommand* pCommand)
 //				void* pBlob1 = pParam1->GetPointer();
 //				unsigned char *szRandomValue = (unsigned char*)MGetBlobArrayElement(pBlob1, 0);
 
-				MCommandParameter* pParam = pCommand->GetParameter(9);
+				MCommandParameter* pParam = pCommand->GetParameter(10);
 				if (pParam->GetType()!=MPT_BLOB) break;
 				void* pBlob = pParam->GetPointer();
 				if( NULL == pBlob )
@@ -317,7 +319,7 @@ bool MMatchClient::OnCommand(MCommand* pCommand)
 				unsigned char* pbyGuidReqMsg = (unsigned char*)MGetBlobArrayElement(pBlob, 0);
 
 				OnResponseMatchLogin(pCommand->GetSenderUID(), nResult, szServerName, MMatchServerMode(nServerMode), 
-					szAccountID, MMatchUserGradeID(nUGradeID), MMatchPremiumGradeID(nPGradeID), uidPlayer, bEnabledSurvivalMode, bEnabledDuelTournament, pbyGuidReqMsg);
+					szAccountID, MMatchUserGradeID(nUGradeID), MMatchPremiumGradeID(nPGradeID), nECoins, uidPlayer, bEnabledSurvivalMode, bEnabledDuelTournament, pbyGuidReqMsg);
 			}
 			break;
 		case MC_MATCH_OBJECT_CACHE:
@@ -495,6 +497,7 @@ int MMatchClient::OnResponseMatchLogin(const MUID& uidServer, int nResult, const
 									   const char* szAccountID,
 									   const MMatchUserGradeID nUGradeID, 
 									   const MMatchPremiumGradeID nPGradeID,
+									   int nECoins,
 									   const MUID& uidPlayer,
 									   bool bEnabledSurvivalMode,
 									   bool bEnabledDuelTournament,

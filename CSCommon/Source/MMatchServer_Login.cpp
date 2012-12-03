@@ -426,6 +426,7 @@ MCommand* MMatchServer::CreateCmdMatchResponseLoginOK(const MUID& uidComm,
 													  const char* szUserID, 
 													  MMatchUserGradeID nUGradeID, 
 													  MMatchPremiumGradeID nPGradeID,
+													  int nECoins,
 //													  const unsigned char* szRandomValue,
 													  const unsigned char* pbyGuidReqMsg)
 {
@@ -436,6 +437,7 @@ MCommand* MMatchServer::CreateCmdMatchResponseLoginOK(const MUID& uidComm,
 	pCmd->AddParameter(new MCommandParameterString(szUserID));
 	pCmd->AddParameter(new MCommandParameterUChar((unsigned char)nUGradeID));
 	pCmd->AddParameter(new MCommandParameterUChar((unsigned char)nPGradeID));
+	pCmd->AddParameter(new MCommandParameterInt(nECoins));
 	pCmd->AddParameter(new MCommandParameterUID(uidPlayer));
 	pCmd->AddParameter(new MCommandParameterBool((bool)MGetServerConfig()->IsEnabledSurvivalMode()));
 	pCmd->AddParameter(new MCommandParameterBool((bool)MGetServerConfig()->IsEnabledDuelTournament()));
@@ -576,6 +578,7 @@ bool MMatchServer::AddObjectOnMatchLogin(const MUID& uidComm,
 												   pObj->GetAccountInfo()->m_szUserID,
 												   pObj->GetAccountInfo()->m_nUGrade,
                                                    pObj->GetAccountInfo()->m_nPGrade,
+												   pObj->GetAccountInfo()->m_nECoins,
 //												   pObj->GetAntiHackInfo()->m_szRandomValue,
 												   pObj->GetHShieldInfo()->m_pbyGuidReqMsg);
 	Post(pCmd);	
