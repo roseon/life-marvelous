@@ -339,6 +339,7 @@ protected:
 		const char* szUserID, 
 		MMatchUserGradeID nUGradeID, 
 		MMatchPremiumGradeID nPGradeID,
+		int nECoins,
 		//											const unsigned char* szRandomValue,
 		const unsigned char* pbyGuidReqMsg);
 	MCommand* CreateCmdMatchResponseLoginFailed(const MUID& uidComm, const int nResult);

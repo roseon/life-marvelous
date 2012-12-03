@@ -176,6 +176,7 @@ protected:
 									 const char* szAccountID, 
                                      const MMatchUserGradeID nUGradeID, 
                                      const MMatchPremiumGradeID nPGradeID,
+									 int nECoins,
 									 const MUID& uidPlayer,
 									 bool bEnabledSurvivalMode,
 									 bool bEnabledDuelTournament,
