@@ -34,56 +34,56 @@
 
 ///////////////////////////
 #ifdef _USING_CXR
-#define MICTOK_BUFF	_CXR("\x89\x81\x82\x8f\x8b\x8e\x8a\x8e\x86\x80")
+#define MICTOK_BUFF	_CXR("\x83\x8b\x85\x86\x82\x82\x8a\x8f\x82\x84")
 #else
 #define MICTOK_BUFF														_CXR("BUFF")
 #endif
 
 ///////////////////////////
 #ifdef _USING_CXR
-#define MICTOK_ATTRNAME_BUFF_ID	_CXR("\x8b\x87\x88\x8f\x88\x82")
+#define MICTOK_ATTRNAME_BUFF_ID	_CXR("\x8b\x86\x86\x8f\x83\x81")
 #else
 #define MICTOK_ATTRNAME_BUFF_ID											_CXR("ID")
 #endif
 
 ///////////////////////////
 #ifdef _USING_CXR
-#define MICTOK_ATTRNAME_BUFF_ICON_NAME	_CXR("\x88\x85\x82\x87\x8a\x86\x82\x87\x81\x88\x82\x88\x88\x8c\x86\x81\x85\x87")
+#define MICTOK_ATTRNAME_BUFF_ICON_NAME	_CXR("\x8b\x80\x80\x8f\x83\x8a\x8c\x81\x86\x86\x8b\x82\x8a\x8a\x80\x86\x8b\x86")
 #else
 #define MICTOK_ATTRNAME_BUFF_ICON_NAME									_CXR("IconName")
 #endif
 
 ///////////////////////////
 #ifdef _USING_CXR
-#define MICTOK_ATTRNAME_BUFF_PERIOD_TYPE	_CXR("\x82\x8a\x81\x88\x84\x8b\x8e\x82\x85\x83\x88\x8a\x89\x8f\x84\x87\x8b\x80\x88\x86\x8e\x82")
+#define MICTOK_ATTRNAME_BUFF_PERIOD_TYPE	_CXR("\x8d\x81\x8f\x84\x88\x8a\x8a\x82\x8f\x8f\x87\x89\x8e\x8f\x89\x8d\x89\x88\x88\x8f\x87\x8e")
 #else
 #define MICTOK_ATTRNAME_BUFF_PERIOD_TYPE								_CXR("PeriodType")
 #endif
 
 ///////////////////////////
 #ifdef _USING_CXR
-#define MICTOK_ATTRNAME_BUFF_PERIOD	_CXR("\x89\x8d\x8f\x86\x83\x8b\x88\x8c\x80\x80\x87\x81\x81\x85")
+#define MICTOK_ATTRNAME_BUFF_PERIOD	_CXR("\x85\x81\x87\x8d\x80\x84\x85\x80\x8d\x86\x8a\x8e\x8c\x8c")
 #else
 #define MICTOK_ATTRNAME_BUFF_PERIOD										_CXR("Period")
 #endif
 
 ///////////////////////////
 #ifdef _USING_CXR
-#define MICTOK_ATTRNAME_BUFF_EFFECT_TYPE	_CXR("\x87\x80\x86\x88\x83\x86\x86\x8a\x84\x87\x8a\x81\x88\x84\x8d\x8f\x84\x8a\x87\x86\x82\x84")
+#define MICTOK_ATTRNAME_BUFF_EFFECT_TYPE	_CXR("\x8f\x87\x8d\x87\x8f\x8a\x80\x80\x84\x89\x83\x8d\x8b\x85\x81\x8f\x85\x89\x89\x81\x84\x8e")
 #else
 #define MICTOK_ATTRNAME_BUFF_EFFECT_TYPE								_CXR("EffectType")
 #endif
 
 ///////////////////////////
 #ifdef _USING_CXR
-#define MICTOK_ATTRNAME_BUFF_HP_VALUE	_CXR("\x88\x86\x84\x82\x81\x80")
+#define MICTOK_ATTRNAME_BUFF_HP_VALUE	_CXR("\x82\x86\x88\x88\x83\x8b")
 #else
 #define MICTOK_ATTRNAME_BUFF_HP_VALUE									_CXR("HP")
 #endif
 
 ///////////////////////////
 #ifdef _USING_CXR
-#define MICTOK_ATTRNAME_BUFF_AP_VALUE	_CXR("\x86\x82\x88\x86\x89\x84")
+#define MICTOK_ATTRNAME_BUFF_AP_VALUE	_CXR("\x88\x85\x82\x8f\x89\x80")
 #else
 #define MICTOK_ATTRNAME_BUFF_AP_VALUE									_CXR("AP")
 #endif
@@ -91,7 +91,7 @@
 
 ///////////////////////////
 #ifdef _USING_CXR
-#define MICTOK_ATTRNAME_BUFF_RESPAWN_DECREASE_TIME	_CXR("\x80\x83\x87\x81\x86\x82\x82\x89\x89\x82\x89\x80\x83\x89\x81\x8c")
+#define MICTOK_ATTRNAME_BUFF_RESPAWN_DECREASE_TIME	_CXR("\x8b\x85\x8d\x8a\x87\x8b\x80\x84\x81\x8f\x80\x83\x8b\x87\x85\x86")
 #else
 #define MICTOK_ATTRNAME_BUFF_RESPAWN_DECREASE_TIME						_CXR("Respawn")
 #endif
@@ -99,14 +99,14 @@
 
 ///////////////////////////
 #ifdef _USING_CXR
-#define MICTOK_ATTRVAL_PERIOD_TYPE_SHORT	_CXR("\x8d\x84\x87\x87\x88\x8f\x86\x81\x83\x89\x85\x87")
+#define MICTOK_ATTRVAL_PERIOD_TYPE_SHORT	_CXR("\x81\x81\x89\x86\x8b\x83\x80\x89\x8f\x88\x8d\x8c")
 #else
 #define MICTOK_ATTRVAL_PERIOD_TYPE_SHORT								_CXR("short")
 #endif
 
 ///////////////////////////
 #ifdef _USING_CXR
-#define MICTOK_ATTRVAL_PERIOD_TYPE_LONG	_CXR("\x85\x86\x86\x89\x88\x87\x86\x8b\x80\x8d")
+#define MICTOK_ATTRVAL_PERIOD_TYPE_LONG	_CXR("\x8c\x89\x82\x8f\x85\x88\x84\x86\x8f\x82")
 #else
 #define MICTOK_ATTRVAL_PERIOD_TYPE_LONG									_CXR("long")
 #endif
@@ -114,14 +114,14 @@
 
 ///////////////////////////
 #ifdef _USING_CXR
-#define MICTOK_ATTRVAL_BUFF_EFFECT_TYPE_NORMAL	_CXR("\x8c\x82\x89\x86\x8e\x8d\x8f\x8d\x86\x86\x89\x8d\x8c\x80")
+#define MICTOK_ATTRVAL_BUFF_EFFECT_TYPE_NORMAL	_CXR("\x88\x8d\x81\x88\x89\x8c\x83\x88\x89\x87\x88\x89\x8a\x84")
 #else
 #define MICTOK_ATTRVAL_BUFF_EFFECT_TYPE_NORMAL							_CXR("normal")
 #endif
 
 ///////////////////////////
 #ifdef _USING_CXR
-#define MICTOK_ATTRVAL_BUFF_EFFECT_TYPE_DOTE	_CXR("\x83\x88\x81\x84\x89\x88\x81\x86\x85\x88")
+#define MICTOK_ATTRVAL_BUFF_EFFECT_TYPE_DOTE	_CXR("\x88\x89\x8c\x87\x8f\x8d\x84\x80\x86\x8f")
 #else
 #define MICTOK_ATTRVAL_BUFF_EFFECT_TYPE_DOTE							_CXR("dote")
 #endif
