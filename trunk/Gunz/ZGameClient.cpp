@@ -321,13 +321,13 @@ void ZGameClient::OnPrepareCommand(MCommand* pCommand)
 }
 
 int ZGameClient::OnResponseMatchLogin(const MUID& uidServer, int nResult, const char* szServerName, const MMatchServerMode nServerMode,
-									  const char* szAccountID, const MMatchUserGradeID nUGradeID, const MMatchPremiumGradeID nPGradeID,
+									  const char* szAccountID, const MMatchUserGradeID nUGradeID, const MMatchPremiumGradeID nPGradeID, int nECoins,
 									  const MUID& uidPlayer, bool bEnabledSurvivalMode, bool bEnabledDuelTournament, unsigned char* pbyGuidReqMsg)
 {
 	int nRet = MMatchClient::OnResponseMatchLogin(uidServer, nResult, szServerName, nServerMode,
-												  szAccountID, nUGradeID, nPGradeID, uidPlayer, bEnabledSurvivalMode, bEnabledDuelTournament, pbyGuidReqMsg);
+												  szAccountID, nUGradeID, nPGradeID, nECoins, uidPlayer, bEnabledSurvivalMode, bEnabledDuelTournament, pbyGuidReqMsg);
 
-	ZGetMyInfo()->InitAccountInfo(szAccountID, nUGradeID, nPGradeID);
+	ZGetMyInfo()->InitAccountInfo(szAccountID, nUGradeID, nPGradeID, nECoins);
 
 	if ((nResult == 0) && (nRet == MOK)) {	// Login successful
 		mlog("Login Successful. \n");

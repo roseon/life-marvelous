@@ -902,6 +902,109 @@ void ZShopEquipInterface::ShowItemDescription(bool bShow, MTextArea* pTextArea, 
 	}
 }
 
+//void ZShopEquipInterface::DrawCharInfoText(char* szShopOrEquip, int nReqLevel, int nNewWT, int nNewMaxWT, int nNewHP, int nNewAP, int nReqBounty, int nReqCash)
+//{
+//	if (szShopOrEquip == NULL) 
+//	{
+//		DrawCharInfoText("Shop", nReqLevel, nNewWT, nNewMaxWT, nNewHP, nNewAP, nReqBounty, nReqCash);
+//		DrawCharInfoText("Equip", nReqLevel, nNewWT, nNewMaxWT, nNewHP, nNewAP, nReqBounty, nReqCash);
+//		return;
+//	}
+//
+//	if (0!=strcmp(szShopOrEquip, "Shop") && 0!=strcmp(szShopOrEquip, "Equip")) return;
+//
+//	MTextArea* pTextArea[3];
+//	char sz1[256], sz2[256], szTextArea[64];
+//	const char* szRed	= "^1";
+//	const char* szGreen	= "^2";
+//	const char* szGray	= "^9";
+//	const char* szColor	= NULL;
+//
+//	// prefix에 따라서 "Shop_MyInfo1" "Shop_MyInfo2" "Shop_MyInfo3" "Equip_MyInfo1" "Equip_MyInfo2" "Equip_MyInfo3"의 이름을 구성
+//	// (가로로 늘어놓은 TextArea 세개에 나눠서 표시하기 때문에..)
+//	for (int i=0; i<3; ++i)
+//	{
+//		sprintf(szTextArea, "%s_MyInfo%d", szShopOrEquip, i+1);
+//		pTextArea[i] = (MTextArea*)GetIDLResource()->FindWidget(szTextArea);
+//		if (NULL == pTextArea[i])
+//		{
+//			_ASSERT(0);
+//			return;	// 하나라도 못찾으면 리턴해버리자
+//		}
+//
+//		pTextArea[i]->Clear();
+//	}
+//
+//	// 첫번째 TextArea (레벨, 무게)
+//	szColor = szGray;
+//	if (nReqLevel > ZGetMyInfo()->GetLevel())
+//		szColor = szRed;
+//	sprintf(sz1, "^9%s : %s%d ^9%s", ZMsg(MSG_CHARINFO_LEVEL), szColor, ZGetMyInfo()->GetLevel(), ZMsg(MSG_CHARINFO_LEVELMARKER));
+//	pTextArea[0]->AddText(sz1);
+//
+//	int nCurrMaxWT = ZGetMyInfo()->GetItemList()->GetMaxWeight();
+//	sprintf(sz1, "^9%s : ", ZMsg(MSG_CHARINFO_WEIGHT));
+//	szColor = (nNewWT > nNewMaxWT) ? szRed : szGray;
+//	sprintf(sz2, "%s%d", szColor, nNewWT);
+//	strcat(sz1, sz2);
+//	sprintf(sz2, "^9/%d", nCurrMaxWT);
+//	strcat(sz1, sz2);
+//	int nDiffMaxWT = nNewMaxWT - nCurrMaxWT;
+//	if (nDiffMaxWT != 0)
+//	{
+//		szColor = (nDiffMaxWT > 0) ? szGreen : szRed;
+//		sprintf(sz2, "%s%+d", szColor, nDiffMaxWT);
+//		strcat(sz1, sz2);
+//	}
+//	pTextArea[0]->AddText(sz1);
+//
+//
+//
+//	// 두번째 TextArea (체력, 방어)
+//	sprintf(sz1, "^9%s : %d ", ZMsg(MSG_CHARINFO_HP), ZGetMyInfo()->GetHP());
+//	int nDiffHP = nNewHP - ZGetMyInfo()->GetHP();
+//	if (nDiffHP != 0)
+//	{
+//		szColor = (nDiffHP > 0) ? szGreen : szRed;
+//		sprintf(sz2, "%s%+d", szColor, nDiffHP);
+//		strcat(sz1, sz2);
+//	}
+//	pTextArea[1]->AddText(sz1);
+//
+//	sprintf(sz1, "^9%s : %d ", ZMsg(MSG_CHARINFO_AP), ZGetMyInfo()->GetAP());
+//	int nDiffAP = nNewAP - ZGetMyInfo()->GetAP();
+//	if (nDiffAP != 0)
+//	{
+//		szColor = (nDiffAP > 0) ? szGreen : szRed;
+//		sprintf(sz2, "%s%+d", szColor, nDiffAP);
+//		strcat(sz1, sz2);
+//	}
+//	pTextArea[1]->AddText(sz1);
+//
+//
+//	// 세번째 TextArea (바운티, 캐시)
+//
+//	sprintf(sz1, "^9%s : ", ZMsg(MSG_CHARINFO_BOUNTY));
+//	szColor = (nReqBounty > ZGetMyInfo()->GetBP()) ? szRed : szGray;
+//	sprintf(sz2, "%s%d", szColor, ZGetMyInfo()->GetBP());
+//	strcat(sz1, sz2);
+//	pTextArea[2]->AddText(sz1);
+//
+//	sprintf(sz1, "^9%s : ", ZMsg(MSG_CHARINFO_CASH));
+//	szColor = (nReqBounty > ZGetMyInfo()->GetECoins()) ? szRed : szGray;
+//	sprintf(sz2, "%s%d", szColor, ZGetMyInfo()->GetECoins());
+//	strcat(sz1, sz2);
+//	pTextArea[2]->AddText(sz1);
+//
+///*	보유 캐쉬는 캐쉬템 구입이 가능해질때 보여주자
+//	sprintf(sz1, "^9%s : ", ZMsg(MSG_CHARINFO_CASH));
+//	szColor = (nReqCash > ZGetMyInfo()->GetCash()) ? szRed : szGray;
+//	sprintf(sz2, "%s%d", szColor, ZGetMyInfo()->GetCash());
+//	strcat(sz1, sz2);
+//	pTextArea[2]->AddText(sz1);
+//	*/
+//}
+
 void ZShopEquipInterface::DrawCharInfoText()
 {
 	// 현재 내 상태로 초기화

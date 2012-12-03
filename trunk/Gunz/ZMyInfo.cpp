@@ -110,11 +110,13 @@ void ZMyInfo::SetLevel( int nLevel )
 	}
 }
 
-bool ZMyInfo::InitAccountInfo(const char* szAccountID, MMatchUserGradeID nUGradeID, MMatchPremiumGradeID nPGradeID)
+
+bool ZMyInfo::InitAccountInfo(const char* szAccountID, MMatchUserGradeID nUGradeID, MMatchPremiumGradeID nPGradeID, int nECoins)
 {
 	strcpy(m_szAccountID, szAccountID);
 	m_nUGradeID = nUGradeID;
 	m_nPGradeID = nPGradeID;
+	m_nECoins = nECoins;
 
 	return true;
 }
