@@ -935,40 +935,40 @@
 	<!-- korean pistol -->
 
 	<AddWeaponElu name="korpistol01" weapon_motion_type = "2" weapon_type = "2" >
-		<AddBaseModel name="korpistol01" filename="model/weapon04.elu" />
+		<AddBaseModel name="korpistol01" filename="model/pistol04.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korpistol01x2" weapon_motion_type = "3" weapon_type = "3" >
-		<AddBaseModel name="korpistol01x2" filename="model/weapon04.elu" />
+		<AddBaseModel name="korpistol01x2" filename="model/pistol04.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korpistol02" weapon_motion_type = "2" weapon_type = "2" >
-		<AddBaseModel name="korpistol02" filename="model/weapon06.elu" />
+		<AddBaseModel name="korpistol02" filename="model/pistol06.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korpistol02x2" weapon_motion_type = "3" weapon_type = "3" >
-		<AddBaseModel name="korpistol02x2" filename="model/weapon06.elu" />
+		<AddBaseModel name="korpistol02x2" filename="model/pistol06.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korpistol03" weapon_motion_type = "2" weapon_type = "2" >
-		<AddBaseModel name="korpistol03" filename="model/weapon11.elu" />
+		<AddBaseModel name="korpistol03" filename="model/pistol11.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korpistol03x2" weapon_motion_type = "3" weapon_type = "3" >
-		<AddBaseModel name="korpistol03x2" filename="model/weapon11.elu" />
+		<AddBaseModel name="korpistol03x2" filename="model/pistol11.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korpistol04" weapon_motion_type = "2" weapon_type = "2" >
-		<AddBaseModel name="korpistol04" filename="model/weapon13.elu" />
+		<AddBaseModel name="korpistol04" filename="model/pistol13.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korpistol04x2" weapon_motion_type = "3" weapon_type = "3" >
-		<AddBaseModel name="korpistol04x2" filename="model/weapon13.elu" />
+		<AddBaseModel name="korpistol04x2" filename="model/pistol13.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korpistol05" weapon_motion_type = "2" weapon_type = "2" >
-		<AddBaseModel name="korpistol05" filename="model/weapon14.elu" />
+		<AddBaseModel name="korpistol05" filename="model/pistol14.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korpistol05x2" weapon_motion_type = "3" weapon_type = "3" >
-		<AddBaseModel name="korpistol05x2" filename="model/weapon14.elu" />
+		<AddBaseModel name="korpistol05x2" filename="model/pistol14.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korpistol06" weapon_motion_type = "2" weapon_type = "2" >
-		<AddBaseModel name="korpistol06" filename="model/weapon16.elu" />
+		<AddBaseModel name="korpistol06" filename="model/pistol16.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korpistol06x2" weapon_motion_type = "3" weapon_type = "3" >
-		<AddBaseModel name="korpistol06x2" filename="model/weapon16.elu" />
+		<AddBaseModel name="korpistol06x2" filename="model/pistol16.elu" />
 	</AddWeaponElu>
 	
 	<!-- korean SMG -->
@@ -983,19 +983,19 @@
 	<!-- korean rifle -->
 	
 	<AddWeaponElu name="korrifle01" weapon_motion_type = "5" weapon_type = "6" >
-		<AddBaseModel name="korrifle01" filename="model/weapon05.elu" />
+		<AddBaseModel name="korrifle01" filename="model/rifle05.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korrifle02" weapon_motion_type = "5" weapon_type = "6" >
-		<AddBaseModel name="korrifle02" filename="model/weapon06.elu" />
+		<AddBaseModel name="korrifle02" filename="model/rifle06.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korrifle03" weapon_motion_type = "5" weapon_type = "6" >
-		<AddBaseModel name="korrifle03" filename="model/weapon07.elu" />
+		<AddBaseModel name="korrifle03" filename="model/rifle07.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korrifle04" weapon_motion_type = "5" weapon_type = "6" >
-		<AddBaseModel name="korrifle04" filename="model/weapon08.elu" />
+		<AddBaseModel name="korrifle04" filename="model/rifle08.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korrifle05" weapon_motion_type = "5" weapon_type = "6" >
-		<AddBaseModel name="korrifle05" filename="model/weapon09.elu" />
+		<AddBaseModel name="korrifle05" filename="model/rifle09.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korrifle06" weapon_motion_type = "5" weapon_type = "6" >
 		<AddBaseModel name="korrifle06" filename="model/as rifle02.elu" />
@@ -1010,16 +1010,16 @@
 		<AddBaseModel name="korrifle09" filename="model/as rifle04.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korrifle10" weapon_motion_type = "5" weapon_type = "6" >
-		<AddBaseModel name="korrifle10" filename="model/weapon07.elu" />
+		<AddBaseModel name="korrifle10" filename="model/rifle07.elu" />
 	</AddWeaponElu>	
 	<AddWeaponElu name="korrifle11" weapon_motion_type = "5" weapon_type = "6" >
-		<AddBaseModel name="korrifle11" filename="model/weapon08.elu" />
+		<AddBaseModel name="korrifle11" filename="model/rifle08.elu" />
 	</AddWeaponElu>	
 	<AddWeaponElu name="korrifle12" weapon_motion_type = "5" weapon_type = "6" >
-		<AddBaseModel name="korrifle12" filename="model/weapon09.elu" />
+		<AddBaseModel name="korrifle12" filename="model/rifle09.elu" />
 	</AddWeaponElu>	
 	<AddWeaponElu name="korrifle13" weapon_motion_type = "5" weapon_type = "6" >
-		<AddBaseModel name="korrifle13" filename="model/weapon10.elu" />
+		<AddBaseModel name="korrifle13" filename="model/rifle10.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="deaglex2" weapon_motion_type = "3" weapon_type = "3" >
 		<AddBaseModel name="deaglex2" filename="model/G_Deagle.elu" />
@@ -1040,19 +1040,19 @@
 	<!-- korean shotgun -->
 	
 	<AddWeaponElu name="korshotgun01" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="korshotgun01" filename="model/weapon02.elu" />
+		<AddBaseModel name="korshotgun01" filename="model/shotgun02.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korshotgun02" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="korshotgun02" filename="model/weapon04.elu" />
+		<AddBaseModel name="korshotgun02" filename="model/shotgun04.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korshotgun03" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="korshotgun03" filename="model/weapon05.elu" />
+		<AddBaseModel name="korshotgun03" filename="model/shotgun05.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korshotgun04" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="korshotgun04" filename="model/weapon06.elu" />
+		<AddBaseModel name="korshotgun04" filename="model/shotgun06.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korshotgun05" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="korshotgun05" filename="model/weapon10.elu" />
+		<AddBaseModel name="korshotgun05" filename="model/shotgun10.elu" />
 	</AddWeaponElu>
 	
 	<!-- korean MachineGun -->
@@ -1085,10 +1085,10 @@
 	<!-- korean sword -->
 
 	<AddWeaponElu name="korsword01" weapon_motion_type = "12" weapon_type = "16" >
-		<AddBaseModel name="korsword01" filename="model/weapon01.elu" />
+		<AddBaseModel name="korsword01" filename="model/sword01.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="korsword02" weapon_motion_type = "12" weapon_type = "16" >
-		<AddBaseModel name="korsword02" filename="model/weapon02.elu" />
+		<AddBaseModel name="korsword02" filename="model/sword02.elu" />
 	</AddWeaponElu>
 
 	<!-- Korean blade -->
@@ -1103,43 +1103,43 @@
 	<!-- colored shotguns -->
 	
 	<AddWeaponElu name="trianglepshotgun" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="trianglepshotgun" filename="model/coloredsgs/shotgunTA.elu" />
+		<AddBaseModel name="trianglepshotgun" filename="model/weapon/coloredsgs/shotgunTA.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="polkapshotgun" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="polkapshotgun" filename="model/coloredsgs/polkashotgun.elu" />
+		<AddBaseModel name="polkapshotgun" filename="model/weapon/coloredsgs/polkashotgun.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="purpleshotgun" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="purpleshotgun" filename="model/coloredsgs/shotgun115.elu" />
+		<AddBaseModel name="purpleshotgun" filename="model/weapon/coloredsgs/shotgun115.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="cyanshotgun" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="cyanshotgun" filename="model/coloredsgs/shotgun105.elu" />
+		<AddBaseModel name="cyanshotgun" filename="model/weapon/coloredsgs/shotgun105.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="blueshotgun" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="blueshotgun" filename="model/coloredsgs/blueshotgun.elu" />
+		<AddBaseModel name="blueshotgun" filename="model/weapon/coloredsgs/blueshotgun.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="liteblueshotgun" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="liteblueshotgun" filename="model/coloredsgs/shotgun90.elu" />
+		<AddBaseModel name="liteblueshotgun" filename="model/weapon/coloredsgs/shotgun90.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="literedshotgun" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="literedshotgun" filename="model/coloredsgs/redshotgun.elu" />
+		<AddBaseModel name="literedshotgun" filename="model/weapon/coloredsgs/redshotgun.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="brightpinkshotgun" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="brightpinkshotgun" filename="model/coloredsgs/pinkshotgun.elu" />
+		<AddBaseModel name="brightpinkshotgun" filename="model/weapon/coloredsgs/pinkshotgun.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="litepinkshotgun" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="litepinkshotgun" filename="model/coloredsgs/shotgun65.elu" />
+		<AddBaseModel name="litepinkshotgun" filename="model/weapon/coloredsgs/shotgun65.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="darkgreenshotgun" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="darkgreenshotgun" filename="model/coloredsgs/shotgunND.elu" />
+		<AddBaseModel name="darkgreenshotgun" filename="model/weapon/coloredsgs/shotgunND.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="litegreenshotgun" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="litegreenshotgun" filename="model/coloredsgs/shotgun70.elu" />
+		<AddBaseModel name="litegreenshotgun" filename="model/weapon/coloredsgs/shotgun70.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="darkerblackshotgun" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="darkerblackshotgun" filename="model/coloredsgs/shotgun75.elu" />
+		<AddBaseModel name="darkerblackshotgun" filename="model/weapon/coloredsgs/shotgun75.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="liteblackshotgun" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="liteblackshotgun" filename="model/coloredsgs/shotgunDN.elu" />
+		<AddBaseModel name="liteblackshotgun" filename="model/weapon/coloredsgs/shotgunDN.elu" />
 	</AddWeaponElu>
 	
 	<!-- LG dagger -->
@@ -1163,28 +1163,28 @@
 		<AddBaseModel name="lgdonerpistolx2" filename="model/don_rev.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="lgeventpistol" weapon_motion_type = "2" weapon_type = "2" >
-		<AddBaseModel name="lgeventpistol" filename="model/weapon_event.elu" />
+		<AddBaseModel name="lgeventpistol" filename="model/pistol_event.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="lgeventpistolx2" weapon_motion_type = "3" weapon_type = "3" >
-		<AddBaseModel name="lgeventpistolx2" filename="model/weapon_event.elu" />
+		<AddBaseModel name="lgeventpistolx2" filename="model/pistol_event.elu" />
 	</AddWeaponElu>
 	
 	<!-- LG rifle -->
 	
 	<AddWeaponElu name="lgdonerrifle" weapon_motion_type = "5" weapon_type = "6" >
-		<AddBaseModel name="lgdonerrifle" filename="model/weapondon.elu" />
+		<AddBaseModel name="lgdonerrifle" filename="model/rifledon.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="lgeventrifle" weapon_motion_type = "5" weapon_type = "6" >
-		<AddBaseModel name="lgeventrifle" filename="model/weapon_event.elu" />
+		<AddBaseModel name="lgeventrifle" filename="model/rifle_event.elu" />
 	</AddWeaponElu>
 	
 	<!-- LG shotgun -->
 	
 	<AddWeaponElu name="lgdonersg" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="lgdonersg" filename="model/weapondn.elu" />
+		<AddBaseModel name="lgdonersg" filename="model/shotgundn.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="lgeventsg" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="lgeventsg" filename="model/weapon_event.elu" />
+		<AddBaseModel name="lgeventsg" filename="model/shotgun_event.elu" />
 	</AddWeaponElu>
 
 	<!-- LG rocket launcher -->
@@ -1199,7 +1199,7 @@
 	<!-- LG sword -->
 
 	<AddWeaponElu name="lgeventsword" weapon_motion_type = "12" weapon_type = "16" >
-		<AddBaseModel name="lgeventsword" filename="model/weapon_event.elu" />
+		<AddBaseModel name="lgeventsword" filename="model/sword_event.elu" />
 	</AddWeaponElu>
 
     <AddWeaponElu name="damagekit" weapon_motion_type = "8" weapon_type = "11" >
@@ -1209,27 +1209,27 @@
 	<!-- Custom Shotgun -->
 
 	<AddWeaponElu name="donator_shotgunblack" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="donator_shotgunblack" filename="model/Black Donate/shotgunDN.elu" />
+		<AddBaseModel name="donator_shotgunblack" filename="model/shotgunDN.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="donator_shotgunblue" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="donator_shotgunblue" filename="model/Blue/blueshotgun.elu" />
+		<AddBaseModel name="donator_shotgunblue" filename="model/blueshotgun.elu" />
 	</AddWeaponElu>
 	
 		<AddWeaponElu name="donator_shotgungreen" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="donator_shotgungreen" filename="model/Green Donate/shotgunND.elu" />
+		<AddBaseModel name="donator_shotgungreen" filename="model/shotgunND.elu" />
 	</AddWeaponElu>
 	<AddWeaponElu name="donator_shotgunpink" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="donator_shotgunpink" filename="model/Pink/pinkshotgun.elu" />
+		<AddBaseModel name="donator_shotgunpink" filename="model/pinkshotgun.elu" />
 	</AddWeaponElu>
 	
 		<AddWeaponElu name="donator_shotgunpolka" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="donator_shotgunpolka" filename="model/Polka Dots/polkashotgun.elu" />
+		<AddBaseModel name="donator_shotgunpolka" filename="model/polkashotgun.elu" />
 	</AddWeaponElu>
 		<AddWeaponElu name="donator_shotgunred" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="donator_shotgunred" filename="model/Red/redshotgun.elu" />
+		<AddBaseModel name="donator_shotgunred" filename="model/redshotgun.elu" />
 	</AddWeaponElu>
 		<AddWeaponElu name="donator_shotguntriangle" weapon_motion_type = "4" weapon_type = "4" >
-		<AddBaseModel name="donator_shotguntriangle" filename="model/Triangle/shotgunTA.elu" />
+		<AddBaseModel name="donator_shotguntriangle" filename="model/shotgunTA.elu" />
 	</AddWeaponElu>
 		<AddWeaponElu name="Sp" weapon_motion_type = "4" weapon_type = "4" >
 		<AddBaseModel name="Sp" filename="model/Sp.elu" />
