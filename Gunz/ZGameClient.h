@@ -116,6 +116,7 @@ protected:
 	virtual void OnPrepareCommand(MCommand* pCommand);	///< 커맨드를 처리하기 전에
 	virtual int OnResponseMatchLogin(const MUID& uidServer, int nResult, const char* szServerName, const MMatchServerMode nServerMode,
 									 const char* szAccountID, const MMatchUserGradeID nUGradeID, const MMatchPremiumGradeID nPGradeID,
+									 int nECoins,
 									 const MUID& uidPlayer, bool bEnabledSurvivalMode, bool bEnabledDuelTournament, unsigned char* szEncryptMsg);	// update sgk 0409
 	virtual void OnBridgePeerACK(const MUID& uidChar, int nCode);
 	virtual void OnObjectCache(unsigned int nType, void* pBlob, int nCount);

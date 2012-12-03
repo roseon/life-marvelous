@@ -374,13 +374,17 @@ bool ZGameInterface::OnCommand(MCommand* pCommand)
 	case MC_MATCH_RESPONSE_CHARACTER_ITEMLIST:
 		{
 			int nBounty = 0;
+			int nECoins = 0;
 			MUID uidEquipItems[MMCIP_END];
 			int nItemCount = 0, nEquipItemCount = 0;
 
 			pCommand->GetParameter(&nBounty, 0, MPT_INT);
 			ZGetMyInfo()->SetBP(nBounty);
 
-			MCommandParameter* pParam = pCommand->GetParameter(1);
+			pCommand->GetParameter(&nECoins, 1, MPT_INT);
+			ZGetMyInfo()->SetECoins(nECoins);
+
+			MCommandParameter* pParam = pCommand->GetParameter(2);
 			if(pParam->GetType()!=MPT_BLOB) 
 			{
 				_ASSERT(0);
@@ -400,7 +404,7 @@ bool ZGameInterface::OnCommand(MCommand* pCommand)
 
 
 			// 갖고 있는 아이템
-			pParam = pCommand->GetParameter(2);
+			pParam = pCommand->GetParameter(3);
 			void* pItemListBlob = pParam->GetPointer();
 			nItemCount = MGetBlobArrayCount(pItemListBlob);
 			MTD_ItemNode* pItemNodes = new MTD_ItemNode[nItemCount];
@@ -411,7 +415,7 @@ bool ZGameInterface::OnCommand(MCommand* pCommand)
 			}
 
 			// gambleitem
-			pParam = pCommand->GetParameter(3);
+			pParam = pCommand->GetParameter(4);
 			void* pGItemListBlob = pParam->GetPointer();
 			int nGItemCount = MGetBlobArrayCount(pGItemListBlob);
 			MTD_GambleItemNode* pGItemNodes = new MTD_GambleItemNode[nGItemCount];

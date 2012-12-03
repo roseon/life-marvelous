@@ -886,7 +886,7 @@ void ZShopEquipItemHandle_PurchaseMatch::Buy()
 	
 	if (bCash)	// 캐쉬 아이템
 	{
-#ifndef _PUBLISH
+#ifndef _PUBLIS
 		//!! 임시로 캐쉬 아이템을 바운티로 구매하도록 해두었음
 		if (bSpendable)	// 구입 갯수 입력 가능한 아이템
 		{

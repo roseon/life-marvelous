@@ -48,6 +48,8 @@ protected:
 	char					m_szAccountID[256];
 	MMatchUserGradeID		m_nUGradeID;
 	MMatchPremiumGradeID	m_nPGradeID;
+	int						m_nECoins;
+
 
 
 	// 캐릭터 정보
@@ -85,7 +87,7 @@ public:
 	ZMyInfo();
 	virtual ~ZMyInfo();
 	bool InitCharInfo(const char* szCharName, const char* szClanName, const MMatchClanGrade nClanGrade, const MMatchSex nSex, const int nHair, const int nFace);
-	bool InitAccountInfo(const char* szAccountID, MMatchUserGradeID nUGradeID, MMatchPremiumGradeID nPGradeID);
+	bool InitAccountInfo(const char* szAccountID, MMatchUserGradeID nUGradeID, MMatchPremiumGradeID nPGradeID, int nECoins);
 	
 	void Destroy();
 	void Serialize();		// UI 업데이트 - 여기서 내 정보에 대한 UI 업데이트를 하도록 하자.
@@ -108,6 +110,7 @@ public:
 	const char*			GetAccountID()	{ return m_szAccountID; }
 	unsigned long int	GetXP() { return m_nXP; }
 	int					GetBP() { return m_nBP; }
+	int					GetECoins() { return m_nECoins; }
 	int					GetCash() { return 0; }
 	int					GetHP();
 	int					GetAP();
@@ -127,6 +130,7 @@ public:
 	// set 씨리즈
 	void SetXP(unsigned long int nXP)			{ m_nXP = nXP; }
 	void SetBP(int nBP)							{ m_nBP = nBP; }
+	void SetECoins(int nECoins) { m_nECoins = nECoins; }
 	void SetLevel( int nLevel );
 	void SetLevelPercent(int nPercent)			{ m_nLevelPercent = nPercent; }
 	void SetClanInfo(const char* szClanName, const MMatchClanGrade nClanGrade);

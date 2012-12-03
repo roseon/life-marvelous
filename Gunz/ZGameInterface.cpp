@@ -3184,6 +3184,10 @@ void ZGameInterface::OnDrawStateLobbyNStage(MDrawContext* pDC)
 		pLabel = (MLabel*)pRes->FindWidget("Lobby_PlayerSpecBP");
 		sprintf( buf, "%s : %d", ZMsg( MSG_CHARINFO_BOUNTY), ZGetMyInfo()->GetBP());
 		if (pLabel) pLabel->SetText(buf);
+		//ECoins
+		pLabel = (MLabel*)pRes->FindWidget("Lobby_PlayerSpecCash");
+		sprintf( buf, "%s : %d", ZMsg( MSG_CHARINFO_CASH), ZGetMyInfo()->GetECoins());
+		if (pLabel) pLabel->SetText(buf);
 		// HP
 		pLabel = (MLabel*)pRes->FindWidget("Lobby_PlayerSpecHP");
 		sprintf( buf, "%s : %d", ZMsg( MSG_CHARINFO_HP), ZGetMyInfo()->GetHP());
@@ -3293,6 +3297,17 @@ void ZGameInterface::OnDrawStateLobbyNStage(MDrawContext* pDC)
 				pLabel->Enable( bShowMe);
 			}
 
+			// Cash
+			pLabel = (MLabel*)pRes->FindWidget("Stage_PlayerSpecCash");
+			if ( pLabel)
+			{
+				if ( bShowMe)
+					sprintf( buf, "%s : %d", ZMsg( MSG_CHARINFO_CASH), ZGetMyInfo()->GetBP());
+				else
+					sprintf( buf, "%s : -", ZMsg( MSG_CHARINFO_CASH));
+				pLabel->SetText(buf);
+				pLabel->Enable( bShowMe);
+			}
 			// HP
 			pLabel = (MLabel*)pRes->FindWidget("Stage_PlayerSpecHP");
 			if ( pLabel)
