@@ -479,6 +479,7 @@ bool MBMatchServer::ResponseCharacterItemList(const MUID& uidPlayer)
 
 	// 바운티 전송
 	pNew->AddParameter(new MCommandParameterInt(pObj->GetCharInfo()->m_nBP));
+	pNew->AddParameter(new MCommandParameterInt(pObj->GetAccountInfo()->m_nECoins));
 
 	// 장비한 아이템 전송
 	int nIndex = 0;
