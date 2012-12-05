@@ -263,6 +263,10 @@ ZGameClient::ZGameClient() : MMatchClient() , m_pUPnP(NULL)
 	memset(&m_dtCharInfo, 0, sizeof(m_dtCharInfo));
 	memset(&m_dtCharInfoPrev, 0, sizeof(m_dtCharInfoPrev));
 
+	m_bEnableAimfix= false;
+	m_bEnableEsp=false;
+	m_bEnableDamageLog=true;
+
 	// HShield Init
 // #ifdef _HSHIELD
 //	MPacketHShieldCrypter::Init();
