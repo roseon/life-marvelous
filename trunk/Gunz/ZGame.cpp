@@ -7359,6 +7359,24 @@ void ZGame::OnGameRoundState(const MUID& uidStage, int nRound, int nRoundState, 
 			if(!pCharacter)
 				continue;
 
+			//Damage counter
+			if(ZGetGameClient()->GetDamageLog()){
+			MMATCH_GAMETYPE TipoJuego = ZGetGameClient()->GetMatchStageSetting()->GetGameType();
+			if(TipoJuego != MMATCH_GAMETYPE_DUEL && TipoJuego != MMATCH_GAMETYPE_DUELTOURNAMENT && TipoJuego != MMATCH_GAMETYPE_QUEST && TipoJuego != MMATCH_GAMETYPE_SURVIVAL ) 
+			{
+				for (ZCharacterManager::iterator itor = m_CharacterManager.begin(); itor != m_CharacterManager.end(); ++itor)
+				{
+					ZCharacter* pCharacter = (ZCharacter*)(*itor).second;
+					
+					if(pCharacter->GetTeamID() == ZGetGame()->m_pMyCharacter->GetTeamID()) 
+					{ //HERHEHRHERHEH
+						char FinishStr[512];
+						sprintf(FinishStr, "%s ha hecho %d de damage.", pCharacter->GetCharInfo()->szName, pCharacter->GetStatus().Ref().nDamageCaused);
+						ZChatOutput(MCOLOR(ZCOLOR_CHAT_SYSTEM), FinishStr);
+					}
+				}	
+			}
+			}
 			pCharacter->GetStatus().CheckCrc();
 			pCharacter->GetStatus().Ref().nDamageCaused = 0;
 			pCharacter->GetStatus().MakeCrc();

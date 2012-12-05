@@ -3416,7 +3416,7 @@ bool ZCharacter::Create(MTD_CharInfo* pCharInfo/*, MTD_CharBuffInfo* pCharBuffIn
 	m_MInitialInfo.Set(*pCharInfo);
 	m_MInitialInfo.MakeCrc();
 
-	
+	//mlog("EL TEAM %d\n",m_nTeamID.Ref());
 	//버프정보임시주석 SetCharacterBuff(pCharBuffInfo);		///< 케릭터 버프 세팅	
 	for (int i = 0; i < MMCIP_END; i++) {	///< 아이템 세팅
 		m_Items.EquipItem(MMatchCharItemParts(i), pCharInfo->nEquipedItemDesc[i], pCharInfo->nEquipedItemCount[i]);
