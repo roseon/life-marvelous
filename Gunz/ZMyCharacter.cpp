@@ -1258,8 +1258,17 @@ void ZMyCharacter::OnShotRocket()
 	Normalize(dir);
 
 	int sel_type = GetItems()->GetSelectedWeaponParts();
+	RVisualMesh* pWVMesh = m_pVMesh->GetSelectWeaponVMesh();
+	int type = ZC_WEAPON_SP_ROCKET;
+	if( pWVMesh ) {
+				if(pWVMesh->m_pMesh) {
+					if(strncmp( pWVMesh->m_pMesh->GetName(), "rlg", 3) == 0) {
+						type = ZC_WEAPON_SP_ROCKETGRENADE;
+					}
+				}
+	}
 
-	ZPostShotSp(/*g_pGame->GetTime(),*/vWeaponPos,dir,ZC_WEAPON_SP_ROCKET,sel_type);
+	ZPostShotSp(/*g_pGame->GetTime(),*/vWeaponPos,dir,type,sel_type);
 }
 
 /*

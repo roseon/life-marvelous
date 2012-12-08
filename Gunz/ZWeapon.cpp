@@ -754,6 +754,157 @@ void ZWeaponGrenade::Explosion()
 }
 
 /////////////////////////////////////////////////////////////////////////////
+MImplementRTTI(ZWeaponMolotov,ZMovingWeapon);
+
+void ZWeaponMolotov::Create(RMesh* pMesh,rvector &pos, rvector &velocity,ZObject* pOwner) {
+
+	ZWeapon::Create(pMesh);
+
+	m_Position=pos;
+	rvector dir=velocity;
+	Normalize(dir);
+	m_Velocity=velocity;
+
+	m_fStartTime=ZGetGame()->GetTime();
+
+	m_Dir=rvector(1,0,0);
+	m_Up=rvector(0,0,1);
+	m_RotAxis=rvector(0,0,1);
+
+	m_uidOwner=pOwner->GetUID();
+	m_nTeamID=pOwner->GetTeamID();
+
+	MMatchItemDesc* pDesc = NULL;
+
+	if( pOwner->GetItems() )
+		if( pOwner->GetItems()->GetSelectedWeapon() )
+			pDesc = pOwner->GetItems()->GetSelectedWeapon()->GetDesc();
+
+	if (pDesc == NULL) {
+		_ASSERT(0);
+		return;
+	}
+
+	m_fDamage=pDesc->m_nDamage.Ref();
+
+	m_nSoundCount = rand() % 2 + 2;	
+}
+
+
+
+bool ZWeaponMolotov::Update(float fElapsedTime)
+{
+	rvector oldPos = m_Position;
+	if(ZGetGame()->GetTime() - m_fStartTime > GRENADE_LIFE) {
+		Explosion();
+		if(Z_VIDEO_DYNAMICLIGHT)
+		ZGetStencilLight()->AddLightSource( m_Position, 3.0f, 1300 );
+		return false;
+	}
+
+	m_Velocity.z-=1000.f*fElapsedTime;
+
+	const DWORD dwPickPassFlag = RM_FLAG_ADDITIVE | RM_FLAG_HIDE | RM_FLAG_PASSROCKET;
+
+	{
+		rvector diff=m_Velocity*fElapsedTime;
+		rvector dir=diff;
+		Normalize(dir);
+
+		float fDist=Magnitude(diff);
+
+		rvector pickpos,normal;
+
+		ZPICKINFO zpi;
+		bool bPicked=ZGetGame()->Pick(ZGetCharacterManager()->Find(m_uidOwner),m_Position,dir,&zpi,dwPickPassFlag);
+		if(bPicked)
+		{
+			if(zpi.bBspPicked)
+			{
+				pickpos=zpi.bpi.PickPos;
+				rplane plane=zpi.bpi.pNode->pInfo[zpi.bpi.nIndex].plane;
+				normal=rvector(plane.a,plane.b,plane.c);
+			}
+			else
+			if(zpi.pObject)
+			{
+				pickpos=zpi.info.vOut;
+				if(zpi.pObject->GetPosition().z+30.f<=pickpos.z && pickpos.z<=zpi.pObject->GetPosition().z+160.f)
+				{
+					normal=pickpos-zpi.pObject->GetPosition();
+					normal.z=0;
+				}else
+					normal=pickpos-(zpi.pObject->GetPosition()+rvector(0,0,90));
+				Normalize(normal);
+			}
+		}
+
+
+
+		if(bPicked && fabsf(Magnitude(pickpos-m_Position))<fDist)
+		{
+			m_Position=pickpos+normal;
+			m_Velocity=GetReflectionVector(m_Velocity,normal);
+			m_Velocity*=zpi.pObject ? 0.4f : 0.8f;		
+
+			if(zpi.bBspPicked && m_nSoundCount>0) {
+				m_nSoundCount--;
+				ZGetSoundEngine()->PlaySound("we_grenade_fire",m_Position);
+			}
+			if(Z_VIDEO_DYNAMICLIGHT)
+			ZGetStencilLight()->AddLightSource( m_Position, 3.0f, 1300 );	
+			Explosion();
+			return false;
+
+			Normalize(normal);
+			float fAbsorb=DotProduct(normal,m_Velocity);
+			m_Velocity-=0.5*fAbsorb*normal;
+
+			float fA=RANDOMFLOAT*2*pi;
+			float fB=RANDOMFLOAT*2*pi;
+			m_RotAxis=rvector(sin(fA)*sin(fB),cos(fA)*sin(fB),cos(fB));
+
+		}else
+			m_Position+=diff;
+	}
+
+	float fRotSpeed=Magnitude(m_Velocity)*0.04f;
+
+	rmatrix rotmat;
+	D3DXQUATERNION q;
+	D3DXQuaternionRotationAxis(&q, &m_RotAxis, fRotSpeed *fElapsedTime);
+	D3DXMatrixRotationQuaternion(&rotmat, &q);
+	m_Dir = m_Dir * rotmat;
+	m_Up = m_Up * rotmat;
+
+	rmatrix mat;
+	rvector dir=m_Velocity;
+	Normalize(dir);
+	MakeWorldMatrix(&mat,m_Position,m_Dir,m_Up);
+
+	mat = rotmat*mat;
+
+	m_pVMesh->SetWorldMatrix(mat);
+
+	ZGetWorld()->GetFlags()->CheckSpearing( oldPos, m_Position, GRENADE_SPEAR_EMBLEM_POWER );
+
+	return true;
+}
+
+void ZWeaponMolotov::Explosion()
+{
+	rvector v = m_Position;
+
+	rvector dir = -RealSpace2::RCameraDirection;
+	dir.z = 0.f;
+	ZGetEffectManager()->AddGrenadeEffect(v,dir);
+
+	ZGetGame()->OnExplosionGrenade(m_uidOwner,v,m_fDamage,400.f,.2f,1.f,m_nTeamID);
+
+	ZGetSoundEngine()->PlaySound("we_grenade_explosion",v);
+
+	ZGetWorld()->GetFlags()->SetExplosion( v, EXPLOSION_EMBLEM_POWER );
+}
 
 MImplementRTTI(ZWeaponFlashBang,ZWeaponGrenade);
 
@@ -1054,7 +1205,8 @@ void ZWeaponSmokeGrenade::Explosion()
 {
 	ZGetEffectManager()->AddSmokeGrenadeEffect( m_Position );
 	mRotVelocity	*= 10;
-
+		rvector v = m_Position;
+		ZGetGame()->OnExplosionSmokeGrenade(m_uidOwner,v,0.f,400.f,.2f,1.f,m_nTeamID);
 	ZGetSoundEngine()->PlaySound("we_gasgrenade_explosion",m_Position);
 }
 

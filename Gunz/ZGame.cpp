@@ -2912,7 +2912,7 @@ void ZGame::OnPeerShotSp(MUID& uid, float fShotTime, rvector& pos, rvector& dir,
 	MMatchWeaponType nType = pDesc->m_nWeaponType.Ref();
 	//들고 있는 무기가 로켓 타입인데 
 	if(nType == MWT_ROCKET) {
-		if( type != ZC_WEAPON_SP_ROCKET){	//type이 로켓이 아니면 미스 매치....무시한다. 		
+		if( type != ZC_WEAPON_SP_ROCKET || type != ZC_WEAPON_SP_ROCKETGRENADE ){	//type이 로켓이 아니면 미스 매치....무시한다. 		
 			return;
 		}
 	} else if( nType == MWT_MED_KIT || nType == MWT_REPAIR_KIT || nType == MWT_BULLET_KIT || nType == MWT_FOOD ) {
@@ -2988,7 +2988,15 @@ void ZGame::OnPeerShotSp(MUID& uid, float fShotTime, rvector& pos, rvector& dir,
 
 			velocity	= pOwnerCharacter->GetVelocity()+pOwnerCharacter->m_TargetDir*1200.f;
 			velocity.z	+= 300.f;
-			m_WeaponManager.AddGrenade(pos, velocity, pOwnerCharacter);
+			unsigned long int nID = pDesc->m_nID;
+			if(nID == 405216 || nID == 405217) 
+			{
+				m_WeaponManager.AddMolotov(pos, velocity, pOwnerCharacter);
+			}
+			else
+			{
+				m_WeaponManager.AddGrenade(pos, velocity, pOwnerCharacter);
+			}
 			//m_WeaponManager.AddFlashBang( pos - rvector(10,10,10), velocity, pOwnerCharacter );
 			//m_WeaponManager.AddSmokeGrenade( pos + rvector(10,10,10), velocity, pOwnerCharacter );
 		}
@@ -3001,6 +3009,30 @@ void ZGame::OnPeerShotSp(MUID& uid, float fShotTime, rvector& pos, rvector& dir,
 			//if(pSES!=NULL) ZApplication::GetSoundEngine()->PlaySE(pSES, pos.x, pos.y, pos.z ,pOwnerCharacter==m_pMyCharacter);
 
 			m_WeaponManager.AddRocket(pos, dir, pOwnerCharacter);
+			//			m_WeaponManager.AddFireBall(pos,dir,pOwnerCharacter);
+			//			m_WeaponManager.AddIceMissile(pos,dir,pOwnerCharacter);
+			//			m_WeaponManager.AddMagicMissile(pos,dir,pOwnerCharacter);
+
+			//if (pOwnerCharacter->m_UID == g_pGame->m_pMyCharacter->m_UID) {
+			//	ZItem* pWeapon = pOwnerCharacter->GetItems()->GetSelectedWeapon();
+			//	if ( (pWeapon->GetBulletCurrMagazine() <= 0) && (pWeapon->GetBullet()>0) ) {
+			//		ZPostReload();
+			//	}
+			//}
+			if(Z_VIDEO_DYNAMICLIGHT) {
+				ZGetStencilLight()->AddLightSource( pos, 2.0f, 100 );
+			}
+		}
+		break;
+	case ZC_WEAPON_SP_ROCKETGRENADE : 
+		{
+			//static RealSoundEffectSource* pSES = ZApplication::GetSoundEngine()->GetSES("rocket_fire");
+			//static RealSoundEffectSource* pSES = ZApplication::GetSoundEngine()->GetSES("we_rocket_fire");
+			//if(pSES!=NULL) ZApplication::GetSoundEngine()->PlaySE(pSES, pos.x, pos.y, pos.z ,pOwnerCharacter==m_pMyCharacter);
+
+			velocity    = pOwnerCharacter->GetVelocity()+pOwnerCharacter->m_TargetDir*1200.f;
+			velocity.z    += 300.f;
+			m_WeaponManager.AddGrenade(pos, velocity, pOwnerCharacter);
 			//			m_WeaponManager.AddFireBall(pos,dir,pOwnerCharacter);
 			//			m_WeaponManager.AddIceMissile(pos,dir,pOwnerCharacter);
 			//			m_WeaponManager.AddMagicMissile(pos,dir,pOwnerCharacter);
@@ -3549,6 +3581,72 @@ void ZGame::OnExplosionMagic(ZWeaponMagic *pWeapon, MUID uidOwner,rvector pos,fl
 	}
 
 	GetWorld()->GetWaters()->CheckSpearing( pos, pos + rvector(0,0,MAX_WATER_DEEP), 500, 0.8f );
+}
+
+void ZGame::OnExplosionSmokeGrenade(MUID uidOwner,rvector pos,float fDamage,float fRange,float fMinDamage,float fKnockBack,MMatchTeam nTeamID)
+{
+	ZObject* pTarget = NULL;
+
+	float fDist,fDamageRange;
+
+	for(ZObjectManager::iterator itor = m_ObjectManager.begin(); itor != m_ObjectManager.end(); ++itor) 
+	{
+		pTarget = (*itor).second;
+
+		bool bReturnValue = !pTarget || pTarget->IsDie();
+		if( !pTarget || pTarget->IsDie())
+			PROTECT_DEBUG_REGISTER(bReturnValue)
+				continue;
+
+		fDist = Magnitude(pos-(pTarget->GetPosition()+rvector(0,0,80)));
+
+		bReturnValue = fDist >=fRange;
+		if(fDist >= fRange)
+			PROTECT_DEBUG_REGISTER(bReturnValue)
+				continue;
+
+		rvector dir=pos-(pTarget->GetPosition()+rvector(0,0,80));
+		Normalize(dir);
+
+
+		if(GetDistance(pos,pTarget->GetPosition()+rvector(0,0,50),pTarget->GetPosition()+rvector(0,0,130))<50)
+		{
+			fDamageRange = 1.f;
+		}
+		else
+		{
+#define MAX_DMG_RANGE	50.f
+			fDamageRange = 1.f - (1.f-fMinDamage)*( max(fDist-MAX_DMG_RANGE,0) / (fRange-MAX_DMG_RANGE));
+		}
+
+
+		ZActor* pATarget = MDynamicCast(ZActor,pTarget);
+
+		bool bPushSkip = false;
+
+		if(pATarget) 
+		{
+			bPushSkip = pATarget->GetNPCInfo()->bNeverPushed;
+		}
+
+		if(bPushSkip==true)
+		{
+			ZGetSoundEngine()->PlaySound("fx_bullethit_mt_met");
+		}
+
+		ZCharacter* pOwnerCharacter = (ZCharacter*) ZGetGame()->m_CharacterManager.Find( uidOwner );
+		if(pOwnerCharacter) 
+		{
+			CheckCombo(pOwnerCharacter, pTarget,!bPushSkip);
+			CheckStylishAction(pOwnerCharacter);
+		}
+
+		ZGameAction* testapplypoison = NULL;
+		testapplypoison->ApplyPoisonEnchantDamage(pTarget, pOwnerCharacter, 9, 1500);
+	}
+
+	GetWorld()->GetWaters()->CheckSpearing( pos, pos + rvector(0,0,MAX_WATER_DEEP), 500, 0.8f );
+
 }
 
 

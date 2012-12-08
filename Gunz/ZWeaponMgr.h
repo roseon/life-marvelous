@@ -37,6 +37,7 @@ public:
 	}
 	void Clear();
 	void AddGrenade(rvector &pos,rvector &velocity,ZObject* pC);
+	void AddMolotov(rvector &pos,rvector &velocity,ZObject* pC);
 	void AddRocket(rvector &pos,rvector &dir,ZObject* pC);
 	void AddMagic(ZSkill* pSkill, const rvector &pos, const rvector &dir,ZObject* pOwner);
 	void AddFlashBang(rvector &pos,rvector &dir,ZObject* pC);
