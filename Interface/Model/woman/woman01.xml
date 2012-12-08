@@ -269,6 +269,23 @@
 	<AddParts name="parts173" filename="ORIGINALcs.elu"> </AddParts>
 	<AddParts name="parts174" filename="TerroParts.elu"> </AddParts>
 	<AddParts name="parts175" filename="gz_kookinpart.elu"> </AddParts>
+	
+	<!--Dic-->
+	<AddParts name="parts176" filename="woman-parts_trider.elu"> </AddParts>
+	<AddParts name="parts177" filename="woman-parts_raven.elu"> </AddParts>
+	<AddParts name="parts178" filename="woman-parts_fishhead.elu"> </AddParts>
+	<AddParts name="parts179" filename="woman-parts_privatesoldier.elu"> </AddParts>
+	<AddParts name="parts180" filename="woman-parts_flamearmor.elu"> </AddParts>
+	<AddParts name="parts181" filename="woman-parts_eliteuniform.elu"> </AddParts>
+	<AddParts name="parts182" filename="woman-parts_deathbring.elu"> </AddParts>
+	<AddParts name="parts183" filename="woman-parts_DesertWarrior.elu"> </AddParts>
+	<!--Another Update Dic-->
+	<AddParts name="parts184" filename="woman-parts_pierrot.elu"> </AddParts>
+	<AddParts name="parts185" filename="woman-parts_iguardian.elu"> </AddParts>
+	<AddParts name="parts186" filename="woman-parts_gears.elu"> </AddParts>
+	<AddParts name="parts187" filename="woman-parts_executioner.elu"> </AddParts>
+	
+	
 <!--	
 
 	<AddParts name="parts93" filename="woman-parts_nintht.elu"> </AddParts>		

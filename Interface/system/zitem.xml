@@ -5813,5 +5813,501 @@
 		snd_fire="we_revolver_fire" snd_dryfire="357magrevolver_dryfire" desc="AbbyGunZ - Item de Evento"
 		effect_id="4" />
 
+    <!--Diciembre-->
+	<!--Blade-->
+	<ITEM id="405111" name="eSBlade" mesh_name="blade_eSBlade" totalpoint="0" type="melee"
+		res_sex="a" res_level="54" slot="melee" weapon="doublekatana" weight="19" bt_price="0"
+		delay="290" damage="23" range="220" ctrl_ability="0" magazine="0" reloadtime="0" slug_output="false"
+		gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF"
+		image_id="0" bullet_image_id="0" magazine_image_id="0" desc="eSBlade" rent_period="7" />
+	<ITEM id="405112" name="blade_SBlade" mesh_name="blade_SBlade" totalpoint="0" type="melee"
+		res_sex="a" res_level="54" slot="melee" weapon="doublekatana" weight="19" bt_price="0"
+		delay="290" damage="23" range="220" ctrl_ability="0" magazine="0" reloadtime="0" slug_output="false"
+		gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF"
+		image_id="0" bullet_image_id="0" magazine_image_id="0" desc="blade_SBlade" rent_period="7" />
+	<ITEM id="405113" name="blade_vSBlade" mesh_name="blade_vSBlade" totalpoint="0" type="melee"
+		res_sex="a" res_level="54" slot="melee" weapon="doublekatana" weight="19" bt_price="0"
+		delay="290" damage="23" range="220" ctrl_ability="0" magazine="0" reloadtime="0" slug_output="false"
+		gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF"
+		image_id="0" bullet_image_id="0" magazine_image_id="0" desc="blade_vSBlade" rent_period="7" />
+	<ITEM id="405114" name="blade_sharkteeth" mesh_name="blade_sharkteeth" totalpoint="0" type="melee"
+		res_sex="a" res_level="54" slot="melee" weapon="doublekatana" weight="19" bt_price="0"
+		delay="290" damage="23" range="220" ctrl_ability="0" magazine="0" reloadtime="0" slug_output="false"
+		gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF"
+		image_id="0" bullet_image_id="0" magazine_image_id="0" desc="blade_sharkteeth" rent_period="7" />
+	<!--Dagger-->
+	<ITEM id="405115" name="dagger_ESDagger" mesh_name="dagger_ESDagger" totalpoint="0" type="melee"
+		res_sex="a" res_level="54" slot="melee" weapon="dagger" weight="4" bt_price="0"
+		delay="346" damage="15" range="160" ctrl_ability="0" magazine="0" reloadtime="0" slug_output="false"
+		gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF"
+		image_id="0" bullet_image_id="0" magazine_image_id="0" desc="dagger_ESDagger" rent_period="7" />
+	<ITEM id="405116" name="dagger_SDagger" mesh_name="dagger_SDagger" totalpoint="0" type="melee"
+		res_sex="a" res_level="54" slot="melee" weapon="dagger" weight="4" bt_price="0"
+		delay="346" damage="15" range="160" ctrl_ability="0" magazine="0" reloadtime="0" slug_output="false"
+		gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF"
+		image_id="0" bullet_image_id="0" magazine_image_id="0" desc="dagger_SDagger" rent_period="7" />
+	<ITEM id="405117" name="dagger_VDagger" mesh_name="dagger_VDagger" totalpoint="0" type="melee"
+		res_sex="a" res_level="54" slot="melee" weapon="dagger" weight="4" bt_price="0"
+		delay="346" damage="15" range="160" ctrl_ability="0" magazine="0" reloadtime="0" slug_output="false"
+		gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF"
+		image_id="0" bullet_image_id="0" magazine_image_id="0" desc="dagger_VDagger" rent_period="7" />	
+	<!--katana-->
+	<ITEM id="405118" name="katana_vSkatana" mesh_name="katana_vSkatana" totalpoint="0" type="melee"
+		res_sex="a" res_level="24" slot="melee" weapon="katana" weight="14" bt_price="2200"
+		delay="349" damage="22" range="220" ctrl_ability="0" magazine="0" reloadtime="0" slug_output="false"
+		gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF"
+		image_id="0" bullet_image_id="0" magazine_image_id="0" desc="katana_vSkatana" />		
+	<ITEM id="405119" name="katana_umbrella" mesh_name="katana_umbrella" totalpoint="0" type="melee"
+		res_sex="a" res_level="24" slot="melee" weapon="katana" weight="14" bt_price="2200"
+		delay="349" damage="22" range="220" ctrl_ability="0" magazine="0" reloadtime="0" slug_output="false"
+		gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF"
+		image_id="0" bullet_image_id="0" magazine_image_id="0" desc="katana_umbrella" />
+	<ITEM id="405120" name="katana_Skatana" mesh_name="katana_Skatana" totalpoint="0" type="melee"
+		res_sex="a" res_level="24" slot="melee" weapon="katana" weight="14" bt_price="2200"
+		delay="349" damage="22" range="220" ctrl_ability="0" magazine="0" reloadtime="0" slug_output="false"
+		gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF"
+		image_id="0" bullet_image_id="0" magazine_image_id="0" desc="katana_Skatana" />
+	<ITEM id="405121" name="katana_eSkatana" mesh_name="katana_eSkatana" totalpoint="0" type="melee"
+		res_sex="a" res_level="24" slot="melee" weapon="katana" weight="14" bt_price="2200"
+		delay="349" damage="22" range="220" ctrl_ability="0" magazine="0" reloadtime="0" slug_output="false"
+		gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF"
+		image_id="0" bullet_image_id="0" magazine_image_id="0" desc="katana_eSkatana" />
 		
+	<!--smg-->
+	<ITEM id="405122" name="smg_vSSMG" mesh_name="smg_vSSMG" totalpoint="0" type="range"
+		res_sex="a" res_level="57" slot="range" weapon="smgx2" weight="28" bt_price="0"
+		delay="95" damage="26" ctrl_ability="90" magazine="32" maxbullet="160" reloadtime="5"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"
+		lr="0" color="#FFFFFFFF" image_id="2" bullet_image_id="0" magazine_image_id="0" snd_reload="we_smg_reload"
+		snd_fire="we_smg_fire" snd_dryfire="762arifle_dryfire" desc="smg_vSSMG"
+		effect_id="6" rent_period="7" />
+	<ITEM id="405123" name="smg_SSMG" mesh_name="smg_SSMG" totalpoint="0" type="range"
+		res_sex="a" res_level="57" slot="range" weapon="smgx2" weight="28" bt_price="0"
+		delay="95" damage="26" ctrl_ability="90" magazine="32" maxbullet="160" reloadtime="5"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"
+		lr="0" color="#FFFFFFFF" image_id="2" bullet_image_id="0" magazine_image_id="0" snd_reload="we_smg_reload"
+		snd_fire="we_smg_fire" snd_dryfire="762arifle_dryfire" desc="smg_SSMG"
+		effect_id="6" rent_period="7" />
+	<ITEM id="405124" name="smg_eSSMG" mesh_name="smg_eSSMG" totalpoint="0" type="range"
+		res_sex="a" res_level="57" slot="range" weapon="smgx2" weight="28" bt_price="0"
+		delay="95" damage="26" ctrl_ability="90" magazine="32" maxbullet="160" reloadtime="5"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"
+		lr="0" color="#FFFFFFFF" image_id="2" bullet_image_id="0" magazine_image_id="0" snd_reload="we_smg_reload"
+		snd_fire="we_smg_fire" snd_dryfire="762arifle_dryfire" desc="smg_eSSMG"
+		effect_id="6" rent_period="7" />
+	<!--pistol-->
+	
+	<ITEM id="405125" name="pistol_VSRevolver" mesh_name="pistol_VSRevolver" totalpoint="0" type="range"
+		res_sex="a" res_level="50" slot="range" weapon="pistolx2" weight="20" bt_price="0"
+		delay="200" damage="32" ctrl_ability="48" magazine="14" maxbullet="84" reloadtime="4"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"
+		lr="0" color="#FFFFFFFF" image_id="1" bullet_image_id="0" magazine_image_id="0" snd_reload="we_pistol_reload"
+		snd_fire="we_pistol_fire" snd_dryfire="357magrevolver_dryfire" desc="pistol_VSRevolver"
+		effect_id="4" rent_period="7" />
+		
+	<ITEM id="405126" name="pistol_vSPistol" mesh_name="pistol_vSPistol" totalpoint="0" type="range"
+		res_sex="a" res_level="50" slot="range" weapon="pistolx2" weight="20" bt_price="0"
+		delay="200" damage="32" ctrl_ability="48" magazine="14" maxbullet="84" reloadtime="4"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"
+		lr="0" color="#FFFFFFFF" image_id="1" bullet_image_id="0" magazine_image_id="0" snd_reload="we_pistol_reload"
+		snd_fire="we_pistol_fire" snd_dryfire="357magrevolver_dryfire" desc="pistol_vSPistol"
+		effect_id="4" rent_period="7" />
+		
+	<ITEM id="405127" name="pistol_SRevolver" mesh_name="pistol_SRevolver" totalpoint="0" type="range"
+		res_sex="a" res_level="50" slot="range" weapon="pistolx2" weight="20" bt_price="0"
+		delay="200" damage="32" ctrl_ability="48" magazine="14" maxbullet="84" reloadtime="4"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"
+		lr="0" color="#FFFFFFFF" image_id="1" bullet_image_id="0" magazine_image_id="0" snd_reload="we_pistol_reload"
+		snd_fire="we_pistol_fire" snd_dryfire="357magrevolver_dryfire" desc="pistol_SRevolver"
+		effect_id="4" rent_period="7" />
+		
+	<ITEM id="405128" name="pistol_SPistol" mesh_name="pistol_SPistol" totalpoint="0" type="range"
+		res_sex="a" res_level="50" slot="range" weapon="pistolx2" weight="20" bt_price="0"
+		delay="200" damage="32" ctrl_ability="48" magazine="14" maxbullet="84" reloadtime="4"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"
+		lr="0" color="#FFFFFFFF" image_id="1" bullet_image_id="0" magazine_image_id="0" snd_reload="we_pistol_reload"
+		snd_fire="we_pistol_fire" snd_dryfire="357magrevolver_dryfire" desc="pistol_SPistol"
+		effect_id="4" rent_period="7" />
+		
+	<ITEM id="405129" name="pistol_ESRevolver" mesh_name="pistol_ESRevolver" totalpoint="0" type="range"
+		res_sex="a" res_level="50" slot="range" weapon="pistolx2" weight="20" bt_price="0"
+		delay="200" damage="32" ctrl_ability="48" magazine="14" maxbullet="84" reloadtime="4"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"
+		lr="0" color="#FFFFFFFF" image_id="1" bullet_image_id="0" magazine_image_id="0" snd_reload="we_pistol_reload"
+		snd_fire="we_pistol_fire" snd_dryfire="357magrevolver_dryfire" desc="pistol_ESRevolver"
+		effect_id="4" rent_period="7" />
+		
+	<ITEM id="405130" name="pistol_eSPistol" mesh_name="pistol_eSPistol" totalpoint="0" type="range"
+		res_sex="a" res_level="50" slot="range" weapon="pistolx2" weight="20" bt_price="0"
+		delay="200" damage="32" ctrl_ability="48" magazine="14" maxbullet="84" reloadtime="4"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"
+		lr="0" color="#FFFFFFFF" image_id="1" bullet_image_id="0" magazine_image_id="0" snd_reload="we_pistol_reload"
+		snd_fire="we_pistol_fire" snd_dryfire="357magrevolver_dryfire" desc="pistol_eSPistol"
+		effect_id="4" rent_period="7" />
+	<!--rifle-->
+	<ITEM id="405131" name="rifle_VSRifle" mesh_name="rifle_VSRifle" totalpoint="0" type="range"
+		res_sex="a" res_level="25" slot="range" weapon="rifle" weight="18" bt_price="0"
+		delay="80" damage="25" ctrl_ability="25" magazine="45" maxbullet="300" reloadtime="6"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0" iscashitem="true"
+		lr="0" color="#FFFFFFFF" image_id="2" bullet_image_id="0" magazine_image_id="0" snd_reload="we_rifle_reload"
+		snd_fire="we_rifle_fire" snd_dryfire="762arifle_dryfire" desc="rifle_VSRifle"
+		effect_id="8" />
+	
+	<ITEM id="405132" name="rifle_SRifle" mesh_name="rifle_SRifle" totalpoint="0" type="range"
+		res_sex="a" res_level="25" slot="range" weapon="rifle" weight="18" bt_price="0"
+		delay="80" damage="25" ctrl_ability="25" magazine="45" maxbullet="300" reloadtime="6"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0" iscashitem="true"
+		lr="0" color="#FFFFFFFF" image_id="2" bullet_image_id="0" magazine_image_id="0" snd_reload="we_rifle_reload"
+		snd_fire="we_rifle_fire" snd_dryfire="762arifle_dryfire" desc="rifle_SRifle"
+		effect_id="8" />	
+		
+	<ITEM id="405133" name="rifle_ESRifle" mesh_name="rifle_ESRifle" totalpoint="0" type="range"
+		res_sex="a" res_level="25" slot="range" weapon="rifle" weight="18" bt_price="0"
+		delay="80" damage="25" ctrl_ability="25" magazine="45" maxbullet="300" reloadtime="6"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0" iscashitem="true"
+		lr="0" color="#FFFFFFFF" image_id="2" bullet_image_id="0" magazine_image_id="0" snd_reload="we_rifle_reload"
+		snd_fire="we_rifle_fire" snd_dryfire="762arifle_dryfire" desc="rifle_ESRifle"
+		effect_id="8" />
+		
+	<!--rocket launcher grenade-->
+	<ITEM id="405134" name="rocket launcher grenade" mesh_name="rlgVSLauncher" totalpoint="0" iscashitem="false"     
+		type="range" res_sex="a" res_level="40" slot="range" weapon="rocket" weight="28" bt_price="0"     
+		delay="1400" damage="65" ctrl_ability="50" magazine="4" maxbullet="12" reloadtime="3"     
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"     
+		lr="0" color="#FFFFFFFF" image_id="2" bullet_image_id="0" magazine_image_id="0"     
+		snd_reload="we_rocket_reload" snd_fire="we_rocket_fire" snd_dryfire="762arifle_dryfire" desc="rocket launcher grenade"      
+		limitspeed="90" limitwall="1" />
+		
+	<ITEM id="405135" name="rocket launcher grenade 2" mesh_name="rlgSLauncher" totalpoint="0" iscashitem="false"     
+		type="range" res_sex="a" res_level="40" slot="range" weapon="rocket" weight="28" bt_price="0"     
+		delay="1400" damage="65" ctrl_ability="50" magazine="4" maxbullet="12" reloadtime="3"     
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"     
+		lr="0" color="#FFFFFFFF" image_id="2" bullet_image_id="0" magazine_image_id="0"     
+		snd_reload="we_rocket_reload" snd_fire="we_rocket_fire" snd_dryfire="762arifle_dryfire" desc="rocket launcher grenade 2"      
+		limitspeed="90" limitwall="1" />
+		
+	<ITEM id="405136" name="rocket launcher grenade 3" mesh_name="rlgESLauncher" totalpoint="0" iscashitem="false"     
+		type="range" res_sex="a" res_level="40" slot="range" weapon="rocket" weight="28" bt_price="0"     
+		delay="1400" damage="65" ctrl_ability="50" magazine="4" maxbullet="12" reloadtime="3"     
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"     
+		lr="0" color="#FFFFFFFF" image_id="2" bullet_image_id="0" magazine_image_id="0"     
+		snd_reload="we_rocket_reload" snd_fire="we_rocket_fire" snd_dryfire="762arifle_dryfire" desc="rocket launcher grenade 3"      
+		limitspeed="90" limitwall="1" />
+
+	<ITEM id="405137" name="rocket launcher grenade 4" mesh_name="rlgadamlauncher" totalpoint="0" iscashitem="false"     
+		type="range" res_sex="a" res_level="40" slot="range" weapon="rocket" weight="28" bt_price="0"     
+		delay="1400" damage="65" ctrl_ability="50" magazine="4" maxbullet="12" reloadtime="3"     
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"     
+		lr="0" color="#FFFFFFFF" image_id="2" bullet_image_id="0" magazine_image_id="0"     
+		snd_reload="we_rocket_reload" snd_fire="we_rocket_fire" snd_dryfire="762arifle_dryfire" desc="rocket launcher grenade 4"      
+		limitspeed="90" limitwall="1" />
+		
+	<ITEM id="405138" name="rocket launcher grenade 5" mesh_name="rl_ketlauncher_doomslinger" totalpoint="0" iscashitem="false"     
+		type="range" res_sex="a" res_level="40" slot="range" weapon="rocket" weight="28" bt_price="0"     
+		delay="1400" damage="65" ctrl_ability="50" magazine="4" maxbullet="12" reloadtime="3"     
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"     
+		lr="0" color="#FFFFFFFF" image_id="2" bullet_image_id="0" magazine_image_id="0"     
+		snd_reload="we_rocket_reload" snd_fire="we_rocket_fire" snd_dryfire="762arifle_dryfire" desc="rocket launcher grenade 5"      
+		limitspeed="90" limitwall="1" />
+		
+	<!--shotgun-->	
+	<ITEM id="405139" name="shotgun_vSShotgun" mesh_name="shotgun_vSShotgun" totalpoint="0" type="range"
+		res_sex="a" res_level="60" slot="range" weapon="shotgun" weight="18" bt_price="0"
+		delay="1000" damage="9" ctrl_ability="60" magazine="5" maxbullet="25" reloadtime="5"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"
+		lr="0" color="#FFFFFFFF" image_id="2" bullet_image_id="0" magazine_image_id="0" snd_reload="we_shotgunpa_reload"
+		snd_fire="we_shotgunpa_fire" snd_dryfire="762arifle_dryfire" desc="shotgun_vSShotgun"
+		effect_id="7" rent_period="7" />
+	<ITEM id="405140" name="shotgun_SShotgun" mesh_name="shotgun_SShotgun" totalpoint="0" type="range"
+		res_sex="a" res_level="60" slot="range" weapon="shotgun" weight="18" bt_price="0"
+		delay="1000" damage="9" ctrl_ability="60" magazine="5" maxbullet="25" reloadtime="5"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"
+		lr="0" color="#FFFFFFFF" image_id="2" bullet_image_id="0" magazine_image_id="0" snd_reload="we_shotgunpa_reload"
+		snd_fire="we_shotgunpa_fire" snd_dryfire="762arifle_dryfire" desc="shotgun_SShotgun"
+		effect_id="7" rent_period="7" />
+	<ITEM id="405141" name="shotgun_hydra" mesh_name="shotgun_hydra" totalpoint="0" type="range"
+		res_sex="a" res_level="60" slot="range" weapon="shotgun" weight="18" bt_price="0"
+		delay="1000" damage="9" ctrl_ability="60" magazine="5" maxbullet="25" reloadtime="5"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"
+		lr="0" color="#FFFFFFFF" image_id="2" bullet_image_id="0" magazine_image_id="0" snd_reload="we_shotgunpa_reload"
+		snd_fire="we_shotgunpa_fire" snd_dryfire="762arifle_dryfire" desc="shotgun_hydra"
+		effect_id="7" rent_period="7" />
+	<ITEM id="405142" name="shotgun_eSShotgun" mesh_name="shotgun_eSShotgun" totalpoint="0" type="range"
+		res_sex="a" res_level="60" slot="range" weapon="shotgun" weight="18" bt_price="0"
+		delay="1000" damage="9" ctrl_ability="60" magazine="5" maxbullet="25" reloadtime="5"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"
+		lr="0" color="#FFFFFFFF" image_id="2" bullet_image_id="0" magazine_image_id="0" snd_reload="we_shotgunpa_reload"
+		snd_fire="we_shotgunpa_fire" snd_dryfire="762arifle_dryfire" desc="shotgun_eSShotgun"
+		effect_id="7" rent_period="7" />
+	<ITEM id="405143" name="shotgun_Finalizer" mesh_name="shotgun_Finalizer" totalpoint="0" type="range"
+		res_sex="a" res_level="60" slot="range" weapon="shotgun" weight="18" bt_price="0"
+		delay="1000" damage="9" ctrl_ability="60" magazine="5" maxbullet="25" reloadtime="5"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"
+		lr="0" color="#FFFFFFFF" image_id="2" bullet_image_id="0" magazine_image_id="0" snd_reload="we_shotgunpa_reload"
+		snd_fire="we_shotgunpa_fire" snd_dryfire="762arifle_dryfire" desc="shotgun_Finalizer"
+		effect_id="7" rent_period="7" />
+	<ITEM id="405144" name="shotgun_destroyer" mesh_name="shotgun_destroyer" totalpoint="0" type="range"
+		res_sex="a" res_level="60" slot="range" weapon="shotgun" weight="18" bt_price="0"
+		delay="1000" damage="9" ctrl_ability="60" magazine="5" maxbullet="25" reloadtime="5"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"
+		lr="0" color="#FFFFFFFF" image_id="2" bullet_image_id="0" magazine_image_id="0" snd_reload="we_shotgunpa_reload"
+		snd_fire="we_shotgunpa_fire" snd_dryfire="762arifle_dryfire" desc="shotgun_destroyer"
+		effect_id="7" rent_period="7" />
+		
+	<!--machinegun-->
+	<ITEM id="405145" name="machinegun_vSMachinegun" mesh_name="machinegun_vSMachinegun" totalpoint="0" type="range"
+		res_sex="a" res_level="55" slot="range" weapon="machinegun" weight="28" bt_price="0"
+		delay="100" damage="19" ctrl_ability="70" magazine="120" maxbullet="240" reloadtime="10"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"
+		lr="0" limitspeed="90" limitwall="1" color="#FFFFFFFF" image_id="2" bullet_image_id="0"
+		magazine_image_id="0" snd_reload="we_machinegun_reload" snd_fire="we_machinegun_fire"
+		snd_dryfire="762arifle_dryfire" desc="machinegun_vSMachinegun" effect_id="9" rent_period="7" />
+		
+	<ITEM id="405146" name="machinegun_SMachinegun" mesh_name="machinegun_SMachinegun" totalpoint="0" type="range"
+		res_sex="a" res_level="55" slot="range" weapon="machinegun" weight="28" bt_price="0"
+		delay="100" damage="19" ctrl_ability="70" magazine="120" maxbullet="240" reloadtime="10"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"
+		lr="0" limitspeed="90" limitwall="1" color="#FFFFFFFF" image_id="2" bullet_image_id="0"
+		magazine_image_id="0" snd_reload="we_machinegun_reload" snd_fire="we_machinegun_fire"
+		snd_dryfire="762arifle_dryfire" desc="machinegun_SMachinegun" effect_id="9" rent_period="7" />
+		
+	<ITEM id="405147" name="machinegun_eSMachinegun" mesh_name="machinegun_eSMachinegun" totalpoint="0" type="range"
+		res_sex="a" res_level="55" slot="range" weapon="machinegun" weight="28" bt_price="0"
+		delay="100" damage="19" ctrl_ability="70" magazine="120" maxbullet="240" reloadtime="10"
+		slug_output="true" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"
+		lr="0" limitspeed="90" limitwall="1" color="#FFFFFFFF" image_id="2" bullet_image_id="0"
+		magazine_image_id="0" snd_reload="we_machinegun_reload" snd_fire="we_machinegun_fire"
+		snd_dryfire="762arifle_dryfire" desc="machinegun_eSMachinegun" effect_id="9" rent_period="7" />
+		
+	<!--woman-->
+	<ITEM id="405148" name="Trider head" mesh_name="eq_head_trider" totalpoint="0" 
+		type="equip" iscashitem="false" res_sex="f" res_level="25" slot="head" weight="4" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="Trider head" />	
+	<ITEM id="405149" name="Trider chest" mesh_name="eq_chest_trider" totalpoint="0" iscashitem="false" 
+		type="equip" res_sex="f" res_level="25" slot="chest" weight="16" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="Trider chest" />
+	<ITEM id="405150" name="Trider legs" mesh_name="eq_legs_trider" totalpoint="0" type="equip" 
+		res_sex="f" res_level="25" slot="legs" weight="15" bt_price="0" hp="4" ap="22" iscashitem="false" 
+		maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="Trider legs" />
+	<ITEM id="405151" name="Trider gloves" mesh_name="eq_hands_trider" totalpoint="0" iscashitem="false" 
+		type="equip" res_sex="f" res_level="25" slot="hands" weight="5" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="Trider gloves" />
+	<ITEM id="405152" name="Trider shoes" mesh_name="eq_feet_trider" totalpoint="0" type="equip" 
+		res_sex="f" res_level="25" slot="feet" weight="5" bt_price="0" hp="4" ap="22" iscashitem="false" 
+		maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="Trider shoes" />
+		
+	<ITEM id="405153" name="raven set" type="avatar" slot="avatar" avatar_head="eq_head_raven"
+	  avatar_chest="eq_chest_raven" avatar_hand="eq_hands_raven" avatar_legs="eq_legs_raven" avatar_feet="eq_feet_raven"
+	  res_sex="f" res_level="0" bt_price="20" iscashitem="false" weight="0" desc="raven set" />
+		
+	<ITEM id="405158" name="fishhead" mesh_name="eq_head_fishhead" totalpoint="0" 
+		type="equip" iscashitem="false" res_sex="f" res_level="25" slot="head" weight="4" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="fishhead" />	
+		
+	<ITEM id="405159" name="privatesoldier head" mesh_name="eq_head_privatesoldier" totalpoint="0" 
+		type="equip" iscashitem="false" res_sex="f" res_level="25" slot="head" weight="4" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="privatesoldier head" />	
+	<ITEM id="405160" name="privatesoldier chest" mesh_name="eq_chest_privatesoldier" totalpoint="0" iscashitem="false" 
+		type="equip" res_sex="f" res_level="25" slot="chest" weight="16" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="privatesoldier chest" />
+	<ITEM id="405161" name="privatesoldier legs" mesh_name="eq_legs_privatesoldier" totalpoint="0" type="equip" 
+		res_sex="f" res_level="25" slot="legs" weight="15" bt_price="0" hp="4" ap="22" iscashitem="false" 
+		maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="privatesoldier legs" />
+	<ITEM id="405162" name="privatesoldier gloves" mesh_name="eq_hands_privatesoldier" totalpoint="0" iscashitem="false" 
+		type="equip" res_sex="f" res_level="25" slot="hands" weight="5" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="privatesoldier gloves" />
+	<ITEM id="405163" name="privatesoldier shoes" mesh_name="eq_feet_privatesoldier" totalpoint="0" type="equip" 
+		res_sex="f" res_level="25" slot="feet" weight="5" bt_price="0" hp="4" ap="22" iscashitem="false" 
+		maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="privatesoldier shoes" />
+		
+	<ITEM id="405164" name="flamearmor set" type="avatar" slot="avatar" avatar_head="eq_head_flamearmor"
+	  avatar_chest="eq_chest_flamearmor" avatar_hand="eq_hands_flamearmor" avatar_legs="eq_legs_flamearmor" avatar_feet="eq_feet_flamearmor"
+	  res_sex="f" res_level="0" bt_price="20" iscashitem="false" weight="0" desc="flamearmor set" />
+
+	<ITEM id="405165" name="eliteuniform set" type="avatar" slot="avatar" avatar_head="eq_head_eliteuniform"
+	  avatar_chest="eq_chest_eliteuniform" avatar_hand="eq_hands_eliteuniform" avatar_legs="eq_legs_eliteuniform" avatar_feet="eq_feet_eliteuniform"
+	  res_sex="f" res_level="0" bt_price="20" iscashitem="false" weight="0" desc="eliteuniform set" />
+	  
+	<ITEM id="405166" name="deathbring head" mesh_name="eq_head_deathbring" totalpoint="0" 
+		type="equip" iscashitem="false" res_sex="f" res_level="25" slot="head" weight="4" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="deathbring head" />	
+	<ITEM id="405167" name="deathbring chest" mesh_name="eq_chest_deathbring" totalpoint="0" iscashitem="false" 
+		type="equip" res_sex="f" res_level="25" slot="chest" weight="16" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="deathbring chest" />
+	<ITEM id="405168" name="deathbring legs" mesh_name="eq_legs_deathbring" totalpoint="0" type="equip" 
+		res_sex="f" res_level="25" slot="legs" weight="15" bt_price="0" hp="4" ap="22" iscashitem="false" 
+		maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="deathbring legs" />
+	<ITEM id="405169" name="deathbring gloves" mesh_name="eq_hands_deathbring" totalpoint="0" iscashitem="false" 
+		type="equip" res_sex="f" res_level="25" slot="hands" weight="5" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="deathbring gloves" />
+	<ITEM id="405170" name="deathbring shoes" mesh_name="eq_feet_deathbring" totalpoint="0" type="equip" 
+		res_sex="f" res_level="25" slot="feet" weight="5" bt_price="0" hp="4" ap="22" iscashitem="false" 
+		maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="deathbring shoes" />
+		
+	<ITEM id="405171" name="DesertWarrior set" type="avatar" slot="avatar" avatar_head="eq_head_DesertWarrior"
+	  avatar_chest="eq_chest_DesertWarrior" avatar_hand="eq_hands_DesertWarrior" avatar_legs="eq_legs_DesertWarrior" avatar_feet="eq_feet_DesertWarrior"
+	  res_sex="f" res_level="0" bt_price="20" iscashitem="false" weight="0" desc="DesertWarrior set" />
+	  
+	<ITEM id="405172" name="pierrot" mesh_name="eq_head_pierrot" totalpoint="0" 
+		type="equip" iscashitem="false" res_sex="f" res_level="25" slot="head" weight="4" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="pierrot" />	
+		
+	<ITEM id="405173" name="iguardian head" mesh_name="eq_head_iguardian" totalpoint="0" 
+		type="equip" iscashitem="false" res_sex="f" res_level="25" slot="head" weight="4" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="iguardian head" />	
+	<ITEM id="405174" name="iguardian chest" mesh_name="eq_chest_iguardian" totalpoint="0" iscashitem="false" 
+		type="equip" res_sex="f" res_level="25" slot="chest" weight="16" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="iguardian chest" />
+	<ITEM id="405175" name="iguardian legs" mesh_name="eq_legs_iguardian" totalpoint="0" type="equip" 
+		res_sex="f" res_level="25" slot="legs" weight="15" bt_price="0" hp="4" ap="22" iscashitem="false" 
+		maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="iguardian legs" />
+	<ITEM id="405176" name="iguardian gloves" mesh_name="eq_hands_iguardian" totalpoint="0" iscashitem="false" 
+		type="equip" res_sex="f" res_level="25" slot="hands" weight="5" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="iguardian gloves" />
+	<ITEM id="405177" name="iguardian shoes" mesh_name="eq_feet_iguardian" totalpoint="0" type="equip" 
+		res_sex="f" res_level="25" slot="feet" weight="5" bt_price="0" hp="4" ap="22" iscashitem="false" 
+		maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="iguardian shoes" />
+	
+	<ITEM id="405178" name="gears set" type="avatar" slot="avatar" avatar_head="eq_head_gears"
+	  avatar_chest="eq_chest_gears" avatar_hand="eq_hands_gears" avatar_legs="eq_legs_gears" avatar_feet="eq_feet_gears"
+	  res_sex="f" res_level="0" bt_price="20" iscashitem="false" weight="0" desc="gears set" />
+	  
+	<ITEM id="405179" name="executioner head" mesh_name="eq_head_executioner" totalpoint="0" 
+		type="equip" iscashitem="false" res_sex="f" res_level="25" slot="head" weight="4" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="executioner head" />	
+	<ITEM id="405180" name="executioner chest" mesh_name="eq_chest_executioner" totalpoint="0" iscashitem="false" 
+		type="equip" res_sex="f" res_level="25" slot="chest" weight="16" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="executioner chest" />
+	<ITEM id="405181" name="executioner legs" mesh_name="eq_legs_executioner" totalpoint="0" type="equip" 
+		res_sex="f" res_level="25" slot="legs" weight="15" bt_price="0" hp="4" ap="22" iscashitem="false" 
+		maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="executioner legs" />
+	<ITEM id="405182" name="executioner gloves" mesh_name="eq_hands_executioner" totalpoint="0" iscashitem="false" 
+		type="equip" res_sex="f" res_level="25" slot="hands" weight="5" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="executioner gloves" />
+	<ITEM id="405183" name="executioner shoes" mesh_name="eq_feet_executioner" totalpoint="0" type="equip" 
+		res_sex="f" res_level="25" slot="feet" weight="5" bt_price="0" hp="4" ap="22" iscashitem="false" 
+		maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="executioner shoes" />
+	
+	<!--man-->
+	<ITEM id="405184" name="Trider head" mesh_name="eq_head_trider" totalpoint="0" 
+		type="equip" iscashitem="false" res_sex="m" res_level="25" slot="head" weight="4" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="Trider head" />	
+	<ITEM id="405185" name="Trider chest" mesh_name="eq_chest_trider" totalpoint="0" iscashitem="false" 
+		type="equip" res_sex="m" res_level="25" slot="chest" weight="16" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="Trider chest" />
+	<ITEM id="405186" name="Trider legs" mesh_name="eq_legs_trider" totalpoint="0" type="equip" 
+		res_sex="m" res_level="25" slot="legs" weight="15" bt_price="0" hp="4" ap="22" iscashitem="false" 
+		maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="Trider legs" />
+	<ITEM id="405187" name="Trider gloves" mesh_name="eq_hands_trider" totalpoint="0" iscashitem="false" 
+		type="equip" res_sex="m" res_level="25" slot="hands" weight="5" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="Trider gloves" />
+	<ITEM id="405188" name="Trider shoes" mesh_name="eq_feet_trider" totalpoint="0" type="equip" 
+		res_sex="m" res_level="25" slot="feet" weight="5" bt_price="0" hp="4" ap="22" iscashitem="false" 
+		maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="Trider shoes" />
+		
+	<ITEM id="405189" name="raven set" type="avatar" slot="avatar" avatar_head="eq_head_raven"
+	  avatar_chest="eq_chest_raven" avatar_hand="eq_hands_raven" avatar_legs="eq_legs_raven" avatar_feet="eq_feet_raven"
+	  res_sex="m" res_level="0" bt_price="20" iscashitem="false" weight="0" desc="raven set" />
+		
+	<ITEM id="405190" name="fishhead" mesh_name="eq_head_fishhead" totalpoint="0" 
+		type="equip" iscashitem="false" res_sex="m" res_level="25" slot="head" weight="4" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="fishhead" />	
+		
+	<ITEM id="405191" name="privatesoldier head" mesh_name="eq_head_privatesoldier" totalpoint="0" 
+		type="equip" iscashitem="false" res_sex="m" res_level="25" slot="head" weight="4" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="privatesoldier head" />	
+	<ITEM id="405192" name="privatesoldier chest" mesh_name="eq_chest_privatesoldier" totalpoint="0" iscashitem="false" 
+		type="equip" res_sex="m" res_level="25" slot="chest" weight="16" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="privatesoldier chest" />
+	<ITEM id="405193" name="privatesoldier legs" mesh_name="eq_legs_privatesoldier" totalpoint="0" type="equip" 
+		res_sex="m" res_level="25" slot="legs" weight="15" bt_price="0" hp="4" ap="22" iscashitem="false" 
+		maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="privatesoldier legs" />
+	<ITEM id="405194" name="privatesoldier gloves" mesh_name="eq_hands_privatesoldier" totalpoint="0" iscashitem="false" 
+		type="equip" res_sex="m" res_level="25" slot="hands" weight="5" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="privatesoldier gloves" />
+	<ITEM id="405195" name="privatesoldier shoes" mesh_name="eq_feet_privatesoldier" totalpoint="0" type="equip" 
+		res_sex="m" res_level="25" slot="feet" weight="5" bt_price="0" hp="4" ap="22" iscashitem="false" 
+		maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="privatesoldier shoes" />
+		
+	<ITEM id="405196" name="flamearmor set" type="avatar" slot="avatar" avatar_head="eq_head_flamearmor"
+	  avatar_chest="eq_chest_flamearmor" avatar_hand="eq_hands_flamearmor" avatar_legs="eq_legs_flamearmor" avatar_feet="eq_feet_flamearmor"
+	  res_sex="m" res_level="0" bt_price="20" iscashitem="false" weight="0" desc="flamearmor set" />
+
+	<ITEM id="405197" name="eliteuniform set" type="avatar" slot="avatar" avatar_head="eq_head_eliteuniform"
+	  avatar_chest="eq_chest_eliteuniform" avatar_hand="eq_hands_eliteuniform" avatar_legs="eq_legs_eliteuniform" avatar_feet="eq_feet_eliteuniform"
+	  res_sex="m" res_level="0" bt_price="20" iscashitem="false" weight="0" desc="eliteuniform set" />
+	  
+	<ITEM id="405198" name="deathbring head" mesh_name="eq_head_deathbring" totalpoint="0" 
+		type="equip" iscashitem="false" res_sex="m" res_level="25" slot="head" weight="4" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="deathbring head" />	
+	<ITEM id="405199" name="deathbring chest" mesh_name="eq_chest_deathbring" totalpoint="0" iscashitem="false" 
+		type="equip" res_sex="m" res_level="25" slot="chest" weight="16" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="deathbring chest" />
+	<ITEM id="405200" name="deathbring legs" mesh_name="eq_legs_deathbring" totalpoint="0" type="equip" 
+		res_sex="m" res_level="25" slot="legs" weight="15" bt_price="0" hp="4" ap="22" iscashitem="false" 
+		maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="deathbring legs" />
+	<ITEM id="405201" name="deathbring gloves" mesh_name="eq_hands_deathbring" totalpoint="0" iscashitem="false" 
+		type="equip" res_sex="m" res_level="25" slot="hands" weight="5" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="deathbring gloves" />
+	<ITEM id="405202" name="deathbring shoes" mesh_name="eq_feet_deathbring" totalpoint="0" type="equip" 
+		res_sex="m" res_level="25" slot="feet" weight="5" bt_price="0" hp="4" ap="22" iscashitem="false" 
+		maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="deathbring shoes" />
+		
+	<ITEM id="405203" name="DesertWarrior set" type="avatar" slot="avatar" avatar_head="eq_head_DesertWarrior"
+	  avatar_chest="eq_chest_DesertWarrior" avatar_hand="eq_hands_DesertWarrior" avatar_legs="eq_legs_DesertWarrior" avatar_feet="eq_feet_DesertWarrior"
+	  res_sex="m" res_level="0" bt_price="20" iscashitem="false" weight="0" desc="DesertWarrior set" />
+	  
+	<ITEM id="405204" name="pierrot" mesh_name="eq_head_pierrot" totalpoint="0" 
+		type="equip" iscashitem="false" res_sex="m" res_level="25" slot="head" weight="4" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="pierrot" />	
+		
+	<ITEM id="405205" name="iguardian head" mesh_name="eq_head_iguardian" totalpoint="0" 
+		type="equip" iscashitem="false" res_sex="m" res_level="25" slot="head" weight="4" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="iguardian head" />	
+	<ITEM id="405206" name="iguardian chest" mesh_name="eq_chest_iguardian" totalpoint="0" iscashitem="false" 
+		type="equip" res_sex="m" res_level="25" slot="chest" weight="16" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="iguardian chest" />
+	<ITEM id="405207" name="iguardian legs" mesh_name="eq_legs_iguardian" totalpoint="0" type="equip" 
+		res_sex="m" res_level="25" slot="legs" weight="15" bt_price="0" hp="4" ap="22" iscashitem="false" 
+		maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="iguardian legs" />
+	<ITEM id="405208" name="iguardian gloves" mesh_name="eq_hands_iguardian" totalpoint="0" iscashitem="false" 
+		type="equip" res_sex="m" res_level="25" slot="hands" weight="5" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="iguardian gloves" />
+	<ITEM id="405209" name="iguardian shoes" mesh_name="eq_feet_iguardian" totalpoint="0" type="equip" 
+		res_sex="m" res_level="25" slot="feet" weight="5" bt_price="0" hp="4" ap="22" iscashitem="false" 
+		maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="iguardian shoes" />
+	
+	<ITEM id="405210" name="gears set" type="avatar" slot="avatar" avatar_head="eq_head_gears"
+	  avatar_chest="eq_chest_gears" avatar_hand="eq_hands_gears" avatar_legs="eq_legs_gears" avatar_feet="eq_feet_gears"
+	  res_sex="m" res_level="0" bt_price="20" iscashitem="false" weight="0" desc="gears set" />
+	  
+	<ITEM id="405211" name="executioner head" mesh_name="eq_head_executioner" totalpoint="0" 
+		type="equip" iscashitem="false" res_sex="m" res_level="25" slot="head" weight="4" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="executioner head" />	
+	<ITEM id="405212" name="executioner chest" mesh_name="eq_chest_executioner" totalpoint="0" iscashitem="false" 
+		type="equip" res_sex="m" res_level="25" slot="chest" weight="16" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="executioner chest" />
+	<ITEM id="405213" name="executioner legs" mesh_name="eq_legs_executioner" totalpoint="0" type="equip" 
+		res_sex="m" res_level="25" slot="legs" weight="15" bt_price="0" hp="4" ap="22" iscashitem="false" 
+		maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="executioner legs" />
+	<ITEM id="405214" name="executioner gloves" mesh_name="eq_hands_executioner" totalpoint="0" iscashitem="false" 
+		type="equip" res_sex="m" res_level="25" slot="hands" weight="5" bt_price="0" 
+		hp="4" ap="22" maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="executioner gloves" />
+	<ITEM id="405215" name="executioner shoes" mesh_name="eq_feet_executioner" totalpoint="0" type="equip" 
+		res_sex="m" res_level="25" slot="feet" weight="5" bt_price="0" hp="4" ap="22" iscashitem="false" 
+		maxwt="0" sf="0" fr="0" cr="0" pr="0" lr="0" color="#FFFFFFFF" desc="executioner shoes" />
+	<!--molotov grenade -->
+	<ITEM id="405216" name="Molotov Grenade" mesh_name="grenade01" totalpoint="0" type="custom"
+		res_sex="a" res_level="44" slot="custom" weapon="frag" weight="6" bt_price="0"
+		delay="1500" damage="100" ctrl_ability="20" magazine="10" maxbullet="10" reloadtime="10"
+		slug_output="false" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"
+		lr="0" color="#FFFFFFFF" image_id="3" bullet_image_id="0" magazine_image_id="0" snd_fire="we_grenade_fire"
+		desc="Molotov Grenade" />
+	<ITEM id="405217" name="Molotov Grenade 2" mesh_name="grenade01" totalpoint="0" type="custom"
+		res_sex="a" res_level="44" slot="custom" weapon="frag" weight="6" bt_price="0"
+		delay="1500" damage="100" ctrl_ability="20" magazine="10" maxbullet="10" reloadtime="10"
+		slug_output="false" gadget_id="0" hp="0" ap="0" maxwt="0" sf="0" fr="0" cr="0" pr="0"
+		lr="0" color="#FFFFFFFF" image_id="3" bullet_image_id="0" magazine_image_id="0" snd_fire="we_grenade_fire"
+		desc="Molotov Grenade 2" />
+	
  </XML>

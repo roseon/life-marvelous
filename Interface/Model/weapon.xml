@@ -1273,5 +1273,135 @@
 	<AddWeaponElu name="bohemia" weapon_motion_type = "1" weapon_type = "1" >
 		<AddBaseModel name="bohemia" filename="model/Bohemia.elu" />
 	</AddWeaponElu>
+	
+<!-- Update dic -->
+<!--blade-->
+<AddWeaponElu name="blade_eSBlade" weapon_motion_type = "13" weapon_type = "17" >
+		<AddBaseModel name="blade_eSBlade" filename="model/blade_eSBlade.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="blade_SBlade" weapon_motion_type = "13" weapon_type = "17" >
+		<AddBaseModel name="blade_SBlade" filename="model/blade_SBlade.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="blade_vSBlade" weapon_motion_type = "13" weapon_type = "17" >
+		<AddBaseModel name="blade_vSBlade" filename="model/blade_vSBlade.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="blade_sharkteeth" weapon_motion_type = "13" weapon_type = "17" >
+		<AddBaseModel name="blade_sharkteeth" filename="model/blade_sharkteeth.elu" />
+</AddWeaponElu>
+
+<!--dagger-->
+<AddWeaponElu name="dagger_ESDagger" 	weapon_motion_type = "7" weapon_type = "10" >	
+		<AddBaseModel name="dagger_ESDagger" 	filename="model/dagger_ESDagger.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="dagger_SDagger" 	weapon_motion_type = "7" weapon_type = "10" >	
+		<AddBaseModel name="dagger_SDagger" 	filename="model/dagger_SDagger.elu" />
+</AddWeaponElu>
+
+<AddWeaponElu name="dagger_VDagger" 	weapon_motion_type = "7" weapon_type = "10" >	
+		<AddBaseModel name="dagger_VDagger" 	filename="model/dagger_VDagger.elu" />
+</AddWeaponElu>
+
+
+<!--katana-->
+<AddWeaponElu name="katana_vSkatana" weapon_motion_type = "1" weapon_type = "1" >
+	<AddBaseModel name="katana_vSkatana" filename="model/katana_vSkatana.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="katana_umbrella" weapon_motion_type = "1" weapon_type = "1" >
+	<AddBaseModel name="katana_umbrella" filename="model/katana_umbrella.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="katana_Skatana" weapon_motion_type = "1" weapon_type = "1" >
+	<AddBaseModel name="katana_Skatana" filename="model/katana_Skatana.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="katana_eSkatana" weapon_motion_type = "1" weapon_type = "1" >
+	<AddBaseModel name="katana_eSkatana" filename="model/katana_eSkatana.elu" />
+</AddWeaponElu>
+
+<!--smg-->
+<AddWeaponElu name="smg_vSSMG" weapon_motion_type = "11" weapon_type = "15" >
+		<AddBaseModel name="smg_vSSMG" filename="model/smg_vSSMG.elu" />
+	</AddWeaponElu>
+<AddWeaponElu name="smg_SSMG" weapon_motion_type = "11" weapon_type = "15" >
+		<AddBaseModel name="smg_SSMG" filename="model/smg_SSMG.elu" />
+	</AddWeaponElu>
+<AddWeaponElu name="smg_eSSMG" weapon_motion_type = "11" weapon_type = "15" >
+		<AddBaseModel name="smg_eSSMG" filename="model/smg_eSSMG.elu" />
+</AddWeaponElu>
+<!--pistol-->
+<AddWeaponElu name="pistol_VSRevolver" weapon_motion_type = "3" weapon_type = "3" >
+		<AddBaseModel name="pistol_VSRevolver" filename="model/pistol_VSRevolver.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="pistol_vSPistol" weapon_motion_type = "3" weapon_type = "3" >
+		<AddBaseModel name="pistol_vSPistol" filename="model/pistol_vSPistol.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="pistol_SRevolver" weapon_motion_type = "3" weapon_type = "3" >
+		<AddBaseModel name="pistol_SRevolver" filename="model/pistol_SRevolver.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="pistol_SPistol" weapon_motion_type = "3" weapon_type = "3" >
+		<AddBaseModel name="pistol_SPistol" filename="model/pistol_SPistol.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="pistol_ESRevolver" weapon_motion_type = "3" weapon_type = "3" >
+		<AddBaseModel name="pistol_ESRevolver" filename="model/pistol_ESRevolver.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="pistol_eSPistol" weapon_motion_type = "3" weapon_type = "3" >
+		<AddBaseModel name="pistol_eSPistol" filename="model/pistol_eSPistol.elu" />
+</AddWeaponElu>
+<!--rifle-->
+<AddWeaponElu name="rifle_VSRifle" weapon_motion_type = "5" weapon_type = "6" >
+		<AddBaseModel name="rifle_VSRifle" filename="model/rifle_VSRifle.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="rifle_SRifle" weapon_motion_type = "5" weapon_type = "6" >
+		<AddBaseModel name="rifle_SRifle" filename="model/rifle_SRifle.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="rifle_ESRifle" weapon_motion_type = "5" weapon_type = "6" >
+		<AddBaseModel name="rifle_ESRifle" filename="model/rifle_ESRifle.elu" />
+</AddWeaponElu>
+<!--rocket launcher grenade-->
+<AddWeaponElu name="rlgVSLauncher" weapon_motion_type = "9" weapon_type = "13" >
+		<AddBaseModel name="rlgVSLauncher" filename="model/rlgVSLauncher.elu" />
+</AddWeaponElu>	
+<AddWeaponElu name="rlgSLauncher" weapon_motion_type = "9" weapon_type = "13" >
+		<AddBaseModel name="rlgSLauncher" filename="model/rlgSLauncher.elu" />
+</AddWeaponElu>	
+<AddWeaponElu name="rlgESLauncher" weapon_motion_type = "9" weapon_type = "13" >
+		<AddBaseModel name="rlgESLauncher" filename="model/rlgESLauncher.elu" />
+</AddWeaponElu>	
+<AddWeaponElu name="rlgadamlauncher" weapon_motion_type = "9" weapon_type = "13" >
+		<AddBaseModel name="rlgadamlauncher" filename="model/rlgadamlauncher.elu" />
+</AddWeaponElu>	
+<AddWeaponElu name="rl_ketlauncher_doomslinger" weapon_motion_type = "9" weapon_type = "13" >
+		<AddBaseModel name="rl_ketlauncher_doomslinger" filename="model/rl_ketlauncher_doomslinger.elu" />
+</AddWeaponElu>	
+
+<!--shotgun-->
+<AddWeaponElu name="shotgun_vSShotgun" weapon_motion_type = "4" weapon_type = "4" >
+		<AddBaseModel name="shotgun_vSShotgun" filename="model/shotgun_vSShotgun.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="shotgun_SShotgun" weapon_motion_type = "4" weapon_type = "4" >
+		<AddBaseModel name="shotgun_SShotgun" filename="model/shotgun_SShotgun.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="shotgun_hydra" weapon_motion_type = "4" weapon_type = "4" >
+		<AddBaseModel name="shotgun_hydra" filename="model/shotgun_hydra.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="shotgun_eSShotgun" weapon_motion_type = "4" weapon_type = "4" >
+		<AddBaseModel name="shotgun_eSShotgun" filename="model/shotgun_eSShotgun.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="machinegun_vSMachinegun" weapon_motion_type = "4" weapon_type = "4" >
+		<AddBaseModel name="machinegun_vSMachinegun" filename="model/machinegun_vSMachinegun.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="machinegun_SMachinegun" weapon_motion_type = "4" weapon_type = "4" >
+		<AddBaseModel name="machinegun_SMachinegun" filename="model/machinegun_SMachinegun.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="machinegun_eSMachinegun" weapon_motion_type = "4" weapon_type = "4" >
+		<AddBaseModel name="machinegun_eSMachinegun" filename="model/machinegun_eSMachinegun.elu" />
+</AddWeaponElu>
+
+<AddWeaponElu name="shotgun_Finalizer" weapon_motion_type = "4" weapon_type = "4" >
+		<AddBaseModel name="shotgun_Finalizer" filename="model/shotgun_Finalizer.elu" />
+</AddWeaponElu>
+
+<AddWeaponElu name="shotgun_destroyer" weapon_motion_type = "4" weapon_type = "4" >
+		<AddBaseModel name="shotgun_destroyer" filename="model/shotgun_destroyer.elu" />
+</AddWeaponElu>
+
 
 </xml>
