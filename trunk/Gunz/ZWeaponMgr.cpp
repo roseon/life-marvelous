@@ -87,6 +87,18 @@ void ZWeaponMgr::AddKit(rvector &pos, rvector &velocity, ZCharacter* pC, float D
 	Add(pWeapon);
 }
 
+void ZWeaponMgr::AddMolotov(rvector &pos,rvector &velocity,ZObject* pC)
+{
+	ZWeaponMolotov* pWeapon = new ZWeaponMolotov;
+
+	RMesh* pMesh = ZGetWeaponMeshMgr()->Get("grenade01");												 
+	if(!pMesh) return;
+
+	pWeapon->Create(pMesh,pos,velocity,pC);
+
+	Add(pWeapon);
+}
+
 void ZWeaponMgr::AddFlashBang( rvector &pos, rvector &velocity, ZObject* pC )
 {
 	ZWeaponFlashBang* pWeapon	= new ZWeaponFlashBang;

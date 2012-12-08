@@ -146,6 +146,25 @@ public:
 	rvector m_RotAxis;
 };
 
+class ZWeaponMolotov : public ZMovingWeapon { 
+public:
+	MDeclareRTTI;
+
+	ZWeaponMolotov() : ZMovingWeapon() { }
+
+	void Create(RMesh* pMesh,rvector &pos, rvector &velocity,ZObject* pOwner);
+
+	virtual void Explosion();
+
+	virtual bool Update(float fElapsedTime);
+
+public:
+
+	int		m_nSoundCount;
+	float	m_fStartTime;
+	
+	rvector m_RotAxis;
+};
 class ZWeaponFlashBang : public ZWeaponGrenade 
 {
 public:
