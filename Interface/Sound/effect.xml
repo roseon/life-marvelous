@@ -61,6 +61,8 @@
   	<EFFECT NAME="we_machinegun_fire" MINDISTANCE="320"/>
   	<EFFECT NAME="we_bowgun_fire" MINDISTANCE="320"/>
   	<EFFECT NAME="we_rifle_fire" MINDISTANCE="320"/>
+	<EFFECT NAME="we_rifle_awp" MINDISTANCE="320"/>
+	
   	<!-- 총기류 reload -->
   	<EFFECT NAME="we_smg_reload" MINDISTANCE="200" MAXDISTANCE="1000"/>
   	<EFFECT NAME="we_shotgunpa_reload" MINDISTANCE="200" MAXDISTANCE="1000"/>
@@ -70,6 +72,7 @@
   	<EFFECT NAME="we_machinegun_reload" MINDISTANCE="200" MAXDISTANCE="1000"/>
   	<EFFECT NAME="we_grenade_reload" MINDISTANCE="200" MAXDISTANCE="1000"/>
   	<EFFECT NAME="we_rifle_reload" MINDISTANCE="200" MAXDISTANCE="1000"/>
+	<EFFECT NAME="we_rifle_reload_awp" MINDISTANCE="200" MAXDISTANCE="1000"/>
   	<EFFECT NAME="we_bowgun_reload" MINDISTANCE="200" MAXDISTANCE="1000"/>
   	<!-- 폭발 -->
 	<EFFECT NAME="fx_explosion01" MINDISTANCE="1000"/>
@@ -104,6 +107,7 @@
 	<!-- 총 -->
   	<EFFECT NAME="357magrevolver_dryfire" MINDISTANCE="150" MAXDISTANCE="1000" type="2"/>
   	<EFFECT NAME="762arifle_dryfire" MINDISTANCE="150" MAXDISTANCE="1000" type="2"/>
+	<EFFECT NAME="762arifle_dryfire_awp" MINDISTANCE="150" MAXDISTANCE="1000" type="2"/>
   	<EFFECT NAME="bowgun_dryfire" MINDISTANCE="150" MAXDISTANCE="1000" type="2"/>
   	<!--<EFFECT NAME="we_rocket_fire" MINDISTANCE="200" type="2"/>
   	<EFFECT NAME="we_shotgunpa_fire" MINDISTANCE="320" type="2"/>
