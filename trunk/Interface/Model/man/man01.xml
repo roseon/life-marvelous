@@ -254,7 +254,22 @@
 	<AddParts name="parts150" filename="man-parts_chdonnyde.elu"> </AddParts>
 	<AddParts name="parts151" filename="ORIGINALcs.elu"> </AddParts>
 	<AddParts name="parts152" filename="TerroParts.elu"> </AddParts>
-<!--	
+	<!--Update Dic-->
+	<AddParts name="parts153" filename="man-parts_trider.elu"> </AddParts>
+	<AddParts name="parts154" filename="man-parts_raven.elu"> </AddParts>
+	<AddParts name="parts155" filename="man-parts_fishhead.elu"> </AddParts>
+	<AddParts name="parts156" filename="man-parts_privatesoldier.elu"> </AddParts>
+	<AddParts name="parts157" filename="man-parts_flamearmor.elu"> </AddParts>
+	<AddParts name="parts158" filename="man-parts_eliteuniform.elu"> </AddParts>
+	<AddParts name="parts159" filename="man-parts_deathbring.elu"> </AddParts>
+	<AddParts name="parts160" filename="man-parts_DesertWarrior.elu"> </AddParts>
+	<!--Another Update Dic-->
+	<AddParts name="parts161" filename="man-parts_pierrot.elu"> </AddParts>
+	<AddParts name="parts162" filename="man-parts_iguardian.elu"> </AddParts>
+	<AddParts name="parts163" filename="man-parts_gears.elu"> </AddParts>
+	<AddParts name="parts164" filename="man-parts_executioner.elu"> </AddParts>
+	
+<!--	 
 	<AddParts name="parts93" filename="man-parts_battlesuit.elu"> </AddParts>	
 
 	
