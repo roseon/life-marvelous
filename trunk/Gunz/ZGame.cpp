@@ -2912,7 +2912,7 @@ void ZGame::OnPeerShotSp(MUID& uid, float fShotTime, rvector& pos, rvector& dir,
 	MMatchWeaponType nType = pDesc->m_nWeaponType.Ref();
 	//들고 있는 무기가 로켓 타입인데 
 	if(nType == MWT_ROCKET) {
-		if( type != ZC_WEAPON_SP_ROCKET || type != ZC_WEAPON_SP_ROCKETGRENADE ){	//type이 로켓이 아니면 미스 매치....무시한다. 		
+		if( type != ZC_WEAPON_SP_ROCKET && type != ZC_WEAPON_SP_ROCKETGRENADE ){	//type이 로켓이 아니면 미스 매치....무시한다. 		
 			return;
 		}
 	} else if( nType == MWT_MED_KIT || nType == MWT_REPAIR_KIT || nType == MWT_BULLET_KIT || nType == MWT_FOOD ) {
