@@ -387,14 +387,14 @@ int MBMatchServer::ValidateStageJoin(const MUID& uidPlayer, const MUID& uidStage
 			}
 		}
 
-		MMatchLadderTeamInfo* pRed = pStage->GetLadderTeam(MMT_RED);
+		/*MMatchLadderTeamInfo* pRed = pStage->GetLadderTeam(MMT_RED);
 		MMatchLadderTeamInfo* pBlue = pStage->GetLadderTeam(MMT_BLUE);
 
 		if (pObj->GetCharInfo()->m_ClanInfo.GetClanID() != pRed->nCLID || pObj->GetCharInfo()->m_ClanInfo.GetClanID() != pBlue->nCLID && !IsAdminGrade(pObj))
 		{
 			return MERR_CANNOT_JOIN_STAGE_BY_BAN;
 		}
-		
+		*/
 		// 게임중참가
 		if ((pStage->GetStageSetting()->GetForcedEntry() == false) && 
 			(pStage->GetState() != STAGE_STATE_STANDBY))
