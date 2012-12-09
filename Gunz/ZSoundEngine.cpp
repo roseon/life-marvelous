@@ -892,22 +892,22 @@ void ZSoundEngine::PlaySEFire(MMatchItemDesc *pDesc, float x, float y, float z, 
 	if( pDesc->m_nType.Ref() == MMIT_RANGE || pDesc->m_nType.Ref() == MMIT_CUSTOM )
 	{
 		char* szSndName = pDesc->m_szFireSndName;
-		if(bPlayer)
-		{
-			char szBuffer[64];
-			sprintf( szBuffer, "%s_2d", szSndName );
-#ifdef _SOUND_LOG
-			mlog("%s stereo 2d sound is played..\n",szBuffer);
-#endif
-			char* szDefault;
-			if (pDesc->m_nType.Ref() == MMIT_RANGE)
-				szDefault = "we_rifle_fire_2d";
-			else 
-				szDefault = szSndName;
-
-			PlaySoundElseDefault(szBuffer,szDefault,rvector(x,y,z),bPlayer);
-			return;
-		}
+//		if(bPlayer)
+//		{
+//			char szBuffer[64];
+//			sprintf( szBuffer, "%s_2d", szSndName );
+//#ifdef _SOUND_LOG
+//			mlog("%s stereo 2d sound is played..\n",szBuffer);
+//#endif
+//			char* szDefault;
+//			if (pDesc->m_nType.Ref() == MMIT_RANGE)
+//				szDefault = "we_rifle_fire_2d";
+//			else 
+//				szDefault = szSndName;
+//
+//			PlaySoundElseDefault(szBuffer,szDefault,rvector(x,y,z),bPlayer);
+//			return;
+//		}
 		PlaySoundElseDefault(szSndName,"we_rifle_fire",rvector(x,y,z),bPlayer);
 	}
 }
