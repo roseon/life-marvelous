@@ -1015,7 +1015,24 @@
 		</BOUNDS>
 		<MULTISELECT/>
 	</PLAYERSELECTLISTBOX>
-
+	
+	<BUTTON item="ArrangedTeamDialogSolo" parent="ArrangedTeamGameDialog">
+		<BUTTONLOOK>DefaultButtonLook</BUTTONLOOK>
+		<ANCHORS>
+			<LEFT>false</LEFT>
+			<TOP>false</TOP>
+			<RIGHT>true</RIGHT>
+			<BOTTOM>true</BOTTOM>
+		</ANCHORS>
+		<BOUNDS>
+			<X>100</X>
+			<Y>250</Y>
+			<W>90</W>
+			<H>32</H>
+		</BOUNDS>
+		<TEXT>Solo</TEXT>
+	</BUTTON>
+	
 	<BUTTON item="ArrangedTeamDialogOk" parent="ArrangedTeamGameDialog">
 		<BUTTONLOOK>DefaultButtonLook</BUTTONLOOK>
 		<ANCHORS>
