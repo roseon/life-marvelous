@@ -1,0 +1,2 @@
+validar las columnas con isnull y poner el alias en el store
+spGetCharInfoByCharNum
