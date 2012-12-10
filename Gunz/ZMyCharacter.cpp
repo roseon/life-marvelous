@@ -1376,6 +1376,14 @@ void ZMyCharacter::OnGadget_Hanging()
 
 void ZMyCharacter::OnGadget_Snifer()
 {
+	static DWORD lastSnifer = 0;
+
+	DWORD current = timeGetTime();
+	DWORD elapsed = current - lastSnifer;
+	if (elapsed < 500) return;
+
+	lastSnifer = current;
+
 	ZMyCharaterStatusBitPacking & zStatus = m_statusFlags.Ref();
 
 	zStatus.m_bSniferMode = !zStatus.m_bSniferMode;

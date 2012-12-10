@@ -559,6 +559,12 @@ void ZGameClient::OnChannelResponseJoin(const MUID& uidChannel, MCHANNEL_TYPE nC
 			}
 		}
 		break;
+
+	case MSM_TEST:
+		{
+					ZPostRequestClanInfo(GetPlayerUID(), szChannelName);
+		 }
+				  break;
 	}
 
 
