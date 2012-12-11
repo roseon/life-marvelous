@@ -18,7 +18,7 @@
 #define MMATCH_GAMETYPE_DUELTOURNAMENT_STR		"Duel Tournament"
 #define MMATCH_GAMETYPE_DEITY_STR				"Deity"
 #define MMATCH_GAMETYPE_REVERSE_BERSERKER_STR	"Reverse Berserker"
-#define MMATCH_GAMETYPE_DUELTOURNAMENT_STR		"Capture the Flag"
+#define MMATCH_GAMETYPE_CTF_STR					"Capture the Flag"
 
 // 리플레이 파일명용 모드 약어 (enum MMATCH_GAMETYPE 와 순서가 같아야함)
 const char* MMatchGameTypeAcronym[MMATCH_GAMETYPE_MAX] = {

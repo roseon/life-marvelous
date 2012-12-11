@@ -21,6 +21,23 @@ public:
 };
 
 
+//AWP
+class MMatchRuleTeamAWP : public MMatchRuleTeamDeath {
+public:
+	MMatchRuleTeamAWP(MMatchStage* pStage);
+	virtual ~MMatchRuleTeamAWP()				{}
+	virtual MMATCH_GAMETYPE GetGameType() { return MMATCH_GAMETYPE_AWP; }
+};
+
+//GRENADEWAR 
+class MMatchRuleTeamGRENADEWAR : public MMatchRuleTeamDeath {
+public:
+	MMatchRuleTeamGRENADEWAR(MMatchStage* pStage);
+	virtual ~MMatchRuleTeamGRENADEWAR()				{}
+	virtual MMATCH_GAMETYPE GetGameType() { return MMATCH_GAMETYPE_GRENADEWAR; }
+};
+
+
 
 
 #endif
