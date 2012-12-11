@@ -63,7 +63,7 @@ void ZClanListBox::OnDraw( MDrawContext* pDC )
 				//ZGetGame()->m_pMyCharacter->GetUserName()
 				if(pInfo->nPlayers ==1){
 					char szBuffer[256];
-					sprintf(szBuffer,"%s esperando", ZGetGame()->m_pMyCharacter->GetUserName());
+					sprintf(szBuffer,"%s esperando", ZGetMyInfo()->GetCharName());
 					pDC->Text((int)(fRatio*280) , (int)(y + fRatio*10) , szBuffer);
 				}else{
 					char szBuffer[256];
