@@ -436,7 +436,7 @@ MCommand* MMatchServer::CreateCmdMatchResponseLoginOK(const MUID& uidComm,
 	pCmd->AddParameter(new MCommandParameterChar((char)MGetServerConfig()->GetServerMode()));
 	pCmd->AddParameter(new MCommandParameterString(szUserID));
 	pCmd->AddParameter(new MCommandParameterUChar((unsigned char)nUGradeID));
-	pCmd->AddParameter(new MCommandParameterUChar((unsigned char)nPGradeID));
+	pCmd->AddParameter(new MCommandParameterInt((int)nPGradeID));
 	pCmd->AddParameter(new MCommandParameterInt(nECoins));
 	pCmd->AddParameter(new MCommandParameterUID(uidPlayer));
 	pCmd->AddParameter(new MCommandParameterBool((bool)MGetServerConfig()->IsEnabledSurvivalMode()));
@@ -468,7 +468,7 @@ MCommand* MMatchServer::CreateCmdMatchResponseLoginFailed(const MUID& uidComm, c
 	pCmd->AddParameter(new MCommandParameterChar((char)MGetServerConfig()->GetServerMode()));
 	pCmd->AddParameter(new MCommandParameterString("Ana"));
 	pCmd->AddParameter(new MCommandParameterUChar((unsigned char)MMUG_FREE));
-	pCmd->AddParameter(new MCommandParameterUChar((unsigned char)MMPG_FREE));
+	pCmd->AddParameter(new MCommandParameterInt((int)MMPG_FREE));
 	pCmd->AddParameter(new MCommandParameterUID(MUID(0,0)));
 	pCmd->AddParameter(new MCommandParameterBool((bool)MGetServerConfig()->IsEnabledSurvivalMode()));
 	pCmd->AddParameter(new MCommandParameterBool((bool)MGetServerConfig()->IsEnabledDuelTournament()));
@@ -559,7 +559,7 @@ bool MMatchServer::AddObjectOnMatchLogin(const MUID& uidComm,
 
 			}
 
-			if (bIsPremiumIP) pObj->GetAccountInfo()->m_nPGrade = MMPG_PREMIUM_IP;
+			//if (bIsPremiumIP) pObj->GetAccountInfo()->m_nPGrade = MMPG_PREMIUM_IP;
 		}		
 	}
 
