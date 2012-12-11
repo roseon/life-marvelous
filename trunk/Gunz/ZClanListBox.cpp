@@ -35,7 +35,7 @@ void ZClanListBox::OnDraw( MDrawContext* pDC )
 	for(int i=0;i<NUM_DISPLAY_CLAN;i++) {
 
 		ZCLANINFO *pInfo = m_pClanInfo+i;
-
+		
 		if(!pInfo->bEmpty) {
 			if(m_pRoomFrame)
 			{
@@ -46,7 +46,7 @@ void ZClanListBox::OnDraw( MDrawContext* pDC )
 
 				// 클랜 emblem
 				//antidodge
-				/*
+				
 				MBitmap *pBitmap = ZGetEmblemInterface()->GetClanEmblem( pInfo->nClanEmblemID);
 				if(pBitmap) {
 					int nSize = (int)(.95f * fRatio * m_pRoomFrame->GetHeight());
@@ -54,15 +54,23 @@ void ZClanListBox::OnDraw( MDrawContext* pDC )
 					pDC->SetBitmap(pBitmap);
 					pDC->Draw(nMargin , y + nMargin , nSize , nSize);
 				}
-
+				/*
 				// 대기중인 클랜 이름
 				pDC->SetColor(MCOLOR(0xffffffff));
 				pDC->Text((int)(fRatio*40) , (int)(y + fRatio*10) , pInfo->szClanName);
 				*/
 				// 대기중인 사람 수 ( x명 대기중 )
-				char szBuffer[256];
-				sprintf(szBuffer,ZMsg( MSG_LOBBY_WAITING ),pInfo->nPlayers );
-				pDC->Text((int)(fRatio*280) , (int)(y + fRatio*10) , szBuffer);
+				//ZGetGame()->m_pMyCharacter->GetUserName()
+				if(pInfo->nPlayers ==1){
+					char szBuffer[256];
+					sprintf(szBuffer,"%s esperando", ZGetGame()->m_pMyCharacter->GetUserName());
+					pDC->Text((int)(fRatio*280) , (int)(y + fRatio*10) , szBuffer);
+				}else{
+					char szBuffer[256];
+					sprintf(szBuffer,ZMsg( MSG_LOBBY_WAITING ),pInfo->nPlayers );
+					pDC->Text((int)(fRatio*280) , (int)(y + fRatio*10) , szBuffer);
+				}
+
 			}
 		}
 	}
