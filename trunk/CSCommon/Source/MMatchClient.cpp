@@ -281,8 +281,8 @@ bool MMatchClient::OnCommand(MCommand* pCommand)
 			{
 				int nResult;
 				char nServerMode;
-				unsigned char nUGradeID, nPGradeID;
-				int nECoins;
+				unsigned char nUGradeID;
+				int nECoins,nPGradeID;
 				MUID uidPlayer;
 				char szServerName[256];
 				char szAccountID[MAX_USERID_STRING_LEN];
@@ -294,7 +294,7 @@ bool MMatchClient::OnCommand(MCommand* pCommand)
 				pCommand->GetParameter(&nServerMode,	2, MPT_CHAR);
 				pCommand->GetParameter(szAccountID,		3, MPT_STR, MAX_USERID_STRING_LEN );
 				pCommand->GetParameter(&nUGradeID,		4, MPT_UCHAR);
-				pCommand->GetParameter(&nPGradeID,		5, MPT_UCHAR);
+				pCommand->GetParameter(&nPGradeID,		5, MPT_INT);
 				pCommand->GetParameter(&nECoins,		6, MPT_INT);
 				pCommand->GetParameter(&uidPlayer,		7, MPT_UID);
 				pCommand->GetParameter(&bEnabledSurvivalMode,	8, MPT_BOOL);

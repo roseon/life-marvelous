@@ -62,7 +62,7 @@ void MAsyncDBJob_GetLoginInfo::Run(void* pContext)
 
 		}
 
-		if (bIsPremiumIP) m_pAccountInfo->m_nPGrade = MMPG_PREMIUM_IP;
+		//if (bIsPremiumIP) m_pAccountInfo->m_nPGrade = MMPG_PREMIUM_IP;
 	}
 
 	SetResult(MASYNC_RESULT_SUCCEED);
