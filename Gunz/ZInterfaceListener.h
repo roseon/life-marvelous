@@ -77,6 +77,7 @@ DECLARE_LISTENER(ZGetPlayerListNextListener);
 
 DECLARE_LISTENER(ZGetArrangedTeamGameListener);
 DECLARE_LISTENER(ZGetArrangedTeamDialogOkListener);
+DECLARE_LISTENER(ZGetArrangedTeamDialogSoloListener);
 DECLARE_LISTENER(ZGetArrangedTeamDialogCloseListener);
 DECLARE_LISTENER(ZGetArrangedTeamGame_CancelListener);
 

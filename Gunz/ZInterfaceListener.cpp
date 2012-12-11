@@ -1885,6 +1885,20 @@ BEGIN_IMPLEMENT_LISTENER(ZGetArrangedTeamGameListener, MBTN_CLK_MSG)
 			MCP_MATCH_CHANNEL_REQUEST_ALL_PLAYER_LIST_MYCLAN);
 	}
 END_IMPLEMENT_LISTENER();
+BEGIN_IMPLEMENT_LISTENER(ZGetArrangedTeamDialogSoloListener, MBTN_CLK_MSG)
+	ZIDLResource* pResource = ZGetGameInterface()->GetIDLResource();
+	MWidget* pWidget = pResource->FindWidget("ArrangedTeamGameDialog");
+	if(pWidget!=NULL)
+		pWidget->Show(false);
+	//se llama al 1v1
+		char szPlayerName[MATCHOBJECT_NAME_LENGTH];
+		strcpy(szPlayerName, ZGetMyInfo()->GetCharName());
+		char* pName[1];
+		pName[0] = szPlayerName;
+
+		ZPostLadderRequestChallenge(pName, 1, 0);
+
+END_IMPLEMENT_LISTENER();
 
 BEGIN_IMPLEMENT_LISTENER(ZGetArrangedTeamDialogOkListener, MBTN_CLK_MSG)
 	ZIDLResource* pResource = ZGetGameInterface()->GetIDLResource();

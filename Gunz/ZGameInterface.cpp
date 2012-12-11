@@ -743,6 +743,7 @@ bool ZGameInterface::InitInterfaceListener()
 
 	SetListenerWidget("ArrangedTeamGame", ZGetArrangedTeamGameListener());
 	SetListenerWidget("ArrangedTeamDialogOk", ZGetArrangedTeamDialogOkListener());
+	SetListenerWidget("ArrangedTeamDialogSolo", ZGetArrangedTeamDialogSoloListener());
 	SetListenerWidget("ArrangedTeamDialogClose", ZGetArrangedTeamDialogCloseListener());
 	SetListenerWidget("ArrangedTeamGame_Cancel", ZGetArrangedTeamGame_CancelListener());
 
