@@ -11,3 +11,12 @@ MMatchRuleSoloClassic::MMatchRuleSoloClassic(MMatchStage* pStage) : MMatchRuleSo
 MMatchRuleTeamClassic::MMatchRuleTeamClassic(MMatchStage* pStage) : MMatchRuleTeamDeath(pStage)
 {
 }
+
+//AWP
+MMatchRuleTeamAWP::MMatchRuleTeamAWP(MMatchStage* pStage) : MMatchRuleTeamDeath(pStage)
+{
+}
+//GRENADEWAR 
+MMatchRuleTeamGRENADEWAR::MMatchRuleTeamGRENADEWAR(MMatchStage* pStage) : MMatchRuleTeamDeath(pStage)
+{
+}
