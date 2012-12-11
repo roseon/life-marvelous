@@ -23,9 +23,9 @@
 
 #define MAX_REPLIER	16			// proposal 답변자는 최대 16명
 
-#define CLAN_SPONSORS_COUNT			4		// 클랜생성시 필요한 발기인 수
-#define CLAN_CREATING_NEED_BOUNTY		1000	// 클랜생성에 필요한 바운티
-#define CLAN_CREATING_NEED_LEVEL		10		// 클랜생성에 필요한 레벨
+#define CLAN_SPONSORS_COUNT			1		// 클랜생성시 필요한 발기인 수
+#define CLAN_CREATING_NEED_BOUNTY		0	// 클랜생성에 필요한 바운티
+#define CLAN_CREATING_NEED_LEVEL		1		// 클랜생성에 필요한 레벨
 
 
 

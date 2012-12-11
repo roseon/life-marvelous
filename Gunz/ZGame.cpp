@@ -1701,6 +1701,26 @@ bool ZGame::OnCommand(MCommand* pCommand)
 
 // 유저 컬러
 
+bool GetPremiumGradeIDColor(MMatchPremiumGradeID PGradeID,MCOLOR& CharNameColor,char* sp_name)
+{
+	/*alex color*/
+	switch (PGradeID) 
+	{
+	case MMPG_FREE: 
+	case MMPG_PREMIUM_IP:
+		return false; 
+		break;
+	default:
+		  unsigned char r = ((PGradeID >> 16) & 0xFF) / 1.0;  // Extract the RR byte
+		  unsigned char g = ((PGradeID >> 8) & 0xFF) / 1.0;   // Extract the GG byte
+		  unsigned char b = ((PGradeID) & 0xFF) / 1.0;        // Extract the BB byte
+		  CharNameColor = MCOLOR(r,g, b); 
+		return true;
+		break;
+	}
+	return true; 
+}
+
 bool GetUserGradeIDColor(MMatchUserGradeID UGradeID,MCOLOR& CharNameColor,char* sp_name)
 {
 	/* Steven: Ugrade Colour */

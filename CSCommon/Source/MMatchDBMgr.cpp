@@ -983,6 +983,9 @@ bool MMatchDBMgr::GetCharInfoByAID( const int nAID, const int nCharIndex, MMatch
 	strcpy(poutCharInfo->m_ClanInfo.m_szClanName, (LPCTSTR)db_strClanName);
 
 	poutCharInfo->m_ClanInfo.m_nClanID = (int)rs.Field("CLID").AsInt();
+	if (poutCharInfo->m_ClanInfo.m_nClanID >= 9000000){
+		poutCharInfo->m_ClanInfo.m_nClanID = 0;
+	}
 
 	if( -1 != rs.GetFieldID("rank") ) {
 #ifdef _DEBUG
@@ -1075,7 +1078,7 @@ bool MMatchDBMgr::GetAccountInfo( const unsigned long int nAID, MMatchAccountInf
 
 	poutAccountInfo->m_nAID			= (unsigned long)rs.Field("AID").AsLong();
 	poutAccountInfo->m_nUGrade		= (MMatchUserGradeID)rs.Field("UGradeID").AsInt();
-	poutAccountInfo->m_nPGrade		= MMPG_FREE;
+	poutAccountInfo->m_nPGrade		=  (MMatchPremiumGradeID)rs.Field("PGradeID").AsInt() ; //MMPG_FREE;
 	strcpy(poutAccountInfo->m_szUserID, (LPCTSTR)rs.Field("UserID").AsString());
 
 	poutAccountInfo->m_nECoins		= (unsigned long)rs.Field("euCoins").AsLong();

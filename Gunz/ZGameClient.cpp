@@ -67,6 +67,9 @@
 
 
 bool GetUserGradeIDColor(MMatchUserGradeID gid,MCOLOR& UserNameColor,char* sp_name);
+bool GetPremiumGradeIDColor(MMatchPremiumGradeID pgid,MCOLOR& UserNameColor,char* sp_name);
+
+
 
 MCommand* ZNewCmd(int nID)
 {
@@ -603,7 +606,9 @@ void ZGameClient::OnChannelChat(const MUID& uidChannel, char* szName, char* szCh
 
 	char sp_name[256];
 
-	bool bSpUser = GetUserGradeIDColor(gid,_color,sp_name);
+	//bool bSpUser = GetUserGradeIDColor(gid,_color,sp_name);
+
+	bool bSpUser = GetPremiumGradeIDColor(ZGetMyInfo()->GetPGradeID(),_color,sp_name);
 
 	char szText[512];
 	/* Steven: Unmask*/
