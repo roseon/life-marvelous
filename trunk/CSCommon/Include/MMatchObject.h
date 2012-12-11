@@ -5,6 +5,7 @@
 #include <map>
 #include <algorithm>
 #include <string>
+#include <limits>
 using namespace std;
 #include "MMatchItem.h"
 #include "MUID.h"
@@ -24,6 +25,7 @@ using namespace std;
 #include "MMatchAccountPenaltyInfo.h"
 
 #include "MMatchCharBRInfo.h"
+
 
 // 등급 - 이것은 디비의 UserGrade테이블과 싱크가 맞아야 한다.
 enum MMatchUserGradeID
@@ -62,7 +64,8 @@ enum MMatchDisconnectStatus
 enum MMatchPremiumGradeID
 {
 	MMPG_FREE			= 0,	// 무료
-	MMPG_PREMIUM_IP		= 1		// 넷마블 PC방 보너스
+	MMPG_PREMIUM_IP		= 1,		// 넷마블 PC방 보너스
+	MMPG_COLOR = 2147483647//numeric_limits<int>::max()//osea max num colores oks
 };
 
 // 성별 - 이것은 디비의 성별정보와 싱크가 맞아야 한다.
