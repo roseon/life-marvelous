@@ -1949,7 +1949,11 @@ BEGIN_IMPLEMENT_LISTENER(ZGetArrangedTeamDialogOkListener, MBTN_CLK_MSG)
 				}
 			}
 			break;
+		#ifndef _QUESTCLAN
 		case MSM_CLAN:
+		#else
+		  default:
+		#endif
 			{
 				bool bRightMember = false;
 				for (int i = 0; i < MLADDERTYPE_MAX; i++)

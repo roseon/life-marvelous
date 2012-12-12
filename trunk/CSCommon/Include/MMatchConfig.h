@@ -198,7 +198,11 @@ public:
 
 	const NHN_SERVERMODE GetNHNServerMode() { return m_NHNServerMode; }
 
+	#ifndef _QUESTCLAN
 	const bool IsClanServer() { return (MSM_CLAN == m_nServerMode); }
+	#else
+		const bool IsClanServer() { return true; }
+	#endif
 
 	const DWORD GetMonitorUDPIP() { return m_dwMonitorUDPIP; }
 	const USHORT GetMonitorUDPPORT()	{ return m_nUDPPort; }

@@ -884,6 +884,10 @@ void MMatchServer::OnStageCreate(const MUID& uidChar, char* pszStageName, bool b
 	}
 	
 	MUID uidStage;
+	if ((IsAdminGrade(pObj) == false) && (strcmp ("Canal solo para Eventos",pChannel->GetName()) == 0)){
+		RouteResponseToListener(pObj, MC_MATCH_RESPONSE_STAGE_CREATE, MERR_CANNOT_CREATE_STAGE);
+		return;
+	}
 
 	if (!StageAdd(pChannel, pszStageName, bPrivate, pszStagePassword, &uidStage))
 	{
@@ -2011,11 +2015,15 @@ void MMatchServer::CalcExpOnGameKill(MMatchStage* pStage, MMatchObject* pAttacke
 
 
 	// 클랜전일 경우는 획득 경험치가 1.5배, 손실경험치 없음
+	#ifndef _QUESTCLAN
 	if ((MGetServerConfig()->GetServerMode() == MSM_CLAN) && (pStage->GetStageType() == MST_LADDER))
-	{
+	#else
+		if (pStage->GetStageType() == MST_LADDER)
+	#endif
+		{
 		nAttackerExp = (int)((float)nAttackerExp * 1.5f);
 		nVictimExp = 0;
-	}
+		}
 
 	// 고수채널, 초고수채널일 경우에는 경치다운 없음(자살제외)
 	MMatchChannel* pOwnerChannel = FindChannel(pStage->GetOwnerChannel());
@@ -2429,8 +2437,12 @@ void MMatchServer::StageList(const MUID& uidPlayer, int nStageStartIndex, bool b
 	if (pChannel == NULL) return;
 
 	// 클랜서버인데 클랜채널일 경우에는 방 리스트대신 대기중 클랜 리스트를 보낸다.
+	#ifndef _QUESTCLAN
 	if ((MGetServerConfig()->GetServerMode() == MSM_CLAN) && (pChannel->GetChannelType() == MCHANNEL_TYPE_CLAN))
-	{
+	#else
+		if (pChannel->GetChannelType() == MCHANNEL_TYPE_CLAN)
+	#endif
+		{
 		StandbyClanList(uidPlayer, nStageStartIndex, bCacheUpdate);
 		return;
 	}

@@ -75,8 +75,10 @@ bool MMatchServer::LadderJoin(const MUID& uidPlayer, const MUID& uidStage, MMatc
 
 void MMatchServer::LadderGameLaunch(MLadderGroup* pGroupA, MLadderGroup* pGroupB)
 {
+#ifndef _QUESTCLAN
 	if ((MGetServerConfig()->GetServerMode() != MSM_LADDER) && 
 		(MGetServerConfig()->GetServerMode() != MSM_CLAN)) return;
+#endif
 
 	MUID uidStage = MUID(0,0);
 	if (StageAdd(NULL, "LADDER_GAME", true, "", &uidStage) == false) {
@@ -214,8 +216,10 @@ bool MMatchServer::IsLadderRequestUserInRequestClanMember( const MUID& uidReques
 
 void MMatchServer::OnLadderRequestChallenge(const MUID& uidRequestMember, void* pMemberNamesBlob, unsigned long int nOptions)
 {
+#ifndef _QUESTCLAN
 	if ((MGetServerConfig()->GetServerMode() != MSM_LADDER) && 
 		(MGetServerConfig()->GetServerMode() != MSM_CLAN)) return;
+#endif
 
 	MMatchObject* pLeaderObject = GetPlayerByCommUID(uidRequestMember);
 	if (! IsEnabledObject(pLeaderObject)) return;

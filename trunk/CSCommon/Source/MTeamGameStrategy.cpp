@@ -24,8 +24,13 @@ MBaseTeamGameStrategy* MBaseTeamGameStrategy::GetInstance(MMatchServerMode nServ
 		return MLadderGameStrategy::GetInstance();
 	case MSM_CLAN:
 		return MClanGameStrategy::GetInstance();
+#ifndef _QUESTCLAN
 	default:
 		_ASSERT(0);
+#else
+	default:
+		return MClanGameStrategy::GetInstance();
+#endif
 	}
 	return NULL;
 }
