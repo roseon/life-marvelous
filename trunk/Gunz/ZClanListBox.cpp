@@ -64,11 +64,11 @@ void ZClanListBox::OnDraw( MDrawContext* pDC )
 				if(pInfo->nPlayers ==1){
 					char szBuffer[256];
 					sprintf(szBuffer,"%s esperando", ZGetMyInfo()->GetCharName());
-					pDC->Text((int)(fRatio*280) , (int)(y + fRatio*10) , szBuffer);
+					pDC->Text((int)(fRatio*180) , (int)(y + fRatio*10) , szBuffer);
 				}else{
 					char szBuffer[256];
 					sprintf(szBuffer,ZMsg( MSG_LOBBY_WAITING ),pInfo->nPlayers );
-					pDC->Text((int)(fRatio*280) , (int)(y + fRatio*10) , szBuffer);
+					pDC->Text((int)(fRatio*200) , (int)(y + fRatio*10) , szBuffer);
 				}
 
 			}
