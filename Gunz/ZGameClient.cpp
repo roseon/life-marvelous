@@ -538,7 +538,11 @@ void ZGameClient::OnChannelResponseJoin(const MUID& uidChannel, MCHANNEL_TYPE nC
 			ZChatOutput(szText, ZChat::CMT_SYSTEM, ZChat::CL_LOBBY);
 		}
 		break;
+	#ifndef _QUESTCLAN
 	case MSM_CLAN:
+	#else
+		default:
+	#endif
 		{
 			if (nChannelType == MCHANNEL_TYPE_CLAN)
 			{
@@ -2338,7 +2342,11 @@ void ZGameClient::RequestOnGameDestroyed()
 	ZPostRequestMySimpleCharInfo(ZGetGameClient()->GetPlayerUID());
 
 	// 새로 바뀐 클랜 정보도 요청한다.
+	#ifndef _QUESTCLAN
 	if ((GetServerMode() == MSM_CLAN) && (GetChannelType() == MCHANNEL_TYPE_CLAN))
+	#else
+		if (GetChannelType() == MCHANNEL_TYPE_CLAN)
+	#endif
 	{
 		ZPostRequestClanInfo(GetPlayerUID(), m_szChannel);
 	}

@@ -486,7 +486,9 @@ bool MMatchServer::LoadInitFile()
 	}
 #endif
 	// 클랜전 서버일 경우만 실행하는 초기화
+#ifndef _QUESTCLAN
 	if (MGetServerConfig()->GetServerMode() == MSM_CLAN)
+#endif
 	{
 		GetLadderMgr()->Init();
 
@@ -1110,10 +1112,13 @@ void MMatchServer::OnRun(void)
 	MGetCheckLoopTimeInstance()->SetLadderTick();
 
 	// Update Ladders - 클랜전서버일 경우에만 실행한다.
+	#ifndef _QUESTCLAN
 	if (MGetServerConfig()->GetServerMode() == MSM_CLAN)
-	{
+	#endif
+	//{
 		GetLadderMgr()->Tick(nGlobalClock);
-	}
+	//}
+
 
 	// Duel Tournament가 활성화 되었을 경우에만 실행한다.
 	if( MGetServerConfig()->IsEnabledDuelTournament() == true ) {

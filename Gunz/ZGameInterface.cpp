@@ -1921,9 +1921,13 @@ void ZGameInterface::OnLobbyCreate(void)
 
 void ZGameInterface::InitLobbyUIByChannelType()
 {
+	#ifndef _QUESTCLAN
 	bool bClanBattleUI =  ((ZGetGameClient()->GetServerMode() == MSM_CLAN) && (ZGetGameClient()->GetChannelType()==MCHANNEL_TYPE_CLAN));
-	bool bDuelTournamentUI = (ZGetGameClient()->GetChannelType() == MCHANNEL_TYPE_DUELTOURNAMENT);
+	#else
+		bool bClanBattleUI =  (ZGetGameClient()->GetChannelType()==MCHANNEL_TYPE_CLAN);
+	#endif
 
+	bool bDuelTournamentUI = (ZGetGameClient()->GetChannelType() == MCHANNEL_TYPE_DUELTOURNAMENT);
 	// 순서가 중요하다.. true인쪽을 나중에 호출해줘야 한다 (추하지만 이제와서 함수 한군데로 합쳐주기도 좀 두려운...)
 	if (bClanBattleUI)
 	{
@@ -5382,7 +5386,11 @@ void ZGameInterface::EnableLobbyInterface(bool bEnable)
 	{
 		MMatchServerMode nCurrentServerMode = ZGetGameClient()->GetServerMode();
 		MCHANNEL_TYPE nCurrentChannelType = ZGetGameClient()->GetChannelType();
+#ifndef _QUESTCLAN
 		bool bClanBattleUI = (nCurrentServerMode== MSM_CLAN) && (nCurrentChannelType==MCHANNEL_TYPE_CLAN);
+#else
+		bool bClanBattleUI = (nCurrentChannelType==MCHANNEL_TYPE_CLAN);
+#endif
 		ZGetGameInterface()->InitClanLobbyUI(bClanBattleUI);
 	}
 
@@ -5724,7 +5732,11 @@ void ZGameInterface::InitClanLobbyUI(bool bClanBattleEnable)
 	pWidget= m_IDLResource.FindWidget( "QuickJoin2" );
 	if(pWidget) pWidget->Show(!bClanBattleEnable);
 
-	bool bClanServer = ZGetGameClient()->GetServerMode()==MSM_CLAN;
+	#ifndef _QUESTCLAN
+		bool bClanServer = ZGetGameClient()->GetServerMode()==MSM_CLAN;
+	#else
+		bool bClanServer = true;
+	#endif
 
 	pWidget= m_IDLResource.FindWidget( "PrivateChannelInput" );
 	if(pWidget) pWidget->Show(bClanServer);
@@ -5919,10 +5931,14 @@ void ZGameInterface::InitLadderUI(bool bLadderEnable)
 	//pWidget= m_IDLResource.FindWidget( "BattleExit" );
 	//if(pWidget) pWidget->Enable(!bLadderEnable);
 
+	#ifndef _QUESTCLAN
 	bool bLadderServer = 
 		ZGetGameClient()->GetServerMode()==MSM_CLAN ||
 		ZGetGameClient()->GetServerMode()==MSM_LADDER ||
 		ZGetGameClient()->GetServerMode()==MSM_EVENT;
+	#else
+		bool bLadderServer = true;
+	#endif
 
 	pWidget= m_IDLResource.FindWidget( "PrivateChannelInput" );
 	if(pWidget) pWidget->Show(bLadderServer);

@@ -59,11 +59,13 @@ const bool MMatchStage::SetChannelRuleForCreateStage(bool bIsAllowNullChannel)
 	MMatchChannel* pChannel = MGetMatchServer()->GetChannelMap()->Find( m_uidOwnerChannel );
 	if( NULL == pChannel )
 	{
+#ifndef _QUESTCLAN
 		// 클랜전은 채널이 없다...
 		if( MSM_CLAN != MGetServerConfig()->GetServerMode() 
 			&& bIsAllowNullChannel == false ) {
 			return false;
 		}		
+#endif
 
 		ChangeRule(MMATCH_GAMETYPE_DEFAULT);
 		return true;
@@ -872,7 +874,9 @@ void MMatchStage::OnFinishGame()
 	}
 	MMatchServer::GetInstance()->StageFinishGame(GetUID());
 
+#ifndef _QUESTCLAN
 	if ((MGetServerConfig()->GetServerMode() == MSM_LADDER) || (MGetServerConfig()->GetServerMode() == MSM_CLAN))
+#endif
 	{
 		if ((m_nStageType == MST_LADDER) && (GetStageSetting()->IsTeamPlay()))
 		{
