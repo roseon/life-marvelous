@@ -562,13 +562,13 @@ void ZStageSetting::InitStageSettingGameType()
 		{
 			pCB->Add(ZGetGameTypeManager()->GetGameTypeStr(MMATCH_GAMETYPE(MMATCH_GAMETYPE_QUEST)));
 			
-#ifdef LOCALE_BRAZIL
-#else
+//#ifdef LOCALE_BRAZIL
+//#else
 			// 브라질에서는 아직 서바이벌모드를 서비스 안함....나중에 서비스 할때 #ifdef를 풀어줘야함
 			// server.ini에서 SURVIVALENABLE=0이면 비활성화
 			if (ZGetGameClient()->IsEnabledSurvivalMode())
 				pCB->Add(ZGetGameTypeManager()->GetGameTypeStr(MMATCH_GAMETYPE(MMATCH_GAMETYPE_SURVIVAL)));
-#endif
+//#endif
 		}
 	}
 	#endif
