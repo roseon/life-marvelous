@@ -30,9 +30,10 @@ void MBMatchServer::OnScheduleAnnounce( const char* pszAnnounce )
 // 클랜서버 Disable.
 void MBMatchServer::OnScheduleClanServerSwitchDown()
 {
-	// 클랜 서버일 경우만 실행될수 있게.
-	if( MSM_CLAN != MGetServerConfig()->GetServerMode() )
-		return;		// 아니면 종료.
+	#ifndef _QUESTCLAN
+		if( MSM_CLAN != MGetServerConfig()->GetServerMode() )
+			return;		// 아니면 종료.
+	#endif
 
 	MGetServerConfig()->SetEnabledCreateLadderGame( false );
 
@@ -49,8 +50,10 @@ void MBMatchServer::OnScheduleClanServerSwitchDown()
 void MBMatchServer::OnScheduleClanServerSwitchUp()
 {
 	// 클랜 서버일 경우만 실행될수 있게.
+	#ifndef _QUESTCLAN
 	if( MSM_CLAN != MGetServerConfig()->GetServerMode() )
 		return;		// 아니면 종료.
+	#endif
 
 	MGetServerConfig()->SetEnabledCreateLadderGame( true );
 
