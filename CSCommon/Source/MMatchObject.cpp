@@ -194,11 +194,12 @@ void MMatchObject::Tick(unsigned long int nTime)
 	if (CheckStageListTransfer() == true) {
 		// 로비에서 클랜채널에 있으면 클랜전 대기 클랜 리스트 업데이트해준다.
 		MMatchChannel* pChannel = pServer->FindChannel(GetChannelUID());
-		#ifndef _QUESTCLAN
+#ifndef _QUESTCLAN
 		if ((MGetServerConfig()->GetServerMode() == MSM_CLAN) && (pChannel) && (pChannel->GetChannelType() == MCHANNEL_TYPE_CLAN))
 #else
 		if ((pChannel) && (pChannel->GetChannelType() == MCHANNEL_TYPE_CLAN))
-#endif	{
+#endif
+		{
 			if ((unsigned int)(nTime - m_nTimeLastStageListTrans) > CYCLE_MATCH_STANDBY_CLANLIST_UPDATE) {
 				unsigned long int nCurrStageListChecksum = pServer->GetLadderMgr()->GetChecksum(m_nStageCursor, 
 																			TRANS_STANDBY_CLANLIST_NODE_COUNT);
