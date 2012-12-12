@@ -267,13 +267,16 @@ bool MBMatchServer::InitSubTaskSchedule()
 	// 수정 했음 - SungE.
 
 	// clan서버일 경우만.
-	if( MSM_CLAN == MGetServerConfig()->GetServerMode() ){
+	#ifndef _QUESTCLAN
+		if( MSM_CLAN == MGetServerConfig()->GetServerMode() )
+	#endif
+		//{
 		if( !AddClanServerSwitchDownSchedule() )
 			return false;
 
 		if( !AddClanServerAnnounceSchedule() )
 		return false;
-	}
+	//}
 
 	return true;
 }
