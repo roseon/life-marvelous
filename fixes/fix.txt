@@ -1,2 +1,25 @@
 validar las columnas con isnull y poner el alias en el store
 spGetCharInfoByCharNum
+
+
+tambien validar este procedure:
+      
+ALTER   PROC [spGetAccountInfo]      
+ @AID  int            
+, @ServerID int = 0      
+AS          
+BEGIN        
+ SET NOCOUNT ON          
+      
+ SELECT AID, UserID, UGradeID, Name, HackingType ,euCoins     
+ , DATEPART(yy, EndHackingBlockTime) AS HackBlockYear, DATEPART(mm, EndHackingBlockTime) AS HackBlockMonth          
+ , DATEPART(dd, EndHackingBlockTime) AS HackBlockDay, DATEPART(hh, EndHackingBlockTime) AS HackBlockHour          
+ , DATEPART(mi, EndHackingBlockTime) AS HackBlockMin      
+ , DATEDIFF(mi, GETDATE(), EndHackingBlockTime) AS 'HackingBlockTimeRemainderMin'      
+ , IsPowerLevelingHacker      
+ , DATEDIFF(mi, PowerLevelingRegDate, GETDATE()) AS 'PowerLevelingRegPassedTimeMin'    
+ , PGradeID    
+ FROM Account(NOLOCK) WHERE AID = @AID            
+      
+ update Account set LastLoginTime = getdate(), ServerID = @ServerID  where aid = @aid        
+END 
