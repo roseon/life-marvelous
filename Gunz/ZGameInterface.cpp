@@ -2965,7 +2965,7 @@ void ZGameInterface::OnDrawStateLogin(MDrawContext* pDC)
         int nCount = ( timeGetTime() / 800) % 4;
 		for ( int i = 0;  i < nCount;  i++)
 			szMsg[ i] = '<';
-		sprintf( szMsg, "%s %s ", szMsg, "Connectsndo a AbbyGamerz GunZ");
+		sprintf( szMsg, "%s %s ", szMsg, "Conectando a AbbyGamerz GunZ");
 		for ( int i = 0;  i < nCount;  i++)
 			strcat( szMsg, ">");
 
