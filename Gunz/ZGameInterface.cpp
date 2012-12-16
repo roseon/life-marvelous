@@ -4628,6 +4628,8 @@ void ZGameInterface::OnInvalidate()
 	if(pCharView!= 0) pCharView->OnInvalidate();
 	pCharView = (ZCharacterView*)m_IDLResource.FindWidget("EquipmentInformationShop");
 	if(pCharView!= 0) pCharView->OnInvalidate();
+	pCharView = (ZCharacterView*)m_IDLResource.FindWidget("EquipmentInformationLobby");
+	if(pCharView!= 0) pCharView->OnInvalidate();
 
 	if (m_pCombatInterface)
 		m_pCombatInterface->OnInvalidate();
@@ -4659,6 +4661,8 @@ void ZGameInterface::OnRestore()
 	pCharView = (ZCharacterView*)m_IDLResource.FindWidget("EquipmentInformation");
 	if(pCharView!= 0) pCharView->OnRestore();
 	pCharView = (ZCharacterView*)m_IDLResource.FindWidget("EquipmentInformationShop");
+	if(pCharView!= 0) pCharView->OnRestore();
+	pCharView = (ZCharacterView*)m_IDLResource.FindWidget("EquipmentInformationLobby");
 	if(pCharView!= 0) pCharView->OnRestore();
 
 	if (m_pCombatInterface)

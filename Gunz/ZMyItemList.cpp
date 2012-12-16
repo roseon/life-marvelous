@@ -214,6 +214,16 @@ void ZMyItemList::Serialize()
 	}
 	pCharacterView->InitCharParts(pmi->GetSex(), pmi->GetHair(), pmi->GetFace(), nEquipedItemID);
 	END_WIDGETLIST();
+	
+	BEGIN_WIDGETLIST("EquipmentInformationLobby", pResource, ZCharacterView*, pCharacterView);
+	ZMyInfo* pmi = ZGetMyInfo();
+	unsigned long int nEquipedItemID[MMCIP_END];
+	for (int i = 0; i < MMCIP_END; i++)
+	{
+		nEquipedItemID[i] = GetEquipedItemID(MMatchCharItemParts(i));
+	}
+	pCharacterView->InitCharParts(pmi->GetSex(), pmi->GetHair(), pmi->GetFace(), nEquipedItemID);
+	END_WIDGETLIST();
 }
 
 
