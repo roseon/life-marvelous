@@ -606,10 +606,14 @@
 		<BITMAP type="icon" mode="8">berserk-mode.tga</BITMAP>
 		<BITMAP type="icon" mode="9">unlimitdeath-mode.tga</BITMAP>
 		<BITMAP type="icon" mode="10">duel-mode.tga</BITMAP>
-		<BITMAP type="icon" mode="12">ChallengeQuest_Guerilla-mode.tga</BITMAP>
-		<BITMAP type="icon" mode="13">ctf-mode.tga</BITMAP>
-		<BITMAP type="icon" mode="14">awp-mode.tga</BITMAP>
-		<BITMAP type="icon" mode="15">classic-mode.tga</BITMAP>
+		<BITMAP type="icon" mode="12">classic-solo.tga</BITMAP>
+		<BITMAP type="icon" mode="13">classic-team.tga</BITMAP>
+		<BITMAP type="icon" mode="14">deity-mode.tga</BITMAP>
+		<BITMAP type="icon" mode="15">reverse-berseker-mode.tga</BITMAP>
+		<BITMAP type="icon" mode="16">ctf-mode.tga</BITMAP>
+		<BITMAP type="icon" mode="17">awp-mode.tga</BITMAP>
+		<BITMAP type="icon" mode="18">grenade-mode.tga</BITMAP>
+		
 		
 		<SIZE type="width">360</SIZE>
 		<SIZE type="height">32</SIZE>
