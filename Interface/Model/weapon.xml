@@ -1403,5 +1403,39 @@
 		<AddBaseModel name="shotgun_destroyer" filename="model/shotgun_destroyer.elu" />
 </AddWeaponElu>
 
+<!--update 16-12-12-->
+<AddWeaponElu name="gz_axe_thor" weapon_motion_type = "1" weapon_type = "1" >
+	<AddBaseModel name="gz_axe_thor" filename="model/gz_axe_thor.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="gz_sword_hallowwen" weapon_motion_type = "1" weapon_type = "1" >
+	<AddBaseModel name="gz_sword_hallowwen" filename="model/gz_sword_hallowwen.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="gz_Hammer_wb" weapon_motion_type = "1" weapon_type = "1" >
+	<AddBaseModel name="gz_Hammer_wb" filename="model/gz_Hammer_wb.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="gz_Sword_blueR" weapon_motion_type = "1" weapon_type = "1" >
+	<AddBaseModel name="gz_Sword_blueR" filename="model/gz_Sword_blueR.elu" />
+</AddWeaponElu>
+<AddWeaponElu name="gz_Sword_whiteR" weapon_motion_type = "1" weapon_type = "1" >
+	<AddBaseModel name="gz_Sword_whiteR" filename="model/gz_Sword_whiteR.elu" />
+</AddWeaponElu>
+
+<AddWeaponElu name="gz_xmas_Hammer" weapon_motion_type = "1" weapon_type = "1" >
+	<AddBaseModel name="gz_xmas_Hammer" filename="model/gz_xmas_Hammer.elu" />
+</AddWeaponElu>
+
+<AddWeaponElu name="gz_Sword_greenR" weapon_motion_type = "1" weapon_type = "1" >
+	<AddBaseModel name="gz_Sword_greenR" filename="model/gz_Sword_greenR.elu" />
+</AddWeaponElu>
+
+<AddWeaponElu name="punisher_gunORIGINAL" weapon_motion_type = "4" weapon_type = "4" >
+		<AddBaseModel name="punisher_gunORIGINAL" filename="model/punisher_gunORIGINAL.elu" />
+</AddWeaponElu>
+
+
+
+
+
+
 
 </xml>
