@@ -1432,7 +1432,10 @@
 		<AddBaseModel name="punisher_gunORIGINAL" filename="model/punisher_gunORIGINAL.elu" />
 </AddWeaponElu>
 
-
+<!--update 17-12-12-->
+<AddWeaponElu name="ZBP" weapon_motion_type = "1" weapon_type = "1" >
+	<AddBaseModel name="ZBP" filename="model/ZBP.elu" />
+</AddWeaponElu>
 
 
 
