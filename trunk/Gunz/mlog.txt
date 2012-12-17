@@ -1,9 +1,9 @@
-GUNZ 1,0,0,290 launched. build (Nov 12 2011 19:41:21) 
-Log time (11/15/11 18:52:20)
-CPU ID = GenuineIntel ( family = 262 , model = 7 , stepping = 10 ) @ 2500 MHz
-Display Device = NVIDIA GeForce 9500 GT ( vendor=10de device=640 subsys=34ad1458 revision=a1 )
-Display Driver Version = 8.17.0012.8026
-Windows = 6.1 Build 7600 ,  (3603556KB) :  ..
+GUNZ 1,0,0,290 launched. build (Dec 10 2012 22:22:30) 
+Log time (12/10/12 22:23:20)
+CPU ID = GenuineIntel ( family = 262 , model = 7 , stepping = 7 ) @ 2493 MHz
+Display Device = Intel(R) Q35 Express Chipset Family ( vendor=8086 device=29b2 subsys=2819103c revision=2 )
+Display Driver Version = 6.14.0010.4864
+Windows = 5.1 Build 2600 , Service Pack 3 (2097151KB) :  Windows xp..
 Load XML from memory : system/locale.xml- SUCCESS
 Country : (USA), Language : (USA)
 Load Config from file : config.xml- SUCCESS
@@ -14,80 +14,131 @@ Load XML from memory : system/messages.xml(0x0009) - SUCCESS
 Load XML from memory : system/gametypecfg.xml 
 InitializeNotify ok.
 WFog Enabled Device.
+Vertex Shader isn't supported
 device created.
-Video memory 993.000000 
-shader initialize successful : 1
+Video memory 173.000000 
 main : RGetLenzFlare()->Initialize() 
-Version : 10
+Abby GunZ
 InitialLoading success.
 interface Initialize success
 ZApplication::OnCreate : begin
 0(Primary Sound Driver): Hardware Mixing Not Supported
-1(Speakers (High Definition Audio Device)): Hardware Mixing Not Supported
-2(Headset Earphone (2- Microsoft LifeChat LX-3000 )): Hardware Mixing Not Supported
+1(SoundMAX HD Audio): Hardware Mixing Not Supported
 [[[getMaxChannel32]]]]
+cannot create sound : we_grenade_reload
+cannot create sound : rebirth
+cannot create sound : ricochet_concrete01
 LoadWave: Error loading file
+cannot create sound : if_error
+cannot create sound : nice
+cannot create sound : run_a_male
+cannot create sound : we_grenade_reload_2d
+cannot create sound : amb_factory
+cannot create sound : amb_steam
+cannot create sound : amb_fan2
+cannot create sound : amb_factory_2d
+cannot create sound : amb_factory2_2d
+cannot create sound : amb_generator_2d
+cannot create sound : amb_steam_2d
+cannot create sound : amb_steam2_2d
+cannot create sound : amb_fan_2d
+cannot create sound : amb_fan2_2d
+cannot create sound : amb_engine_2d
+cannot create sound : GoblinW_castFirst
+cannot create sound : GoblinW_castSecond
+cannot create sound : SkeletonLp_neglect
 
--------------------> Sound Engine Create : 6.289000 
+-------------------> Sound Engine Create : 7.003000 
 
 sound engine create.
 Load XML from memory : system/tips.xml(0x0009)- SUCCESS
 start log bipmap
 end of load bitmaps2
-loading pictures : 16.474001 
+loading pictures : 6.495000 
+warning : bitmap gametype_triple.tga not found.
 warning : bitmap slot_head.tga not found.
 warning : bitmap slot_head.tga not found.
 warning : bitmap icon_gameroom.tga not found.
 IDLResource Loading Success!!
-IDL resources : 9.818000 
+IDL resources : 2.562000 
 start InitInterface option
-Number of Display mode : 27
-Number of Display mode : 27
+Number of Display mode : 85
+Number of Display mode : 85
 end of InitInterface option ok
 Init maps : no Current ChannelRule 
-Screen Effect Manager Create : 0.863000 
+Screen Effect Manager Create : 0.530000 
 Screen effect manager create success.
-SFX/ef_hp ampulla.elu mesh Plane57 node 2 face 0 point -> physique 3 개 이상
-SFX/ef_hp ampulla.elu mesh Plane50 node 2 face 0 point -> physique 3 개 이상
-SFX/ef_hp ampulla.elu mesh Plane51 node 2 face 0 point -> physique 3 개 이상
-SFX/ef_hp ampulla.elu mesh Plane52 node 2 face 0 point -> physique 3 개 이상
-SFX/ef_hp ampulla.elu mesh Plane53 node 2 face 0 point -> physique 3 개 이상
-SFX/ef_hp ampulla.elu mesh Plane54 node 2 face 0 point -> physique 3 개 이상
-SFX/ef_hp ampulla.elu mesh Plane56 node 2 face 0 point -> physique 3 개 이상
-SFX/ef_ap ampulla.elu mesh Plane50 node 2 face 0 point -> physique 3 개 이상
-SFX/ef_ap ampulla.elu mesh Plane51 node 2 face 0 point -> physique 3 개 이상
-SFX/ef_ap ampulla.elu mesh Plane52 node 2 face 0 point -> physique 3 개 이상
-SFX/ef_ap ampulla.elu mesh Plane53 node 2 face 0 point -> physique 3 개 이상
-SFX/ef_ap ampulla.elu mesh Plane54 node 2 face 0 point -> physique 3 개 이상
-SFX/ef_ap ampulla.elu mesh Plane56 node 2 face 0 point -> physique 3 개 이상
-SFX/ef_ap ampulla.elu mesh Plane57 node 2 face 0 point -> physique 3 개 이상
-SFX/ef_haste ampulla.elu mesh Plane50 node 2 face 0 point -> physique 3 개 이상
-SFX/ef_haste ampulla.elu mesh Plane51 node 2 face 0 point -> physique 3 개 이상
-SFX/ef_haste ampulla.elu mesh Plane52 node 2 face 0 point -> physique 3 개 이상
-SFX/ef_haste ampulla.elu mesh Plane53 node 2 face 0 point -> physique 3 개 이상
-SFX/ef_haste ampulla.elu mesh Plane54 node 2 face 0 point -> physique 3 개 이상
-SFX/ef_haste ampulla.elu mesh Plane56 node 2 face 0 point -> physique 3 개 이상
-SFX/ef_haste ampulla.elu mesh Plane57 node 2 face 0 point -> physique 3 개 이상
 Effect manager create success.
-7180 upnp port forward initialized.
 Client create success.
 game interface create success.
 
--------------------> GameInterface Create : 34.955002 
+-------------------> GameInterface Create : 15.937000 
 
-model/man-parts_shunter.elu mesh eq_chest_shunter node 34 face 0 point -> physique 3 개 이상
-model/woman-parts_blackdragon.elu mesh eq_legs_blackdragon node 301 face 1 point -> physique 3 개 이상
-model/woman-parts_eskimo.elu mesh eq_chest_eskimo node 80 face 1 point -> physique 3 개 이상
 Load character.xml success,
 
--------------------> Character Loading : 36.483002 
+-------------------> Character Loading : 64.419998 
 
-
--------------------> WeaponMesh Loading : 5.781000 
+----------> in zip ( model/weapon04.elu ) file not found!! 
+ ----------> in zip ( model/weapon04.elu ) file not found!! 
+ ----------> in zip ( model/weapon06.elu ) file not found!! 
+ ----------> in zip ( model/weapon06.elu ) file not found!! 
+ ----------> in zip ( model/weapon11.elu ) file not found!! 
+ ----------> in zip ( model/weapon11.elu ) file not found!! 
+ ----------> in zip ( model/weapon13.elu ) file not found!! 
+ ----------> in zip ( model/weapon13.elu ) file not found!! 
+ ----------> in zip ( model/weapon14.elu ) file not found!! 
+ ----------> in zip ( model/weapon14.elu ) file not found!! 
+ ----------> in zip ( model/weapon16.elu ) file not found!! 
+ ----------> in zip ( model/weapon16.elu ) file not found!! 
+ ----------> in zip ( model/weapon05.elu ) file not found!! 
+ ----------> in zip ( model/weapon06.elu ) file not found!! 
+ ----------> in zip ( model/weapon07.elu ) file not found!! 
+ ----------> in zip ( model/weapon08.elu ) file not found!! 
+ ----------> in zip ( model/weapon09.elu ) file not found!! 
+ ----------> in zip ( model/weapon07.elu ) file not found!! 
+ ----------> in zip ( model/weapon08.elu ) file not found!! 
+ ----------> in zip ( model/weapon09.elu ) file not found!! 
+ ----------> in zip ( model/weapon10.elu ) file not found!! 
+ ----------> in zip ( model/weapon02.elu ) file not found!! 
+ ----------> in zip ( model/weapon04.elu ) file not found!! 
+ ----------> in zip ( model/weapon05.elu ) file not found!! 
+ ----------> in zip ( model/weapon06.elu ) file not found!! 
+ ----------> in zip ( model/weapon10.elu ) file not found!! 
+ ----------> in zip ( model/weapon01.elu ) file not found!! 
+ ----------> in zip ( model/weapon02.elu ) file not found!! 
+ ----------> in zip ( model/coloredsgs/shotgunTA.elu ) file not found!! 
+ ----------> in zip ( model/coloredsgs/polkashotgun.elu ) file not found!! 
+ ----------> in zip ( model/coloredsgs/shotgun115.elu ) file not found!! 
+ ----------> in zip ( model/coloredsgs/shotgun105.elu ) file not found!! 
+ ----------> in zip ( model/coloredsgs/blueshotgun.elu ) file not found!! 
+ ----------> in zip ( model/coloredsgs/shotgun90.elu ) file not found!! 
+ ----------> in zip ( model/coloredsgs/redshotgun.elu ) file not found!! 
+ ----------> in zip ( model/coloredsgs/pinkshotgun.elu ) file not found!! 
+ ----------> in zip ( model/coloredsgs/shotgun65.elu ) file not found!! 
+ ----------> in zip ( model/coloredsgs/shotgunND.elu ) file not found!! 
+ ----------> in zip ( model/coloredsgs/shotgun70.elu ) file not found!! 
+ ----------> in zip ( model/coloredsgs/shotgun75.elu ) file not found!! 
+ ----------> in zip ( model/coloredsgs/shotgunDN.elu ) file not found!! 
+ ----------> in zip ( model/weapon_event.elu ) file not found!! 
+ ----------> in zip ( model/weapon_event.elu ) file not found!! 
+ ----------> in zip ( model/weapondon.elu ) file not found!! 
+ ----------> in zip ( model/weapon_event.elu ) file not found!! 
+ ----------> in zip ( model/weapondn.elu ) file not found!! 
+ ----------> in zip ( model/weapon_event.elu ) file not found!! 
+ ----------> in zip ( model/weapon_event.elu ) file not found!! 
+ ----------> in zip ( model/Black Donate/shotgunDN.elu ) file not found!! 
+ ----------> in zip ( model/Blue/blueshotgun.elu ) file not found!! 
+ ----------> in zip ( model/Green Donate/shotgunND.elu ) file not found!! 
+ ----------> in zip ( model/Pink/pinkshotgun.elu ) file not found!! 
+ ----------> in zip ( model/Polka Dots/polkashotgun.elu ) file not found!! 
+ ----------> in zip ( model/Red/redshotgun.elu ) file not found!! 
+ ----------> in zip ( model/Triangle/shotgunTA.elu ) file not found!! 
+ 
+-------------------> WeaponMesh Loading : 3.154000 
 
 Load weapon.xml success. 
 
--------------------> Worlditem Loading : 0.287000 
+-------------------> Worlditem Loading : 0.124000 
 
 Load zitem info success.
 Load zBuff info success.
@@ -97,5 +148,69 @@ Init channel rule manager success.
 Init abuse manager success.
 Init chatting filter. success
 
--------------------> ETC .. : 34.297001 
+-------------------> ETC .. : 18.042999 
 
+BspObject open : begin interface/login.rs 
+RBspObject::Open : Open_MaterialList
+RBspObject::Open : Open_LightList
+BspObject open object list : begin
+in zip : interface/Pavilion_obj_sky.elu.ani file not found!! 
+ RBspObject::Open_ObjectList : size 9 
+RBspObject::Open_ObjectList : pInfo->pVisualMesh == NULL 
+RBspObject::Open_ObjectList : end
+RBspObject::Open : OpenDescription
+RBspObject::OpenRs : file.Open 
+RBspObject::OpenRs : file.Read(&header) 
+RBspObject::OpenRs : file.Read(&nMaterial) 
+RBspObject::OpenRs : Open_Nodes begin 
+RBspObject::OpenRs : Open_Nodes end 
+RBspObject::Open : OpenRs 
+RBspObject::Open : OpenBsp 
+BspObject load lightmap : file.Read(&header)
+BspObject load lightmap nCount = 2
+BspObject load lightmap 0
+BspObject load lightmap 1
+BspObject load lightmap : file.Read(&m_nLightmap) done
+BspObject load lightmap : end 
+RBspObject::Open : done
+Load smoke description mesh.
+main : OnCreate() done
+Server Connected
+Login Posted
+Login Successful. 
+Responsed Account Charlist
+[Testing OpenCustomMusic] - Previos File Name:  --- New File Name: 
+Calling PlayMusic
+Cloth VertexBuffer is Released
+Selected character name : Echiz3n (45 63 68 69 7A 33 6E )  (len = 7)
+Responsed Account Charlist
+[Testing OpenCustomMusic] - Previos File Name:  --- New File Name: 
+Calling PlayMusic
+BspObject open : begin interface/login.rs 
+RBspObject::Open : Open_MaterialList
+RBspObject::Open : Open_LightList
+BspObject open object list : begin
+RBspObject::Open_ObjectList : size 9 
+RBspObject::Open_ObjectList : pInfo->pVisualMesh == NULL 
+RBspObject::Open_ObjectList : end
+Can't Set Light...: Light Buffer for LenzFlare is Full already..
+Fail to Set LenzFlare Position...
+RBspObject::Open : OpenDescription
+RBspObject::OpenRs : file.Open 
+RBspObject::OpenRs : file.Read(&header) 
+RBspObject::OpenRs : file.Read(&nMaterial) 
+RBspObject::OpenRs : Open_Nodes begin 
+RBspObject::OpenRs : Open_Nodes end 
+RBspObject::Open : OpenRs 
+RBspObject::Open : OpenBsp 
+BspObject load lightmap : file.Read(&header)
+BspObject load lightmap nCount = 2
+BspObject load lightmap 0
+BspObject load lightmap 1
+BspObject load lightmap : file.Read(&m_nLightmap) done
+BspObject load lightmap : end 
+RBspObject::Open : done
+Load smoke description mesh.
+MLogoutListener !
+Server Connected
+Login Posted
