@@ -1627,12 +1627,26 @@ bool MMatchStage::IsValidMap( const char* pMapName )
 
 	bool IsDule = false;
 	bool IsCTF = false;
+	bool IsAWP= false;
+	bool IsGWR= false;
+	bool IsSWR = false;
+
 	if( MMATCH_GAMETYPE_DUEL == m_StageSetting.GetGameType() )
 		IsDule = true;
 
 	
 	if( MMATCH_GAMETYPE_CTF == m_StageSetting.GetGameType() )
 		IsCTF = true;
+
+	if( MMATCH_GAMETYPE_AWP == m_StageSetting.GetGameType() )
+		IsAWP = true;
+
+	if( MMATCH_GAMETYPE_GRENADEWAR == m_StageSetting.GetGameType() )
+		IsGWR = true;
+
+	if( MMATCH_GAMETYPE_SKILLWAR == m_StageSetting.GetGameType() )
+		IsSWR = true;
+
 	// 퀘스트 모드에선 사용하지 않기로 함...
 	//if( MGetGameTypeMgr()->IsQuestDerived(GetStageSetting()->GetGameType()) ) 
 	//{
@@ -1653,6 +1667,14 @@ bool MMatchStage::IsValidMap( const char* pMapName )
 	
 	if(IsCTF)
 		return pRule->CheckCTFMap(pMapName);
+	//customs
+	if(IsAWP)
+		return pRule->CheckAWPMap(pMapName);
+	if(IsGWR)
+		return pRule->CheckGWRMap(pMapName);
+	if(IsSWR)
+		return pRule->CheckSWRMap(pMapName);
+
 
 	return pRule->CheckMap( pMapName, IsDule );
 }

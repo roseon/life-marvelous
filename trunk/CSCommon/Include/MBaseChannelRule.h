@@ -56,6 +56,14 @@ public:
 	bool Exist(const char* pszMapName, bool bOnlyDuel);
 	bool ExistAsCTF(int nMapID);
 	bool ExistAsCTF(const char* pszMapName);
+	//cutoms
+	bool ExistAsAWP(int nMapID);
+	bool ExistAsAWP(const char* pszMapName);
+	bool ExistAsGWR(int nMapID);
+	bool ExistAsGWR(const char* pszMapName);
+	bool ExistAsSWR(int nMapID);
+	bool ExistAsSWR(const char* pszMapName);
+
 };
 
 class MChannelRuleGameTypeList : public list<int>
@@ -134,6 +142,35 @@ public:
 	{
 		return m_MapList.ExistAsCTF(nMapID);
 	}
+	//customs
+	bool CheckAWPMap(const char* pszMapName)
+	{
+		return m_MapList.ExistAsAWP(pszMapName);
+	}
+	bool CheckAWPMap(int nMapID)
+	{
+		return m_MapList.ExistAsAWP(nMapID);
+	}
+
+	bool CheckGWRMap(const char* pszMapName)
+	{
+		return m_MapList.ExistAsGWR(pszMapName);
+	}
+	bool CheckGWRMap(int nMapID)
+	{
+		return m_MapList.ExistAsGWR(nMapID);
+	}
+	
+	bool CheckSWRMap(const char* pszMapName)
+	{
+		return m_MapList.ExistAsSWR(pszMapName);
+	}
+	bool CheckSWRMap(int nMapID)
+	{
+		return m_MapList.ExistAsSWR(nMapID);
+	}
+
+
 	bool CheckGameType(int nGameTypeID)
 	{
 #ifdef _DEBUG
