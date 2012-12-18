@@ -57,6 +57,9 @@ private:
 		int			nMaxPlayers;					// ÃÖ´ë ÀÎ¿ø
 		bool		bOnlyDuelMap;					// µà¾ó¸Ê Àü¿ë
 		bool		bIsCTFMap;
+		bool		bIsAWPMap;
+		bool		bIsGWRMap;
+		bool		bIsSWRMap;
 	};
 
 
@@ -72,6 +75,10 @@ public:
 	bool Initialize(MZFileSystem* pfs, const char* szFileName);
 	bool MIsCorrectMap(const int nMapID);
 	bool IsCTFMap( const int nMapID);
+
+	bool IsAWPMap( const int nMapID);
+	bool IsGWRMap( const int nMapID);
+	bool IsSWRMap( const int nMapID);
 
  
 	bool IsMapOnlyDuel( const int nMapID);

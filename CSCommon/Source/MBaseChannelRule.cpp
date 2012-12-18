@@ -94,6 +94,123 @@ bool MChannelRuleMapList::ExistAsCTF(const char* pszMapName)
 	return false;
 }
 
+//customs
+bool MChannelRuleMapList::ExistAsAWP(int nMapID)
+{
+	set<int>::iterator itor = m_Set.find( nMapID);
+
+	if ( itor != m_Set.end())
+	{
+		int id = (*itor);
+
+		if (MGetMapDescMgr()->IsAWPMap(id))
+			return true;
+
+		return false;
+	}
+
+	return false;
+}
+
+bool MChannelRuleMapList::ExistAsAWP(const char* pszMapName)
+{
+	for (set<int>::iterator itor = m_Set.begin(); itor != m_Set.end(); ++itor)
+	{
+		int id = (*itor);
+
+		if ((id >= 0) && (id < MMATCH_MAP_MAX))
+		{
+			if ( !stricmp(pszMapName, MGetMapDescMgr()->GetMapName(id)) )
+			{
+				if (MGetMapDescMgr()->IsAWPMap(id))
+					return true;
+
+				return false;
+			}
+		}
+	}
+
+	return false;
+}
+
+
+bool MChannelRuleMapList::ExistAsGWR(int nMapID)
+{
+	set<int>::iterator itor = m_Set.find( nMapID);
+
+	if ( itor != m_Set.end())
+	{
+		int id = (*itor);
+
+		if (MGetMapDescMgr()->IsGWRMap(id))
+			return true;
+
+		return false;
+	}
+
+	return false;
+}
+
+bool MChannelRuleMapList::ExistAsGWR(const char* pszMapName)
+{
+	for (set<int>::iterator itor = m_Set.begin(); itor != m_Set.end(); ++itor)
+	{
+		int id = (*itor);
+
+		if ((id >= 0) && (id < MMATCH_MAP_MAX))
+		{
+			if ( !stricmp(pszMapName, MGetMapDescMgr()->GetMapName(id)) )
+			{
+				if (MGetMapDescMgr()->IsGWRMap(id))
+					return true;
+
+				return false;
+			}
+		}
+	}
+
+	return false;
+}
+
+bool MChannelRuleMapList::ExistAsSWR(int nMapID)
+{
+	set<int>::iterator itor = m_Set.find( nMapID);
+
+	if ( itor != m_Set.end())
+	{
+		int id = (*itor);
+
+		if (MGetMapDescMgr()->IsSWRMap(id))
+			return true;
+
+		return false;
+	}
+
+	return false;
+}
+
+bool MChannelRuleMapList::ExistAsSWR(const char* pszMapName)
+{
+	for (set<int>::iterator itor = m_Set.begin(); itor != m_Set.end(); ++itor)
+	{
+		int id = (*itor);
+
+		if ((id >= 0) && (id < MMATCH_MAP_MAX))
+		{
+			if ( !stricmp(pszMapName, MGetMapDescMgr()->GetMapName(id)) )
+			{
+				if (MGetMapDescMgr()->IsSWRMap(id))
+					return true;
+
+				return false;
+			}
+		}
+	}
+
+	return false;
+}
+
+
 #define MTOK_CHANNELRULE				"CHANNELRULE"
 #define MTOK_CHANNELMAP					"MAP"
 #define MTOK_CHANNELRULE_GAMETYPE		"GAMETYPE"

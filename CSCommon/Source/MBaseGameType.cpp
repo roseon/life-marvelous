@@ -34,7 +34,14 @@ const char* MMatchGameTypeAcronym[MMATCH_GAMETYPE_MAX] = {
 	"DMTE",		// DEATHMATCH_TEAM2 (DeathMatch Team Extream)
 	"DUEL",		// DUEL			
 	"DUELT",	// DUELTOURNAMENT	
+	"CSS",	// MMATCH_GAMETYPE_CLASSIC_SOLO	
+	"CST",	// MMATCH_GAMETYPE_CLASSIC_TEAM	
+	"DMD",	// MMATCH_GAMETYPE_DEITY	
+	"DMRB",	// MMATCH_GAMETYPE_REVERSE_BERSERKER	
 	"CTF",		//CAPTURE THE FLAG
+	"AWP",		//MMATCH_GAMETYPE_AWP
+	"GWR",	// MMATCH_GAMETYPE_GRENADEWAR
+	"SWR",		//MMATCH_GAMETYPE_SKILLWAR
 };
 
 void MMatchGameTypeInfo::Set(const MMATCH_GAMETYPE a_nGameTypeID, const char* a_szGameTypeStr, const float a_fGameExpRatio,

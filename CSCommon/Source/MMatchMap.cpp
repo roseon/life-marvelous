@@ -16,6 +16,9 @@
 #define MMAP_MAXPLAYERS		"MaxPlayers"
 #define MMAP_ONLYDUELMAP	"bOnlyDuelMap"
 #define MMAP_ISCTFMAP		"bIsCTFMap"
+#define MMAP_ISAWPMAP		"bIsAWPMap"
+#define MMAP_ISGWRMAP		"bIsGWRMap"
+#define MMAP_ISSWRMAP		"bIsSWRMap"
 
 MMapDesc::MMapDesc()
 {
@@ -65,7 +68,10 @@ bool MMapDesc::Initialize(const char* szFileName)
 			aChild.GetAttribute(&m_MapVectors[num].nMaxPlayers , MMAP_MAXPLAYERS);
 			aChild.GetAttribute(&m_MapVectors[num].bOnlyDuelMap , MMAP_ONLYDUELMAP);
 			aChild.GetAttribute(&m_MapVectors[num].bIsCTFMap , MMAP_ISCTFMAP);
-
+			//testing awp,grenade,skill
+			aChild.GetAttribute(&m_MapVectors[num].bIsCTFMap , MMAP_ISAWPMAP);
+			aChild.GetAttribute(&m_MapVectors[num].bIsGWRMap , MMAP_ISGWRMAP);
+			aChild.GetAttribute(&m_MapVectors[num].bIsSWRMap , MMAP_ISSWRMAP);
 			num++;
 		}
 	}
@@ -138,6 +144,10 @@ bool MMapDesc::Initialize(MZFileSystem* pFileSystem, const char* szFileName)
 			aChild.GetAttribute(&m_MapVectors[num].nMaxPlayers , MMAP_MAXPLAYERS);
 			aChild.GetAttribute(&m_MapVectors[num].bOnlyDuelMap , MMAP_ONLYDUELMAP);
 			aChild.GetAttribute(&m_MapVectors[num].bIsCTFMap , MMAP_ISCTFMAP);
+			//testing awp,grenade,skill
+			aChild.GetAttribute(&m_MapVectors[num].bIsCTFMap , MMAP_ISAWPMAP);
+			aChild.GetAttribute(&m_MapVectors[num].bIsGWRMap , MMAP_ISGWRMAP);
+			aChild.GetAttribute(&m_MapVectors[num].bIsSWRMap , MMAP_ISSWRMAP);
 			num++;
 		}
 	}
@@ -228,6 +238,30 @@ bool MMapDesc::IsCTFMap( const int nMapID)
 {
 	if ( MIsCorrectMap(nMapID))
 		return m_MapVectors[ nMapID].bIsCTFMap;
+	else
+		return 0;
+}
+
+bool MMapDesc::IsAWPMap( const int nMapID)
+{
+	if ( MIsCorrectMap(nMapID))
+		return m_MapVectors[ nMapID].bIsAWPMap;
+	else
+		return 0;
+}
+
+bool MMapDesc::IsGWRMap( const int nMapID)
+{
+	if ( MIsCorrectMap(nMapID))
+		return m_MapVectors[ nMapID].bIsGWRMap;
+	else
+		return 0;
+}
+
+bool MMapDesc::IsSWRMap( const int nMapID)
+{
+	if ( MIsCorrectMap(nMapID))
+		return m_MapVectors[ nMapID].bIsSWRMap;
 	else
 		return 0;
 }

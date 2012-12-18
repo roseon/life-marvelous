@@ -92,10 +92,20 @@ bool InitMaps(MWidget *pWidget)
 
 		bool bDuelMode = false;
                 bool bCTFMode = false;
+	    bool bAWPMode = false;
+		bool bGWRMode = false;
+		bool bSWRMode = false;
+
         if ( ZGetGameClient() && (ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_DUEL))
                         bDuelMode = true;
         if ( ZGetGameClient() && (ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_CTF))
                         bCTFMode = true;
+		if ( ZGetGameClient() && (ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_AWP))
+                        bAWPMode = true;
+	    if ( ZGetGameClient() && (ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_GRENADEWAR))
+                        bGWRMode = true;
+		if ( ZGetGameClient() && (ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_SKILLWAR))
+                        bSWRMode = true;
  
          bool UseThisMap = true;
 
@@ -121,9 +131,38 @@ bool InitMaps(MWidget *pWidget)
                                 if(strcmp(MMATCH_MAPNAME_RELAYMAP, MGetMapDescMgr()->GetMapName(i)) != 0)
                                         pCombo->Add(MGetMapDescMgr()->GetMapName(i));
                         }
-                }
+         }
+		//customs
+		if(bAWPMode)
+		{
+                        if ( pRule->CheckAWPMap( MGetMapDescMgr()->GetMapName(i)))
+                        {
+                                if(strcmp(MMATCH_MAPNAME_RELAYMAP, MGetMapDescMgr()->GetMapName(i)) != 0)
+                                        pCombo->Add(MGetMapDescMgr()->GetMapName(i));
+                        }
+         }
+
+		if(bGWRMode)
+		{
+                        if ( pRule->CheckGWRMap( MGetMapDescMgr()->GetMapName(i)))
+                        {
+                                if(strcmp(MMATCH_MAPNAME_RELAYMAP, MGetMapDescMgr()->GetMapName(i)) != 0)
+                                        pCombo->Add(MGetMapDescMgr()->GetMapName(i));
+                        }
+         }
+
+		if(bSWRMode)
+		{
+                        if ( pRule->CheckSWRMap( MGetMapDescMgr()->GetMapName(i)))
+                        {
+                                if(strcmp(MMATCH_MAPNAME_RELAYMAP, MGetMapDescMgr()->GetMapName(i)) != 0)
+                                        pCombo->Add(MGetMapDescMgr()->GetMapName(i));
+                        }
+         }
+
+
  
-                if ( pRule->CheckMap( MGetMapDescMgr()->GetMapName(i), bDuelMode) && !bCTFMode)
+                if ( pRule->CheckMap( MGetMapDescMgr()->GetMapName(i), bDuelMode) && !bCTFMode && !bAWPMode && !bGWRMode && !bSWRMode)
                         if(strcmp(MMATCH_MAPNAME_RELAYMAP, MGetMapDescMgr()->GetMapName(i)) != 0)
                                 pCombo->Add(MGetMapDescMgr()->GetMapName(i));
 	}
