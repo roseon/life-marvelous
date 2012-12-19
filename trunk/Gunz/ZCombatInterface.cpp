@@ -465,8 +465,10 @@ void ZCombatInterface::OnDestroy()
 
 void TextRelative(MDrawContext* pDC,float x,float y,const char *szText,bool bCenter)
 {
+#ifndef _EXTRESOLUTION
 	if( RGetIsWidthScreen() )
 		x = (x*800+80)/960.f;
+#endif
 
 	int screenx=x*MGetWorkspaceWidth();
 	if(bCenter)
@@ -481,9 +483,10 @@ void TextRelative(MDrawContext* pDC,float x,float y,const char *szText,bool bCen
 void BitmapRelative(MDrawContext* pDC, float x, float y, float w, float h, MBitmap* pBitmap, bool bCenter=false)
 {
 	pDC->SetBitmap( pBitmap);
-
+#ifndef _EXTRESOLUTION
 	if( RGetIsWidthScreen() )
 		x = (x*800+80)/960.f;
+#endif
 
 	int screenx=x*MGetWorkspaceWidth();
 	if(bCenter)

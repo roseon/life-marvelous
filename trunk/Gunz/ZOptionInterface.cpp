@@ -146,13 +146,17 @@ void ZOptionInterface::InitInterfaceOption(void)
 				{
 					if( REnumAdapterMode( D3DADAPTER_DEFAULT,format[i], idm,  &ddm ))
 					{
+#ifndef _EXTRESOLUTION
 						if( ddm.Width < 640 || ddm.Height < 480 )
 							continue;
 
 						if( ((float)ddm.Height / (float)ddm.Width  != 0.75f) &&  
 							((float)ddm.Height / (float)ddm.Width  != 0.625f) )
 							continue;
-
+#else
+						if( ddm.Width < 800 || ddm.Height < 600 )
+							continue;
+#endif
 						ddm.RefreshRate = DEFAULT_REFRESHRATE;
 
 						if( ddm.Format == D3DFMT_X8R8G8B8 || ddm.Format == D3DFMT_R5G6B5 )

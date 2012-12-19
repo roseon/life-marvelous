@@ -148,11 +148,13 @@ void MDrawContextR2::Rectangle(int x, int y, int cx, int cy)
 
 void MDrawContextR2::FillRectangleW(int x, int y, int cx, int cy)
 {
+#ifndef _EXTRESOLUTION
 	if( RGetIsWidthScreen() )
 	{
 		x = ( 800*x+80*RGetScreenWidth() )/960.f;//( x/float(RGetScreenWidth()) *800 + 80 )/960 * RGetScreenWidth();
 		cx = int(cx*800.f/960.f);
 	}
+#endif
 
 	FillRectangle( x,  y,  cx,  cy);
 }

@@ -444,9 +444,11 @@ void ZObserver::DrawPlayerDuelHPAPBar(MDrawContext* pDC)
 	if ( pBitmap)
 	{
 		pDC->SetBitmap( pBitmap);
+#ifndef _EXTRESOLUTION
 		if( RGetIsWidthScreen() )
 			pDC->Draw( ( 800*167.0f*fRx+80*RGetScreenWidth() )/960.f, 0, 466.0f*fRy, 49.0f*fRy);
 		else
+#endif
 			pDC->Draw( 167.0f*fRx, 0, 466.0f*fRx, 49.0f*fRx);
 	}
 

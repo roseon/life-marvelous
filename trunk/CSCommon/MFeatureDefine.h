@@ -16,3 +16,4 @@
 #define _MAPLOGIN 1
 #define _LUCAS_LOADING 1
 #define _QUESTCLAN 1
+#define _EXTRESOLUTION 1
