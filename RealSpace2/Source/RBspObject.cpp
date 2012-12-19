@@ -40,6 +40,8 @@ _NAMESPACE_REALSPACE2_BEGIN
 // 테스트용
 LPDIRECT3DTEXTURE9 g_pShademap=NULL;
 
+bool			RBspObject::m_bTextureRenderOnOff = true;
+
 // 디버그용.. 
 int nsplitcount=0,nleafcount=0;
 int g_nPoly,g_nCall;
@@ -492,7 +494,7 @@ void RBspObject::SetDiffuseMap(int nMaterial)
 	LPDIRECT3DDEVICE9 pd3dDevice=RGetDevice();
 
 	RBaseTexture *pTex=m_pMaterials[nMaterial].texture;
-	if(pTex)
+	if(pTex && GetTextureRenderOnOff())
 	{
 		pd3dDevice->SetTexture(0,pTex->GetTexture());
 		pd3dDevice->SetTextureStageState( 0, D3DTSS_COLORARG1, D3DTA_TEXTURE );
@@ -1641,6 +1643,7 @@ bool RBspObject::Open_MaterialList(MXmlElement *pElement)
 			DiffuseMapName = strBase + mat->DiffuseMap;
 		else
 			DiffuseMapName = mat->DiffuseMap;
+
 
 		char szMapName[256];
 		GetRefineFilename(szMapName,DiffuseMapName.c_str());

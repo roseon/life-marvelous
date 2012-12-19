@@ -199,17 +199,32 @@ void ZOptionInterface::InitInterfaceOption(void)
 
 		pWidget = (MComboBox*)pResource->FindWidget("CharTexLevel");
 		if(pWidget)	{
-			pWidget->SetSelIndex(ZGetConfiguration()->GetVideo()->nCharTexLevel);
+			int TexLevel = ZGetConfiguration()->GetVideo()->nCharTexLevel;
+			if (ZGetConfiguration()->GetVideo()->nCharTexLevel < 3)
+				pWidget->SetSelIndex(ZGetConfiguration()->GetVideo()->nCharTexLevel);
+			else
+				pWidget->SetSelIndex(3);
 		}
 
 		pWidget = (MComboBox*)pResource->FindWidget("MapTexLevel");
 		if(pWidget)	{
-			pWidget->SetSelIndex(ZGetConfiguration()->GetVideo()->nMapTexLevel);
+			int TexLevel = ZGetConfiguration()->GetVideo()->nMapTexLevel;
+			if (TexLevel < 3)
+				pWidget->SetSelIndex(TexLevel);
+			else
+				if (TexLevel == 7)
+					pWidget->SetSelIndex(4);
+				else
+					pWidget->SetSelIndex(3);				
 		}
 
 		pWidget = (MComboBox*)pResource->FindWidget("EffectLevel");
 		if(pWidget)	{
-			pWidget->SetSelIndex(ZGetConfiguration()->GetVideo()->nEffectLevel);
+			int EffectLevel = ZGetConfiguration()->GetVideo()->nEffectLevel;
+			if (EffectLevel < 3)
+				pWidget->SetSelIndex(EffectLevel);
+			else
+				pWidget->SetSelIndex(3);
 		}
 
 		pWidget = (MComboBox*)pResource->FindWidget("TextureFormat");
@@ -490,11 +505,14 @@ void ZOptionInterface::InitInterfaceOption(void)
 	//	if(pComboBox)	{
 	//		if (Z_ETC_FRAMELIMIT_PERSECOND >= pComboBox->GetCount())	// 사용자지정이였는데 사용자지정이 없어졌을 경우
 	//		{
+
 	//			Z_ETC_FRAMELIMIT_PERSECOND = 0;
 	//		}
+
 	//		pComboBox->SetSelIndex(Z_ETC_FRAMELIMIT_PERSECOND); // 1초당 프레임 제한
 	//		RSetFrameLimitPerSeceond(Z_ETC_FRAMELIMIT_PERSECOND);
 	//	}
+
 	}
 
 	//Macro
@@ -616,6 +634,7 @@ bool ZOptionInterface::SaveInterfaceOption(void)
 		if(pWidget)	{
 
 			TexLevel = pWidget->GetSelIndex();
+			if (TexLevel == 3) TexLevel = 8;
 
 			if( ZGetConfiguration()->GetVideo()->bTerrible ){
 				ZGetConfiguration()->GetVideo()->nCharTexLevel = TexLevel;
@@ -638,9 +657,10 @@ bool ZOptionInterface::SaveInterfaceOption(void)
 		if(pWidget)	{
 
 			TexLevel = pWidget->GetSelIndex();
-			//PenguinGuy
-			if( TexLevel == 3 )
-				TexLevel = 8;
+			//Andres :D
+			if (TexLevel == 3) TexLevel = 8;
+				
+			if (TexLevel == 4) TexLevel = 7;
 
 			if( ZGetConfiguration()->GetVideo()->bTerrible ){
 				ZGetConfiguration()->GetVideo()->nCharTexLevel = TexLevel;
@@ -656,6 +676,7 @@ bool ZOptionInterface::SaveInterfaceOption(void)
 				ZGetConfiguration()->GetVideo()->nMapTexLevel = TexLevel;
 
 				SetMapTextureLevel(TexLevel);
+				RBspObject::SetTextureRenderOnOff(TexLevel != 7);
 				flag |= RTextureType_Map;
 			}
 		}
@@ -665,6 +686,7 @@ bool ZOptionInterface::SaveInterfaceOption(void)
 		if(pWidget)	{
 
 			EffectLevel = pWidget->GetSelIndex();
+
 
 			if( ZGetConfiguration()->GetVideo()->nEffectLevel != EffectLevel ) {
 				ZGetConfiguration()->GetVideo()->nEffectLevel = EffectLevel;
@@ -979,8 +1001,10 @@ bool ZOptionInterface::SaveInterfaceOption(void)
 			Z_ETC_CROSSHAIR = pComboBox->GetSelIndex();
 		}
 		//PenguinGuy - Added this
+
 		MEdit* pFrameLimitEdit = (MEdit*)pResource->FindWidget( "FrameLimit_PerSecond" );
 		if( pFrameLimitEdit )
+
 		{
 			Z_ETC_FRAMELIMIT_PERSECOND = atoi( pFrameLimitEdit->GetText() );
 			RSetFrameLimitPerSeceond( Z_ETC_FRAMELIMIT_PERSECOND );
@@ -1436,6 +1460,8 @@ void ZOptionInterface::AdjustMultipliedWidgetsManually()
 extern MFontR2* g_pDefFont;
 void ZOptionInterface::ResizeDefaultFont( int newScreenHeight )
 {
+	return;
+
 	// 폰트를 기준 해상도(800*600)에서 몇배할 것인지 계산
 	float fontResizeRatio = newScreenHeight/600.f;
 
@@ -1648,6 +1674,7 @@ BEGIN_IMPLEMENT_LISTENER(ZGetOptionFrameButtonListener, MBTN_CLK_MSG)
 		pButton->Show( false);
 	}
 #endif
+
 #ifndef _MULTILANGUAGE	// 다중언어지원 디파인을 껐을땐 언어선택 콤보박스를 숨겨버린다
 	pWidget = (MLabel*)pResource->FindWidget( "LanguageSelectLabel");
 	if ( pWidget) {

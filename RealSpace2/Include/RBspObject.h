@@ -382,6 +382,10 @@ public:
 	void LightMapOnOff(bool b);
 	static void SetDrawLightMap(bool b);
 
+	static bool  m_bTextureRenderOnOff;
+	static void SetTextureRenderOnOff(bool b) { m_bTextureRenderOnOff = b; }
+	static bool GetTextureRenderOnOff() { return m_bTextureRenderOnOff; }
+
 	FogInfo GetFogInfo(){ return m_FogInfo;}
 	list<AmbSndInfo*> GetAmbSndList() { return m_AmbSndInfoList;	}
 
