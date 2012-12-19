@@ -58,12 +58,22 @@ bool ZScreenEffect::DrawCustom(unsigned long int nTime, rvector& vOffset, float 
 		D3DXMatrixRotationZ(&World, fAngle);
 	}
 
-	rmatrix View,Offset;
+	rmatrix View,Offset,Scale;
+	D3DXMatrixIdentity(&Scale);
+#ifndef _EXTRESOLUTION
 	if(RGetIsWidthScreen())
 	{
 		const rvector eye(0,0,-780),at(0,0,0),up(0,1,0);
 		D3DXMatrixLookAtLH(&View,&eye,&at,&up);
 	}
+#else
+	if (RGetWidthScreen() != 0.75f)
+	{
+		const rvector eye(0,0, -(975.0f/RGetWidthScreen()/2)),at(0,0,0),up(0,1,0);
+		D3DXMatrixLookAtLH(&View,&eye,&at,&up);
+		D3DXMatrixScaling(&Scale, (float)RGetScreenWidth() / ((float)RGetScreenHeight() * (4.0f/3.0f)), 1, 1);
+	}
+#endif
 	else
 	{
 		const rvector eye(0,0,-650),at(0,0,0),up(0,1,0);
@@ -597,11 +607,13 @@ void ZScreenEffectManager::Add(ZEffect *pEffect)
 
 void DrawGauge(float x,float y,float fWidth,float fHeight,float fLeanDir,DWORD color)
 {
+#ifndef _EXTRESOLUTION
 	if( RGetIsWidthScreen() )
 	{
 		x = (x*800 + 80)/960;
 		fWidth = fWidth*800/960;
 	}
+#endif
 
 	struct TLVERTEX {
 		float x, y, z, w;

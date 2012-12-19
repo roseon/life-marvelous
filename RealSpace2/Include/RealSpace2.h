@@ -25,6 +25,7 @@ int		RGetApproxVMem();
 int		RGetScreenWidth();
 int		RGetScreenHeight();
 int     RGetIsWidthScreen();
+float	RGetWidthScreen();
 int		RGetPicmip();
 RPIXELFORMAT RGetPixelFormat();
 D3DADAPTER_IDENTIFIER9*	RGetAdapterID();

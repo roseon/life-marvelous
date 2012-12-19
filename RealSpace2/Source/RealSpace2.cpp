@@ -71,6 +71,7 @@ bool RIsAvailUserClipPlane() { return g_bAvailUserClipPlane; }
 int RGetScreenWidth()		{ return g_nScreenWidth; }
 int RGetScreenHeight()		{ return g_nScreenHeight; }
 int RGetIsWidthScreen()		{ return (float(g_nScreenHeight)/float(g_nScreenWidth) == 0.625f) ? 1 : 0; }
+float RGetWidthScreen()		{ return float(g_nScreenHeight)/float(g_nScreenWidth); }
 int RGetPicmip()			{ return g_nPicmip; }
 RPIXELFORMAT RGetPixelFormat() { return g_PixelFormat; }
 LPDIRECT3DDEVICE9	RGetDevice() { return g_pd3dDevice; }
