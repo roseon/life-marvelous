@@ -82,6 +82,7 @@ bool ZScreenEffect::DrawCustom(unsigned long int nTime, rvector& vOffset, float 
 	D3DXMatrixTranslation(&Offset,vOffset.x,vOffset.y,vOffset.z);
 
 	View=Offset*View;
+	View=Scale*View;
 
 	RGetDevice()->SetTransform( D3DTS_VIEW, &View );
 
@@ -112,6 +113,7 @@ bool ZScreenEffectLetterBox::Draw(unsigned long int nTime)
 
 	rmatrix View,Offset;
 
+#ifndef _EXTRESOLUTION
 	if(RGetIsWidthScreen())
 	{
 		const rvector eye(0,0,-780),at(0,0,0),up(0,1,0);
@@ -119,6 +121,7 @@ bool ZScreenEffectLetterBox::Draw(unsigned long int nTime)
 		m_VMesh.SetScale(rvector(5,1,1));
 	}
 	else
+#endif
 	{
 		const rvector eye(0,0,-650),at(0,0,0),up(0,1,0);
 		D3DXMatrixLookAtLH(&View,&eye,&at,&up);
