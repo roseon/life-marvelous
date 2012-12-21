@@ -363,6 +363,7 @@ public:
 	bool IsReservedResetApp()		{ return m_bReserveResetApp; }
 
 	void SaveScreenShot();
+	void SaveScreenShotSex();
 
 	void ShowMessage(const char* szText, MListener* pCustomListenter=NULL, int nMessageID=0);
 	void ShowConfirmMessage(const char* szText, MListener* pCustomListenter=NULL);
