@@ -789,7 +789,7 @@ void ZApplication::OnUpdate()
 //	if(Mint::GetInstance()) {
 		if(ZIsActionKeyPressed(ZACTION_SCREENSHOT)) {
 			if(m_pGameInterface)
-				m_pGameInterface->SaveScreenShot();
+				m_pGameInterface->SaveScreenShotSex();//m_pGameInterface->SaveScreenShot();
 		}
 //	}
 

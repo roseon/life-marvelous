@@ -4300,6 +4300,91 @@ void ZGameInterface::Reload()
 	ZPostReload();
 }
 
+void ZGameInterface::SaveScreenShotSex()
+{
+	static unsigned long int st_nLastTime = 0;
+	unsigned long int nNowTime = timeGetTime();
+#define SCREENSHOT_DELAY		2000
+
+	// 2초 딜레이
+	if ((nNowTime-st_nLastTime) < SCREENSHOT_DELAY)	return;
+	st_nLastTime = nNowTime;
+
+	
+	//HDC dc;
+
+	char szPath[_MAX_PATH];
+	char szFilename[_MAX_PATH];
+	char szFilenameSafe[_MAX_PATH];
+
+	TCHAR szMyDocPath[MAX_PATH];
+	if(GetMyDocumentsPath(szMyDocPath)) {
+		strcpy(szPath,szMyDocPath);
+		strcat(szPath,GUNZ_FOLDER);
+		CreatePath( szPath );
+		strcat(szPath,SCREENSHOT_FOLDER);
+		CreatePath( szPath );
+		strcat(szPath, "/");
+	}
+
+	// 현재 게임 정보로 파일명을 구성
+	SYSTEMTIME t;
+	GetLocalTime( &t );
+	char szCharName[MATCHOBJECT_NAME_LENGTH];
+	ValidateFilename(szCharName, ZGetMyInfo()->GetCharName(), '_');
+
+	sprintf(szFilename,"%s_%4d%02d%02d_%02d%02d%02d",  
+		szCharName, t.wYear, t.wMonth, t.wDay, t.wHour, t.wMinute, t.wSecond);
+
+	sprintf(szFilenameSafe,"nocharname_%4d%02d%02d_%02d%02d%02d",  
+		t.wYear, t.wMonth, t.wDay, t.wHour, t.wMinute, t.wSecond);	// 캐릭명을 생략한 버전
+
+	char szFullPath[_MAX_PATH];	// 확장자는 안들어있음
+	char szFullPathToNotify[_MAX_PATH];
+			
+	sprintf(szFullPath, "%s%s", szPath, szFilename);
+	sprintf(szFullPathToNotify,GUNZ_FOLDER SCREENSHOT_FOLDER"/""%s.jpg", szFilename);
+
+	LPDIRECT3DSURFACE9 surface=NULL;//IDirect3DSurface9* surface;
+	D3DDISPLAYMODE mode;
+//	HRESULT hr;
+	LPDIRECT3DDEVICE9 pDevice=RGetDevice();
+	pDevice->GetDisplayMode(0, &mode); // pDev is my *IDirect3DDevice
+  // we can capture only the entire screen,
+  // so width and height must match current display mode
+  pDevice->CreateOffscreenPlainSurface(mode.Width, mode.Height, D3DFMT_A8R8G8B8, D3DPOOL_SCRATCH, &surface, NULL);
+  if(pDevice->GetFrontBufferData(0, surface)==D3D_OK)
+  { 
+    if(ZGetConfiguration()->GetVideo()->bFullScreen==false) // a global config variable
+    {
+      // get client area in desktop coordinates
+      // this might need to be changed to support multiple screens
+      RECT r;
+      ::GetClientRect(g_hWnd,&r);// hWnd is our window handle
+      POINT p = {0, 0};
+      ClientToScreen(g_hWnd, &p);
+	  int nWidth=r.right-r.left;
+	  int nHeight=r.bottom-r.top;
+	   //SetRect(&r, p.x, p.y, p.x+r.right, p.y+r.bottom);
+	  mlog("x :%d , y :%d , right :%d , bottom :%d\n",p.x,p.y,p.x+r.right,p.y+r.bottom);
+      //SetRect(&r, p.x, p.y, p.x+r.right, p.y+r.bottom);
+	  SetRect(&r, p.x, p.y, p.x+r.bottom, p.y+r.right);
+	  //SetRect(&r,  p.y, p.x, p.y+r.bottom , p.x+r.right);
+	 // SetRect(&r, nWidth, nHeight, nWidth+r.right, nHeight+r.bottom);
+	   
+      D3DXSaveSurfaceToFile(strcat(szFullPath,".jpg") , D3DXIFF_JPG, surface, NULL, &r);
+    }
+    else
+      D3DXSaveSurfaceToFile(strcat(szFullPath,".jpg"), D3DXIFF_JPG, surface, NULL, NULL);
+
+	char szOutput[_MAX_PATH*2];
+			ZTransMsg( szOutput,MSG_SCREENSHOT_SAVED,1,szFullPathToNotify );
+			ZChatOutput(MCOLOR(ZCOLOR_CHAT_SYSTEM), szOutput);
+  }
+  surface->Release();
+
+
+}
 void ZGameInterface::SaveScreenShot()
 {
 	static unsigned long int st_nLastTime = 0;

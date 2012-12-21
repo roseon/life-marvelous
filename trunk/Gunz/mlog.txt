@@ -1,5 +1,5 @@
-GUNZ 1,0,0,290 launched. build (Dec 10 2012 22:22:30) 
-Log time (12/10/12 22:23:20)
+GUNZ 1,0,0,290 launched. build (Dec 19 2012 21:33:40) 
+Log time (12/19/12 21:40:21)
 CPU ID = GenuineIntel ( family = 262 , model = 7 , stepping = 7 ) @ 2493 MHz
 Display Device = Intel(R) Q35 Express Chipset Family ( vendor=8086 device=29b2 subsys=2819103c revision=2 )
 Display Driver Version = 6.14.0010.4864
@@ -16,7 +16,7 @@ InitializeNotify ok.
 WFog Enabled Device.
 Vertex Shader isn't supported
 device created.
-Video memory 173.000000 
+Video memory 176.000000 
 main : RGetLenzFlare()->Initialize() 
 Abby GunZ
 InitialLoading success.
@@ -48,35 +48,35 @@ cannot create sound : GoblinW_castFirst
 cannot create sound : GoblinW_castSecond
 cannot create sound : SkeletonLp_neglect
 
--------------------> Sound Engine Create : 7.003000 
+-------------------> Sound Engine Create : 8.232000 
 
 sound engine create.
 Load XML from memory : system/tips.xml(0x0009)- SUCCESS
 start log bipmap
 end of load bitmaps2
-loading pictures : 6.495000 
+loading pictures : 4.925000 
 warning : bitmap gametype_triple.tga not found.
 warning : bitmap slot_head.tga not found.
 warning : bitmap slot_head.tga not found.
 warning : bitmap icon_gameroom.tga not found.
 IDLResource Loading Success!!
-IDL resources : 2.562000 
+IDL resources : 2.653000 
 start InitInterface option
 Number of Display mode : 85
 Number of Display mode : 85
 end of InitInterface option ok
 Init maps : no Current ChannelRule 
-Screen Effect Manager Create : 0.530000 
+Screen Effect Manager Create : 0.558000 
 Screen effect manager create success.
 Effect manager create success.
 Client create success.
 game interface create success.
 
--------------------> GameInterface Create : 15.937000 
+-------------------> GameInterface Create : 13.198000 
 
 Load character.xml success,
 
--------------------> Character Loading : 64.419998 
+-------------------> Character Loading : 36.068001 
 
 ----------> in zip ( model/weapon04.elu ) file not found!! 
  ----------> in zip ( model/weapon04.elu ) file not found!! 
@@ -134,11 +134,11 @@ Load character.xml success,
  ----------> in zip ( model/Red/redshotgun.elu ) file not found!! 
  ----------> in zip ( model/Triangle/shotgunTA.elu ) file not found!! 
  
--------------------> WeaponMesh Loading : 3.154000 
+-------------------> WeaponMesh Loading : 3.201000 
 
 Load weapon.xml success. 
 
--------------------> Worlditem Loading : 0.124000 
+-------------------> Worlditem Loading : 0.129000 
 
 Load zitem info success.
 Load zBuff info success.
@@ -148,7 +148,7 @@ Init channel rule manager success.
 Init abuse manager success.
 Init chatting filter. success
 
--------------------> ETC .. : 18.042999 
+-------------------> ETC .. : 16.277000 
 
 BspObject open : begin interface/login.rs 
 RBspObject::Open : Open_MaterialList
@@ -166,12 +166,6 @@ RBspObject::OpenRs : Open_Nodes begin
 RBspObject::OpenRs : Open_Nodes end 
 RBspObject::Open : OpenRs 
 RBspObject::Open : OpenBsp 
-BspObject load lightmap : file.Read(&header)
-BspObject load lightmap nCount = 2
-BspObject load lightmap 0
-BspObject load lightmap 1
-BspObject load lightmap : file.Read(&m_nLightmap) done
-BspObject load lightmap : end 
 RBspObject::Open : done
 Load smoke description mesh.
 main : OnCreate() done
@@ -181,36 +175,9 @@ Login Successful.
 Responsed Account Charlist
 [Testing OpenCustomMusic] - Previos File Name:  --- New File Name: 
 Calling PlayMusic
+Destroy gunz
+Destroy sound engine.
+Destroy sound engine. success
+Destroy console.
+Destroy interface begin 
 Cloth VertexBuffer is Released
-Selected character name : Echiz3n (45 63 68 69 7A 33 6E )  (len = 7)
-Responsed Account Charlist
-[Testing OpenCustomMusic] - Previos File Name:  --- New File Name: 
-Calling PlayMusic
-BspObject open : begin interface/login.rs 
-RBspObject::Open : Open_MaterialList
-RBspObject::Open : Open_LightList
-BspObject open object list : begin
-RBspObject::Open_ObjectList : size 9 
-RBspObject::Open_ObjectList : pInfo->pVisualMesh == NULL 
-RBspObject::Open_ObjectList : end
-Can't Set Light...: Light Buffer for LenzFlare is Full already..
-Fail to Set LenzFlare Position...
-RBspObject::Open : OpenDescription
-RBspObject::OpenRs : file.Open 
-RBspObject::OpenRs : file.Read(&header) 
-RBspObject::OpenRs : file.Read(&nMaterial) 
-RBspObject::OpenRs : Open_Nodes begin 
-RBspObject::OpenRs : Open_Nodes end 
-RBspObject::Open : OpenRs 
-RBspObject::Open : OpenBsp 
-BspObject load lightmap : file.Read(&header)
-BspObject load lightmap nCount = 2
-BspObject load lightmap 0
-BspObject load lightmap 1
-BspObject load lightmap : file.Read(&m_nLightmap) done
-BspObject load lightmap : end 
-RBspObject::Open : done
-Load smoke description mesh.
-MLogoutListener !
-Server Connected
-Login Posted
