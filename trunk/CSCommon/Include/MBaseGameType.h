@@ -125,6 +125,9 @@ inline bool MBaseGameTypeCatalogue::IsTeamGame(MMATCH_GAMETYPE nGameType)
 		(nGameType == MMATCH_GAMETYPE_GLADIATOR_TEAM) ||
 		(nGameType == MMATCH_GAMETYPE_ASSASSINATE) ||
 		(nGameType == MMATCH_GAMETYPE_CTF)			||
+		(nGameType == MMATCH_GAMETYPE_AWP)			||
+		(nGameType == MMATCH_GAMETYPE_GRENADEWAR)			||
+		(nGameType == MMATCH_GAMETYPE_SKILLWAR)			||
 		(nGameType == MMATCH_GAMETYPE_CLASSIC_TEAM))
 	{
 		return true;
@@ -141,6 +144,9 @@ inline bool MBaseGameTypeCatalogue::IsTeamLimitTime(MMATCH_GAMETYPE nGameType)
 		(nGameType == MMATCH_GAMETYPE_DUEL) ||
 		(nGameType == MMATCH_GAMETYPE_CLASSIC_TEAM) ||
 		(nGameType == MMATCH_GAMETYPE_CTF) ||
+		(nGameType == MMATCH_GAMETYPE_AWP)			||
+		(nGameType == MMATCH_GAMETYPE_GRENADEWAR)			||
+		(nGameType == MMATCH_GAMETYPE_SKILLWAR)			||
 		(nGameType == MMATCH_GAMETYPE_ASSASSINATE) )
 	{
 		return true;
@@ -157,6 +163,9 @@ inline bool MBaseGameTypeCatalogue::IsWaitForRoundEnd(MMATCH_GAMETYPE nGameType)
 		(nGameType == MMATCH_GAMETYPE_GLADIATOR_TEAM) ||
 		(nGameType == MMATCH_GAMETYPE_ASSASSINATE) ||
 		(nGameType == MMATCH_GAMETYPE_CLASSIC_TEAM) ||
+		(nGameType == MMATCH_GAMETYPE_AWP)			||
+		(nGameType == MMATCH_GAMETYPE_GRENADEWAR)			||
+		(nGameType == MMATCH_GAMETYPE_SKILLWAR)			||
 		(nGameType == MMATCH_GAMETYPE_DUELTOURNAMENT))
 	{
 		return true;

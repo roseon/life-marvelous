@@ -37,6 +37,14 @@ public:
 	virtual MMATCH_GAMETYPE GetGameType() { return MMATCH_GAMETYPE_GRENADEWAR; }
 };
 
+//SKILLWAR 
+class MMatchRuleTeamSKILLWAR : public MMatchRuleTeamDeath {
+public:
+	MMatchRuleTeamSKILLWAR(MMatchStage* pStage);
+	virtual ~MMatchRuleTeamSKILLWAR()				{}
+	virtual MMATCH_GAMETYPE GetGameType() { return MMATCH_GAMETYPE_SKILLWAR; }
+};
+
 
 
 

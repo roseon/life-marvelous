@@ -3419,7 +3419,45 @@ bool ZCharacter::Create(MTD_CharInfo* pCharInfo/*, MTD_CharBuffInfo* pCharBuffIn
 	//mlog("EL TEAM %d\n",m_nTeamID.Ref());
 	//버프정보임시주석 SetCharacterBuff(pCharBuffInfo);		///< 케릭터 버프 세팅	
 	for (int i = 0; i < MMCIP_END; i++) {	///< 아이템 세팅
+		//m_Items.EquipItem(MMatchCharItemParts(i), pCharInfo->nEquipedItemDesc[i], pCharInfo->nEquipedItemCount[i]);
+		if((ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_AWP && MMatchCharItemParts(i)==MMCIP_PRIMARY) ||
+			(ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_AWP && MMatchCharItemParts(i)==MMCIP_SECONDARY)){
+			m_Items.EquipItem(MMatchCharItemParts(i), 10001,1);
+		}
+		else if((ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_CLASSIC_TEAM && MMatchCharItemParts(i)==MMCIP_AVATAR))
+        {
+			//counters
+			//mlog("GetTeamID:%d\n",ZGetGame()->m_pMyCharacter->GetTeamID());
+			ZIDLResource* pResource = ZGetGameInterface()->GetIDLResource();
+			MButton* pBlueBtn = (MButton*)pResource->FindWidget("StageTeamBlue");
+			MButton* pRedBtn = (MButton*)pResource->FindWidget("StageTeamRed");
+			if ( ZGetGameInterface()->m_bTeamPlay) // 팀전 이면..
+			{
+			if(  pBlueBtn->GetCheck()){
+				//mlog("es azul\n");
+				if(ZGetMyInfo()->GetSex() ==MMS_FEMALE){
+					//mlog("es mujer\n");
+					m_Items.EquipItem(MMatchCharItemParts(i), 405106,1);
+				}else{
+					//mlog("es hoombre\n");
+					m_Items.EquipItem(MMatchCharItemParts(i), 405107,1);
+				}
+			}else if(pRedBtn->GetCheck()){
+				//mlog("es rojo\n");
+				if(ZGetMyInfo()->GetSex()==MMS_FEMALE){
+					//mlog("es mujer\n");
+					m_Items.EquipItem(MMatchCharItemParts(i), 405108,1);
+				}else{
+					//mlog("es hoombre\n");
+					m_Items.EquipItem(MMatchCharItemParts(i), 405109,1);
+				}
+			}
+			}
+
+        }
+		else{
 		m_Items.EquipItem(MMatchCharItemParts(i), pCharInfo->nEquipedItemDesc[i], pCharInfo->nEquipedItemCount[i]);
+		}
 	}
 
 	InitProperties();	///< 반드시 아이템 및 버프 세팅 후 해야함
@@ -3452,6 +3490,8 @@ bool ZCharacter::Create(MTD_CharInfo* pCharInfo/*, MTD_CharBuffInfo* pCharBuffIn
 
 	return true;
 }
+
+
 void ZCharacter::Destroy()
 {
 	if(m_bInitialized) {

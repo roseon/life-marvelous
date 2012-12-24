@@ -833,6 +833,11 @@ void ZCombatInterface::OnDraw(MDrawContext* pDC)
 			// 크로스헤어
 			if(ZGetGameInterface()->GetCamera()->GetLookMode()==ZCAMERA_DEFAULT)
 				m_CrossHair.Draw(pDC);
+
+			if(ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_CLASSIC_TEAM || 
+				ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_CLASSIC_SOLO	){
+				ZGetGameInterface()->GetCamera()->m_fDist = 100.0f;
+			}
 		}
 
 		DrawBuffStatus(pDC);

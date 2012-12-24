@@ -27,3 +27,34 @@ ZRuleTeamClassic::~ZRuleTeamClassic()
 }
 
 
+//customs
+
+ZRuleTeamAWP::ZRuleTeamAWP(ZMatch* pMatch) : ZRuleTeamDeathMatch(pMatch)
+{
+
+}
+
+ZRuleTeamAWP::~ZRuleTeamAWP()
+{
+
+}
+
+ZRuleTeamGrenadeWar::ZRuleTeamGrenadeWar(ZMatch* pMatch) : ZRuleTeamDeathMatch(pMatch)
+{
+
+}
+ZRuleTeamGrenadeWar::~ZRuleTeamGrenadeWar()
+{
+
+}
+
+
+ZRuleTeamSkillWar::ZRuleTeamSkillWar(ZMatch* pMatch) : ZRuleTeamDeathMatch(pMatch)
+{
+
+}
+ZRuleTeamSkillWar::~ZRuleTeamSkillWar()
+{
+
+}
+

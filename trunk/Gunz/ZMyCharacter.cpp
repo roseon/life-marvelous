@@ -3006,6 +3006,15 @@ void ZMyCharacter::OnBlast(rvector &dir)
 
 void ZMyCharacter::OnTumble(int nDir)
 {
+
+	if((ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_CLASSIC_TEAM )||
+		(ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_CLASSIC_SOLO	) ||
+		(ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_AWP	) ||
+		(ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_GRENADEWAR) ||
+		(ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_SKILLWAR	) 
+		){
+	return ;
+	}
 #define SWORD_DASH		1000.f
 #define GUN_DASH        900.f
 	//jintriple3 메모리 프록시...비트 패킹..
@@ -3682,7 +3691,13 @@ void ZMyCharacter::OnGuardSuccess()
 
 void ZMyCharacter::OnDamaged(ZObject* pAttacker, rvector srcPos, ZDAMAGETYPE damageType, MMatchWeaponType weaponType, float fDamage, float fPiercingRatio, int nMeleeType)
 {
-	ZCharacter::OnDamaged(pAttacker,srcPos,damageType,weaponType,fDamage,fPiercingRatio,nMeleeType);
+	int factorTriple=1;
+	if(ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_CLASSIC_TEAM || 
+		ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_CLASSIC_SOLO  ){
+	factorTriple=2 ;
+	}
+
+	ZCharacter::OnDamaged(pAttacker,srcPos,damageType,weaponType,fDamage*factorTriple,fPiercingRatio,nMeleeType);
 	ZGetScreenEffectManager()->AddAlert(GetPosition(),m_Direction, srcPos);
 
 	// 내가 던진 수류탄/로켓
