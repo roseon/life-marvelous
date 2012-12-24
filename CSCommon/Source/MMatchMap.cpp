@@ -69,7 +69,7 @@ bool MMapDesc::Initialize(const char* szFileName)
 			aChild.GetAttribute(&m_MapVectors[num].bOnlyDuelMap , MMAP_ONLYDUELMAP);
 			aChild.GetAttribute(&m_MapVectors[num].bIsCTFMap , MMAP_ISCTFMAP);
 			//testing awp,grenade,skill
-			aChild.GetAttribute(&m_MapVectors[num].bIsCTFMap , MMAP_ISAWPMAP);
+			aChild.GetAttribute(&m_MapVectors[num].bIsAWPMap , MMAP_ISAWPMAP);
 			aChild.GetAttribute(&m_MapVectors[num].bIsGWRMap , MMAP_ISGWRMAP);
 			aChild.GetAttribute(&m_MapVectors[num].bIsSWRMap , MMAP_ISSWRMAP);
 			num++;
@@ -145,7 +145,7 @@ bool MMapDesc::Initialize(MZFileSystem* pFileSystem, const char* szFileName)
 			aChild.GetAttribute(&m_MapVectors[num].bOnlyDuelMap , MMAP_ONLYDUELMAP);
 			aChild.GetAttribute(&m_MapVectors[num].bIsCTFMap , MMAP_ISCTFMAP);
 			//testing awp,grenade,skill
-			aChild.GetAttribute(&m_MapVectors[num].bIsCTFMap , MMAP_ISAWPMAP);
+			aChild.GetAttribute(&m_MapVectors[num].bIsAWPMap , MMAP_ISAWPMAP);
 			aChild.GetAttribute(&m_MapVectors[num].bIsGWRMap , MMAP_ISGWRMAP);
 			aChild.GetAttribute(&m_MapVectors[num].bIsSWRMap , MMAP_ISSWRMAP);
 			num++;
