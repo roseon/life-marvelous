@@ -124,6 +124,19 @@ ZRule* ZRule::CreateRule(ZMatch* pMatch, MMATCH_GAMETYPE nGameType)
 		{
 			return (new ZRuleReverseBerserker(pMatch));
 		}
+	//customs
+	case MMATCH_GAMETYPE_AWP:
+		{
+			return (new ZRuleTeamAWP(pMatch));
+		}
+	case MMATCH_GAMETYPE_GRENADEWAR:
+		{
+			return (new ZRuleTeamGrenadeWar(pMatch));
+		}
+	case MMATCH_GAMETYPE_SKILLWAR:
+		{
+			return (new ZRuleTeamSkillWar(pMatch));
+		}
 	default:
 		{
 			// 게임 타입이 없습니다.

@@ -525,6 +525,22 @@ MMatchRule* MMatchStage::CreateRule(MMATCH_GAMETYPE nGameType)
 			return (new MMatchRuleReverseBerserker(this));
 		}
 		break;
+	//customs
+	case MMATCH_GAMETYPE_AWP:
+		{
+			return (new MMatchRuleTeamAWP(this));
+		}
+		break;
+	case MMATCH_GAMETYPE_GRENADEWAR:
+		{
+			return (new MMatchRuleTeamGRENADEWAR(this));
+		}
+		break;
+	case MMATCH_GAMETYPE_SKILLWAR:
+		{
+			return (new MMatchRuleTeamSKILLWAR(this));
+		}
+		break;
 	default:
 		{
 			_ASSERT(0);

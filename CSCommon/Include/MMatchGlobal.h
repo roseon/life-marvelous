@@ -238,7 +238,7 @@ inline MMatchTeam NegativeTeam(MMatchTeam nTeam)
 #define MAX_CHATROOMNAME_STRING_LEN		64	
 // #define MAX_USERID_STRING_LEN			20
 #define MAX_USERID_STRING_LEN			21	///< 스트링 길이 20바이트 + 종료 문자 1바이트
-#define MAX_USER_PASSWORD_STRING_LEN	20
+#define MAX_USER_PASSWORD_STRING_LEN	32
 #define USERNAME_STRING_LEN				50
 #define MAX_HWID_LEN					64 //Steven: Hwid
 // channel

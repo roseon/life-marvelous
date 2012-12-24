@@ -20,3 +20,8 @@ MMatchRuleTeamAWP::MMatchRuleTeamAWP(MMatchStage* pStage) : MMatchRuleTeamDeath(
 MMatchRuleTeamGRENADEWAR::MMatchRuleTeamGRENADEWAR(MMatchStage* pStage) : MMatchRuleTeamDeath(pStage)
 {
 }
+
+//SKILLWAR 
+MMatchRuleTeamSKILLWAR::MMatchRuleTeamSKILLWAR(MMatchStage* pStage) : MMatchRuleTeamDeath(pStage)
+{
+}
