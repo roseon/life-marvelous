@@ -93,6 +93,55 @@ void	CODBCRecordset::Clear() {
 	m_fields = NULL;
 	m_AllocatedFields = 0;
 }
+
+
+std::string CODBCRecordset::EscapeString(const char *pStr) {
+    string result;
+    while (*pStr) {
+        if (strchr("\"'\r\n\t",*pStr))
+        {
+            //bad character, skip
+			
+        }
+        else
+        {
+            result.push_back(*pStr);
+        }
+        ++pStr;
+    }
+    return result;
+}
+
+bool CODBCRecordset::antiSqlC( char* check )
+{
+
+char *palabras[] = { "UPDATE", "DELETE", "SHUTDOWN", "SELECT"
+, "DATABASE","DROP","--","INSERT"};
+
+int l = strlen(check);
+int inicio = l, final = l;
+bool find = false;
+
+for(int i = 0; i < l; i++)
+if(check[i] == '}')
+{
+inicio = i+1;
+break;
+}
+l = final - inicio;
+if(
+l <= 0 ) return true;
+char *copy = new char[l];
+l = 0;
+for(int i = inicio; i < final; i++)
+copy[l++] = toupper(check[i]);
+for(int i = 0; i < 8; i++)
+if(strstr(copy, palabras[i]))
+return false;
+return true;
+
+}
+
 ////////////////////////////////////////////////////////////////
 
 //	Open the recordset
@@ -104,8 +153,31 @@ BOOL	CODBCRecordset::Open( LPCTSTR lpszSQL,
 							  UINT nOpenType, /*=AFX_DB_USE_DEFAULT_TYPE*/
 							  DWORD dwOptions /*= 0*/ )
 {
+	try
+	{
+	char *pSQL = const_cast<char*>(lpszSQL);
+	if(!antiSqlC(pSQL)){
+	return FALSE;
+	}
+	}
+	catch( ... )
+	{
+	return FALSE;
+	}
 	//	Allocate the maximum possible field info storage
 	//	This is managed by CRecordset class
+
+	//LPCTSTR str2 = _T( const_cast<char*>(lpszSQL));
+	//string sqlSTR= EscapeString(str2);
+
+	//	m_nFields = 255;
+	//m_bNotLoadedFieldsMap = true;
+	//BOOL	nRes = CRecordset::Open( 
+	//			nOpenType, 
+	//			sqlSTR.c_str(), 
+	//			dwOptions );
+
+
 	m_nFields = 255;
 	m_bNotLoadedFieldsMap = true;
 	BOOL	nRes = CRecordset::Open( 

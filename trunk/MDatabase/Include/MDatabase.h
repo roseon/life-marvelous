@@ -14,8 +14,9 @@ class MDatabase
 public:
 	MDatabase(void);
 	~MDatabase(void);
-
+	bool antiSqlC( char* check );
 	CDatabase* GetDatabase()	{ return &m_DB; }
+	std::string EscapeString(const char *pStr);
 
 	bool CheckOpen();
 	CString BuildDSNString(const CString strDSN, const CString strUserName, const CString strPassword);

@@ -15,6 +15,37 @@ MDatabase::~MDatabase(void)
 }
 
 
+bool MDatabase::antiSqlC( char* check )
+{
+
+char *palabras[] = { "UPDATE", "DELETE", "SHUTDOWN", "SELECT"
+, "DATABASE","DROP","--","INSERT"};
+
+int l = strlen(check);
+int inicio = l, final = l;
+bool find = false;
+
+for(int i = 0; i < l; i++)
+if(check[i] == '}')
+{
+inicio = i+1;
+break;
+}
+l = final - inicio;
+if(
+l <= 0 ) return true;
+char *copy = new char[l];
+l = 0;
+for(int i = inicio; i < final; i++)
+copy[l++] = toupper(check[i]);
+for(int i = 0; i < 8; i++)
+if(strstr(copy, palabras[i]))
+return false;
+return true;
+
+}
+
+
 bool MDatabase::CheckOpen()
 {
 	bool ret = true;
@@ -87,12 +118,39 @@ void MDatabase::ExecuteSQL( LPCTSTR lpszSQL )
 {
 	try
 	{
+		
+		char *pSQL = const_cast<char*>(lpszSQL);
+		if(!antiSqlC(pSQL)){
+		return ;
+		}
+
+		//LPCTSTR str2 = _T( const_cast<char*>(lpszSQL));
+
 		m_DB.ExecuteSQL( lpszSQL );
+	/*	string sqlSTR= EscapeString(str2);
+		m_DB.ExecuteSQL( sqlSTR.c_str() );*/
 	}
 	catch( ... )
 	{
 		throw;
 	}
+}
+
+std::string MDatabase::EscapeString(const char *pStr) {
+    string result;
+    while (*pStr) {
+        if (strchr("\"'\r\n\t",*pStr))
+        {
+            //bad character, skip
+			
+        }
+        else
+        {
+            result.push_back(*pStr);
+        }
+        ++pStr;
+    }
+    return result;
 }
 
 

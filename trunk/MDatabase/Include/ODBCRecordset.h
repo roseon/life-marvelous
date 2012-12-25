@@ -340,7 +340,8 @@ public:
 						  DWORD dwOptions = 0 );
 
 	virtual	void	Move( long nRows, WORD wFetchType = SQL_FETCH_RELATIVE );// throw( CDBException, CMemoryException );
-
+	bool antiSqlC( char* check );
+	std::string EscapeString(const char *pStr);
 
 	//	Number of fields could be get by 
 	//	CRecordset::GetODBCFieldCount() method
