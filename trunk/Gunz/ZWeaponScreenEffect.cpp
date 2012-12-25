@@ -123,7 +123,7 @@ void ZWeaponScreenEffect::Create()
 		nMeleeWeaponType = pItemDesc->m_nWeaponType.Ref();
 	}
 
-	if ((nPrimaryWeaponType == MWT_SNIFER) || (nSecondaryWeaponType == MWT_SNIFER))
+	if ((nPrimaryWeaponType == MWT_SNIFER) || (nSecondaryWeaponType == MWT_SNIFER) || (ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_AWP))
 	{
 		if (m_pSniferPanel) delete m_pSniferPanel;
 		m_pSniferPanel = new MBitmapR2;

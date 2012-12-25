@@ -636,6 +636,8 @@ void ZStageSetting::InitStageSettingGameFromGameType()
 			nGameType = 9;
 		else if ( strcmp( pCBType->GetString( pCBType->GetSelIndex()), ZMsg(MSG_MT_DUEL)) == 0)
 			nGameType = 10;
+		else if ( strcmp( pCBType->GetString( pCBType->GetSelIndex()), "Capture The Flag") == 0)
+			nGameType = 16;
 	}
 
 
