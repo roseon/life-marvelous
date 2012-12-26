@@ -18,6 +18,9 @@
 		<MAXPLAYERS player="8"  str="8" default="true" />
 		<MAXPLAYERS player="12" str="12" />
 		<MAXPLAYERS player="16" str="16" />
+		<MAXPLAYERS player="32" str="32" />
+		<MAXPLAYERS player="64" str="64" />
+		<MAXPLAYERS player="120" str="120" />
 	</GAMETYPE>
 
 	<GAMETYPE id="1">	<!-- GAMETYPE_DEATHMATCH_TEAM -->
@@ -38,6 +41,9 @@
 		<MAXPLAYERS player="8"  str="8" default="true" />
 		<MAXPLAYERS player="12" str="12" />
 		<MAXPLAYERS player="16" str="16" />
+		<MAXPLAYERS player="32" str="32" />
+		<MAXPLAYERS player="64" str="64" />
+		<MAXPLAYERS player="120" str="120" />
 	</GAMETYPE>
 
 	<GAMETYPE id="2">	<!-- GAMETYPE_GLADIATOR_SOLO -->
@@ -58,6 +64,9 @@
 		<MAXPLAYERS player="8"  str="8" default="true" />
 		<MAXPLAYERS player="12" str="12" />
 		<MAXPLAYERS player="16" str="16" />
+		<MAXPLAYERS player="32" str="32" />
+		<MAXPLAYERS player="64" str="64" />
+		<MAXPLAYERS player="120" str="120" />
 	</GAMETYPE>
 
 	<GAMETYPE id="3">	<!-- GAMETYPE_GLADIATOR_TEAM -->
@@ -78,6 +87,9 @@
 		<MAXPLAYERS player="8"  str="8" default="true" />
 		<MAXPLAYERS player="12" str="12" />
 		<MAXPLAYERS player="16" str="16" />
+		<MAXPLAYERS player="32" str="32" />
+		<MAXPLAYERS player="64" str="64" />
+		<MAXPLAYERS player="120" str="120" />
 	</GAMETYPE>
 
 	<GAMETYPE id="4">	<!-- GAMETYPE_ASSASSINATE -->
@@ -98,6 +110,9 @@
 		<MAXPLAYERS player="8"  str="8" default="true" />
 		<MAXPLAYERS player="12" str="12" />
 		<MAXPLAYERS player="16" str="16" />
+		<MAXPLAYERS player="32" str="32" />
+		<MAXPLAYERS player="64" str="64" />
+		<MAXPLAYERS player="120" str="120" />
 	</GAMETYPE>
 
 	<GAMETYPE id="5">	<!-- GAMETYPE_TRAINING -->
@@ -118,6 +133,9 @@
 		<MAXPLAYERS player="8"  str="8" default="true" />
 		<MAXPLAYERS player="12" str="12" />
 		<MAXPLAYERS player="16" str="16" />
+		<MAXPLAYERS player="32" str="32" />
+		<MAXPLAYERS player="64" str="64" />
+		<MAXPLAYERS player="120" str="120" />
 	</GAMETYPE>
 
 	<GAMETYPE id="6">	<!-- GAMETYPE_SURVIVAL -->
@@ -152,6 +170,9 @@
 		<MAXPLAYERS player="8"  str="8" default="true" />
 		<MAXPLAYERS player="12" str="12" />
 		<MAXPLAYERS player="16" str="16" />
+		<MAXPLAYERS player="32" str="32" />
+		<MAXPLAYERS player="64" str="64" />
+		<MAXPLAYERS player="120" str="120" />
 	</GAMETYPE>
 
 	<GAMETYPE id="9">	<!-- GAMETYPE_DEATHMATCH_TEAM2 -->
@@ -172,6 +193,9 @@
 		<MAXPLAYERS player="8"  str="8" default="true" />
 		<MAXPLAYERS player="12" str="12" />
 		<MAXPLAYERS player="16" str="16" />
+		<MAXPLAYERS player="32" str="32" />
+		<MAXPLAYERS player="64" str="64" />
+		<MAXPLAYERS player="120" str="120" />
 	</GAMETYPE>
 
 	<GAMETYPE id="10">	<!-- GAMETYPE_DEATHMATCH_DUEL -->
@@ -189,6 +213,9 @@
 		<MAXPLAYERS player="8"  str="8" default="true" />
 		<MAXPLAYERS player="12" str="12" />
 		<MAXPLAYERS player="16" str="16" />
+		<MAXPLAYERS player="32" str="32" />
+		<MAXPLAYERS player="64" str="64" />
+		<MAXPLAYERS player="120" str="120" />
 	</GAMETYPE>
 	
 	<GAMETYPE id="12">	<!-- GAMETYPE_CLASSIC_SOLO -->
@@ -209,6 +236,9 @@
 		<MAXPLAYERS player="8"  str="8" default="true" />
 		<MAXPLAYERS player="12" str="12" />
 		<MAXPLAYERS player="16" str="16" />
+		<MAXPLAYERS player="32" str="32" />
+		<MAXPLAYERS player="64" str="64" />
+		<MAXPLAYERS player="120" str="120" />
 	</GAMETYPE>
 	<GAMETYPE id="13">	<!-- GAMETYPE_CLASSIC_TEAM -->
 		<ROUNDS    round="10"	str="10" />
@@ -228,6 +258,9 @@
 		<MAXPLAYERS player="8"  str="8" default="true" />
 		<MAXPLAYERS player="12" str="12" />
 		<MAXPLAYERS player="16" str="16" />
+		<MAXPLAYERS player="32" str="32" />
+		<MAXPLAYERS player="64" str="64" />
+		<MAXPLAYERS player="120" str="120" />
 	</GAMETYPE>
 	<GAMETYPE id="14">	<!-- GAMETYPE_DEITY -->
 		<ROUNDS    round="10"	str="10" />
@@ -247,6 +280,9 @@
 		<MAXPLAYERS player="8"  str="8" default="true" />
 		<MAXPLAYERS player="12" str="12" />
 		<MAXPLAYERS player="16" str="16" />
+		<MAXPLAYERS player="32" str="32" />
+		<MAXPLAYERS player="64" str="64" />
+		<MAXPLAYERS player="120" str="120" />
 	</GAMETYPE>
 	<GAMETYPE id="15">	<!-- GAMETYPE_REVERSE_BER -->
 		<ROUNDS    round="10"	str="10" />
@@ -266,6 +302,9 @@
 		<MAXPLAYERS player="8"  str="8" default="true" />
 		<MAXPLAYERS player="12" str="12" />
 		<MAXPLAYERS player="16" str="16" />
+		<MAXPLAYERS player="32" str="32" />
+		<MAXPLAYERS player="64" str="64" />
+		<MAXPLAYERS player="120" str="120" />
 	</GAMETYPE>
 	<GAMETYPE id="16">	<!-- CTF -->
 		<ROUNDS round="10"	str="10" /> 
@@ -285,6 +324,9 @@
 		<MAXPLAYERS player="8"  str="8" default="true" />
 		<MAXPLAYERS player="12" str="12" />
 		<MAXPLAYERS player="16" str="16" />
+		<MAXPLAYERS player="32" str="32" />
+		<MAXPLAYERS player="64" str="64" />
+		<MAXPLAYERS player="120" str="120" />
 	</GAMETYPE>
 	
 	<GAMETYPE id="17">	<!-- AWP -->
@@ -305,6 +347,10 @@
 		<MAXPLAYERS player="8"  str="8" default="true" />
 		<MAXPLAYERS player="12" str="12" />
 		<MAXPLAYERS player="16" str="16" />
+		<MAXPLAYERS player="32" str="32" />
+		<MAXPLAYERS player="64" str="64" />
+		<MAXPLAYERS player="120" str="120" />
+		
 	</GAMETYPE>
 	
 	
@@ -326,6 +372,9 @@
 		<MAXPLAYERS player="8"  str="8" default="true" />
 		<MAXPLAYERS player="12" str="12" />
 		<MAXPLAYERS player="16" str="16" />
+		<MAXPLAYERS player="32" str="32" />
+		<MAXPLAYERS player="64" str="64" />
+		<MAXPLAYERS player="120" str="120" />
 	</GAMETYPE>
 	
 	<GAMETYPE id="19">	<!-- SkillWar -->
@@ -346,6 +395,9 @@
 		<MAXPLAYERS player="8"  str="8" default="true" />
 		<MAXPLAYERS player="12" str="12" />
 		<MAXPLAYERS player="16" str="16" />
+		<MAXPLAYERS player="32" str="32" />
+		<MAXPLAYERS player="64" str="64" />
+		<MAXPLAYERS player="120" str="120" />
 	</GAMETYPE>
 	
 </XML>
