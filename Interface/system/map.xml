@@ -31,13 +31,13 @@
 <MAP id="26" MapName ="Hot_Summer" MapImageName= "map_Hot_Summer.bmp" BannerName = "banner_Hot_Summer.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"  bIsCTFMap="true"></MAP>
 <MAP id="27" MapName ="Old_Mansion" MapImageName= "map_Old_Mansion.bmp" BannerName = "banner_Old_Mansion.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"  bIsCTFMap="true"></MAP>
 <MAP id="28" MapName ="Toy_room" MapImageName= "map_Toy_room.bmp" BannerName = "banner_Toy_room.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"  bIsCTFMap="false"></MAP>
-<MAP id="29" MapName ="SkillMapV1" MapImageName= "map_SkillMapV1.bmp" BannerName = "banner_SkillmapV1.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"  bIsCTFMap="false"></MAP>
-<MAP id="30" MapName ="SkillMapV2" MapImageName= "map_SkillMapV2.bmp" BannerName = "banner_SkillMapV2.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"  bIsCTFMap="false"></MAP>
-<MAP id="31" MapName ="SkillMapV3" MapImageName= "map_SkillMapV3.bmp" BannerName = "banner_SkillMapV3.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"  bIsCTFMap="false"></MAP>
-<MAP id="32" MapName ="SkillMapV4" MapImageName= "map_SkillMapV4.bmp" BannerName = "banner_SkillMapV4.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"  bIsCTFMap="false"></MAP>
-<MAP id="33" MapName ="SkillMapV5" MapImageName= "map_SkillMapV5.bmp" BannerName = "banner_SkillMapV5.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"  bIsCTFMap="false"></MAP>
-<MAP id="34" MapName ="SkillMapV6" MapImageName= "map_SkillMapV6.bmp" BannerName = "banner_SkillMapV6.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"  bIsCTFMap="false"></MAP>
-<MAP id="35" MapName ="SkillMapV7" MapImageName= "map_SkillMapV7.bmp" BannerName = "banner_SkillMapV7.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"  bIsCTFMap="false"></MAP>
+<MAP id="29" MapName ="SkillMapV1" MapImageName= "map_SkillMapV1.bmp" BannerName = "banner_SkillmapV1.tga" ExpRatio ="1" MaxPlayers ="127" bIsSWRMap = "true" ></MAP>
+<MAP id="30" MapName ="SkillMapV2" MapImageName= "map_SkillMapV2.bmp" BannerName = "banner_SkillMapV2.tga" ExpRatio ="1" MaxPlayers ="127" bIsSWRMap = "true" ></MAP>
+<MAP id="31" MapName ="SkillMapV3" MapImageName= "map_SkillMapV3.bmp" BannerName = "banner_SkillMapV3.tga" ExpRatio ="1" MaxPlayers ="127" bIsSWRMap = "true" ></MAP>
+<MAP id="32" MapName ="SkillMapV4" MapImageName= "map_SkillMapV4.bmp" BannerName = "banner_SkillMapV4.tga" ExpRatio ="1" MaxPlayers ="127" bIsSWRMap = "true" ></MAP>
+<MAP id="33" MapName ="SkillMapV5" MapImageName= "map_SkillMapV5.bmp" BannerName = "banner_SkillMapV5.tga" ExpRatio ="1" MaxPlayers ="127" bIsSWRMap = "true" ></MAP>
+<MAP id="34" MapName ="SkillMapV6" MapImageName= "map_SkillMapV6.bmp" BannerName = "banner_SkillMapV6.tga" ExpRatio ="1" MaxPlayers ="127" bIsSWRMap = "true" ></MAP>
+<MAP id="35" MapName ="SkillMapV7" MapImageName= "map_SkillMapV7.bmp" BannerName = "banner_SkillMapV7.tga" ExpRatio ="1" MaxPlayers ="127" bIsSWRMap = "true" ></MAP>
 
 <!-- 첼린지 퀘스트 -->
 <CHALLENGE_QUEST_MAP id="0" MapName ="[Lv. 1] Rebel Arsenal" 	MapImageName= "map_ChallengeQuest_Guerilla.bmp" BannerName = "banner_ChallengeQuest_Guerilla.tga" ExpRatio ="1.0" MaxPlayers ="4" bOnlyDuelMap = "false"></CHALLENGE_QUEST_MAP>
