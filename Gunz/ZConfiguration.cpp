@@ -216,7 +216,8 @@ bool ZConfiguration::LoadLocale(const char* szFileName)
 		{
 			char szCountry[ 16 ]	= "";
 			char szLanguage[ 16 ]	= "";
-			int nMaxPlayers = 16;
+			//int nMaxPlayers = 16;
+			int nMaxPlayers = 127;
 
 			childElement.GetChildContents( szCountry, ZTOK_LOCALE_COUNTRY );
 			childElement.GetChildContents( szLanguage, ZTOK_LOCALE_LANGUAGE );

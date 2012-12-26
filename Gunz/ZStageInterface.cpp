@@ -415,14 +415,16 @@ void ZStageInterface::OnStageInterfaceSettup( void)
 	MBitmap* pBitmap = 0;
 	char szMapName[256];
  	pPicture = (MPicture*)pResource->FindWidget( "Stage_MainBGTop");
+	
+
 	if ( pPicture)
 	{
 		if( 0 == strcmp(MMATCH_MAPNAME_RELAYMAP, ZGetGameClient()->GetMatchStageSetting()->GetMapName()))
 		{
-			sprintf( szMapName, "interface/%s", MGetMapDescMgr()->GetMapImageName( MMATCH_DEFAULT_STAGESETTING_MAPNAME));
+			sprintf( szMapName, "Maps/%s/%s",MMATCH_DEFAULT_STAGESETTING_MAPNAME, MGetMapDescMgr()->GetMapImageName( MMATCH_DEFAULT_STAGESETTING_MAPNAME));
 		}
 		else
-			sprintf( szMapName, "interface/%s", MGetMapDescMgr()->GetMapImageName( ZGetGameClient()->GetMatchStageSetting()->GetMapName()));
+			sprintf( szMapName, "Maps/%s/%s", ZGetGameClient()->GetMatchStageSetting()->GetMapName(), MGetMapDescMgr()->GetMapImageName( ZGetGameClient()->GetMatchStageSetting()->GetMapName()));
 
 		if ( m_pTopBgImg != NULL)
 		{
@@ -542,7 +544,9 @@ void ZStageInterface::SetStageRelayMapImage()
 	if(pRelayMapListBox == NULL) return;
 	if( 0 < pRelayMapListBox->GetCount())
 	{
-		sprintf( szMapName, "interface/%s", MGetMapDescMgr()->GetMapImageName( pRelayMapListBox->GetString(pRelayMapListBox->GetStartItem())));
+		//sprintf( szMapName, "Maps/%s", MGetMapDescMgr()->GetMapImageName( pRelayMapListBox->GetString(pRelayMapListBox->GetStartItem())));
+		sprintf( szMapName, "Maps/%s/%s", pRelayMapListBox->GetString(pRelayMapListBox->GetStartItem()), MGetMapDescMgr()->GetMapImageName( pRelayMapListBox->GetString(pRelayMapListBox->GetStartItem())));
+
 		if ( m_pTopBgImg != NULL)
 		{
 			delete m_pTopBgImg;

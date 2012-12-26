@@ -6,7 +6,8 @@ ZGameTypeConfig::ZGameTypeConfig( void)
 {
 	m_nDefaultRound			= 0;
 	m_nDefaultLimitTime		= 0;
-	m_nDefaultMaxPlayers	= 16;
+	//m_nDefaultMaxPlayers	= 16;
+	m_nDefaultMaxPlayers	= 127;
 }
 
 
