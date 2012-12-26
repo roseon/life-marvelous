@@ -1171,15 +1171,32 @@ bool ZGameInterface::OnGameCreate(void)
 		break;
 	}
 #endif*/
-char strN[256];
-strcpy(strN,"Interface/Default/Loading/loading_");
-strcat(strN, ZGetGameClient()->GetMatchStageSetting()->GetMapName());
-strcat(strN, ".jpg");
+	//char strN[256];
+	//strcpy(strN,"Interface/Default/Loading/loading_");
+	//strcat(strN, ZGetGameClient()->GetMatchStageSetting()->GetMapName());
+	//strcat(strN, ".jpg");
 
-char strN2[256];
-strcpy(strN2,"Interface/Default/Loading/loading_Complete_");
-strcat(strN2, ZGetGameClient()->GetMatchStageSetting()->GetMapName());
-strcat(strN2, ".jpg");
+	//char strN2[256];
+	//strcpy(strN2,"Interface/Default/Loading/loading_Complete_");
+	//strcat(strN2, ZGetGameClient()->GetMatchStageSetting()->GetMapName());
+	//strcat(strN2, ".jpg");
+	char strN[256];
+	char strN2[256];
+	if(ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_SKILLWAR){
+		sprintf( strN2, "Interface/Default/Loading/loading_Skill_FULLr.jpg");
+		sprintf( strN, "Interface/Default/Loading/loading_Skill_EMPTYr.jpg");
+
+	}else{
+	sprintf( strN, "Maps/%s/loading_%s.jpg", ZGetGameClient()->GetMatchStageSetting()->GetMapName(),ZGetGameClient()->GetMatchStageSetting()->GetMapName());
+	sprintf( strN2, "Maps/%s/loading_Complete_%s.jpg", ZGetGameClient()->GetMatchStageSetting()->GetMapName(),ZGetGameClient()->GetMatchStageSetting()->GetMapName());
+	}
+
+	
+	
+
+
+	
+
 
 	if ( !ZGetInitialLoading()->AddBitmap( 0, szFileName))
 		ZGetInitialLoading()->AddBitmap( 0, strN);
