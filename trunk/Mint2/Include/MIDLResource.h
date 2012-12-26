@@ -118,6 +118,7 @@ protected:
 	MSIZE			GetSize(MXmlElement& element);
 	MCOLOR			GetColor(MXmlElement& element);
 	MBitmap*		GetBitmap(MXmlElement& element);
+	MBitmap*		GetBitmapbyMap(const char* pathMap);
 	MBitmap*		GetBitmapAlias(MXmlElement& element);	// 부분bitmap을 특정 이름으로 alias
 	MAnchors		GetAnchors(MXmlElement& element);
 	MAlignmentMode	GetAlignmentMode(MXmlElement& element);

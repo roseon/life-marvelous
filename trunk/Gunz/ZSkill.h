@@ -184,6 +184,7 @@ public:
 
 	ZSkillDesc *GetDesc()	{ return m_pDesc; }
 	MUID		GetTarget()	{ return m_uidTarget; }
+	void setTarget(MUID uidTarget){ m_uidTarget=uidTarget; }
 	const rvector&	GetTarGetPosition() { return m_TargetPos; }
 
 	void Execute(MUID& uidTarget, rvector& targetPos );

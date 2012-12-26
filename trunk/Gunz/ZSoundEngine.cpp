@@ -1292,13 +1292,43 @@ const char* ZSoundEngine::GetBGMFileName(int nBgmIndex)
 												"TRANCE mission_tmix.ogg",
 												"Vague words.ogg",
 												"X-Fighter.ogg",
-												"Fin.ogg" };
+												"Fin.ogg",
+												"Jingle Bells Techno Remix.ogg"};
 
 	static char szFileName[256] = "";
 #define BGM_FOLDER		"sound/"
 
 	int nRealBgmIndex = nBgmIndex;
 	if ((nBgmIndex >= BGMID_BATTLE) && (nBgmIndex < BGMID_FIN)) nRealBgmIndex = RandomNumber(BGMID_BATTLE, BGMID_FIN-1);
+	sprintf(szFileName, "%s%s", BGM_FOLDER, m_stSndFileName[nRealBgmIndex]);
+
+	return szFileName;
+}
+
+
+
+const char* ZSoundEngine::GetBGMFileNamebyIndex(int nBgmIndex)
+{
+	static char m_stSndFileName[MAX_BGM][64] = {"Intro Retake2(D-R).ogg", 
+												"Theme Rock(D).ogg", 
+												"HardBgm3 Vanessa Retake(D).ogg", 
+												"HardBgm(D).ogg",
+												"HardTech(D).ogg", 
+												"HardCore(D).ogg",
+												"Ryswick style.ogg", 
+												"El-tracaz.ogg", 
+												"Industrial technolism.ogg",
+												"TRANCE mission_tmix.ogg",
+												"Vague words.ogg",
+												"X-Fighter.ogg",
+												"Fin.ogg",
+												"Jingle Bells Techno Remix.ogg"};
+
+	static char szFileName[256] = "";
+#define BGM_FOLDER		"sound/"
+
+	int nRealBgmIndex = nBgmIndex;
+	//if ((nBgmIndex >= BGMID_BATTLE) && (nBgmIndex < BGMID_FIN)) nRealBgmIndex = RandomNumber(BGMID_BATTLE, BGMID_FIN-1);
 	sprintf(szFileName, "%s%s", BGM_FOLDER, m_stSndFileName[nRealBgmIndex]);
 
 	return szFileName;
@@ -1317,6 +1347,20 @@ bool ZSoundEngine::OpenMusic(int nBgmIndex, MZFileSystem* pfs)
 
 	return OpenMusic(szFileName, pfs);
 }
+
+bool ZSoundEngine::OpenMusicNavi(int nBgmIndex, MZFileSystem* pfs)
+{
+	if( !m_bSoundEnable ) return false;
+
+	m_pfs=pfs;
+	m_bBattleMusic = true;
+	char szFileName[256];
+	strcpy(szFileName, GetBGMFileNamebyIndex(nBgmIndex));
+
+	return OpenMusic(szFileName, pfs);
+}
+
+
 
 bool ZSoundEngine::LoadResource( char* pFileName_ ,ZLoadingProgress *pLoading )
 {

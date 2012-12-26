@@ -379,6 +379,23 @@ MBitmap* MIDLResource::GetBitmap(MXmlElement& element)
 	return pBitmap;
 }
 
+
+MBitmap* MIDLResource::GetBitmapbyMap(const char* pathMap)
+{
+	
+
+		if(stricmp(pathMap,"NULL")==0) return NULL;
+		MBitmap *pBitmap = MBitmapManager::Get(pathMap);
+		if(pBitmap==NULL) {
+			mlog("warning : bitmap %s not found.\n",pathMap);
+			return NULL;
+		}
+
+		return pBitmap;
+
+
+}
+
 // ∫Œ∫– bitmap¿« alias
 MBitmap* MIDLResource::GetBitmapAlias(MXmlElement& element)
 {

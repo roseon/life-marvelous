@@ -86,6 +86,9 @@ public:
 	const char* GetMapName(const int nMapID);
 	const char* GetMapImageName(const char* szMapName);
 	const char* GetBannerName(const char* szMapName);
+	const char* GetMapImageName(const int nMapID);
+	const char* GetBannerName(const int nMapID);
+
 	float GetExpRatio( const int nMapID); 
 	int GetMaxPlayers( const int nMapID);
 
