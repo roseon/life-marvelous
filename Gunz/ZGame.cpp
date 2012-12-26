@@ -549,7 +549,14 @@ bool ZGame::Create(MZFileSystem *pfs, ZLoadingProgress *pLoading )
 	}
 	else
 	{
-		ZApplication::GetSoundEngine()->OpenMusic(BGMID_BATTLE, pfs);
+		int rMusicNavi =  RandomNumber(0, 3);
+		if(rMusicNavi==1){
+			ZApplication::GetSoundEngine()->OpenMusic(13, pfs);
+		}else
+		{
+			ZApplication::GetSoundEngine()->OpenMusic(BGMID_BATTLE, pfs);
+		}
+		
 		ZApplication::GetSoundEngine()->PlayMusic();
 	}
 #endif
@@ -3028,7 +3035,34 @@ void ZGame::OnPeerShotSp(MUID& uid, float fShotTime, rvector& pos, rvector& dir,
 			//static RealSoundEffectSource* pSES = ZApplication::GetSoundEngine()->GetSES("we_rocket_fire");
 			//if(pSES!=NULL) ZApplication::GetSoundEngine()->PlaySE(pSES, pos.x, pos.y, pos.z ,pOwnerCharacter==m_pMyCharacter);
 
-			m_WeaponManager.AddRocket(pos, dir, pOwnerCharacter);
+			//m_WeaponManager.AddRocket(pos, dir, pOwnerCharacter);
+			ZPICKINFO pickinfo;
+			MPOINT Cp = ZGetCombatInterface()->GetCrosshairPoint();
+			rvector pos2,dir2;
+			RGetScreenLine(Cp.x,Cp.y,&pos2,&dir2);
+
+			
+
+			//bool bPick = false;
+			ZSkill *sk = new ZSkill();
+
+			if(ZGetGame()->Pick(m_pMyCharacter,pos2,dir2,&pickinfo))
+			{
+				if(pickinfo.pObject)
+				{
+					if (IsPlayerObject(pickinfo.pObject)) {
+						//ZGetCombatInterface()->SetPickTarget(true, (ZCharacter*)pickinfo.pObject);
+						sk->setTarget(pickinfo.pObject->GetUID());
+					}
+				}
+			}
+
+		
+			//ZBrain *zb = new ZBrain();
+			sk->Init(322,pOwnerCharacter);
+			//sk->GetTarget();
+		//	zb->GetUseableSkill( &nSkill, &uidTarget, &targetPosition)
+			m_WeaponManager.AddMagic(sk,pos, dir, pOwnerCharacter);
 			//			m_WeaponManager.AddFireBall(pos,dir,pOwnerCharacter);
 			//			m_WeaponManager.AddIceMissile(pos,dir,pOwnerCharacter);
 			//			m_WeaponManager.AddMagicMissile(pos,dir,pOwnerCharacter);
@@ -5282,8 +5316,9 @@ void ZGame::OnPeerDead(const MUID& uidAttacker, const unsigned long int nAttacke
 		}
 
 		pVictim->GetStatus().CheckCrc();
-		
+		if(nVictimExp>=0){
 		pVictim->GetStatus().Ref().AddExp(nVictimExp);
+		}
 		pVictim->GetStatus().Ref().AddDeaths();
 		if (pVictim->GetStatus().Ref().nLife > 0)
 			pVictim->GetStatus().Ref().nLife--;

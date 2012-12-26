@@ -605,14 +605,15 @@ void ZGameClient::OnChannelChat(const MUID& uidChannel, char* szName, char* szCh
 //	MMatchObjectCache* pObjCache = FindObjCache(uid);
 	MCOLOR _color = MCOLOR(0,0,0);
 
-	MMatchUserGradeID gid = (MMatchUserGradeID) nGrade;
+	//MMatchUserGradeID gid = (MMatchUserGradeID) nGrade;
+	MMatchPremiumGradeID  pgid = (MMatchPremiumGradeID) nGrade;
 //	gid = MMUG_DEVELOPER;
 
 	char sp_name[256];
 
 	//bool bSpUser = GetUserGradeIDColor(gid,_color,sp_name);
 
-	bool bSpUser = GetPremiumGradeIDColor(ZGetMyInfo()->GetPGradeID(),_color,sp_name);
+	bool bSpUser = GetPremiumGradeIDColor(pgid,_color,sp_name);
 
 	char szText[512];
 	/* Steven: Unmask*/

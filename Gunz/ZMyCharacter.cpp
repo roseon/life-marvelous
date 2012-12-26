@@ -1214,7 +1214,7 @@ bool ZMyCharacter::CheckWall(rvector& Pos)
 void ZMyCharacter::OnShotRocket()
 {
 	ZItem* pSelectedItem = GetItems()->GetSelectedWeapon();
-
+	
 	if (pSelectedItem==NULL || pSelectedItem->GetBulletCurrMagazine() <= 0) {
 
 		return;

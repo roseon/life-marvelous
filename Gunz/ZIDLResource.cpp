@@ -482,10 +482,10 @@ ZRoomListBox* ZIDLResource::GetRoomListBox( MXmlElement& element )
 			else if( strcmp(szAttr, "back") == 0 )
 			{
 				childElement.GetContents(szAttr);
-
-				MBitmap* pBitmap =GetBitmap(childElement);
+				//MBitmap* pBitmap =GetBitmap(childElement);
+				/*MBitmap* pBitmap =GetBitmap(childElement);
 				if( pBitmap != 0 )
-					pWidget->SetBannerImage( szAttr, pBitmap);
+					pWidget->SetBannerImage( szAttr, pBitmap);*/
 			}
  			else if( stricmp( szAttr,"icon" )==0 )
 			{
@@ -514,6 +514,29 @@ ZRoomListBox* ZIDLResource::GetRoomListBox( MXmlElement& element )
 			}
 		}
 	}
+
+	//llenando banners
+	for (int i = 0; i < MMATCH_MAP_MAX; i++)
+	{
+		const char* strMapName = MGetMapDescMgr()->GetMapName(i);
+		const char* strbannerMapName = MGetMapDescMgr()->GetBannerName(i);
+		
+
+		if (0 == strlen(strbannerMapName)  ||   strbannerMapName ==0 ) {
+			continue;
+		}
+		char szFilename[_MAX_PATH];
+		sprintf(szFilename, "Maps/%s/%s", strMapName, strbannerMapName);
+		MBitmap* pBitmap =GetBitmapbyMap( strbannerMapName);
+		pWidget->SetBannerImage((char *)strbannerMapName, pBitmap);
+		/*pWidget->SetBannerImage( szAttr, pBitmap);
+		if (!stricmp(strMapName.c_str(), MGetMapDescMgr()->GetMapName(i)))
+		{
+			Add(i);
+			return;
+		}*/
+	}
+
 	return pWidget;
 }
 

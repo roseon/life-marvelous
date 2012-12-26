@@ -553,6 +553,7 @@ bool ZGameInterface::InitInterface(const char* szSkinName, ZLoadingProgress *pLo
 	////	ZLoadBitmap(szPath, ".dds");
 	//ZLoadBitmap(PATH_CUSTOM_CROSSHAIR, ".png", true);
 	LoadBitmaps(szPath, szSubPath, &pictureProgress);
+	LoadBitmaps("Maps", szSubPath, &pictureProgress);
 
 	END_("loading pictures");
 

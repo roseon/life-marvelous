@@ -347,7 +347,8 @@ bool MMatchServer::ChannelChat(const MUID& uidPlayer, const MUID& uidChannel, ch
 	if ((pObj == NULL) || (pObj->GetCharInfo() == NULL)) return false;
 	if (pObj->GetAccountInfo()->m_nUGrade == MMUG_CHAT_LIMITED) return false;
 
-	int nGrade = (int) pObj->GetAccountInfo()->m_nUGrade;
+	//int nGrade = (int) pObj->GetAccountInfo()->m_nUGrade;
+	int nGrade = (int) pObj->GetAccountInfo()->m_nPGrade;
 
 /*
 	// RAONHAJE : GO 임시코드

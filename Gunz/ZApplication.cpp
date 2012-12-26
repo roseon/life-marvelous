@@ -447,6 +447,12 @@ bool ZApplication::OnCreate(ZLoadingProgress *pLoadingProgress)
 //	ZGetInitialLoading()->Draw( MODE_DEFAULT, 0 , true );
 
 //	loadingProgress.UpdateAndDraw(.3f);
+	
+	if (!MGetMapDescMgr()->Initialize(GetFileSystem(), "system/map.xml"))
+	{
+		MLog("Error while Read map Descriptor %s\n", "system/map.xml");
+	}
+	mlog("Init map Descriptor success.\n");
 
 	RegisterForbidKey();
 
@@ -601,11 +607,7 @@ BirdGo:
 	mlog("Init world item manager success.\n");
 
 	
-	if (!MGetMapDescMgr()->Initialize(GetFileSystem(), "system/map.xml"))
-	{
-		MLog("Error while Read map Descriptor %s\n", "system/map.xml");
-	}
-	mlog("Init map Descriptor success.\n");
+	
 
 
 	string strFileChannelRule("system/channelrule.xml");
@@ -789,7 +791,8 @@ void ZApplication::OnUpdate()
 //	if(Mint::GetInstance()) {
 		if(ZIsActionKeyPressed(ZACTION_SCREENSHOT)) {
 			if(m_pGameInterface)
-				m_pGameInterface->SaveScreenShotSex();//m_pGameInterface->SaveScreenShot();
+				m_pGameInterface->SaveScreenShot();
+				//m_pGameInterface->SaveScreenShotSex();
 		}
 //	}
 

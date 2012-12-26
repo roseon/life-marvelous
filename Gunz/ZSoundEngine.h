@@ -182,6 +182,9 @@ protected:
 	MZFileSystem*	m_pfs;
 	bool			m_bBattleMusic;
 	const char*		GetBGMFileName(int nBgmIndex);
+	const char*		GetBGMFileNamebyIndex(int nBgmIndex);
+
+	
 	bool OpenMusic(const char* szFileName, MZFileSystem* pfs);
 	bool OpenCustomMusic( const char* szFileNameDir, const char* szFileName );
 	bool CheckCulling(char* szName, SoundSource* pSS, const rvector& vSoundPos, bool bHero, int* pnoutPriority=NULL);
@@ -198,6 +201,7 @@ public:
 
 	// BGM
 	bool OpenMusic(int nBgmIndex, MZFileSystem* pfs);
+	bool OpenMusicNavi(int nBgmIndex, MZFileSystem* pfs);
 	void CloseMusic();
 	void PlayMusic(bool bLoop = true);
 	void StopMusic();
@@ -291,7 +295,7 @@ public:
 #define BGMID_BATTLE			2
 #define BGMID_FIN				12
 
-#define MAX_BGM	13
+#define MAX_BGM	14
 
 
 

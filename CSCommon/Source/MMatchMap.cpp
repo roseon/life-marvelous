@@ -216,6 +216,14 @@ const char* MMapDesc::GetMapImageName(const char* szMapName)
 	return 0;
 }
 
+const char* MMapDesc::GetMapImageName(const int nMapID)
+{
+	if (MIsCorrectMap(nMapID))
+		return m_MapVectors[nMapID].szMapImageName;
+	else
+		return 0;
+}
+
 const char* MMapDesc::GetBannerName(const char* szMapName)
 {
 	for ( int i = 0;  i < MMATCH_MAP_COUNT;  i++)
@@ -225,6 +233,15 @@ const char* MMapDesc::GetBannerName(const char* szMapName)
 	}
 
 	return 0;
+}
+
+
+const char* MMapDesc::GetBannerName(const int nMapID)
+{
+	if (MIsCorrectMap(nMapID))
+		return m_MapVectors[nMapID].szBannerName;
+	else
+		return 0;
 }
 
 bool MMapDesc::IsMapOnlyDuel( const int nMapID)
