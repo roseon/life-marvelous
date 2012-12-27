@@ -613,6 +613,7 @@
 		<BITMAP type="icon" mode="16">ctf-mode.tga</BITMAP>
 		<BITMAP type="icon" mode="17">awp-mode.tga</BITMAP>
 		<BITMAP type="icon" mode="18">grenade-mode.tga</BITMAP>
+		<BITMAP type="icon" mode="19">skill-mode.tga</BITMAP>
 		
 		
 		<SIZE type="width">360</SIZE>
