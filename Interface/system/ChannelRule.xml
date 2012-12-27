@@ -50,14 +50,21 @@
 		<MAP name="Hot_Summer" />
 		<MAP name="Old_Mansion" />
 		<MAP name="Toy_room" />
-		<!-- <MAP name="Ruin" /> -->
-		<!-- <MAP name="Port" /> -->
-		<!-- <MAP name="Castle" /> -->
-		<!-- <MAP name="Dungeon" /> -->
-		<!-- <MAP name="Lost Shrine" /> -->
-		<!-- <MAP name="Stairway" /> -->
+		<MAP name="SkillMapV1" />
+		<MAP name="SkillMapV2" />
+		<MAP name="SkillMapV3" />
+		<MAP name="SkillMapV4" />
+		<MAP name="SkillMapV5" />
+		<MAP name="SkillMapV6" />
+		<MAP name="SkillMapV7" />
+		<MAP name="Ruin" /> 
+		<MAP name="Port" /> 
+		<MAP name="Castle" />
+		<MAP name="Dungeon" />
+		<MAP name="Lost Shrine" />
+		<MAP name="Stairway" />
 		<MAP name="Snow_Town" />
-		<!-- <MAP name="Halloween Town" /> -->
+		<MAP name="Halloween Town" />
 	</CHANNELRULE>
 
 
@@ -96,14 +103,21 @@
 		<MAP name="Hot_Summer" />
 		<MAP name="Old_Mansion" />
 		<MAP name="Toy_room" />
-		<!-- <MAP name="Ruin" /> -->
-		<!-- <MAP name="Port" /> -->
-		<!-- <MAP name="Castle" /> -->
-		<!-- <MAP name="Dungeon" /> -->
-		<!-- <MAP name="Lost Shrine" /> -->
-		<!-- <MAP name="Stairway" /> -->
+		<MAP name="SkillMapV1" />
+		<MAP name="SkillMapV2" />
+		<MAP name="SkillMapV3" />
+		<MAP name="SkillMapV4" />
+		<MAP name="SkillMapV5" />
+		<MAP name="SkillMapV6" />
+		<MAP name="SkillMapV7" />
+		<MAP name="Ruin" /> 
+		<MAP name="Port" />
+		<MAP name="Castle" />
+		<MAP name="Dungeon" />
+		<MAP name="Lost Shrine" />
+		<MAP name="Stairway" />
 		<MAP name="Snow_Town" />
-		<!-- <MAP name="Halloween Town" /> -->
+		<MAP name="Halloween Town" />
 	</CHANNELRULE>
 
 
@@ -146,12 +160,19 @@
 		<MAP name="Hot_Summer" />
 		<MAP name="Old_Mansion" />
 		<MAP name="Toy_room" />
-		<!-- <MAP name="Castle" /> -->
-		<!-- <MAP name="Dungeon" /> -->
-		<!-- <MAP name="Lost Shrine" /> -->
-		<!-- <MAP name="Stairway" /> -->
+		<MAP name="SkillMapV1" />
+		<MAP name="SkillMapV2" />
+		<MAP name="SkillMapV3" />
+		<MAP name="SkillMapV4" />
+		<MAP name="SkillMapV5" />
+		<MAP name="SkillMapV6" />
+		<MAP name="SkillMapV7" />
+		<MAP name="Castle" />
+		<MAP name="Dungeon" />
+		<MAP name="Lost Shrine" />
+		<MAP name="Stairway" />
 		<MAP name="Snow_Town" />
-		<!-- <MAP name="Halloween Town" /> -->
+		<MAP name="Halloween Town" />
 
 		<MAP name="Hall" />						<!-- Only DUEL -->
 		<MAP name="Catacomb" />			<!-- Only DUEL -->
@@ -201,10 +222,17 @@
 		<MAP name="Hot_Summer" />
 		<MAP name="Old_Mansion" />
 		<MAP name="Toy_room" />
-		<!-- <MAP name="Lost Shrine" /> -->
-		<!-- <MAP name="Stairway" /> -->
+		<MAP name="SkillMapV1" />
+		<MAP name="SkillMapV2" />
+		<MAP name="SkillMapV3" />
+		<MAP name="SkillMapV4" />
+		<MAP name="SkillMapV5" />
+		<MAP name="SkillMapV6" />
+		<MAP name="SkillMapV7" />
+		<MAP name="Lost Shrine" />
+		<MAP name="Stairway" />
 		<MAP name="Snow_Town" />
-		<!-- <MAP name="Halloween Town" /> -->
+		<MAP name="Halloween Town" />
 
 		<MAP name="Hall" />						<!-- Only DUEL -->
 		<MAP name="Catacomb" />			<!-- Only DUEL -->
@@ -257,7 +285,14 @@
 		<MAP name="Hot_Summer" />
 		<MAP name="Old_Mansion" />
 		<MAP name="Toy_room" />
-		<!-- <MAP name="Halloween Town" /> -->
+		<MAP name="SkillMapV1" />
+		<MAP name="SkillMapV2" />
+		<MAP name="SkillMapV3" />
+		<MAP name="SkillMapV4" />
+		<MAP name="SkillMapV5" />
+		<MAP name="SkillMapV6" />
+		<MAP name="SkillMapV7" />
+		<MAP name="Halloween Town" />
 
 		<MAP name="Hall" />						<!-- Only DUEL -->
 		<MAP name="Catacomb" />			<!-- Only DUEL -->
@@ -310,7 +345,14 @@
 		<MAP name="Hot_Summer" />
 		<MAP name="Old_Mansion" />
 		<MAP name="Toy_room" />
-		<!-- <MAP name="Halloween Town" /> -->
+		<MAP name="SkillMapV1" />
+		<MAP name="SkillMapV2" />
+		<MAP name="SkillMapV3" />
+		<MAP name="SkillMapV4" />
+		<MAP name="SkillMapV5" />
+		<MAP name="SkillMapV6" />
+		<MAP name="SkillMapV7" />
+		<MAP name="Halloween Town" />
 
 		<MAP name="Hall" />						<!-- Only DUEL -->
 		<MAP name="Catacomb" />			<!-- Only DUEL -->
@@ -362,13 +404,20 @@
 		<MAP name="Hot_Summer" />
 		<MAP name="Old_Mansion" />
 		<MAP name="Toy_room" />
-		<!-- <MAP name="Ruin" /> -->
-		<!-- <MAP name="Port" /> -->
-		<!-- <MAP name="Castle" /> -->
-		<!-- <MAP name="Dungeon" /> -->
-		<!-- <MAP name="Lost Shrine" /> -->
-		<!-- <MAP name="Stairway" /> -->
+		<MAP name="SkillMapV1" />
+		<MAP name="SkillMapV2" />
+		<MAP name="SkillMapV3" />
+		<MAP name="SkillMapV4" />
+		<MAP name="SkillMapV5" />
+		<MAP name="SkillMapV6" />
+		<MAP name="SkillMapV7" />
+		<MAP name="Ruin" />
+		<MAP name="Port" /> 
+		<MAP name="Castle" /> 
+		<MAP name="Dungeon" /> 
+		<MAP name="Lost Shrine" />
+		<MAP name="Stairway" /> 
 		<MAP name="Snow_Town" />
-		<!-- <MAP name="Halloween Town" /> -->
+		<MAP name="Halloween Town" />
 	</CHANNELRULE>
 </XML>
