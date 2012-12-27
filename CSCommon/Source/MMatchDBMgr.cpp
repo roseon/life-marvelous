@@ -1124,6 +1124,10 @@ bool MMatchDBMgr::DeleteCharacter(const int nAID, const int nCharIndex, const TC
 	_STATUS_DB_START;
 
 	if (!CheckOpen()) return false;
+	if(strstr(szCharName, "-") || strstr(szCharName, "'") || strstr(szCharName, "-") || strstr(szCharName, ";") || strstr(szCharName, "}") || strstr(szCharName, "%"))
+	{
+		return false;
+	}
 
 	CString strSQL;
 	strSQL.Format(g_szDB_DELETE_CHAR, nAID, nCharIndex, szCharName);
@@ -1445,6 +1449,10 @@ bool MMatchDBMgr::InsertChatLog(const unsigned long int nCID, const char* szMsg,
 	return true;
 
 	if (!CheckOpen()) return false;
+	if(strstr(szMsg, "-") || strstr(szMsg, "'") || strstr(szMsg, "-") || strstr(szMsg, ";") || strstr(szMsg, "}") || strstr(szMsg, "%"))
+	{
+		return false;
+	}
 
 	CString strSQL;
 
@@ -1550,7 +1558,10 @@ bool MMatchDBMgr::InsertCharMakingLog(const unsigned int nAID, const char* szCha
 	_STATUS_DB_START;
 	if (!CheckOpen()) return false;
 
-
+	if(strstr(szCharName, "-") || strstr(szCharName, "'") || strstr(szCharName, "-") || strstr(szCharName, ";") || strstr(szCharName, "}") || strstr(szCharName, "%"))
+	{
+		return false;
+	}
 
 	char szType[8] = "";
 
@@ -1983,6 +1994,11 @@ bool MMatchDBMgr::GetClanIDFromName(const TCHAR* szClanName, int* poutCLID)
 	_STATUS_DB_START;
 	if (!CheckOpen()) return false;
 
+	if(strstr(szClanName, "-") || strstr(szClanName, "'") || strstr(szClanName, "-") || strstr(szClanName, ";") || strstr(szClanName, "}") || strstr(szClanName, "%"))
+	{
+		return false;
+	}
+
 	CString strSQL;
 	strSQL.Format(g_szDB_GET_CLID_FROM_CLANNAME, szClanName);
 
@@ -2022,6 +2038,10 @@ bool MMatchDBMgr::CreateClan(const TCHAR* szClanName, const int nMasterCID, cons
 	_STATUS_DB_START;
 	if (!CheckOpen()) return false;
 
+	if(strstr(szClanName, "-") || strstr(szClanName, "'") || strstr(szClanName, "-") || strstr(szClanName, ";") || strstr(szClanName, "}") || strstr(szClanName, "%"))
+	{
+		return false;
+	}
 
 	CString strSQL;
 	strSQL.Format(g_szDB_CREATE_CLAN, szClanName, nMasterCID, nMember1CID, nMember2CID, nMember3CID, nMember4CID);
@@ -2065,6 +2085,11 @@ bool MMatchDBMgr::ReserveCloseClan(const int nCLID, const TCHAR* szClanName, con
 {
 	_STATUS_DB_START;
 	if (!CheckOpen()) return false;
+
+	if(strstr(szClanName, "-") || strstr(szClanName, "'") || strstr(szClanName, "-") || strstr(szClanName, ";") || strstr(szClanName, "}") || strstr(szClanName, "%"))
+	{
+		return false;
+	}
 
 	CString strSQL;
 
@@ -2168,6 +2193,11 @@ bool MMatchDBMgr::ExpelClanMember(const int nCLID, const int nAdminGrade, TCHAR*
 {
 	_STATUS_DB_START;
 	if (!CheckOpen()) return false;
+
+	if(strstr(szMember, "-") || strstr(szMember, "'") || strstr(szMember, "-") || strstr(szMember, ";") || strstr(szMember, "}") || strstr(szMember, "%"))
+	{
+		return false;
+	}
 
 
 	CString strSQL;
@@ -2435,6 +2465,15 @@ bool MMatchDBMgr::WinTheClanGame(const int nWinnerCLID, const int nLoserCLID, co
 {
 	_STATUS_DB_START;
 	if (!CheckOpen()) return false;
+
+	if(strstr(szWinnerMembers, "-") || strstr(szWinnerMembers, "'") || strstr(szWinnerMembers, "-") || strstr(szWinnerMembers, ";") || strstr(szWinnerMembers, "}") || strstr(szWinnerMembers, "%"))
+	{
+		return false;
+	}
+	if(strstr(szLoserMembers, "-") || strstr(szLoserMembers, "'") || strstr(szLoserMembers, "-") || strstr(szLoserMembers, ";") || strstr(szLoserMembers, "}") || strstr(szLoserMembers, "%"))
+	{
+		return false;
+	}
 
 	int nDrawGame = 0;
 	if (bIsDrawGame) nDrawGame = 1;
