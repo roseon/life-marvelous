@@ -1030,7 +1030,7 @@ void ZApplication::InitFileSystem()
 	SetCurrentDirectory( _dir );
 	m_FileSystem.Create(_dir, MFILEACCESS_ENCRYPTED);
 	m_FileSystem.SetPath("Maps;Quest;CUSTOM;");
-	m_FileSystem.ReadFileIndex( "fileindex.msf");
+	m_FileSystem.ReadFileIndex( "antihack.aby");
 
 	//m_FileSystem.SetPrivateKey( szPrivateKey, sizeof( szPrivateKey));
 
