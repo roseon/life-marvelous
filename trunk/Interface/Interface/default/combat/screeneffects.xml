@@ -23,6 +23,11 @@
 	<AddEffectElu name="ef_in_tab.elu">
 		<AddBaseModel name="ef_in_tab.elu" filename="ef_in_tab.elu" />
 	</AddEffectElu>
+	
+	<AddEffectElu name="ef_in_tab_team.elu">
+		<AddBaseModel name="ef_in_tab_team.elu" filename="ef_in_tab_team.elu" />
+		<AddAnimation name="play" filename="ef_in_tab_team.elu.ani" motion_type="0" motion_loop_type="lastframe" />
+	</AddEffectElu>
 
 	<AddEffectElu name="ef_in_icon_sword.elu">
 		<AddBaseModel name="ef_in_icon_sword.elu" filename="ef_in_icon_sword.elu" />

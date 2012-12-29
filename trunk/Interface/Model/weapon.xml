@@ -1438,6 +1438,9 @@
 </AddWeaponElu>
 
 
+<AddWeaponElu name="rifle99" weapon_motion_type = "5" weapon_type = "6" >
+		<AddBaseModel name="rifle99" filename="model/gz_Sniper.elu" />
+	</AddWeaponElu>
 
 
 
