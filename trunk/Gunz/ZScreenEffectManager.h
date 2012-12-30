@@ -120,6 +120,9 @@ private:
 	ZScreenEffect*	m_pScorePanel;
 	ZScreenEffect*	m_pBuffPanel;
 
+	ZScreenEffect*	m_pScorePanelTeam;
+	ZScreenEffect*	m_pScorePanelSolo;
+
 	ZScreenEffect*	m_pWeaponIcons[MWT_END];
 	
 	// Æ÷¼Ç·ù(¾ÚÇÃ,Ä¸½¶)¿Í Æ®·¦·ù´Â µû·Î °ü¸®ÇÑ´Ù
@@ -194,6 +197,9 @@ public:
 
 	void Draw();
 	void DrawScoreBoard();
+	void DrawScoreBoardTeam();
+	void DrawScoreBoardSolo();
+
 	void DrawSpectator();
 	void DrawMyHPPanal(MDrawContext* pDC);
 	void DrawMyWeaponImage();

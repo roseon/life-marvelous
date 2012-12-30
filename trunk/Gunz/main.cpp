@@ -222,7 +222,18 @@ RRESULT OnCreate(void *pParam)
 		SAFE_DELETE( g_pDefFont );
 		g_pDefFont	= NULL;
 	}
-	//pDefFont->Create("Default", RGetDevice(), "FONTb11b", 10, 1.0f, true, false);
+
+//	if( !g_pDefFont->Create("Default", RGetDevice(), "FONTb11b", 10, 1.0f, true, false) )
+////	if( !g_pDefFont->Create("Default", RGetDevice(), "FONTb11b", 9, 1.0f, true, false) )
+////	if( !g_pDefFont->Create("Default", RGetDevice(), "FONTb11b", 14, 1.0f, true, false) )
+//	{
+//		mlog("Fail to Create defualt font : MFontR2 / main.cpp.. onCreate\n" );
+//		g_pDefFont->Destroy();
+//		SAFE_DELETE( g_pDefFont );
+//		g_pDefFont	= NULL;
+//	}
+
+		//pDefFont->Create("Default", RGetDevice(), "FONTb11b", 10, 1.0f, true, false);
 	//pDefFont->Create("Default", RGetDevice(), "FONTb11b", 16, 1.0f, true, false, -1, 4);
 	//pDefFont->Create("Default", RGetDevice(), "-2002", 10, 1.0f, false, false, -1, 1);
 	//pDefFont->Create("Default", RGetDevice(), "HY¼öÆò¼±L", 12, 1.0f, false, false, -1, 2);

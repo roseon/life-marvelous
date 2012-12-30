@@ -265,6 +265,9 @@ struct ZCharacterStatus
 	int			nDamageCaused;
 	int			nDamageTaken;
 	int			nFrozen;
+	float		XTest;
+	float		YTest;
+	float		LineTest;
 	ZCharacterStatus() :	
 							nLife(10),
 							nKills(0),
@@ -280,7 +283,10 @@ struct ZCharacterStatus
 							nExp(0),
 							nDamageCaused(0),
 							nDamageTaken(0),
-							nFrozen(0)
+							nFrozen(0),
+							XTest(0.12f),
+							YTest(0.5f),
+							LineTest(0.0f)
 							{  }
 
 	void AddKills(int nAddedKills = 1) { nKills += nAddedKills; }

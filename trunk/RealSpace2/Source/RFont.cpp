@@ -494,6 +494,7 @@ bool RFont::EndFont()
 void RFont::DrawText(float x, float y, const TCHAR* szText, DWORD dwColor/* =0xFFFFFFFF */, float fScale/* =1.0f */)
 {
 	if(szText==NULL)	return;
+	//if(strlen(szText)==0) return;
 	if(szText[0]==NULL) return;
 
 //	bool bPrevInFont = m_bInFont;	// 하단에서 부적절하게 사용중이다.

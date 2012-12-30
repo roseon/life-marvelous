@@ -821,6 +821,9 @@ void ZCombatInterface::OnDraw(MDrawContext* pDC)
 			ZGetScreenEffectManager()->DrawMyWeaponImage();		// 나의 무기 타입 이미지
 			ZGetScreenEffectManager()->DrawMyBuffImage();		// 나의 버프 타입 이미지
 
+			
+
+
 			// 퀘스트모드일때는 퀘스트 화면을 보여준다.
 			if (m_pQuestScreen) m_pQuestScreen->OnDraw(pDC);
 
@@ -2027,8 +2030,13 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 #endif
 
 	ZSCOREBOARDITEMLIST items;
+	if (ZGetGame()->GetMatch()->IsTeamPlay())
+	{
+		ZGetScreenEffectManager()->DrawScoreBoardTeam();
+	}else{
+		ZGetScreenEffectManager()->DrawScoreBoard();
+	}
 
-	ZGetScreenEffectManager()->DrawScoreBoard();
 
 	MFont *pFont=GetGameFont();
 	pDC->SetFont(pFont);
@@ -2060,14 +2068,26 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 	else
 	{
 		// 클랜전이 아니면 방제를 표시한다
-		sprintf(szText, "(%03d) %s", ZGetGameClient()->GetStageNumber(), ZGetGameClient()->GetStageName());
+		//sprintf(szText, "(%03d) %s", ZGetGameClient()->GetStageNumber(), ZGetGameClient()->GetStageName());
+		sprintf(szText, "%03d", ZGetGameClient()->GetStageNumber());
 	}
-	TextRelative(pDC,0.26f,0.22f,szText);
+	//mlog("Width:%d Height:%d\n",MGetWorkspaceWidth(),MGetWorkspaceHeight());
+	//TextRelative(pDC,0.26f,0.22f,szText);
+	TextRelative(pDC,0.587f,0.657f,szText);
+
+
+	//test
+
+	
+
+	//	TextRelative(pDC,0.12f,0.51f,"Level");
 
 
 	float x = 0.27f;
 	float y = 0.284f;
 	float linespace2= 0.071f / 3.f;
+	char szTextRed[256];
+	char szTextBlue[256];
 
 	// 세번째줄 앞 : 점수(팀플)
 	if (ZGetGame()->GetMatch()->IsTeamPlay())
@@ -2081,18 +2101,26 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 		else
 		{
 			if (ZGetGameTypeManager()->IsTeamExtremeGame(ZGetGame()->GetMatch()->GetMatchType())) // 팀전일때 무한데스매치만 예외가 많이 발생합니다 =_=;
-				sprintf(szText, "%s : %d(Red) vs %d(Blue)",  ZGetGameTypeManager()->GetGameTypeStr(ZGetGame()->GetMatch()->GetMatchType()),
+				{
+					sprintf(szText, "%s : %d(Red) vs %d(Blue)",  ZGetGameTypeManager()->GetGameTypeStr(ZGetGame()->GetMatch()->GetMatchType()),
 															ZGetGame()->GetMatch()->GetTeamKills(MMT_RED), 
 															ZGetGame()->GetMatch()->GetTeamKills(MMT_BLUE));
-			else
+				sprintf(szTextRed, "%d",  	ZGetGame()->GetMatch()->GetTeamKills(MMT_RED));
+				sprintf(szTextBlue, "%d",  	ZGetGame()->GetMatch()->GetTeamKills(MMT_BLUE));
+			}else{
 				sprintf(szText, "%s : %d(Red) vs %d(Blue)",  ZGetGameTypeManager()->GetGameTypeStr(ZGetGame()->GetMatch()->GetMatchType()),
 															ZGetGame()->GetMatch()->GetTeamScore(MMT_RED), 
 															ZGetGame()->GetMatch()->GetTeamScore(MMT_BLUE));
+				sprintf(szTextRed, "%d",  	ZGetGame()->GetMatch()->GetTeamScore(MMT_RED));
+				sprintf(szTextBlue, "%d",  	ZGetGame()->GetMatch()->GetTeamScore(MMT_BLUE));
+			}
 		}
 	}
 	else
 		sprintf(szText, "%s", ZGetGameTypeManager()->GetGameTypeStr(ZGetGame()->GetMatch()->GetMatchType()));
-	TextRelative(pDC,x,y,szText);
+	//TextRelative(pDC,x,y,szText);
+	TextRelative(pDC,0.469f,0.139f,szTextRed);
+	TextRelative(pDC,0.514f,0.139f,szTextBlue);
 	y-=linespace2;
 
 
@@ -2202,21 +2230,27 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 				if ( dwTime <= dwLimitTime)
 				{
 					dwTime = (dwLimitTime - dwTime) / 1000;
-					sprintf( szText, "%s : %d:%02d", ZMsg( MSG_WORD_REMAINTIME), (dwTime / 60), (dwTime % 60));
+					//sprintf( szText, "%s : %d:%02d", ZMsg( MSG_WORD_REMAINTIME), (dwTime / 60), (dwTime % 60));
+					sprintf( szText, "%d:%02d", (dwTime / 60), (dwTime % 60));
 				}
 				else
-					sprintf( szText, "%s :", ZMsg( MSG_WORD_REMAINTIME));
+					//sprintf( szText, "%s :", ZMsg( MSG_WORD_REMAINTIME));
+					sprintf( szText, "---");
 			}
 			else
-				sprintf( szText, "%s : ---", ZMsg( MSG_WORD_REMAINTIME));
+				//sprintf( szText, "%s : ---", ZMsg( MSG_WORD_REMAINTIME));
+				sprintf( szText, "---");
 		}
 		else
-			sprintf( szText, "%s : ---", ZMsg( MSG_WORD_REMAINTIME)); 
-
+			//sprintf( szText, "%s : ---", ZMsg( MSG_WORD_REMAINTIME)); 
+			sprintf( szText, "---"); 
+		x=0.838f;
+		y=0.191f;
 		TextRelative( pDC, x, y, szText);
 		y -= linespace2;
 
-		sprintf( szText, "%s : %d / %d %s", ZMsg( MSG_WORD_RPROGRESS), ZGetGame()->GetMatch()->GetCurrRound() + 1, ZGetGame()->GetMatch()->GetRoundCount(), ZMsg( MSG_WORD_ROUND));
+		//sprintf( szText, "%s : %d / %d %s", ZMsg( MSG_WORD_RPROGRESS), ZGetGame()->GetMatch()->GetCurrRound() + 1, ZGetGame()->GetMatch()->GetRoundCount(), ZMsg( MSG_WORD_ROUND));
+		sprintf( szText, "%d / %d %s", ZGetGame()->GetMatch()->GetCurrRound() + 1, ZGetGame()->GetMatch()->GetRoundCount(), ZMsg( MSG_WORD_ROUND));
 	}
 	else if ( ZGetGameTypeManager()->IsQuestOnly(ZGetGame()->GetMatch()->GetMatchType())) 	// 퀘스트 모드일 경우
 	{
@@ -2246,17 +2280,22 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 				if ( dwTime <= dwLimitTime)
 				{
 					dwTime = (dwLimitTime - dwTime) / 1000;
-					sprintf( szText, "%s : %d:%02d", ZMsg( MSG_WORD_REMAINTIME), (dwTime / 60), (dwTime % 60));
+					//sprintf( szText, "%s : %d:%02d", ZMsg( MSG_WORD_REMAINTIME), (dwTime / 60), (dwTime % 60));
+					sprintf( szText, "%d:%02d", (dwTime / 60), (dwTime % 60));
 				}
 				else
-					sprintf( szText, "%s :", ZMsg( MSG_WORD_REMAINTIME));
+					//sprintf( szText, "%s :", ZMsg( MSG_WORD_REMAINTIME));
+					sprintf( szText, "");
 			}
 			else
-				sprintf( szText, "%s : ---", ZMsg( MSG_WORD_REMAINTIME));
+				//sprintf( szText, "%s : ---", ZMsg( MSG_WORD_REMAINTIME));
+				sprintf( szText, "---");
 		}
 		else
-			sprintf( szText, "%s : ---", ZMsg( MSG_WORD_REMAINTIME));
-
+			//sprintf( szText, "%s : ---", ZMsg( MSG_WORD_REMAINTIME));
+			sprintf( szText, "---", ZMsg( MSG_WORD_REMAINTIME));
+		x=0.838f;
+		y=0.191f;
 		TextRelative( pDC, x, y, szText);
 		y -= linespace2;
 		if ( ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_CTF)
@@ -2265,6 +2304,9 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 			sprintf( szText, "%s : %d", ZMsg( MSG_WORD_ENDKILL), ZGetGame()->GetMatch()->GetRoundCount());
 
 	}
+
+	x=0.429f;
+	y=0.657f;
 	TextRelative( pDC, x, y, szText);
 
 
@@ -2285,12 +2327,12 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 	pDC->SetColor(MCOLOR(TEXT_COLOR_TITLE));
 	x = ITEM_XPOS[0];	// level
 	sprintf( szBuff, "%s", ZMsg(MSG_CHARINFO_LEVEL));
-	TextRelative(pDC,x,y, szBuff);
+	//TextRelative(pDC,x,y, szBuff);
 	x = ITEM_XPOS[6];	// Name
 	sprintf( szBuff, "%s", ZMsg(MSG_CHARINFO_NAME));
-	TextRelative(pDC,x,y, szBuff);
+	//TextRelative(pDC,x,y, szBuff);
 	x = ITEM_XPOS[1];	// Clan
-	TextRelative(pDC,x,y, ZMsg(MSG_CHARINFO_CLAN));
+	//TextRelative(pDC,x,y, ZMsg(MSG_CHARINFO_CLAN));
 	if ( ZGetGameTypeManager()->IsQuestDerived( ZGetGame()->GetMatch()->GetMatchType()))
 	{
 		x = ITEM_XPOS[2];	// HP/AP
@@ -2300,16 +2342,16 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 	else
 	{
 		x = ITEM_XPOS[2];	// Exp
-		TextRelative(pDC,x,y, ZMsg(MSG_WORD_EXP));
+		//TextRelative(pDC,x,y, ZMsg(MSG_WORD_EXP));
 	}
 	x = ITEM_XPOS[3];	// Kills
-	TextRelative(pDC,x,y, ZMsg(MSG_WORD_KILL));
+	//TextRelative(pDC,x,y, ZMsg(MSG_WORD_KILL));
 	x = ITEM_XPOS[4];	// Deaths
-	TextRelative(pDC,x,y, ZMsg(MSG_WORD_DEATH));
+	//TextRelative(pDC,x,y, ZMsg(MSG_WORD_DEATH));
 	x = ITEM_XPOS[9];	// Ping
-	TextRelative(pDC,x,y, ZMsg(MSG_WORD_PING));
+	//TextRelative(pDC,x,y, ZMsg(MSG_WORD_PING));
 	x = ITEM_XPOS[7];	// Damage Caused
-	TextRelative(pDC,x,y,"DMG Dealt");
+	//TextRelative(pDC,x,y,"DMG Dealt");
 //	x = ITEM_XPOS[8];	// Damage Taken - Implement during anti-lead
 //	TextRelative(pDC,x,y,"DMG Taken");
 	
@@ -2371,6 +2413,11 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 
 		}
 	}
+
+	MFont *pTestFont=MFontManager::Get("FONTb11b");
+	if (pTestFont == NULL) _ASSERT(0);
+	pDC->SetFont(pTestFont);
+	pDC->SetColor(MCOLOR(TEXT_COLOR_CLAN_NAME));
 
 
 	// 캐릭터 리스트
@@ -2475,20 +2522,56 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 	}
 
 	int nCount = 0;
+	int nCountRed = 0;
+	int nCountBlue = 0;
 	int MiPing = 0, total = 0;
+	char szMsgTest[128] = { 0, };
+
+	sprintf(szMsgTest, "x:%3.3f y:%3.3f line:%3.3f", ZGetGame()->m_pMyCharacter->GetStatus().Ref().XTest*1.f,
+													 ZGetGame()->m_pMyCharacter->GetStatus().Ref().YTest*1.f,
+													 ZGetGame()->m_pMyCharacter->GetStatus().Ref().LineTest*1.f);	
+	TextRelative(pDC, ZGetGame()->m_pMyCharacter->GetStatus().Ref().XTest, ZGetGame()->m_pMyCharacter->GetStatus().Ref().YTest, szMsgTest);
+	y=0.339f;
+	//y=ZGetGame()->m_pMyCharacter->GetStatus().Ref().LineTest;
+	
 	for(i=items.begin();i!=items.end();i++)
 	{
 		ZScoreBoardItem *pItem=*i;
 
-		if(nCurrentTeamIndex!=pItem->nTeam)	// 팀이 바뀌면
-		{
-			nCurrentTeamIndex=pItem->nTeam;
-			nCount = max(nCount,min(8,nMaxLineCount - ((int)items.size()-nCount)));
+		//if(nCurrentTeamIndex!=pItem->nTeam)	// 팀이 바뀌면
+		//{
+		//	
+		//	nCount = max(nCount,min(8,nMaxLineCount - ((int)items.size()-nCount)));
+		//}
+		
+		 
+		nCurrentTeamIndex=pItem->nTeam;
+		if(nCurrentTeamIndex==MMT_RED){
+			//nCountRed++;
+			nCount= nCountRed ;
+		}else{
+			//nCountBlue++;
+			nCount= nCountBlue ;
 		}
+
 
 		float itemy = y + linespace * nCount;
 
-		nCount++;
+		if(nCurrentTeamIndex==MMT_RED){
+			nCountRed++;
+			nCount= nCountRed ;
+		}else{
+			nCountBlue++;
+			nCount= nCountBlue ;
+		}
+
+	
+		/*ZGetGame()->m_pMyCharacter->GetStatus().CheckCrc();
+		ZGetGame()->m_pMyCharacter->GetStatus().Ref().LineTest =  itemy;
+		ZGetGame()->m_pMyCharacter->GetStatus().MakeCrc();
+*/
+
+		//nCount++;
 
 		if(nCount>nMaxLineCount) break;
 
@@ -2511,9 +2594,17 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 			int y1 = itemy * MGetWorkspaceHeight();
 			int y2 = (y + linespace * nCount) * MGetWorkspaceHeight();
 
-			int x1 = bClanGame ? 0.43*MGetWorkspaceWidth() : 0.255*MGetWorkspaceWidth();
-			int x2 = (0.715+0.26)*MGetWorkspaceWidth();
-
+			int x1,x2 ;
+			x1=0.106f;
+			x2=0.485f;
+			if(pItem->nTeam==MMT_BLUE){
+			x1+= 0.428f;
+			x2+= 0.428f;
+			}
+			//int x1 = bClanGame ? 0.43*MGetWorkspaceWidth() : 0.255*MGetWorkspaceWidth();
+			//int x2 = (0.715+0.26)*MGetWorkspaceWidth();
+			x1 =x1*MGetWorkspaceWidth();
+			x2 =x2*MGetWorkspaceWidth();
 			pDC->SetColor(backgroundcolor);
 			pDC->FillRectangleW(x1,y1,x2-x1,y2-y1);
 		}
@@ -2538,7 +2629,7 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 			GetDuelTournamentGradeIconFileName(szDTGradeIconFileName, pItem->nDTLastWeekGrade);
 			MBitmap* pBmpDTGradeIcon = MBitmapManager::Get( szDTGradeIconFileName );
 
-			BitmapRelative(pDC, ITEM_XPOS[10], icony, nIconSize, nIconSize, MBitmapManager::Get( szDTGradeIconFileName));
+		//	BitmapRelative(pDC, ITEM_XPOS[10], icony, nIconSize, nIconSize, MBitmapManager::Get( szDTGradeIconFileName));
 		}
 
 
@@ -2572,15 +2663,28 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 		// 글자를 가운데 정렬하기 위해 ..
 		float texty= itemy + (linespace - (float)pFont->GetHeight() / (float)MGetWorkspaceHeight())*.5f;
 		x = ITEM_XPOS[0];
+		x=0.088f;
+		if(pItem->nTeam==MMT_BLUE){
+			x+= 0.438f;
+		}
+		//TextRelative(pDC,x,texty,pItem->szLevel);
 		TextRelative(pDC,x,texty,pItem->szLevel);
 
 		x = ITEM_XPOS[6];
+		x=0.121f;
+		if(pItem->nTeam==MMT_BLUE){
+			x+=  0.438f;
+		}
 		
 		TextRelative(pDC,x,texty,pItem->szName);
 
 		if(!bClanGame)
 		{
 			x = ITEM_XPOS[1];
+			x=0.191f;
+			if(pItem->nTeam==MMT_BLUE){
+				x+=  0.438f;
+			}
 
 			int nIconSize = .8 * linespace * (float)MGetWorkspaceHeight();
 			float icony = itemy + (linespace - (float)nIconSize / (float)MGetWorkspaceHeight())*.5f;
@@ -2652,6 +2756,11 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 		else
 		{
 			x=ITEM_XPOS[2];
+			x=0.306f;
+			if(pItem->nTeam==MMT_BLUE){
+				x+=   0.438f;
+			}
+
 			sprintf(szText,"%d",pItem->nExp);
 			TextRelative(pDC,x,texty,szText,true);
 
@@ -2674,6 +2783,11 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 				pDC->SetColor(255, 0, 0);
 
 			x=ITEM_XPOS[3];
+			x=0.369f;
+			if(pItem->nTeam==MMT_BLUE){
+				x+=  0.438f;
+			}
+
 			sprintf(szText,"%d",pItem->nKills);
 			TextRelative(pDC,x,texty,szText,true);
 
@@ -2688,6 +2802,10 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 		}
 
 		x=ITEM_XPOS[4];
+		x=0.407f;
+		if(pItem->nTeam==MMT_BLUE){
+				x+=  0.438f;
+			}
 		sprintf(szText,"%d",pItem->nDeaths);
 		TextRelative(pDC,x,texty,szText,true);
 
@@ -2709,6 +2827,10 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 		//////////
 
 		x=ITEM_XPOS[9];
+		x=0.444f;
+		if(pItem->nTeam==MMT_BLUE){
+				x+= 0.438f;
+			}
 		sprintf(szText,"%d",pItem->nPing);		
 		TextRelative(pDC,x,texty,szText,true);
 		
