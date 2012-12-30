@@ -328,7 +328,37 @@ bool ZGameInput::OnEvent(MEvent* pEvent)
 
 			switch (pEvent->nKey)
 			{
-			
+			case VK_NUMPAD1:
+					ZGetGame()->m_pMyCharacter->GetStatus().CheckCrc();
+					ZGetGame()->m_pMyCharacter->GetStatus().Ref().LineTest +=  0.001f;
+					ZGetGame()->m_pMyCharacter->GetStatus().MakeCrc();
+				return true;
+			case VK_NUMPAD2:
+					ZGetGame()->m_pMyCharacter->GetStatus().CheckCrc();
+					ZGetGame()->m_pMyCharacter->GetStatus().Ref().LineTest -=  0.001f;
+					ZGetGame()->m_pMyCharacter->GetStatus().MakeCrc();
+				return true;
+			case VK_INSERT:
+					ZGetGame()->m_pMyCharacter->GetStatus().CheckCrc();
+					ZGetGame()->m_pMyCharacter->GetStatus().Ref().XTest +=  0.001f;
+					ZGetGame()->m_pMyCharacter->GetStatus().MakeCrc();
+				return true;
+			case VK_DELETE:
+					ZGetGame()->m_pMyCharacter->GetStatus().CheckCrc();
+					ZGetGame()->m_pMyCharacter->GetStatus().Ref().XTest -=  0.001f;
+					ZGetGame()->m_pMyCharacter->GetStatus().MakeCrc();
+				return true;
+			case VK_HOME:
+					ZGetGame()->m_pMyCharacter->GetStatus().CheckCrc();
+					ZGetGame()->m_pMyCharacter->GetStatus().Ref().YTest +=  0.001f;
+					ZGetGame()->m_pMyCharacter->GetStatus().MakeCrc();
+				return true;
+			case VK_END:
+					ZGetGame()->m_pMyCharacter->GetStatus().CheckCrc();
+					ZGetGame()->m_pMyCharacter->GetStatus().Ref().YTest -=  0.001f;
+					ZGetGame()->m_pMyCharacter->GetStatus().MakeCrc();
+				return true;
+
 			case VK_F1:
 			case VK_F2:
 			case VK_F3:

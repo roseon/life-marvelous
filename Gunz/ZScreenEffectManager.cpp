@@ -340,6 +340,9 @@ ZScreenEffectManager::ZScreenEffectManager()
 
 	m_pHPPanel = NULL;
 	m_pScorePanel = NULL;
+	m_pScorePanelTeam = NULL;
+	m_pScorePanelSolo = NULL;
+
 	m_pBuffPanel = NULL;
 
 	m_pReload = NULL;
@@ -386,6 +389,8 @@ void ZScreenEffectManager::Destroy()
 
 	SAFE_DELETE(m_pHPPanel);
 	SAFE_DELETE(m_pScorePanel);
+	SAFE_DELETE(m_pScorePanelTeam);
+	SAFE_DELETE(m_pScorePanelSolo);
 	SAFE_DELETE(m_pBuffPanel);
 
 	SAFE_DELETE(m_pReload);
@@ -488,6 +493,9 @@ bool ZScreenEffectManager::Create()
 
 	m_pHPPanel		= new ZScreenEffect(m_pEffectMeshMgr->Get("hppanel"));
 	m_pScorePanel	= new ZScreenEffect(m_pEffectMeshMgr->Get("ef_in_tab.elu"));
+	m_pScorePanelTeam	= new ZScreenEffect(m_pEffectMeshMgr->Get("ef_in_tab_team.elu"));
+	m_pScorePanelSolo	= new ZScreenEffect(m_pEffectMeshMgr->Get("SINGLE_ef_in_tab_team.elu"));
+
     m_pBuffPanel	= new ZScreenEffect(m_pEffectMeshMgr->Get("ef_in_tab.elu"));
 
 	m_pSpectator = new ZScreenEffectLetterBox(m_pEffectMeshMgr->Get("spectator"));
@@ -1266,6 +1274,16 @@ void ZScreenEffectManager::AddExpEffect(int nExp)
 void ZScreenEffectManager::DrawScoreBoard()
 {
 	m_pScorePanel->Draw(0);
+}
+
+void ZScreenEffectManager::DrawScoreBoardTeam()
+{
+	m_pScorePanelTeam->Draw(0);
+}
+
+void ZScreenEffectManager::DrawScoreBoardSolo()
+{
+	m_pScorePanelSolo->Draw(0);
 }
 
 void ZScreenEffectManager::AddAlert(const rvector& vVictimPos, rvector& vVictimDir, rvector& vAttackerPos)
