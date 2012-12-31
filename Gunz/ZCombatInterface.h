@@ -175,6 +175,9 @@ protected:
 	void DrawAllPlayerName(MDrawContext* pDC);		// 모든 팀 이름 표시 (Free Spectator)
 
 	void DrawScoreBoard(MDrawContext* pDC);			// 점수 화면 (tab키)
+	void DrawScoreBoardTeam(MDrawContext* pDC);		
+	void DrawScoreBoardSolo(MDrawContext* pDC);		
+
 	void DrawDuelTournamentScoreBoard(MDrawContext* pDC);						// 듀얼 토너먼트 대진표 화면 (tab키)
 	void DrawPlayTime(MDrawContext* pDC, float xPos, float yPos);	// 플레이 시간
 	void DrawResultBoard(MDrawContext* pDC);		// 게임 결과화면
