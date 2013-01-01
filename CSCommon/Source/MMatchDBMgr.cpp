@@ -547,7 +547,8 @@ void MMatchDBMgr::Log(const char *pFormat,...)
 	va_start(args, pFormat);
 	vsprintf(msg, pFormat, args);
 
-	mlog(msg);
+	//mlog(msg);
+	mlog("%s", msg);
 
 	va_end(args);
 }

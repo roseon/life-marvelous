@@ -59,7 +59,8 @@ void __cdecl MLog(const char *pFormat,...)
 		pFile = fopen( logfilename, "a" );
 		if( !pFile ) pFile=fopen(logfilename,"w");
 		if( pFile==NULL ) return;
-		fprintf(pFile,temp);
+		//fprintf(pFile,temp);
+		 fprintf(pFile, "%s", temp);
 		fclose(pFile);
 	}
 	if(g_nLogMethod&MLOGSTYLE_DEBUGSTRING)

@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 
 #include "ZGameClient.h"
 #include "ZCombatInterface.h"
@@ -161,7 +161,7 @@ ZCombatInterface::ZCombatInterface(const char* szName, MWidget* pParent, MListen
 	m_szRedClanName[0] = 0;
 	m_szBlueClanName[0] = 0;
 
-	m_bNetworkAlive = true;		// ÀÎÅÍ³İ ¿¬°áµÇ¾îÀÖÀ½
+	m_bNetworkAlive = true;		// Ã€ÃÃ…ÃÂ³Ã Â¿Â¬Â°Ã¡ÂµÃ‡Â¾Ã®Ã€Ã–Ã€Â½
 	m_dLastTimeTick = 0;
 	m_dAbuseHandicapTick = 0;
 
@@ -284,7 +284,7 @@ bool ZCombatInterface::OnCreate()
 
 	if (ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DUELTOURNAMENT)
 	{
-		// µà¾óÅä³Ê¸ÕÆ® ³²Àº½Ã°£ Ç¥½Ã
+		// ÂµÃ Â¾Ã³Ã…Ã¤Â³ÃŠÂ¸Ã•Ã†Â® Â³Â²Ã€ÂºÂ½ÃƒÂ°Â£ Ã‡Â¥Â½Ãƒ
 		MWidget *pPicture = ZApplication::GetGameInterface()->GetIDLResource()->FindWidget( "TDM_Score_TimeBack");
 		if ( pPicture)
 			pPicture->Show( true);
@@ -304,7 +304,7 @@ bool ZCombatInterface::OnCreate()
 		if ( pWidget)
 			pWidget->Show( true);
 
-		// ´ëÀüÀÚ Á¤º¸ ·¹ÀÌºí align (·¹ÀÌºíalignÀº ¹ö±×°¡ ÀÖ¾î¼­ xml¿¡¼­ ÁöÁ¤ÇÒ¼ö ¾ø´Ù-_-;)
+		// Â´Ã«Ã€Ã¼Ã€Ãš ÃÂ¤ÂºÂ¸ Â·Â¹Ã€ÃŒÂºÃ­ align (Â·Â¹Ã€ÃŒÂºÃ­alignÃ€Âº Â¹Ã¶Â±Ã—Â°Â¡ Ã€Ã–Â¾Ã®Â¼Â­ xmlÂ¿Â¡Â¼Â­ ÃÃ¶ÃÂ¤Ã‡Ã’Â¼Ã¶ Â¾Ã¸Â´Ã™-_-;)
 		MWidget* pFrame = ZApplication::GetGameInterface()->GetIDLResource()->FindWidget( "CombatDT_CharacterInfo");
 		if (pFrame)
 		{
@@ -334,22 +334,22 @@ bool ZCombatInterface::OnCreate()
 		GetWidgetCharViewRight()->SetEnableRotateZoom(false, false);
 		GetWidgetCharViewResult()->SetEnableRotateZoom(false, false);
 
-		// ´©Àûµ¥¹ÌÁö Àû¿ë(µà¾óÅä³Ê¸ÕÆ®ÀÏ½Ã OK½ÂÀÌ Èûµé¶§ ´©Àûµ¥¹ÌÁö·Î ÆÇÁ¤½Â Ã³¸®¿ë)
+		// Â´Â©Ã€Ã»ÂµÂ¥Â¹ÃŒÃÃ¶ Ã€Ã»Â¿Ã«(ÂµÃ Â¾Ã³Ã…Ã¤Â³ÃŠÂ¸Ã•Ã†Â®Ã€ÃÂ½Ãƒ OKÂ½Ã‚Ã€ÃŒ ÃˆÃ»ÂµÃ©Â¶Â§ Â´Â©Ã€Ã»ÂµÂ¥Â¹ÃŒÃÃ¶Â·Ã Ã†Ã‡ÃÂ¤Â½Ã‚ ÃƒÂ³Â¸Â®Â¿Ã«)
 		ZGetGame()->m_pMyCharacter->EnableAccumulationDamage(true);
 	}
 
-	// °ÔÀÓ ³ª°¡±â ¹öÆ°ÀÇ È®ÀÎ ¸Ş½ÃÁö¸¦ °ÔÀÓ·ê¿¡ µû¶ó º¯°æÇÑ´Ù
+	// Â°Ã”Ã€Ã“ Â³ÂªÂ°Â¡Â±Ã¢ Â¹Ã¶Ã†Â°Ã€Ã‡ ÃˆÂ®Ã€Ã Â¸ÃÂ½ÃƒÃÃ¶Â¸Â¦ Â°Ã”Ã€Ã“Â·ÃªÂ¿Â¡ ÂµÃ»Â¶Ã³ ÂºÂ¯Â°Ã¦Ã‡Ã‘Â´Ã™
 	MButton* pExitConfirmButton = (MButton*)ZApplication::GetGameInterface()->GetIDLResource()->FindWidget( "StageExit");
 	if (pExitConfirmButton) {
 		char szConfirmMsg[256];
 		if (ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DUELTOURNAMENT)
 		{
-			ZTransMsg(szConfirmMsg, MSG_GAME_DUELTOURNAMENT_MATCH_EXITSTAGE_CONFIRM);	// TP Æä³ÎÆ¼ °æ°í¹®
+			ZTransMsg(szConfirmMsg, MSG_GAME_DUELTOURNAMENT_MATCH_EXITSTAGE_CONFIRM);	// TP Ã†Ã¤Â³ÃÃ†Â¼ Â°Ã¦Â°Ã­Â¹Â®
 			pExitConfirmButton->SetAlterableConfirmMessage(szConfirmMsg);
 		}
 		else
 		{
-			// ±×¿Ü °ÔÀÓ·ê¿¡ ´ëÇØ¼­´Â µğÆúÆ® ¸Ş½ÃÁö
+			// Â±Ã—Â¿Ãœ Â°Ã”Ã€Ã“Â·ÃªÂ¿Â¡ Â´Ã«Ã‡Ã˜Â¼Â­Â´Ã‚ ÂµÃ°Ã†ÃºÃ†Â® Â¸ÃÂ½ÃƒÃÃ¶
 			pExitConfirmButton->RestoreIDLConfirmMessage();
 		}
 	}
@@ -500,11 +500,11 @@ void BitmapRelative(MDrawContext* pDC, float x, float y, float w, float h, MBitm
 
 void MatchOrderRelative(MDrawContext* pDC, float x, float y, float fHalfGrid, int nMatchCount, int nCouple, bool bBlink)
 {
-	// UI°¡ ³ª¿À¸é ±×¸²À¸·Î ´ëÃ¼ÇÒ²¨ÀÓ.... ±×·¡¼­ ¸ÅÁ÷³Ñ¹ö »ç¿ë
+	// UIÂ°Â¡ Â³ÂªÂ¿Ã€Â¸Ã© Â±Ã—Â¸Â²Ã€Â¸Â·Ã Â´Ã«ÃƒÂ¼Ã‡Ã’Â²Â¨Ã€Ã“.... Â±Ã—Â·Â¡Â¼Â­ Â¸Ã…ÃÃ·Â³Ã‘Â¹Ã¶ Â»Ã§Â¿Ã«
 	float screenx=x*MGetWorkspaceWidth();
 	float screeny=y*MGetWorkspaceHeight();
 
-	// ´ëÁøÇ¥ ¹Ú½º ±×·ÁÁÖ±â
+	// Â´Ã«ÃÃ¸Ã‡Â¥ Â¹ÃšÂ½Âº Â±Ã—Â·ÃÃÃ–Â±Ã¢
 	float fRectX = screenx-2;
 	float fRectY = screeny-4;
 	float fRectWidth = 0.138f*MGetWorkspaceWidth();
@@ -513,14 +513,14 @@ void MatchOrderRelative(MDrawContext* pDC, float x, float y, float fHalfGrid, in
 
 	if(bBlink)
 		return;
-	// ´ëÁøÇ¥ ¼±µé ±×·ÁÁÖ±â
+	// Â´Ã«ÃÃ¸Ã‡Â¥ Â¼Â±ÂµÃ© Â±Ã—Â·ÃÃÃ–Â±Ã¢
 	float fLineWidth = 0.032f*MGetWorkspaceWidth();
 	float fLineHeight = 0.038f*MGetWorkspaceHeight();
 
 	MDUELTOURNAMENTTYPE eDTType = ZApplication::GetGameInterface()->GetDuelTournamentType();
 	switch(eDTType)
 	{
-	case MDUELTOURNAMENTTYPE_FINAL:				//< °á½ÂÀüºÎÅÍ
+	case MDUELTOURNAMENTTYPE_FINAL:				//< Â°Ã¡Â½Ã‚Ã€Ã¼ÂºÃÃ…Ã
 		{
 			fLineWidth = 0.145f*MGetWorkspaceWidth();
 			if(nCouple != 1)
@@ -528,13 +528,13 @@ void MatchOrderRelative(MDrawContext* pDC, float x, float y, float fHalfGrid, in
 			return;
 		}
 		break;
-	case MDUELTOURNAMENTTYPE_SEMIFINAL:			//< 4°­ÀüºÎÅÍ
+	case MDUELTOURNAMENTTYPE_SEMIFINAL:			//< 4Â°Â­Ã€Ã¼ÂºÃÃ…Ã
 		{
 			fLineWidth = 0.082f*MGetWorkspaceWidth();
 			fLineHeight = 0.049f*MGetWorkspaceHeight();
 		}
 		break;
-	case MDUELTOURNAMENTTYPE_QUATERFINAL:		//< 8°­ÀüºÎÅÍ
+	case MDUELTOURNAMENTTYPE_QUATERFINAL:		//< 8Â°Â­Ã€Ã¼ÂºÃÃ…Ã
 		{
 			fLineWidth = 0.032f*MGetWorkspaceWidth();
 			fLineHeight = 0.038f*MGetWorkspaceHeight();
@@ -546,15 +546,15 @@ void MatchOrderRelative(MDrawContext* pDC, float x, float y, float fHalfGrid, in
 	float fHalf = fHalfGrid*MGetWorkspaceHeight();
 	if(nCouple)
 	{
-		fLineHeight = -fLineHeight; // ´ëÁøÇ¥ ¼¼·Î¼±À» À§·Î ±×¸±Áö ¾Æ·¡·Î ±×¸±Áö Á¤ÇØÁØ´Ù.
+		fLineHeight = -fLineHeight; // Â´Ã«ÃÃ¸Ã‡Â¥ Â¼Â¼Â·ÃÂ¼Â±Ã€Â» Ã€Â§Â·Ã Â±Ã—Â¸Â±ÃÃ¶ Â¾Ã†Â·Â¡Â·Ã Â±Ã—Â¸Â±ÃÃ¶ ÃÂ¤Ã‡Ã˜ÃÃ˜Â´Ã™.
 		fHalf = -fHalf;
 	}
-	// ¹Ú½º ¿ìÃø °¡·Î¼±
+	// Â¹ÃšÂ½Âº Â¿Ã¬ÃƒÃ¸ Â°Â¡Â·ÃÂ¼Â±
 	pDC->HLine(fRectX+fRectWidth, fRectY+fRectHeight/2, fLineWidth);
-	// ¹Ú½º ¿ìÃø ¾Æ·¡ ¼¼·Î¼±
+	// Â¹ÃšÂ½Âº Â¿Ã¬ÃƒÃ¸ Â¾Ã†Â·Â¡ Â¼Â¼Â·ÃÂ¼Â±
 	pDC->VLine(fRectX+fRectWidth+fLineWidth, fRectY+fRectHeight/2, fLineHeight);
-	// ¹Ú½º ÇÑ½Ö °¡¿î´ë ¼±
-	if(nMatchCount != eDTType+1) // Final °¡¿îµ¥ ¼±Àº ¾È±×¸°´Ù.
+	// Â¹ÃšÂ½Âº Ã‡Ã‘Â½Ã– Â°Â¡Â¿Ã®Â´Ã« Â¼Â±
+	if(nMatchCount != eDTType+1) // Final Â°Â¡Â¿Ã®ÂµÂ¥ Â¼Â±Ã€Âº Â¾ÃˆÂ±Ã—Â¸Â°Â´Ã™.
 		pDC->HLine(fRectX+fRectWidth+fLineWidth, fRectY+fRectHeight/2 + fHalf, fLineWidth);
 }
 
@@ -595,7 +595,7 @@ void ZCombatInterface::DrawNPCName(MDrawContext* pDC)
 			int x = screen_pos.x - pDC->GetFont()->GetWidth(pActor->m_szOwner) / 2;
 			pDC->Text(x, screen_pos.y - 12, pActor->m_szOwner);
 
-			// ¸¶Áö¸· Á¤º¸¸¦ ¹ŞÀº½Ã°£ÀÌ ÀÌ»óÇÏ¸é Âï¾îÁØ´Ù
+			// Â¸Â¶ÃÃ¶Â¸Â· ÃÂ¤ÂºÂ¸Â¸Â¦ Â¹ÃÃ€ÂºÂ½ÃƒÂ°Â£Ã€ÃŒ Ã€ÃŒÂ»Ã³Ã‡ÃÂ¸Ã© Ã‚Ã¯Â¾Ã®ÃÃ˜Â´Ã™
 			float fElapsedTime = ZGetGame()->GetTime() - pActor->m_fLastBasicInfo;
 			if(!pActor->CheckFlag(AF_MY_CONTROL) && fElapsedTime>.2f) {
 				int y= screen_pos.y;
@@ -709,7 +709,7 @@ void ZCombatInterface::OnDraw(MDrawContext* pDC)
 	}
 #endif // LOCALE_KOREA
 
-	if ( m_bShowResult)	// °á°ú È­¸é
+	if ( m_bShowResult)	// Â°Ã¡Â°Ãº ÃˆÂ­Â¸Ã©
 		return;
 
 	bool bDrawAllPlayerName = false;
@@ -733,25 +733,25 @@ void ZCombatInterface::OnDraw(MDrawContext* pDC)
 	GetVoteInterface()->DrawVoteTargetlist(pDC);
 	GetVoteInterface()->DrawVoteMessage(pDC);
 
-	// Äù½ºÆ®½Ã º¸½º°ÔÀÌÁö, ÄŞº¸ ¿¡´Ï¸ŞÀÌ¼Ç, K.O ÀÌ¹ÌÁö
+	// Ã„Ã¹Â½ÂºÃ†Â®Â½Ãƒ ÂºÂ¸Â½ÂºÂ°Ã”Ã€ÃŒÃÃ¶, Ã„ÃÂºÂ¸ Â¿Â¡Â´ÃÂ¸ÃÃ€ÃŒÂ¼Ã‡, K.O Ã€ÃŒÂ¹ÃŒÃÃ¶
 	ZGetScreenEffectManager()->Draw();
 
-	if(IsShowUI())				// ¸ğµç UI °¨Ãß±â... by kam 20081020
+	if(IsShowUI())				// Â¸Ã°ÂµÃ§ UI Â°Â¨ÃƒÃŸÂ±Ã¢... by kam 20081020
 	{
-		// Ã¤ÆÃ ÀÎÇ² Ã¢À» ±×¸°´Ù.
+		// ÃƒÂ¤Ã†Ãƒ Ã€ÃÃ‡Â² ÃƒÂ¢Ã€Â» Â±Ã—Â¸Â°Â´Ã™.
 		m_Chat.OnDraw(pDC);
 
 		if (!m_bSkipUIDrawByRule)
 		{
 			m_pWeaponScreenEffect->Draw(pDC);
 
-			// ±âÈ¹»ó µà¾ó 
-			ZGetScreenEffectManager()->DrawMyHPPanal(pDC);		// ³ªÀÇ »óÅÂÃ¢(HP°ÔÀÌÁö¹Ù)			
+			// Â±Ã¢ÃˆÂ¹Â»Ã³ ÂµÃ Â¾Ã³ 
+			ZGetScreenEffectManager()->DrawMyHPPanal(pDC);		// Â³ÂªÃ€Ã‡ Â»Ã³Ã…Ã‚ÃƒÂ¢(HPÂ°Ã”Ã€ÃŒÃÃ¶Â¹Ã™)			
 #ifdef _DEBUG
-			// TodoH(»ó) - Áö¿öÁ®¾ß µË´Ï´Ù. ÃßÈÄ¿¡.
+			// TodoH(Â»Ã³) - ÃÃ¶Â¿Ã¶ÃÂ®Â¾ÃŸ ÂµÃ‹Â´ÃÂ´Ã™. ÃƒÃŸÃˆÃ„Â¿Â¡.
 			ZCharacter* pCharacter = GetTargetCharacter();
 			if( pCharacter != NULL ) {
-				//¹öÇÁÁ¤º¸ÀÓ½ÃÁÖ¼® ZCharacterBuff *pCharBuff = pCharacter->GetCharacterBuff();
+				//Â¹Ã¶Ã‡ÃÃÂ¤ÂºÂ¸Ã€Ã“Â½ÃƒÃÃ–Â¼Â® ZCharacterBuff *pCharBuff = pCharacter->GetCharacterBuff();
 
 				int nX = 300;
 				int nY = 50;
@@ -818,22 +818,22 @@ void ZCombatInterface::OnDraw(MDrawContext* pDC)
 				}
 			}
 
-			ZGetScreenEffectManager()->DrawMyWeaponImage();		// ³ªÀÇ ¹«±â Å¸ÀÔ ÀÌ¹ÌÁö
-			ZGetScreenEffectManager()->DrawMyBuffImage();		// ³ªÀÇ ¹öÇÁ Å¸ÀÔ ÀÌ¹ÌÁö
+			ZGetScreenEffectManager()->DrawMyWeaponImage();		// Â³ÂªÃ€Ã‡ Â¹Â«Â±Ã¢ Ã…Â¸Ã€Ã” Ã€ÃŒÂ¹ÃŒÃÃ¶
+			ZGetScreenEffectManager()->DrawMyBuffImage();		// Â³ÂªÃ€Ã‡ Â¹Ã¶Ã‡Ã Ã…Â¸Ã€Ã” Ã€ÃŒÂ¹ÃŒÃÃ¶
 
 			
 
 
-			// Äù½ºÆ®¸ğµåÀÏ¶§´Â Äù½ºÆ® È­¸éÀ» º¸¿©ÁØ´Ù.
+			// Ã„Ã¹Â½ÂºÃ†Â®Â¸Ã°ÂµÃ¥Ã€ÃÂ¶Â§Â´Ã‚ Ã„Ã¹Â½ÂºÃ†Â® ÃˆÂ­Â¸Ã©Ã€Â» ÂºÂ¸Â¿Â©ÃÃ˜Â´Ã™.
 			if (m_pQuestScreen) m_pQuestScreen->OnDraw(pDC);
 
 			DrawSoloSpawnTimeMessage(pDC);
 
-			DrawPont(pDC);			// ÆùÆ®... 			
-			DrawMyNamePont(pDC);	// ³» Ä³¸¯ÅÍ¸í(·¹º§Æ÷ÇÔ)			
-			DrawMyWeaponPont(pDC);	// ³» ¹«±â¸í, Åº¾Ë¼ö
+			DrawPont(pDC);			// Ã†Ã¹Ã†Â®... 			
+			DrawMyNamePont(pDC);	// Â³Â» Ã„Â³Â¸Â¯Ã…ÃÂ¸Ã­(Â·Â¹ÂºÂ§Ã†Ã·Ã‡Ã”)			
+			DrawMyWeaponPont(pDC);	// Â³Â» Â¹Â«Â±Ã¢Â¸Ã­, Ã…ÂºÂ¾Ã‹Â¼Ã¶
 
-			// Å©·Î½ºÇì¾î
+			// Ã…Â©Â·ÃÂ½ÂºÃ‡Ã¬Â¾Ã®
 			if(ZGetGameInterface()->GetCamera()->GetLookMode()==ZCAMERA_DEFAULT)
 				m_CrossHair.Draw(pDC);
 
@@ -845,7 +845,7 @@ void ZCombatInterface::OnDraw(MDrawContext* pDC)
 
 		DrawBuffStatus(pDC);
 
-		// ½ºÄÚ¾î
+		// Â½ÂºÃ„ÃšÂ¾Ã®
 		DrawScore(pDC);
 
 #ifdef _DUELTOURNAMENT
@@ -856,12 +856,12 @@ void ZCombatInterface::OnDraw(MDrawContext* pDC)
 #endif
 	}
 
-	//±×¸®´Â ¼ø¼­ ¶§¹®¿¡
+	//Â±Ã—Â¸Â®Â´Ã‚ Â¼Ã¸Â¼Â­ Â¶Â§Â¹Â®Â¿Â¡
 	if(ZGetGame()) {
 		ZGetGame()->m_HelpScreen.DrawHelpScreen();
 	}
 
-	// µ¿¿µ»ó Ä¸ÃÄ...2008.10.20
+	// ÂµÂ¿Â¿ÂµÂ»Ã³ Ã„Â¸ÃƒÃ„...2008.10.20
 #ifndef _DEBUG
 	if (ZGetGameInterface()->GetBandiCapturer() != NULL)
 		ZGetGameInterface()->GetBandiCapturer()->DrawCapture(pDC);
@@ -905,14 +905,14 @@ void ZCombatInterface::DrawMyWeaponPont(MDrawContext* pDC)
 
 	char buffer[256];
 
-	// ¹«±â ÀÌ¸§
+	// Â¹Â«Â±Ã¢ Ã€ÃŒÂ¸Â§
 	TextRelative(pDC,660.f/800.f,510.f/600.f,m_szItemName);
 
-	// Åº¾Ë¼ö
+	// Ã…ÂºÂ¾Ã‹Â¼Ã¶
 	MMatchCharItemParts nParts = pCharacter->GetItems()->GetSelectedWeaponParts();
 	if (nParts != MMCIP_MELEE && nParts < MMCIP_END) 
 	{
-		// meleeÀÏ¶§´Â Åº¾Ë¼ö Ç¥½Ã¸¦ ÇÏÁö ¾Ê´Â´Ù.
+		// meleeÃ€ÃÂ¶Â§Â´Ã‚ Ã…ÂºÂ¾Ã‹Â¼Ã¶ Ã‡Â¥Â½ÃƒÂ¸Â¦ Ã‡ÃÃÃ¶ Â¾ÃŠÂ´Ã‚Â´Ã™.
 		sprintf(buffer,"%d / %d", m_nBulletCurrMagazine, m_nBulletSpare);
 		TextRelative(pDC, 720.f/800.f, 585.f/600.f, buffer);
 	}
@@ -926,7 +926,7 @@ void ZCombatInterface::DrawPont(MDrawContext* pDC)
 	if (m_Observer.IsVisible())
 		return;
 
-	// µà¾ó ¸ğµåÀÏ¶§(¿ÉÁ®¹ö ¸ğµå ¾Æ´Ô)
+	// ÂµÃ Â¾Ã³ Â¸Ã°ÂµÃ¥Ã€ÃÂ¶Â§(Â¿Ã‰ÃÂ®Â¹Ã¶ Â¸Ã°ÂµÃ¥ Â¾Ã†Â´Ã”)
 	if ( ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DUEL)
 	{
 		char	charName[ 3][ 32];
@@ -1063,7 +1063,7 @@ void ZCombatInterface::DrawScore(MDrawContext* pDC)
 
 void ZCombatInterface::DrawBuffStatus(MDrawContext* pDC)
 {
-	//¹öÇÁÁ¤º¸ÀÓ½ÃÁÖ¼® 
+	//Â¹Ã¶Ã‡ÃÃÂ¤ÂºÂ¸Ã€Ã“Â½ÃƒÃÃ–Â¼Â® 
 /*	if(ZGetGame()->GetMatch()->GetMatchType() != MMATCH_GAMETYPE_DUELTOURNAMENT)
 	{
 		ZCharacter* pCharacter = GetTargetCharacter();
@@ -1100,10 +1100,10 @@ void ZCombatInterface::DrawBuffStatus(MDrawContext* pDC)
 void ZCombatInterface::DrawFinish()
 {
 //	DrawResultBoard(pDC);
-	// Finish ÈÄ¿¡ ÀÏÁ¤ ½Ã°£ÀÌ °æ°úÇÏ¸é °á°ú È­¸é º¸¿©ÁÜ
+	// Finish ÃˆÃ„Â¿Â¡ Ã€ÃÃÂ¤ Â½ÃƒÂ°Â£Ã€ÃŒ Â°Ã¦Â°ÃºÃ‡ÃÂ¸Ã© Â°Ã¡Â°Ãº ÃˆÂ­Â¸Ã© ÂºÂ¸Â¿Â©ÃÃœ
 	if ( !m_bShowResult && IsFinish())
 	{
-		// ¹è°æ À½¾Ç º¼·ıÀ» ¼­¼­È÷ ³·Ãã
+		// Â¹Ã¨Â°Ã¦ Ã€Â½Â¾Ã‡ ÂºÂ¼Â·Ã½Ã€Â» Â¼Â­Â¼Â­ÃˆÃ· Â³Â·ÃƒÃ£
 		float fVolume;
 		DWORD dwClock = timeGetTime() - m_nReserveFinishTime;
 		if ( dwClock > 4000)
@@ -1129,7 +1129,7 @@ void ZCombatInterface::DrawFinish()
 
 
 
-			// ¸¸¾à Äù½ºÆ® ½ÇÆĞ¸é ½ºÅ×ÀÌÁö·Î ¹Ù·Î ³Ñ¾î°£´Ù.
+			// Â¸Â¸Â¾Ã  Ã„Ã¹Â½ÂºÃ†Â® Â½Ã‡Ã†ÃÂ¸Ã© Â½ÂºÃ…Ã—Ã€ÃŒÃÃ¶Â·Ã Â¹Ã™Â·Ã Â³Ã‘Â¾Ã®Â°Â£Â´Ã™.
 			if ( ZGetGameTypeManager()->IsQuestOnly( ZGetGame()->GetMatch()->GetMatchType()))
 			{
 				if ( !ZGetQuest()->IsQuestComplete())
@@ -1141,7 +1141,7 @@ void ZCombatInterface::DrawFinish()
 				}
 			}
 
-			// ¹è°æ È­¸é¿¡ ÇÊ¿äÇÑ Á¤º¸¸¦ ¾÷µ¥ÀÌÆ® ÇÑ´Ù
+			// Â¹Ã¨Â°Ã¦ ÃˆÂ­Â¸Ã©Â¿Â¡ Ã‡ÃŠÂ¿Ã¤Ã‡Ã‘ ÃÂ¤ÂºÂ¸Â¸Â¦ Â¾Ã·ÂµÂ¥Ã€ÃŒÃ†Â® Ã‡Ã‘Â´Ã™
 			GetResultInfo();
 
 			pWidget = ZGetGameInterface()->GetIDLResource()->FindWidget( "GameResult");
@@ -1149,7 +1149,7 @@ void ZCombatInterface::DrawFinish()
 				pWidget->Show( true, true);
 
 
-			// »ç¿îµå¸¦ Ãâ·ÂÇÑ´Ù
+			// Â»Ã§Â¿Ã®ÂµÃ¥Â¸Â¦ ÃƒÃ¢Â·Ã‚Ã‡Ã‘Â´Ã™
 			ZApplication::GetSoundEngine()->SetMusicVolume( m_fOrgMusicVolume);
 #ifdef _BIRDSOUND
 			ZApplication::GetSoundEngine()->OpenMusic(BGMID_FIN);
@@ -1221,7 +1221,7 @@ int ZCombatInterface::DrawVictory( MDrawContext* pDC, int x, int y, int nWinCoun
 	// Draw
 	int nPosX = x * fRx;
 	int nPosY = y * fRy;
-	int nSize = 17.0f * fRx;								// 1 ´ÜÀ§
+	int nSize = 17.0f * fRx;								// 1 Â´ÃœÃ€Â§
 	for ( int i = 0;  i < (nWinCount % 5);  i++)
 	{
 		pDC->Draw( nPosX, nPosY, nSize, nSize, nImage, 0, 32, 32);
@@ -1230,7 +1230,7 @@ int ZCombatInterface::DrawVictory( MDrawContext* pDC, int x, int y, int nWinCoun
 
 	nSize = 19.0f * fRx;
 	nPosY = ( y - 2) * fRy;
-	if ( (nWinCount % 10) >= 5)								// 5 ´ÜÀ§
+	if ( (nWinCount % 10) >= 5)								// 5 Â´ÃœÃ€Â§
 	{
 		nPosX -= nSize * 0.2f;
 		pDC->Draw( nPosX, nPosY, nSize, nSize, nImage, 64, 32, 32);
@@ -1239,7 +1239,7 @@ int ZCombatInterface::DrawVictory( MDrawContext* pDC, int x, int y, int nWinCoun
 	else
 		nPosX -= nSize * 0.5f;
 
-	nSize = 22.0f * fRx;									// 10 ´ÜÀ§
+	nSize = 22.0f * fRx;									// 10 Â´ÃœÃ€Â§
 	nPosY = ( y - 5) * fRy;
 	for ( int i = 0;  i < (nWinCount / 10);  i++)
 	{
@@ -1247,7 +1247,7 @@ int ZCombatInterface::DrawVictory( MDrawContext* pDC, int x, int y, int nWinCoun
 		nPosX -= nSize * 0.5f;
 	}
 
-	// ¿¬½Â ¼ıÀÚ Ç¥½Ã
+	// Â¿Â¬Â½Ã‚ Â¼Ã½Ã€Ãš Ã‡Â¥Â½Ãƒ
 /*	if ( nWinCount >= 10)
 	{
 		pFont = MFontManager::Get( "FONTa9b");
@@ -1262,17 +1262,17 @@ int ZCombatInterface::DrawVictory( MDrawContext* pDC, int x, int y, int nWinCoun
 }
 
 
-// TODO : ÀÌ°Ô ÇÊ¿ä ¾ø´Âµí.
-// ±×¸®´Â ¼ø¼­¶§¹®¿¡ ¸¸µç Æã¼Ç
+// TODO : Ã€ÃŒÂ°Ã” Ã‡ÃŠÂ¿Ã¤ Â¾Ã¸Â´Ã‚ÂµÃ­.
+// Â±Ã—Â¸Â®Â´Ã‚ Â¼Ã¸Â¼Â­Â¶Â§Â¹Â®Â¿Â¡ Â¸Â¸ÂµÃ§ Ã†Ã£Â¼Ã‡
 void ZCombatInterface::OnDrawCustom(MDrawContext* pDC)
 {
-	// °á°ú È­¸é º¸ÀÎ ÀÌÈÄ¿¡ ÀÏÁ¤ ½Ã°£ ÈÄ ÀÚµ¿ Á¾·áÇÑ´Ù
+	// Â°Ã¡Â°Ãº ÃˆÂ­Â¸Ã© ÂºÂ¸Ã€Ã Ã€ÃŒÃˆÃ„Â¿Â¡ Ã€ÃÃÂ¤ Â½ÃƒÂ°Â£ ÃˆÃ„ Ã€ÃšÂµÂ¿ ÃÂ¾Â·Ã¡Ã‡Ã‘Â´Ã™
 	if ( m_bShowResult)
 	{
-		// ¼ıÀÚ¸¦ Ä«¿îÅÍÇÑ´Ù.
+		// Â¼Ã½Ã€ÃšÂ¸Â¦ Ã„Â«Â¿Ã®Ã…ÃÃ‡Ã‘Â´Ã™.
 		if ( ZGetGameTypeManager()->IsQuestOnly( ZGetGame()->GetMatch()->GetMatchType()))
 		{
-			int nNumCount = ( timeGetTime() - (m_nReservedOutTime - 15000)) * 3.6418424f;		// 3.6418424f´Â gain °ªÀÌ´Ù.
+			int nNumCount = ( timeGetTime() - (m_nReservedOutTime - 15000)) * 3.6418424f;		// 3.6418424fÂ´Ã‚ gain Â°ÂªÃ€ÃŒÂ´Ã™.
 			ZBmNumLabel* pBmNumLabel = (ZBmNumLabel*)ZApplication::GetGameInterface()->GetIDLResource()->FindWidget( "QuestResult_GetPlusXP");
 			if ( pBmNumLabel)
 			{
@@ -1303,7 +1303,7 @@ void ZCombatInterface::OnDrawCustom(MDrawContext* pDC)
 		}
 		else if ( ZGetGameTypeManager()->IsSurvivalOnly( ZGetGame()->GetMatch()->GetMatchType()))
 		{
-			int nNumCount = ( timeGetTime() - (m_nReservedOutTime - 15000)) * 3.6418424f;		// 3.6418424f´Â gain °ªÀÌ´Ù.
+			int nNumCount = ( timeGetTime() - (m_nReservedOutTime - 15000)) * 3.6418424f;		// 3.6418424fÂ´Ã‚ gain Â°ÂªÃ€ÃŒÂ´Ã™.
 
 			ZBmNumLabel* pBmNumLabel = (ZBmNumLabel*)ZApplication::GetGameInterface()->GetIDLResource()->FindWidget( "SurvivalResult_GetReachedRound");
 			if ( pBmNumLabel)
@@ -1337,7 +1337,7 @@ void ZCombatInterface::OnDrawCustom(MDrawContext* pDC)
 			}
 		}
 
-		// ³²Àº ½Ã°£À» Ç¥½ÃÇÑ´Ù
+		// Â³Â²Ã€Âº Â½ÃƒÂ°Â£Ã€Â» Ã‡Â¥Â½ÃƒÃ‡Ã‘Â´Ã™
 		MLabel* pLabel = (MLabel*)ZGetGameInterface()->GetIDLResource()->FindWidget( "GameResult_RemaindTime");
 		if ( pLabel)
 		{
@@ -1406,7 +1406,7 @@ void ZCombatInterface::DrawSoloSpawnTimeMessage(MDrawContext* pDC)
 void ZCombatInterface::DrawLeaveBattleTimeMessage(MDrawContext* pDC)
 {
 	char szMsg[128] = "";
-//	sprintf(szMsg, "%d ÃÊÈÄ¿¡ °ÔÀÓ¿¡¼­ ³ª°©´Ï´Ù", m_nDrawLeaveBattleSeconds);
+//	sprintf(szMsg, "%d ÃƒÃŠÃˆÃ„Â¿Â¡ Â°Ã”Ã€Ã“Â¿Â¡Â¼Â­ Â³ÂªÂ°Â©Â´ÃÂ´Ã™", m_nDrawLeaveBattleSeconds);
 
 	char temp[ 4 ];
 	sprintf( temp, "%d", m_nDrawLeaveBattleSeconds );
@@ -1445,7 +1445,7 @@ void ZCombatInterface::ShowMenu(bool bVisible)
 
 void ZCombatInterface::EnableInputChat(bool bInput, bool bTeamChat)
 {
-	// Ã¤ÆÃÃ¢ ¾Èº¸±âÀÎ »óÅÂÀÏ ¶§¿¡´Â ÀÔ·Âµµ ¾ÈµÈ´Ù.
+	// ÃƒÂ¤Ã†ÃƒÃƒÂ¢ Â¾ÃˆÂºÂ¸Â±Ã¢Ã€Ã Â»Ã³Ã…Ã‚Ã€Ã Â¶Â§Â¿Â¡Â´Ã‚ Ã€Ã”Â·Ã‚ÂµÂµ Â¾ÃˆÂµÃˆÂ´Ã™.
 //	if ((!ZGetConfiguration()->GetViewGameChat()) && (bInput)) return;
 
 	m_Chat.EnableInput(bInput, bTeamChat);
@@ -1492,10 +1492,10 @@ void ZCombatInterface::ShowInfo(bool bVisible)
 
 void ZCombatInterface::Update(float fElapsed)
 {
-	// Finish ÈÄ¿¡ ÀÏÁ¤ ½Ã°£ÀÌ °æ°úÇÏ¸é °á°ú È­¸é º¸¿©ÁÜ
+	// Finish ÃˆÃ„Â¿Â¡ Ã€ÃÃÂ¤ Â½ÃƒÂ°Â£Ã€ÃŒ Â°Ã¦Â°ÃºÃ‡ÃÂ¸Ã© Â°Ã¡Â°Ãº ÃˆÂ­Â¸Ã© ÂºÂ¸Â¿Â©ÃÃœ
 	DrawFinish();
 
-	// °á°ú È­¸é º¸´Â ÁßÀÌ¸é ÀÏÁ¤ ½Ã°£ ÈÄ ÀÚµ¿ Á¾·áÇÑ´Ù
+	// Â°Ã¡Â°Ãº ÃˆÂ­Â¸Ã© ÂºÂ¸Â´Ã‚ ÃÃŸÃ€ÃŒÂ¸Ã© Ã€ÃÃÂ¤ Â½ÃƒÂ°Â£ ÃˆÃ„ Ã€ÃšÂµÂ¿ ÃÂ¾Â·Ã¡Ã‡Ã‘Â´Ã™
 	if ( m_bShowResult)
 	{
 		if ( timeGetTime() > m_nReservedOutTime)
@@ -1563,8 +1563,8 @@ void ZCombatInterface::Update(float fElapsed)
 		ZGetScreenEffectManager()->SetGauge_AP(fGauge);
 	}
 
-//	ZGetScreenEffectManager()->SetGauge_EXP((float)pCharacter->GetStatus()->fStamina/100.f);//ÀÓ½Ã·Î stamina ·Î Å×½ºÆ®
-//	ZGetScreenEffectManager()->SetGauge_EXP(100.f);//ÀÓ½Ã·Î stamina ·Î Å×½ºÆ®
+//	ZGetScreenEffectManager()->SetGauge_EXP((float)pCharacter->GetStatus()->fStamina/100.f);//Ã€Ã“Â½ÃƒÂ·Ã stamina Â·Ã Ã…Ã—Â½ÂºÃ†Â®
+//	ZGetScreenEffectManager()->SetGauge_EXP(100.f);//Ã€Ã“Â½ÃƒÂ·Ã stamina Â·Ã Ã…Ã—Â½ÂºÃ†Â®
 
 	MMatchWeaponType wtype = MWT_NONE;
 
@@ -1861,7 +1861,7 @@ void ZCombatInterface::DrawAllPlayerName(MDrawContext* pDC)
 
 		if (isInViewFrustum(&box, RGetViewFrustum()))
 		{
-			// ¹Ì´Ï¸ÊÀÌ¸é z °ªÀ» 0¿¡ ¸ÂÃá´Ù
+			// Â¹ÃŒÂ´ÃÂ¸ÃŠÃ€ÃŒÂ¸Ã© z Â°ÂªÃ€Â» 0Â¿Â¡ Â¸Ã‚ÃƒÃ¡Â´Ã™
 			if(ZGetCamera()->GetLookMode()==ZCAMERA_MINIMAP) {
 				rvector pos = pCharacter->GetPosition();	//mmemory proxy
 				pos.z=0;
@@ -1911,7 +1911,7 @@ MFont *ZCombatInterface::GetGameFont()
 	return pFont;
 }
 
-// µà¾ó¼øÀ§ / ÆÀ / »ı»ç / ¼ºÀûÀÌ ¼ÒÆ®ÀÇ ±âÁØÀÌ´Ù
+// ÂµÃ Â¾Ã³Â¼Ã¸Ã€Â§ / Ã†Ã€ / Â»Ã½Â»Ã§ / Â¼ÂºÃ€Ã»Ã€ÃŒ Â¼Ã’Ã†Â®Ã€Ã‡ Â±Ã¢ÃÃ˜Ã€ÃŒÂ´Ã™
 bool CompareZScoreBoardItem(ZScoreBoardItem* a,ZScoreBoardItem* b) {
 	if(a->nDuelQueueIdx < b->nDuelQueueIdx) return true;
 	if(a->nDuelQueueIdx > b->nDuelQueueIdx) return false;
@@ -1931,20 +1931,20 @@ bool CompareZScoreBoardItem(ZScoreBoardItem* a,ZScoreBoardItem* b) {
 	if(a->nKills < b->nKills) return false;
 	return false;
 }
-void ZCombatInterface::DrawDuelTournamentScoreBoard(MDrawContext* pDC)	// µà¾ó Åä³Ê¸ÕÆ® ´ëÁøÇ¥ È­¸é (tabÅ°)
+void ZCombatInterface::DrawDuelTournamentScoreBoard(MDrawContext* pDC)	// ÂµÃ Â¾Ã³ Ã…Ã¤Â³ÃŠÂ¸Ã•Ã†Â® Â´Ã«ÃÃ¸Ã‡Â¥ ÃˆÂ­Â¸Ã© (tabÃ…Â°)
 {
-	// º¸µå¸¦ ±×·ÁÁØ´Ù.
+	// ÂºÂ¸ÂµÃ¥Â¸Â¦ Â±Ã—Â·ÃÃÃ˜Â´Ã™.
 	ZGetScreenEffectManager()->DrawScoreBoard();
 
 
 	MFont *pFont=GetGameFont();
 	pDC->SetFont(pFont);
-	pFont=pDC->GetFont();	// ¸¸¾à ÆùÆ®°¡ ¾øÀ¸¸é ´Ù½Ã µğÆúÆ® ÆùÆ®¸¦ ¾ò´Â´Ù
+	pFont=pDC->GetFont();	// Â¸Â¸Â¾Ã  Ã†Ã¹Ã†Â®Â°Â¡ Â¾Ã¸Ã€Â¸Â¸Ã© Â´Ã™Â½Ãƒ ÂµÃ°Ã†ÃºÃ†Â® Ã†Ã¹Ã†Â®Â¸Â¦ Â¾Ã²Â´Ã‚Â´Ã™
 	pDC->SetColor(MCOLOR(TEXT_COLOR_TITLE));
 
 	char szText[256];
 
-	// ¹æÁ¦¸¦ ±×·ÁÁØ´Ù.
+	// Â¹Ã¦ÃÂ¦Â¸Â¦ Â±Ã—Â·ÃÃÃ˜Â´Ã™.
 	sprintf(szText, "(%03d) %s", ZGetGameClient()->GetStageNumber(), ZGetGameClient()->GetStageName());
 	TextRelative(pDC,0.26f,0.22f,szText);
 
@@ -1952,30 +1952,30 @@ void ZCombatInterface::DrawDuelTournamentScoreBoard(MDrawContext* pDC)	// µà¾ó Å
 	float y = 0.284f;
 	float linespace2= 0.071f / 3.f;
 
-	// µÎ¹øÂ°ÁÙ ¾Õ : ¸ÊÀÌ¸§
+	// ÂµÃÂ¹Ã¸Ã‚Â°ÃÃ™ Â¾Ã• : Â¸ÃŠÃ€ÃŒÂ¸Â§
 	strcpy( szText, ZGetGameClient()->GetMatchStageSetting()->GetMapName());
 	TextRelative(pDC,x,y,szText);
 	
 	y -= linespace2;
-	// °ÔÀÓ Å¸ÀÔÀ» ½áÁØ´Ù.
+	// Â°Ã”Ã€Ã“ Ã…Â¸Ã€Ã”Ã€Â» Â½Ã¡ÃÃ˜Â´Ã™.
 	sprintf(szText, "%s", ZGetGameTypeManager()->GetGameTypeStr(ZGetGame()->GetMatch()->GetMatchType()));
 	TextRelative(pDC,x,y,szText);
 
 	x = 0.70f;
 	y = 0.284f;
 
-	// ³²Àº ½Ã°£ Ç¥½Ã( Å¬·£Àü Á¦¿Ü)
-	DrawPlayTime(pDC, x, y);	// ÇÃ·¹ÀÌ ½Ã°£
+	// Â³Â²Ã€Âº Â½ÃƒÂ°Â£ Ã‡Â¥Â½Ãƒ( Ã…Â¬Â·Â£Ã€Ã¼ ÃÂ¦Â¿Ãœ)
+	DrawPlayTime(pDC, x, y);	// Ã‡ÃƒÂ·Â¹Ã€ÃŒ Â½ÃƒÂ°Â£
 	y -= linespace2;
 
-	// ´ëÁøÇ¥ ±×¸®±â
+	// Â´Ã«ÃÃ¸Ã‡Â¥ Â±Ã—Â¸Â®Â±Ã¢
 	((ZRuleDuelTournament*)ZGetGame()->GetMatch()->GetRule())->ShowMatchOrder(pDC, false, m_fElapsed);
 }
-void ZCombatInterface::DrawPlayTime(MDrawContext* pDC, float xPos, float yPos)	// ÇÃ·¹ÀÌ ½Ã°£
+void ZCombatInterface::DrawPlayTime(MDrawContext* pDC, float xPos, float yPos)	// Ã‡ÃƒÂ·Â¹Ã€ÃŒ Â½ÃƒÂ°Â£
 {
-	// #³²Àº ½Ã°£À» ¾ò°í ½ÍÀ¸¸é GetPlayTime()À» »ç¿ëÇÏ¼¼¿ä
+	// #Â³Â²Ã€Âº Â½ÃƒÂ°Â£Ã€Â» Â¾Ã²Â°Ã­ Â½ÃÃ€Â¸Â¸Ã© GetPlayTime()Ã€Â» Â»Ã§Â¿Ã«Ã‡ÃÂ¼Â¼Â¿Ã¤
 	char szText[256];
-	if ( ZGetGame()->GetMatch()->GetRoundState() == MMATCH_ROUNDSTATE_PLAY)				// ÇÃ·¹ÀÌ ÁßÀÌ¶ó¸é
+	if ( ZGetGame()->GetMatch()->GetRoundState() == MMATCH_ROUNDSTATE_PLAY)				// Ã‡ÃƒÂ·Â¹Ã€ÃŒ ÃÃŸÃ€ÃŒÂ¶Ã³Â¸Ã©
 	{
 		DWORD dwTime = ZGetGame()->GetMatch()->GetRemaindTime();
 		DWORD dwLimitTime = ZGetGameClient()->GetMatchStageSetting()->GetStageSetting()->nLimitTime;
@@ -1998,16 +1998,16 @@ void ZCombatInterface::DrawPlayTime(MDrawContext* pDC, float xPos, float yPos)	/
 
 	TextRelative( pDC, xPos, yPos, szText);
 }
-// ¿ø·¡¶ó¸é DrawPlayTime()¿¡¼­ ºĞ¸®ÇØ³»¾ß ÇÏ´Â ³»¿ëÀÌÁö¸¸ °Çµå¸®±â ¹«¼·°Ô »ı±è; ³²Àº½Ã°£ ¾ò´Â ÇÔ¼ö¸¦ »õ·Î ¸¸µé¾úÀ¸´Ï ½Ã°£À» ¾ò°í ½ÍÀ¸¸é ¾ÕÀ¸·Î ÀÌ°ÍÀ» »ç¿ë
+// Â¿Ã¸Â·Â¡Â¶Ã³Â¸Ã© DrawPlayTime()Â¿Â¡Â¼Â­ ÂºÃÂ¸Â®Ã‡Ã˜Â³Â»Â¾ÃŸ Ã‡ÃÂ´Ã‚ Â³Â»Â¿Ã«Ã€ÃŒÃÃ¶Â¸Â¸ Â°Ã‡ÂµÃ¥Â¸Â®Â±Ã¢ Â¹Â«Â¼Â·Â°Ã” Â»Ã½Â±Ã¨; Â³Â²Ã€ÂºÂ½ÃƒÂ°Â£ Â¾Ã²Â´Ã‚ Ã‡Ã”Â¼Ã¶Â¸Â¦ Â»ÃµÂ·Ã Â¸Â¸ÂµÃ©Â¾ÃºÃ€Â¸Â´Ã Â½ÃƒÂ°Â£Ã€Â» Â¾Ã²Â°Ã­ Â½ÃÃ€Â¸Â¸Ã© Â¾Ã•Ã€Â¸Â·Ã Ã€ÃŒÂ°ÃÃ€Â» Â»Ã§Â¿Ã«
 int ZCombatInterface::GetPlayTime()
 {
-	// ÃÊ´ÜÀ§·Î ³²Àº ¶ó¿îµå ½Ã°£À» ¸®ÅÏ, ¹«È¿°ªÀÏ ¶§ -1 ¸®ÅÏÇÔ
+	// ÃƒÃŠÂ´ÃœÃ€Â§Â·Ã Â³Â²Ã€Âº Â¶Ã³Â¿Ã®ÂµÃ¥ Â½ÃƒÂ°Â£Ã€Â» Â¸Â®Ã…Ã, Â¹Â«ÃˆÂ¿Â°ÂªÃ€Ã Â¶Â§ -1 Â¸Â®Ã…ÃÃ‡Ã”
 	if ( ZGetGame()->GetMatch()->GetRoundState() != MMATCH_ROUNDSTATE_PLAY)
 		return -1;
 
 	DWORD dwLimitTime = ZGetGameClient()->GetMatchStageSetting()->GetStageSetting()->nLimitTime;
-	if ( dwLimitTime == 99999 || dwLimitTime == 0) // ¼­¹ö¿¡¼­´Â ¹«ÇÑ´ëÀÏ¶§ nLimitTimeÀ» 0À¸·Î º¸³»ÁØ´Ù.
-		return -2; // ¹«ÇÑ´ë ½Ã°£À» Ç¥½ÃÇÏ±â À§ÇØ -2·Î ¹İÈ¯
+	if ( dwLimitTime == 99999 || dwLimitTime == 0) // Â¼Â­Â¹Ã¶Â¿Â¡Â¼Â­Â´Ã‚ Â¹Â«Ã‡Ã‘Â´Ã«Ã€ÃÂ¶Â§ nLimitTimeÃ€Â» 0Ã€Â¸Â·Ã ÂºÂ¸Â³Â»ÃÃ˜Â´Ã™.
+		return -2; // Â¹Â«Ã‡Ã‘Â´Ã« Â½ÃƒÂ°Â£Ã€Â» Ã‡Â¥Â½ÃƒÃ‡ÃÂ±Ã¢ Ã€Â§Ã‡Ã˜ -2Â·Ã Â¹ÃÃˆÂ¯
 
 	dwLimitTime *= 60000;
 	DWORD dwTime = ZGetGame()->GetMatch()->GetRemaindTime();
@@ -2025,7 +2025,7 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 	ZGetScreenEffectManager()->DrawScoreBoardTeam();
 	MFont *pFont=GetGameFont();
 	pDC->SetFont(pFont);
-	pFont=pDC->GetFont();	// ¸¸¾à ÆùÆ®°¡ ¾øÀ¸¸é ´Ù½Ã µğÆúÆ® ÆùÆ®¸¦ ¾ò´Â´Ù
+	pFont=pDC->GetFont();	// Â¸Â¸Â¾Ã  Ã†Ã¹Ã†Â®Â°Â¡ Â¾Ã¸Ã€Â¸Â¸Ã© Â´Ã™Â½Ãƒ ÂµÃ°Ã†ÃºÃ†Â® Ã†Ã¹Ã†Â®Â¸Â¦ Â¾Ã²Â´Ã‚Â´Ã™
 	pDC->SetColor(MCOLOR(TEXT_COLOR_TITLE));
 	
 	//custom
@@ -2068,7 +2068,7 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 	char szTextRed[256];
 	char szTextBlue[256];
 
-	// ¼¼¹øÂ°ÁÙ ¾Õ : Á¡¼ö(ÆÀÇÃ)
+	// Â¼Â¼Â¹Ã¸Ã‚Â°ÃÃ™ Â¾Ã• : ÃÂ¡Â¼Ã¶(Ã†Ã€Ã‡Ãƒ)
 	if (ZGetGame()->GetMatch()->IsTeamPlay())
 	{
 		if ( bClanGame)
@@ -2082,7 +2082,7 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 		}
 		else
 		{
-			if (ZGetGameTypeManager()->IsTeamExtremeGame(ZGetGame()->GetMatch()->GetMatchType())) // ÆÀÀüÀÏ¶§ ¹«ÇÑµ¥½º¸ÅÄ¡¸¸ ¿¹¿Ü°¡ ¸¹ÀÌ ¹ß»ıÇÕ´Ï´Ù =_=;
+			if (ZGetGameTypeManager()->IsTeamExtremeGame(ZGetGame()->GetMatch()->GetMatchType())) // Ã†Ã€Ã€Ã¼Ã€ÃÂ¶Â§ Â¹Â«Ã‡Ã‘ÂµÂ¥Â½ÂºÂ¸Ã…Ã„Â¡Â¸Â¸ Â¿Â¹Â¿ÃœÂ°Â¡ Â¸Â¹Ã€ÃŒ Â¹ÃŸÂ»Ã½Ã‡Ã•Â´ÃÂ´Ã™ =_=;
 				{
 					sprintf(szText, "%s : %d(Red) vs %d(Blue)",  ZGetGameTypeManager()->GetGameTypeStr(ZGetGame()->GetMatch()->GetMatchType()),
 															ZGetGame()->GetMatch()->GetTeamKills(MMT_RED), 
@@ -2106,7 +2106,7 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 	y-=linespace2;
 
 
-	// µÎ¹øÂ°ÁÙ ¾Õ : ¸ÊÀÌ¸§
+	// ÂµÃÂ¹Ã¸Ã‚Â°ÃÃ™ Â¾Ã• : Â¸ÃŠÃ€ÃŒÂ¸Â§
    	strcpy( szText, ZGetGameClient()->GetMatchStageSetting()->GetMapName());
 	
 	TextRelative(pDC,x,y,szText);
@@ -2115,10 +2115,10 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 	y = 0.284f;
 
 	
-	// ¶ó¿îµå¸¦ ±â´Ù·Á¾ß ÇÏ´Â Á¾·ù¶ó¸é ¶ó¿îµå Ç¥½Ã ¾Æ´Ï¸é ½Ã°£ Ç¥½Ã
+	// Â¶Ã³Â¿Ã®ÂµÃ¥Â¸Â¦ Â±Ã¢Â´Ã™Â·ÃÂ¾ÃŸ Ã‡ÃÂ´Ã‚ ÃÂ¾Â·Ã¹Â¶Ã³Â¸Ã© Â¶Ã³Â¿Ã®ÂµÃ¥ Ã‡Â¥Â½Ãƒ Â¾Ã†Â´ÃÂ¸Ã© Â½ÃƒÂ°Â£ Ã‡Â¥Â½Ãƒ
 	if ( ZGetGame()->GetMatch()->IsWaitForRoundEnd() && !bClanGame)
 	{
-		if ( ZGetGame()->GetMatch()->GetRoundState() == MMATCH_ROUNDSTATE_PLAY)				// ÇÃ·¹ÀÌ ÁßÀÌ¶ó¸é
+		if ( ZGetGame()->GetMatch()->GetRoundState() == MMATCH_ROUNDSTATE_PLAY)				// Ã‡ÃƒÂ·Â¹Ã€ÃŒ ÃÃŸÃ€ÃŒÂ¶Ã³Â¸Ã©
 		{
 			DWORD dwTime = ZGetGame()->GetMatch()->GetRemaindTime();
 			DWORD dwLimitTime = ZGetGameClient()->GetMatchStageSetting()->GetStageSetting()->nLimitTime;
@@ -2150,10 +2150,10 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 		//sprintf( szText, "%s : %d / %d %s", ZMsg( MSG_WORD_RPROGRESS), ZGetGame()->GetMatch()->GetCurrRound() + 1, ZGetGame()->GetMatch()->GetRoundCount(), ZMsg( MSG_WORD_ROUND));
 		sprintf( szText, "%d / %d", ZGetGame()->GetMatch()->GetCurrRound() + 1, ZGetGame()->GetMatch()->GetRoundCount());
 	}
-	// ³²Àº ½Ã°£ Ç¥½Ã( Å¬·£Àü Á¦¿Ü)
+	// Â³Â²Ã€Âº Â½ÃƒÂ°Â£ Ã‡Â¥Â½Ãƒ( Ã…Â¬Â·Â£Ã€Ã¼ ÃÂ¦Â¿Ãœ)
 	else if ( !bClanGame)
 	{
-		if ( ZGetGame()->GetMatch()->GetRoundState() == MMATCH_ROUNDSTATE_PLAY)				// ÇÃ·¹ÀÌ ÁßÀÌ¶ó¸é
+		if ( ZGetGame()->GetMatch()->GetRoundState() == MMATCH_ROUNDSTATE_PLAY)				// Ã‡ÃƒÂ·Â¹Ã€ÃŒ ÃÃŸÃ€ÃŒÂ¶Ã³Â¸Ã©
 		{
 			DWORD dwTime = ZGetGame()->GetMatch()->GetRemaindTime();
 			DWORD dwLimitTime = ZGetGameClient()->GetMatchStageSetting()->GetStageSetting()->nLimitTime;
@@ -2204,11 +2204,11 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 	const float *ITEM_XPOS = bClanGame ? clanXPOS : normalXPOS;
 
 	// player
-	// È­¸éÀÇ xy »ó´ëÀ§Ä¡ ( 0~1 ·ÎºÃÀ»¶§ ) ´Â 0.25 , 0.361
+	// ÃˆÂ­Â¸Ã©Ã€Ã‡ xy Â»Ã³Â´Ã«Ã€Â§Ã„Â¡ ( 0~1 Â·ÃÂºÃƒÃ€Â»Â¶Â§ ) Â´Ã‚ 0.25 , 0.361
 	y=0.343f;
-	const float fHeight=0.578f;	// °ø°£ÀÇ ³ôÀÌ
+	const float fHeight=0.578f;	// Â°Ã¸Â°Â£Ã€Ã‡ Â³Ã´Ã€ÃŒ
 
-	// ÄÃ·³ Å¸ÀÌÆ² Ãâ·Â
+	// Ã„ÃƒÂ·Â³ Ã…Â¸Ã€ÃŒÃ†Â² ÃƒÃ¢Â·Ã‚
 	char szBuff[ 25];
 	pDC->SetColor(MCOLOR(TEXT_COLOR_TITLE));
 	x = ITEM_XPOS[0];	// level
@@ -2244,14 +2244,14 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 	float fTitleHeight = (float)pFont->GetHeight()*1.1f / (float)RGetScreenHeight();
 	y+=fTitleHeight;
 
-	// ±×¸±¼öÀÖ´Â ÃÖ´ëÁÙ¼ö ÁÙ°£°İÀº 150%
+	// Â±Ã—Â¸Â±Â¼Ã¶Ã€Ã–Â´Ã‚ ÃƒÃ–Â´Ã«ÃÃ™Â¼Ã¶ ÃÃ™Â°Â£Â°ÃÃ€Âº 150%
 //	int nMaxLineCount=int((fHeight-fTitleHeight)*(float)RGetScreenHeight()/((float)pFont->GetHeight()*1.1f));
 	int nMaxLineCount = 16;
 	
-	// ÇÑÁÙ»çÀÌÀÇ °£°İ(³ôÀÌ)
+	// Ã‡Ã‘ÃÃ™Â»Ã§Ã€ÃŒÃ€Ã‡ Â°Â£Â°Ã(Â³Ã´Ã€ÃŒ)
 	float linespace=(fHeight-fTitleHeight)/(float)nMaxLineCount;
 
-	// ÁÂÃøÀÇ Å¬·£¸¶Å©¹× ÀÌ¸§,Á¡¼ö
+	// ÃÃ‚ÃƒÃ¸Ã€Ã‡ Ã…Â¬Â·Â£Â¸Â¶Ã…Â©Â¹Ã— Ã€ÃŒÂ¸Â§,ÃÂ¡Â¼Ã¶
 	if(bClanGame)
 	{
 		for(int i=0;i<2;i++)
@@ -2269,10 +2269,10 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 			float clanx = clancenter - .5f*((float)pClanFont->GetWidth(szClanName)/(float)MGetWorkspaceWidth());
 			float clany = y + linespace * ((nTeam==MMT_RED) ? .5f : 8.5f) ;
 
-			// ¾ÆÀÌÄÜ Ãâ·Â
+			// Â¾Ã†Ã€ÃŒÃ„Ãœ ÃƒÃ¢Â·Ã‚
 			MBitmap *pbmp = ZGetEmblemInterface()->GetClanEmblem(nClanID);
 #ifdef TEST_CLAN_SCOREBOARD
-			pbmp = MBitmapManager::Get("btntxtr_gnd_on.png");//Å×½ºÆ®¿ë
+			pbmp = MBitmapManager::Get("btntxtr_gnd_on.png");//Ã…Ã—Â½ÂºÃ†Â®Â¿Ã«
 #endif
 			if(pbmp) {
 				pDC->SetBitmap(pbmp);
@@ -2288,10 +2288,10 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 				clany+=fIconSize+1.2*linespace;
 			}
 
-			// ÆÀÀÌ¸§ Ãâ·Â
+			// Ã†Ã€Ã€ÃŒÂ¸Â§ ÃƒÃ¢Â·Ã‚
 			TextRelative(pDC,clanx,clany ,szClanName);
 
-			// Á¡¼ö Ãâ·Â. °¡¿îµ¥ Á¤·Ä
+			// ÃÂ¡Â¼Ã¶ ÃƒÃ¢Â·Ã‚. Â°Â¡Â¿Ã®ÂµÂ¥ ÃÂ¤Â·Ã„
 			sprintf(szText,"%d",ZGetGame()->GetMatch()->GetTeamScore(nTeam));
 			clanx = clancenter - .5f*((float)pClanFont->GetWidth(szText)/(float)MGetWorkspaceWidth());
 			clany+=1.f*linespace;
@@ -2306,14 +2306,14 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 	pDC->SetColor(MCOLOR(TEXT_COLOR_CLAN_NAME));
 
 
-	// Ä³¸¯ÅÍ ¸®½ºÆ®
+	// Ã„Â³Â¸Â¯Ã…Ã Â¸Â®Â½ÂºÃ†Â®
 	ZCharacterManager::iterator itor;
 	for (itor = ZGetCharacterManager()->begin();
 		itor != ZGetCharacterManager()->end(); ++itor)
 	{
 		ZCharacter* pCharacter = (*itor).second;
 
-		if(pCharacter->GetTeamID() == MMT_SPECTATOR) continue;	// ¿ÉÀú¹ö´Â –A´Ù
+		if(pCharacter->GetTeamID() == MMT_SPECTATOR) continue;	// Â¿Ã‰Ã€ÃºÂ¹Ã¶Â´Ã‚ â€“AÂ´Ã™
 
 		if(pCharacter->IsAdminHide()) continue;
 
@@ -2366,7 +2366,7 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 		else
 			pItem->bCommander = false;
 
-		// ¹ö¼­Ä¿¸ğµåÀÇ ¹ö¼­Ä¿
+		// Â¹Ã¶Â¼Â­Ã„Â¿Â¸Ã°ÂµÃ¥Ã€Ã‡ Â¹Ã¶Â¼Â­Ã„Â¿
 		if (ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_BERSERKER)
 		{
 			if (pCharacter->IsTagger()) pItem->bCommander = true;
@@ -2374,7 +2374,7 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 
 		if (ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DUEL)
 		{
-			ZRuleDuel* pDuel = (ZRuleDuel*)ZGetGame()->GetMatch()->GetRule();	// À§Çè -_-
+			ZRuleDuel* pDuel = (ZRuleDuel*)ZGetGame()->GetMatch()->GetRule();	// Ã€Â§Ã‡Ã¨ -_-
 			pItem->nDuelQueueIdx = pDuel->GetQueueIdx(pCharacter->GetUID());
 		}
 		else
@@ -2388,7 +2388,7 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 		else
 			pItem->bGameRoomUser = false;
 
-		// Áö³­ÁÖ µà¾óÅä³Ê¸ÕÆ® µî±Ş
+		// ÃÃ¶Â³Â­ÃÃ– ÂµÃ Â¾Ã³Ã…Ã¤Â³ÃŠÂ¸Ã•Ã†Â® ÂµÃ®Â±Ã
 		pItem->nDTLastWeekGrade = pCharacter->GetDTLastWeekGrade();
 
 		items.push_back(pItem);
@@ -2449,7 +2449,7 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 
 		if(nCount>nMaxLineCount) break;
 
-		// ¹è°æ »ö±òÀ» °áÁ¤ÇÑ´Ù
+		// Â¹Ã¨Â°Ã¦ Â»Ã¶Â±Ã²Ã€Â» Â°Ã¡ÃÂ¤Ã‡Ã‘Â´Ã™
 		MCOLOR backgroundcolor;
 		if(pItem->bMyChar) {
 			backgroundcolor = BACKGROUND_COLOR_MYCHAR_DEATH_MATCH;
@@ -2486,7 +2486,7 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 //		backgroundy=newbackgroundy;
 
 
-		// PC¹æ À¯ÀúÀÏ °æ¿ì¿¡ PC¹æ ¸¶Å©¸¦ Ç¥½ÃÇÑ´Ù.
+		// PCÂ¹Ã¦ Ã€Â¯Ã€ÃºÃ€Ã Â°Ã¦Â¿Ã¬Â¿Â¡ PCÂ¹Ã¦ Â¸Â¶Ã…Â©Â¸Â¦ Ã‡Â¥Â½ÃƒÃ‡Ã‘Â´Ã™.
 		if ( pItem->bGameRoomUser)	
 		{
 			int nIconSize = .8f * linespace * (float)MGetWorkspaceHeight();
@@ -2494,7 +2494,7 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 			BitmapRelative(pDC, ITEM_XPOS[0] - 0.043f, icony, nIconSize+4, nIconSize, MBitmapManager::Get( "icon_gameroom_s.tga"));
 		}
 
-		// µà¾óÅä³Ê¸ÕÆ® °è±ŞÀå Ç¥½Ã(ÀÌ¸§ ¾Õ¿¡)
+		// ÂµÃ Â¾Ã³Ã…Ã¤Â³ÃŠÂ¸Ã•Ã†Â® Â°Ã¨Â±ÃÃ€Ã¥ Ã‡Â¥Â½Ãƒ(Ã€ÃŒÂ¸Â§ Â¾Ã•Â¿Â¡)
 		{
 			int nIconSize = .8f * linespace * (float)MGetWorkspaceHeight();
 			float icony = itemy + (linespace - (float)nIconSize / (float)MGetWorkspaceHeight())*.5f;
@@ -2507,7 +2507,7 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 		}
 
 
-		// ±ÛÀÚ »ö±òÀ» °áÁ¤ÇÑ´Ù.. (ÆÀ°ú »ı»ç¿©ºÎ)
+		// Â±Ã›Ã€Ãš Â»Ã¶Â±Ã²Ã€Â» Â°Ã¡ÃÂ¤Ã‡Ã‘Â´Ã™.. (Ã†Ã€Â°Ãº Â»Ã½Â»Ã§Â¿Â©ÂºÃ)
 		MCOLOR textcolor=pItem->bDeath ? TEXT_COLOR_DEATH_MATCH_DEAD : TEXT_COLOR_DEATH_MATCH;
 
 		if(!bClanGame)
@@ -2523,7 +2523,7 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 
 		}
 
-		if(pItem->bSpColor)	// Æ¯¼öÇÑ À¯Àú¶ó¸é..°íÀ¯ÀÇ ÄÃ·¯¸¦ °¡Áö°í ÀÖ´Ù.
+		if(pItem->bSpColor)	// Ã†Â¯Â¼Ã¶Ã‡Ã‘ Ã€Â¯Ã€ÃºÂ¶Ã³Â¸Ã©..Â°Ã­Ã€Â¯Ã€Ã‡ Ã„ÃƒÂ·Â¯Â¸Â¦ Â°Â¡ÃÃ¶Â°Ã­ Ã€Ã–Â´Ã™.
 		{
 			if(!pItem->bDeath)
 				textcolor = pItem->GetColor();
@@ -2534,7 +2534,7 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 		pDC->SetColor(textcolor);
 		pDC->SetFont(pFont);
 
-		// ±ÛÀÚ¸¦ °¡¿îµ¥ Á¤·ÄÇÏ±â À§ÇØ ..
+		// Â±Ã›Ã€ÃšÂ¸Â¦ Â°Â¡Â¿Ã®ÂµÂ¥ ÃÂ¤Â·Ã„Ã‡ÃÂ±Ã¢ Ã€Â§Ã‡Ã˜ ..
 		float texty= itemy + (linespace - (float)pFont->GetHeight() / (float)MGetWorkspaceHeight())*.5f;
 		x = ITEM_XPOS[0];
 		x=0.088f;
@@ -2690,11 +2690,594 @@ void ZCombatInterface::DrawScoreBoard(MDrawContext* pDC)
 
 void ZCombatInterface::DrawScoreBoardSolo(MDrawContext* pDC){
 	ZGetScreenEffectManager()->DrawScoreBoardSolo();
+
+	ZSCOREBOARDITEMLIST items;
+
+	MFont *pFont=GetGameFont();
+	pDC->SetFont(pFont);
+	pFont=pDC->GetFont();	// Â¸Â¸Â¾Ã  Ã†Ã¹Ã†Â®Â°Â¡ Â¾Ã¸Ã€Â¸Â¸Ã© Â´Ã™Â½Ãƒ ÂµÃ°Ã†ÃºÃ†Â® Ã†Ã¹Ã†Â®Â¸Â¦ Â¾Ã²Â´Ã‚Â´Ã™
+	pDC->SetColor(MCOLOR(TEXT_COLOR_TITLE));
+	char szMsgTest[128] = { 0, };
+
+	sprintf(szMsgTest, "x:%3.3f y:%3.3f line:%3.3f", ZGetGame()->m_pMyCharacter->GetStatus().Ref().XTest*1.f,
+													 ZGetGame()->m_pMyCharacter->GetStatus().Ref().YTest*1.f,
+													 ZGetGame()->m_pMyCharacter->GetStatus().Ref().LineTest*1.f);	
+	TextRelative(pDC, ZGetGame()->m_pMyCharacter->GetStatus().Ref().XTest, ZGetGame()->m_pMyCharacter->GetStatus().Ref().YTest, szMsgTest);
+
+	char szText[256];
+
+	sprintf(szText, "(%03d) %s", ZGetGameClient()->GetStageNumber(), ZGetGameClient()->GetStageName());
+
+	TextRelative(pDC,0.316f,0.145f,szText);
+
+
+	float x = 0.316f;
+	float y = 0.284f;
+	float linespace2= 0.071f / 3.f;
+
+	sprintf(szText, "%s", ZGetGameTypeManager()->GetGameTypeStr(ZGetGame()->GetMatch()->GetMatchType()));
+	TextRelative(pDC,x,0.195f,szText);
+	y-=linespace2;
+
+
+	// ÂµÃÂ¹Ã¸Ã‚Â°ÃÃ™ Â¾Ã• : Â¸ÃŠÃ€ÃŒÂ¸Â§
+   	strcpy( szText, ZGetGameClient()->GetMatchStageSetting()->GetMapName());
+	if ( ZGetGameTypeManager()->IsQuestOnly(ZGetGame()->GetMatch()->GetMatchType()))		// Ã„Ã¹Â½ÂºÃ†Â® Â¸Ã°ÂµÃ¥Ã€ÃŒÂ¸Ã©...
+	{
+   		sprintf( szText, "%s (%s %d)", szText, ZMsg( MSG_CHARINFO_LEVELMARKER), ZGetQuest()->GetGameInfo()->GetQuestLevel());
+
+
+	}
+	TextRelative(pDC,0.316f,0.173f,szText);
+
+	x = 0.70f;
+	y = 0.284f;
+
+	// ÂºÂ¸Â»Ã³ Â¾Ã†Ã€ÃŒÃ…Ã›
+	if ( ZGetGameTypeManager()->IsQuestOnly( ZGetGame()->GetMatch()->GetMatchType()))		// Ã„Ã¹Â½ÂºÃ†Â® Â¸Ã°ÂµÃ¥Ã€ÃÂ°Ã¦Â¿Ã¬
+	{
+		sprintf( szText, "%s : %d", ZMsg( MSG_WORD_GETITEMQTY), ZGetQuest()->GetGameInfo()->GetNumOfObtainQuestItem());
+		TextRelative( pDC, x, y, szText);
+		y -= linespace2;
+	}
+
+	// NPC Â¼Ã¶
+	if ( ZGetGameTypeManager()->IsQuestOnly( ZGetGame()->GetMatch()->GetMatchType())) 	// Ã„Ã¹Â½ÂºÃ†Â® Â¸Ã°ÂµÃ¥Ã€Ã Â°Ã¦Â¿Ã¬
+	{
+		int nNPCKilled = ZGetQuest()->GetGameInfo()->GetNPCCount() - ZGetQuest()->GetGameInfo()->GetNPCKilled();
+		if ( nNPCKilled < 0)
+			nNPCKilled = 0;
+
+		MUID uidBoss = ZGetQuest()->GetGameInfo()->GetBoss();
+
+		if (uidBoss != MUID(0,0))	
+			sprintf( szText, "%s : -", ZMsg( MSG_WORD_REMAINNPC));
+		else
+			sprintf( szText, "%s : %d", ZMsg( MSG_WORD_REMAINNPC), nNPCKilled);
+		TextRelative( pDC, x, y, szText);
+		y -= linespace2;
+	}
+	else if ( ZGetGameTypeManager()->IsSurvivalOnly( ZGetGame()->GetMatch()->GetMatchType())) 	// Â¼Â­Â¹Ã™Ã€ÃŒÂ¹Ãº Â¸Ã°ÂµÃ¥Ã€Ã Â°Ã¦Â¿Ã¬
+	{
+		int nNPCKilled = ZGetQuest()->GetGameInfo()->GetNPCCount() - ZGetQuest()->GetGameInfo()->GetNPCKilled();
+		if ( nNPCKilled < 0)
+			nNPCKilled = 0;
+
+		MUID uidBoss = ZGetQuest()->GetGameInfo()->GetBoss();
+
+		// Â¼Â­Â¹Ã™Ã€ÃŒÂ¹ÃºÂ¿Â£ Ã€ÃšÃ„ÃšÂ°Â¡ Â¾Ã¸Ã€Â¸Â¹Ã‡Â·Ã ÂºÂ¸Â½ÂºÂ°Â¡ Â³ÂªÂ¿Ã€Â´ÃµÂ¶Ã³ÂµÂµ Ã€ÃœÂ¿Â© npc Â¼Ã¶Â´Ã‚ Ã‡Â¥Â½Ãƒ Â°Â¡Â´Ã‰Ã‡ÃÂ´Ã™
+		sprintf( szText, "%s : %d", ZMsg( MSG_WORD_REMAINNPC), nNPCKilled);
+		TextRelative( pDC, x, y, szText);
+		y -= linespace2;
+	}
+
+	// ÃÃ¸Ã‡Ã ÂµÂµ Ã‡Â¥Â½Ãƒ
+	if ( ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DUEL)
+	{
+		if ( ZGetGame()->GetMatch()->GetRoundState() == MMATCH_ROUNDSTATE_PLAY)				// Ã‡ÃƒÂ·Â¹Ã€ÃŒ ÃÃŸÃ€ÃŒÂ¶Ã³Â¸Ã©
+		{
+			DWORD dwTime = ZGetGame()->GetMatch()->GetRemaindTime();
+			DWORD dwLimitTime = ZGetGameClient()->GetMatchStageSetting()->GetStageSetting()->nLimitTime;
+			if ( dwLimitTime != 99999)
+			{
+				dwLimitTime *= 60000;
+				if ( dwTime <= dwLimitTime)
+				{
+					dwTime = (dwLimitTime - dwTime) / 1000;
+					sprintf( szText, "%d:%02d",  (dwTime / 60), (dwTime % 60));
+				}
+				else
+					sprintf( szText, "---");
+			}
+			else
+				sprintf( szText, "---");
+		}
+		else
+			sprintf( szText, "---");
+
+		TextRelative( pDC, x, y, szText);
+		y -= linespace2;
+
+		
+		sprintf( szText, "%s : %d", ZMsg( MSG_WORD_ENDKILL), ZGetGame()->GetMatch()->GetRoundCount());
+	}
+
+	// Â¶Ã³Â¿Ã®ÂµÃ¥Â¸Â¦ Â±Ã¢Â´Ã™Â·ÃÂ¾ÃŸ Ã‡ÃÂ´Ã‚ ÃÂ¾Â·Ã¹Â¶Ã³Â¸Ã© Â¶Ã³Â¿Ã®ÂµÃ¥ Ã‡Â¥Â½Ãƒ Â¾Ã†Â´ÃÂ¸Ã© Â½ÃƒÂ°Â£ Ã‡Â¥Â½Ãƒ
+	else if ( ZGetGame()->GetMatch()->IsWaitForRoundEnd())
+	{
+		if ( ZGetGame()->GetMatch()->GetRoundState() == MMATCH_ROUNDSTATE_PLAY)				// Ã‡ÃƒÂ·Â¹Ã€ÃŒ ÃÃŸÃ€ÃŒÂ¶Ã³Â¸Ã©
+		{
+			DWORD dwTime = ZGetGame()->GetMatch()->GetRemaindTime();
+			DWORD dwLimitTime = ZGetGameClient()->GetMatchStageSetting()->GetStageSetting()->nLimitTime;
+			if ( dwLimitTime != 99999)
+			{
+				dwLimitTime *= 60000;
+				if ( dwTime <= dwLimitTime)
+				{
+					dwTime = (dwLimitTime - dwTime) / 1000;
+					sprintf( szText, "%d:%02d", (dwTime / 60), (dwTime % 60));
+				}
+				else
+					sprintf( szText, "---");
+			}
+			else
+				sprintf( szText, "---");
+		}
+		else
+			sprintf( szText, "---");
+
+		TextRelative( pDC, 0.605f, 0.157f, szText);
+		y -= linespace2;
+
+		sprintf( szText, "%d / %d ", ZGetGame()->GetMatch()->GetCurrRound() + 1, ZGetGame()->GetMatch()->GetRoundCount());
+	}
+	else if ( ZGetGameTypeManager()->IsQuestOnly(ZGetGame()->GetMatch()->GetMatchType())) 	// Ã„Ã¹Â½ÂºÃ†Â® Â¸Ã°ÂµÃ¥Ã€Ã Â°Ã¦Â¿Ã¬
+	{
+		sprintf( szText, "%d / %d", ZGetQuest()->GetGameInfo()->GetCurrSectorIndex() + 1, ZGetQuest()->GetGameInfo()->GetMapSectorCount());
+	}
+	else if ( ZGetGameTypeManager()->IsSurvivalOnly(ZGetGame()->GetMatch()->GetMatchType())) 	// Â¼Â­Â¹Ã™Ã€ÃŒÂ¹Ãº Â¸Ã°ÂµÃ¥Ã€Ã Â°Ã¦Â¿Ã¬
+	{
+		int currSector = ZGetQuest()->GetGameInfo()->GetCurrSectorIndex() + 1;
+		int sectorCount = ZGetQuest()->GetGameInfo()->GetMapSectorCount();
+		int repeatCount = ZGetQuest()->GetGameInfo()->GetRepeatCount();
+
+		currSector += ZGetQuest()->GetGameInfo()->GetCurrRepeatIndex() * sectorCount;
+		sectorCount *= repeatCount;
+		sprintf( szText, "%s : %d / %d", ZMsg( MSG_WORD_RPROGRESS), currSector, sectorCount);
+	}
+
+
+		if ( ZGetGame()->GetMatch()->GetRoundState() == MMATCH_ROUNDSTATE_PLAY)				// Ã‡ÃƒÂ·Â¹Ã€ÃŒ ÃÃŸÃ€ÃŒÂ¶Ã³Â¸Ã©
+		{
+			DWORD dwTime = ZGetGame()->GetMatch()->GetRemaindTime();
+			DWORD dwLimitTime = ZGetGameClient()->GetMatchStageSetting()->GetStageSetting()->nLimitTime;
+			if ( dwLimitTime != 99999)
+			{
+				dwLimitTime *= 60000;
+				if ( dwTime <= dwLimitTime)
+				{
+					dwTime = (dwLimitTime - dwTime) / 1000;
+					sprintf( szText, "%d:%02d",  (dwTime / 60), (dwTime % 60));
+				}
+				else
+					sprintf( szText, "---");
+			}
+			else
+				sprintf( szText, "---");
+		}
+		else
+			sprintf( szText, "---");
+
+		TextRelative( pDC, 0.605f, 0.157f, szText);
+		y -= linespace2;
+		if ( ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_CTF)
+			sprintf( szText, "%d",  ZGetGame()->GetMatch()->GetRoundCount());
+		else
+			sprintf( szText, "%d", ZGetGame()->GetMatch()->GetRoundCount());
+
+	
+	TextRelative( pDC,  0.605f, 0.188f, szText);
+
+
+//	const float normalXPOS[6] = {0.25f, 0.46f, 0.68f, 0.77f, 0.83f, 0.92f};
+//	const float clanXPOS[6] = {0.45f, 0.25f, 0.68f, 0.77f, 0.83f, 0.92f};
+	const float normalXPOS[] = {0.25f, 0.38f, 0.50f, 0.55f, 0.60f, 0.65f, 0.30f, 0.70f, 0.75f, 0.80, 0.90};
+	const float clanXPOS[]   = {0.44f, 0.24f, 0.67f, 0.76f, 0.82f, 0.91f, 0.514f, 0.491f};
+	
+	const float *ITEM_XPOS = normalXPOS;
+
+	// player
+	// ÃˆÂ­Â¸Ã©Ã€Ã‡ xy Â»Ã³Â´Ã«Ã€Â§Ã„Â¡ ( 0~1 Â·ÃÂºÃƒÃ€Â»Â¶Â§ ) Â´Ã‚ 0.25 , 0.361
+	y=0.343f;
+	const float fHeight=0.578f;	// Â°Ã¸Â°Â£Ã€Ã‡ Â³Ã´Ã€ÃŒ
+
+	// Ã„ÃƒÂ·Â³ Ã…Â¸Ã€ÃŒÃ†Â² ÃƒÃ¢Â·Ã‚
+	char szBuff[ 25];
+	pDC->SetColor(MCOLOR(TEXT_COLOR_TITLE));
+	x = ITEM_XPOS[0];	// level
+	sprintf( szBuff, "%s", ZMsg(MSG_CHARINFO_LEVEL));
+	//TextRelative(pDC,x,y, szBuff);
+	x = ITEM_XPOS[6];	// Name
+	sprintf( szBuff, "%s", ZMsg(MSG_CHARINFO_NAME));
+	//TextRelative(pDC,x,y, szBuff);
+	x = ITEM_XPOS[1];	// Clan
+	//TextRelative(pDC,x,y, ZMsg(MSG_CHARINFO_CLAN));
+	if ( ZGetGameTypeManager()->IsQuestDerived( ZGetGame()->GetMatch()->GetMatchType()))
+	{
+		x = ITEM_XPOS[2];	// HP/AP
+		sprintf( szBuff, "%s/%s", ZMsg(MSG_CHARINFO_HP), ZMsg(MSG_CHARINFO_AP));
+		//TextRelative(pDC,x,y, szBuff);
+	}
+	else
+	{
+		x = ITEM_XPOS[2];	// Exp
+		//TextRelative(pDC,x,y, ZMsg(MSG_WORD_EXP));
+	}
+	x = ITEM_XPOS[3];	// Kills
+	//TextRelative(pDC,x,y, ZMsg(MSG_WORD_KILL));
+	x = ITEM_XPOS[4];	// Deaths
+	//TextRelative(pDC,x,y, ZMsg(MSG_WORD_DEATH));
+	x = ITEM_XPOS[9];	// Ping
+	//TextRelative(pDC,x,y, ZMsg(MSG_WORD_PING));
+	x = ITEM_XPOS[7];	// Damage Caused
+	//TextRelative(pDC,x,y,"DMG Dealt");
+//	x = ITEM_XPOS[8];	// Damage Taken - Implement during anti-lead
+//	TextRelative(pDC,x,y,"DMG Taken");
+	
+	float fTitleHeight = (float)pFont->GetHeight()*1.1f / (float)RGetScreenHeight();
+	y+=fTitleHeight;
+
+	// Â±Ã—Â¸Â±Â¼Ã¶Ã€Ã–Â´Ã‚ ÃƒÃ–Â´Ã«ÃÃ™Â¼Ã¶ ÃÃ™Â°Â£Â°ÃÃ€Âº 150%
+//	int nMaxLineCount=int((fHeight-fTitleHeight)*(float)RGetScreenHeight()/((float)pFont->GetHeight()*1.1f));
+	int nMaxLineCount = 16;
+	
+	// Ã‡Ã‘ÃÃ™Â»Ã§Ã€ÃŒÃ€Ã‡ Â°Â£Â°Ã(Â³Ã´Ã€ÃŒ)
+	float linespace=(fHeight-fTitleHeight)/(float)nMaxLineCount;
+
+	// Ã„Â³Â¸Â¯Ã…Ã Â¸Â®Â½ÂºÃ†Â®
+	ZCharacterManager::iterator itor;
+	for (itor = ZGetCharacterManager()->begin();
+		itor != ZGetCharacterManager()->end(); ++itor)
+	{
+		ZCharacter* pCharacter = (*itor).second;
+
+		if(pCharacter->GetTeamID() == MMT_SPECTATOR) continue;	// Â¿Ã‰Ã€ÃºÂ¹Ã¶Â´Ã‚ Â–AÂ´Ã™
+
+		if(pCharacter->IsAdminHide()) continue;
+
+		ZScoreBoardItem *pItem=new ZScoreBoardItem;
+
+		MCOLOR colors;
+		if(pCharacter->IsAdminName())
+			m_pTargetLabel->SetTextColor(ZCOLOR_ADMIN_NAME);
+		else if(ZGetGameClient()->getColor( pCharacter->GetUserGrade(), colors))
+			m_pTargetLabel->SetTextColor(colors);
+
+		sprintf(pItem->szLevel,"%d%s",pCharacter->GetProperty()->nLevel, ZMsg(MSG_CHARINFO_LEVELMARKER));
+		sprintf(pItem->szName,"%s", pCharacter->GetProperty()->GetName());
+		memcpy(pItem->szClan,pCharacter->GetProperty()->GetClanName(),CLAN_NAME_LENGTH);
+
+		
+		pItem->nClanID = pCharacter->GetClanID();
+		pItem->nTeam = ZGetGame()->GetMatch()->IsTeamPlay() ? pCharacter->GetTeamID() : MMT_END;
+		pItem->bDeath = pCharacter->IsDie();
+		if ( ZGetGameTypeManager()->IsQuestDerived( ZGetGame()->GetMatch()->GetMatchType()))
+			pItem->nExp = pCharacter->GetStatus().Ref().nKills * 100;
+		else
+			pItem->nExp = pCharacter->GetStatus().Ref().nExp;
+		pItem->nKills = pCharacter->GetStatus().Ref().nKills;
+		pItem->nDeaths = pCharacter->GetStatus().Ref().nDeaths;
+		pItem->uidUID = pCharacter->GetUID();
+
+		int nPing = (pCharacter->GetUID() == ZGetGameClient()->GetPlayerUID() ? 0 : MAX_PING);
+		MMatchPeerInfo* pPeer = ZGetGameClient()->FindPeer(pCharacter->GetUID());
+		if (pPeer) {
+			if ( ZGetGame()->IsReplay())
+				nPing = 0;
+			else
+				nPing = pPeer->GetPing(ZGetGame()->GetTickTime());
+		}
+		pItem->nPing = nPing;
+		pItem->bMyChar = pCharacter->IsHero();
+		
+		if(ZGetGame()->m_pMyCharacter->GetTeamID()==MMT_SPECTATOR &&
+			m_Observer.IsVisible() && m_Observer.GetTargetCharacter()==pCharacter)
+			pItem->bMyChar = true;
+
+
+		
+		if(pCharacter->GetTeamID()==ZGetGame()->m_pMyCharacter->GetTeamID() && pCharacter->m_dwStatusBitPackingValue.Ref().m_bCommander)
+			pItem->bCommander = true;
+		else
+			pItem->bCommander = false;
+
+		// Â¹Ã¶Â¼Â­Ã„Â¿Â¸Ã°ÂµÃ¥Ã€Ã‡ Â¹Ã¶Â¼Â­Ã„Â¿
+		if (ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_BERSERKER)
+		{
+			if (pCharacter->IsTagger()) pItem->bCommander = true;
+		}
+
+		if (ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DUEL)
+		{
+			ZRuleDuel* pDuel = (ZRuleDuel*)ZGetGame()->GetMatch()->GetRule();	// Ã€Â§Ã‡Ã¨ -_-
+			pItem->nDuelQueueIdx = pDuel->GetQueueIdx(pCharacter->GetUID());
+		}
+		else
+			pItem->nDuelQueueIdx = 0;
+
+
+		// GameRoom User
+		MMatchObjCache* pCache = ZGetGameClient()->FindObjCache( pCharacter->GetUID());
+		if ( pCache)
+			pItem->bGameRoomUser = (pCache->GetPGrade() == MMPG_PREMIUM_IP) ? true : false;
+		else
+			pItem->bGameRoomUser = false;
+
+		// ÃÃ¶Â³Â­ÃÃ– ÂµÃ Â¾Ã³Ã…Ã¤Â³ÃŠÂ¸Ã•Ã†Â® ÂµÃ®Â±Ã
+		pItem->nDTLastWeekGrade = pCharacter->GetDTLastWeekGrade();
+
+		items.push_back(pItem);
+	}
+
+
+	items.sort(CompareZScoreBoardItem);
+	ZSCOREBOARDITEMLIST::iterator i;
+
+	int nCurrentTeamIndex;
+	if(ZGetGame()->GetMatch()->IsTeamPlay())
+		nCurrentTeamIndex=MMT_RED;
+	else
+	{
+		if (items.size() > 0) 
+			nCurrentTeamIndex = (*items.begin())->nTeam;
+	}
+
+	int nCount = 0;
+	int MiPing = 0, total = 0;
+	y=0.287f;
+	for(i=items.begin();i!=items.end();i++)
+	{
+		ZScoreBoardItem *pItem=*i;
+
+		if(nCurrentTeamIndex!=pItem->nTeam)	// Ã†Ã€Ã€ÃŒ Â¹Ã™Â²Ã®Â¸Ã©
+		{
+			nCurrentTeamIndex=pItem->nTeam;
+			nCount = max(nCount,min(8,nMaxLineCount - ((int)items.size()-nCount)));
+		}
+
+		float itemy = y + linespace * nCount;
+
+		nCount++;
+
+		if(nCount>nMaxLineCount) break;
+
+		// Â¹Ã¨Â°Ã¦ Â»Ã¶Â±Ã²Ã€Â» Â°Ã¡ÃÂ¤Ã‡Ã‘Â´Ã™
+		MCOLOR backgroundcolor;
+		if(pItem->bMyChar) {
+			backgroundcolor = BACKGROUND_COLOR_MYCHAR_DEATH_MATCH;
+		}
+
+		if(pItem->bCommander) backgroundcolor = BACKGROUND_COLOR_COMMANDER;
+
+		if(pItem->bMyChar || pItem->bCommander)
+		{
+			int y1 = itemy * MGetWorkspaceHeight();
+			int y2 = (y + linespace * nCount) * MGetWorkspaceHeight();
+
+			int x1 = 0.309*MGetWorkspaceWidth();
+			int x2 = (0.665)*MGetWorkspaceWidth();
+
+			pDC->SetColor(backgroundcolor);
+			pDC->FillRectangleW(x1,y1,x2-x1,y2-y1);
+		}
+
+
+
+		// PCÂ¹Ã¦ Ã€Â¯Ã€ÃºÃ€Ã Â°Ã¦Â¿Ã¬Â¿Â¡ PCÂ¹Ã¦ Â¸Â¶Ã…Â©Â¸Â¦ Ã‡Â¥Â½ÃƒÃ‡Ã‘Â´Ã™.
+		if ( pItem->bGameRoomUser)	
+		{
+			int nIconSize = .8f * linespace * (float)MGetWorkspaceHeight();
+			float icony = itemy + (linespace - (float)nIconSize / (float)MGetWorkspaceHeight())*.5f;
+			BitmapRelative(pDC, ITEM_XPOS[0] - 0.043f, icony, nIconSize+4, nIconSize, MBitmapManager::Get( "icon_gameroom_s.tga"));
+		}
+
+		// ÂµÃ Â¾Ã³Ã…Ã¤Â³ÃŠÂ¸Ã•Ã†Â® Â°Ã¨Â±ÃÃ€Ã¥ Ã‡Â¥Â½Ãƒ(Ã€ÃŒÂ¸Â§ Â¾Ã•Â¿Â¡)
+		{
+			int nIconSize = .8f * linespace * (float)MGetWorkspaceHeight();
+			float icony = itemy + (linespace - (float)nIconSize / (float)MGetWorkspaceHeight())*.5f;
+
+			char szDTGradeIconFileName[64];
+			GetDuelTournamentGradeIconFileName(szDTGradeIconFileName, pItem->nDTLastWeekGrade);
+			MBitmap* pBmpDTGradeIcon = MBitmapManager::Get( szDTGradeIconFileName );
+
+			BitmapRelative(pDC,0.288f, icony, nIconSize, nIconSize, MBitmapManager::Get( szDTGradeIconFileName));
+		}
+
+
+		// Â±Ã›Ã€Ãš Â»Ã¶Â±Ã²Ã€Â» Â°Ã¡ÃÂ¤Ã‡Ã‘Â´Ã™.. (Ã†Ã€Â°Ãº Â»Ã½Â»Ã§Â¿Â©ÂºÃ)
+		MCOLOR textcolor=pItem->bDeath ? TEXT_COLOR_DEATH_MATCH_DEAD : TEXT_COLOR_DEATH_MATCH;
+		if(pItem->nTeam==MMT_SPECTATOR)
+			textcolor = TEXT_COLOR_SPECTATOR;
+
+
+
+		if(pItem->bSpColor)	// Ã†Â¯Â¼Ã¶Ã‡Ã‘ Ã€Â¯Ã€ÃºÂ¶Ã³Â¸Ã©..Â°Ã­Ã€Â¯Ã€Ã‡ Ã„ÃƒÂ·Â¯Â¸Â¦ Â°Â¡ÃÃ¶Â°Ã­ Ã€Ã–Â´Ã™.
+		{
+			if(!pItem->bDeath)
+				textcolor = pItem->GetColor();
+			else 
+				textcolor = 0xff402010;
+		}
+
+		pDC->SetColor(textcolor);
+		pDC->SetFont(pFont);
+
+		// Â±Ã›Ã€ÃšÂ¸Â¦ Â°Â¡Â¿Ã®ÂµÂ¥ ÃÂ¤Â·Ã„Ã‡ÃÂ±Ã¢ Ã€Â§Ã‡Ã˜ ..
+		float texty= itemy + (linespace - (float)pFont->GetHeight() / (float)MGetWorkspaceHeight())*.5f;
+		x = ITEM_XPOS[0];
+		TextRelative(pDC,0.310f,texty,pItem->szLevel);
+
+		x = ITEM_XPOS[6];
+		
+		TextRelative(pDC,0.345f,texty,pItem->szName);
+
+		x = ITEM_XPOS[1];
+		x= 0.417f;
+			int nIconSize = .8 * linespace * (float)MGetWorkspaceHeight();
+			float icony = itemy + (linespace - (float)nIconSize / (float)MGetWorkspaceHeight())*.5f;
+
+			if(pItem->szClan[0]) {
+				MBitmap *pbmp = ZGetEmblemInterface()->GetClanEmblem(pItem->nClanID);
+				if(pbmp) {
+					pDC->SetBitmap(pbmp);
+					int screenx=x*MGetWorkspaceWidth();
+					int screeny=icony*MGetWorkspaceHeight();
+
+					pDC->Draw(screenx,screeny,nIconSize,nIconSize);
+
+				}
+			}
+			x+= (float)nIconSize/(float)MGetWorkspaceWidth() +0.005f;
+			TextRelative(pDC,0.436f,texty,pItem->szClan);
+		
+
+		if ( ZGetGameTypeManager()->IsQuestDerived( ZGetGame()->GetMatch()->GetMatchType()))
+		{
+			bool bDraw = m_Observer.IsVisible();
+
+			ZCharacterManager::iterator itor = ZGetGame()->m_CharacterManager.find( pItem->uidUID);
+			if ( itor != ZGetGame()->m_CharacterManager.end())
+			{
+				ZCharacter* pQuestPlayerInfo = (*itor).second;
+
+				MCOLOR tmpColor = pDC->GetColor();
+
+				x=ITEM_XPOS[2];
+
+				if ( bDraw)
+					pDC->SetColor( MCOLOR( 0x40FF0000));
+				else
+					pDC->SetColor( MCOLOR( 0x30000000));
+				pDC->FillRectangleW( (x*MGetWorkspaceWidth()), texty*MGetWorkspaceHeight()+1, 0.08*MGetWorkspaceWidth(), 7);
+
+				if ( bDraw)
+				{
+					float nValue = 0.08 * pQuestPlayerInfo->GetHP() / pQuestPlayerInfo->GetMaxHP();
+					pDC->SetColor( MCOLOR( 0x90FF0000));
+					pDC->FillRectangleW( (x*MGetWorkspaceWidth()), texty*MGetWorkspaceHeight()+1, nValue*MGetWorkspaceWidth(), 7);
+				}
+
+				if ( bDraw)
+					pDC->SetColor( MCOLOR( 0x4000FF00));
+				else
+					pDC->SetColor( MCOLOR( 0x30000000));
+				pDC->FillRectangleW( (x*MGetWorkspaceWidth()), texty*MGetWorkspaceHeight()+9, 0.08*MGetWorkspaceWidth(), 3);
+				if ( bDraw)
+				{
+					float nValue = 0.08 * pQuestPlayerInfo->GetAP() / pQuestPlayerInfo->GetMaxAP();
+					pDC->SetColor( MCOLOR( 0x9000FF00));
+					pDC->FillRectangleW( (x*MGetWorkspaceWidth()), texty*MGetWorkspaceHeight()+9, nValue*MGetWorkspaceWidth(), 3);
+				}
+
+				pDC->SetColor( tmpColor);
+
+				x=ITEM_XPOS[3];
+				int nKills = 0;
+				ZModule_QuestStatus* pMod = (ZModule_QuestStatus*)pQuestPlayerInfo->GetModule(ZMID_QUESTSTATUS);
+				if (pMod)
+					nKills = pMod->GetKills();
+				sprintf(szText,"%d", nKills);
+				TextRelative(pDC,x,texty,szText,true);
+			}
+		}
+		else
+		{
+			x=ITEM_XPOS[2];
+			sprintf(szText,"%d",pItem->nExp);
+			TextRelative(pDC,0.509f,texty,szText,true);
+
+			MCOLOR color = pDC->GetColor();
+
+			if ( ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DUEL)
+			{
+				if(!pItem->bDeath)
+					pDC->SetColor( 200, 0, 0);
+				else
+					pDC->SetColor( 120, 0, 0);
+			}
+
+
+			if(pItem->nKills == pItem->nDeaths)
+				pDC->SetColor(255, 191, 0);
+			else if(pItem->nKills > pItem->nDeaths)
+				pDC->SetColor(0, 255, 0);
+			else
+				pDC->SetColor(255, 0, 0);
+
+			x=ITEM_XPOS[3];
+			sprintf(szText,"%d",pItem->nKills);
+			TextRelative(pDC,0.569f,texty,szText,true);
+
+			if(pItem->nKills == pItem->nDeaths)
+				pDC->SetColor(255, 191, 0);
+			else if(pItem->nKills < pItem->nDeaths)
+				pDC->SetColor(0, 255, 0);
+			else if(pItem->nKills > pItem->nDeaths)
+				pDC->SetColor(255, 0, 0);
+			else
+				pDC->SetColor( color);
+		}
+
+		x=ITEM_XPOS[4];
+		sprintf(szText,"%d",pItem->nDeaths);
+		TextRelative(pDC,0.603f,texty,szText,true);
+
+		//////////
+		int p = pItem->nPing;
+		if(p <= 110)
+			pDC->SetColor(0, 255, 0);
+		else if(p <= 210)
+			pDC->SetColor(255, 255, 0);
+		else
+			pDC->SetColor(255, 0, 0);
+		if(p != 999 && p > 0 && pItem->uidUID != ZGetGameClient()->GetPlayerUID())
+		{
+			MiPing += p;
+			total++;
+		}
+		if(pItem->uidUID == ZGetGameClient()->GetPlayerUID())
+			pItem->nPing = ZGetGameClient()->MiPing;
+		//////////
+
+		x=ITEM_XPOS[9];
+		sprintf(szText,"%d",pItem->nPing);		
+		TextRelative(pDC,0.640f,texty,szText,true);
+		
+/*		x=ITEM_XPOS[7];
+		sprintf(szText,"%d",pItem->nDamageCaused);
+		TextRelative(pDC,x,texty,szText,true);
+	
+*/
+
+//		y+=linespace;
+	}
+
+	/////////// miPing //////
+	if(total > 2)
+		MiPing /= total;
+	ZGetGameClient()->MiPing = MiPing;
+	///////////////////////
+
+	while(!items.empty())
+	{
+		delete *items.begin();
+		items.erase(items.begin());
+	}
 }
 
 
 
-// ÆÀ / »ı»ç / ¼ºÀûÀÌ ¼ÒÆ®ÀÇ ±âÁØÀÌ´Ù
+// Ã†Ã€ / Â»Ã½Â»Ã§ / Â¼ÂºÃ€Ã»Ã€ÃŒ Â¼Ã’Ã†Â®Ã€Ã‡ Â±Ã¢ÃÃ˜Ã€ÃŒÂ´Ã™
 bool CompareZResultBoardItem(ZResultBoardItem* a,ZResultBoardItem* b) {
 	if( a->nScore > b->nScore) return true;
 	else if( a->nScore < b->nScore) return false;
@@ -2847,7 +3430,7 @@ void AddClanResultInfoLose( const char* szName, int nScore, int nKill, int nDeat
 	}
 }
 
-// °á°ú È­¸éÀ» ±×¸°´Ù.
+// Â°Ã¡Â°Ãº ÃˆÂ­Â¸Ã©Ã€Â» Â±Ã—Â¸Â°Â´Ã™.
 void ZCombatInterface::GetResultInfo( void)
 {
 	// Sort list
@@ -3005,15 +3588,15 @@ void ZCombatInterface::GetResultInfo( void)
 	szFileName[0] = 0;
 
 	// Set player info
-	if ( ZGetGameTypeManager()->IsQuestOnly(ZGetGame()->GetMatch()->GetMatchType()))	// Äù½ºÆ®ÀÌ¸é...
+	if ( ZGetGameTypeManager()->IsQuestOnly(ZGetGame()->GetMatch()->GetMatchType()))	// Ã„Ã¹Â½ÂºÃ†Â®Ã€ÃŒÂ¸Ã©...
 	{
-		// ÃÊ±â UI ¼³Á¤
+		// ÃƒÃŠÂ±Ã¢ UI Â¼Â³ÃÂ¤
 		strcpy( szFileName, "interface/rstbg_quest.jpg");
 		pWidget = ZApplication::GetGameInterface()->GetIDLResource()->FindWidget( "QuestResult");
 		if ( pWidget)
 			pWidget->Show( true);
 
-		//  °æÇèÄ¡ ¹× ¹Ù¿îÆ¼ ÃÊ±âÈ­
+		//  Â°Ã¦Ã‡Ã¨Ã„Â¡ Â¹Ã— Â¹Ã™Â¿Ã®Ã†Â¼ ÃƒÃŠÂ±Ã¢ÃˆÂ­
 		ZBmNumLabel* pBmNumLabel = (ZBmNumLabel*)ZApplication::GetGameInterface()->GetIDLResource()->FindWidget( "QuestResult_GetPlusXP");
 		if ( pBmNumLabel)
 			pBmNumLabel->SetNumber( 0, false);
@@ -3028,15 +3611,15 @@ void ZCombatInterface::GetResultInfo( void)
 			pBmNumLabel->SetNumber( 0, false);
 	}
 
-	else if ( ZGetGameTypeManager()->IsSurvivalOnly(ZGetGame()->GetMatch()->GetMatchType()))	// ¼­¹ÙÀÌ¹úÀÌ¸é...
+	else if ( ZGetGameTypeManager()->IsSurvivalOnly(ZGetGame()->GetMatch()->GetMatchType()))	// Â¼Â­Â¹Ã™Ã€ÃŒÂ¹ÃºÃ€ÃŒÂ¸Ã©...
 	{
-		// ÃÊ±â UI ¼³Á¤
+		// ÃƒÃŠÂ±Ã¢ UI Â¼Â³ÃÂ¤
 		strcpy( szFileName, "interface/rstbg_survival.jpg");
 		pWidget = ZApplication::GetGameInterface()->GetIDLResource()->FindWidget( "SurvivalResult");
 		if ( pWidget)
 			pWidget->Show( true);
 
-		//  °æÇèÄ¡ ¹× ¹Ù¿îÆ¼ ÃÊ±âÈ­
+		//  Â°Ã¦Ã‡Ã¨Ã„Â¡ Â¹Ã— Â¹Ã™Â¿Ã®Ã†Â¼ ÃƒÃŠÂ±Ã¢ÃˆÂ­
 		ZBmNumLabel* pBmNumLabel = (ZBmNumLabel*)ZApplication::GetGameInterface()->GetIDLResource()->FindWidget( "SurvivalResult_GetReachedRound");
 		if ( pBmNumLabel)
 			pBmNumLabel->SetNumber( 0, false);
@@ -3051,9 +3634,9 @@ void ZCombatInterface::GetResultInfo( void)
 			pBmNumLabel->SetNumber( 0, false);
 	}
 
-	else if ( ZGetGameClient()->IsLadderGame())		// Å¬·£ÀüÀÌ¸é...
+	else if ( ZGetGameClient()->IsLadderGame())		// Ã…Â¬Â·Â£Ã€Ã¼Ã€ÃŒÂ¸Ã©...
 	{
-		// ÃÊ±â UI ¼³Á¤
+		// ÃƒÃŠÂ±Ã¢ UI Â¼Â³ÃÂ¤
 		strcpy( szFileName, "interface/rstbg_clan.jpg");
 		pWidget = ZApplication::GetGameInterface()->GetIDLResource()->FindWidget( "ClanResult");
 		if ( pWidget)
@@ -3119,7 +3702,7 @@ void ZCombatInterface::GetResultInfo( void)
 			}
 
 
-			// °ÔÀÓ¹æ Ç¥½Ã Á¤·Ä
+			// Â°Ã”Ã€Ã“Â¹Ã¦ Ã‡Â¥Â½Ãƒ ÃÂ¤Â·Ã„
 			int nStartX = 0;
 			int nStartY = 0;
 			char szName[ 256];
@@ -3150,7 +3733,7 @@ void ZCombatInterface::GetResultInfo( void)
 		}
 
 
-		// ÆÀ Á¤º¸ Ãß°¡
+		// Ã†Ã€ ÃÂ¤ÂºÂ¸ ÃƒÃŸÂ°Â¡
 		for ( ZResultBoardList::iterator i = m_ResultItems.begin(); i != m_ResultItems.end();  i++)
 		{
 			ZResultBoardItem *pItem = *i;
@@ -3165,14 +3748,14 @@ void ZCombatInterface::GetResultInfo( void)
 				AddClanResultInfoLose( pItem->szName, pItem->nScore, pItem->nKills, pItem->nDeaths, pItem->bMyChar, pItem->bGameRoomUser);
 		}
 	}
-	else if(ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DUELTOURNAMENT)	// µà¾óÅä³Ê¸ÕÆ®¸é..
+	else if(ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DUELTOURNAMENT)	// ÂµÃ Â¾Ã³Ã…Ã¤Â³ÃŠÂ¸Ã•Ã†Â®Â¸Ã©..
 	{
 		strcpy( szFileName, "interface/rstbg_deathmatch.jpg");
 		pWidget = ZApplication::GetGameInterface()->GetIDLResource()->FindWidget( "DuelTournamentResult");
 		if ( pWidget)
 			pWidget->Show( true);
 
-		// ¿ì½ÂÀÚ Ä³¸¯ÅÍ ºä º¸¿©ÁÖ±â
+		// Â¿Ã¬Â½Ã‚Ã€Ãš Ã„Â³Â¸Â¯Ã…Ã ÂºÃ¤ ÂºÂ¸Â¿Â©ÃÃ–Â±Ã¢
 		ZCharacterView* pCharView = GetWidgetCharViewResult();
 		if (pCharView) {
 			MUID uidChampion = ((ZRuleDuelTournament*)ZGetGame()->GetMatch()->GetRule())->GetChampion();
@@ -3181,10 +3764,10 @@ void ZCombatInterface::GetResultInfo( void)
 	}
 	else
 	{
-		// ÃÊ±â UI ¼³Á¤
+		// ÃƒÃŠÂ±Ã¢ UI Â¼Â³ÃÂ¤
 		if ( (ZGetLocale()->GetCountry() == MC_US) || (ZGetLocale()->GetCountry() == MC_BRAZIL) || (ZGetLocale()->GetCountry() == MC_INDIA))
 		{
-			// ÀÎÅÍ³»¼Å³Î ¹× ºê¶óÁú ¹öÁ¯ ÇÑÁ¤ ¿É¼Ç
+			// Ã€ÃÃ…ÃÂ³Â»Â¼Ã…Â³Ã Â¹Ã— ÂºÃªÂ¶Ã³ÃÃº Â¹Ã¶ÃÂ¯ Ã‡Ã‘ÃÂ¤ Â¿Ã‰Â¼Ã‡
 			if ( (rand() % 2))
 				strcpy( szFileName, "interface/rstbg_deathmatch.jpg");
 			else
@@ -3244,7 +3827,7 @@ void ZCombatInterface::GetResultInfo( void)
 					pWidget->SetOpacity( 110);
 
 
-					// Á» ¾ÈÁÁÀº À§Ä¡Áö¸¸...  -_-;
+					// ÃÂ» Â¾ÃˆÃÃÃ€Âº Ã€Â§Ã„Â¡ÃÃ¶Â¸Â¸...  -_-;
 					sprintf( szName, "CombatResult_GameRoomImg%02d", i);
 					pWidget = ZApplication::GetGameInterface()->GetIDLResource()->FindWidget( szName);
 					if ( pWidget)
@@ -3263,9 +3846,9 @@ void ZCombatInterface::GetResultInfo( void)
 		}
 
 
-		// ÀÌ¹ÌÁö ¼³Á¤
+		// Ã€ÃŒÂ¹ÃŒÃÃ¶ Â¼Â³ÃÂ¤
 		MPicture* pPicture;
-		if (ZGetGameTypeManager()->IsTeamExtremeGame(ZGetGame()->GetMatch()->GetMatchType()))	// À¸¾Æ¾Æ¾Æ¾Ç
+		if (ZGetGameTypeManager()->IsTeamExtremeGame(ZGetGame()->GetMatch()->GetMatchType()))	// Ã€Â¸Â¾Ã†Â¾Ã†Â¾Ã†Â¾Ã‡
 		{
 			pPicture = (MPicture*)ZApplication::GetGameInterface()->GetIDLResource()->FindWidget( "CombatResult_Finish");
 			if ( pPicture)
@@ -3297,7 +3880,7 @@ void ZCombatInterface::GetResultInfo( void)
 				pPicture->Show( true);
 			}
 		}
-		else if ( ZGetGameInterface()->m_bTeamPlay)		// ÆÀÀüÀÌ¸é...
+		else if ( ZGetGameInterface()->m_bTeamPlay)		// Ã†Ã€Ã€Ã¼Ã€ÃŒÂ¸Ã©...
 		{
 			pPicture = (MPicture*)ZApplication::GetGameInterface()->GetIDLResource()->FindWidget( "CombatResult_Finish");
 			if ( pPicture)
@@ -3329,7 +3912,7 @@ void ZCombatInterface::GetResultInfo( void)
 				pPicture->Show( true);
 			}
 		}
-		else										// °³ÀÎÀüÀÌ¸é...
+		else										// Â°Â³Ã€ÃÃ€Ã¼Ã€ÃŒÂ¸Ã©...
 		{
 			pPicture = (MPicture*)ZApplication::GetGameInterface()->GetIDLResource()->FindWidget( "CombatResult_Finish");
 			if ( pPicture)
@@ -3342,12 +3925,12 @@ void ZCombatInterface::GetResultInfo( void)
 	}
 
 
-	// ¹è°æÀÌ¹ÌÁö ·Îµù
+	// Â¹Ã¨Â°Ã¦Ã€ÃŒÂ¹ÃŒÃÃ¶ Â·ÃÂµÃ¹
 	m_pResultBgImg = new MBitmapR2;
 	((MBitmapR2*)m_pResultBgImg)->Create( "resultbackground.png", RGetDevice(), szFileName);
 	if ( m_pResultBgImg != NULL)
 	{
-		// ÀĞ¾î¿Â ºñÆ®¸Ê ÀÌ¹ÌÁö Æ÷ÀÎÅÍ¸¦ ÇØ´ç À§Á¬¿¡ ³Ñ°ÜÁà¼­ Ç¥½ÃÇÑ´Ù
+		// Ã€ÃÂ¾Ã®Â¿Ã‚ ÂºÃ±Ã†Â®Â¸ÃŠ Ã€ÃŒÂ¹ÃŒÃÃ¶ Ã†Ã·Ã€ÃÃ…ÃÂ¸Â¦ Ã‡Ã˜Â´Ã§ Ã€Â§ÃÂ¬Â¿Â¡ Â³Ã‘Â°ÃœÃÃ Â¼Â­ Ã‡Â¥Â½ÃƒÃ‡Ã‘Â´Ã™
 		MPicture* pBgImage = (MPicture*)ZApplication::GetGameInterface()->GetIDLResource()->FindWidget( "GameResult_Background");
 		if ( pBgImage)
 			pBgImage->SetBitmap( m_pResultBgImg->GetSourceBitmap());
@@ -3357,10 +3940,10 @@ void ZCombatInterface::GetResultInfo( void)
 void ZCombatInterface::DrawResultBoard(MDrawContext* pDC)
 {
 ////////////////////////////////////////////////////////////////////////
-// ÀÌÇÔ¼ö´Â È£ÃâÇÏ´Â °÷µµ ¾ø´Ù. ¹ö¸®´Â ÇÔ¼öÀÎ°Í °°´Ù. ½ÇÁ¦·Î´Â GetResultInfo()¿¡¼­ ±×¸®´Â µí.
+// Ã€ÃŒÃ‡Ã”Â¼Ã¶Â´Ã‚ ÃˆÂ£ÃƒÃ¢Ã‡ÃÂ´Ã‚ Â°Ã·ÂµÂµ Â¾Ã¸Â´Ã™. Â¹Ã¶Â¸Â®Â´Ã‚ Ã‡Ã”Â¼Ã¶Ã€ÃÂ°Ã Â°Â°Â´Ã™. Â½Ã‡ÃÂ¦Â·ÃÂ´Ã‚ GetResultInfo()Â¿Â¡Â¼Â­ Â±Ã—Â¸Â®Â´Ã‚ ÂµÃ­.
 ////////////////////////////////////////////////////////////////////////
 
-	// Å¬·£ÀüÀÏ¶§ ³» ÆÀÀ» ¿ŞÆí¿¡, »ó´ëÆÀÀ» ¿À¸¥ÂÊ¿¡ º¸¿©ÁØ´Ù
+	// Ã…Â¬Â·Â£Ã€Ã¼Ã€ÃÂ¶Â§ Â³Â» Ã†Ã€Ã€Â» Â¿ÃÃ†Ã­Â¿Â¡, Â»Ã³Â´Ã«Ã†Ã€Ã€Â» Â¿Ã€Â¸Â¥Ã‚ÃŠÂ¿Â¡ ÂºÂ¸Â¿Â©ÃÃ˜Â´Ã™
 
 	bool bClanGame = ZGetGameClient()->IsLadderGame();
 //	bool bClanGame = true;
@@ -3398,7 +3981,7 @@ void ZCombatInterface::DrawResultBoard(MDrawContext* pDC)
 			}else
 				nLeft = (nRed==nBlue) ? 1 : (nRed<nBlue) ? 0 : 2;
 			
-			// ¿À¸¥ÂÊÀº ¿ŞÂÊÀÇ ¹İ´ë
+			// Â¿Ã€Â¸Â¥Ã‚ÃŠÃ€Âº Â¿ÃÃ‚ÃŠÃ€Ã‡ Â¹ÃÂ´Ã«
 			nRight = 2 - nLeft;
 
 			m_pResultLeft = ZGetScreenEffectManager()->CreateScreenEffect(szEffectNames[nLeft],
@@ -3418,7 +4001,7 @@ void ZCombatInterface::DrawResultBoard(MDrawContext* pDC)
 
 	MFont *pFont=GetGameFont();
 	pDC->SetFont(pFont);
-	pFont=pDC->GetFont();	// ¸¸¾à ÆùÆ®°¡ ¾øÀ¸¸é ´Ù½Ã µğÆúÆ® ÆùÆ®¸¦ ¾ò´Â´Ù
+	pFont=pDC->GetFont();	// Â¸Â¸Â¾Ã  Ã†Ã¹Ã†Â®Â°Â¡ Â¾Ã¸Ã€Â¸Â¸Ã© Â´Ã™Â½Ãƒ ÂµÃ°Ã†ÃºÃ†Â® Ã†Ã¹Ã†Â®Â¸Â¦ Â¾Ã²Â´Ã‚Â´Ã™
 
 	MCOLOR opacity=MCOLOR(0,0,0,255*fOpacity);
 	pDC->SetOpacity(255*fOpacity);
@@ -3430,13 +4013,13 @@ void ZCombatInterface::DrawResultBoard(MDrawContext* pDC)
 	x=0.026f;
 	y=0.107f;
 
-	const float fHeight=0.651f;	// °ø°£ÀÇ ³ôÀÌ
+	const float fHeight=0.651f;	// Â°Ã¸Â°Â£Ã€Ã‡ Â³Ã´Ã€ÃŒ
 
-	// ±×¸±¼öÀÖ´Â ÃÖ´ëÁÙ¼ö ÁÙ°£°İÀº 150%
+	// Â±Ã—Â¸Â±Â¼Ã¶Ã€Ã–Â´Ã‚ ÃƒÃ–Â´Ã«ÃÃ™Â¼Ã¶ ÃÃ™Â°Â£Â°ÃÃ€Âº 150%
 //	int nMaxLineCount=int(fHeight*RGetScreenHeight()/((float)pFont->GetHeight()*1.5f));
 	int nMaxLineCount = 16;
 
-	// ÇÑÁÙ»çÀÌÀÇ °£°İ(³ôÀÌ)
+	// Ã‡Ã‘ÃÃ™Â»Ã§Ã€ÃŒÃ€Ã‡ Â°Â£Â°Ã(Â³Ã´Ã€ÃŒ)
 	float linespace=fHeight/(float)nMaxLineCount;
 
 	m_ResultItems.sort(CompareZResultBoardItem);
@@ -3444,18 +4027,18 @@ void ZCombatInterface::DrawResultBoard(MDrawContext* pDC)
 	/*
 	m_ResultItems.clear();
 	g_pGame->m_pMyCharacter->SetTeamID(MMT_RED);
-	m_ResultItems.push_back(new ZResultBoardItem("test1","Áö¿ÁÀÇ¹ßÂ÷±â",MMT_RED,0,0,0));
-	m_ResultItems.push_back(new ZResultBoardItem("test2","Áö¿ÁÀÇ¹ßÂ÷±â",MMT_RED,0,0,0));
-	m_ResultItems.push_back(new ZResultBoardItem("test3","Áö¿ÁÀÇ¹ßÂ÷±â",MMT_RED,0,0,0));
-	m_ResultItems.push_back(new ZResultBoardItem("test4","Áö¿ÁÀÇ¹ßÂ÷±â",MMT_RED,0,0,0));
-	m_ResultItems.push_back(new ZResultBoardItem("test5","Áö¿ÁÀÇ¹ßÂ÷±â",MMT_RED,0,0,0));
-	m_ResultItems.push_back(new ZResultBoardItem("test6","Áö¿ÁÀÇ¹ßÂ÷±â",MMT_RED,0,0,0));
-	m_ResultItems.push_back(new ZResultBoardItem("test7","Áö¿ÁÀÇ¹ßÂ÷±â",MMT_RED,0,0,0));
-	m_ResultItems.push_back(new ZResultBoardItem("test8","Áö¿ÁÀÇ¹ßÂ÷±â",MMT_RED,0,0,0));
-	m_ResultItems.push_back(new ZResultBoardItem("test1","´ë·«³¶ÆĞ",MMT_BLUE,0,0,0));
-	m_ResultItems.push_back(new ZResultBoardItem("test2","´ë·«³¶ÆĞ",MMT_BLUE,0,0,0));
-	m_ResultItems.push_back(new ZResultBoardItem("test3","´ë·«³¶ÆĞ",MMT_BLUE,0,0,0));
-	m_ResultItems.push_back(new ZResultBoardItem("test4","´ë·«³¶ÆĞ",MMT_BLUE,0,0,0,true));
+	m_ResultItems.push_back(new ZResultBoardItem("test1","ÃÃ¶Â¿ÃÃ€Ã‡Â¹ÃŸÃ‚Ã·Â±Ã¢",MMT_RED,0,0,0));
+	m_ResultItems.push_back(new ZResultBoardItem("test2","ÃÃ¶Â¿ÃÃ€Ã‡Â¹ÃŸÃ‚Ã·Â±Ã¢",MMT_RED,0,0,0));
+	m_ResultItems.push_back(new ZResultBoardItem("test3","ÃÃ¶Â¿ÃÃ€Ã‡Â¹ÃŸÃ‚Ã·Â±Ã¢",MMT_RED,0,0,0));
+	m_ResultItems.push_back(new ZResultBoardItem("test4","ÃÃ¶Â¿ÃÃ€Ã‡Â¹ÃŸÃ‚Ã·Â±Ã¢",MMT_RED,0,0,0));
+	m_ResultItems.push_back(new ZResultBoardItem("test5","ÃÃ¶Â¿ÃÃ€Ã‡Â¹ÃŸÃ‚Ã·Â±Ã¢",MMT_RED,0,0,0));
+	m_ResultItems.push_back(new ZResultBoardItem("test6","ÃÃ¶Â¿ÃÃ€Ã‡Â¹ÃŸÃ‚Ã·Â±Ã¢",MMT_RED,0,0,0));
+	m_ResultItems.push_back(new ZResultBoardItem("test7","ÃÃ¶Â¿ÃÃ€Ã‡Â¹ÃŸÃ‚Ã·Â±Ã¢",MMT_RED,0,0,0));
+	m_ResultItems.push_back(new ZResultBoardItem("test8","ÃÃ¶Â¿ÃÃ€Ã‡Â¹ÃŸÃ‚Ã·Â±Ã¢",MMT_RED,0,0,0));
+	m_ResultItems.push_back(new ZResultBoardItem("test1","Â´Ã«Â·Â«Â³Â¶Ã†Ã",MMT_BLUE,0,0,0));
+	m_ResultItems.push_back(new ZResultBoardItem("test2","Â´Ã«Â·Â«Â³Â¶Ã†Ã",MMT_BLUE,0,0,0));
+	m_ResultItems.push_back(new ZResultBoardItem("test3","Â´Ã«Â·Â«Â³Â¶Ã†Ã",MMT_BLUE,0,0,0));
+	m_ResultItems.push_back(new ZResultBoardItem("test4","Â´Ã«Â·Â«Â³Â¶Ã†Ã",MMT_BLUE,0,0,0,true));
 	*/
 
 	if(bClanGame)
@@ -3465,7 +4048,7 @@ void ZCombatInterface::DrawResultBoard(MDrawContext* pDC)
 
 		y=0.387f;
 
-		// TODO : Å¬·£ ÀÌ¸§¹× emblem Ãâ·ÂÀº stagesetting È¤Àº matchÂÊ¿¡ Á¤º¸°¡ Ãß°¡µÇ´Â´ë·Î ¼öÁ¤
+		// TODO : Ã…Â¬Â·Â£ Ã€ÃŒÂ¸Â§Â¹Ã— emblem ÃƒÃ¢Â·Ã‚Ã€Âº stagesetting ÃˆÂ¤Ã€Âº matchÃ‚ÃŠÂ¿Â¡ ÃÂ¤ÂºÂ¸Â°Â¡ ÃƒÃŸÂ°Â¡ÂµÃ‡Â´Ã‚Â´Ã«Â·Ã Â¼Ã¶ÃÂ¤
 		for(ZResultBoardList::iterator i=m_ResultItems.begin();i!=m_ResultItems.end();i++)
 		{
 			ZResultBoardItem *pItem=*i;
@@ -3523,7 +4106,7 @@ void ZCombatInterface::DrawResultBoard(MDrawContext* pDC)
 				clanx = clancenter - .5f*(float)pClanFont->GetWidth(szText)/(float)MGetWorkspaceWidth();
 				TextRelative(pDC,clanx,0.2,szText);
 
-				// Ä®·³Ç¥½Ã
+				// Ã„Â®Â·Â³Ã‡Â¥Â½Ãƒ
 				textcolor = TEXT_COLOR_TITLE;
 				textcolor.a=opacity.a;
 				pDC->SetColor(textcolor);
@@ -3548,7 +4131,7 @@ void ZCombatInterface::DrawResultBoard(MDrawContext* pDC)
 			pDC->SetColor(textcolor);
 			pDC->SetFont(pFont);
 
-			// ±ÛÀÚ¸¦ °¡¿îµ¥ Á¤·ÄÇÏ±â À§ÇØ ..
+			// Â±Ã›Ã€ÃšÂ¸Â¦ Â°Â¡Â¿Ã®ÂµÂ¥ ÃÂ¤Â·Ã„Ã‡ÃÂ±Ã¢ Ã€Â§Ã‡Ã˜ ..
 			float texty= itemy + (linespace - (float)pFont->GetHeight() / (float)RGetScreenHeight())*.5f;
 			TextRelative(pDC,x,texty,pItem->szName);
 
@@ -3575,7 +4158,7 @@ void ZCombatInterface::DrawResultBoard(MDrawContext* pDC)
 			nCount++;
 
 			/*
-			// ¸¶Áö¸·ÁÙÀÌ¸é ... À»Âï°í ³Ñ¾î°£´Ù
+			// Â¸Â¶ÃÃ¶Â¸Â·ÃÃ™Ã€ÃŒÂ¸Ã© ... Ã€Â»Ã‚Ã¯Â°Ã­ Â³Ã‘Â¾Ã®Â°Â£Â´Ã™
 			if(nCount==nMaxLineCount)
 			{
 			pDC->SetColor(MCOLOR(255,255,255,opacity.a));
@@ -3585,7 +4168,7 @@ void ZCombatInterface::DrawResultBoard(MDrawContext* pDC)
 			}
 			*/
 
-			// ¹è°æ »ö±òÀ» °áÁ¤ÇÑ´Ù
+			// Â¹Ã¨Â°Ã¦ Â»Ã¶Â±Ã²Ã€Â» Â°Ã¡ÃÂ¤Ã‡Ã‘Â´Ã™
 			MCOLOR backgroundcolor= (nCount%2==0) ? BACKGROUND_COLOR1 : BACKGROUND_COLOR2;
 			if(pItem->bMyChar) backgroundcolor = 
 				(pItem->nTeam==MMT_RED) ? BACKGROUND_COLOR_MYCHAR_RED_TEAM :
@@ -3603,7 +4186,7 @@ void ZCombatInterface::DrawResultBoard(MDrawContext* pDC)
 				0.960*MGetWorkspaceWidth(),y2-y1);
 			//		backgroundy=newbackgroundy;
 
-			// ±ÛÀÚ »ö±òÀ» °áÁ¤ÇÑ´Ù.. 
+			// Â±Ã›Ã€Ãš Â»Ã¶Â±Ã²Ã€Â» Â°Ã¡ÃÂ¤Ã‡Ã‘Â´Ã™.. 
 			MCOLOR textcolor= TEXT_COLOR_DEATH_MATCH ;
 
 			if(pItem->nTeam==MMT_RED)		// red
@@ -3618,7 +4201,7 @@ void ZCombatInterface::DrawResultBoard(MDrawContext* pDC)
 			textcolor.a=opacity.a;
 			pDC->SetColor(textcolor);
 
-			// ±ÛÀÚ¸¦ °¡¿îµ¥ Á¤·ÄÇÏ±â À§ÇØ ..
+			// Â±Ã›Ã€ÃšÂ¸Â¦ Â°Â¡Â¿Ã®ÂµÂ¥ ÃÂ¤Â·Ã„Ã‡ÃÂ±Ã¢ Ã€Â§Ã‡Ã˜ ..
 			float texty= itemy + (linespace - (float)pFont->GetHeight() / (float)RGetScreenHeight())*.5f;
 
 			x=0.025f;
@@ -3773,7 +4356,7 @@ void ZCombatInterface::OnFinish()
 
 	m_Observer.Show(false);
 
-	m_nReservedOutTime = timeGetTime() + 5000;		// 5ÃÊ ÈÄ¿¡ ÀÚµ¿ Á¾·á.
+	m_nReservedOutTime = timeGetTime() + 5000;		// 5ÃƒÃŠ ÃˆÃ„Â¿Â¡ Ã€ÃšÂµÂ¿ ÃÂ¾Â·Ã¡.
 	m_bOnFinish = true;
 }
 
@@ -3839,8 +4422,8 @@ void ZCombatInterface::GameCheckPickCharacter()
 		if(pMyChar->m_pVMesh->m_vRotXYZ.y < -25.f)
 			bPick = true;
 
-		if( pMyChar->IsMan() ) { // ¸ğµ¨ÀÌ ³²ÀÚ°í
-			if( pMyChar->m_pVMesh->m_vRotXYZ.x < -20.f) {//¿À¸¥ÂÊÀ¸·Î ÀÌµ¿Áß¿¡
+		if( pMyChar->IsMan() ) { // Â¸Ã°ÂµÂ¨Ã€ÃŒ Â³Â²Ã€ÃšÂ°Ã­
+			if( pMyChar->m_pVMesh->m_vRotXYZ.x < -20.f) {//Â¿Ã€Â¸Â¥Ã‚ÃŠÃ€Â¸Â·Ã Ã€ÃŒÂµÂ¿ÃÃŸÂ¿Â¡
 				if( RCameraDirection.z < -0.2f)
 					bPick = true;
 			}
@@ -3931,7 +4514,7 @@ void ZCombatInterface::ShowChatOutput(bool bShow)
 
 void ZCombatInterface::DrawAfterWidgets( MDrawContext* pDC )
 {
-	// µà¾óÅä³Ê¸ÕÆ® °á°úÃ¢¿ë ´ëÁøÇ¥¸¦ ±×¸°´Ù.
+	// ÂµÃ Â¾Ã³Ã…Ã¤Â³ÃŠÂ¸Ã•Ã†Â® Â°Ã¡Â°ÃºÃƒÂ¢Â¿Ã« Â´Ã«ÃÃ¸Ã‡Â¥Â¸Â¦ Â±Ã—Â¸Â°Â´Ã™.
 	if(m_bShowResult)
 		if (ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DUELTOURNAMENT)
 			((ZRuleDuelTournament*)ZGetGame()->GetMatch()->GetRule())->ShowMatchOrder(pDC, true, m_fElapsed);
