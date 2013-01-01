@@ -235,6 +235,8 @@ bool ZConfiguration::LoadLocale(const char* szFileName)
 			m_Locale.strDefaultLanguage	= szLanguage;
 			m_Locale.nMaxPlayers		= nMaxPlayers;
 
+		    strcpy(m_Etc.szLanguage, szLanguage);
+
 			mlog( "Country : (%s), Language : (%s)\n", szCountry, szLanguage );
 		}
 	}
@@ -595,7 +597,7 @@ bool ZConfiguration::LoadConfig(const char* szFileName)
 			childElement.GetChildContents(&m_Etc.nCrossHair, ZTOK_ETC_CROSSHAIR);
 			childElement.GetChildContents(&m_Etc.nFrameLimit_perSecond, ZTOK_ETC_FRAMELIMIT_PERSECOND);
 
-			m_Etc.szLanguage[0] = 0;
+			//m_Etc.szLanguage[0] = 0;
 
 #ifdef _MULTILANGUAGE
 	#ifdef LOCALE_NHNUSA

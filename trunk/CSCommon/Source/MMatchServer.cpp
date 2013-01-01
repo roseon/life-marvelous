@@ -4128,6 +4128,7 @@ void MMatchServer::Log(unsigned int nLogLevel, const char* szLog)
 		strcpy(szTemp, szTime);
 		strcat(szTemp, szLog);
 		strcat(szTemp, "\n");
-		mlog(szTemp);
+		//mlog(szTemp);
+		mlog("%s", szTemp);
 	}
 }
