@@ -2692,6 +2692,14 @@ void ZCombatInterface::DrawScoreBoardSolo(MDrawContext* pDC){
 	ZGetScreenEffectManager()->DrawScoreBoardSolo();
 
 	ZSCOREBOARDITEMLIST items;
+		//custom
+	MFont *pTestFont2=MFontManager::Get("FONTb11b");
+	if (pTestFont2 == NULL) _ASSERT(0);
+	pDC->SetFont(pTestFont2);
+	pDC->SetColor(MCOLOR(TEXT_COLOR_CLAN_NAME));
+	char szText[256];
+	sprintf(szText, "%03d", ZGetGameClient()->GetStageNumber());
+	TextRelative(pDC,0.474f,0.909f,szText);
 
 	MFont *pFont=GetGameFont();
 	pDC->SetFont(pFont);
@@ -2704,9 +2712,10 @@ void ZCombatInterface::DrawScoreBoardSolo(MDrawContext* pDC){
 													 ZGetGame()->m_pMyCharacter->GetStatus().Ref().LineTest*1.f);	
 	TextRelative(pDC, ZGetGame()->m_pMyCharacter->GetStatus().Ref().XTest, ZGetGame()->m_pMyCharacter->GetStatus().Ref().YTest, szMsgTest);
 
-	char szText[256];
+	
 
-	sprintf(szText, "(%03d) %s", ZGetGameClient()->GetStageNumber(), ZGetGameClient()->GetStageName());
+//	sprintf(szText, "(%03d) %s", ZGetGameClient()->GetStageNumber(), ZGetGameClient()->GetStageName());
+	sprintf(szText, "%s",ZGetGameClient()->GetStageName());
 
 	TextRelative(pDC,0.316f,0.145f,szText);
 
