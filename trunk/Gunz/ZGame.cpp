@@ -3036,6 +3036,8 @@ void ZGame::OnPeerShotSp(MUID& uid, float fShotTime, rvector& pos, rvector& dir,
 			//if(pSES!=NULL) ZApplication::GetSoundEngine()->PlaySE(pSES, pos.x, pos.y, pos.z ,pOwnerCharacter==m_pMyCharacter);
 
 			//m_WeaponManager.AddRocket(pos, dir, pOwnerCharacter);
+			/*
+			//ini
 			ZPICKINFO pickinfo;
 			MPOINT Cp = ZGetCombatInterface()->GetCrosshairPoint();
 			rvector pos2,dir2;
@@ -3057,12 +3059,15 @@ void ZGame::OnPeerShotSp(MUID& uid, float fShotTime, rvector& pos, rvector& dir,
 				}
 			}
 
-		
-			//ZBrain *zb = new ZBrain();
 			sk->Init(322,pOwnerCharacter);
+			m_WeaponManager.AddMagic(sk,pos, dir, pOwnerCharacter);
+			//end
+			*/
+			//ZBrain *zb = new ZBrain();
+			
 			//sk->GetTarget();
 		//	zb->GetUseableSkill( &nSkill, &uidTarget, &targetPosition)
-			m_WeaponManager.AddMagic(sk,pos, dir, pOwnerCharacter);
+			
 			//			m_WeaponManager.AddFireBall(pos,dir,pOwnerCharacter);
 			//			m_WeaponManager.AddIceMissile(pos,dir,pOwnerCharacter);
 			//			m_WeaponManager.AddMagicMissile(pos,dir,pOwnerCharacter);
@@ -3073,6 +3078,7 @@ void ZGame::OnPeerShotSp(MUID& uid, float fShotTime, rvector& pos, rvector& dir,
 			//		ZPostReload();
 			//	}
 			//}
+			m_WeaponManager.AddRocket(pos, dir, pOwnerCharacter);
 			if(Z_VIDEO_DYNAMICLIGHT) {
 				ZGetStencilLight()->AddLightSource( pos, 2.0f, 100 );
 			}
