@@ -1786,6 +1786,7 @@ void ZMyCharacter::ProcessShot()
 
 	MMatchItemDesc* pRangeDesc = pSelectedItem->GetDesc();
 	DWORD nWeaponDelay = pRangeDesc->m_nDelay.Ref();
+	nWeaponDelay = nWeaponDelay - nWeaponDelay*0.4;
 
 	// 단도의 딜레이는 끝난 시간을 기준으로 한다. 애니메이션이 끝날때 다시 세팅해준다.
 

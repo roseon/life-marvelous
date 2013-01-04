@@ -2102,7 +2102,7 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 		sprintf(szText, "%s", ZGetGameTypeManager()->GetGameTypeStr(ZGetGame()->GetMatch()->GetMatchType()));
 	//TextRelative(pDC,x,y,szText);
 	TextRelative(pDC,0.469f,0.139f,szTextRed);
-	TextRelative(pDC,0.515f,0.139f,szTextBlue);
+	TextRelative(pDC,0.521f,0.139f,szTextBlue);
 	y-=linespace2;
 
 
@@ -2699,7 +2699,7 @@ void ZCombatInterface::DrawScoreBoardSolo(MDrawContext* pDC){
 	pDC->SetColor(MCOLOR(TEXT_COLOR_CLAN_NAME));
 	char szText[256];
 	sprintf(szText, "%03d", ZGetGameClient()->GetStageNumber());
-	TextRelative(pDC,0.474f,0.909f,szText);
+	TextRelative(pDC,0.474f,0.911f,szText);
 
 	MFont *pFont=GetGameFont();
 	pDC->SetFont(pFont);
@@ -2804,7 +2804,7 @@ void ZCombatInterface::DrawScoreBoardSolo(MDrawContext* pDC){
 		else
 			sprintf( szText, "---");
 
-		TextRelative( pDC, x, y, szText);
+	//	TextRelative( pDC, x, y, szText);
 		y -= linespace2;
 
 		

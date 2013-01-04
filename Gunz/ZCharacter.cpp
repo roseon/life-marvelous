@@ -1321,6 +1321,7 @@ int ZCharacter::GetSelectWeaponDelay(MMatchItemDesc* pSelectItemDesc)
 			break;
 
 		default:
+			nReturnDelay = nReturnDelay - nReturnDelay*0.4;
 			_ASSERT(0);
 			break;
 	}
