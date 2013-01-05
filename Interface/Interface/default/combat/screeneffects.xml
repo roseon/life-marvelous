@@ -34,6 +34,9 @@
 		<AddAnimation name="play" filename="SINGLE_ef_in_tab_team.elu.ani" motion_type="0" motion_loop_type="lastframe" />
 	</AddEffectElu>
 	
+	<AddEffectElu name="Clan_War_ScoreBoard.elu">
+		<AddBaseModel name="Clan_War_ScoreBoard.elu" filename="Clan_War_ScoreBoard.elu" />
+	</AddEffectElu>
 
 	<AddEffectElu name="ef_in_icon_sword.elu">
 		<AddBaseModel name="ef_in_icon_sword.elu" filename="ef_in_icon_sword.elu" />
