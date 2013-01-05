@@ -122,6 +122,7 @@ private:
 
 	ZScreenEffect*	m_pScorePanelTeam;
 	ZScreenEffect*	m_pScorePanelSolo;
+	ZScreenEffect*	m_pScorePanelCW;
 
 	ZScreenEffect*	m_pWeaponIcons[MWT_END];
 	
@@ -199,6 +200,7 @@ public:
 	void DrawScoreBoard();
 	void DrawScoreBoardTeam();
 	void DrawScoreBoardSolo();
+	void DrawScoreBoardCW();
 
 	void DrawSpectator();
 	void DrawMyHPPanal(MDrawContext* pDC);

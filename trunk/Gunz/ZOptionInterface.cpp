@@ -967,9 +967,9 @@ bool ZOptionInterface::SaveInterfaceOption(void)
 		{
 			Z_ETC_DISABLESPECIAL = pDisableSpecial->GetCheck();
 
-				if (Z_ETC_DISABLESPECIAL)
+				/*if (Z_ETC_DISABLESPECIAL)
 					ZGetConfiguration()->GetEtc()->bDisableSpecial = true;
-				else
+				else*/
 					ZGetConfiguration()->GetEtc()->bDisableSpecial = false;
 		}
 

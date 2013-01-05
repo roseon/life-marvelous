@@ -342,6 +342,7 @@ ZScreenEffectManager::ZScreenEffectManager()
 	m_pScorePanel = NULL;
 	m_pScorePanelTeam = NULL;
 	m_pScorePanelSolo = NULL;
+	m_pScorePanelCW = NULL;
 
 	m_pBuffPanel = NULL;
 
@@ -391,6 +392,7 @@ void ZScreenEffectManager::Destroy()
 	SAFE_DELETE(m_pScorePanel);
 	SAFE_DELETE(m_pScorePanelTeam);
 	SAFE_DELETE(m_pScorePanelSolo);
+	SAFE_DELETE(m_pScorePanelCW);
 	SAFE_DELETE(m_pBuffPanel);
 
 	SAFE_DELETE(m_pReload);
@@ -495,6 +497,7 @@ bool ZScreenEffectManager::Create()
 	m_pScorePanel	= new ZScreenEffect(m_pEffectMeshMgr->Get("ef_in_tab.elu"));
 	m_pScorePanelTeam	= new ZScreenEffect(m_pEffectMeshMgr->Get("ef_in_tab_team.elu"));
 	m_pScorePanelSolo	= new ZScreenEffect(m_pEffectMeshMgr->Get("SINGLE_ef_in_tab_team.elu"));
+	m_pScorePanelCW	= new ZScreenEffect(m_pEffectMeshMgr->Get("Clan_War_ScoreBoard.elu"));
 
     m_pBuffPanel	= new ZScreenEffect(m_pEffectMeshMgr->Get("ef_in_tab.elu"));
 
@@ -1284,6 +1287,11 @@ void ZScreenEffectManager::DrawScoreBoardTeam()
 void ZScreenEffectManager::DrawScoreBoardSolo()
 {
 	m_pScorePanelSolo->Draw(0);
+}
+
+void ZScreenEffectManager::DrawScoreBoardCW()
+{
+	m_pScorePanelCW->Draw(0);
 }
 
 void ZScreenEffectManager::AddAlert(const rvector& vVictimPos, rvector& vVictimDir, rvector& vAttackerPos)
