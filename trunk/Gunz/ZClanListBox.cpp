@@ -61,15 +61,15 @@ void ZClanListBox::OnDraw( MDrawContext* pDC )
 				*/
 				// 대기중인 사람 수 ( x명 대기중 )
 				//ZGetGame()->m_pMyCharacter->GetUserName()
-				if(pInfo->nPlayers ==1){
+			/*	if(pInfo->nPlayers ==1){
 					char szBuffer[256];
 					sprintf(szBuffer,"%s esperando", ZGetMyInfo()->GetCharName());
 					pDC->Text((int)(fRatio*180) , (int)(y + fRatio*10) , szBuffer);
-				}else{
+				}else{*/
 					char szBuffer[256];
 					sprintf(szBuffer,ZMsg( MSG_LOBBY_WAITING ),pInfo->nPlayers );
 					pDC->Text((int)(fRatio*200) , (int)(y + fRatio*10) , szBuffer);
-				}
+			//	}
 
 			}
 		}
