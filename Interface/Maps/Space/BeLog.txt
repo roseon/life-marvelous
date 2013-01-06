@@ -1,0 +1,113 @@
+Starting BSP Export...
+object BSP_Object_model_0 : BSP_Object_model_0: 8512 ver / 1767 face 
+object BSP_Object_model_1 : BSP_Object_model_1: 320 ver / 80 face 
+object BSP_Object_model_2 : BSP_Object_model_2: 240 ver / 60 face 
+object BSP_Object_model_3 : BSP_Object_model_3: 320 ver / 80 face 
+object BSP_Object_model_4 : BSP_Object_model_4: 240 ver / 60 face 
+object BSP_Object_model_5 : BSP_Object_model_5: 48 ver / 12 face 
+object BSP_Object_model_6 : BSP_Object_model_6: 248 ver / 54 face 
+object BSP_Object_model_7 : BSP_Object_model_7: 304 ver / 74 face 
+object BSP_Object_model_8 : BSP_Object_model_8: 296 ver / 68 face 
+object BSP_Object_model_9 : BSP_Object_model_9: 40 ver / 9 face 
+object BSP_Object_model_10 : BSP_Object_model_10: 128 ver / 32 face 
+object BSP_Object_model_11 : BSP_Object_model_11: 128 ver / 32 face 
+object BSP_Object_model_12 : BSP_Object_model_12: 128 ver / 32 face 
+object BSP_Object_model_13 : BSP_Object_model_13: 144 ver / 32 face 
+object BSP_Object_model_15 : BSP_Object_model_15: 653 ver / 145 face 
+object BSP_Object_model_16 : BSP_Object_model_16: 320 ver / 80 face 
+object BSP_Object_model_17 : BSP_Object_model_17: 240 ver / 60 face 
+object BSP_Object_model_18 : BSP_Object_model_18: 320 ver / 80 face 
+object BSP_Object_model_19 : BSP_Object_model_19: 240 ver / 60 face 
+object BSP_Object_model_20 : BSP_Object_model_20: 48 ver / 12 face 
+object BSP_Object_model_21 : BSP_Object_model_21: 248 ver / 54 face 
+object BSP_Object_model_22 : BSP_Object_model_22: 304 ver / 74 face 
+object BSP_Object_model_23 : BSP_Object_model_23: 296 ver / 68 face 
+object BSP_Object_model_24 : BSP_Object_model_24: 40 ver / 9 face 
+object BSP_Object_model_25 : BSP_Object_model_25: 128 ver / 32 face 
+object BSP_Object_model_26 : BSP_Object_model_26: 128 ver / 32 face 
+object BSP_Object_model_27 : BSP_Object_model_27: 128 ver / 32 face 
+object BSP_Object_model_28 : BSP_Object_model_28: 144 ver / 32 face 
+object BSP_Object_model_30 : BSP_Object_model_30: 653 ver / 145 face 
+object BSP_Object_model_31 : BSP_Object_model_31: 88 ver / 22 face 
+object BSP_Object_model_33 : BSP_Object_model_33: 116 ver / 22 face 
+object BSP_Object_model_34 : BSP_Object_model_34: 144 ver / 28 face 
+object BSP_Object_model_35 : BSP_Object_model_35: 120 ver / 24 face 
+object BSP_Object_model_36 : BSP_Object_model_36: 116 ver / 22 face 
+object BSP_Object_model_37 : BSP_Object_model_37: 144 ver / 28 face 
+object BSP_Object_model_38 : BSP_Object_model_38: 120 ver / 24 face 
+object BSP_Object_model_39 : BSP_Object_model_39: 48 ver / 12 face 
+object BSP_Object_model_40 : BSP_Object_model_40: 48 ver / 12 face 
+object BSP_Object_model_41 : BSP_Object_model_41: 48 ver / 12 face 
+object BSP_Object_model_42 : BSP_Object_model_42: 48 ver / 12 face 
+object BSP_Object_model_43 : BSP_Object_model_43: 48 ver / 12 face 
+object BSP_Object_model_44 : BSP_Object_model_44: 48 ver / 12 face 
+object BSP_Object_model_45 : BSP_Object_model_45: 36 ver / 8 face 
+object BSP_Object_model_46 : BSP_Object_model_46: 36 ver / 8 face 
+RSBsp Info : 4144 faces
+Scene Dimension ( 4738.0 5130.6 3626.4 )
+Export Objects.
+Export description.. 
+Saving Source Data.
+CSG union - 44 objects
+construct object subtree BSP_Object_model_0 ( 2276 source polygon ) : total 2262 faces splitted 1389 leaf nodes 3482 nodes 9165 polygons
+construct object subtree BSP_Object_model_1 ( 80 source polygon ) : total 50 faces splitted 41 leaf nodes 91 nodes 240 polygons
+construct object subtree BSP_Object_model_2 ( 60 source polygon ) : total 40 faces splitted 41 leaf nodes 91 nodes 180 polygons
+construct object subtree BSP_Object_model_3 ( 80 source polygon ) : total 50 faces splitted 41 leaf nodes 91 nodes 240 polygons
+construct object subtree BSP_Object_model_4 ( 60 source polygon ) : total 40 faces splitted 41 leaf nodes 91 nodes 180 polygons
+construct object subtree BSP_Object_model_5 ( 12 source polygon ) : total 0 faces splitted 7 leaf nodes 13 nodes 24 polygons
+construct object subtree BSP_Object_model_6 ( 54 source polygon ) : total 12 faces splitted 38 leaf nodes 92 nodes 144 polygons
+construct object subtree BSP_Object_model_7 ( 74 source polygon ) : total 45 faces splitted 69 leaf nodes 170 nodes 224 polygons
+construct object subtree BSP_Object_model_8 ( 68 source polygon ) : total 46 faces splitted 74 leaf nodes 183 nodes 238 polygons
+construct object subtree BSP_Object_model_9 ( 9 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 22 polygons
+construct object subtree BSP_Object_model_10 ( 32 source polygon ) : total 8 faces splitted 19 leaf nodes 45 nodes 80 polygons
+construct object subtree BSP_Object_model_11 ( 32 source polygon ) : total 8 faces splitted 19 leaf nodes 45 nodes 80 polygons
+construct object subtree BSP_Object_model_12 ( 32 source polygon ) : total 8 faces splitted 19 leaf nodes 45 nodes 80 polygons
+construct object subtree BSP_Object_model_13 ( 65 source polygon ) : total 21 faces splitted 27 leaf nodes 58 nodes 118 polygons
+construct object subtree BSP_Object_model_15 ( 145 source polygon ) : total 114 faces splitted 124 leaf nodes 315 nodes 556 polygons
+construct object subtree BSP_Object_model_16 ( 80 source polygon ) : total 50 faces splitted 41 leaf nodes 91 nodes 240 polygons
+construct object subtree BSP_Object_model_17 ( 60 source polygon ) : total 40 faces splitted 41 leaf nodes 91 nodes 180 polygons
+construct object subtree BSP_Object_model_18 ( 80 source polygon ) : total 50 faces splitted 41 leaf nodes 91 nodes 240 polygons
+construct object subtree BSP_Object_model_19 ( 60 source polygon ) : total 40 faces splitted 41 leaf nodes 91 nodes 180 polygons
+construct object subtree BSP_Object_model_20 ( 12 source polygon ) : total 0 faces splitted 7 leaf nodes 13 nodes 24 polygons
+construct object subtree BSP_Object_model_21 ( 54 source polygon ) : total 12 faces splitted 38 leaf nodes 92 nodes 144 polygons
+construct object subtree BSP_Object_model_22 ( 74 source polygon ) : total 42 faces splitted 67 leaf nodes 166 nodes 220 polygons
+construct object subtree BSP_Object_model_23 ( 68 source polygon ) : total 46 faces splitted 74 leaf nodes 183 nodes 238 polygons
+construct object subtree BSP_Object_model_24 ( 9 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 22 polygons
+construct object subtree BSP_Object_model_25 ( 32 source polygon ) : total 8 faces splitted 19 leaf nodes 45 nodes 80 polygons
+construct object subtree BSP_Object_model_26 ( 32 source polygon ) : total 8 faces splitted 19 leaf nodes 45 nodes 80 polygons
+construct object subtree BSP_Object_model_27 ( 32 source polygon ) : total 8 faces splitted 19 leaf nodes 45 nodes 80 polygons
+construct object subtree BSP_Object_model_28 ( 65 source polygon ) : total 21 faces splitted 27 leaf nodes 58 nodes 118 polygons
+construct object subtree BSP_Object_model_30 ( 145 source polygon ) : total 113 faces splitted 124 leaf nodes 315 nodes 554 polygons
+construct object subtree BSP_Object_model_31 ( 22 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 44 polygons
+construct object subtree BSP_Object_model_33 ( 22 source polygon ) : total 9 faces splitted 21 leaf nodes 46 nodes 76 polygons
+construct object subtree BSP_Object_model_34 ( 28 source polygon ) : total 16 faces splitted 31 leaf nodes 67 nodes 118 polygons
+construct object subtree BSP_Object_model_35 ( 24 source polygon ) : total 16 faces splitted 31 leaf nodes 67 nodes 104 polygons
+construct object subtree BSP_Object_model_36 ( 22 source polygon ) : total 9 faces splitted 21 leaf nodes 46 nodes 76 polygons
+construct object subtree BSP_Object_model_37 ( 28 source polygon ) : total 16 faces splitted 31 leaf nodes 67 nodes 118 polygons
+construct object subtree BSP_Object_model_38 ( 24 source polygon ) : total 16 faces splitted 31 leaf nodes 67 nodes 104 polygons
+construct object subtree BSP_Object_model_39 ( 12 source polygon ) : total 0 faces splitted 11 leaf nodes 23 nodes 24 polygons
+construct object subtree BSP_Object_model_40 ( 12 source polygon ) : total 0 faces splitted 11 leaf nodes 23 nodes 24 polygons
+construct object subtree BSP_Object_model_41 ( 12 source polygon ) : total 0 faces splitted 11 leaf nodes 23 nodes 24 polygons
+construct object subtree BSP_Object_model_42 ( 12 source polygon ) : total 0 faces splitted 11 leaf nodes 23 nodes 24 polygons
+construct object subtree BSP_Object_model_43 ( 12 source polygon ) : total 0 faces splitted 11 leaf nodes 23 nodes 24 polygons
+construct object subtree BSP_Object_model_44 ( 12 source polygon ) : total 0 faces splitted 11 leaf nodes 23 nodes 24 polygons
+construct object subtree BSP_Object_model_45 ( 10 source polygon ) : total 0 faces splitted 8 leaf nodes 16 nodes 20 polygons
+construct object subtree BSP_Object_model_46 ( 10 source polygon ) : total 0 faces splitted 8 leaf nodes 16 nodes 20 polygons
+0 faces eliminated. (solid)
+5941 source polygons remain
+optimized 3912 polygons remain
+Generating Convex polygons...
+Optimize Polygon 4144 -> 3101 
+Constructing Collision BspTree. ( 3912 source polygons )
+Collision Bsp Info : total 20827 faces splitted 2826 leaf nodes 20761 nodes 35832 polygons
+Constructing OcTree. ( 3101 source polygons )
+Octree Info : total 856 faces splitted 28 leaf nodes 55 nodes 3957 polygons
+Constructing BspTree. ( 3101 source polygons )
+RSBsp Info : total 4114 faces splitted 2830 leaf nodes 5659 nodes 7215 polygons
+Constructing Bsp Bounding Volumes.
+Saving Bsp information.
+C:\Gunz\mapas\space\bsp\Space.RS file saved
+C:\Gunz\mapas\space\bsp\Space.RS.bsp file saved
+C:\Gunz\mapas\space\bsp\Space.RS.col file saved
+Exporting takes 0 minutes and     21 seconds.
+Done.
