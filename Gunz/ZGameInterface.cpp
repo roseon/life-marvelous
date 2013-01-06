@@ -3908,19 +3908,19 @@ void ZGameInterface::ChangeWeapon(ZChangeWeaponType nType)
 		// 가진 아이템 목록을 만들고, 현재 들고있는 넘을 찾는다
 
 		//Disable special item on mouse scrolling :D
-		if(ZGetConfiguration()->GetEtc()->bDisableSpecial)
-		{
-			for(int i = MMCIP_MELEE; i < MMCIP_CUSTOM2 + 1; i++)
-			{
-				if (!pChar->GetItems()->GetItem((MMatchCharItemParts)i)->IsEmpty())
-				{
-					if(pChar->GetItems()->GetSelectedWeaponParts() == i)
-						nPos = nHasItemCount;
-					
-					ItemQueue[nHasItemCount++] = i;
-				}
-			}
-		}
+		//if(ZGetConfiguration()->GetEtc()->bDisableSpecial)
+		//{
+		//	for(int i = MMCIP_MELEE; i < MMCIP_CUSTOM2 + 1; i++)
+		//	{
+		//		if (!pChar->GetItems()->GetItem((MMatchCharItemParts)i)->IsEmpty())
+		//		{
+		//			if(pChar->GetItems()->GetSelectedWeaponParts() == i)
+		//				nPos = nHasItemCount;
+		//			
+		//			ItemQueue[nHasItemCount++] = i;
+		//		}
+		//	}
+		//}
 		
 		if (nPos < 0) return;
 

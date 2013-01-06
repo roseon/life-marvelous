@@ -3425,6 +3425,18 @@ bool ZCharacter::Create(MTD_CharInfo* pCharInfo/*, MTD_CharBuffInfo* pCharBuffIn
 			(ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_AWP && MMatchCharItemParts(i)==MMCIP_SECONDARY)){
 			m_Items.EquipItem(MMatchCharItemParts(i), 10001,1);
 		}
+		else if(ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_GRENADEWAR ){
+			if(MMatchCharItemParts(i)==MMCIP_PRIMARY){
+				m_Items.EquipItem(MMatchCharItemParts(i), 405134,1);//rocket launcher grenade 
+			}else if(MMatchCharItemParts(i)==MMCIP_SECONDARY){
+				m_Items.EquipItem(MMatchCharItemParts(i), 405134,1);//rocket launcher grenade
+			}else if(MMatchCharItemParts(i)==MMCIP_CUSTOM1){
+				m_Items.EquipItem(MMatchCharItemParts(i), 405216,1);//Molotov Grenade
+			}else if(MMatchCharItemParts(i)==MMCIP_CUSTOM2){
+				m_Items.EquipItem(MMatchCharItemParts(i), 1234567913,1); //normal grenade
+			}
+					
+		}
 		else if((ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_CLASSIC_TEAM && MMatchCharItemParts(i)==MMCIP_AVATAR))
         {
 			//counters

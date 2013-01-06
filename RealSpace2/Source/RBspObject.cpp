@@ -334,6 +334,11 @@ void RBspObject::ClearLightmaps()
 	m_nLightmap = 0;
 }
 
+bool  RBspObject::getLightMapAlex(){
+
+	return m_bisDrawLightMap;
+}
+
 void RBspObject::LightMapOnOff(bool bDraw)
 {
 	if(m_bisDrawLightMap == bDraw)
