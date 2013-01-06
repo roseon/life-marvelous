@@ -860,6 +860,15 @@ void ZCombatInterface::OnDraw(MDrawContext* pDC)
 	if(ZGetGame()) {
 		ZGetGame()->m_HelpScreen.DrawHelpScreen();
 	}
+	if(ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_GRENADEWAR){
+	if(ZGetGame() && (strcmp(ZGetGameClient()->GetMatchStageSetting()->GetMapName(), "Bunker") == 0)  ) {
+		if(Z_VIDEO_LIGHTMAP==false){
+			Z_VIDEO_LIGHTMAP=true;
+			ZGetGame()->GetWorld()->GetBsp()->LightMapOnOff(true);
+			}	
+				
+	}
+	}
 
 	// µ¿¿µ»ó Ä¸ÃÄ...2008.10.20
 #ifndef _DEBUG

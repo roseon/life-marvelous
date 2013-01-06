@@ -380,6 +380,8 @@ public:
 	RSolidBspNode *GetColRoot() { return m_pColRoot; }
 
 	void LightMapOnOff(bool b);
+	bool getLightMapAlex();
+
 	static void SetDrawLightMap(bool b);
 
 	static bool  m_bTextureRenderOnOff;
