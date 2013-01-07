@@ -1,0 +1,27 @@
+Starting BSP Export...
+object VBSP_Object_model_0 : VBSP_Object_model_0: 7417 ver / 1599 face 
+RSBsp Info : 1641 faces
+Scene Dimension ( 6949.7 4337.3 20747.1 )
+Export Objects.
+Export description.. 
+Saving Source Data.
+CSG union - 1 objects
+construct object subtree VBSP_Object_model_0 ( 1641 source polygon ) : total 1511 faces splitted 782 leaf nodes 2425 nodes 6936 polygons
+0 faces eliminated. (solid)
+1641 source polygons remain
+optimized 1303 polygons remain
+Generating Convex polygons...
+Optimize Polygon 1641 -> 1303 
+Constructing Collision BspTree. ( 1303 source polygons )
+Collision Bsp Info : total 7548 faces splitted 796 leaf nodes 8018 nodes 15370 polygons
+Constructing OcTree. ( 1303 source polygons )
+Octree Info : total 282 faces splitted 17 leaf nodes 33 nodes 1585 polygons
+Constructing BspTree. ( 1303 source polygons )
+RSBsp Info : total 1195 faces splitted 746 leaf nodes 1491 nodes 2498 polygons
+Constructing Bsp Bounding Volumes.
+Saving Bsp information.
+C:\Gunz\mapas\tower\bsp\Tower.RS file saved
+C:\Gunz\mapas\tower\bsp\Tower.RS.bsp file saved
+C:\Gunz\mapas\tower\bsp\Tower.RS.col file saved
+Exporting takes 0 minutes and     11 seconds.
+Done.
