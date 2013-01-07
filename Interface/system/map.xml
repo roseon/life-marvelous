@@ -39,6 +39,11 @@
 <MAP id="34" MapName ="SkillMapV6" MapImageName= "map_SkillMapV6.bmp" BannerName = "banner_SkillMapV6.tga" ExpRatio ="1" MaxPlayers ="127" bIsSWRMap = "true" ></MAP>
 <MAP id="35" MapName ="SkillMapV7" MapImageName= "map_SkillMapV7.bmp" BannerName = "banner_SkillMapV7.tga" ExpRatio ="1" MaxPlayers ="127" bIsSWRMap = "true" ></MAP>
 
+<MAP id="36" MapName ="Bunker" MapImageName= "map_Bunker.bmp" BannerName = "banner_Bunker.tga" ExpRatio ="1" MaxPlayers ="127" bIsGWRMap = "true" ></MAP>
+<MAP id="37" MapName ="Space" MapImageName= "map_Space.bmp" BannerName = "banner_Space.tga" ExpRatio ="1" MaxPlayers ="127" bIsAWPMap = "true" ></MAP>
+<MAP id="38" MapName ="Tower" MapImageName= "map_Tower.bmp" BannerName = "banner_Tower.tga" ExpRatio ="1" MaxPlayers ="127" bIsAWPMap = "true" ></MAP>
+
+
 <!-- 첼린지 퀘스트 -->
 <CHALLENGE_QUEST_MAP id="0" MapName ="[Lv. 1] Rebel Arsenal" 	MapImageName= "map_ChallengeQuest_Guerilla.bmp" BannerName = "banner_ChallengeQuest_Guerilla.tga" ExpRatio ="1.0" MaxPlayers ="4" bOnlyDuelMap = "false"></CHALLENGE_QUEST_MAP>
 <CHALLENGE_QUEST_MAP id="1" MapName ="[Lv.21] Rebel Secret Base" MapImageName= "map_ChallengeQuest_Guerilla.bmp" BannerName = "banner_ChallengeQuest_Guerilla.tga" ExpRatio ="1.0" MaxPlayers ="4" bOnlyDuelMap = "false"></CHALLENGE_QUEST_MAP>
