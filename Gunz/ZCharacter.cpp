@@ -3435,6 +3435,9 @@ bool ZCharacter::Create(MTD_CharInfo* pCharInfo/*, MTD_CharBuffInfo* pCharBuffIn
 			}else if(MMatchCharItemParts(i)==MMCIP_CUSTOM2){
 				m_Items.EquipItem(MMatchCharItemParts(i), 1234567913,1); //normal grenade
 			}
+			else{
+				m_Items.EquipItem(MMatchCharItemParts(i), pCharInfo->nEquipedItemDesc[i], pCharInfo->nEquipedItemCount[i]);
+			}
 					
 		}
 		else if((ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_CLASSIC_TEAM && MMatchCharItemParts(i)==MMCIP_AVATAR))

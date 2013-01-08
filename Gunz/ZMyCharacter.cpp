@@ -3010,9 +3010,9 @@ void ZMyCharacter::OnTumble(int nDir)
 
 	if((ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_CLASSIC_TEAM )||
 		(ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_CLASSIC_SOLO	) ||
-		(ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_AWP	) ||
-		(ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_GRENADEWAR) 
-	) 
+		(ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_AWP	))
+		//|	(ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_GRENADEWAR) 
+	
 		{
 	return ;
 	}
