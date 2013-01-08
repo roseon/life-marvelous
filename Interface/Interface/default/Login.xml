@@ -23,6 +23,17 @@
 		<FOCUSABLE>false</FOCUSABLE>
 		<VISIBLE>false</VISIBLE>
 	</FRAME>
+	
+	<PICTURE item="LoginYlaLogo" parent="Login">
+		<BOUNDS>
+			<X>5</X>
+			<Y>0</Y>
+			<W>250</W>
+			<H>50</H>
+		</BOUNDS>
+		<STRETCH/>
+		<BITMAP>logo.png</BITMAP>
+	</PICTURE>
 
 	<PICTURE item="CharSel_BGImgUp" parent="Login">
 		<BOUNDS>
@@ -58,18 +69,6 @@
 		<STRETCH/>
 		<BITMAP></BITMAP>
 	</PICTURE>
-
-
-	<ANIMATION item="AnimacionLogo" parent="Login">
-		<PLAYMODE>repetition</PLAYMODE>
-		<ANIMTEMPLATE>AnimacionLogo</ANIMTEMPLATE>
-		<BOUNDS>
-			<X>5</X>
-			<Y>0</Y>
-			<W>200</W>
-			<H>45</H>
-		</BOUNDS>
-	</ANIMATION>
 
 <!-- LABEL : 연결중 -->
 	<LABEL item="Login_ConnectingMsg" parent="Login">
@@ -114,7 +113,7 @@
 	<!-- SERVERVIEW : 서버 선택 -->
 	<SERVERVIEW item="SelectedServer" parent="LoginFrame">
 		<BOUNDS>
-			<X>20</X>
+			<X>8</X>
 			<Y>40</Y>
 			<W>300</W>
 			<H>300</H>

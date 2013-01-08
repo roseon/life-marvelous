@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <XML ID="StageList">
 	<Schema xmlns="MaietData" xmlns:dt="MaietDataTypes" />
 	<FRAME item="StageCreateFrame">
@@ -51,6 +51,7 @@
 
 	
 	<EDIT item="StageName" parent="StageCreateFrame">
+		<EDITLOOK>NullEditLook</EDITLOOK>
 		<BOUNDS>
 			<X>95</X>
 			<Y>51</Y>
@@ -61,6 +62,7 @@
 		<MAXLENGTH>32</MAXLENGTH>
 	</EDIT>
 	<EDIT item="StagePassword" parent="StageCreateFrame">
+		<EDITLOOK>NullEditLook</EDITLOOK>
 		<BOUNDS>
 			<X>95</X>
 			<Y>80</Y>

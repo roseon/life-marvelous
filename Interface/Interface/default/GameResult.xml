@@ -1935,9 +1935,9 @@
 	<!-- ZBMNUMLABEL : XP 표시 -->
 	<ZBMNUMLABEL item="CQ_Result_XP" parent="ChallengeQuestResult">
 		<BOUNDS>
-			<X>548</X>
+			<X>448</X>
 			<Y>199</Y>
-			<W>96</W>
+			<W>196</W>
 			<H>32</H>
 		</BOUNDS>
 		<BITMAP>grp_num.tga</BITMAP>
@@ -1950,9 +1950,9 @@
 	<!-- ZBMNUMLABEL : BP 표시 -->
 	<ZBMNUMLABEL item="CQ_Result_BP" parent="ChallengeQuestResult">
 		<BOUNDS>
-			<X>548</X>
+			<X>448</X>
 			<Y>226</Y>
-			<W>96</W>
+			<W>196</W>
 			<H>32</H>
 		</BOUNDS>
 		<BITMAP>grp_num.tga</BITMAP>

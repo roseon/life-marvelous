@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <XML ID="BitmapAlias">
 
-<!-- 로비 페이지 선택 1~6 버튼 -->
+<!-- 로비 페이지 선택 1~6 버튼   -->
   <BITMAPALIAS name="page1_off.png">
-  	<SOURCE>interface.tga</SOURCE>
+    <SOURCE>interface.tga</SOURCE>
   	<BOUNDS>
   		<X>0</X>
   		<Y>0</Y>
@@ -20,6 +20,7 @@
   		<H>16</H>
   	</BOUNDS>
   </BITMAPALIAS>
+
   <BITMAPALIAS name="page2_off.png">
   	<SOURCE>interface.tga</SOURCE>
   	<BOUNDS>
