@@ -5,50 +5,50 @@
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/prison/gzd_map_Prison_deco001.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/prison/gzd_map_Prison_deco001.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Prison_fx001_add">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/prison/gzd_map_Prison_fx001.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/prison/gzd_map_Prison_fx001.bmp</DIFFUSEMAP>
 			<ADDITIVE/>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Prison_deco002_mt_met">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/prison/gzd_map_Prison_deco002.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/prison/gzd_map_Prison_deco002.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Prison_wall001_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/prison/gzd_map_Prison_wall001.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/prison/gzd_map_Prison_wall001.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Prison_roof001_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/prison/gzd_map_Prison_roof001.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/prison/gzd_map_Prison_roof001.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Prison_win001_mt_gls">
 			<DIFFUSE>0.5880000 0.5880000 0.5880000</DIFFUSE>
 			<AMBIENT>0.5880000 0.5880000 0.5880000</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/prison/gzd_map_Prison_win001.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/prison/gzd_map_Prison_win001.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Prison_shower001_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/prison/gzd_map_Prison_shower001.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/prison/gzd_map_Prison_shower001.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Prison_fx001_2s_add">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/prison/gzd_map_Prison_fx001.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/prison/gzd_map_Prison_fx001.bmp</DIFFUSEMAP>
 			<ADDITIVE/>
 			<TWOSIDED/>
 		</MATERIAL>
@@ -56,43 +56,43 @@
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/prison/gzd_map_Prison_deco003.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/prison/gzd_map_Prison_deco003.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Prison_tile002_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/prison/gzd_map_Prison_tile002.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/prison/gzd_map_Prison_tile002.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Prison_floor001_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/prison/gzd_map_Prison_floor001.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/prison/gzd_map_Prison_floor001.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Prison_wall003_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/prison/gzd_map_Prison_wall003.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/prison/gzd_map_Prison_wall003.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Prison_wall002_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/prison/gzd_map_Prison_wall002.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/prison/gzd_map_Prison_wall002.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Prison_tile001_mt_con">
 			<DIFFUSE>0.5880000 0.5880000 0.5880000</DIFFUSE>
 			<AMBIENT>0.5880000 0.5880000 0.5880000</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/prison/gzd_map_Prison_tile001.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/prison/gzd_map_Prison_tile001.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Prison_grating003_mt_met">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/prison/gzd_map_Prison_grating003.tga</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/prison/gzd_map_Prison_grating003.tga</DIFFUSEMAP>
 			<USEOPACITY/>
 		</MATERIAL>
 	</MATERIALLIST>

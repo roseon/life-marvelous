@@ -65,6 +65,11 @@
 		<MAP name="Stairway" />
 		<MAP name="Snow_Town" />
 		<MAP name="Halloween Town" />
+		<MAP name="Bunker" />
+		<MAP name="Space" />
+		<MAP name="Tower" />
+		
+		
 	</CHANNELRULE>
 
 
@@ -118,6 +123,9 @@
 		<MAP name="Stairway" />
 		<MAP name="Snow_Town" />
 		<MAP name="Halloween Town" />
+		<MAP name="Bunker" />
+		<MAP name="Space" />
+		<MAP name="Tower" />
 	</CHANNELRULE>
 
 
@@ -178,6 +186,9 @@
 		<MAP name="Catacomb" />			<!-- Only DUEL -->
 		<MAP name="Jail" />						<!-- Only DUEL -->
 		<MAP name="Shower Room" />	<!-- Only DUEL -->
+		<MAP name="Bunker" />
+		<MAP name="Space" />
+		<MAP name="Tower" />
 	</CHANNELRULE>
 
 
@@ -238,6 +249,9 @@
 		<MAP name="Catacomb" />			<!-- Only DUEL -->
 		<MAP name="Jail" />						<!-- Only DUEL -->
 		<MAP name="Shower Room" />	<!-- Only DUEL -->
+		<MAP name="Bunker" />
+		<MAP name="Space" />
+		<MAP name="Tower" />
 	</CHANNELRULE>
 
 
@@ -298,6 +312,9 @@
 		<MAP name="Catacomb" />			<!-- Only DUEL -->
 		<MAP name="Jail" />						<!-- Only DUEL -->
 		<MAP name="Shower Room" />	<!-- Only DUEL -->
+		<MAP name="Bunker" />
+		<MAP name="Space" />
+		<MAP name="Tower" />
 	</CHANNELRULE>
 
 
@@ -358,6 +375,9 @@
 		<MAP name="Catacomb" />			<!-- Only DUEL -->
 		<MAP name="Jail" />						<!-- Only DUEL -->
 		<MAP name="Shower Room" />	<!-- Only DUEL -->	
+		<MAP name="Bunker" />
+		<MAP name="Space" />
+		<MAP name="Tower" />
 	</CHANNELRULE>
 
 	<CHANNELRULE id="6" name="dueltournament">
@@ -419,5 +439,8 @@
 		<MAP name="Stairway" /> 
 		<MAP name="Snow_Town" />
 		<MAP name="Halloween Town" />
+		<MAP name="Bunker" />
+		<MAP name="Space" />
+		<MAP name="Tower" />
 	</CHANNELRULE>
 </XML>

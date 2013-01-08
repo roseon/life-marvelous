@@ -5,97 +5,97 @@
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/Ruin/gzd_map_Ruin_hieroglyphic01.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/Ruin/gzd_map_Ruin_hieroglyphic01.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_BA_gateway01_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/battle arena/gzd_map_BA_gateway01.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/battle arena/gzd_map_BA_gateway01.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_BA_wall02_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/battle arena/gzd_map_BA_wall02.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/battle arena/gzd_map_BA_wall02.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_BA_wall04_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/battle arena/gzd_map_BA_wall04.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/battle arena/gzd_map_BA_wall04.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_town_build28_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/town/gzd_map_town_build28.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/town/gzd_map_town_build28.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_town_roof11_mt_wod">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/town/gzd_map_town_roof11.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/town/gzd_map_town_roof11.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Garden_wall01_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/Garden/gzd_map_Garden_wall01.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/Garden/gzd_map_Garden_wall01.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_town_build24_mt_met">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/town/gzd_map_town_build24.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/town/gzd_map_town_build24.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_town_car_b02_mt_met">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/town/gzd_map_town_car_b02.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/town/gzd_map_town_car_b02.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_town_car_b02_mt_gls">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/town/gzd_map_town_car_b02.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/town/gzd_map_town_car_b02.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_town_car_b02_mt_clo">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/town/gzd_map_town_car_b02.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/town/gzd_map_town_car_b02.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_town_car_b02_1_mt_met">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/town/gzd_map_town_car_b02_1.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/town/gzd_map_town_car_b02_1.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_town_car_b02_1_mt_clo">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/town/gzd_map_town_car_b02_1.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/town/gzd_map_town_car_b02_1.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_town_car_b02_1_mt_gls">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/town/gzd_map_town_car_b02_1.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/town/gzd_map_town_car_b02_1.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Mansion_floor01_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/Mansion/gzd_map_Mansion_floor01.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/Mansion/gzd_map_Mansion_floor01.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="at_gzd_map_Garden_mask_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/Garden/gzd_map_Garden_mask.tga</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/Garden/gzd_map_Garden_mask.tga</DIFFUSEMAP>
 			<USEOPACITY/>
 			<USEALPHATEST/>
 		</MATERIAL>
@@ -103,91 +103,91 @@
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/town/gzd_map_town_floor13_1.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/town/gzd_map_town_floor13_1.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Mansion_ornament03_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/Mansion/gzd_map_Mansion_ornament03.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/Mansion/gzd_map_Mansion_ornament03.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Garden_floor01_mt_pnt">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/Garden/gzd_map_Garden_floor01.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/Garden/gzd_map_Garden_floor01.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Mansion_light01_mt_met">
 			<DIFFUSE>0.5880000 0.5880000 0.5880000</DIFFUSE>
 			<AMBIENT>0.5880000 0.5880000 0.5880000</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/Mansion/gzd_map_Mansion_light01.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/Mansion/gzd_map_Mansion_light01.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_town_roof17_mt_wod">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/town/gzd_map_town_roof17.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/town/gzd_map_town_roof17.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Mansion_ornament01_mt_con">
 			<DIFFUSE>0.5880000 0.5880000 0.5880000</DIFFUSE>
 			<AMBIENT>0.5880000 0.5880000 0.5880000</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/Mansion/gzd_map_Mansion_ornament01.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/Mansion/gzd_map_Mansion_ornament01.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Mansion_door02_mt_met">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/Mansion/gzd_map_Mansion_door02.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/Mansion/gzd_map_Mansion_door02.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_BA_sky_daylight">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/battle arena/sky_daylight.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/battle arena/sky_daylight.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_town_chimney02_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/town/gzd_map_town_chimney02.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/town/gzd_map_town_chimney02.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Ruin_wall01_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/Ruin/gzd_map_Ruin_wall01.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/Ruin/gzd_map_Ruin_wall01.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Prison_floor001_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/Prison/gzd_map_Prison_floor001.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/Prison/gzd_map_Prison_floor001.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Garden_wall02_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/Garden/gzd_map_Garden_wall02.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/Garden/gzd_map_Garden_wall02.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Garden_wall03_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/Garden/gzd_map_Garden_wall03.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/Garden/gzd_map_Garden_wall03.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_town_wall14_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/town/gzd_map_town_wall14.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/town/gzd_map_town_wall14.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Garden_wood01_mt_pnt">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/Garden/gzd_map_Garden_wood01.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/Garden/gzd_map_Garden_wood01.bmp</DIFFUSEMAP>
 		</MATERIAL>
 	</MATERIALLIST>
 	<LIGHTLIST>
