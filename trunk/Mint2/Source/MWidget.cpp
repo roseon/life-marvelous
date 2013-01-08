@@ -903,6 +903,7 @@ MFont* MWidget::SetFont(MFont* pFont)
 {
 	MFont* pTemp = m_pFont;
 	m_pFont = pFont;
+	//m_pFont = pTemp;
 	return pTemp;
 }
 

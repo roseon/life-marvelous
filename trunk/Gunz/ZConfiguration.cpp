@@ -236,8 +236,8 @@ bool ZConfiguration::LoadLocale(const char* szFileName)
 			m_Locale.nMaxPlayers		= nMaxPlayers;
 
 		    strcpy(m_Etc.szLanguage, szLanguage);
-
-			mlog( "Country : (%s), Language : (%s)\n", szCountry, szLanguage );
+			mlog( "Country : KOR, Language : KOR\n", szCountry, szLanguage );
+			//mlog( "Country : (%s), Language : (%s)\n", szCountry, szLanguage );
 		}
 	}
 	xmlLocale.Destroy();
