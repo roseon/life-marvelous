@@ -1,15 +1,15 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <XML ID="StageList">
 	<Schema xmlns="MaietData" xmlns:dt="MaietDataTypes" />
 
 <!--
-   Stage 화면 구성
+   Stage ?? ??
    
    Last Update : 5.NOV.2004
    Editor      : Lim Dong Hwan
 -->
 
-<!-- 프레임 생성 : StageSettingFrame -->
+<!-- ??? ?? : StageSettingFrame -->
 	<FRAME item="StageSettingFrame">
 		<FRAMELOOK>DefaultFrameLook</FRAMELOOK>
 		<BOUNDS>
@@ -22,12 +22,12 @@
 			<HALIGN>center</HALIGN>
 			<VALIGN>center</VALIGN>
 		</ALIGN>
-		<TEXT>STR:UI_SSF_01</TEXT> <!-- 기타 게임 설정 -->
+		<TEXT>STR:UI_SSF_01</TEXT> <!-- ?? ?? ?? -->
 		<VISIBLE>false</VISIBLE>
 		<RESIZABLE>false</RESIZABLE>
 	</FRAME>
 
-	<!-- Label : 제한 시간 -->
+	<!-- Label : ?? ?? -->
 	<LABEL item="Label" parent="StageSettingFrame">
 		<BOUNDS>
 			<X>20</X>
@@ -35,10 +35,10 @@
 			<W>150</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_SSF_02</TEXT> <!-- 제한 시간 -->
+		<TEXT>STR:UI_SSF_02</TEXT> <!-- ?? ?? -->
 	</LABEL>	
 	
-	<!-- COMBOBOX : 제한 시간 콤보박스 -->
+	<!-- COMBOBOX : ?? ?? ???? -->
 	<COMBOBOX item="StageLimitTime" parent="StageSettingFrame">
 		<LISTBOXLOOK>CustomListBoxLook</LISTBOXLOOK>
 		<BUTTONLOOK>ListBoxButtonLook</BUTTONLOOK>
@@ -56,7 +56,7 @@
 		<DROPSIZE>210</DROPSIZE>
 	</COMBOBOX>
 
-	<!-- Label : 난입 허용 -->
+	<!-- Label : ?? ?? -->
 	<LABEL item="Label" parent="StageSettingFrame">
 		<BOUNDS>
 			<X>20</X>
@@ -64,10 +64,10 @@
 			<W>150</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_SSF_03</TEXT> <!-- 난입 허용 -->
+		<TEXT>STR:UI_SSF_03</TEXT> <!-- ?? ?? -->
 	</LABEL>	
 
-	<!-- COMBOBOX : 난입 허용 콤보박스 -->
+	<!-- COMBOBOX : ?? ?? ???? -->
 	<COMBOBOX item="StageIntrude" parent="StageSettingFrame">
 		<LISTBOXLOOK>CustomListBoxLook</LISTBOXLOOK>
 		<BUTTONLOOK>ListBoxButtonLook</BUTTONLOOK>
@@ -87,7 +87,7 @@
 		<COMBOFIRSTSIZE>51</COMBOFIRSTSIZE>
 	</COMBOBOX>
 	
-	<!-- LABEL : 팀킬 여부 -->
+	<!-- LABEL : ?? ?? -->
 	<LABEL item="Label" parent="StageSettingFrame">
 		<BOUNDS>
 			<X>20</X>
@@ -95,10 +95,10 @@
 			<W>150</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_SSF_04</TEXT> <!-- 팀킬 여부 -->
+		<TEXT>STR:UI_SSF_04</TEXT> <!-- ?? ?? -->
 	</LABEL>	
 
-	<!-- COMBOBOX : 팀킬 여부 콤보 박스 -->
+	<!-- COMBOBOX : ?? ?? ?? ?? -->
 	<COMBOBOX item="StageTeamKill" parent="StageSettingFrame">
 		<LISTBOXLOOK>CustomListBoxLook</LISTBOXLOOK>
 		<BUTTONLOOK>ListBoxButtonLook</BUTTONLOOK>
@@ -118,7 +118,7 @@
 		<COMBOFIRSTSIZE>51</COMBOFIRSTSIZE>
 	</COMBOBOX>
 	
-	<!-- LABEL : 레벨 제한 -->
+	<!-- LABEL : ?? ?? -->
 	<LABEL item="Label" parent="StageSettingFrame">
 		<BOUNDS>
 			<X>20</X>
@@ -126,10 +126,10 @@
 			<W>150</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_SSF_05</TEXT> <!-- 레벨 제한 -->
+		<TEXT>STR:UI_SSF_05</TEXT> <!-- ?? ?? -->
 	</LABEL>
 
-	<!-- COMBOBOX : 레벨 제한 콤보 박스 -->
+	<!-- COMBOBOX : ?? ?? ?? ?? -->
 	<COMBOBOX item="StageLevelLimit" parent="StageSettingFrame">
 		<LISTBOXLOOK>CustomListBoxLook</LISTBOXLOOK>
 		<BUTTONLOOK>ListBoxButtonLook</BUTTONLOOK>
@@ -147,7 +147,7 @@
 		<DROPSIZE>210</DROPSIZE>
 	</COMBOBOX>
 
-	<!-- LABEL : 팀밸런스 -->
+	<!-- LABEL : ???? -->
 	<LABEL item="Label" parent="StageSettingFrame">
 		<BOUNDS>
 			<X>20</X>
@@ -155,10 +155,10 @@
 			<W>150</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_SSF_08</TEXT> <!-- 팀밸런스 -->
+		<TEXT>STR:UI_SSF_08</TEXT> <!-- ???? -->
 	</LABEL>	
 
-	<!-- COMBOBOX : 팀밸런스 콤보 박스 -->
+	<!-- COMBOBOX : ???? ?? ?? -->
 	<COMBOBOX item="StageTeamBalancing" parent="StageSettingFrame">
 		<LISTBOXLOOK>CustomListBoxLook</LISTBOXLOOK>
 		<BUTTONLOOK>ListBoxButtonLook</BUTTONLOOK>
@@ -178,7 +178,7 @@
 		<COMBOFIRSTSIZE>51</COMBOFIRSTSIZE>
 	</COMBOBOX>
 
-	<!-- LABEL : 팀밸런스 -->
+	<!-- LABEL : ???? -->
 	<LABEL item="Label" parent="StageSettingFrame">
 		<BOUNDS>
 			<X>20</X>
@@ -186,10 +186,10 @@
 			<W>150</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>Training On/Off</TEXT> <!-- 팀밸런스 -->
+		<TEXT>Training On/Off</TEXT> <!-- ???? -->
 	</LABEL>
 
-	<!-- COMBOBOX : 팀밸런스 콤보 박스 -->
+	<!-- COMBOBOX : ???? ?? ?? -->
 	<COMBOBOX item="StageTraining" parent="StageSettingFrame">
 		<LISTBOXLOOK>CustomListBoxLook</LISTBOXLOOK>
 		<BUTTONLOOK>ListBoxButtonLook</BUTTONLOOK>
@@ -211,7 +211,7 @@
 
 
 		
-	<!-- LABEL : 관전 허용 -->
+	<!-- LABEL : ?? ?? -->
 	<LABEL item="Label" parent="StageSettingFrame">
 		<BOUNDS>
 			<X>20</X>
@@ -219,10 +219,10 @@
 			<W>150</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_SSF_06</TEXT> <!-- 관전 허용 -->
+		<TEXT>STR:UI_SSF_06</TEXT> <!-- ?? ?? -->
 	</LABEL>	
 
-	<!-- COMBOBOX : 관전 허용 콤보 박스 -->
+	<!-- COMBOBOX : ?? ?? ?? ?? -->
 	<COMBOBOX item="StageObserver" parent="StageSettingFrame">
 		<LISTBOXLOOK>CustomListBoxLook</LISTBOXLOOK>
 		<BUTTONLOOK>ListBoxButtonLook</BUTTONLOOK>
@@ -243,7 +243,7 @@
 		<ENABLE>false</ENABLE>
 	</COMBOBOX>
 	
-	<!-- LABEL : 투표 가능 -->
+	<!-- LABEL : ?? ?? -->
 	<LABEL item="Label" parent="StageSettingFrame">
 		<BOUNDS>
 			<X>20</X>
@@ -251,10 +251,10 @@
 			<W>150</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_SSF_07</TEXT> <!-- 투표 가능 -->
+		<TEXT>STR:UI_SSF_07</TEXT> <!-- ?? ?? -->
 	</LABEL>	
 
-	<!-- COMBOBOX : 투표 가능 콤보 박스 -->
+	<!-- COMBOBOX : ?? ?? ?? ?? -->
 	<COMBOBOX item="StageVote" parent="StageSettingFrame">
 		<LISTBOXLOOK>CustomListBoxLook</LISTBOXLOOK>
 		<BUTTONLOOK>ListBoxButtonLook</BUTTONLOOK>
@@ -312,8 +312,8 @@
 		<ENABLE>true</ENABLE>
 	</COMBOBOX>
 	
-<!-- 버튼 -->
-	<!-- BUTTON : 확인 버튼 -->
+<!-- ?? -->
+	<!-- BUTTON : ?? ?? -->
 	<BUTTON item="StageSettingApplyBtn" parent="StageSettingFrame">
 		<BUTTONLOOK>DefaultButtonLook</BUTTONLOOK>
 		<ANCHORS>
@@ -328,11 +328,11 @@
 			<W>100</W>
 			<H>32</H>
 		</BOUNDS>
-		<TEXT>STR:UI_COMMON_OK</TEXT> <!-- 확인(&amp;O) -->
+		<TEXT>STR:UI_COMMON_OK</TEXT> <!-- ??(&amp;O) -->
 		<DEFAULTKEY>ENTER</DEFAULTKEY>
 	</BUTTON>
 
-	<!-- BUTTON : 취소 버튼 -->
+	<!-- BUTTON : ?? ?? -->
 	<BUTTON item="ParentClose" parent="StageSettingFrame">
 		<BUTTONLOOK>DefaultButtonLook</BUTTONLOOK>
 		<ANCHORS>
@@ -347,7 +347,7 @@
 			<W>100</W>
 			<H>32</H>
 		</BOUNDS>
-		<TEXT>STR:UI_COMMON_CANCEL</TEXT> <!-- 취소(&amp;C) -->
+		<TEXT>STR:UI_COMMON_CANCEL</TEXT> <!-- ??(&amp;C) -->
 		<DEFAULTKEY>ESC</DEFAULTKEY>
 	</BUTTON>
 	

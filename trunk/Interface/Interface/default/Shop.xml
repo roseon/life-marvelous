@@ -31,34 +31,10 @@
 			<X>0</X>
 			<Y>0</Y>
 			<W>800</W>
-			<H>92</H>
+			<H>600</H>
 		</BOUNDS>
 		<STRETCH/>
-		<BITMAP>main_bg_t.png</BITMAP>
-	</PICTURE>
-
-
-	<PICTURE item="Shop_Logo" parent="Shop">
-		<BOUNDS>
-			<X>10</X>
-			<Y>3</Y>
-			<W>164</W>
-			<H>76</H>
-		</BOUNDS>
-		<STRETCH/>
-		<BITMAP>gunz_logo_hq.png</BITMAP>
-	</PICTURE>
-
-	<!-- Picture : 하단 바탕화면 이미지 -->
-	<PICTURE item="Shop_MainBGBottom" parent="Shop">
-		<BOUNDS>
-			<X>0</X>
-			<Y>552</Y>
-			<W>800</W>
-			<H>48</H>
-		</BOUNDS>
-		<STRETCH/>
-		<BITMAP>main_bg_b.png</BITMAP>
+		<BITMAP>background_stage.png</BITMAP>
 	</PICTURE>
 
 	<!-- CHARACTERVIEW : 캐릭터 표시창 -->
@@ -88,8 +64,6 @@
 		<FOCUSABLE>false</FOCUSABLE>
 		<VISIBLE>true</VISIBLE>
 	</FRAME>
-	
-
 	
 	<!-- Picture : 상점 프레임 이미지 출력 -->
 	<PICTURE item ="Shop_Frame" parent="Shop">
@@ -322,7 +296,6 @@
 		<LISTITEM>STR:UI_SHOP_LIST_01_16</LISTITEM>					<!--	뽑기 아이템 -->
 		<LISTITEM>STR:UI_SHOP_LIST_01_17</LISTITEM>					<!--	인챈트 아이템 -->
 		<!--<LISTITEM>STR:UI_SHOP_LIST_01_18</LISTITEM>-->					<!--	편의성 아이템 -->
-		<LISTITEM>STR:UI_SHOP_LIST_01_19</LISTITEM>					<!--	기타 아이템 -->
 		<ITEMHEIGHT>18</ITEMHEIGHT>
 		<DROPSIZE>400</DROPSIZE>
 	</COMBOBOX>
@@ -483,6 +456,7 @@
 		<EDITABLE>false</EDITABLE>
 	</TEXTAREA>
 
+	
 
 <!-- 장비 리스트 -->
 	<FRAME item="Shop_MyEquipListFrame" parent="Shop">
@@ -823,38 +797,100 @@
 		<TEXT></TEXT>
 	</BMBUTTON>	
 	
-
-
 	
-	<BUTTON item="Shop_to_Equipment" parent="Shop">
-	<BUTTONLOOK>DefaultButtonLook</BUTTONLOOK>
+<!-- 상단 버튼 배열 -->
+	<!-- Picture : 장비버튼 -->
+	<PICTURE item="Shop_nullbutton" parent="Shop">
 		<BOUNDS>
-			<X>394</X>
+			<X>299</X>
 			<Y>32</Y>
-			<W>131</W>
-			<H>33</H>
+			<W>111</W>
+			<H>24</H>
 		</BOUNDS>
 		<STRETCH/>
-		<TEXT>Inventario</TEXT>
-	</BUTTON>
+		<BITMAP>shop_on_kr.png</BITMAP>
+	</PICTURE>
 	
+	<!-- BMBUTTON : 상점버튼
+	<BMBUTTON item="Shop_nullbutton" parent="Shop">
+		<BUTTONLOOK>NormalBmButtonLook</BUTTONLOOK>
+		<BOUNDS>
+			<X>289</X>
+			<Y>32</Y>
+			<W>93</W>
+			<H>38</H>
+		</BOUNDS>
+		<STRETCH/>
+		<BITMAP type="up">shop_off_kr.tga</BITMAP>
+		<BITMAP type="over">shop_on_kr.tga</BITMAP>
+		<BITMAP type="down">shop_on_kr.tga</BITMAP>
+		<TEXT></TEXT>
+		<ENABLE>false</ENABLE>
+	</BMBUTTON> -->
+	
+	<!-- BMBUTTON : 장비버튼 -->
+	<BMBUTTON item="Shop_to_Equipment" parent="Shop">
+	<BUTTONLOOK>NormalBmButtonLook</BUTTONLOOK>
+		<BOUNDS>
+			<X>430</X>
+			<Y>32</Y>
+			<W>111</W>
+			<H>24</H>
+		</BOUNDS>
+		<STRETCH/>
+		<BITMAP type="up">equip_off_kr.png</BITMAP>
+		<BITMAP type="over">equip_on_kr.png</BITMAP>
+		<BITMAP type="down">equip_on_kr.png</BITMAP>
+		<TEXT></TEXT>
+	</BMBUTTON>
+	
+	<!-- BMBUTTON : 옵션버튼 -->
+	<BMBUTTON item="Shop_OptionFrame" parent="Shop">
+		<BUTTONLOOK>NormalBmButtonLook</BUTTONLOOK>
+		<BOUNDS>
+			<X>689</X>
+			<Y>32</Y>
+			<W>111</W>
+			<H>24</H>
+		</BOUNDS>
+		<STRETCH/>
+		<BITMAP type="up">option_off_kr.png</BITMAP>
+		<BITMAP type="over">option_on_kr.png</BITMAP>
+		<BITMAP type="down">option_on_kr.png</BITMAP>
+		<TEXT></TEXT>
+		<ENABLE>false</ENABLE>
+	</BMBUTTON>
 
 
 <!-- 하단 버튼 배열 -->
 	<!-- BMBUTTON : 나가기 버튼 -->
-	<BUTTON item ="ShopClose" parent="Shop">
-	<BUTTONLOOK>DefaultButtonLook</BUTTONLOOK>
+	<BMBUTTON item ="ShopClose" parent="Shop">
+		<BUTTONLOOK>NormalBmButtonLook</BUTTONLOOK>
 		<BOUNDS>
-			<X>625</X>
+			<X>677</X>
 			<Y>565</Y>
-			<W>131</W>
-			<H>33</H>
+			<W>111</W>
+			<H>24</H>
 		</BOUNDS>
 		<STRETCH/>
-		<TEXT>Salir</TEXT>
+		<BITMAP type="up">exit_off.png</BITMAP>
+		<BITMAP type="over">exit_on.png</BITMAP>
+		<BITMAP type="down">exit_on.png</BITMAP>
+		<DEFAULTKEY>ESC</DEFAULTKEY>
+	</BMBUTTON>
+
+	<!-- BUTTON : 나가기 버튼 -->
+	<BUTTON item ="ShopClose" parent="Shop">
+		<BUTTONLOOK>NormalBmButtonLook</BUTTONLOOK>
+		<BOUNDS>
+			<X>0</X>
+			<Y>0</Y>
+			<W>0</W>
+			<H>0</H>
+		</BOUNDS>
 		<DEFAULTKEY>ESC</DEFAULTKEY>
 	</BUTTON>
-
+	
 	<!-- FRAME : 상점/장비창에서 복수 아이템을 사거나, 팔거나, 중앙은행 보낼 때 수량을 입력하는 대화상자 프레임 -->
 	<FRAME item="TradeCountableItemFrame">
 		<FRAMELOOK>DefaultFrameLook</FRAMELOOK>

@@ -23,18 +23,44 @@
 		<FOCUSABLE>false</FOCUSABLE>
 		<VISIBLE>false</VISIBLE>
 	</FRAME>
+	
+	<PICTURE item="Fondo" parent="Stage">
+		<BOUNDS>
+			<X>0</X>
+			<Y>0</Y>
+			<W>800</W>
+			<H>600</H>
+		</BOUNDS>
+		<STRETCH/>
+		<BITMAP>background_stage.png</BITMAP>
+	</PICTURE>
 
-	<!-- Picture : 상단 바탕화면 -->
+	<!-- Picture : 상단 바탕화면 
 	<PICTURE item="Stage_MainBGTop" parent="Stage">
 		<BOUNDS>
 			<X>0</X>
 			<Y>0</Y>
 			<W>800</W>
-			<H>92</H>
+			<H>600</H>
 		</BOUNDS>
 		<STRETCH/>
-		<BITMAP>main_bg_t.png</BITMAP>
-	</PICTURE>
+		<BITMAP>background_stage.png</BITMAP>
+	</PICTURE> -->
+
+	<!-- Picture : 상단 이펙트 
+	<PICTURE item="Stage_StripTop" parent="Stage_MainBGTop">
+		<BOUNDS>
+			<X>288</X>
+			<Y>0</Y>
+			<W>512</W>
+			<H>92</H>
+		</BOUNDS>
+		<STRETCH>x</STRETCH>
+		<BITMAP>stripe.tga</BITMAP>
+		<DRAWMODE>1</DRAWMODE>
+	</PICTURE> -->
+
+	<!-- Picture : 좌측 상단 GUNZ 로고 
 	<PICTURE item="Stage_Logo" parent="Stage_MainBGTop">
 		<BOUNDS>
 			<X>10</X>
@@ -44,9 +70,9 @@
 		</BOUNDS>
 		<STRETCH/>
 		<BITMAP>gunz_logo_hq.png</BITMAP>
-	</PICTURE>
+	</PICTURE> -->
 	
-	<!-- Picture : 하단 바탕화면 -->
+	<!-- Picture : 하단 바탕화면 
 	<PICTURE item="Stage_MainBGBottom" parent="Stage">
 		<BOUNDS>
 			<X>0</X>
@@ -56,7 +82,19 @@
 		</BOUNDS>
 		<STRETCH/>
 		<BITMAP>main_bg_b.png</BITMAP>
-	</PICTURE>
+	</PICTURE> -->
+
+	<!-- Picture : 하단 이펙트 
+	<PICTURE item="Stage_StripBottom" parent="Stage_MainBGBottom">
+		<BOUNDS>
+			<X>0</X>
+			<Y>0</Y>
+			<W>512</W>
+			<H>92</H>
+		</BOUNDS>
+		<STRETCH>x</STRETCH>
+		<BITMAP>stripe.tga</BITMAP>
+	</PICTURE> -->
 
 
 <!-- 프레임 생성 : Stage_Main_Frame -->
@@ -74,17 +112,46 @@
 		<VISIBLE>true</VISIBLE>
 	</FRAME>
 
-	<!-- Picture : 이미지 프레임 출력 -->
+	<!-- Picture : 방제 표시창 이미지 출력 
+	<PICTURE item ="Stage_ChannelNameBG" parent="Stage">
+		<BOUNDS>
+			<X>18</X>
+			<Y>83</Y>
+			<W>425</W>
+			<H>35</H>
+		</BOUNDS>
+		<STRETCH/>
+		<BITMAP>title_bar.tga</BITMAP>
+	</PICTURE> -->
+	
+	<!-- Label : 방제 정보 표시
+	<LABEL item="StageNameLabel" parent="Stage">
+		<FONT>FONTa10b</FONT>
+		<TEXTCOLOR>
+			<R>210</R>
+			<G>210</G>
+			<B>210</B>
+		</TEXTCOLOR>
+		<BOUNDS>
+			<X>40</X>
+			<Y>92</Y>
+			<W>380</W>
+			<H>20</H>
+		</BOUNDS>
+		<TEXT>Stage</TEXT>
+	</LABEL>  -->
+
+	<!-- Picture : 이미지 프레임 출력  -->
 	<PICTURE item ="Stage_BG" parent="Stage">
 		<BOUNDS>
 			<X>15</X>
 			<Y>125</Y>
-			<W>200</W>
-			<H>416</H>
+			<W>188</W> <!-- 200 -->
+			<H>406</H> <!-- 416 -->
 		</BOUNDS>
 		<STRETCH/>
-		<BITMAP>stage_bg.tga</BITMAP>
-	</PICTURE>
+		<BITMAP>stage_bg.png</BITMAP>
+	</PICTURE> 
 
 	
 <!-- 캐릭터 뷰어 -->
@@ -102,7 +169,7 @@
 		<VISIBLE>true</VISIBLE>
 	</FRAME>
 
-	<!-- CHARACTERVIEW : 캐릭터 뷰어 -->
+<!-- CHARACTERVIEW : 캐릭터 뷰어 -->
 	<CHARACTERVIEW item="Stage_Charviewer" parent="Stage_CharacterInfo">
 		<BOUNDS>
 			<X>20</X>
@@ -127,7 +194,7 @@
 		</BOUNDS>
 		<STRETCH/>
 		<BITMAP>black_bg.tga</BITMAP>
-	</PICTURE>
+	</PICTURE> 
 	
 	<!-- Label : 플레이어 이름 표시 -->
 	<LABEL item="Stage_PlayerName" parent="Stage_CharacterInfo">
@@ -157,9 +224,9 @@
 	<LABEL item="Stage_PlayerSpecClan" parent="Stage_CharacterInfo">
 		<FONT>FONTa9</FONT>
 		<TEXTCOLOR>
-			<R>205</R>
-			<G>205</G>
-			<B>205</B>
+			<R>108</R>
+			<G>108</G>
+			<B>108</B>
 		</TEXTCOLOR>
 		<BOUNDS>
 			<X>25</X>
@@ -174,9 +241,9 @@
 	<LABEL item="Stage_PlayerSpecLevel" parent="Stage_CharacterInfo">
 		<FONT>FONTa9</FONT>
 		<TEXTCOLOR>
-			<R>205</R>
-			<G>205</G>
-			<B>205</B>
+			<R>108</R>
+			<G>108</G>
+			<B>108</B>
 		</TEXTCOLOR>
 		<BOUNDS>
 			<X>25</X>
@@ -276,9 +343,9 @@
 	<LABEL item="Stage_PlayerSpecRanking" parent="Stage_CharacterInfo">
 		<FONT>FONTa9</FONT>
 		<TEXTCOLOR>
-			<R>205</R>
-			<G>205</G>
-			<B>205</B>
+			<R>108</R>
+			<G>108</G>
+			<B>108</B>
 		</TEXTCOLOR>
 		<BOUNDS>
 			<X>25</X>
@@ -292,9 +359,9 @@
 	<LABEL item="Stage_PlayerSpecKill" parent="Stage_CharacterInfo">
 		<FONT>FONTa9</FONT>
 		<TEXTCOLOR>
-			<R>205</R>
-			<G>205</G>
-			<B>205</B>
+			<R>108</R>
+			<G>108</G>
+			<B>108</B>
 		</TEXTCOLOR>
 		<BOUNDS>
 			<X>25</X>
@@ -308,9 +375,9 @@
 	<LABEL item="Stage_PlayerSpecDeath" parent="Stage_CharacterInfo">
 		<FONT>FONTa9</FONT>
 		<TEXTCOLOR>
-			<R>205</R>
-			<G>205</G>
-			<B>205</B>
+			<R>108</R>
+			<G>108</G>
+			<B>108</B>
 		</TEXTCOLOR>
 		<BOUNDS>
 			<X>25</X>
@@ -324,9 +391,9 @@
 	<LABEL item="Stage_PlayerSpecWinning" parent="Stage_CharacterInfo">
 		<FONT>FONTa9</FONT>
 		<TEXTCOLOR>
-			<R>205</R>
-			<G>205</G>
-			<B>205</B>
+			<R>108</R>
+			<G>108</G>
+			<B>108</B>
 		</TEXTCOLOR>
 		<BOUNDS>
 			<X>25</X>
@@ -335,8 +402,6 @@
 			<H>20</H>
 		</BOUNDS>
 	</LABEL>
-
-
 
 	<!-- Picture : 이미지 프레임 출력 -->
 	<PICTURE item ="Stage_FrameBG" parent="Stage">
@@ -377,7 +442,7 @@
 		<EDITLOOK>NullEditLook</EDITLOOK>
 		<BOUNDS>
 			<X>225</X>
-			<Y>505</Y>
+			<Y>503</Y>
 			<W>284</W>
 			<H>24</H>
 		</BOUNDS>
@@ -385,13 +450,12 @@
 	
 <!-- PLAYER LIST -->
 	<!-- PLAYERLISTBOX : 게임 참가자 리스트 -->
-	
 	<PICTURE item="ListaDeJugadores" parent="Stage">
 		<BOUNDS>
 			<X>521</X>
 			<Y>286</Y>
-			<W>263</W>
-			<H>28</H>
+			<W>232</W>
+			<H>27</H>
 		</BOUNDS>
 		<STRETCH/>
 		<BITMAP>lista_stage.png</BITMAP>
@@ -458,7 +522,7 @@
 		<VISIBLE>true</VISIBLE>
 	</FRAME>
 
-	<!-- Picture : 맵 이름 이미지 -->
+	<!-- Picture : 맵 이름 이미지 
 	<PICTURE item="MapImage" parent="StageGameInfo">
 		<BOUNDS>
 			<X>16</X>
@@ -467,7 +531,7 @@
 			<H>50</H>
 		</BOUNDS>
 		<STRETCH/>
-	</PICTURE>
+	</PICTURE> -->
 
 	<!-- ANIMATION : 맵 이름 배경 이미지 -->
 	<ANIMATION item="Stage_MapNameBG" parent="StageGameInfo">
@@ -654,7 +718,6 @@
 		<STRETCH/>
 		<BITMAP>slot_head.tga</BITMAP>			
 	</ITEMSLOT>
-
 	
 	<!-- BMBUTTON : 게임 시작 버튼 -->
 	<BMBUTTON item="GameStart" parent="StageGameInfo">
@@ -1026,51 +1089,69 @@
 			
 <!-- 상단 버튼 배열 -->
 	<!-- BMBUTTON : 장비버튼 -->
-	<BUTTON item="EquipmentCaller" parent="Stage">
-	<BUTTONLOOK>DefaultButtonLook</BUTTONLOOK>
+	<BMBUTTON item="EquipmentCaller" parent="Stage">
+	<BUTTONLOOK>NormalBmButtonLook</BUTTONLOOK>
 		<BOUNDS>
-			<X>394</X>
+			<X>401</X>
 			<Y>32</Y>
-			<W>131</W>
-			<H>33</H>
+			<W>111</W>
+			<H>24</H>
 		</BOUNDS>
 		<STRETCH/>
-		<TEXT>Inventario</TEXT>
-	</BUTTON>
-
-
+		<BITMAP type="up">equip_off_kr.png</BITMAP>
+		<BITMAP type="over">equip_on_kr.png</BITMAP>
+		<BITMAP type="down">equip_on_kr.png</BITMAP>
+		<TEXT></TEXT>
+	</BMBUTTON>
 	
 	<!-- BMBUTTON : 옵션버튼 -->
-	<BUTTON item="Stage_OptionFrame" parent="Stage">
-		<BUTTONLOOK>DefaultButtonLook</BUTTONLOOK>
+	<BMBUTTON item="Stage_OptionFrame" parent="Stage">
+		<BUTTONLOOK>NormalBmButtonLook</BUTTONLOOK>
 		<BOUNDS>
-			<X>590</X>
-			<Y>32</Y>
-			<W>131</W>
-			<H>33</H>
+			<X>682</X>
+			<Y>32</Y> <!-- 32 -->
+			<W>111</W>
+			<H>24</H>
 		</BOUNDS>
 		<STRETCH/>
-		<TEXT>Opciones</TEXT>
-	</BUTTON>
+		<BITMAP type="up">option_off_kr.png</BITMAP>
+		<BITMAP type="over">option_on_kr.png</BITMAP>
+		<BITMAP type="down">option_on_kr.png</BITMAP>
+		<TEXT></TEXT>
+	</BMBUTTON>
 
 
 <!-- 하단 버튼 배열 -->
 	<!-- BMBUTTON : 나가기 버튼 -->
-	<BUTTON item ="Lobby_StageExit" parent="Stage">
-	<BUTTONLOOK>DefaultButtonLook</BUTTONLOOK>
+	<BMBUTTON item ="Lobby_StageExit" parent="Stage">
+		<BUTTONLOOK>NormalBmButtonLook</BUTTONLOOK>
 		<BOUNDS>
-			<X>625</X>
+			<X>677</X>
 			<Y>565</Y>
-			<W>131</W>
-			<H>33</H>
+			<W>111</W>
+			<H>24</H>
 		</BOUNDS>
 		<STRETCH/>
+		<BITMAP type="up">exit_off_kr.png</BITMAP>
+		<BITMAP type="over">exit_on_kr.png</BITMAP>
+		<BITMAP type="down">exit_on_kr.png</BITMAP>
 		<DEFAULTKEY>ESC</DEFAULTKEY>
-		<TEXT>Salir</TEXT>
+		<TEXT></TEXT>
 		<CONFIRMMESSAGE>STR:UI_STAGE_19</CONFIRMMESSAGE> <!-- 게임에서 나가시겠습니까? -->
 		<CONFIRMLOOK>DefaultFrameLook</CONFIRMLOOK>
-	</BUTTON>
+	</BMBUTTON>
 	
+	<!-- BUTTON : 나가기 버튼 -->
+	<BUTTON item ="Lobby_StageExit" parent="Stage">
+		<BUTTONLOOK>NormalBmButtonLook</BUTTONLOOK>
+		<BOUNDS>
+			<X>0</X>
+			<Y>0</Y>
+			<W>0</W>
+			<H>0</H>
+		</BOUNDS>
+		<DEFAULTKEY>ESC</DEFAULTKEY>
+	</BUTTON>
 	
 	
 <!-- FRAME : 희생 아이템 설명 프레임 -->
@@ -1347,8 +1428,6 @@
 		<STRETCH/>
 		<BITMAP>graynullframe.tga</BITMAP>
 	</PICTURE>
-	
-
 	
 	<!-- BMBUTTON : 확인 버튼 -->
 	<BUTTON item="Stage_RelayMap_OK_Button" parent="Stage_RelayMapListView">

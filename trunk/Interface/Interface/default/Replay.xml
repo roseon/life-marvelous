@@ -23,7 +23,7 @@
 	</FRAME>
 	-->
 	<FRAME item="Replay">
-		<FRAMELOOK>NullFrameLook</FRAMELOOK>
+		<FRAMELOOK>DefaultFrameLook</FRAMELOOK>
 		<BOUNDS>
 			<X>0</X>
 			<Y>0</Y>
@@ -36,18 +36,8 @@
 		</ALIGN>
 		<RESIZABLE>false</RESIZABLE>
 		<VISIBLE>false</VISIBLE>
+		<TEXT>STR:UI_REPLAY_01</TEXT> <!-- 리플레이 -->
 	</FRAME>
-	
-	<PICTURE item="replaypng" parent="Replay">
-		<BOUNDS>
-			<X>0</X>
-			<Y>0</Y>
-			<W>500</W>
-			<H>295</H>
-		</BOUNDS>
-		<STRETCH/>
-		<BITMAP>replay.png</BITMAP>
-	</PICTURE>
 	
 	<!-- LABEL : 파일 선택 표시 라벨 -->
 	<LABEL item="Label" parent="Replay">

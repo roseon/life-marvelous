@@ -1,10 +1,100 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <XML ID="SelChar">
 	<Schema xmlns="MaietData" xmlns:dt="MaietDataTypes" />
 
 
+	<!-- 장비버튼 
+	<REBOUNDS item="EquipmentCaller">
+		<X>338</X>
+		<Y>99</Y>
+		<W>111</W>
+		<H>24</H>
+	</REBOUNDS>
+
+	<REBOUNDS item="Equip_nullbutton">
+		<X>392</X>
+		<Y>32</Y>
+		<W>111</W>
+		<H>24</H>
+	</REBOUNDS>
+	
+	<REBOUNDS item="Shop_to_Equipment">
+		<X>401</X>
+		<Y>32</Y>
+		<W>111</W>
+		<H>24</H>
+	</REBOUNDS>
+
+	<!-- 옵션 버튼 
+	<REBOUNDS item="LobbyOptionFrame">
+		<X>620</X>
+		<Y>99</Y>
+		<W>111</W>
+		<H>24</H>
+	</REBOUNDS>
+
+	<REBOUNDS item="Stage_OptionFrame">
+		<X>689</X>
+		<Y>32</Y>
+		<W>111</W>
+		<H>24</H>
+	</REBOUNDS>
+
+	<REBOUNDS item="Equip_OptionFrame">
+		<X>689</X>
+		<Y>99</Y> <!-- 32 
+		<W>111</W>
+		<H>24</H>
+	</REBOUNDS>
+	
+	<REBOUNDS item="Shop_OptionFrame">
+		<X>689</X>
+		<Y>99</Y> <!-- 32 
+		<W>111</W>
+		<H>24</H>
+	</REBOUNDS>  -->
+
+	
+<!-- 112Confirm.xml -->
+	
+	
+<!-- CharCreation.xml -->
 
 
+<!-- CharSelection.xml -->
+<!-- 
+	<REBOUNDS item="CS_DeleteChar">
+		<X>145</X>
+		<Y>562</Y>
+		<W>136</W>
+		<H>38</H>	
+	</REBOUNDS>
+	<REBOUNDS item="CS_SelectChar">
+		<X>530</X>
+		<Y>562</Y>
+		<W>136</W>
+		<H>38</H>
+	</REBOUNDS>
+	<REBOUNDS item="CS_Label_01">
+		<X>19</X>
+		<Y>30</Y>
+		<W>260</W>
+		<H>20</H>
+	</REBOUNDS>
+	<REBOUNDS item="CS_Label_02">
+		<X>19</X>
+		<Y>43</Y>
+		<W>260</W>
+		<H>20</H>
+	</REBOUNDS>
+	<REBOUNDS item="CS_DeleteCharNameEdit">
+		<X>19</X>
+		<Y>77</Y>
+		<W>100</W>
+		<H>24</H>
+	</REBOUNDS>
+-->
+<!-- GameResult.xml -->
 	<REBOUNDS item="CombatResult">
 		<X>-15</X>
 		<Y>20</Y>

@@ -31,12 +31,26 @@
 			<X>0</X>
 			<Y>0</Y>
 			<W>800</W>
-			<H>92</H>
+			<H>600</H>
 		</BOUNDS>
 		<STRETCH/>
-		<BITMAP>main_bg_t.png</BITMAP>
+		<BITMAP>background_stage.png</BITMAP>
 	</PICTURE>
 
+	<!-- Picture : 상단 바탕화면 이미지(이펙트 효과) 
+	<PICTURE item="Equip_StripTop" parent="Equipment">
+		<BOUNDS>
+			<X>288</X>
+			<Y>0</Y>
+			<W>512</W>
+			<H>92</H>
+		</BOUNDS>
+		<STRETCH>x</STRETCH>
+		<BITMAP>stripe.tga</BITMAP>
+		<DRAWMODE>1</DRAWMODE>
+	</PICTURE> -->
+
+	<!-- Picture : 좌측 상단 GUNZ 로고 
 	<PICTURE item="Equip_Logo" parent="Equipment">
 		<BOUNDS>
 			<X>10</X>
@@ -46,8 +60,9 @@
 		</BOUNDS>
 		<STRETCH/>
 		<BITMAP>gunz_logo_hq.png</BITMAP>
-	</PICTURE>
-	<!-- Picture : 하단 바탕화면 이미지 -->
+	</PICTURE> -->
+
+	<!-- Picture : 하단 바탕화면 이미지 
 	<PICTURE item="Equip_MainBGBottom" parent="Equipment">
 		<BOUNDS>
 			<X>0</X>
@@ -57,8 +72,19 @@
 		</BOUNDS>
 		<STRETCH/>
 		<BITMAP>main_bg_b.png</BITMAP>
-	</PICTURE>
+	</PICTURE> -->
 
+	<!-- Picture : 하단 바탕화면 이미지(이펙트 효과) 
+	<PICTURE item="Equip_StripBottom" parent="Equip_MainBGBottom">
+		<BOUNDS>
+			<X>0</X>
+			<Y>0</Y>
+			<W>512</W>
+			<H>92</H>
+		</BOUNDS>
+		<STRETCH>x</STRETCH>
+		<BITMAP>stripe.tga</BITMAP>
+	</PICTURE> -->
 
 	<!-- CHARACTERVIEW : 캐릭터 뷰 -->
 	<CHARACTERVIEW item="EquipmentInformation" parent="Equipment">
@@ -87,6 +113,34 @@
 		<VISIBLE>true</VISIBLE>
 	</FRAME>
 	
+	<!-- Picture : 장비 정보 표시창 이미지 출력 
+	<PICTURE item ="Equip_MessageBG" parent="Equipment">
+		<BOUNDS>
+			<X>18</X>
+			<Y>83</Y>
+			<W>425</W>
+			<H>35</H>
+		</BOUNDS>
+		<STRETCH/>
+		<BITMAP>title_bar.tga</BITMAP>
+	</PICTURE>  -->
+	
+	<!-- Label : 장비 정보 표시 
+	<LABEL item="Equip_Message" parent="Equipment">
+		<FONT>FONTa10b</FONT>
+		<TEXTCOLOR>
+			<R>210</R>
+			<G>210</G>
+			<B>210</B>
+		</TEXTCOLOR>
+		<BOUNDS>
+			<X>40</X>
+			<Y>92</Y>
+			<W>380</W>
+			<H>20</H>
+		</BOUNDS>
+		<TEXT>Equipment</TEXT>
+	</LABEL> -->
 
 	<!-- Picture : 장비 프레임 이미지 출력 -->
 	<PICTURE item ="Equip_Frame" parent="Equipment">
@@ -795,32 +849,35 @@
 	</BMBUTTON>
 	
 
+	
 <!-- 상단 버튼 배열 -->
 	<!-- BMBUTTON : 상점버튼 -->
-	<BUTTON item="Equipment_to_Shop" parent="Equipment">
-		<BUTTONLOOK>DefaultButtonLook</BUTTONLOOK>
+	<BMBUTTON item="Equipment_to_Shop" parent="Equipment">
+		<BUTTONLOOK>NormalBmButtonLook</BUTTONLOOK>
 		<BOUNDS>
-			<X>289</X>
+			<X>299</X>
 			<Y>32</Y>
-			<W>131</W>
-			<H>33</H>
+			<W>111</W>
+			<H>24</H>
 		</BOUNDS>
 		<STRETCH/>
-		<TEXT>Tienda Normal</TEXT>
-	</BUTTON>
+		<BITMAP type="up">shop_off_kr.png</BITMAP>
+		<BITMAP type="over">shop_on_kr.png</BITMAP>
+		<BITMAP type="down">shop_on_kr.png</BITMAP>
+		<TEXT></TEXT>
+	</BMBUTTON>
 	
-	<BUTTON item="CashShopCaller" parent="Equipment">
-		<BUTTONLOOK>DefaultButtonLook</BUTTONLOOK>
+	<!-- Picture : 장비버튼 -->
+	<PICTURE item="Equip_nullbutton" parent="Equipment">
 		<BOUNDS>
-			<X>180</X>
+			<X>430</X>
 			<Y>32</Y>
-			<W>131</W>
-			<H>33</H>
+			<W>111</W>
+			<H>24</H>
 		</BOUNDS>
 		<STRETCH/>
-		<TEXT>Tienda de Evento</TEXT>
-	</BUTTON>
-	
+		<BITMAP>equip_on_kr.png</BITMAP>
+	</PICTURE>
 
 	<!-- BMBUTTON : 장비버튼
 	<BMBUTTON item="Equip_nullbutton" parent="Equipment">
@@ -839,19 +896,50 @@
 		<ENABLE>false</ENABLE>
 	</BMBUTTON> -->
 	
-<!-- 하단 버튼 배열 -->
-	<!-- BMBUTTON : 나가기 버튼 -->
-	<BUTTON item ="EquipmentClose" parent="Equipment">
-	<BUTTONLOOK>DefaultButtonLook</BUTTONLOOK>
+	<!-- BMBUTTON : 옵션버튼 -->
+	<BMBUTTON item="Equip_OptionFrame" parent="Equipment">
+		<BUTTONLOOK>NormalBmButtonLook</BUTTONLOOK>
 		<BOUNDS>
-			<X>625</X>
-			<Y>565</Y>
-			<W>131</W>
-			<H>33</H>
+			<X>689</X>
+			<Y>32</Y>
+			<W>111</W>
+			<H>24</H>
 		</BOUNDS>
 		<STRETCH/>
-		<TEXT>Salir</TEXT>
+		<BITMAP type="up">option_off_kr.png</BITMAP>
+		<BITMAP type="over">option_on_kr.png</BITMAP>
+		<BITMAP type="down">option_on_kr.png</BITMAP>
+		<TEXT></TEXT>
+		<ENABLE>false</ENABLE>
+	</BMBUTTON>
+
+
+<!-- 하단 버튼 배열 -->
+	<!-- BMBUTTON : 나가기 버튼 -->
+	<BMBUTTON item ="EquipmentClose" parent="Equipment">
+		<BUTTONLOOK>NormalBmButtonLook</BUTTONLOOK>
+		<BOUNDS>
+			<X>677</X>
+			<Y>565</Y>
+			<W>111</W>
+			<H>24</H>
+		</BOUNDS>
+		<STRETCH/>
+		<BITMAP type="up">exit_off.png</BITMAP>
+		<BITMAP type="over">exit_on.png</BITMAP>
+		<BITMAP type="down">exit_on.png</BITMAP>
+		<DEFAULTKEY>ESC</DEFAULTKEY>
+	</BMBUTTON>
+
+	<!-- BUTTON : 나가기 버튼 -->
+	<BUTTON item ="EquipmentClose" parent="Equipment">
+		<BUTTONLOOK>NormalBmButtonLook</BUTTONLOOK>
+		<BOUNDS>
+			<X>0</X>
+			<Y>0</Y>
+			<W>0</W>
+			<H>0</H>
+		</BOUNDS>
 		<DEFAULTKEY>ESC</DEFAULTKEY>
 	</BUTTON>
-
 </XML>

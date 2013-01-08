@@ -27,13 +27,13 @@
 			<BITMAP type="8">NULL</BITMAP>
 		</BITMAPS>
 	</FRAMELOOKTEMPLATE>
-	
+
 	<SCOREBOARD item="CombatScoreBoardFrame">
 		<FRAMELOOK>ScoreBoardFrameLook</FRAMELOOK>
 		<VISIBLE>false</VISIBLE>
 		<BOUNDS>
-			<X>0</X>
-			<Y>0</Y>
+			<X>50</X>
+			<Y>50</Y>
 			<W>520</W>
 			<H>400</H>
 		</BOUNDS>
@@ -42,7 +42,6 @@
 			<VALIGN>center</VALIGN>
 		</ALIGN>
 	</SCOREBOARD>
-		
 	<LABEL item="CombatScoreGameType" parent="CombatScoreBoardFrame">
 		<LABELLOOK>HPAPLabelLook</LABELLOOK>
 		<BOUNDS>

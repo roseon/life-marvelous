@@ -26,7 +26,7 @@
 		</ALIGN>
 		<VISIBLE>TRUE</VISIBLE>
 		<RESIZABLE>false</RESIZABLE>
-		<TEXT>STR:UI_OPTION_01</TEXT> <!-- 옵션 -->
+		<TEXT>STR:UI_OPTION_01</TEXT> <!-- ?? -->
 	</FRAME>
 	
 	<PICTURE item="optionpng" parent="OptionGroup">
@@ -71,7 +71,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_02</TEXT> <!-- 해상도 -->
+		<TEXT>STR:UI_OPTION_02</TEXT> <!-- ??? -->
 	</LABEL>
 	<COMBOBOX item="ScreenResolution" parent="VideoOptionGroup">
 		<LISTBOXLOOK>CustomListBoxLook</LISTBOXLOOK>
@@ -110,7 +110,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_03</TEXT> <!-- 밝기 -->
+		<TEXT>STR:UI_OPTION_03</TEXT> <!-- ?? -->
 	</LABEL>
 	<SLIDER item="VideoGamma" parent="VideoOptionGroup">
 		<BOUNDS>
@@ -137,7 +137,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_04</TEXT> <!-- 반사효과 -->
+		<TEXT>STR:UI_OPTION_04</TEXT> <!-- ???? -->
 	</LABEL>
 	<BUTTON item="Reflection" parent="VideoOptionGroup">
 		<BUTTONLOOK>Custom1ButtonLook</BUTTONLOOK>
@@ -166,7 +166,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_05</TEXT> <!-- 라이트맵 -->
+		<TEXT>STR:UI_OPTION_05</TEXT> <!-- ???? -->
 	</LABEL>
 	<BUTTON item="LightMap" parent="VideoOptionGroup">
 		<BUTTONLOOK>Custom1ButtonLook</BUTTONLOOK>
@@ -195,7 +195,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_06</TEXT> <!-- 쉐이더 -->
+		<TEXT>STR:UI_OPTION_06</TEXT> <!-- ??? -->
 	</LABEL>
 	<BUTTON item="Shader" parent="VideoOptionGroup">
 		<BUTTONLOOK>Custom1ButtonLook</BUTTONLOOK>
@@ -224,7 +224,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_07</TEXT> <!-- 동적라이트 -->
+		<TEXT>STR:UI_OPTION_07</TEXT> <!-- ????? -->
 	</LABEL>
 	<BUTTON item="DynamicLight" parent="VideoOptionGroup">
 		<BUTTONLOOK>Custom1ButtonLook</BUTTONLOOK>
@@ -254,7 +254,7 @@
             <W>300</W>
             <H>24</H>
         </BOUNDS>
-        <TEXT>Full Screen</TEXT> <!-- 동적라이트 -->
+        <TEXT>Full Screen</TEXT> <!-- ????? -->
     </LABEL>
     
 	<BUTTON item="FullScreen" parent="VideoOptionGroup">
@@ -285,7 +285,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_08</TEXT> <!-- 캐릭터 이미지 품질 -->
+		<TEXT>STR:UI_OPTION_08</TEXT> <!-- ??? ??? ?? -->
 	</LABEL>
 
 	<LABEL item="Label" parent="VideoOptionGroup">
@@ -301,7 +301,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_09</TEXT> <!-- 배경 이미지 품질 -->
+		<TEXT>STR:UI_OPTION_09</TEXT> <!-- ?? ??? ?? -->
 	</LABEL>
 
 	<LABEL item="Label" parent="VideoOptionGroup">
@@ -317,7 +317,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_10</TEXT> <!-- 이펙트 품질 -->
+		<TEXT>STR:UI_OPTION_10</TEXT> <!-- ??? ?? -->
 	</LABEL>
 
 	<LABEL item="Label" parent="VideoOptionGroup">
@@ -333,7 +333,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_11</TEXT> <!-- 텍스쳐 품질 -->
+		<TEXT>STR:UI_OPTION_11</TEXT> <!-- ??? ?? -->
 	</LABEL>
 
 	<COMBOBOX item="CharTexLevel" parent="VideoOptionGroup">
@@ -358,10 +358,10 @@
 		<ALIGN>
 			<HALIGN>right</HALIGN>
 		</ALIGN>
-		<LISTITEM selected="true">STR:UI_OPTION_LIST_01_01</LISTITEM> <!-- 좋음 -->
-		<LISTITEM>STR:UI_OPTION_LIST_01_02</LISTITEM> <!-- 보통 -->
-		<LISTITEM>STR:UI_OPTION_LIST_01_03</LISTITEM> <!-- 낮음 -->
-		<LISTITEM>Archtype</LISTITEM> <!-- 낮음 -->
+		<LISTITEM selected="true">STR:UI_OPTION_LIST_01_01</LISTITEM> <!-- ?? -->
+		<LISTITEM>STR:UI_OPTION_LIST_01_02</LISTITEM> <!-- ?? -->
+		<LISTITEM>STR:UI_OPTION_LIST_01_03</LISTITEM> <!-- ?? -->
+		<LISTITEM>Archtype</LISTITEM> <!-- ?? -->
 		<DROPSIZE>80</DROPSIZE>
 		<COMBOTYPE>1</COMBOTYPE>
 	</COMBOBOX>
@@ -388,11 +388,11 @@
 		<ALIGN>
 			<HALIGN>right</HALIGN>
 		</ALIGN>
-		<LISTITEM selected="true">STR:UI_OPTION_LIST_01_01</LISTITEM> <!-- 좋음 -->
-		<LISTITEM>STR:UI_OPTION_LIST_01_02</LISTITEM> <!-- 보통 -->
-		<LISTITEM>STR:UI_OPTION_LIST_01_03</LISTITEM> <!-- 낮음 -->
-		<LISTITEM>Archtype</LISTITEM> <!-- 낮음 -->
-		<LISTITEM>No Texture</LISTITEM> <!-- 낮음 -->
+		<LISTITEM selected="true">STR:UI_OPTION_LIST_01_01</LISTITEM> <!-- ?? -->
+		<LISTITEM>STR:UI_OPTION_LIST_01_02</LISTITEM> <!-- ?? -->
+		<LISTITEM>STR:UI_OPTION_LIST_01_03</LISTITEM> <!-- ?? -->
+		<LISTITEM>Archtype</LISTITEM> <!-- ?? -->
+		<LISTITEM>No Texture</LISTITEM> <!-- ?? -->
 		<DROPSIZE>80</DROPSIZE>
 		<COMBOTYPE>1</COMBOTYPE>
 	</COMBOBOX>
@@ -419,10 +419,10 @@
 		<ALIGN>
 			<HALIGN>right</HALIGN>
 		</ALIGN>
-		<LISTITEM selected="true">STR:UI_OPTION_LIST_01_01</LISTITEM> <!-- 좋음 -->
-		<LISTITEM>STR:UI_OPTION_LIST_01_02</LISTITEM> <!-- 보통 -->
-		<LISTITEM>STR:UI_OPTION_LIST_01_03</LISTITEM> <!-- 낮음 -->
-		<LISTITEM>Archtype</LISTITEM> <!-- 낮음 -->
+		<LISTITEM selected="true">STR:UI_OPTION_LIST_01_01</LISTITEM> <!-- ?? -->
+		<LISTITEM>STR:UI_OPTION_LIST_01_02</LISTITEM> <!-- ?? -->
+		<LISTITEM>STR:UI_OPTION_LIST_01_03</LISTITEM> <!-- ?? -->
+		<LISTITEM>Archtype</LISTITEM> <!-- ?? -->
 		<DROPSIZE>80</DROPSIZE>
 		<COMBOTYPE>1</COMBOTYPE>
 	</COMBOBOX>
@@ -465,7 +465,7 @@
 		<ALIGN>
 			<HALIGN>right</HALIGN>
 		</ALIGN>
-		<TEXT>STR:UI_OPTION_12</TEXT> <!-- 최적화하기 -->
+		<TEXT>STR:UI_OPTION_12</TEXT> <!-- ????? -->
 	</BUTTON>
 
 	<!-- Audio -->
@@ -496,7 +496,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_13</TEXT> <!-- 배경음악 -->
+		<TEXT>STR:UI_OPTION_13</TEXT> <!-- ???? -->
 	</LABEL>
 	<BUTTON item="BGMMute" parent="AudioOptionGroup">
 		<BUTTONLOOK>Custom1ButtonLook</BUTTONLOOK>
@@ -524,7 +524,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_14</TEXT> <!-- 배경음악 볼륨 -->
+		<TEXT>STR:UI_OPTION_14</TEXT> <!-- ???? ?? -->
 	</LABEL>
 	<SLIDER item="BGMVolumeSlider" parent="AudioOptionGroup">
 		<BOUNDS>
@@ -551,7 +551,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_15</TEXT> <!-- 효과음 -->
+		<TEXT>STR:UI_OPTION_15</TEXT> <!-- ??? -->
 	</LABEL>
 	<BUTTON item="EffectMute" parent="AudioOptionGroup">
 		<BUTTONLOOK>Custom1ButtonLook</BUTTONLOOK>
@@ -579,7 +579,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_16</TEXT> <!-- 효과음 볼륨 -->
+		<TEXT>STR:UI_OPTION_16</TEXT> <!-- ??? ?? -->
 	</LABEL>
 	<SLIDER item="EffectVolumeSlider" parent="AudioOptionGroup">
 		<BOUNDS>
@@ -601,7 +601,7 @@
 			<W>140</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>8비트사운드</TEXT>
+		<TEXT>8?????</TEXT>
 	</BUTTON>
 
 	<BUTTON item="16BitSound" parent="AudioOptionGroup">
@@ -612,7 +612,7 @@
 			<W>140</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>16비트사운드</TEXT>
+		<TEXT>16?????</TEXT>
 	</BUTTON>
 	-->
 
@@ -629,7 +629,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_17</TEXT> <!-- 3D사운드 좌우반전 -->
+		<TEXT>STR:UI_OPTION_17</TEXT> <!-- 3D??? ???? -->
 	</LABEL>
 	<BUTTON item="InverseSound" parent="AudioOptionGroup">
 		<BUTTONLOOK>Custom1ButtonLook</BUTTONLOOK>
@@ -658,7 +658,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_18</TEXT> <!-- 하드웨어 믹싱지원 -->
+		<TEXT>STR:UI_OPTION_18</TEXT> <!-- ???? ???? -->
 	</LABEL>
 	<BUTTON item="HWMixing" parent="AudioOptionGroup">
 		<BUTTONLOOK>Custom1ButtonLook</BUTTONLOOK>
@@ -687,7 +687,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_19</TEXT> <!-- 적 명중시 표시음 -->
+		<TEXT>STR:UI_OPTION_19</TEXT> <!-- ? ??? ??? -->
 	</LABEL>
 	<BUTTON item="HitSound" parent="AudioOptionGroup">
 		<BUTTONLOOK>Custom1ButtonLook</BUTTONLOOK>
@@ -716,7 +716,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_74</TEXT> <!-- 해설자 음성 출력 -->
+		<TEXT>STR:UI_OPTION_74</TEXT> <!-- ??? ?? ?? -->
 	</LABEL>
 	<BUTTON item="NarrationSound" parent="AudioOptionGroup">
 		<BUTTONLOOK>Custom1ButtonLook</BUTTONLOOK>
@@ -740,7 +740,7 @@
 			<W>100</W>
 			<H>16</H>
 		</BOUNDS>
-		<TEXT>3차원 소리</TEXT>
+		<TEXT>3?? ??</TEXT>
 	</LABEL>
 	<BUTTON item="Effect3D" parent="AudioOptionGroup">
 		<BUTTONLOOK>NormalButton2Look</BUTTONLOOK>
@@ -898,7 +898,7 @@
 			<W>65</W>
 			<H>30</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_80</TEXT>	<!-- 액션 3 -->
+		<TEXT>STR:UI_OPTION_80</TEXT>	<!-- ?? 3 -->
 	</BUTTON>
 	<BUTTON item="ControlTabBtn4" parent="KeyboardOptionGroup">
 		<BOUNDS>
@@ -952,7 +952,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_22</TEXT> <!-- 앞으로 가기 -->
+		<TEXT>STR:UI_OPTION_22</TEXT> <!-- ??? ?? -->
 	</LABEL>
 	<ACTIONKEY item="ForwardActionKey" parent="KeyboardOptionGroup1">
 		<BOUNDS>
@@ -976,7 +976,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_23</TEXT> <!-- 뒤로 가기 -->
+		<TEXT>STR:UI_OPTION_23</TEXT> <!-- ?? ?? -->
 	</LABEL>
 	<ACTIONKEY item="BackActionKey" parent="KeyboardOptionGroup1">
 		<BOUNDS>
@@ -1000,7 +1000,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_24</TEXT> <!-- 왼쪽으로 가기 -->
+		<TEXT>STR:UI_OPTION_24</TEXT> <!-- ???? ?? -->
 	</LABEL>
 	<ACTIONKEY item="LeftActionKey" parent="KeyboardOptionGroup1">
 		<BOUNDS>
@@ -1024,7 +1024,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_25</TEXT> <!-- 오른쪽으로 가기 -->
+		<TEXT>STR:UI_OPTION_25</TEXT> <!-- ????? ?? -->
 	</LABEL>
 	<ACTIONKEY item="RightActionKey" parent="KeyboardOptionGroup1">
 		<BOUNDS>
@@ -1048,7 +1048,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_59</TEXT> <!-- 무기 사용 -->
+		<TEXT>STR:UI_OPTION_59</TEXT> <!-- ?? ?? -->
 	</LABEL>
 	<ACTIONKEY item="UseWeaponActionKey" parent="KeyboardOptionGroup1">
 		<BOUNDS>
@@ -1072,7 +1072,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_73</TEXT> <!-- 무기 사용2 -->
+		<TEXT>STR:UI_OPTION_73</TEXT> <!-- ?? ??2 -->
 	</LABEL>
 	<ACTIONKEY item="UseWeapon2ActionKey" parent="KeyboardOptionGroup1">
 		<BOUNDS>
@@ -1096,7 +1096,7 @@
 			<W>200</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_34</TEXT> <!-- 재장전 -->
+		<TEXT>STR:UI_OPTION_34</TEXT> <!-- ??? -->
 	</LABEL>
 	<ACTIONKEY item="ReloadActionKey" parent="KeyboardOptionGroup1">
 		<BOUNDS>
@@ -1119,7 +1119,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-	<TEXT>STR:UI_OPTION_35</TEXT> <!-- 점프 -->
+	<TEXT>STR:UI_OPTION_35</TEXT> <!-- ?? -->
 	</LABEL>
 	<ACTIONKEY item="JumpActionKey" parent="KeyboardOptionGroup1">
 		<BOUNDS>
@@ -1143,7 +1143,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_39</TEXT> <!-- 방어 -->
+		<TEXT>STR:UI_OPTION_39</TEXT> <!-- ?? -->
 	</LABEL>
 	<ACTIONKEY item="DefenceActionKey" parent="KeyboardOptionGroup1">
 		<BOUNDS>
@@ -1167,7 +1167,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_31</TEXT> <!-- 이전무기 -->
+		<TEXT>STR:UI_OPTION_31</TEXT> <!-- ???? -->
 	</LABEL>
 	<ACTIONKEY item="PrevousWeaponActionKey" parent="KeyboardOptionGroup1">
 		<BOUNDS>
@@ -1192,7 +1192,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_32</TEXT> <!-- 다음무기 -->
+		<TEXT>STR:UI_OPTION_32</TEXT> <!-- ???? -->
 	</LABEL>
 	<ACTIONKEY item="NextWeaponActionKey" parent="KeyboardOptionGroup1">
 		<BOUNDS>
@@ -1218,7 +1218,7 @@
 			<W>150</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_26</TEXT> <!-- 근접 무기 선택 -->
+		<TEXT>STR:UI_OPTION_26</TEXT> <!-- ?? ?? ?? -->
 	</LABEL>
 	<ACTIONKEY item="MeleeWeaponActionKey" parent="KeyboardOptionGroup2">
 		<BOUNDS>
@@ -1242,7 +1242,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_27</TEXT> <!-- 주 무기 선택 -->
+		<TEXT>STR:UI_OPTION_27</TEXT> <!-- ? ?? ?? -->
 	</LABEL>
 	<ACTIONKEY item="PrimaryWeaponActionKey" parent="KeyboardOptionGroup2">
 		<BOUNDS>
@@ -1266,7 +1266,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_28</TEXT> <!-- 보조 무기 선택 -->
+		<TEXT>STR:UI_OPTION_28</TEXT> <!-- ?? ?? ?? -->
 	</LABEL>
 	<ACTIONKEY item="SecondaryWeaponActionKey" parent="KeyboardOptionGroup2">
 		<BOUNDS>
@@ -1291,7 +1291,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_81</TEXT> <!-- 아이템1 선택 -->
+		<TEXT>STR:UI_OPTION_81</TEXT> <!-- ???1 ?? -->
 	</LABEL>
 	<ACTIONKEY item="Item1ActionKey" parent="KeyboardOptionGroup2">
 		<BOUNDS>
@@ -1315,7 +1315,7 @@
 			<W>120</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_82</TEXT> <!-- 아이템2 선택 -->
+		<TEXT>STR:UI_OPTION_82</TEXT> <!-- ???2 ?? -->
 	</LABEL>
 	<ACTIONKEY item="Item2ActionKey" parent="KeyboardOptionGroup2">
 		<BOUNDS>
@@ -1340,7 +1340,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_40</TEXT> <!-- 채팅창보기 -->
+		<TEXT>STR:UI_OPTION_40</TEXT> <!-- ????? -->
 	</LABEL>
 	<ACTIONKEY item="ToggleChatActionKey" parent="KeyboardOptionGroup3">
 		<BOUNDS>
@@ -1364,7 +1364,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_36</TEXT> <!-- 점수 보기 -->
+		<TEXT>STR:UI_OPTION_36</TEXT> <!-- ?? ?? -->
 	</LABEL>
 	<ACTIONKEY item="ScoreActionKey" parent="KeyboardOptionGroup3">
 		<BOUNDS>
@@ -1389,7 +1389,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_37</TEXT> <!-- 스크린샷 -->
+		<TEXT>STR:UI_OPTION_37</TEXT> <!-- ???? -->
 	</LABEL>
 	<ACTIONKEY item="ScreenShotActionKey" parent="KeyboardOptionGroup3">
 		<BOUNDS>
@@ -1413,7 +1413,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_38</TEXT> <!-- 재생 -->
+		<TEXT>STR:UI_OPTION_38</TEXT> <!-- ?? -->
 	</LABEL>
 	<ACTIONKEY item="RecordActionKey" parent="KeyboardOptionGroup3">
 		<BOUNDS>
@@ -1437,7 +1437,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_75</TEXT> <!-- 동영상 녹화 -->
+		<TEXT>STR:UI_OPTION_75</TEXT> <!-- ??? ?? -->
 	</LABEL>
 	<ACTIONKEY item="MovingPictureActionKey" parent="KeyboardOptionGroup3">
 		<BOUNDS>
@@ -1462,7 +1462,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_60</TEXT> <!-- 도발 -->
+		<TEXT>STR:UI_OPTION_60</TEXT> <!-- ?? -->
 	</LABEL>
 	<ACTIONKEY item="TauntActionKey" parent="KeyboardOptionGroup4">
 		<BOUNDS>
@@ -1486,7 +1486,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_61</TEXT> <!-- 인사 -->
+		<TEXT>STR:UI_OPTION_61</TEXT> <!-- ?? -->
 	</LABEL>
 	<ACTIONKEY item="BowActionKey" parent="KeyboardOptionGroup4">
 		<BOUNDS>
@@ -1510,7 +1510,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_62</TEXT> <!-- 손 흔들기 -->
+		<TEXT>STR:UI_OPTION_62</TEXT> <!-- ? ??? -->
 	</LABEL>
 	<ACTIONKEY item="WaveActionKey" parent="KeyboardOptionGroup4">
 		<BOUNDS>
@@ -1534,7 +1534,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_63</TEXT> <!-- 웃기 -->
+		<TEXT>STR:UI_OPTION_63</TEXT> <!-- ?? -->
 	</LABEL>
 	<ACTIONKEY item="LaughActionKey" parent="KeyboardOptionGroup4">
 		<BOUNDS>
@@ -1558,7 +1558,7 @@
 			<W>150</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_64</TEXT> <!-- 울기 -->
+		<TEXT>STR:UI_OPTION_64</TEXT> <!-- ?? -->
 	</LABEL>
 	<ACTIONKEY item="CryActionKey" parent="KeyboardOptionGroup4">
 		<BOUNDS>
@@ -1582,7 +1582,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_65</TEXT> <!-- 춤 -->
+		<TEXT>STR:UI_OPTION_65</TEXT> <!-- ? -->
 	</LABEL>
 	<ACTIONKEY item="DanceActionKey" parent="KeyboardOptionGroup4">
 		<BOUNDS>
@@ -1608,7 +1608,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_76</TEXT> <!-- 마우스 감도 감소 -->
+		<TEXT>STR:UI_OPTION_76</TEXT> <!-- ??? ?? ?? -->
 	</LABEL>
 	<ACTIONKEY item="MouseSensitivityDecActionKey" parent="KeyboardOptionGroup5">
 		<BOUNDS>
@@ -1632,7 +1632,7 @@
 			<W>100</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_77</TEXT> <!-- 마우스 감도 증가 -->
+		<TEXT>STR:UI_OPTION_77</TEXT> <!-- ??? ?? ?? -->
 	</LABEL>
 	<ACTIONKEY item="MouseSensitivityIncActionKey" parent="KeyboardOptionGroup5">
 		<BOUNDS>
@@ -1656,7 +1656,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_20</TEXT> <!-- 마우스 감도 -->
+		<TEXT>STR:UI_OPTION_20</TEXT> <!-- ??? ?? -->
 	</LABEL>
 	<SLIDER item="MouseSensitivitySlider" parent="KeyboardOptionGroup5">
 		<BOUNDS>
@@ -1692,7 +1692,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_21</TEXT> <!-- 마우스 상하 반전 -->
+		<TEXT>STR:UI_OPTION_21</TEXT> <!-- ??? ?? ?? -->
 	</LABEL>
 	<BUTTON item="InvertMouse" parent="KeyboardOptionGroup5">
 		<BUTTONLOOK>Custom1ButtonLook</BUTTONLOOK>
@@ -1717,7 +1717,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>Disable Special Items From Mouse Wheel</TEXT> <!-- 마우스 상하 반전 -->
+		<TEXT>Disable Special Items From Mouse Wheel</TEXT> <!-- ??? ?? ?? -->
 	</LABEL>
 	<BUTTON item="DisableSpecial" parent="KeyboardOptionGroup5">
 		<BUTTONLOOK>Custom1ButtonLook</BUTTONLOOK>
@@ -1744,7 +1744,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_66</TEXT> <!-- 조이스틱 아날로그 감도 -->
+		<TEXT>STR:UI_OPTION_66</TEXT> <!-- ???? ???? ?? -->
 	</LABEL>
 	<SLIDER item="JoystickSensitivitySlider" parent="KeyboardOptionGroup6">
 		<BOUNDS>
@@ -1771,7 +1771,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_67</TEXT> <!-- 조이스틱 상하 반전 -->
+		<TEXT>STR:UI_OPTION_67</TEXT> <!-- ???? ?? ?? -->
 	</LABEL>
 	<BUTTON item="InvertJoystick" parent="KeyboardOptionGroup6">
 		<BUTTONLOOK>Custom1ButtonLook</BUTTONLOOK>
@@ -1797,7 +1797,7 @@
 			<W>140</W>
 			<H>32</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_41</TEXT> <!-- 기본설정으로 -->
+		<TEXT>STR:UI_OPTION_41</TEXT> <!-- ?????? -->
 		<WIRELOOK/>
 	</BUTTON>
 
@@ -1828,7 +1828,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_42</TEXT> <!-- 포트포워딩 포트설정 -->
+		<TEXT>STR:UI_OPTION_42</TEXT> <!-- ????? ???? -->
 	</LABEL>
 	<EDIT item="NetworkPort1" parent="EtcOptionGroup">
 		<BOUNDS>
@@ -1890,7 +1890,7 @@
 			<W>310</W>
 			<H>55</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_43</TEXT> <!-- 성능 최대화(일부시스템에서 마우스가 느려질수 있습니다) -->
+		<TEXT>STR:UI_OPTION_43</TEXT> <!-- ?? ???(??????? ???? ???? ????) -->
 		<EDITABLE>false</EDITABLE>
 	</TEXTAREA>
 		
@@ -1921,7 +1921,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_LANGUAGE_SELECT</TEXT> <!-- 언어 선택 지 -->
+		<TEXT>STR:UI_OPTION_LANGUAGE_SELECT</TEXT> <!-- ?? ?? ? -->
 	</LABEL>
 	<COMBOBOX item="LanguageSelectComboBox" parent="EtcOptionGroup">
 		<LISTBOXLOOK>CustomListBoxLook</LISTBOXLOOK>
@@ -1962,7 +1962,7 @@
 			<W>320</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_44</TEXT> <!-- 채팅 필터 옵션 -->
+		<TEXT>STR:UI_OPTION_44</TEXT> <!-- ?? ?? ?? -->
 	</LABEL>
 	<LABEL item="Label" parent="EtcOptionGroup">
 		<FONT>FONTa9</FONT>
@@ -1977,7 +1977,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_45</TEXT> <!-- 일반 채팅 말 무시 -->
+		<TEXT>STR:UI_OPTION_45</TEXT> <!-- ?? ?? ? ?? -->
 	</LABEL>
 	<BUTTON item="NormalChatOption" parent="EtcOptionGroup">
 		<BUTTONLOOK>Custom1ButtonLook</BUTTONLOOK>
@@ -2002,7 +2002,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_46</TEXT> <!-- 팀 채팅 말 무시 -->
+		<TEXT>STR:UI_OPTION_46</TEXT> <!-- ? ?? ? ?? -->
 	</LABEL>
 	<BUTTON item="TeamChatOption" parent="EtcOptionGroup">
 		<BUTTONLOOK>Custom1ButtonLook</BUTTONLOOK>
@@ -2027,7 +2027,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_47</TEXT> <!-- 클랜 채팅 말 무시 -->
+		<TEXT>STR:UI_OPTION_47</TEXT> <!-- ?? ?? ? ?? -->
 	</LABEL>
 	<BUTTON item="ClanChatOption" parent="EtcOptionGroup">
 		<BUTTONLOOK>Custom1ButtonLook</BUTTONLOOK>
@@ -2052,7 +2052,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_48</TEXT> <!-- 귓말 거부 -->
+		<TEXT>STR:UI_OPTION_48</TEXT> <!-- ?? ?? -->
 	</LABEL>
 	<BUTTON item="WhisperOption" parent="EtcOptionGroup">
 		<BUTTONLOOK>Custom1ButtonLook</BUTTONLOOK>
@@ -2078,7 +2078,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_MOVINGPICTURE_01</TEXT> <!-- 해상도(동영상) -->
+		<TEXT>STR:UI_OPTION_MOVINGPICTURE_01</TEXT> <!-- ???(???) -->
 	</LABEL>
 	<COMBOBOX item="MovingPictureResolution" parent="EtcOptionGroup">
 		<LISTBOXLOOK>CustomListBoxLook</LISTBOXLOOK>
@@ -2122,7 +2122,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_MOVINGPICTURE_11</TEXT> <!-- 파일크기(제한용량)(동영상) -->
+		<TEXT>STR:UI_OPTION_MOVINGPICTURE_11</TEXT> <!-- ????(????)(???) -->
 	</LABEL>
 	<COMBOBOX item="MovingPictureFileSize" parent="EtcOptionGroup">
 		<LISTBOXLOOK>CustomListBoxLook</LISTBOXLOOK>
@@ -2149,7 +2149,7 @@
 		<LISTITEM selected="true">STR:UI_OPTION_MOVINGPICTURE_12</LISTITEM> <!-- 100MB -->
 		<LISTITEM>STR:UI_OPTION_MOVINGPICTURE_13</LISTITEM> <!-- 300MB -->
 		<LISTITEM>STR:UI_OPTION_MOVINGPICTURE_14</LISTITEM> <!-- 500MB -->
-		<LISTITEM>STR:UI_OPTION_MOVINGPICTURE_15</LISTITEM> <!-- 무제한 -->
+		<LISTITEM>STR:UI_OPTION_MOVINGPICTURE_15</LISTITEM> <!-- ??? -->
 		<DROPSIZE>80</DROPSIZE>
 		<COMBOTYPE>1</COMBOTYPE>
 	</COMBOBOX>
@@ -2167,7 +2167,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_FRAMELIMIT_PERSECOND_01</TEXT> <!-- 1초당 프레임 제한 -->
+		<TEXT>STR:UI_OPTION_FRAMELIMIT_PERSECOND_01</TEXT> <!-- 1?? ??? ?? -->
 	</LABEL>
 	<EDIT item="FrameLimit_PerSecond" parent="EtcOptionGroup">
 		<FONT>FONTa9</FONT>
@@ -2203,7 +2203,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_50</TEXT> <!-- 조준점 -->
+		<TEXT>STR:UI_OPTION_50</TEXT> <!-- ??? -->
 	</LABEL>
 	<COMBOBOX item="CrossHairComboBox" parent="EtcOptionGroup">
 		<LISTBOXLOOK>CustomListBoxLook</LISTBOXLOOK>
@@ -2256,7 +2256,7 @@
 			<W>300</W>
 			<H>24</H>
 		</BOUNDS>
-		<TEXT>STR:UI_OPTION_49</TEXT> <!-- 초대거부 -->
+		<TEXT>STR:UI_OPTION_49</TEXT> <!-- ???? -->
 	</LABEL>
 	<BUTTON item="InviteOption" parent="EtcOptionGroup">
 		<BUTTONLOOK>Custom1ButtonLook</BUTTONLOOK>
@@ -2498,7 +2498,7 @@
 	</EDIT>
 
 
-<!-- 옵션 메뉴 버튼들 -->
+<!-- ?? ?? ??? -->
 
 	<BUTTON item = "ShowVideoOptionGroup" parent = "OptionGroup">
 	<BUTTONLOOK>DefaultButtonLook</BUTTONLOOK>
@@ -2591,7 +2591,7 @@
 		<TABCONTROLLOOK>NullTabLook</TABCONTROLLOOK>
 	</TABCONTROL>
 	
-	<!-- 나가기 -->
+	<!-- ??? -->
 	<BUTTON item="SaveOptionButton" parent="OptionGroup">
 		<BUTTONLOOK>DefaultButtonLook</BUTTONLOOK>
 		<ANCHORS>
@@ -2607,7 +2607,7 @@
 			<H>32</H>
 		</BOUNDS>
 		<DEFAULTKEY>ENTER</DEFAULTKEY>
-		<TEXT>STR:UI_COMMON_OK</TEXT> <!-- 확인(&amp;O) -->
+		<TEXT>STR:UI_COMMON_OK</TEXT> <!-- ??(&amp;O) -->
 	</BUTTON>
 	<BUTTON item="CancelOptionButton" parent="OptionGroup">
 		<BUTTONLOOK>DefaultButtonLook</BUTTONLOOK>
@@ -2624,7 +2624,7 @@
 			<H>32</H>
 		</BOUNDS>
 		<DEFAULTKEY>ESC</DEFAULTKEY>
-		<TEXT>STR:UI_COMMON_CANCEL</TEXT> <!-- 취소(&amp;C) -->
+		<TEXT>STR:UI_COMMON_CANCEL</TEXT> <!-- ??(&amp;C) -->
 	</BUTTON>
 
 </XML>

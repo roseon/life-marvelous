@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <XML ID="Sample">
 	<Schema xmlns="MaietData" xmlns:dt="MaietDataTypes" />
 
@@ -6,6 +6,12 @@
 	<FONTTEMPLATE item="FONTa9">
 		<FONTSET>Arial</FONTSET>
 		<FONTHEIGHT>9</FONTHEIGHT>
+	</FONTTEMPLATE>
+	
+	<FONTTEMPLATE item="FONTChar">
+		<FONTSET>Arial</FONTSET>
+		<FONTHEIGHT>5</FONTHEIGHT>
+		<BOLD/>
 	</FONTTEMPLATE>
 
 	<FONTTEMPLATE item="FONTa9b">
@@ -22,12 +28,6 @@
 	<FONTTEMPLATE item="FONTa10b">
 		<FONTSET>Arial</FONTSET>
 		<FONTHEIGHT>10</FONTHEIGHT>
-		<BOLD/>
-	</FONTTEMPLATE>
-
-	<FONTTEMPLATE item="FontPJ">
-		<FONTSET>Arial</FONTSET>
-		<FONTHEIGHT>16</FONTHEIGHT>
 		<BOLD/>
 	</FONTTEMPLATE>
 
@@ -126,6 +126,108 @@
 		<FONTHEIGHT>8</FONTHEIGHT>
 		<BOLD/>
 	</FONTTEMPLATE>
+	
+	
+	<FRAMELOOKTEMPLATE item="TransparentFrameLook">
+		<SCALABLE/>
+		<STRETCH>true</STRETCH>
+		<DEFAULT>true</DEFAULT>
+		<TEXTCOLOR>
+			<R>255</R>
+			<G>255</G>
+			<B>255</B>
+		</TEXTCOLOR>
+		<FONT>FONTa9b</FONT>
+		<TEXTPOSITION>
+			<X>16</X>
+			<Y>8</Y>
+		</TEXTPOSITION>
+		<DEFAULTTITLE>Confirm</DEFAULTTITLE>		<!-- confirm 에도 쓰인다 -->
+		<BITMAPS>
+			<BITMAP type="0">
+				<SOURCE>windowframe.png</SOURCE>
+				<BOUNDS>
+					<X>0</X>
+					<Y>56</Y>
+					<W>8</W>
+					<H>10</H>
+				</BOUNDS>
+			</BITMAP>
+			<BITMAP type="1">
+				<SOURCE>windowframe.png</SOURCE>
+				<BOUNDS>
+					<X>10</X>
+					<Y>56</Y>
+					<W>8</W>
+					<H>10</H>
+				</BOUNDS>
+			</BITMAP>
+			<BITMAP type="2">
+				<SOURCE>windowframe.png</SOURCE>
+				<BOUNDS>
+					<X>22</X>
+					<Y>56</Y>
+					<W>10</W>
+					<H>10</H>
+				</BOUNDS>
+			</BITMAP>
+			<BITMAP type="3">
+				<SOURCE>windowframe.png</SOURCE>
+				<BOUNDS>
+					<X>0</X>
+					<Y>48</Y>
+					<W>10</W>
+					<H>8</H>
+				</BOUNDS>
+			</BITMAP>
+			<BITMAP type="4">
+				<SOURCE>windowframe.png</SOURCE>
+				<BOUNDS>
+					<X>10</X>
+					<Y>48</Y>
+					<W>12</W>
+					<H>8</H>
+				</BOUNDS>
+			</BITMAP>
+			<BITMAP type="5">
+				<SOURCE>windowframe.png</SOURCE>
+				<BOUNDS>
+					<X>22</X>
+					<Y>48</Y>
+					<W>10</W>
+					<H>8</H>
+				</BOUNDS>
+			</BITMAP>
+			<BITMAP type="6">
+				<SOURCE>windowframe.png</SOURCE>
+				<BOUNDS>
+					<X>0</X>
+					<Y>0</Y>
+					<W>10</W>
+					<H>48</H>
+				</BOUNDS>
+			</BITMAP>
+			<BITMAP type="7">
+				<SOURCE>windowframe.png</SOURCE>
+				<BOUNDS>
+					<X>10</X>
+					<Y>0</Y>
+					<W>12</W>
+					<H>48</H>
+				</BOUNDS>
+			</BITMAP>
+			<BITMAP type="8">
+				<SOURCE>windowframe.png</SOURCE>
+				<BOUNDS>
+					<X>22</X>
+					<Y>0</Y>
+					<W>10</W>
+					<H>48</H>
+				</BOUNDS>
+			</BITMAP>
+		</BITMAPS>
+	</FRAMELOOKTEMPLATE>
+	
 
 <!-- Edit Looks Begin -->
 
@@ -549,7 +651,7 @@
 		<CUSTOMLOOK/>
 	</BUTTONLOOKTEMPLATE>
 
-	<BUTTONLOOKTEMPLATE item="DefaultButtonLook_Antiguo">
+	<BUTTONLOOKTEMPLATE item="DefaultButtonLook">
 		<DEFAULT>true</DEFAULT>
 		<FONT>FONTa9b</FONT>
 		<TEXTCOLOR>
@@ -1273,7 +1375,8 @@
 <!-- ScrollBar End -->
 
 <!-- 프레임룩 -->
-<!-- 안에 버튼 넣을때는 이렇게한다		<CLOSE>
+<!-- 안에 버튼 넣을때는 이렇게한다
+		<CLOSE>
 			<BITMAP type="up">frame00-close.png</BITMAP>
 			<BITMAP type="down">frame00-closedown.png</BITMAP>
 		</CLOSE>
@@ -1647,451 +1750,6 @@
 		<CUSTOMLOOK>3</CUSTOMLOOK>
 	</FRAMELOOKTEMPLATE>	
 
-	<FRAMELOOKTEMPLATE item="TransparentFrameLook">
-		<SCALABLE/>
-		<STRETCH>true</STRETCH>
-		<DEFAULT>true</DEFAULT>
-		<TEXTCOLOR>
-			<R>255</R>
-			<G>255</G>
-			<B>255</B>
-		</TEXTCOLOR>
-		<FONT>FONTa9b</FONT>
-		<TEXTPOSITION>
-			<X>16</X>
-			<Y>8</Y>
-		</TEXTPOSITION>
-		<DEFAULTTITLE>Confirm</DEFAULTTITLE>		<!-- confirm 에도 쓰인다 -->
-		<BITMAPS>
-			<BITMAP type="0">
-				<SOURCE>windowframe.png</SOURCE>
-				<BOUNDS>
-					<X>0</X>
-					<Y>56</Y>
-					<W>8</W>
-					<H>10</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="1">
-				<SOURCE>windowframe.png</SOURCE>
-				<BOUNDS>
-					<X>10</X>
-					<Y>56</Y>
-					<W>8</W>
-					<H>10</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="2">
-				<SOURCE>windowframe.png</SOURCE>
-				<BOUNDS>
-					<X>22</X>
-					<Y>56</Y>
-					<W>10</W>
-					<H>10</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="3">
-				<SOURCE>windowframe.png</SOURCE>
-				<BOUNDS>
-					<X>0</X>
-					<Y>48</Y>
-					<W>10</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="4">
-				<SOURCE>windowframe.png</SOURCE>
-				<BOUNDS>
-					<X>10</X>
-					<Y>48</Y>
-					<W>12</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="5">
-				<SOURCE>windowframe.png</SOURCE>
-				<BOUNDS>
-					<X>22</X>
-					<Y>48</Y>
-					<W>10</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="6">
-				<SOURCE>windowframe.png</SOURCE>
-				<BOUNDS>
-					<X>0</X>
-					<Y>0</Y>
-					<W>10</W>
-					<H>48</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="7">
-				<SOURCE>windowframe.png</SOURCE>
-				<BOUNDS>
-					<X>10</X>
-					<Y>0</Y>
-					<W>12</W>
-					<H>48</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="8">
-				<SOURCE>windowframe.png</SOURCE>
-				<BOUNDS>
-					<X>22</X>
-					<Y>0</Y>
-					<W>10</W>
-					<H>48</H>
-				</BOUNDS>
-			</BITMAP>
-		</BITMAPS>
-	</FRAMELOOKTEMPLATE>	
-
-	<TABCTRLLOOKTEMPLATE item="NullTabLook">
-	</TABCTRLLOOKTEMPLATE>
-
-<!-- 기타 Look -->
-	<ANIMATIONTEMPLATE item="CursorAnimation">
-		<BITMAP>cursor0000.png</BITMAP>
-		<BITMAP>cursor0001.png</BITMAP>
-		<BITMAP>cursor0002.png</BITMAP>
-		<BITMAP>cursor0003.png</BITMAP>
-		<BITMAP>cursor0004.png</BITMAP>
-		<BITMAP>cursor0005.png</BITMAP>
-		<BITMAP>cursor0006.png</BITMAP>
-		<BITMAP>cursor0007.png</BITMAP>
-		<BITMAP>cursor0008.png</BITMAP>
-		<BITMAP>cursor0009.png</BITMAP>
-		<BITMAP>cursor0010.png</BITMAP>
-		<DELAY>90</DELAY>
-	</ANIMATIONTEMPLATE>
-	<CURSOR>
-		<ANIMTEMPLATE>CursorAnimation</ANIMTEMPLATE>
-	</CURSOR>
-
-	<ANIMATIONTEMPLATE item="FlameEffect">
-		<BITMAP>flame0001.tga</BITMAP>
-		<BITMAP>flame0002.tga</BITMAP>
-		<BITMAP>flame0003.tga</BITMAP>
-		<BITMAP>flame0004.tga</BITMAP>
-		<BITMAP>flame0005.tga</BITMAP>
-		<BITMAP>flame0006.tga</BITMAP>
-		<BITMAP>flame0007.tga</BITMAP>
-		<BITMAP>flame0008.tga</BITMAP>
-		<BITMAP>flame0009.tga</BITMAP>
-		<BITMAP>flame0010.tga</BITMAP>
-		<BITMAP>flame0011.tga</BITMAP>
-		<BITMAP>flame0012.tga</BITMAP>
-		<BITMAP>flame0013.tga</BITMAP>
-		<BITMAP>flame0014.tga</BITMAP>
-		<DELAY>150</DELAY>
-	</ANIMATIONTEMPLATE>
-	
-	<ANIMATIONTEMPLATE item="MapAnimation">
-		<BITMAP>gametype_solo.tga</BITMAP>
-		<BITMAP>gametype_team.tga</BITMAP>
-		<BITMAP>gametype_quest.tga</BITMAP>
-		<BITMAP>gametype_ChallengeQuest.tga</BITMAP>
-		<BITMAP>gametype_triple.tga</BITMAP>
-		<DELAY>10</DELAY>
-	</ANIMATIONTEMPLATE>
-
-        <!-- Custom animation --> 
-    <ANIMATIONTEMPLATE item="MainBGTop"> 
-        <BITMAP>main_1.png</BITMAP> 
-        <BITMAP>main_4.png</BITMAP> 
-        <DELAY>700</DELAY> 
-    </ANIMATIONTEMPLATE> 
-
-    <ANIMATIONTEMPLATE item="AnimacionLogo"> 
-        <BITMAP>logo1.png</BITMAP> 
-        <BITMAP>logo2.png</BITMAP> 
-        <BITMAP>logo3.png</BITMAP> 
-        <BITMAP>logo4.png</BITMAP> 
-        <BITMAP>logo5.png</BITMAP> 
-        <BITMAP>logo6.png</BITMAP> 
-        <BITMAP>logo7.png</BITMAP> 
-        <DELAY>100</DELAY> 
-    </ANIMATIONTEMPLATE> 
-
-<!-- CUSTOM BOTON -->
-
-	<BUTTONLOOKTEMPLATE item="DefaultButtonLook">
-		<DEFAULT>true</DEFAULT>
-		<FONT>FONTa9b</FONT>
-		<TEXTCOLOR>
-			<R>159</R>
-			<G>159</G>
-			<B>159</B>
-		</TEXTCOLOR>
-		<TEXTDOWNCOLOR>
-			<R>180</R>
-			<G>180</G>
-			<B>180</B>
-		</TEXTDOWNCOLOR>
-		<TEXTHIGHLIGHTCOLOR>
-			<R>237</R>
-			<G>237</G>
-			<B>237</B>
-		</TEXTHIGHLIGHTCOLOR>
-		<TEXTDOWNOFFSET>
-			<X>4</X>
-			<Y>4</Y>
-		</TEXTDOWNOFFSET>
-		<SCALABLE/>
-		<UP>
-			<BITMAP type="0">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>0</X>
-					<Y>16</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="1">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>8</X>
-					<Y>16</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="2">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>16</X>
-					<Y>16</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="3">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>0</X>
-					<Y>8</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="4">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>8</X>
-					<Y>8</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="5">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>16</X>
-					<Y>8</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="6">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>0</X>
-					<Y>0</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="7">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>8</X>
-					<Y>0</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="8">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>16</X>
-					<Y>0</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-		</UP>
-		<OVER>
-			<BITMAP type="0">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>0</X>
-					<Y>16</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="1">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>8</X>
-					<Y>16</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="2">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>16</X>
-					<Y>16</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="3">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>0</X>
-					<Y>8</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="4">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>8</X>
-					<Y>8</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="5">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>16</X>
-					<Y>8</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="6">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>0</X>
-					<Y>0</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="7">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>8</X>
-					<Y>0</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="8">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>16</X>
-					<Y>0</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-		</OVER>
-		<DOWN>
-			<BITMAP type="0">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>24</X>
-					<Y>16</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="1">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>32</X>
-					<Y>16</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="2">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>40</X>
-					<Y>16</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="3">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>24</X>
-					<Y>8</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="4">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>32</X>
-					<Y>8</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="5">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>40</X>
-					<Y>8</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="6">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>24</X>
-					<Y>0</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="7">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>32</X>
-					<Y>0</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-			<BITMAP type="8">
-				<SOURCE>botoncustom.tga</SOURCE>
-				<BOUNDS>
-					<X>40</X>
-					<Y>0</Y>
-					<W>8</W>
-					<H>8</H>
-				</BOUNDS>
-			</BITMAP>
-		</DOWN>
-	</BUTTONLOOKTEMPLATE>
-
-<!-- Transparente Frame -->
-
 	<FRAMELOOKTEMPLATE item="DefaultFrameLook">
 		<SCALABLE/>
 		<STRETCH>true</STRETCH>
@@ -2190,5 +1848,54 @@
 				</BOUNDS>
 			</BITMAP>
 		</BITMAPS>
-	</FRAMELOOKTEMPLATE>
+	</FRAMELOOKTEMPLATE>	
+
+	<TABCTRLLOOKTEMPLATE item="NullTabLook">
+	</TABCTRLLOOKTEMPLATE>
+
+<!-- 기타 Look -->
+	<ANIMATIONTEMPLATE item="CursorAnimation">
+		<BITMAP>cursor0000.png</BITMAP>
+		<BITMAP>cursor0001.png</BITMAP>
+		<BITMAP>cursor0002.png</BITMAP>
+		<BITMAP>cursor0003.png</BITMAP>
+		<BITMAP>cursor0004.png</BITMAP>
+		<BITMAP>cursor0005.png</BITMAP>
+		<BITMAP>cursor0006.png</BITMAP>
+		<BITMAP>cursor0007.png</BITMAP>
+		<BITMAP>cursor0008.png</BITMAP>
+		<BITMAP>cursor0009.png</BITMAP>
+		<BITMAP>cursor0010.png</BITMAP>
+		<DELAY>90</DELAY>
+	</ANIMATIONTEMPLATE>
+	<CURSOR>
+		<ANIMTEMPLATE>CursorAnimation</ANIMTEMPLATE>
+	</CURSOR>
+
+	<ANIMATIONTEMPLATE item="FlameEffect">
+		<BITMAP>flame0001.tga</BITMAP>
+		<BITMAP>flame0002.tga</BITMAP>
+		<BITMAP>flame0003.tga</BITMAP>
+		<BITMAP>flame0004.tga</BITMAP>
+		<BITMAP>flame0005.tga</BITMAP>
+		<BITMAP>flame0006.tga</BITMAP>
+		<BITMAP>flame0007.tga</BITMAP>
+		<BITMAP>flame0008.tga</BITMAP>
+		<BITMAP>flame0009.tga</BITMAP>
+		<BITMAP>flame0010.tga</BITMAP>
+		<BITMAP>flame0011.tga</BITMAP>
+		<BITMAP>flame0012.tga</BITMAP>
+		<BITMAP>flame0013.tga</BITMAP>
+		<BITMAP>flame0014.tga</BITMAP>
+		<DELAY>150</DELAY>
+	</ANIMATIONTEMPLATE>
+	
+	<ANIMATIONTEMPLATE item="MapAnimation">
+		<BITMAP>gametype_solo.tga</BITMAP>
+		<BITMAP>gametype_team.tga</BITMAP>
+		<BITMAP>gametype_quest.tga</BITMAP>
+		<BITMAP>gametype_ChallengeQuest.tga</BITMAP>
+		<DELAY>10</DELAY>
+	</ANIMATIONTEMPLATE>
+
 </XML>
