@@ -5,62 +5,62 @@
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/mansion/gzd_map_Mansion_ornament01.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/mansion/gzd_map_Mansion_ornament01.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Mansion_post01_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/mansion/gzd_map_Mansion_post01.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/mansion/gzd_map_Mansion_post01.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Mansion_post02_mt_con">
 			<DIFFUSE>0.5880000 0.5880000 0.5880000</DIFFUSE>
 			<AMBIENT>0.5880000 0.5880000 0.5880000</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/mansion/gzd_map_Mansion_post02.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/mansion/gzd_map_Mansion_post02.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Mansion_wall08_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/mansion/gzd_map_Mansion_wall08.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/mansion/gzd_map_Mansion_wall08.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Mansion_door02_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/mansion/gzd_map_Mansion_door02.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/mansion/gzd_map_Mansion_door02.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Mansion_wall02_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/mansion/gzd_map_Mansion_wall02.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/mansion/gzd_map_Mansion_wall02.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Mansion_floor01_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/mansion/gzd_map_Mansion_floor01.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/mansion/gzd_map_Mansion_floor01.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Mansion_floor05_mt_con">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/mansion/gzd_map_Mansion_floor05.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/mansion/gzd_map_Mansion_floor05.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Mansion_light01_2s_mt_met">
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/mansion/gzd_map_Mansion_light01.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/mansion/gzd_map_Mansion_light01.bmp</DIFFUSEMAP>
 			<TWOSIDED/>
 		</MATERIAL>
 		<MATERIAL name="at_gzd_map_Mansion_chain01_2s_mt_met">
 			<DIFFUSE>0.5880000 0.5880000 0.5880000</DIFFUSE>
 			<AMBIENT>0.5880000 0.5880000 0.5880000</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/mansion/gzd_map_Mansion_chain01.tga</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/mansion/gzd_map_Mansion_chain01.tga</DIFFUSEMAP>
 			<TWOSIDED/>
 			<USEOPACITY/>
 			<USEALPHATEST/>
@@ -69,7 +69,7 @@
 			<DIFFUSE>0.5880000 0.5880000 0.5880000</DIFFUSE>
 			<AMBIENT>0.5880000 0.5880000 0.5880000</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/mansion/txa 30 2000 fire_a00.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/mansion/txa 30 2000 fire_a00.bmp</DIFFUSEMAP>
 			<ADDITIVE/>
 			<TWOSIDED/>
 		</MATERIAL>
@@ -77,13 +77,13 @@
 			<DIFFUSE>0.5882353 0.5882353 0.5882353</DIFFUSE>
 			<AMBIENT>0.5882353 0.5882353 0.5882353</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/mansion/gzd_map_Mansion_floor03.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/mansion/gzd_map_Mansion_floor03.bmp</DIFFUSEMAP>
 		</MATERIAL>
 		<MATERIAL name="gzd_map_Mansion_carpet00_mt_drt">
 			<DIFFUSE>1.0000000 0.9137256 0.9137256</DIFFUSE>
 			<AMBIENT>1.0000000 0.9137256 0.9137256</AMBIENT>
 			<SPECULAR>0.9000000 0.9000000 0.9000000</SPECULAR>
-			<DIFFUSEMAP>../../../maps/mansion/gzd_map_Mansion_carpet00.bmp</DIFFUSEMAP>
+			<DIFFUSEMAP>../../maps/mansion/gzd_map_Mansion_carpet00.bmp</DIFFUSEMAP>
 		</MATERIAL>
 	</MATERIALLIST>
 	<LIGHTLIST>
