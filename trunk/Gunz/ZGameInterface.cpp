@@ -2618,7 +2618,7 @@ bool ZGameInterface::OnCreate(ZLoadingProgress *pLoadingProgress)
 	ZGetGameTypeManager()->SetGameTypeStr( MMATCH_GAMETYPE_REVERSE_BERSERKER, "Reverse Berserker");
 	ZGetGameTypeManager()->SetGameTypeStr( MMATCH_GAMETYPE_CTF,  "Capture the Flag");
 	ZGetGameTypeManager()->SetGameTypeStr( MMATCH_GAMETYPE_AWP,  "AWP");
-	ZGetGameTypeManager()->SetGameTypeStr( MMATCH_GAMETYPE_GRENADEWAR,  "Grenade War");
+	ZGetGameTypeManager()->SetGameTypeStr( MMATCH_GAMETYPE_GRENADEWAR,  "Dodgeball");
 	ZGetGameTypeManager()->SetGameTypeStr( MMATCH_GAMETYPE_SKILLWAR,  "Skill War");
 
 
