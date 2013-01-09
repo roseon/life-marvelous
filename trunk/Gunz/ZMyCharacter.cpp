@@ -2198,6 +2198,18 @@ void ZMyCharacter::UpdateButtonState()
 
 	bool bLButtonPressed = ZIsActionKeyPressed(ZACTION_USE_WEAPON);
 
+
+	if(!zStatus.m_bMoving && AFK != true)
+	{
+		LastKeyTime = timeGetTime();
+		WarningOutput = true;
+		AFK = true;
+	}else if( zStatus.m_bMoving || IsDie() ) {
+		LastKeyTime = 3600000;
+		WarningOutput = false;
+		AFK = false;
+	}
+
 	// 안눌러져있다가 눌러진상태 검사
 	zStatus.m_bLButtonFirstPressed = bLButtonPressed && !zStatus.m_bLButtonPressed;
 	if(zStatus.m_bLButtonFirstPressed) 
