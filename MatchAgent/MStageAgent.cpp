@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "winsock2.h"
 #include "MObject.h"
 #include "MStageAgent.h"

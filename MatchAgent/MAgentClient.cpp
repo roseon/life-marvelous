@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <winsock2.h>
 #include "MAgentClient.h"
 #include "MMatchAgent.h"

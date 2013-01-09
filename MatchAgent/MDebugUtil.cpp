@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "MDebugUtil.h"
 #include "MMatchAgent.h"
 
