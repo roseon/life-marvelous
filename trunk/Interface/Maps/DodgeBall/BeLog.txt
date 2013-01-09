@@ -1,0 +1,175 @@
+Starting BSP Export...
+object Box02 : Box02: 132 ver / 130 face 
+object Box03 : Box03: 144 ver / 126 face 
+object Line02 : Line02: 360 ver / 354 face 
+object Line06 : Line06: 360 ver / 354 face 
+object Box01 : Box01: 8 ver / 6 face 
+object Box04 : Box04: 8 ver / 6 face 
+object Box05 : Box05: 8 ver / 6 face 
+object Box06 : Box06: 8 ver / 6 face 
+object Box07 : Box07: 8 ver / 6 face 
+object Box08 : Box08: 8 ver / 6 face 
+object Box09 : Box09: 8 ver / 6 face 
+object Box10 : Box10: 8 ver / 6 face 
+object Box11 : Box11: 8 ver / 6 face 
+object Box12 : Box12: 8 ver / 6 face 
+object Box13 : Box13: 8 ver / 6 face 
+object Box14 : Box14: 8 ver / 6 face 
+object Box15 : Box15: 8 ver / 6 face 
+object Box16 : Box16: 8 ver / 6 face 
+object Box17 : Box17: 8 ver / 6 face 
+object Box18 : Box18: 8 ver / 6 face 
+object Box19 : Box19: 8 ver / 6 face 
+object Box20 : Box20: 8 ver / 6 face 
+object Box21 : Box21: 8 ver / 6 face 
+object Box22 : Box22: 8 ver / 6 face 
+object Box23 : Box23: 8 ver / 6 face 
+object Box24 : Box24: 8 ver / 6 face 
+object Box25 : Box25: 8 ver / 6 face 
+object Box26 : Box26: 8 ver / 6 face 
+object Box27 : Box27: 8 ver / 6 face 
+object Box28 : Box28: 8 ver / 6 face 
+object Box29 : Box29: 8 ver / 6 face 
+object Box30 : Box30: 8 ver / 6 face 
+object Box31 : Box31: 8 ver / 6 face 
+object Box32 : Box32: 8 ver / 6 face 
+object Box33 : Box33: 8 ver / 6 face 
+object Box34 : Box34: 8 ver / 6 face 
+object Box35 : Box35: 8 ver / 6 face 
+object Box36 : Box36: 8 ver / 6 face 
+object Box37 : Box37: 8 ver / 6 face 
+object Box38 : Box38: 8 ver / 6 face 
+object Box39 : Box39: 8 ver / 6 face 
+object Box40 : Box40: 8 ver / 6 face 
+object Box41 : Box41: 8 ver / 6 face 
+object Box42 : Box42: 8 ver / 6 face 
+object Box43 : Box43: 8 ver / 6 face 
+object Box44 : Box44: 8 ver / 6 face 
+object Box45 : Box45: 8 ver / 6 face 
+object Box46 : Box46: 8 ver / 6 face 
+object Box47 : Box47: 8 ver / 6 face 
+object Box48 : Box48: 8 ver / 6 face 
+object Box49 : Box49: 8 ver / 6 face 
+object BSP_Object_model_0 : BSP_Object_model_0: 565 ver / 829 face 
+object BSP_Object_model_42 : BSP_Object_model_42: 217 ver / 352 face 
+object Object28 : Object28: 54 ver / 71 face 
+object Object29 : Object29: 54 ver / 71 face 
+object BSP_Object_model_43 : BSP_Object_model_43: 217 ver / 352 face 
+object Object30 : Object30: 54 ver / 71 face 
+object BSP_Object_model_44 : BSP_Object_model_44: 217 ver / 352 face 
+object BSP_Object_model_45 : BSP_Object_model_45: 217 ver / 352 face 
+object Object31 : Object31: 54 ver / 71 face 
+RSBsp Info : 3847 faces
+Scene Dimension ( 13381.9 10425.0 1934.1 )
+Export Objects.
+Export Objects : Dodgeball_obj_sky_daylight.elu 
+Export Objects : Dodgeball_obj_xmas_a05.elu 
+Export Objects : Dodgeball_obj_xmas_a04.elu 
+Export Objects : Dodgeball_obj_xmas_a03.elu 
+Export Objects : Dodgeball_Object02.elu 
+Export Objects : Dodgeball_Object03.elu 
+Export Objects : Dodgeball_Object04.elu 
+Export Objects : Dodgeball_Object05.elu 
+Export Objects : Dodgeball_Object06.elu 
+Export Objects : Dodgeball_Object07.elu 
+Export Objects : Dodgeball_Object08.elu 
+Export Objects : Dodgeball_Object09.elu 
+Export Objects : Dodgeball_Object10.elu 
+Export Objects : Dodgeball_Object11.elu 
+Export Objects : Dodgeball_Object12.elu 
+Export Objects : Dodgeball_Object13.elu 
+Export Objects : Dodgeball_Object14.elu 
+Export Objects : Dodgeball_Object15.elu 
+Export Objects : Dodgeball_Object16.elu 
+Export Objects : Dodgeball_Object17.elu 
+Export Objects : Dodgeball_Object18.elu 
+Export Objects : Dodgeball_Object19.elu 
+Export Objects : Dodgeball_Object20.elu 
+Export Objects : Dodgeball_Object21.elu 
+Export Objects : Dodgeball_Object22.elu 
+Export Objects : Dodgeball_Object23.elu 
+Export Objects : Dodgeball_Object24.elu 
+Export Objects : Dodgeball_Object25.elu 
+Export Objects : Dodgeball_Object26.elu 
+Export Objects : Dodgeball_Object27.elu 
+Export description.. 
+Saving Source Data.
+CSG union - 60 objects
+construct object subtree Box02 ( 130 source polygon ) : total 8 faces splitted 34 leaf nodes 72 nodes 272 polygons
+construct object subtree Box03 ( 126 source polygon ) : total 20 faces splitted 25 leaf nodes 53 nodes 284 polygons
+construct object subtree Line02 ( 364 source polygon ) : total 1276 faces splitted 544 leaf nodes 1960 nodes 3059 polygons
+construct object subtree Line06 ( 364 source polygon ) : total 1276 faces splitted 544 leaf nodes 1960 nodes 3059 polygons
+construct object subtree Box01 ( 6 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box04 ( 6 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box05 ( 6 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box06 ( 6 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box07 ( 6 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box08 ( 6 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box09 ( 6 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box10 ( 6 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box11 ( 6 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box12 ( 6 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box13 ( 6 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box14 ( 6 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box15 ( 6 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box16 ( 6 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box17 ( 6 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box18 ( 6 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box19 ( 6 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box20 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box21 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box22 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box23 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box24 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box25 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box26 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box27 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box28 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box29 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box30 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box31 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box32 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box33 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box34 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box35 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box36 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box37 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box38 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box39 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box40 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box41 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box42 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box43 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box44 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box45 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box46 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box47 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box48 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree Box49 ( 8 source polygon ) : total 0 faces splitted 6 leaf nodes 12 nodes 12 polygons
+construct object subtree BSP_Object_model_0 ( 829 source polygon ) : total 229 faces splitted 197 leaf nodes 452 nodes 1251 polygons
+construct object subtree BSP_Object_model_42 ( 352 source polygon ) : total 205 faces splitted 161 leaf nodes 373 nodes 707 polygons
+construct object subtree Object28 ( 71 source polygon ) : total 41 faces splitted 41 leaf nodes 92 nodes 139 polygons
+construct object subtree Object29 ( 71 source polygon ) : total 41 faces splitted 41 leaf nodes 92 nodes 139 polygons
+construct object subtree BSP_Object_model_43 ( 352 source polygon ) : total 205 faces splitted 161 leaf nodes 373 nodes 707 polygons
+construct object subtree Object30 ( 71 source polygon ) : total 41 faces splitted 41 leaf nodes 92 nodes 139 polygons
+construct object subtree BSP_Object_model_44 ( 352 source polygon ) : total 205 faces splitted 161 leaf nodes 373 nodes 707 polygons
+construct object subtree BSP_Object_model_45 ( 352 source polygon ) : total 205 faces splitted 161 leaf nodes 373 nodes 707 polygons
+construct object subtree Object31 ( 71 source polygon ) : total 41 faces splitted 41 leaf nodes 92 nodes 139 polygons
+0 faces eliminated. (solid)
+5256 source polygons remain
+optimized 3319 polygons remain
+Generating Convex polygons...
+Optimize Polygon 3847 -> 2460 
+Constructing Collision BspTree. ( 3319 source polygons )
+Collision Bsp Info : total 29018 faces splitted 2767 leaf nodes 36287 nodes 49428 polygons
+Constructing OcTree. ( 2460 source polygons )
+Octree Info : total 920 faces splitted 19 leaf nodes 39 nodes 3380 polygons
+Constructing BspTree. ( 2460 source polygons )
+RSBsp Info : total 4735 faces splitted 2612 leaf nodes 5223 nodes 7195 polygons
+Constructing Bsp Bounding Volumes.
+Saving Bsp information.
+E:\Gunz\STADIUM\EXPORTER\ORIGINAL\Dodgeball.RS file saved
+E:\Gunz\STADIUM\EXPORTER\ORIGINAL\Dodgeball.RS.bsp file saved
+E:\Gunz\STADIUM\EXPORTER\ORIGINAL\Dodgeball.RS.col file saved
+Exporting takes 0 minutes and     26 seconds.
+Done.
