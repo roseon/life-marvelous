@@ -978,9 +978,9 @@ bool ZOptionInterface::SaveInterfaceOption(void)
 		{
 			Z_ETC_WHEELLOCK = pWheelLock->GetCheck();
 
-			if(Z_ETC_WHEELLOCK)
+		/*	if(Z_ETC_WHEELLOCK)
 				ZGetConfiguration()->GetEtc()->bWheelLock = true;
-			else
+			else*/
 				ZGetConfiguration()->GetEtc()->bWheelLock = false;
 		}
 

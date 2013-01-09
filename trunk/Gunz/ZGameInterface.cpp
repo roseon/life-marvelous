@@ -3910,26 +3910,26 @@ void ZGameInterface::ChangeWeapon(ZChangeWeaponType nType)
 		//Disable special item on mouse scrolling :D
 		//if(ZGetConfiguration()->GetEtc()->bDisableSpecial)
 		//{
-		//	for(int i = MMCIP_MELEE; i < MMCIP_CUSTOM2 + 1; i++)
-		//	{
-		//		if (!pChar->GetItems()->GetItem((MMatchCharItemParts)i)->IsEmpty())
-		//		{
-		//			if(pChar->GetItems()->GetSelectedWeaponParts() == i)
-		//				nPos = nHasItemCount;
-		//			
-		//			ItemQueue[nHasItemCount++] = i;
-		//		}
-		//	}
+			for(int i = MMCIP_MELEE; i < MMCIP_CUSTOM2 + 1; i++)
+			{
+				if (!pChar->GetItems()->GetItem((MMatchCharItemParts)i)->IsEmpty())
+				{
+					if(pChar->GetItems()->GetSelectedWeaponParts() == i)
+						nPos = nHasItemCount;
+					
+					ItemQueue[nHasItemCount++] = i;
+				}
+			}
 		//}
 		
 		if (nPos < 0) return;
 
 		if (nType == ZCWT_PREV)
 		{
-			if(ZGetConfiguration()->GetEtc()->bWheelLock)
+			/*if(ZGetConfiguration()->GetEtc()->bWheelLock)
 				return;
 			else
-			{
+			{*/
 				if (nHasItemCount <= 1) return;
 				
 				int nNewPos = nPos - 1;
@@ -3951,13 +3951,13 @@ void ZGameInterface::ChangeWeapon(ZChangeWeaponType nType)
 						return;
 				}
 				nPos = nNewPos;
-			}
+		//	}
 		}
 		else if (nType == ZCWT_NEXT)
 		{
-			if(ZGetConfiguration()->GetEtc()->bWheelLock)
+			/*if(ZGetConfiguration()->GetEtc()->bWheelLock)
 				return;
-			else if (nHasItemCount <= 1) return;
+			else */if (nHasItemCount <= 1) return;
 
 			int nNewPos = nPos + 1;
 			if (nNewPos >= nHasItemCount) nNewPos = 0;
