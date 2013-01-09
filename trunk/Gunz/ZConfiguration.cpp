@@ -499,6 +499,7 @@ bool ZConfiguration::LoadConfig(const char* szFileName)
 			childElement.GetChildContents(&m_Video.bShader, ZTOK_VIDEO_SHADER );
 			childElement.GetChildContents(&m_Video.nCharTexLevel, ZTOK_VIDEO_CHARTEXLEVEL );
 			childElement.GetChildContents(&m_Video.nMapTexLevel, ZTOK_VIDEO_MAPTEXLEVEL );
+			RBspObject::SetTextureRenderOnOff(m_Video.nMapTexLevel != 7);
 			childElement.GetChildContents(&m_Video.nEffectLevel, ZTOK_VIDEO_EFFECTLEVEL );
 			childElement.GetChildContents(&m_Video.nTextureFormat, ZTOK_VIDEO_TEXTUREFORMAT );
 			childElement.GetChildContents(&m_Video.bTerrible, "NHARDWARETNL");
