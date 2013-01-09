@@ -138,6 +138,10 @@ public:
 	int		m_nTumbleDir;
 	int		m_nWallJump2Dir;
 
+	int LastKeyTime;
+    bool AFK;
+	bool WarningOutput;
+
 	//float	m_fSplashShotTime;
 	//rvector m_HangPos;
 

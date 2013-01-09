@@ -370,8 +370,8 @@ struct MMatchItemDesc
 
 	int GetSellBountyValue(int nCnt = 1) { return int(m_nBountyPrice.Ref() * 0.25) * nCnt; }
 
-	bool IsCashItem()		{ if ((m_bIsCashItem)) return true; return false; }
-	bool IsStaffItem()		{ if (m_bIsStaffItem) return true; return false; }
+	bool IsCashItem()		{ if (m_bIsCashItem) { return true; } return false; }
+	bool IsStaffItem()		{ if (m_bIsStaffItem) { return true; } return false; }
 	bool IsEnchantItem()	{ if (m_nWeaponType.Ref() >= MWT_ENCHANT_FIRE && m_nWeaponType.Ref() <= MWT_ENCHANT_POISON) return true; 
 								return false; }
 	bool IsUnLimitItem()		{ return RENT_PERIOD_UNLIMITED == m_nMaxRentPeriod.Ref(); }	

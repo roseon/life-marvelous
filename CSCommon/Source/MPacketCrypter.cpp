@@ -78,14 +78,14 @@ char MPacketCrypter::_Enc(char s, char key)
 	w = b << m_nSHL;
 	bh = (w&0xFF00)>>8;
 	b = w&0xFF;
-	return( BYTE( b | bh ) ^ 0xF0 );
+	return( BYTE( b | bh ) ^ 0xF0 ); // Cambiar 0xF0 a algun otro para mas seguridad
 }
 
 char MPacketCrypter::_Dec(char s, char key)
 {
 	BYTE b, bh, d;
 
-	b = s^0xF0;
+	b = s^0xF0; // Cambiar 0xF0 a algun otro para mas seguridad
 	bh = b&m_ShlMask;
 	d = (bh<<(8-m_nSHL))|(b>>m_nSHL);
 
