@@ -42,7 +42,7 @@
 <MAP id="36" MapName ="Bunker" MapImageName= "map_Bunker.bmp" BannerName = "banner_Bunker.tga" ExpRatio ="1" MaxPlayers ="127" bIsGWRMap = "true" ></MAP>
 <MAP id="37" MapName ="Space" MapImageName= "map_Space.bmp" BannerName = "banner_Space.tga" ExpRatio ="1" MaxPlayers ="127" bIsAWPMap = "true" ></MAP>
 <MAP id="38" MapName ="Tower" MapImageName= "map_Tower.bmp" BannerName = "banner_Tower.tga" ExpRatio ="1" MaxPlayers ="127" bIsAWPMap = "true" ></MAP>
-<MAP id="39" MapName ="DodgeBall" MapImageName= "map_DodgeBall.bmp" BannerName = "banner_DodgeBall.tga" ExpRatio ="1" MaxPlayers ="127" bIsAWPMap = "true" ></MAP>
+<MAP id="39" MapName ="DodgeBall" MapImageName= "map_DodgeBall.bmp" BannerName = "banner_DodgeBall.tga" ExpRatio ="1" MaxPlayers ="127" bIsGWRMap = "true" ></MAP>
 
 
 <!-- 첼린지 퀘스트 -->
