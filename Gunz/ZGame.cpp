@@ -6373,6 +6373,16 @@ bool IsAddressHooked(unsigned long address)
 	return (*offsetValue == 0xE8 || *offsetValue == 0xE9 || *offsetValue == 0x7E || *offsetValue == 0x74 || *offsetValue == 0xFF);
 }
 
+bool IsWin8()
+{
+	OSVERSIONINFO os;
+	os.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
+	GetVersionEx(&os);
+	if(os.dwMajorVersion < 6 || os.dwMinorVersion < 2)
+		return false;
+	return true;
+}
+
 void ZGame::PostSyncReport()
 {
 	DWORD nNowTime = GetTickTime();
@@ -6381,11 +6391,14 @@ void ZGame::PostSyncReport()
 	DWORD queryPerformanceCounter = (DWORD)GetProcAddress(GetModuleHandleA("kernel32.dll"), "QueryPerformanceCounter");
 	DWORD timeGetTime = (DWORD)GetProcAddress(GetModuleHandleA("Winmm.dll"), "timeGetTime");
 
-	if (IsAddressHooked(timeGetTime) || IsAddressHooked(getTickCount) || IsAddressHooked(queryPerformanceCounter) || GetModuleHandleA ("SpeedHack.dll") != NULL || GetModuleHandleA ("MyHookDll.dll") != NULL)
+	if(!IsWin8())
 	{
-		ZApplication::GetGameInterface()->ShowWidget("HackWarnings", true, true);
+		if (IsAddressHooked(timeGetTime) || IsAddressHooked(getTickCount) || IsAddressHooked(queryPerformanceCounter) || GetModuleHandleA ("SpeedHack.dll") != NULL || GetModuleHandleA ("MyHookDll.dll") != NULL)
+		{
+			ZApplication::GetGameInterface()->ShowWidget("HackWarnings", true, true);
 
-		ZPostDisconnect();
+			ZPostDisconnect();
+		}
 	}
 
 #ifdef _PUBLISH
