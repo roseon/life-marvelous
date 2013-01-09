@@ -68,6 +68,9 @@
 		<MAP name="Bunker" />
 		<MAP name="Space" />
 		<MAP name="Tower" />
+		<MAP name="DodgeBall" />
+		
+		
 		
 		
 	</CHANNELRULE>
@@ -126,6 +129,7 @@
 		<MAP name="Bunker" />
 		<MAP name="Space" />
 		<MAP name="Tower" />
+		<MAP name="DodgeBall" />
 	</CHANNELRULE>
 
 
@@ -189,6 +193,7 @@
 		<MAP name="Bunker" />
 		<MAP name="Space" />
 		<MAP name="Tower" />
+		<MAP name="DodgeBall" />
 	</CHANNELRULE>
 
 
@@ -252,6 +257,7 @@
 		<MAP name="Bunker" />
 		<MAP name="Space" />
 		<MAP name="Tower" />
+		<MAP name="DodgeBall" />
 	</CHANNELRULE>
 
 
@@ -315,6 +321,7 @@
 		<MAP name="Bunker" />
 		<MAP name="Space" />
 		<MAP name="Tower" />
+		<MAP name="DodgeBall" />
 	</CHANNELRULE>
 
 
@@ -378,6 +385,7 @@
 		<MAP name="Bunker" />
 		<MAP name="Space" />
 		<MAP name="Tower" />
+		<MAP name="DodgeBall" />
 	</CHANNELRULE>
 
 	<CHANNELRULE id="6" name="dueltournament">
@@ -442,5 +450,6 @@
 		<MAP name="Bunker" />
 		<MAP name="Space" />
 		<MAP name="Tower" />
+		<MAP name="DodgeBall" />
 	</CHANNELRULE>
 </XML>
