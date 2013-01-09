@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "MXml.h"
 #include "MAgentConfig.h"
 

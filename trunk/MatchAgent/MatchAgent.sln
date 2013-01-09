@@ -14,8 +14,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MCountryFilter", "..\MCount
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MDatabase", "..\MDatabase\MDatabase.vcxproj", "{98475FA7-BEA2-42EE-9B1C-31D9684D237B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MMonitor", "..\..\MaietTools\MMonitor\MMonitor.vcproj", "{0F829089-B087-4352-B888-EF4E93A2069C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		_Encrypt_BRZ_Debug|Win32 = _Encrypt_BRZ_Debug|Win32
@@ -261,8 +259,8 @@ Global
 		{68FD6FF4-464A-4484-B397-0DFCC060B773}.Template|Win32.Build.0 = Release|Win32
 		{68FD6FF4-464A-4484-B397-0DFCC060B773}.USA_Debug|Win32.ActiveCfg = Debug|Win32
 		{68FD6FF4-464A-4484-B397-0DFCC060B773}.USA_Debug|Win32.Build.0 = Debug|Win32
-		{68FD6FF4-464A-4484-B397-0DFCC060B773}.USA_Release_publish|Win32.ActiveCfg = Release_publish|Win32
-		{68FD6FF4-464A-4484-B397-0DFCC060B773}.USA_Release_publish|Win32.Build.0 = Release_publish|Win32
+		{68FD6FF4-464A-4484-B397-0DFCC060B773}.USA_Release_publish|Win32.ActiveCfg = Release|Win32
+		{68FD6FF4-464A-4484-B397-0DFCC060B773}.USA_Release_publish|Win32.Build.0 = Release|Win32
 		{6C8069BD-5E8C-41EC-8BD9-2F819291BA67}._Encrypt_BRZ_Debug|Win32.ActiveCfg = Debug|Win32
 		{6C8069BD-5E8C-41EC-8BD9-2F819291BA67}._Encrypt_BRZ_Debug|Win32.Build.0 = Debug|Win32
 		{6C8069BD-5E8C-41EC-8BD9-2F819291BA67}._Encrypt_BRZ_Release_publish|Win32.ActiveCfg = Release|Win32
@@ -425,33 +423,6 @@ Global
 		{98475FA7-BEA2-42EE-9B1C-31D9684D237B}.USA_Debug|Win32.Build.0 = Debug|Win32
 		{98475FA7-BEA2-42EE-9B1C-31D9684D237B}.USA_Release_publish|Win32.ActiveCfg = Release|Win32
 		{98475FA7-BEA2-42EE-9B1C-31D9684D237B}.USA_Release_publish|Win32.Build.0 = Release|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}._Encrypt_BRZ_Debug|Win32.ActiveCfg = Debug|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}._Encrypt_BRZ_Release_publish|Win32.ActiveCfg = Release|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}._Encrypt_Debug|Win32.ActiveCfg = Debug|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}._Encrypt_JPN_Debug|Win32.ActiveCfg = Debug|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}._Encrypt_JPN_Release_publish|Win32.ActiveCfg = Release|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}._Encrypt_KOR_Debug|Win32.ActiveCfg = Debug|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}._Encrypt_KOR_Release_publish|Win32.ActiveCfg = Release|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}._Encrypt_USA_Debug|Win32.ActiveCfg = Debug|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}._Encrypt_USA_Release_publish|Win32.ActiveCfg = Release|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}.BRZ_Debug|Win32.ActiveCfg = Debug|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}.BRZ_Release_publish|Win32.ActiveCfg = Release|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}.Debug|Win32.ActiveCfg = Debug|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}.DebugDll|Win32.ActiveCfg = Debug|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}.IND_Debug|Win32.ActiveCfg = Debug|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}.IND_Release_publish|Win32.ActiveCfg = Release|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}.INTER_Debug|Win32.ActiveCfg = Debug|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}.INTER_Release_publish|Win32.ActiveCfg = Release|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}.JPN_Debug|Win32.ActiveCfg = Debug|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}.JPN_Release_publish|Win32.ActiveCfg = Release|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}.KOR_Debug|Win32.ActiveCfg = Debug|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}.KOR_Release_publish|Win32.ActiveCfg = Release|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}.Release_publish|Win32.ActiveCfg = Release|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}.Release|Win32.ActiveCfg = Release|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}.ReleaseDll|Win32.ActiveCfg = Release|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}.Template|Win32.ActiveCfg = Release|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}.USA_Debug|Win32.ActiveCfg = Debug|Win32
-		{0F829089-B087-4352-B888-EF4E93A2069C}.USA_Release_publish|Win32.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
