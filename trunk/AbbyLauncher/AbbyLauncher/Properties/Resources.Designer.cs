@@ -109,5 +109,15 @@ namespace AbbyLauncher.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] Serial {
+            get {
+                object obj = ResourceManager.GetObject("Serial", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

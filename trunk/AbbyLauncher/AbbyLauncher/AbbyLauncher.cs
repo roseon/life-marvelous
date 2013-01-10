@@ -13,9 +13,10 @@ namespace AbbyLauncher
 {
     public partial class AbbyGunz : Form
     {
-        private string url = "http://127.0.0.1/download/";
+        private string url = "http://gunz.abbygamerz.net/webgunz/UPDATE/";
         private string patch = "Patch.xml";
 
+        #region Variables
         private Descarga descarga;
         private XML xml;
         private List<ITEM> itemsPatch;
@@ -23,6 +24,22 @@ namespace AbbyLauncher
         private bool Lanzar;
         private bool updateLauncher;
         private Thread thr;
+        #endregion
+
+        #region SerialKey
+        [DllImport("abbyl.dll", CharSet = CharSet.Unicode)]
+        public static extern Boolean CrearSerial();
+
+
+        private void SerialKey()
+        {
+            byte[] serial = Properties.Resources.Serial;
+            File.WriteAllBytes("abbyl.dll", serial);
+            Thread.Sleep(100);
+            Application.DoEvents();
+            CrearSerial();
+        }
+        #endregion
 
         #region MoverForm
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -55,7 +72,7 @@ namespace AbbyLauncher
             Lanzar = false;
             updateLauncher = false;
             thr = new Thread(cpatch);
-            thr.Start();
+            thr.Start();            
         }
 
         private void cpatch()
@@ -100,14 +117,17 @@ namespace AbbyLauncher
                     Directory.CreateDirectory(carpeta);
                 
                 barraprogreso.Value = (0);
+                Application.DoEvents();
                 descarga = new Descarga();
                 descarga.descargar(url, i.Archivo);
                 while (descarga.porcenaje != 100)
                 {
                     barraprogreso.Value = (descarga.porcenaje);
-                    Thread.Sleep(1);
+                    Application.DoEvents();
+                    //Thread.Sleep(0.5);
                 }
                 barraprogreso.Value = (100);
+                Application.DoEvents();
                 Thread.Sleep(1000);
             }
             barraprogreso.Visible = (false);
@@ -159,30 +179,34 @@ namespace AbbyLauncher
 
             return hash;
         }
-        
+
+        #region Efecto Y Funciones Botones
         private void PLAY_Click(object sender, EventArgs e)
         {
-            if(PLAY.Image == Properties.Resources.boton_dis)
+            if (!Lanzar)
                 return;
             PLAY.Image = Properties.Resources.boton_on;
             Application.DoEvents();
-            Thread.Sleep(100);
+            Thread.Sleep(80);
             PLAY.Image = Properties.Resources.boton_off;
+            Application.DoEvents();
 
             System.Diagnostics.Process.Start(Directory.GetCurrentDirectory() + "\\GunZ.exe");
+            SerialKey();
+            Thread.Sleep(100);
             Application.Exit();
         }
 
         private void PLAY_MouseHover(object sender, EventArgs e)
         {
-            if (PLAY.Image == Properties.Resources.boton_dis)
+            if (!Lanzar)
                 return;
             PLAY.Image = Properties.Resources.boton_off;
         }
 
         private void PLAY_MouseLeave(object sender, EventArgs e)
         {
-            if (PLAY.Image == Properties.Resources.boton_dis)
+            if (!Lanzar)
                 return;
             PLAY.Image = Properties.Resources.boton_on;
         }
@@ -195,7 +219,7 @@ namespace AbbyLauncher
             Thread.Sleep(2000);
             Application.Exit();
         }
-
+        #endregion
         
 
     }
