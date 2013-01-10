@@ -2377,7 +2377,11 @@ void ZGameClient::OnClanResponseEmblemURL(unsigned int nCLID, unsigned int nEmbl
 	else
 		sprintf( szFullURL, "%s%s", Z_LOCALE_EMBLEM_URL, szEmblemURL);
 #else
-	sprintf( szFullURL, "%s%s", Z_LOCALE_EMBLEM_URL, szEmblemURL);
+	if(strstr(szEmblemURL, "http") != NULL)
+		sprintf( szFullURL, "%s", szEmblemURL);
+	else
+		sprintf( szFullURL, "%s%s", Z_LOCALE_EMBLEM_URL, szEmblemURL);
+	mlog("clanID(%d) : %s\n", nCLID, szFullURL);
 #endif
 
 #ifdef _DEBUG
@@ -2390,8 +2394,11 @@ void ZGameClient::OnClanResponseEmblemURL(unsigned int nCLID, unsigned int nEmbl
 		mlog("Emblem url is null! clanID(%d)\n", nCLID);
 		return;
 	}
+	if(m_EmblemMgr.ProcessEmblem(nCLID, szFullURL, nEmblemChecksum))
+		mlog("Ya Existe\n");
+	else
+		mlog("Descargando\n");
 
-	m_EmblemMgr.ProcessEmblem(nCLID, szFullURL, nEmblemChecksum);
 }
 
 void ZGameClient::OnClanEmblemReady(unsigned int nCLID, const char* szURL)
