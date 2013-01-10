@@ -1554,11 +1554,29 @@ void ZGameInterface::OnLoginCreate(void)
 
 
 	MWidget* pWidget = m_IDLResource.FindWidget("LoginID");
+	MWidget* pWidgetz = m_IDLResource.FindWidget("LoginPassword");
 	if(pWidget)
 	{
 		char buffer[256];
 		if (ZGetApplication()->GetSystemValue("LoginID", buffer))
 			pWidget->SetText(buffer);
+	}
+	if(pWidgetz)
+	{
+		char buffer[256];
+		if(ZGetApplication()->GetSystemValue("LoginPassword", buffer))
+		{
+			pWidgetz->SetText(buffer);
+			ZIDLResource* pResource = ZApplication::GetGameInterface()->GetIDLResource();
+			MButton* pw = (MButton*)pResource->FindWidget("LoginRememberPass");
+			if(pw)
+			{
+				if(strcmp(buffer, "") == 0)
+					pw->SetCheck( false );
+				else
+					pw->SetCheck( true );
+			}
+		}
 	}
 
 	// 서버 IP
@@ -1628,10 +1646,23 @@ void ZGameInterface::OnLoginDestroy(void)
 	ShowWidget("Login", false);
 
 	MWidget* pWidget = m_IDLResource.FindWidget("LoginID");
+	MWidget* pWidgetz = m_IDLResource.FindWidget("LoginPassword");
 	if(pWidget)
 	{
 		// 로긴이 성공하면 write 해야 하나.. 지금 check out 관계로 여기다 -_-;
 		ZGetApplication()->SetSystemValue("LoginID", pWidget->GetText());
+		
+		ZIDLResource* pResource = ZApplication::GetGameInterface()->GetIDLResource();
+		MButton* pw = (MButton*)pResource->FindWidget("LoginRememberPass");
+		if(pw && pWidgetz)
+		{
+			if(pw->GetCheck())
+			{
+				ZGetApplication()->SetSystemValue("LoginPassword", pWidgetz->GetText()); 
+			}else{
+				ZGetApplication()->SetSystemValue("LoginPassword", "");
+			}
+		}
 
 		if ( m_pBackground)
 			m_pBackground->SetScene(LOGIN_SCENE_FALLDOWN);

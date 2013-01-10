@@ -6,14 +6,14 @@
 
 // 전역적으로 사용하는 것은 이곳에다 넣도록 하자
 #ifdef LOCALE_BRAZIL
-#define APPLICATION_NAME		"GunZ Online"
+#define APPLICATION_NAME		"AbbyGunZ"
 #else
 #define APPLICATION_NAME		"Gunz"
 #endif
 
 // 저장되는 폴더
 #ifdef LOCALE_BRAZIL
-#define GUNZ_FOLDER			"/GunZ Online"
+#define GUNZ_FOLDER			"/AbbyGunZ"
 #elif LOCALE_JAPAN
 #define GUNZ_FOLDER			"/GUNZWEI"
 #else
