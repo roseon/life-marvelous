@@ -1,0 +1,8 @@
+C:\Users\Victor\Documents\Visual Studio 2012\Projects\AbbyLauncher\AbbyLauncher\bin\Debug\AbbyLauncher.exe
+C:\Users\Victor\Documents\Visual Studio 2012\Projects\AbbyLauncher\AbbyLauncher\bin\Debug\AbbyLauncher.pdb
+C:\Users\Victor\Documents\Visual Studio 2012\Projects\AbbyLauncher\AbbyLauncher\obj\Debug\AbbyLauncher.csprojResolveAssemblyReference.cache
+C:\Users\Victor\Documents\Visual Studio 2012\Projects\AbbyLauncher\AbbyLauncher\obj\Debug\AbbyLauncher.Properties.Resources.resources
+C:\Users\Victor\Documents\Visual Studio 2012\Projects\AbbyLauncher\AbbyLauncher\obj\Debug\AbbyLauncher.csproj.GenerateResource.Cache
+C:\Users\Victor\Documents\Visual Studio 2012\Projects\AbbyLauncher\AbbyLauncher\obj\Debug\AbbyLauncher.exe
+C:\Users\Victor\Documents\Visual Studio 2012\Projects\AbbyLauncher\AbbyLauncher\obj\Debug\AbbyLauncher.pdb
+C:\Users\Victor\Documents\Visual Studio 2012\Projects\AbbyLauncher\AbbyLauncher\obj\Debug\AbbyLauncher.AbbyGunz.resources

@@ -1,0 +1,8 @@
+C:\Users\Victor\Documents\Visual Studio 2012\Projects\AbbyLauncher\AbbyPatchBuilder\bin\Debug\AbbyPatchBuilder.exe
+C:\Users\Victor\Documents\Visual Studio 2012\Projects\AbbyLauncher\AbbyPatchBuilder\bin\Debug\AbbyPatchBuilder.pdb
+C:\Users\Victor\Documents\Visual Studio 2012\Projects\AbbyLauncher\AbbyPatchBuilder\obj\Debug\AbbyPatchBuilder.csprojResolveAssemblyReference.cache
+C:\Users\Victor\Documents\Visual Studio 2012\Projects\AbbyLauncher\AbbyPatchBuilder\obj\Debug\AbbyPatchBuilder.Properties.Resources.resources
+C:\Users\Victor\Documents\Visual Studio 2012\Projects\AbbyLauncher\AbbyPatchBuilder\obj\Debug\AbbyPatchBuilder.csproj.GenerateResource.Cache
+C:\Users\Victor\Documents\Visual Studio 2012\Projects\AbbyLauncher\AbbyPatchBuilder\obj\Debug\AbbyPatchBuilder.exe
+C:\Users\Victor\Documents\Visual Studio 2012\Projects\AbbyLauncher\AbbyPatchBuilder\obj\Debug\AbbyPatchBuilder.pdb
+C:\Users\Victor\Documents\Visual Studio 2012\Projects\AbbyLauncher\AbbyPatchBuilder\obj\Debug\AbbyPatchBuilder.AbbyPatchBuilder.resources
