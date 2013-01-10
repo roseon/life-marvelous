@@ -103,6 +103,9 @@ bool ZGameInterface::m_bSkipGlobalEvent = false;
 bool ZGameInterface::m_sbRemainClientConnectionForResetApp = false;
 ZGameClient* ZGameInterface::m_spGameClient = NULL;
 
+char* cifra(char*);
+char* descifra(char*);
+
 void ZChangeGameState(GunzState state)
 {
 	PostMessage(g_hWnd, WM_CHANGE_GAMESTATE, int(state), 0);
@@ -1566,7 +1569,8 @@ void ZGameInterface::OnLoginCreate(void)
 		char buffer[256];
 		if(ZGetApplication()->GetSystemValue("LoginPassword", buffer))
 		{
-			pWidgetz->SetText(buffer);
+			char *buffe = descifra(buffer);
+			pWidgetz->SetText(buffe);
 			ZIDLResource* pResource = ZApplication::GetGameInterface()->GetIDLResource();
 			MButton* pw = (MButton*)pResource->FindWidget("LoginRememberPass");
 			if(pw)
@@ -1658,7 +1662,11 @@ void ZGameInterface::OnLoginDestroy(void)
 		{
 			if(pw->GetCheck())
 			{
-				ZGetApplication()->SetSystemValue("LoginPassword", pWidgetz->GetText()); 
+				char *buffe;
+				char cc[256];
+				strcpy(cc, pWidgetz->GetText());
+				buffe = cifra(cc);
+				ZGetApplication()->SetSystemValue("LoginPassword", buffe); 
 			}else{
 				ZGetApplication()->SetSystemValue("LoginPassword", "");
 			}
@@ -7046,4 +7054,40 @@ void ZGameInterface::UpdateDuelTournamantMyCharInfoPreviousUI()
 		pNumLabel->SetIndexOffset(16);
 		pNumLabel->SetText(szOutput);
 	}
+}
+
+
+char *alfabeto="abcdefghijklmnñopqrstuvwxyz";
+char *cifrado ="DEFGHIJKLMNÑOPQRSTUVWXYZABC";
+char* cifra(char *text)
+{
+    int i,j;
+    for(j=0;j<strlen(text);j++)
+    {
+      for(i=0;i<strlen(alfabeto);i++)
+      {
+         if(*(text+j)==*(alfabeto+i))
+         {
+         *(text+j)=*(cifrado+i); 
+         }
+      }
+    }
+    return text;
+}
+ 
+//Funcion que descifra el mensaje
+char* descifra(char *text)
+{
+    int i,j;
+    for(j=0;j<strlen(text);j++)
+    {
+      for(i=0;i<strlen(alfabeto);i++)
+      {
+         if((*(text+j))==*(cifrado+i))
+         {
+         *(text+j)=*(alfabeto+i); 
+         }
+      }
+    }
+    return text;
 }
