@@ -747,21 +747,21 @@ void ZCombatInterface::OnDraw(MDrawContext* pDC)
 
 			// ±âÈ¹»ó µà¾ó 
 			ZGetScreenEffectManager()->DrawMyHPPanal(pDC);		// ³ªÀÇ »óÅÂÃ¢(HP°ÔÀÌÁö¹Ù)			
-#ifdef _DEBUG
+#ifndef _DEBUG
 			// TodoH(»ó) - Áö¿öÁ®¾ß µË´Ï´Ù. ÃßÈÄ¿¡.
 			ZCharacter* pCharacter = GetTargetCharacter();
 			if( pCharacter != NULL ) {
 				//¹öÇÁÁ¤º¸ÀÓ½ÃÁÖ¼® ZCharacterBuff *pCharBuff = pCharacter->GetCharacterBuff();
 
-				int nX = 300;
-				int nY = 50;
+				int nX = 120;
+				int nY = 30;
 				char szMsg[128] = { 0, };
 
-				sprintf(szMsg, "HP : %f / %f", pCharacter->GetHP(), pCharacter->GetMaxHP());
+				sprintf(szMsg, "HP : %d / %d", (int)pCharacter->GetHP(), (int)pCharacter->GetMaxHP());
 				pDC->Text(nX, nY, szMsg);
 
-				sprintf(szMsg, "AP : %f / %f", pCharacter->GetAP(), pCharacter->GetMaxAP());
-				pDC->Text(nX, nY + 30, szMsg);
+				sprintf(szMsg, "AP : %d / %d", (int)pCharacter->GetAP(), (int)pCharacter->GetMaxAP());
+				pDC->Text(nX, nY + 40, szMsg);
 			}			
 #endif
 

@@ -2204,7 +2204,7 @@ void ZMyCharacter::UpdateButtonState()
 		LastKeyTime = timeGetTime();
 		WarningOutput = true;
 		AFK = true;
-	}else if( zStatus.m_bMoving || IsDie() ) {
+	}else if( zStatus.m_bMoving ) {
 		LastKeyTime = 3600000;
 		WarningOutput = false;
 		AFK = false;
