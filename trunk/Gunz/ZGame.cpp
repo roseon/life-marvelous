@@ -735,8 +735,6 @@ void ZGame::Destroy()
 
 bool ZGame::CreateMyCharacter(MTD_CharInfo* pCharInfo/*, MTD_CharBuffInfo* pCharBuffInfo*/)
 {
-	if (!m_pMyCharacter) return false;
-
 	m_pMyCharacter->Create(pCharInfo/*, pCharBuffInfo*/);
 	m_pMyCharacter->SetVisible(true);
 
@@ -747,7 +745,7 @@ bool ZGame::CreateMyCharacter(MTD_CharInfo* pCharInfo/*, MTD_CharBuffInfo* pChar
 }
 
 bool ZGame::CheckGameReady()
-{
+{	
 	if (GetReadyState() == ZGAME_READYSTATE_RUN) {
 		return true;
 	} else if (GetReadyState() == ZGAME_READYSTATE_INIT) {
@@ -776,14 +774,11 @@ void ZGame::OnGameResponseTimeSync(unsigned int nLocalTimeStamp, unsigned int nG
 void ZGame::Update(float fElapsed)
 {
 
-	if(ZGetGame()->m_pMyCharacter->LastKeyTime + 30000 < timeGetTime() && ZGetGame()->m_pMyCharacter->WarningOutput == true)
-	{
+	if(ZGetGame()->m_pMyCharacter->LastKeyTime + 30000 <= timeGetTime() && ZGetGame()->m_pMyCharacter->WarningOutput == true){
 		ZChatOutput(ZCOLOR_CHAT_SYSTEM_GAME, "AFK ADVERTENCIA: Seras kickeado en 30 segundos!.");
 		ZGetGame()->m_pMyCharacter->WarningOutput = false;
-	}else if(ZGetGame()->m_pMyCharacter->LastKeyTime + 60000 < timeGetTime() && ZGetGame()->m_pMyCharacter->AFK == true)
-	{
+	}else if(ZGetGame()->m_pMyCharacter->LastKeyTime + 60000 <= timeGetTime() && ZGetGame()->m_pMyCharacter->AFK == true){
 		ZApplication::GetGameInterface()->ReserveLeaveBattle();
-		ZGetGame()->m_pMyCharacter->AFK = false;
 	}
 
 	int time = 300000; //5 mins

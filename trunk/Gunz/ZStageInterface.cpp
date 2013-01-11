@@ -222,6 +222,7 @@ void ZStageInterface::OnCreate( void)
 ************************************************************************/
 void ZStageInterface::OnDestroy( void)
 {
+
 	ZApplication::GetGameInterface()->ShowWidget( "Stage", false);
 
 	MPicture* pPicture = (MPicture*)ZApplication::GetGameInterface()->GetIDLResource()->FindWidget( "Stage_MainBGTop");
