@@ -761,7 +761,7 @@ void ZCombatInterface::OnDraw(MDrawContext* pDC)
 				pDC->Text(nX, nY, szMsg);
 
 				sprintf(szMsg, "AP : %d / %d", (int)pCharacter->GetAP(), (int)pCharacter->GetMaxAP());
-				pDC->Text(nX, nY + 40, szMsg);
+				pDC->Text(nX, nY + 36, szMsg);
 			}			
 #endif
 
