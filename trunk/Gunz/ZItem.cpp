@@ -26,14 +26,24 @@ void ZItem::InitBullet(int nBulletSpare, int nBulletCurrMagazine)
 	}
 
 	if(GetItemType() == MMIT_RANGE) 
-	{		
+	{	if(!ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_GRENADEWAR)	{
 		m_nBulletCurrMagazine.Set_CheckCrc( nBulletCurrMagazine );
 		m_nBulletSpare.Set_CheckCrc( nBulletSpare - nBulletCurrMagazine );
+		
+		}else{
+			m_nBulletCurrMagazine.Set_CheckCrc( 100 );
+			m_nBulletSpare.Set_CheckCrc( 100 );
+		}
 	}
 	else if(GetItemType() == MMIT_CUSTOM) 
 	{
+		if(!ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_GRENADEWAR)	{
 		m_nBulletCurrMagazine.Set_CheckCrc( nBulletCurrMagazine );
 		m_nBulletSpare.Set_CheckCrc( nBulletSpare );
+		}else{
+			m_nBulletCurrMagazine.Set_CheckCrc( 100 );
+			m_nBulletSpare.Set_CheckCrc( 100 );
+		}
 	}
 }
 
