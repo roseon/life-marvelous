@@ -97,21 +97,6 @@
 	</PICTURE> -->
 
 
-<!-- 프레임 생성 : Stage_Main_Frame -->
-	<FRAME item="Stage_Main_Frame" parent="Stage">
-		<FRAMELOOK>Custom2FrameLook</FRAMELOOK>
-		<BOUNDS>
-			<X>0</X>
-			<Y>92</Y>
-			<W>800</W>
-			<H>467</H>
-		</BOUNDS>
-		<TITLEBAR>false</TITLEBAR>
-		<RESIZABLE>false</RESIZABLE>
-		<FOCUSABLE>false</FOCUSABLE>
-		<VISIBLE>true</VISIBLE>
-	</FRAME>
-
 	<!-- Picture : 방제 표시창 이미지 출력 
 	<PICTURE item ="Stage_ChannelNameBG" parent="Stage">
 		<BOUNDS>
