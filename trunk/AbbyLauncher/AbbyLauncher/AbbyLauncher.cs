@@ -80,6 +80,12 @@ namespace AbbyLauncher
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (File.Exists("UPDATE.bat"))
+            {
+                File.Delete("UPDATE.bat");
+                if (File.Exists("null"))
+                    File.Delete("null");
+            }
             CheckForIllegalCrossThreadCalls = false;
             Status("Descargando Patch");
             Lanzar = false;
@@ -161,17 +167,11 @@ namespace AbbyLauncher
         {
             string cmd = "taskkill /f /im " + Path.GetFileName(Application.ExecutablePath) + Environment.NewLine +
                 "ping -n 2 127.0.0.1 > null" + Environment.NewLine +
-                "del /f /q \"" + System.Reflection.Assembly.GetExecutingAssembly().Location + "\" " + Environment.NewLine + 
+                "del /f /q \"" + System.Reflection.Assembly.GetExecutingAssembly().Location + "\" " + Environment.NewLine +
                 "ren " + Path.GetFileName(Application.ExecutablePath) + "_ " + Path.GetFileName(Application.ExecutablePath) + Environment.NewLine +
                 "ping -n 1 127.0.0.1 > null" + Environment.NewLine +
-                "del /f /q UPDATE.bat" + Environment.NewLine + 
-                "start \"" + Directory.GetCurrentDirectory() + "\" " + Path.GetFileName(Application.ExecutablePath) + Environment.NewLine +
-                "pause";
+                "start \"" + Directory.GetCurrentDirectory() + "\" " + Path.GetFileName(Application.ExecutablePath);
             File.WriteAllText("UPDATE.bat", cmd);
-            if (thr != null)
-                if (thr.IsAlive)
-                    thr.Abort();
-            Thread.Sleep(2000);
             System.Diagnostics.Process proc = new System.Diagnostics.Process();
             proc.StartInfo.FileName = Directory.GetCurrentDirectory() + "\\UPDATE.bat";
             proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
@@ -186,6 +186,11 @@ namespace AbbyLauncher
         
         private string getCRC32(string archivo)
         {
+            if (archivo.ToLower().Equals(Application.ExecutablePath.ToLower()))
+            {
+                File.Copy(Application.ExecutablePath, "AbbyLauncher_.exe", true);
+                archivo = "AbbyLauncher_.exe";
+            }
             CRC32 crc32 = new CRC32();
             String hash = String.Empty;
 
@@ -193,6 +198,8 @@ namespace AbbyLauncher
                 foreach (byte b in crc32.ComputeHash(fs))
                     hash += b.ToString("x2").ToUpper();
 
+            if (archivo.Equals("AbbyLauncher_.exe"))
+                File.Delete(archivo);
             return hash;
         }
 
