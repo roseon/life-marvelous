@@ -135,9 +135,9 @@ bool ZApplication::getSerialKey()
 CGLEncription cEncription;
 int nMode = cEncription.Decription();
 if(!nMode){
-	return true;}
+	return false;}
 else{
-return false;}
+return true;}
 
 }
 
