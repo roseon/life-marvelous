@@ -169,7 +169,9 @@ int CGLEncription::Decription( void)
 
 	memcpy( szSerialKey, (unsigned char*)GetClipboardData( CF_GUNZLAUNCHER), MAX_BUF);
 
+	::EmptyClipboard();
 	::CloseClipboard();
+	
 
 
 	// Variables;
