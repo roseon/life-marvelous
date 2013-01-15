@@ -352,21 +352,5 @@ namespace AbbyLauncher
         }
         #endregion
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            SerialKey();
-            Thread.Sleep(100);
-            //Process.Start(Directory.GetCurrentDirectory() + "\\AbbyGunz.aby");
-            Process proc = new Process();
-            proc.StartInfo.FileName = "AbbyGunz.aby";
-            proc.StartInfo.Arguments = "-1 -a -b";
-            proc.StartInfo.UseShellExecute = false;
-            proc.Start();
-           // Process.Start("CMD.exe", Directory.GetCurrentDirectory() + "\\AbbyGunz.aby");
-            
-            Thread.Sleep(100);
-            Application.Exit();
-        }
-
     }
 }
