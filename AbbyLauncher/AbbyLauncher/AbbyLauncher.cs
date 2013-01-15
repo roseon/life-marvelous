@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace AbbyLauncher
 {
@@ -42,21 +43,33 @@ namespace AbbyLauncher
         #endregion
 
         #region MoverForm
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
+        private int mouseStartX, mouseStartY;
+        private int formStartX, formStartY;
+        private bool FormDragging = false;
 
-        [DllImportAttribute("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd,
-                         int Msg, int wParam, int lParam);
-        [DllImportAttribute("user32.dll")]
-        public static extern bool ReleaseCapture();
-        private void AbbyGunz_MouseDown(object sender, MouseEventArgs e)
+        private void Dragg_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            this.mouseStartX = MousePosition.X;
+            this.mouseStartY = MousePosition.Y;
+            this.formStartX = this.Location.X;
+            this.formStartY = this.Location.Y;
+            FormDragging = true;
+        }
+
+        private void Dragg_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (FormDragging)
             {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+                this.Location = new Point(
+                this.formStartX + MousePosition.X - this.mouseStartX,
+                this.formStartY + MousePosition.Y - this.mouseStartY
+                );
             }
+        }
+
+        private void Dragg_MouseUp(object sender, MouseEventArgs e)
+        {
+            FormDragging = false;
         }
         #endregion
 
@@ -130,7 +143,7 @@ namespace AbbyLauncher
                 Application.DoEvents();
                 Thread.Sleep(1000);
             }
-            barraprogreso.Visible = (false);
+            barraprogreso.Value = (100);
             if (updateLauncher)
             {
                 ActualizarLauncher();
@@ -138,7 +151,10 @@ namespace AbbyLauncher
             Lanzar = true;
             Status("Listo!");
             if (Lanzar)
+            {
                 PLAY.Image = Properties.Resources.boton_on;
+                PLAY.Enabled = true;
+            }
         }
 
         private void ActualizarLauncher()
@@ -186,18 +202,19 @@ namespace AbbyLauncher
             if (!Lanzar)
                 return;
             PLAY.Image = Properties.Resources.boton_on;
+            PLAY.Enabled = true;
             Application.DoEvents();
             Thread.Sleep(80);
-            PLAY.Image = Properties.Resources.boton_off;
+            PLAY.Image = Properties.Resources.pause;
             Application.DoEvents();
 
-            System.Diagnostics.Process.Start(Directory.GetCurrentDirectory() + "\\GunZ.exe");
+            Process.Start(Directory.GetCurrentDirectory() + "\\GunZ.exe");
             SerialKey();
             Thread.Sleep(100);
             Application.Exit();
         }
 
-        private void PLAY_MouseHover(object sender, EventArgs e)
+        private void PLAY_MouseMove(object sender, MouseEventArgs e)
         {
             if (!Lanzar)
                 return;
@@ -211,6 +228,16 @@ namespace AbbyLauncher
             PLAY.Image = Properties.Resources.boton_on;
         }
 
+        private void PLAY_MouseDown(object sender, MouseEventArgs e)
+        {
+            PLAY.Image = Properties.Resources.boton_dis;
+        }
+
+        private void PLAY_MouseUp(object sender, MouseEventArgs e)
+        {
+            PLAY.Image = Properties.Resources.pause;
+        }
+
         private void cerrar_Click(object sender, EventArgs e)
         {
             if (thr != null)
@@ -219,8 +246,94 @@ namespace AbbyLauncher
             Thread.Sleep(2000);
             Application.Exit();
         }
+
+        private void cerrar_MouseMove(object sender, MouseEventArgs e)
+        {
+            cerrar.Image = Properties.Resources.cerrar_hover;
+        }
+
+        private void cerrar_MouseLeave(object sender, EventArgs e)
+        {
+            cerrar.Image = Properties.Resources.close;
+        }
+
+        private void cerrar_MouseDown(object sender, MouseEventArgs e)
+        {
+            cerrar.Image = Properties.Resources.cerrar_pres;
+        }
+
+        private void cerrar_MouseUp(object sender, MouseEventArgs e)
+        {
+            cerrar.Image = Properties.Resources.close;
+        }
+
+        private void min_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void min_MouseMove(object sender, MouseEventArgs e)
+        {
+            min.Image = Properties.Resources.minim_hover;
+        }
+
+        private void min_MouseLeave(object sender, EventArgs e)
+        {
+            min.Image = Properties.Resources.minim;
+        }
+
+        private void min_MouseDown(object sender, MouseEventArgs e)
+        {
+            min.Image = Properties.Resources.minim_pres;
+        }
+
+        private void min_MouseUp(object sender, MouseEventArgs e)
+        {
+            min.Image = Properties.Resources.minim;
+        }
+
+        private void info_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Programado por s00rk - Androide28 \nDiseñado por Roan", "AbbyLauncher", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void info_MouseMove(object sender, MouseEventArgs e)
+        {
+            info.Image = Properties.Resources.info_hover;
+        }
+
+        private void info_MouseLeave(object sender, EventArgs e)
+        {
+            info.Image = Properties.Resources.info;
+        }
+
+        private void info_MouseDown(object sender, MouseEventArgs e)
+        {
+            info.Image = Properties.Resources.info_press;
+        }
+
+        private void info_MouseUp(object sender, MouseEventArgs e)
+        {
+            info.Image = Properties.Resources.info;
+        }
         #endregion
-        
+
+        #region Links
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://gunz.abbygamerz.net/");
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://abbygamerz.net/foro/");
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://www.facebook.com/AbbyGamerz/");
+        }
+        #endregion
 
     }
 }

@@ -6,3 +6,5 @@ C:\Users\Victor\Documents\Visual Studio 2012\Projects\AbbyLauncher\AbbyLauncher\
 C:\Users\Victor\Documents\Visual Studio 2012\Projects\AbbyLauncher\AbbyLauncher\obj\Debug\AbbyLauncher.exe
 C:\Users\Victor\Documents\Visual Studio 2012\Projects\AbbyLauncher\AbbyLauncher\obj\Debug\AbbyLauncher.pdb
 C:\Users\Victor\Documents\Visual Studio 2012\Projects\AbbyLauncher\AbbyLauncher\obj\Debug\AbbyLauncher.AbbyGunz.resources
+C:\Users\Andrés\Documents\Andres\Gunz_Andres\Abby2\AbbyLauncher\AbbyLauncher\obj\Debug\AbbyLauncher.exe
+C:\Users\Andrés\Documents\Andres\Gunz_Andres\Abby2\AbbyLauncher\AbbyLauncher\obj\Debug\AbbyLauncher.pdb
