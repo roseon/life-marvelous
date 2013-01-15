@@ -53,9 +53,8 @@
     <StartupObject>AbbyLauncher.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup />
-  <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -102,10 +101,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Launcher.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="icon1.ico" />
+    <None Include="Resources\info_press.png" />
+    <None Include="Resources\info_hover.png" />
+    <None Include="Resources\info.png" />
+    <None Include="Resources\minim_pres.png" />
+    <None Include="Resources\minim_hover.png" />
+    <None Include="Resources\minim.png" />
+    <None Include="Resources\cerrar_pres.png" />
+    <None Include="Resources\cerrar_hover.png" />
+    <None Include="Resources\progressbar.png" />
+    <None Include="Resources\pause.png" />
+    <None Include="Resources\launcha3.png" />
     <None Include="Resources\Serial.dll" />
     <None Include="Resources\close.png" />
     <None Include="Resources\boton_dis.png" />
