@@ -130,6 +130,17 @@ bool GetNextName(char *szBuffer,int nBufferCount,char *szSource)
 	return true;
 }
 
+bool ZApplication::getSerialKey()
+{
+CGLEncription cEncription;
+int nMode = cEncription.Decription();
+if(!nMode){
+	return true;}
+else{
+return false;}
+
+}
+
 bool ZApplication::ParseArguments(const char* pszArgs)
 {
 	strcpy(m_szCmdLine, pszArgs);

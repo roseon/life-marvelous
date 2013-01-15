@@ -1318,7 +1318,7 @@ int PASCAL WinMain(HINSTANCE this_inst, HINSTANCE prev_inst, LPSTR cmdline, int 
 	SetCurrentDirectory(szModuleFileName);
 
 
-	/*
+
 #ifndef _GAMEGUARD
 	#ifdef _PUBLISH
 		// 중복 실행 금지
@@ -1330,7 +1330,7 @@ int PASCAL WinMain(HINSTANCE this_inst, HINSTANCE prev_inst, LPSTR cmdline, int 
 		}
 	#endif
 #endif
-	*/
+
 
 #ifdef _HSHIELD
 
@@ -1507,6 +1507,13 @@ int PASCAL WinMain(HINSTANCE this_inst, HINSTANCE prev_inst, LPSTR cmdline, int 
 	mlog("cmdline = %s\n",cmdline);
 
 #endif
+
+	if( !ZApplication::GetInstance()->getSerialKey())
+	{
+		return false;
+	}
+
+
 
 #ifndef _LAUNCHER
 	UpgradeMrsFile();// mrs1 이라면 mrs2로 업그래이드 한다..
