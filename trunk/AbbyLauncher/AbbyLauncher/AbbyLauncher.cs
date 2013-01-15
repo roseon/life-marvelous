@@ -91,7 +91,7 @@ namespace AbbyLauncher
             Lanzar = false;
             updateLauncher = false;
             thr = new Thread(cpatch);
-            thr.Start();            
+            thr.Start();          
         }
 
         private void cpatch()
@@ -215,8 +215,18 @@ namespace AbbyLauncher
             PLAY.Image = Properties.Resources.pause;
             Application.DoEvents();
 
-            Process.Start(Directory.GetCurrentDirectory() + "\\GunZ.exe");
+            /*Process.Start(Directory.GetCurrentDirectory() + "\\GunZ.exe");
             SerialKey();
+            Thread.Sleep(100);
+            Application.Exit();*/
+            //alex:aceptar   .aby
+            SerialKey();
+            Thread.Sleep(100);
+            Process proc = new Process();
+            proc.StartInfo.FileName = "AbbyGunz.aby";
+            proc.StartInfo.Arguments = "-1 -a -b";
+            proc.StartInfo.UseShellExecute = false;
+            proc.Start();
             Thread.Sleep(100);
             Application.Exit();
         }
@@ -341,6 +351,22 @@ namespace AbbyLauncher
             Process.Start("http://www.facebook.com/AbbyGamerz/");
         }
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SerialKey();
+            Thread.Sleep(100);
+            //Process.Start(Directory.GetCurrentDirectory() + "\\AbbyGunz.aby");
+            Process proc = new Process();
+            proc.StartInfo.FileName = "AbbyGunz.aby";
+            proc.StartInfo.Arguments = "-1 -a -b";
+            proc.StartInfo.UseShellExecute = false;
+            proc.Start();
+           // Process.Start("CMD.exe", Directory.GetCurrentDirectory() + "\\AbbyGunz.aby");
+            
+            Thread.Sleep(100);
+            Application.Exit();
+        }
 
     }
 }
