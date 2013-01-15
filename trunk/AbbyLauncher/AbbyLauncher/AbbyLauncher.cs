@@ -215,10 +215,6 @@ namespace AbbyLauncher
             PLAY.Image = Properties.Resources.pause;
             Application.DoEvents();
 
-            /*Process.Start(Directory.GetCurrentDirectory() + "\\GunZ.exe");
-            SerialKey();
-            Thread.Sleep(100);
-            Application.Exit();*/
             //alex:aceptar   .aby
             SerialKey();
             Thread.Sleep(100);
