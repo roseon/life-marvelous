@@ -773,25 +773,15 @@ void ZGame::OnGameResponseTimeSync(unsigned int nLocalTimeStamp, unsigned int nG
 
 void ZGame::Update(float fElapsed)
 {
-
-	if(ZGetGame()->m_pMyCharacter->LastKeyTime + 30000 <= timeGetTime() && ZGetGame()->m_pMyCharacter->WarningOutput == true){
-		ZChatOutput(ZCOLOR_CHAT_SYSTEM_GAME, "AFK ADVERTENCIA: Seras kickeado en 30 segundos!.");
+	if(ZGetGame()->m_pMyCharacter->LastKeyTime + 150000 < timeGetTime() && ZGetGame()->m_pMyCharacter->WarningOutput == true)
+	{
+		ZChatOutput(ZCOLOR_CHAT_SYSTEM_GAME, "AFK ADVERTENCIA: Seras kickeado en 30 segundos.");
 		ZGetGame()->m_pMyCharacter->WarningOutput = false;
-	}else if(ZGetGame()->m_pMyCharacter->LastKeyTime + 60000 <= timeGetTime() && ZGetGame()->m_pMyCharacter->AFK == true){
+	}else if(ZGetGame()->m_pMyCharacter->LastKeyTime + 180000 < timeGetTime() && ZGetGame()->m_pMyCharacter->AFK == true){
 		ZApplication::GetGameInterface()->ReserveLeaveBattle();
+		ZGetGame()->m_pMyCharacter->AFK = false;
 	}
-
-	int time = 300000; //5 mins
-	if( ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DUEL || ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DUELTOURNAMENT )
-		time = 90000; // 1 minuto y 30 segundos
-
-	if( (ZGetGame()->m_pMyCharacter->LastKeyTime + time) < timeGetTime() )
-		{	
-			int test= 0;
-			test= 33;
-			//ZApplication::GetGameInterface()->ReserveLeaveBattle();
-		}
-
+	
 	if (CheckGameReady() == false) {
 		OnCameraUpdate(fElapsed);
 		return;
