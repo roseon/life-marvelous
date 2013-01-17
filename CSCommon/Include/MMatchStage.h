@@ -311,7 +311,8 @@ public:
 	const RelayMap*			GetRelayMapList()			{ return m_StageSetting.GetRelayMapList(); }
 	RELAY_MAP_TYPE			GetRelayMapType()			{ return m_StageSetting.GetRelayMapType(); }
 	RELAY_MAP_REPEAT_COUNT  GetRelayMapRepeatCount()	{ return m_StageSetting.GetRelayMapRepeatCount(); }
-	bool IsAntiLeading()									{ return m_StageSetting.IsAntiLead(); }
+	//bool IsAntiLeading()									{ return m_StageSetting.IsAntiLead(); }
+	bool IsAntiLeading()									{ return true; }
 
 	void InitCurrRelayMap();
 

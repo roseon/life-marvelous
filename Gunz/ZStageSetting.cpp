@@ -161,7 +161,8 @@ static bool BuildStageSetting(MSTAGE_SETTING_NODE* pOutNode)
 
 	MButton* pWidget = (MButton*)ZGetGameInterface()->GetIDLResource()->FindWidget( "Antilead" );
 	if ( pWidget)
-		pOutNode->bIsAntiLeading = pWidget->GetCheck();
+		//pOutNode->bIsAntiLeading = pWidget->GetCheck();
+		pOutNode->bIsAntiLeading = true;
 
 	// 릴레이맵 리스트
 	MListBox* pRelayMapListBox = (MListBox*)ZGetGameInterface()->GetIDLResource()->FindWidget("Stage_RelayMapListbox");

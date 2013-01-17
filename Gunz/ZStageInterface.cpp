@@ -687,7 +687,8 @@ void ZStageInterface::ChangeStageGameSetting( const MSTAGE_SETTING_NODE* pSettin
 
 
 	MButton* pButton = (MButton*)pResource->FindWidget("Antilead");
-	if(pButton!=0) pButton->SetCheck(pSetting->bIsAntiLeading);
+	//if(pButton!=0) pButton->SetCheck(pSetting->bIsAntiLeading);
+	if(pButton!=0) pButton->SetCheck(true);
 
 	if ( m_bPrevQuest != bQuestUI)
 	{
