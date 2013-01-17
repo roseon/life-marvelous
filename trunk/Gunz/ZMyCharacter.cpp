@@ -2198,13 +2198,11 @@ void ZMyCharacter::UpdateButtonState()
 
 	bool bLButtonPressed = ZIsActionKeyPressed(ZACTION_USE_WEAPON);
 
-
-	if(!zStatus.m_bMoving && AFK != true)
-	{
+	if(!zStatus.m_bMoving && AFK != true){
 		LastKeyTime = timeGetTime();
 		WarningOutput = true;
 		AFK = true;
-	}else if( zStatus.m_bMoving ) {
+	}else if(zStatus.m_bMoving || IsDie()){
 		LastKeyTime = 3600000;
 		WarningOutput = false;
 		AFK = false;

@@ -786,9 +786,6 @@ public:
 	virtual bool IsGuard();
 	virtual void OnMeleeGuardSuccess();
 	
-	int LastKeyTime;
-    bool AFK;
-	bool WarningOutput;
 
 	virtual void OnDamagedAnimation(ZObject *pAttacker,int type);
 

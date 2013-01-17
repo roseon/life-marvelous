@@ -750,31 +750,25 @@ void ZCombatInterface::OnDraw(MDrawContext* pDC)
 #ifndef _DEBUG
 			// TodoH(»ó) - Áö¿öÁ®¾ß µË´Ï´Ù. ÃßÈÄ¿¡.
 			ZCharacter* pCharacter = GetTargetCharacter();
-			if( pCharacter != NULL ) {
+			if( pCharacter != NULL) {
 				//¹öÇÁÁ¤º¸ÀÓ½ÃÁÖ¼® ZCharacterBuff *pCharBuff = pCharacter->GetCharacterBuff();
-
-				int nX = 120;
-				int nY = 30;
-				char szMsg[128] = { 0, };
-
-				MFont* pFont = MFontManager::Get("FONTa6_O2Wht");
-				pDC->SetFont(pFont);
-				pDC->SetColor(MCOLOR(0xFFFFFFFF));
-
-				sprintf(szMsg, "HP : %d / %d", (int)pCharacter->GetHP(), (int)pCharacter->GetMaxHP());
-				pDC->Text(nX, nY, szMsg);
-
-				sprintf(szMsg, "AP : %d / %d", (int)pCharacter->GetAP(), (int)pCharacter->GetMaxAP());
-				pDC->Text(nX, nY + 36, szMsg);
-
-				if(ZGetGame()->m_pMyCharacter->LastKeyTime + 30000 <= timeGetTime() && ZGetGame()->m_pMyCharacter->WarningOutput == true)
+				if(!pCharacter->IsDie())
 				{
-					ZChatOutput(ZCOLOR_CHAT_SYSTEM_GAME, "AFK ADVERTENCIA: Seras kickeado en 30 segundos!.");
-					ZGetGame()->m_pMyCharacter->WarningOutput = false;
-				}else if(ZGetGame()->m_pMyCharacter->LastKeyTime + 60000 <= timeGetTime() && ZGetGame()->m_pMyCharacter->AFK == true){
-					ZApplication::GetGameInterface()->ReserveLeaveBattle();
+					int nX = 120;
+					int nY = 30;
+					char szMsg[128] = { 0, };
+
+					MFont* pFont = MFontManager::Get("FONTa6_O2Wht");
+					pDC->SetFont(pFont);
+					pDC->SetColor(MCOLOR(0xFFFFFFFF));
+
+					sprintf(szMsg, "HP : %d / %d", (int)pCharacter->GetHP(), (int)pCharacter->GetMaxHP());
+					pDC->Text(nX, nY, szMsg);
+
+					sprintf(szMsg, "AP : %d / %d", (int)pCharacter->GetAP(), (int)pCharacter->GetMaxAP());
+					pDC->Text(nX, nY + 36, szMsg);
 				}
-				
+								
 			}			
 #endif
 
