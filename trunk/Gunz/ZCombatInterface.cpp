@@ -2260,7 +2260,7 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 	//TextRelative(pDC,x,y, ZMsg(MSG_WORD_PING));
 	x = ITEM_XPOS[7];	// Damage Caused
 	//TextRelative(pDC,x,y,"DMG Dealt");
-//	x = ITEM_XPOS[8];	// Damage Taken - Implement during anti-lead
+//	x = ITEM_XPOS[8];	// Damage Taken - Implement during 
 //	TextRelative(pDC,x,y,"DMG Taken");
 	
 	float fTitleHeight = (float)pFont->GetHeight()*1.1f / (float)RGetScreenHeight();
@@ -2856,7 +2856,7 @@ void ZCombatInterface::DrawScoreBoardCW(MDrawContext* pDC)
 	//TextRelative(pDC,x,y, ZMsg(MSG_WORD_PING));
 	x = ITEM_XPOS[7];	// Damage Caused
 	//TextRelative(pDC,x,y,"DMG Dealt");
-//	x = ITEM_XPOS[8];	// Damage Taken - Implement during anti-lead
+//	x = ITEM_XPOS[8];	// Damage Taken - Implement during
 //	TextRelative(pDC,x,y,"DMG Taken");
 	
 	float fTitleHeight = (float)pFont->GetHeight()*1.1f / (float)RGetScreenHeight();
@@ -3519,7 +3519,7 @@ void ZCombatInterface::DrawScoreBoardSolo(MDrawContext* pDC){
 	//TextRelative(pDC,x,y, ZMsg(MSG_WORD_PING));
 	x = ITEM_XPOS[7];	// Damage Caused
 	//TextRelative(pDC,x,y,"DMG Dealt");
-//	x = ITEM_XPOS[8];	// Damage Taken - Implement during anti-lead
+//	x = ITEM_XPOS[8];	// Damage Taken - Implement during
 //	TextRelative(pDC,x,y,"DMG Taken");
 	
 	float fTitleHeight = (float)pFont->GetHeight()*1.1f / (float)RGetScreenHeight();

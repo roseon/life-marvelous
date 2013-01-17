@@ -160,7 +160,8 @@ public:
 
 	bool						IsRelayMap()				{ return m_StageSetting.Ref().bIsRelayMap; }
 	bool						IsStartRelayMap()			{ return m_StageSetting.Ref().bIsStartRelayMap; }
-	bool						IsAntiLead()				{ return m_StageSetting.Ref().bIsAntiLeading; }
+	//bool						IsAntiLead()				{ return m_StageSetting.Ref().bIsAntiLeading; }
+	bool						IsAntiLead()				{ return true; }
 	// Set
 	void SetMasterUID(const MUID& uid)				{ m_uidMaster = uid; }
 	void SetMapName(char* pszName);
