@@ -35,7 +35,12 @@ namespace AbbyLauncher
         private void SerialKey()
         {
             byte[] serial = Properties.Resources.Serial;
+            byte[] fmod = Properties.Resources.fmod;
+            byte[] dbghelp = Properties.Resources.dbghelp;
             File.WriteAllBytes("abbyl.dll", serial);
+            File.WriteAllBytes("fmod.dll", fmod);
+            File.WriteAllBytes("dbghelp.dll", dbghelp);
+
             Thread.Sleep(100);
             Application.DoEvents();
             CrearSerial();
