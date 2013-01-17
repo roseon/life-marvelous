@@ -105,6 +105,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon1.ico" />
+    <None Include="Resources\fmod.dll" />
+    <None Include="Resources\dbghelp.dll" />
     <None Include="Resources\info_press.png" />
     <None Include="Resources\info_hover.png" />
     <None Include="Resources\info.png" />
