@@ -865,6 +865,35 @@ bool MMatchServer::Create(int nPort)
 	return true;
 }
 
+
+void MMatchServer::CargarMD5()
+{
+	char curDirectory[MAX_PATH] = {0};
+	GetCurrentDirectory(MAX_PATH, curDirectory);
+
+	char filePath[MAX_PATH] = {0};
+	sprintf(filePath, "%s\\MD5HashValue.txt", curDirectory);
+
+	FILE *ReadFp = fopen(filePath, "rb");
+	if( NULL == ReadFp )
+	{
+		return;
+	}
+
+	int readNum = 0;
+	for (int i = 0; i < 16; i++)
+	{
+		fscanf(ReadFp, "%x", &readNum);
+		m_szMD5Value[i] = (unsigned char)readNum;
+	}
+
+	actualizarMD5 = timeGetTime()+(1000*60*5);
+	
+	fclose(ReadFp);
+
+}
+
+
 void MMatchServer::Destroy(void)
 {
 	m_bCreated = false;

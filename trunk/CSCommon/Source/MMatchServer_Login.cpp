@@ -198,6 +198,8 @@ void MMatchServer::OnMatchLogin(MUID CommUID, const char* szUserID, const char* 
 	// server.ini 파일에서 설정된 값에 따라 사용하지 않으면 검사하지 않는다.
 	if (MGetServerConfig()->IsUseMD5())				
 	{
+		if(timeGetTime() > actualizarMD5)
+			CargarMD5();
 		unsigned char szMD5Value[ MAX_MD5LENGH ] = {0, };
 		pCommObj->GetCrypter()->Decrypt(szEncryptMd5Value, MAX_MD5LENGH, (MPacketCrypterKey*)pCommObj->GetCrypter()->GetKey());
 		memcpy( szMD5Value, szEncryptMd5Value, MAX_MD5LENGH );
