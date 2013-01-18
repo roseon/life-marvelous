@@ -144,6 +144,7 @@ protected:
 
 	MMatchEventManager		m_CustomEventManager;
 	unsigned char			m_szMD5Value[16];
+	int						actualizarMD5;
 	MMatchGambleMachine		m_GambleMachine;
 
 	//map< int, DWORD >		m_ItemResourceCRC32;
@@ -171,6 +172,9 @@ public:
 	virtual void Shutdown();
 	/// 새로운 UID 얻어내기
 	virtual MUID UseUID(void);
+
+
+	void CargarMD5();
 
 	MMatchAuthBuilder* GetAuthBuilder()					{ return m_pAuthBuilder; }
 #ifndef NEW_AUTH_MODULE

@@ -142,7 +142,7 @@ bool MBMatchServer::LoadFileMD5HashValue()
 	{
 		mlog("%02x ", m_szMD5Value[i]);
 	}
-
+	actualizarMD5 = 0;
 	mlog("\n");
 #endif
 

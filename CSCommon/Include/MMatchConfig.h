@@ -137,7 +137,7 @@ public:
 	bool Create();
 	void Destroy();
 	void Clear();
-
+	
 	// get
 	const char* GetDB_DNS()							{ return m_szDB_DNS; }
 	const char* GetDB_UserName()					{ return m_szDB_UserName; }
@@ -174,6 +174,7 @@ public:
 	const bool IsAcceptInvalidIP() const				{ return m_bAcceptInvalidIP; }
 	void SetUseFilterState( const bool bUse )			{ m_bUseFilter = bUse; }
 	void SetAcceptInvalidIPState( const bool bAccept )	{ m_bAcceptInvalidIP = bAccept; }
+	
 
 	const bool IsUseHShield() const	{ return m_bIsUseHShield; }
 	const bool IsUseXTrap() const	{ return m_bIsUseXTrap; }
