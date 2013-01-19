@@ -6377,12 +6377,13 @@ bool IsAddressHooked(unsigned long address)
 
 bool IsWin8()
 {
-	OSVERSIONINFO os;
+	return true;
+	/*OSVERSIONINFO os;
 	os.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
 	GetVersionEx(&os);
 	if(os.dwMajorVersion < 6 || os.dwMinorVersion < 2)
 		return false;
-	return true;
+	return true;*/
 }
 
 void ZGame::PostSyncReport()
