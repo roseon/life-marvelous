@@ -358,7 +358,7 @@ void MMatchServer::OnClanRequestAgreedCreateClan(const MUID& uidPlayer, const ch
 	int nNewCLID = 0;
 
 	// 실제로 디비에 넣는다.
-	if (CLAN_SPONSORS_COUNT == 4)
+	/*if (CLAN_SPONSORS_COUNT == 4)
 	{
 		MAsyncDBJob_CreateClan* pNewJob = new MAsyncDBJob_CreateClan(uidPlayer);
 		pNewJob->Input(szClanName, 
@@ -372,6 +372,17 @@ void MMatchServer::OnClanRequestAgreedCreateClan(const MUID& uidPlayer, const ch
 					   pSponsorObjects[1]->GetUID(),
 					   pSponsorObjects[2]->GetUID(),
 					   pSponsorObjects[3]->GetUID());
+		// PostAsyncJob(pNewJob);
+		pMasterObject->m_DBJobQ.DBJobQ.push_back( pNewJob );
+	}*/
+	if (CLAN_SPONSORS_COUNT == 1)
+	{
+		MAsyncDBJob_CreateClan* pNewJob = new MAsyncDBJob_CreateClan(uidPlayer);
+		pNewJob->Input(szClanName, 
+					   nMasterCID, 
+					   nMemberCID[0], 
+					   pMasterObject->GetUID(),
+					   pSponsorObjects[0]->GetUID());
 		// PostAsyncJob(pNewJob);
 		pMasterObject->m_DBJobQ.DBJobQ.push_back( pNewJob );
 	}

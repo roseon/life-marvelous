@@ -708,12 +708,12 @@ void MMatchServer::OnAsyncCreateClan(MAsyncJob* pJobResult)
 
 
 	MMatchObject* pSponsorObjects[CLAN_SPONSORS_COUNT];
-	_ASSERT(CLAN_SPONSORS_COUNT == 4);
+	_ASSERT(CLAN_SPONSORS_COUNT == 1/*4*/);
 
 	pSponsorObjects[0] = GetObject(pJob->GetMember1UID());
-	pSponsorObjects[1] = GetObject(pJob->GetMember2UID());
-	pSponsorObjects[2] = GetObject(pJob->GetMember3UID());
-	pSponsorObjects[3] = GetObject(pJob->GetMember4UID());
+	//pSponsorObjects[1] = GetObject(pJob->GetMember2UID());
+	//pSponsorObjects[2] = GetObject(pJob->GetMember3UID());
+	//pSponsorObjects[3] = GetObject(pJob->GetMember4UID());
 
 	for (int i = 0; i < CLAN_SPONSORS_COUNT; i++)
 	{
