@@ -790,7 +790,7 @@ void ZGameClient::OnStageJoin(const MUID& uidChar, const MUID& uidStage, unsigne
 		else
 		{
 			sprintf( kill, "? %s", ZMsg( MSG_CHARINFO_KILL));
-			sprintf( death, "? %s", pInfo->GetDeath(), ZMsg( MSG_CHARINFO_DEATH));
+			sprintf( death, "? %s", ZMsg( MSG_CHARINFO_DEATH));
 			sprintf( winning, "0.0%%");
 		}
 
@@ -1711,7 +1711,7 @@ void ZGameClient::OnForcedEntryToGame()
 {
 	m_bLadderGame = false;
 	m_bForcedEntry = true;
-	SetAllowTunneling(false);
+	SetAllowTunneling(true); //TUNEGLEGE
 	ZChangeGameState(GUNZ_GAME);
 }
 

@@ -796,7 +796,7 @@ public:
 //	virtual void OnDamage(int damage, float fRatio = 1.0f);
 	virtual void OnDamaged(ZObject* pAttacker, rvector srcPos, ZDAMAGETYPE damageType, MMatchWeaponType weaponType, float fDamage, float fPiercingRatio=1.f, int nMeleeType=-1);
 	virtual void OnDamagedAPlayer(ZObject* pAttacker, rvector srcPos, ZDAMAGETYPE damageType, MMatchWeaponType weaponType, float fDamage, float fPiercingRatio=1.f, int nMeleeTpye=-1);
-	virtual void OnDamagedAPlayer(vector<MTD_ShotInfo*> vShots);
+	virtual void OnDamagedAPlayer(ZObject* pAttacker, vector<MTD_ShotInfo*> vShots);
 	virtual void OnScream();
 
 	int GetDTLastWeekGrade() { return m_MInitialInfo.Ref().nDTLastWeekGrade; }

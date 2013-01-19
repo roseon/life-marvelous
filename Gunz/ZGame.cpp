@@ -4859,11 +4859,11 @@ void ZGame::OnPeerShot_Shotgun(ZItem *pItem, ZCharacter* pOwnerCharacter, float 
 		if (pCharacter && !m_pMyCharacter->IsDie())
 		{
 			if (!GetMatch()->IsTeamPlay())
-				pCharacter->OnDamagedAPlayer(vShots);
+				pCharacter->OnDamagedAPlayer(pOwnerCharacter, vShots);
 			else if (GetMatch()->IsTeamPlay() && ZGetGame()->GetMatch()->GetTeamKillEnabled() && pCharacter->IsTeam(m_pMyCharacter))
-				pCharacter->OnDamagedAPlayer(vShots);
+				pCharacter->OnDamagedAPlayer(pOwnerCharacter, vShots);
 			else if (GetMatch()->IsTeamPlay() && !pCharacter->IsTeam(m_pMyCharacter))
-				pCharacter->OnDamagedAPlayer(vShots);
+				pCharacter->OnDamagedAPlayer(pOwnerCharacter, vShots);
 		}
 
 		for(auto i = vShots.begin(); i != vShots.end(); i++)
@@ -5700,7 +5700,9 @@ void ZGame::OnPeerSpawn(MUID& uid, rvector& pos, rvector& dir)
 
 		ZGetScreenEffectManager()->ReSetHpPanel();// hppanel_ani
 	}
-
+	pCharacter->GetStatus().CheckCrc();
+	pCharacter->GetStatus().Ref().nDamageCaused = 0;
+	pCharacter->GetStatus().MakeCrc();
 #ifndef _PUBLISH
 	char szLog[128];
 	sprintf(szLog, "ZGame::OnPeerSpawn() - %s(%u) Spawned \n", 
@@ -6640,6 +6642,26 @@ void ZGame::AddEffectRoundState(MMATCH_ROUNDSTATE nRoundState, int nArg)
 		break;
 	case MMATCH_ROUNDSTATE_FINISH:
 		{
+
+//	m_pMyCharacter->GetStatus().CheckCrc();
+//	m_pMyCharacter->GetStatus().Ref().nDamageCaused = 0;
+//	m_pMyCharacter->GetStatus().MakeCrc();
+			MMATCH_GAMETYPE TipoJuego = ZGetGameClient()->GetMatchStageSetting()->GetGameType();
+			if(TipoJuego != MMATCH_GAMETYPE_DUEL && TipoJuego != MMATCH_GAMETYPE_DUELTOURNAMENT && TipoJuego != MMATCH_GAMETYPE_QUEST && TipoJuego != MMATCH_GAMETYPE_SURVIVAL ) 
+			{
+				for (ZCharacterManager::iterator itor = m_CharacterManager.begin(); itor != m_CharacterManager.end(); ++itor)
+				{
+					ZCharacter* pCharacter = (ZCharacter*)(*itor).second;
+					
+					if(pCharacter->GetTeamID() == ZGetGame()->m_pMyCharacter->GetTeamID()) 
+					{ //HERHEHRHERHEH
+						char FinishStr[512];
+						sprintf(FinishStr, "%s ha hecho %d de damage.", pCharacter->GetCharInfo()->szName, pCharacter->GetStatus().Ref().nDamageCaused);
+						ZChatOutput(MCOLOR(ZCOLOR_CHAT_SYSTEM), FinishStr);
+					}
+				}	
+			}
+
 			if (m_Match.IsTeamPlay())
 			{
 				int nRedTeam, nBlueTeam;
@@ -7525,34 +7547,6 @@ void ZGame::OnGameRoundState(const MUID& uidStage, int nRound, int nRoundState, 
 	if (RoundState == MMATCH_ROUNDSTATE_FINISH)
 	{
 		ZGetMyInfo()->GetGameInfo()->InitRound();	// 제일 마지막에 불려져야 한다.
-		for ( ZCharacterManager::iterator itor = ZGetCharacterManager()->begin();  itor != ZGetCharacterManager()->end();  ++itor)
-		{
-			ZCharacter*	pCharacter	= (*itor).second;
-			if(!pCharacter)
-				continue;
-
-			//Damage counter
-			if(ZGetGameClient()->GetDamageLog()){
-			MMATCH_GAMETYPE TipoJuego = ZGetGameClient()->GetMatchStageSetting()->GetGameType();
-			if(TipoJuego != MMATCH_GAMETYPE_DUEL && TipoJuego != MMATCH_GAMETYPE_DUELTOURNAMENT && TipoJuego != MMATCH_GAMETYPE_QUEST && TipoJuego != MMATCH_GAMETYPE_SURVIVAL ) 
-			{
-				for (ZCharacterManager::iterator itor = m_CharacterManager.begin(); itor != m_CharacterManager.end(); ++itor)
-				{
-					ZCharacter* pCharacter = (ZCharacter*)(*itor).second;
-					
-					if(pCharacter->GetTeamID() == ZGetGame()->m_pMyCharacter->GetTeamID()) 
-					{ //HERHEHRHERHEH
-						char FinishStr[512];
-						sprintf(FinishStr, "%s ha hecho %d de damage.", pCharacter->GetCharInfo()->szName, pCharacter->GetStatus().Ref().nDamageCaused);
-						ZChatOutput(MCOLOR(ZCOLOR_CHAT_SYSTEM), FinishStr);
-					}
-				}	
-			}
-			}
-			pCharacter->GetStatus().CheckCrc();
-			pCharacter->GetStatus().Ref().nDamageCaused = 0;
-			pCharacter->GetStatus().MakeCrc();
-		}
 	}
 }
 

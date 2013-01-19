@@ -132,7 +132,7 @@ bool ZChat::Input(char* szMsg)
 				// 관리자인지 판별
 				if ((ZGetMyInfo()->GetUGradeID() == MMUG_ADMIN) || 
 					(ZGetMyInfo()->GetUGradeID() == MMUG_DEVELOPER) ||
-					(ZGetMyInfo()->GetUGradeID() == MMUG_EVENTMASTER))
+					(ZGetMyInfo()->GetUGradeID() == MMUG_EVENTMASTER) )
 				{
 					nCmdInputFlag |= ZChatCmdManager::CIF_ADMIN;
 				}

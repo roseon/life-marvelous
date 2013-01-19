@@ -1097,9 +1097,16 @@ void ZShopEquipInterface::DrawCharInfoText(char* szShopOrEquip, int nReqLevel, i
 
 
 	// 세번째 TextArea (바운티, 캐시)
+
 	sprintf(sz1, "^9%s : ", ZMsg(MSG_CHARINFO_BOUNTY));
 	szColor = (nReqBounty > ZGetMyInfo()->GetBP()) ? szRed : szGray;
 	sprintf(sz2, "%s%d", szColor, ZGetMyInfo()->GetBP());
+	strcat(sz1, sz2);
+	pTextArea[2]->AddText(sz1);
+
+	sprintf(sz1, "^9%s : ", ZMsg(MSG_CHARINFO_CASH));
+	szColor = (nReqBounty > ZGetMyInfo()->GetECoins()) ? szRed : szGray;
+	sprintf(sz2, "%s%d", szColor, ZGetMyInfo()->GetECoins());
 	strcat(sz1, sz2);
 	pTextArea[2]->AddText(sz1);
 
