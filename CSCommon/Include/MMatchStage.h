@@ -174,7 +174,7 @@ protected:
 	void UpdateChecksum(unsigned long nTick);
 	void OnStartGame();
 	void OnFinishGame();
-	void OnApplyTeamBonus(MMatchTeam nTeam);
+	
 protected:
 	friend MMatchServer;
 	void SetStageType(MMatchStageType nStageType);
@@ -188,13 +188,14 @@ private :
 public:
 	MMatchWorldItemManager	m_WorldItemManager;
 	MMatchActiveTrapMgr		m_ActiveTrapManager;
-
+	void OnApplyTeamBonus(MMatchTeam nTeam);
 	void UpdateStateTimer();
 	unsigned long GetStateTimer()	{ return m_nStateTimer; }
 	unsigned long GetChecksum()		{ return m_nChecksum; }
 	unsigned long GetStartTime()	{ return m_nStartTime; }		///< 게임 시작한 시간
 	MMatchLadderTeamInfo* GetLadderTeam(int nTeam) { return &m_Teams[nTeam].LadderInfo; }
 
+	void OnApplyTeamBonusCTF(MMatchTeam nTeam, int nCaps);
 public:
 	MMatchStage();
 	virtual ~MMatchStage();
@@ -289,6 +290,7 @@ public:
 
 	bool IsApplyTeamBonus();	// 팀전 보너스 적용여부 확인
 	void AddTeamBonus(int nExp, MMatchTeam nTeam);
+	void ResetTeamBonus();
 	int GetTeamScore(MMatchTeam nTeam)		{ return m_Teams[nTeam].nScore; }
 
 	void InitTeamKills()									{ m_Teams[MMT_BLUE].nTotalKills = m_Teams[MMT_RED].nTotalKills = 0; }

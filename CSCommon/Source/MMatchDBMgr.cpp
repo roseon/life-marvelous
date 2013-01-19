@@ -131,7 +131,7 @@ TCHAR g_szDB_GET_CLID_FROM_CLANNAME[] = _T("{CALL spGetCLIDFromClanName ('%s')}"
 
 // 클랜 만들기
 // 인자: ClanName	varchar(24), MasterCID, Member1CID, Member2CID, Member3CID, Member4CID
-TCHAR g_szDB_CREATE_CLAN[] = _T("{CALL spCreateClan ('%s', %d, %d, %d, %d, %d)}");
+TCHAR g_szDB_CREATE_CLAN[] = _T("{CALL spCreateClan ('%s', %d, %d)}");//_T("{CALL spCreateClan ('%s', %d, %d, %d, %d, %d)}");
 
 // 클랜 폐쇄 예약
 // 인자: CLID, ClanName, MasterCID
@@ -246,7 +246,9 @@ TCHAR g_szSetClanDeleteDate[] = _T( "{CALL spSetClanDeleteDate (%u, %u, '%s')}" 
 // @MasterCID int
 // @DeleteName varchar(24)
 // @WaitHour int = 168 -- 1주일
-TCHAR g_szDeleteExpiredClan[] = _T( "{CALL spDeleteExpiredClan (%u, %u, '%s', %u)}" );
+TCHAR g_szDeleteExpiredClan[] = _T( "{CALL spDeleteClan (%u,'%s')}" );
+
+TCHAR g_szDeleteClan[] = _T( "{CALL spDeleteClan (%u,'%s')}" );
 
 TCHAR g_szAdminResetAllHackingBlock[] = _T( "{CALL spResetHackingBlock}" );
 
@@ -2033,8 +2035,8 @@ bool MMatchDBMgr::GetClanIDFromName(const TCHAR* szClanName, int* poutCLID)
 	return true;
 }
 
-bool MMatchDBMgr::CreateClan(const TCHAR* szClanName, const int nMasterCID, const int nMember1CID, const int nMember2CID,
-							 const int nMember3CID, const int nMember4CID, bool* boutRet, int* noutNewCLID)
+bool MMatchDBMgr::CreateClan(const TCHAR* szClanName, const int nMasterCID, const int nMember1CID, /*const int nMember2CID,
+							 const int nMember3CID, const int nMember4CID,*/ bool* boutRet, int* noutNewCLID)
 {
 	_STATUS_DB_START;
 	if (!CheckOpen()) return false;
@@ -2045,7 +2047,7 @@ bool MMatchDBMgr::CreateClan(const TCHAR* szClanName, const int nMasterCID, cons
 	}
 
 	CString strSQL;
-	strSQL.Format(g_szDB_CREATE_CLAN, szClanName, nMasterCID, nMember1CID, nMember2CID, nMember3CID, nMember4CID);
+	strSQL.Format(g_szDB_CREATE_CLAN, szClanName, nMasterCID, nMember1CID/*, nMember2CID, nMember3CID, nMember4CID*/);
 
 	CODBCRecordset rs(&m_DB);
 

@@ -338,16 +338,16 @@ class MAsyncDBJob_CreateClan : public MAsyncJob {
 protected:
 	MUID		m_uidMaster;
 	MUID		m_uidMember1;
-	MUID		m_uidMember2;
-	MUID		m_uidMember3;
-	MUID		m_uidMember4;
+	//MUID		m_uidMember2;
+	//MUID		m_uidMember3;
+	//MUID		m_uidMember4;
 protected: // Input Argument
 	char		m_szClanName[256];
 	int			m_nMasterCID;
 	int			m_nMember1CID;
-	int			m_nMember2CID;
-	int			m_nMember3CID;
-	int			m_nMember4CID;
+	//int			m_nMember2CID;
+	//int			m_nMember3CID;
+	//int			m_nMember4CID;
 protected:	// Output Result
 	bool		m_bDBResult;
 	int			m_nNewCLID;
@@ -362,22 +362,23 @@ public:
 	bool Input(const TCHAR* szClanName, 
 			   const int nMasterCID, 
 			   const int nMember1CID, 
-			   const int nMember2CID,
-               const int nMember3CID, 
-			   const int nMember4CID,
+			   //const int nMember2CID,
+               //const int nMember3CID, 
+			   //const int nMember4CID,
 			   const MUID& uidMaster,
-			   const MUID& uidMember1,
-			   const MUID& uidMember2,
-			   const MUID& uidMember3,
-			   const MUID& uidMember4);
+			   const MUID& uidMember1//,
+			   //const MUID& uidMember2,
+			   //const MUID& uidMember3,
+			   //const MUID& uidMember4
+			   );
 	virtual void Run(void* pContext);
 	bool GetDBResult() { return m_bDBResult; }
 	int GetNewCLID() { return m_nNewCLID; }
 	const MUID& GetMasterUID() { return m_uidMaster; }
 	const MUID& GetMember1UID() { return m_uidMember1; }
-	const MUID& GetMember2UID() { return m_uidMember2; }
-	const MUID& GetMember3UID() { return m_uidMember3; }
-	const MUID& GetMember4UID() { return m_uidMember4; }
+	//const MUID& GetMember2UID() { return m_uidMember2; }
+	//const MUID& GetMember3UID() { return m_uidMember3; }
+	//const MUID& GetMember4UID() { return m_uidMember4; }
 	const char* GetClanName() { return m_szClanName; }
 };
 ////////////////////////////////////////////////////////////////////////////////////////////////////

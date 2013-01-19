@@ -193,8 +193,8 @@ public:
 	//// Clan //////
 	bool GetCharClan(const int nCID, int* poutClanID, TCHAR* poutClanName);
 	bool GetClanIDFromName(const TCHAR* szClanName, int* poutCLID);
-	bool CreateClan(const TCHAR* szClanName, const int nMasterCID, const int nMember1CID, const int nMember2CID,
-		const int nMember3CID, const int nMember4CID, bool* boutRet, int* noutNewCLID);
+	bool CreateClan(const TCHAR* szClanName, const int nMasterCID, const int nMember1CID, /*const int nMember2CID,
+		const int nMember3CID, const int nMember4CID,*/ bool* boutRet, int* noutNewCLID);
 	bool DeleteExpiredClan( const DWORD dwCID, const DWORD dwCLID, const string& strDeleteName, const DWORD dwWaitHour = 24 );
 	bool SetDeleteTime( const DWORD dwMasterCID, const DWORD dwCLID, const string& strDeleteDate );
 	bool ReserveCloseClan(const int nCLID, const TCHAR* szClanName, const int nMasterCID, const string& strDeleteDate);
