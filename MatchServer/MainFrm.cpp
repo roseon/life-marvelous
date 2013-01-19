@@ -161,7 +161,7 @@ void CMainFrame::OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized)
 
 void CMainFrame::OnClose()
 {
-	if (AfxMessageBox("Are You Sure You Want To Exit ?", MB_YESNO | MB_ICONQUESTION) != IDYES)
+	if (AfxMessageBox("Desea salir?", MB_YESNO | MB_ICONQUESTION) != IDYES)
 	{
 		return;
 	}
