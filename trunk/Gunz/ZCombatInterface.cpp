@@ -747,7 +747,7 @@ void ZCombatInterface::OnDraw(MDrawContext* pDC)
 
 			// ±âÈ¹»ó µà¾ó 
 			ZGetScreenEffectManager()->DrawMyHPPanal(pDC);		// ³ªÀÇ »óÅÂÃ¢(HP°ÔÀÌÁö¹Ù)			
-#ifndef _DEBUG
+#ifdef _DEBUG
 			// TodoH(»ó) - Áö¿öÁ®¾ß µË´Ï´Ù. ÃßÈÄ¿¡.
 			ZCharacter* pCharacter = GetTargetCharacter();
 			if( pCharacter != NULL) {

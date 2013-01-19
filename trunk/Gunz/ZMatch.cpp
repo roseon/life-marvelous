@@ -461,7 +461,7 @@ void ZMatch::SetRoundState(MMATCH_ROUNDSTATE nRoundState, int nArg)
 	if (m_nRoundState == nRoundState) return;
 	m_nRoundState = nRoundState;
 
-//#ifdef _LOG_ENABLE_ROUNDSTATE_
+#ifdef _LOG_ENABLE_ROUNDSTATE_
 	char buf[128];
 	switch(ZGetGame()->GetMatch()->GetRoundState())
 	{
@@ -474,9 +474,8 @@ void ZMatch::SetRoundState(MMATCH_ROUNDSTATE nRoundState, int nArg)
 	case MMATCH_ROUNDSTATE_FAILED:		sprintf(buf, "RoundState: FAILED \n"); break;
 	case MMATCH_ROUNDSTATE_PRE_COUNTDOWN: sprintf(buf, "RoundState: PRE_COUNTDOWN \n"); break;
 	}
-	mlog(buf);
-	//OutputDebugString(buf);
-//#endif
+	OutputDebugString(buf);
+#endif
 
 	//# 앞으로는 이 switch 내부에 룰에 따른 if else if else를 추가하지 않는게 좋겠습니다.
 	//# 라운드상태 변화시 룰에 따라 해야할 일은 ZRule***쪽에 넣는 것이 좋겠습니다. => virtual ZRule::OnSetRoundState()

@@ -782,9 +782,11 @@ inline void ZPostRequestCreateClan(const MUID& uidChar, const int nRequestID, ch
 								   char** ppMemberCharNames, int nMemberCharNamesCount)
 {
 	if (nMemberCharNamesCount != CLAN_SPONSORS_COUNT) return;
-	ZPOSTCMD7(MC_MATCH_CLAN_REQUEST_CREATE_CLAN, MCmdParamUID(uidChar), MCmdParamInt(nRequestID), MCmdParamStr(szClanName), 
+	/*ZPOSTCMD7(MC_MATCH_CLAN_REQUEST_CREATE_CLAN, MCmdParamUID(uidChar), MCmdParamInt(nRequestID), MCmdParamStr(szClanName), 
 				MCmdParamStr(ppMemberCharNames[0]), MCmdParamStr(ppMemberCharNames[1]),
-				MCmdParamStr(ppMemberCharNames[2]), MCmdParamStr(ppMemberCharNames[3]));
+				MCmdParamStr(ppMemberCharNames[2]), MCmdParamStr(ppMemberCharNames[3]));*/
+	ZPOSTCMD4(MC_MATCH_CLAN_REQUEST_CREATE_CLAN, MCmdParamUID(uidChar), MCmdParamInt(nRequestID), MCmdParamStr(szClanName), 
+				MCmdParamStr(ppMemberCharNames[0]));
 
 }
 
@@ -797,9 +799,11 @@ inline void ZPostAnswerSponsorAgreement(const int nRequestID, const MUID& uidCla
 inline void ZPostRequestAgreedCreateClan(const MUID& uidChar, char* szClanName, char** ppMemberCharNames, int nMemberCharNamesCount)
 {
 	if (nMemberCharNamesCount != CLAN_SPONSORS_COUNT) return;
-	ZPOSTCMD6(MC_MATCH_CLAN_REQUEST_AGREED_CREATE_CLAN, MCmdParamUID(uidChar), MCmdParamStr(szClanName), 
+	/*ZPOSTCMD6(MC_MATCH_CLAN_REQUEST_AGREED_CREATE_CLAN, MCmdParamUID(uidChar), MCmdParamStr(szClanName), 
 				MCmdParamStr(ppMemberCharNames[0]), MCmdParamStr(ppMemberCharNames[1]),
-				MCmdParamStr(ppMemberCharNames[2]), MCmdParamStr(ppMemberCharNames[3]));
+				MCmdParamStr(ppMemberCharNames[2]), MCmdParamStr(ppMemberCharNames[3]));*/
+	ZPOSTCMD3(MC_MATCH_CLAN_REQUEST_AGREED_CREATE_CLAN, MCmdParamUID(uidChar), MCmdParamStr(szClanName), 
+				MCmdParamStr(ppMemberCharNames[0]));
 }
 
 // ≈¨∑£ ∆Ûº‚ ø‰√ª
@@ -988,6 +992,12 @@ inline void ZPostAdminRequestSwitchLadderGame(const MUID& uidChar, bool bEnabled
 
 
 inline void ZPostAdminAnnounce(const MUID& uidChar, char* szMsg, ZAdminAnnounceType nType)
+{
+	ZPOSTCMD3(MC_ADMIN_ANNOUNCE, MCommandParameterUID(uidChar), 
+		MCommandParameterString(szMsg), MCommandParameterUInt(nType));
+}
+
+inline void ZPostAdminMessage(const MUID& uidChar, char* szMsg, ZAdminAnnounceType nType)
 {
 	ZPOSTCMD3(MC_ADMIN_ANNOUNCE, MCommandParameterUID(uidChar), 
 		MCommandParameterString(szMsg), MCommandParameterUInt(nType));
@@ -1221,6 +1231,7 @@ inline void ZPostRequestUseSpendableBuffItem( const MUID& uid )
 {
 	ZPOSTCMD1( MC_MATCH_REQUEST_USE_SPENDABLE_BUFF_ITEM, MCmdParamUID(uid) );
 }
+
 inline void ZPostRequestCaptureFlag(const int nItemUID)
 {
 	ZPOSTCMD1(MC_MATCH_REQUEST_FLAG_CAP, MCommandParameterInt(nItemUID));

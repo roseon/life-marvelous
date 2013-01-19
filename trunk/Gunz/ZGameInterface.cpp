@@ -5518,6 +5518,7 @@ void ZGameInterface::EnableLobbyInterface(bool bEnable)
 	EnableWidget("Lobby_Charviewer_info", bEnable);		// 정보보기 버튼
 	EnableWidget("StageJoin", bEnable);					// 게임참가 버튼
 	EnableWidget("StageCreateFrameCaller", bEnable);	// 게임생성 버튼
+	EnableWidget("CashShopCaller", bEnable);
 	EnableWidget("ShopCaller", bEnable);				// 상점 버튼
 	EnableWidget("EquipmentCaller", bEnable);			// 장비 버튼
 	EnableWidget("ReplayCaller", bEnable);				// 리플레이 버튼
@@ -5566,6 +5567,7 @@ void ZGameInterface::EnableStageInterface(bool bEnable)
 	EnableWidget("StageTeamRed",  bEnable);				// red팀 설정 버튼
 	EnableWidget("StageTeamRed2", bEnable);				// red팀 설정 버튼
 	EnableWidget("ShopCaller", bEnable);				// 상점 버튼
+	EnableWidget("CashShopCaller", bEnable);
 	EnableWidget("EquipmentCaller", bEnable);			// 장비 버튼
 	EnableWidget("StageSettingCaller", bEnable);		// 방설정 버튼
 	EnableWidget("StageObserverBtn", bEnable);			// 관전 체크 버튼
@@ -6115,6 +6117,7 @@ void ZGameInterface::OnArrangedTeamGameUI(bool bFinding)
 	SAFE_ENABLE("LobbyChannelPlayerList", bFinding);
 //	SAFE_ENABLE("LobbyPlayerListTabClanCreateButton");
 	SAFE_ENABLE("ShopCaller", bFinding);
+	SAFE_ENABLE("CashShopCaller", bFinding);
 	SAFE_ENABLE("EquipmentCaller", bFinding);
 	SAFE_ENABLE("ChannelListFrameCaller", bFinding);
 	SAFE_ENABLE("LobbyOptionFrame", bFinding);
@@ -6138,6 +6141,7 @@ void ZGameInterface::OnDuelTournamentGameUI(bool bWaiting)
 	// 다음 위젯들을 enable/disable 해준다
 	SAFE_ENABLE("LobbyChannelPlayerList", bWaiting);
 	SAFE_ENABLE("ShopCaller", bWaiting);
+	SAFE_ENABLE("CashShopCaller", bWaiting);
 	SAFE_ENABLE("EquipmentCaller", bWaiting);
 	SAFE_ENABLE("ChannelListFrameCaller", bWaiting);
 	SAFE_ENABLE("LobbyOptionFrame", bWaiting);

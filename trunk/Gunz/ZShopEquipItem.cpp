@@ -963,7 +963,7 @@ bool ZShopEquipItemHandle_PurchaseMatch::GetPrice( bool& out_bCash, int& out_nRe
 {
 	if (!m_pItem || !m_pItem->GetDesc()) { _ASSERT(0); return false; }
 	out_bCash = m_pItem->GetDesc()->IsCashItem();
-	if (out_bCash) return false; // 아직은 상점에서 캐쉬를 팔지 않으므로 캐쉬 아이템인 경우 바운티로 팔면 큰일이니까 그냥 리턴
+	//if (out_bCash) return false; // 아직은 상점에서 캐쉬를 팔지 않으므로 캐쉬 아이템인 경우 바운티로 팔면 큰일이니까 그냥 리턴
 	out_nRentalHour = m_pItem->GetDesc()->m_nMaxRentPeriod.Ref() * 24;
 	out_nPrice = m_pItem->GetDesc()->m_nBountyPrice.Ref();
 	return true;

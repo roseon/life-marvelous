@@ -686,7 +686,7 @@ bool ZOptionInterface::SaveInterfaceOption(void)
 		if(pWidget)	{
 
 			EffectLevel = pWidget->GetSelIndex();
-
+			if (EffectLevel == 3) EffectLevel = 8;
 
 			if( ZGetConfiguration()->GetVideo()->nEffectLevel != EffectLevel ) {
 				ZGetConfiguration()->GetVideo()->nEffectLevel = EffectLevel;

@@ -221,7 +221,7 @@ float ZItem::GetPiercingRatio(MMatchWeaponType wtype, RMeshPartsType partstype)
 		case MWT_SNIFER:		//우선은 라이플처럼...
 			{
 				if(bHead)	fRatio = 0.8f;
-				else		fRatio = 0.4f;
+				else		fRatio = 0.65f;
 			}
 			break;
 

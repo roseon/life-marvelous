@@ -69,7 +69,7 @@ void ZGameClient::OnDuelTournamentLaunch(const MUID& uidStage, const char* pszMa
 	m_uidStage = uidStage;
 	strcpy(m_szStageName, "DuelTournament_Stage");
 
-	SetAllowTunneling(false);
+	SetAllowTunneling(true);
 
 	m_MatchStageSetting.SetMapName(const_cast<char*>(pszMapName));
 

@@ -4493,28 +4493,31 @@ void ZCharacter::OnDamagedAPlayer(ZObject* pAttacker, rvector srcPos, ZDAMAGETYP
 		}
 	}
 }
-
-void ZCharacter::OnDamagedAPlayer(vector<MTD_ShotInfo*> vShotInfo)
+void ZCharacter::OnDamagedAPlayer(ZObject* pAttacker, vector<MTD_ShotInfo*> vShots)
 {
-	if (vShotInfo.size() > 0)
-	{
-		if (ZGetGameClient()->GetPlayerUID().Low != vShotInfo[0]->nLowId && GetUID().Low == vShotInfo[0]->nLowId)
-		{
-			void* pBlobArray = MMakeBlobArray(sizeof(MTD_ShotInfo), vShotInfo.size());
 
-			for (int i = 0; i < vShotInfo.size(); ++i)
+	if (vShots.size() > 0)
+	{
+		if (ZGetGameClient()->GetPlayerUID().Low != vShots[0]->nLowId && GetUID().Low == vShots[0]->nLowId)
+		{
+		if (pAttacker == ZGetGame()->m_pMyCharacter && this != pAttacker && !ZGetGame()->m_pMyCharacter->IsDie())
+		{
+			void* pBlobArray = MMakeBlobArray(sizeof(MTD_ShotInfo), vShots.size());
+			for (int i = 0; i < vShots.size(); ++i)
 			{
-				MTD_ShotInfo* pShot = vShotInfo[i];
+				MTD_ShotInfo* pShot = vShots[i];
 				void* pElement = MGetBlobArrayElement(pBlobArray, i);
 				memcpy(pElement, pShot, sizeof(MTD_ShotInfo));
 				ZGetGameClient()->GetPeerPacketCrypter().Encrypt((char*)pElement, sizeof(MTD_ShotInfo));
 			}
 
 			ZPOSTCMDLEAD(MC_GUNZ_ANTILEAD, GetUID(), MCommandParameterBlob(pBlobArray, MGetBlobArraySize(pBlobArray)));
+
+		}
 		}
 	}
-}
 
+}
 void ZCharacter::OnScream()
 {
 	if(GetProperty()->nSex==MMS_MALE)

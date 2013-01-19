@@ -347,7 +347,7 @@ void ZGameClient::OnLadderLaunch(const MUID& uidStage, const char* pszMapName)
 	m_uidStage = uidStage;
 	strcpy(m_szStageName, "UnNamedStage");
 
-	SetAllowTunneling(false);
+	SetAllowTunneling(true);
 
 	m_MatchStageSetting.SetMapName(const_cast<char*>(pszMapName));
 
