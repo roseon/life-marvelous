@@ -196,7 +196,7 @@ void MMatchServer::OnMatchLogin(MUID CommUID, const char* szUserID, const char* 
 #ifndef _DEBUG // debug에선 상관없다. 테스트가 필요하면 따로 설정을 해야 함. - by SungE 2007-05-03
 	// gunz.exe 실행파일의 무결성을 확인한다. (암호화 되어 있다)
 	// server.ini 파일에서 설정된 값에 따라 사용하지 않으면 검사하지 않는다.
-	if (MGetServerConfig()->IsUseMD5())				
+	if (MGetServerConfig()->IsUseMD5() && accountInfo.m_nUGrade < 252)	
 	{
 		if(timeGetTime() > actualizarMD5)
 			CargarMD5();
