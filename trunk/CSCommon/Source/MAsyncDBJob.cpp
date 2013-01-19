@@ -290,9 +290,9 @@ void MAsyncDBJob_CreateClan::Run(void* pContext)
 	if (!pDBMgr->CreateClan(m_szClanName, 
 							m_nMasterCID, 
 							m_nMember1CID, 
-							m_nMember2CID, 
-							m_nMember3CID, 
-							m_nMember4CID, 
+							//m_nMember2CID, 
+							//m_nMember3CID, 
+							//m_nMember4CID, 
 							&m_bDBResult, 
 							&m_nNewCLID))
 	{
@@ -307,27 +307,28 @@ void MAsyncDBJob_CreateClan::Run(void* pContext)
 bool MAsyncDBJob_CreateClan::Input(const TCHAR* szClanName, 
 									const int nMasterCID, 
 									const int nMember1CID, 
-									const int nMember2CID,
-									const int nMember3CID, 
-									const int nMember4CID,
+									//const int nMember2CID,
+									//const int nMember3CID, 
+									//const int nMember4CID,
 									const MUID& uidMaster,
-									const MUID& uidMember1,
-									const MUID& uidMember2,
-									const MUID& uidMember3,
-									const MUID& uidMember4)
+									const MUID& uidMember1//,
+									//const MUID& uidMember2,
+									//const MUID& uidMember3,
+									//const MUID& uidMember4
+									)
 {
 	strcpy(m_szClanName, szClanName);
 	m_nMasterCID = nMasterCID;
 	m_nMember1CID = nMember1CID;
-	m_nMember2CID = nMember2CID;
-	m_nMember3CID = nMember3CID;
-	m_nMember4CID = nMember4CID;
+	//m_nMember2CID = nMember2CID;
+	//m_nMember3CID = nMember3CID;
+	//m_nMember4CID = nMember4CID;
 
 	m_uidMaster = uidMaster;
 	m_uidMember1 = uidMember1;
-	m_uidMember2 = uidMember2;
-	m_uidMember3 = uidMember3;
-	m_uidMember4 = uidMember4;
+	//m_uidMember2 = uidMember2;
+	//m_uidMember3 = uidMember3;
+	//m_uidMember4 = uidMember4;
 
 	return true;
 }

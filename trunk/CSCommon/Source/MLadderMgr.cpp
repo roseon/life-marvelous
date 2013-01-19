@@ -179,6 +179,7 @@ int MLadderMgr::MakeMatch(MLADDERTYPE nLadderType)
 		int nGroupB = 0;
 		if (ladderPicker.PickMatch(&nGroupA, &nGroupB) == false)
 			break;
+		//antilead - cw
 		LaunchLadder(nLadderType, nGroupA, nGroupB);
 		nLaunchCount++;
 	}

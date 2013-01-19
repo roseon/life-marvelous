@@ -481,7 +481,7 @@ void MMatchClient::OnAgentConnected(const MUID& uidAgentServer, const MUID& uidA
 	m_uidAgentServer = uidAgentServer;
 	m_uidAgentClient = uidAlloc;
 
-	SetAllowTunneling(false);
+	SetAllowTunneling(true);
 
 	MPacketCrypterKey key;
 	MMakeSeedKey(&key, uidAgentServer, uidAlloc, 0);
