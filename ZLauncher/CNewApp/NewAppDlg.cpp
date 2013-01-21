@@ -21,9 +21,9 @@
 #define STR_LAUNCHER_EXCUTE_FILENAME		"GunzLauncher.exe"
 #define STR_PATCHINFO_FILENAME				"patch.xml"
 #define STR_WEBPAGE_URL					    "http://legiongamers.com/launcher/index.php"
-#define STR_ADDRESS_REAL					"directoweb.legiongamers.com"
+#define STR_ADDRESS_REAL					"gunz.abbygamerz.net"
 #define STR_ADDRESS_ALPHA					"u-gunz-gm01.alpha-pubgame.ijji.com"
-#define STR_DIRECTORY_REAL					"launcher/patch"
+#define STR_DIRECTORY_REAL					"webgunz/launcher/patch"
 #define STR_DIRECTORY_ALPHA					"client/GunzUpdate"
 #endif LOCALE_NHNUSA
 
