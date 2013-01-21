@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<XML>
+<PATCHINFO>
+	<PATCHNODE file="./-GunzLauncher.ini">
+		<SIZE>26</SIZE>
+		<CHECKSUM>3772701391</CHECKSUM>
+	</PATCHNODE>
+	<PATCHNODE file="./GunzLauncher.exe">
+		<SIZE>3015680</SIZE>
+		<CHECKSUM>2723273521</CHECKSUM>
+	</PATCHNODE>
+	<PATCHNODE file="./gunz_img.bmp">
+		<SIZE>904512</SIZE>
+		<CHECKSUM>2605003772</CHECKSUM>
+	</PATCHNODE>
+</PATCHINFO>
+</XML>
