@@ -17,10 +17,10 @@
 #ifdef LOCALE_NHNUSA
 #include "ZNHNModule.h"
 #define STR_GUNZ_PROCESS_NAME				"Gunz"
-#define STR_GUNZ_EXCUTE_FILENAME			"Gunz.exe"
+#define STR_GUNZ_EXCUTE_FILENAME			"AbbyGunz.aby"
 #define STR_LAUNCHER_EXCUTE_FILENAME		"GunzLauncher.exe"
 #define STR_PATCHINFO_FILENAME				"patch.xml"
-#define STR_WEBPAGE_URL					    "http://legiongamers.com/launcher/index.php"
+#define STR_WEBPAGE_URL					    "http://gunz.abbygamerz.net/index.php?p=tienda&pagina=7&type="
 #define STR_ADDRESS_REAL					"gunz.abbygamerz.net"//"localhost"
 #define STR_ADDRESS_ALPHA					"u-gunz-gm01.alpha-pubgame.ijji.com"
 #define STR_DIRECTORY_REAL					"webgunz/launcher/patch"
@@ -1274,7 +1274,7 @@ void CNewAppDlg::OnAbout()
 	// 메시지 작성
 	CString strMsg;
 	strMsg.Format( "%s Launcher\nCopyright (c) 2005 MAIET entertainment, Inc.\n\n%s Version : %s\nLauncher Version : %s",
-		STR_GUNZ_PROCESS_NAME, STR_GUNZ_PROCESS_NAME, m_szClientVersion, m_szLauncherVersion);
+		STR_GUNZ_PROCESS_NAME, STR_GUNZ_PROCESS_NAME, "2013", m_szLauncherVersion);
 
 	// About box 열기
 	CNewAppAboutBox dlg;
