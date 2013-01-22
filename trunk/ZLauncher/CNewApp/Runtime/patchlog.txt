@@ -1,26 +1,10 @@
-Log start : Thu Jan 17 17:41:48 2013
+Log start : Mon Jan 21 23:04:01 2013
 
-Current Directory : D:\Disco E\gonz\2003_Ale\2003\Stable\ZLauncher\ZLauncher_2nd\CNewApp\Runtime
-17:41:48:359   [APP] OS version : Microsoft Windows XP Professional Service Pack 3 (Build 2600)
-17:41:48:359   [APP] Window created successfully.
-17:41:50:546   [ZUpdate] Create.
-17:41:50:546   [ZFileTransfer] Create.
-17:41:50:546   [ZFileTransfer] Create successfully complete.
-17:41:50:546   [ZFileTransfer] Open connection.
-17:41:50:546   [ZFileTransfer] Open connection successfully complete.
-17:41:50:546   [ZFileTransfer] Change directory.
-17:41:50:546   [ZFileTransfer] Change directory successfully complete.
-17:41:50:546   [ZUpdate] Create successfully compete.
-17:41:50:546   [APP] Download patch info file
-17:41:50:546   [ZUpdate] Start update.
-17:41:50:546   [ZFileTransfer] Download file : ./patch.xml  to  ./patch.xml
-17:41:55:827   [ZFileTransfer] ERROR : Server error.
-17:41:55:827   [ZFileTransfer] ERROR : Failed download : ./patch.xml
-17:41:55:827   [ZUpdate] ERROR : Start update FAILED!!!
-17:41:55:843   [APP] ERROR - Cannot download patch info file
-17:41:55:905   [ZUpdate] Destroy.
-17:41:55:905   [ZFileTransfer] Destroy.
-17:41:55:905   [ZFileTransfer] Close connection.
-17:41:55:905   [ZFileTransfer] Close connection successfully complete.
-17:41:55:905   [ZFileTransfer] Destroy successfly complete.
-17:41:55:905   [ZUpdate] Destroy successfully complete.
+Current Directory : D:\abby\Abby\SVN\ZLauncher\CNewApp\Runtime
+23:04:01:386   [APP] OS version : Microsoft Windows XP Professional Service Pack 3 (Build 2600)
+23:04:01:401   saltar update
+23:04:01:401   [APP] Window created successfully.
+23:04:11:354   [ZUpdate] Destroy.
+23:04:11:354   [ZFileTransfer] Destroy.
+23:04:11:354   [ZFileTransfer] Destroy successfly complete.
+23:04:11:354   [ZUpdate] Destroy successfully complete.
