@@ -34,12 +34,12 @@ void ZNHNAuth::InitTok()
 {
 	m_Tok.clear();
 
-	m_Tok.push_back( "GunzLauncher.EXE" );
-	m_Tok.push_back( "GunzLauncher.exe" );
-	m_Tok.push_back( "gunzlauncher.EXE" );
-	m_Tok.push_back( "gunzlauncher.exe" );
-	m_Tok.push_back( "GunzLauncher" );
-	m_Tok.push_back( "gunzlauncher" );
+	m_Tok.push_back( "AbbyLauncher.exe" );
+	m_Tok.push_back( "AbbyLauncher.exe" );
+	m_Tok.push_back( "AbbyLauncher.exe" );
+	m_Tok.push_back( "AbbyLauncher.exe" );
+	m_Tok.push_back( "AbbyLauncher" );
+	m_Tok.push_back( "abbylauncher" );
 	m_Tok.push_back( "NewApp" );
 }
 

@@ -7,7 +7,7 @@
 
 
 // Defines
-#define LAUNCHER_FILENAME			"GunzLauncher.exe"					// 건즈 런쳐 실행 파일 이름
+#define LAUNCHER_FILENAME			"AbbyLauncher.exe"					// 건즈 런쳐 실행 파일 이름
 
 
 
@@ -140,7 +140,7 @@ void CNewAppDlg::OnTimer(UINT nIDEvent)
 			{
 				case 0 :
 					nPatchCount++;
-					if ( PatchFile( ".\\PATCH\\GunzLauncher.exe_", ".\\GunzLauncher.exe") == false)
+					if ( PatchFile( ".\\PATCH\\AbbyLauncher.exe_", ".\\AbbyLauncher.exe") == false)
 						nErrorCount++;
 					break;
 
@@ -209,7 +209,7 @@ void CNewAppDlg::OnOK()
 {
 	// 런쳐를 다시 시작한다.
 	char szCmdLine[ 4096] = { 0,};
-	sprintf( szCmdLine, ".\\GunzLauncher.exe \"%s\"", GetCommandLine());
+	sprintf( szCmdLine, ".\\AbbyLauncher.exe \"%s\"", GetCommandLine());
 	WinExec( szCmdLine, SW_SHOW);
 
 

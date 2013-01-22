@@ -47,7 +47,7 @@ BEGIN
             VALUE "FileVersion", "2, 0, 0, 4"
             VALUE "InternalName", "GunzLauncher"
             VALUE "LegalCopyright", "Copyright (C) 2007 MAIET entertainment, Inc."
-            VALUE "OriginalFilename", "GunzLauncher.exe"
+            VALUE "OriginalFilename", "AbbyLauncher.exe"
             VALUE "ProductName", "GunzLauncher"
             VALUE "ProductVersion", "2, 0, 0, 4"
         END
