@@ -650,7 +650,7 @@ bool ZUpdate::CheckValidFromPatchList()
 bool ZUpdate::PatchFiles()
 {
 	PutLog( "[ZUpdate] Patch files.");
-
+	int numErrores =0;
 
 	// Get patch files information
 	char szMsg[ 1024];
@@ -719,6 +719,7 @@ bool ZUpdate::PatchFiles()
 						sprintf( szMsg, "%s : %s\n     [Tip] %s\n",	/*Internet connection closed or this file is read-only*/ ZGetString( "STR_135"), GetFilteredFileName( szFullPath),
 																	/*Please check your internet connection or delete this file*/ ZGetString( "STR_136"));
 						m_strErrorMsg += szMsg;
+						numErrores = numErrores+1;
 					}
 					// Retry
 					else
@@ -748,6 +749,10 @@ bool ZUpdate::PatchFiles()
 
     // Success
 	PutLog( "[ZUpdate] Patch files successfully complete.");
+
+	if(numErrores>0){
+		return false;
+	}
 
 	return true;
 }
