@@ -15,7 +15,8 @@
 #include "MXml.h"
 #include "FileInfo.h"
 #include <shlwapi.h>
-
+#include <sstream>
+#include <string>
 
 
 // 현재 폴더 이름이 필터링된 파일 이름을 구함
@@ -153,6 +154,16 @@ ZUpdatePatchNode::ZUpdatePatchNode( const char* pszName, unsigned long nSize, un
 }
 
 
+ZUpdatePatchNode::ZUpdatePatchNode( const char* pszName, unsigned long nSize,  const char*  nChecksum)
+{
+	strcpy( m_szFileName, pszName);
+	m_nSize = nSize;
+	strcpy( m_nCheckSumSTR, nChecksum);
+	m_bValidate = false;
+	m_bPatchSuccess = true;
+}
+
+
 // 소멸자
 ZUpdatePatchNode::~ZUpdatePatchNode()
 {
@@ -186,15 +197,20 @@ bool ZUpdatePatchNode::CheckValid( CString* pstrErrorMsg)
 
 	// CheckSum 구함
 	DWORD dwCRC = GetCRC( GetFileName(), pstrErrorMsg);
+	std::ostringstream stream;
+    stream << dwCRC;
+
 	char szMsg[ 512];
-	if ( dwCRC != GetChecksum())
+	if(strcmp(stream.str().c_str(),GetChecksumSTR()) !=0)
+	//if ( dwCRC != GetChecksum())
 	{
 		// CRC가 다르면 패치 대상 파일
 		
 #ifdef _DEBUG
-		sprintf( szMsg, "[ZUpdatePatchNode] Needs to update : %s, remote(%u), local(%u)", GetFileName(), GetChecksum(), dwCRC);
+		sprintf( szMsg, "[ZUpdatePatchNode] Needs to update : %s, remote(%s), local(%u)", GetFileName(), GetChecksumSTR(), dwCRC);
 #else
-		sprintf( szMsg, "[ZUpdatePatchNode] Needs to update : %s", GetFileName());
+		//sprintf( szMsg, "[ZUpdatePatchNode] Needs to update : %s", GetFileName());
+		sprintf( szMsg, "[ZUpdatePatchNode] Needs to update : %s, remote(%s), local(%u)", GetFileName(), GetChecksumSTR(), dwCRC);
 #endif
 		PutLog( szMsg);
 	}
@@ -525,7 +541,10 @@ bool ZUpdate::GetUpdateInfo( const char* pszPatchFileName)
 			int nSize = 0;
 			FILETIME tmWrite;
 			int nCheckSum = 0;
-
+			char nCheckSumSTR[256]  = "";
+		//	char * pEnd="";
+		//	DWORD ncheckFilexx =0;
+			 
 			// File
 			if ( aPatchNode.GetAttribute( szFileName, MPTOK_ATTR_FILE) == false)
 				continue;
@@ -545,15 +564,25 @@ bool ZUpdate::GetUpdateInfo( const char* pszPatchFileName)
 			if ( aPatchNode.GetChildContents( &nCheckSum, MPTOK_CHECKSUM) == false)
 				continue;
 
+			if ( aPatchNode.GetChildContents(nCheckSumSTR, MPTOK_CHECKSUM) == false)
+				continue;
 
 #ifdef _DEBUG
 			// 만약 디버그 모드에서 건즈 런쳐 파일이면 그냥 통과한다
 			if ( strstr( szFileName, "GunzLauncher.exe") != NULL)
 				continue;
 #endif
+			
+			//std::string myString = nCheckSumSTR;
+   //         int valuetest = atol(myString.c_str()); //value = 45 
 
 
-			m_pUpdatePatchList.push_back( new ZUpdatePatchNode( szFileName, nSize, nCheckSum));
+			//char szMsg[512];
+			//sprintf( szMsg, "File %s:%s\n",szFileName,nCheckSumSTR);
+
+			//PutLog(szMsg);
+//			m_pUpdatePatchList.push_back( new ZUpdatePatchNode( szFileName, nSize, nCheckSum));
+			m_pUpdatePatchList.push_back( new ZUpdatePatchNode( szFileName, nSize, nCheckSumSTR));
 		}
 		else if ( !stricmp( szBuf, MPTOK_VERSION))
 		{
@@ -638,11 +667,16 @@ bool ZUpdate::PatchFiles()
 			bool bExistFile = false;
 			WIN32_FIND_DATA findfile;
 			HANDLE hFind = FindFirstFile( _T( szFullPath), &findfile);
-
+			std::ostringstream stream;
+			stream<<NULL;
+  
 			if ( hFind != INVALID_HANDLE_VALUE)
 			{
 				// CRC 검사를 해서 올바른 CRC이면 패스함
-				if ( (*itr)->GetChecksum() == GetCRC( szFullPath, &m_strErrorMsg))
+				DWORD dwCRCs = GetCRC( szFullPath, &m_strErrorMsg);
+			    stream<<dwCRCs;
+				//if ( (*itr)->GetChecksum() == GetCRC( szFullPath, &m_strErrorMsg))
+				if(strcmp(stream.str().c_str(),(*itr)->GetChecksumSTR()) ==0)
 				{
 					sprintf( szMsg, "[ZUpdate] Already exist patch file : %s", GetFilteredFileName( szFullPath));
 					PutLog( szMsg);
@@ -743,11 +777,17 @@ bool ZUpdate::MovePatchFiles()
 
 			// 다운로드 받은 패치 파일의 CRC를 구한다
 			DWORD dwCRC = GetCRC( szTmpFullPath, &m_strErrorMsg);
+			std::ostringstream stream;
+            stream << dwCRC;
+          //  std::string str = stream.str();
+		   // sprintf( szMsg, "[CRCTEST] %s,%s",(*itr)->GetFileName(),str.c_str());
+		//	PutLog( szMsg);
 
-
-			// CRC 검사
-			if ( (*itr)->GetChecksum() != dwCRC)
-			{
+//
+//			// CRC 검사
+			//crcalex
+			//if ( (*itr)->GetChecksum() != dwCRC)
+			if(strcmp(stream.str().c_str(),(*itr)->GetChecksumSTR()) !=0){
 				// CRC 오류
 #ifdef _DEBUG
 				sprintf( szMsg, "[ZUpdate] ERROR : Invalid CRC : '%s' (org:%u / curr:%u)", GetFilteredFileName( szTmpFullPath), (*itr)->GetChecksum(), dwCRC);
@@ -832,16 +872,18 @@ bool ZUpdate::MovePatchFiles()
 			
 			// 패치된 파일이 정상인지 다시 확인한다
 			dwCRC = GetCRC( szFullPath, &m_strErrorMsg);
-
+			std::ostringstream stream2;
+            stream2 << dwCRC;
 
 			// CRC 검사
-			if ( (*itr)->GetChecksum() != dwCRC)
-			{
+			//if ( (*itr)->GetChecksum() != dwCRC)
+			if(strcmp(stream2.str().c_str(),(*itr)->GetChecksumSTR()) !=0){
 				// CRC 오류
 #ifdef _DEBUG
 				sprintf( szMsg, "[ZUpdate] ERROR : CRC error '%s' (current : %u  /  original : %u)", GetFilteredFileName( szFullPath), dwCRC, (*itr)->GetChecksum());
 #else
-				sprintf( szMsg, "[ZUpdate] ERROR : CRC error '%s'", GetFilteredFileName( szFullPath));
+				//sprintf( szMsg, "[ZUpdate] ERROR : CRC error '%s'", GetFilteredFileName( szFullPath));
+				sprintf( szMsg, "[ZUpdate] ERROR : CRC error '%s' (current : %u  /  original : %s)", GetFilteredFileName( szFullPath), dwCRC, (*itr)->GetChecksumSTR());
 #endif
 				PutLog( szMsg);
 
@@ -854,7 +896,7 @@ bool ZUpdate::MovePatchFiles()
 				bFail = true;
 			}
 
-			// 이상 없으면 패치 파일을 삭제함
+			 //이상 없으면 패치 파일을 삭제함
 			else
 				DeleteFile( szTmpFullPath);
 		}

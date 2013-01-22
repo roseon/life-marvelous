@@ -29,17 +29,20 @@ protected:
 	char				m_szFileName[ _MAX_DIR];
 	unsigned long		m_nSize;
 	unsigned long		m_nCheckSum;
+	char		        m_nCheckSumSTR[ _MAX_DIR];
 	bool				m_bValidate;
 	bool				m_bPatchSuccess;
 
 
 public:
 	ZUpdatePatchNode( const char* pszName, unsigned long nSize, unsigned long nChecksum);
+	ZUpdatePatchNode( const char* pszName, unsigned long nSize, const char* nChecksum);
 	virtual ~ZUpdatePatchNode();
 
 	const char* GetFileName()				{ return m_szFileName; }
 	unsigned long GetSize()					{ return m_nSize; }
 	unsigned long GetChecksum()				{ return m_nCheckSum; }
+	const char* GetChecksumSTR()			{ return m_nCheckSumSTR; }
 	bool IsValid()							{ return m_bValidate; }
 	void SetValid( bool bValid)				{ m_bValidate = bValid; }
 	bool IsPatchSuccess()					{ return m_bPatchSuccess; }
