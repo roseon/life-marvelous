@@ -498,6 +498,29 @@ bool MXmlElement::GetChildContents(int* iOutValue, const char* sChildTagName)
 		try
 		{
 			*iOutValue = atoi(szBuf);
+		    
+		}
+		catch(...)
+		{
+			*iOutValue = 0;
+			return false;
+		}
+
+		return true;
+	}
+	
+	return false;
+}
+
+bool MXmlElement::GetChildContents(DWORD* iOutValue, const char* sChildTagName)
+{
+	char szBuf[256];
+	if (GetChildContents(szBuf, sChildTagName))
+	{
+		try
+		{
+			*iOutValue = atoi(szBuf);
+		    
 		}
 		catch(...)
 		{

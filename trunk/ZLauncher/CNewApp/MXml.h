@@ -141,6 +141,7 @@ public:
 	bool GetChildContents(int* iOutValue, const char* sChildTagName);
 	bool GetChildContents(float* fOutValue, const char* sChildTagName);
 	bool GetChildContents(bool* bOutValue, const char* sChildTagName);
+	bool GetChildContents(DWORD* iOutValue, const char* sChildTagName);
 
 	/// 속성값을 반환 - 선형검색이라 시간은 오래 걸린다.
 	/// @param sOutText			[out] 반환될 속성값
