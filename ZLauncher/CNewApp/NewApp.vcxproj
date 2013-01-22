@@ -459,7 +459,9 @@
     <ClInclude Include="ZUpdate.h" />
   </ItemGroup>
   <ItemGroup>
-    <Manifest Include="res\default.manifest" />
+    <Manifest Include="res\default.manifest">
+      <SubType>Designer</SubType>
+    </Manifest>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\icon_mainframe_brz.ico" />

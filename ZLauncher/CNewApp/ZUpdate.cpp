@@ -126,7 +126,7 @@ bool IsRebootingFile( const char* szFileName)
 
 	char *pFileName = _strlwr( _strdup( szFileName));
 
-	if ( strstr( pFileName, "gunzlauncher") != NULL)				bIsReboot = true;
+	if ( strstr( pFileName, "abbylauncher") != NULL)				bIsReboot = true;
 	else if ( strstr( pFileName, "hanauthforclient") != NULL)		bIsReboot = true;
 	else if ( strstr( pFileName, "hanreportforclient") != NULL)		bIsReboot = true;
 
@@ -569,7 +569,7 @@ bool ZUpdate::GetUpdateInfo( const char* pszPatchFileName)
 
 #ifdef _DEBUG
 			// 만약 디버그 모드에서 건즈 런쳐 파일이면 그냥 통과한다
-			if ( strstr( szFileName, "GunzLauncher.exe") != NULL)
+			if ( strstr( szFileName, "AbbyLauncher.exe") != NULL)
 				continue;
 #endif
 			

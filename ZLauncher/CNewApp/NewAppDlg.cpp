@@ -18,12 +18,12 @@
 #include "ZNHNModule.h"
 #define STR_GUNZ_PROCESS_NAME				"Gunz"
 #define STR_GUNZ_EXCUTE_FILENAME			"AbbyGunz.aby"
-#define STR_LAUNCHER_EXCUTE_FILENAME		"GunzLauncher.exe"
+#define STR_LAUNCHER_EXCUTE_FILENAME		"AbbyLauncher.exe"
 #define STR_PATCHINFO_FILENAME				"patch.xml"
 #define STR_WEBPAGE_URL					    "http://gunz.abbygamerz.net/index.php?p=tienda&pagina=7&type="
 #define STR_ADDRESS_REAL					"gunz.abbygamerz.net"//"localhost"
 #define STR_ADDRESS_ALPHA					"u-gunz-gm01.alpha-pubgame.ijji.com"
-#define STR_DIRECTORY_REAL					"webgunz/launcher/patch"
+#define STR_DIRECTORY_REAL					"webgunz/gunzupdate/patch"
 #define STR_DIRECTORY_ALPHA					"client/GunzUpdate"
 #endif LOCALE_NHNUSA
 
@@ -31,7 +31,7 @@
 #ifdef LOCALE_BRAZIL
 #define STR_GUNZ_PROCESS_NAME				"The Duel"
 #define STR_GUNZ_EXCUTE_FILENAME			"theduel.exe"
-#define STR_LAUNCHER_EXCUTE_FILENAME		"GunzLauncher.exe"
+#define STR_LAUNCHER_EXCUTE_FILENAME		"AbbyLauncher.exe"
 #define STR_PATCHINFO_FILENAME				"patch.xml"
 #define STR_WEBPAGE_URL						"http://launcher.levelupgames.com.br/Launchers/TheDuel/start.html"
 #define STR_ADDRESS_REAL					"fpatch.theduel.com.br"
@@ -44,7 +44,7 @@
 #ifdef LOCALE_INDIA
 #define STR_GUNZ_PROCESS_NAME				"Gunz"
 #define STR_GUNZ_EXCUTE_FILENAME			"Gunz.exe"
-#define STR_LAUNCHER_EXCUTE_FILENAME		"GunzLauncher.exe"
+#define STR_LAUNCHER_EXCUTE_FILENAME		"AbbyLauncher.exe"
 #define STR_PATCHINFO_FILENAME				"patch.xml"
 #define STR_WEBPAGE_URL						"http://202.92.10.151/gunzweb/launcher/start.html"
 #define STR_ADDRESS_REAL					"patch.gunzonline.co.in"
