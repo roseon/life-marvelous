@@ -724,9 +724,9 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType)
 			P(MPT_INT, "RequestID")			// 요청ID - 클라이언트가 임의로 결정한다. 자신만 알고 있으면 됨.
 			P(MPT_STR, "ClanName")			// 생성할 클랜 이름
 			P(MPT_STR, "Member1CharName")	// 발기인 캐릭터 이름
-			P(MPT_STR, "Member2CharName")	// 발기인 캐릭터 이름
-			P(MPT_STR, "Member3CharName")	// 발기인 캐릭터 이름
-			P(MPT_STR, "Member4CharName")	// 발기인 캐릭터 이름
+			//P(MPT_STR, "Member2CharName")	// 발기인 캐릭터 이름
+			//P(MPT_STR, "Member3CharName")	// 발기인 캐릭터 이름
+			//P(MPT_STR, "Member4CharName")	// 발기인 캐릭터 이름
         C(MC_MATCH_CLAN_RESPONSE_CREATE_CLAN, "Match.Clan.ResponseCreateClan", "Response Create Clan", MCDT_MACHINE2MACHINE)
 			P(MPT_INT, "Result")
 			P(MPT_INT, "RequestID")			// 요청ID
@@ -744,9 +744,9 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType)
 			P(MPT_UID, "uidChar")	// 요청한 캐릭터 UID
 			P(MPT_STR, "ClanName")	// 생성할 클랜 이름
 			P(MPT_STR, "Member1CharName")	// 발기인 캐릭터 이름
-			P(MPT_STR, "Member2CharName")	// 발기인 캐릭터 이름
-			P(MPT_STR, "Member3CharName")	// 발기인 캐릭터 이름
-			P(MPT_STR, "Member4CharName")	// 발기인 캐릭터 이름
+			//P(MPT_STR, "Member2CharName")	// 발기인 캐릭터 이름
+			//P(MPT_STR, "Member3CharName")	// 발기인 캐릭터 이름
+			//P(MPT_STR, "Member4CharName")	// 발기인 캐릭터 이름
         C(MC_MATCH_CLAN_RESPONSE_AGREED_CREATE_CLAN, "Match.Clan.AgreedResponseCreateClan", "Response Agreed Create Clan", MCDT_MACHINE2MACHINE)
 			P(MPT_INT, "Result")
 		C(MC_MATCH_CLAN_REQUEST_CLOSE_CLAN, "Match.Clan.RequestCloseClan", "Request Close Clan", MCDT_MACHINE2MACHINE)
