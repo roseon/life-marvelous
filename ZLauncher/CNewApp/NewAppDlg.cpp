@@ -20,7 +20,7 @@
 #define STR_GUNZ_EXCUTE_FILENAME			"AbbyGunz.aby"
 #define STR_LAUNCHER_EXCUTE_FILENAME		"AbbyLauncher.exe"
 #define STR_PATCHINFO_FILENAME				"patch.xml"
-#define STR_WEBPAGE_URL					    "http://gunz.abbygamerz.net/index.php?p=tienda&pagina=7&type="
+#define STR_WEBPAGE_URL					    "http://gunz.abbygamerz.net/webgunz/launcher/start.html"
 #define STR_ADDRESS_REAL					"gunz.abbygamerz.net"//"localhost"
 #define STR_ADDRESS_ALPHA					"u-gunz-gm01.alpha-pubgame.ijji.com"
 #define STR_DIRECTORY_REAL					"webgunz/gunzupdate/patch"
