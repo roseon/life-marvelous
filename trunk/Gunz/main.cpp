@@ -1508,10 +1508,10 @@ int PASCAL WinMain(HINSTANCE this_inst, HINSTANCE prev_inst, LPSTR cmdline, int 
 
 #endif
 
-	if( !ZApplication::GetInstance()->getSerialKey())
-	{
-		return false;
-	}
+	//if( !ZApplication::GetInstance()->getSerialKey())
+	//{
+		//return false;
+//	}
 
 
 
