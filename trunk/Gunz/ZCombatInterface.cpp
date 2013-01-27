@@ -2330,9 +2330,9 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 	{
 		ZCharacter* pCharacter = (*itor).second;
 		//test
-		/*sprintf(szText,"PJ:%s,x:%f,y:%f,z:%f", pCharacter->GetProperty()->GetName(), pCharacter->GetPosition().x,pCharacter->GetPosition().y,pCharacter->GetPosition().z);
+	/*	sprintf(szText,"PJ:%s,x:%f,y:%f,z:%f", pCharacter->GetProperty()->GetName(), pCharacter->GetPosition().x,pCharacter->GetPosition().y,pCharacter->GetPosition().z);
 		TextRelative(pDC,0.600f,testy,szText);
-		testy = testy + 0.30f;*/
+		testy = testy + 0.10f;*/
 		//end test
 
 		if(pCharacter->GetTeamID() == MMT_SPECTATOR) continue;	// ¿ÉÀú¹ö´Â –A´Ù
