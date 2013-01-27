@@ -31,7 +31,7 @@
 		<GAMETYPE id="16" />
 		<GAMETYPE id="17" />
 		<GAMETYPE id="18" />
-		<GAMETYPE id="19" />
+		
 		
 		<MAP name="RelayMap" />
 		<MAP name="Mansion" />
@@ -92,7 +92,7 @@
 		
 		<GAMETYPE id="17" />
 		<GAMETYPE id="18" />
-		<GAMETYPE id="19" />
+		
 		
 		<MAP name="RelayMap" />
 		<MAP name="Mansion" />
@@ -151,7 +151,7 @@
 		
 		<GAMETYPE id="17" />
 		<GAMETYPE id="18" />
-		<GAMETYPE id="19" />
+		
 		
 		<MAP name="RelayMap" />
 		<MAP name="Mansion" />
@@ -215,7 +215,7 @@
 		
 		<GAMETYPE id="17" />
 		<GAMETYPE id="18" />
-		<GAMETYPE id="19" />
+		
 		
 		<MAP name="RelayMap" />
 		<MAP name="Mansion" />
@@ -279,7 +279,7 @@
 		
 		<GAMETYPE id="17" />
 		<GAMETYPE id="18" />
-		<GAMETYPE id="19" />
+		
 		
 		<MAP name="RelayMap" />
 		<MAP name="Mansion" />
@@ -344,6 +344,7 @@
 		<GAMETYPE id="17" />
 		<GAMETYPE id="18" />
 		<GAMETYPE id="19" />
+		
 		
 		<MAP name="RelayMap" />
 		<MAP name="Mansion" />
@@ -413,7 +414,7 @@
 		
 		<GAMETYPE id="17" />
 		<GAMETYPE id="18" />
-		<GAMETYPE id="19" />
+		
 		
 		<MAP name="RelayMap" />
 		<MAP name="Mansion" />

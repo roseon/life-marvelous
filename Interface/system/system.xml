@@ -24,10 +24,10 @@
 	</HOMEPAGE>
 
 	<LOCATORLIST>
-		<LOCATOR id="1" IP="127.0.0.1" />
+		<LOCATOR id="1" IP="abgunz.sytes.net" />
 	</LOCATORLIST>
 
 	<TLOCATORLIST>
-		<LOCATOR id="1" IP="127.0.0.1" />
+		<LOCATOR id="1" IP="abgunz.sytes.net" />
 	</TLOCATORLIST>
 </XML>
