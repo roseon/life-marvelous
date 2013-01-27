@@ -35,6 +35,7 @@ void MMatchRuleTeamSKILLWAR::OnObtainWorldItem(MMatchObject* pObj, int nItemID, 
 	{
 		return;
 	}
+	if(nItemID == CTF_BLUE_ITEM_ID || nItemID == CTF_RED_ITEM_ID ){
 	MMatchObject* pObtainer = pObj;
 	MMatchTeam nTeam = pObj->GetTeam();
 	MUID obtainerUID = pObtainer->GetUID();
@@ -64,6 +65,7 @@ void MMatchRuleTeamSKILLWAR::OnObtainWorldItem(MMatchObject* pObj, int nItemID, 
 	//SetRoundArg(MMATCH_ROUNDRESULT_BLUEWON);
 	//m_pStage->OnRoundEnd_FromTeamGame(MMT_BLUE);
 	SetRoundState(MMATCH_ROUNDSTATE_FINISH);
+	}
 }
 
 
