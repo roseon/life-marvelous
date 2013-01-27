@@ -689,7 +689,8 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType);
 #define MC_RESPONSE_COLOR							50024
 #define MC_ADMIN_RELOAD_COLORS						50025
 #define MC_ADMIN_RELOAD_CONFIG						50026
-
+#define MC_MATCH_REQUEST_SKILFLAG					50027	///( S -> C)
+#define MC_MATCH_SKILFLAG_CAP				    	50028
 
 #define MC_MATCH_ASSIGN_DEITY						3002
 #define MC_MATCH_ASSIGN_REVERSE_BERSERKER			3003

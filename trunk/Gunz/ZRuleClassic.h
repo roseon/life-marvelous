@@ -42,6 +42,7 @@ public:
 class ZRuleTeamSkillWar : public ZRuleTeamDeathMatch
 {
 public:
+	virtual bool OnCommand(MCommand* pCommand);
 	ZRuleTeamSkillWar(ZMatch* pMatch);
 	virtual ~ZRuleTeamSkillWar();
 };

@@ -304,6 +304,15 @@ void ZWorldItemManager::OnOptainWorldItem(ZWorldItem* pItem)
 					}
 					return;
 				}
+			/*	else if(ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_SKILLWAR){
+					unsigned int nowTime2 = timeGetTime();
+					if(nowTime2 > pItem->m_dwFlagObtainTime + 1000)
+					{
+						pItem->m_dwFlagObtainTime = nowTime2;
+						ZPostRequestSkillFlag(pItem->GetItemID());
+					}
+					return;
+				}*/
 			}
 		}
 	if( !CheckBitSet(pItem->GetSpawnTypeFlags(), WORLD_ITEM_STAND_ALINE) )

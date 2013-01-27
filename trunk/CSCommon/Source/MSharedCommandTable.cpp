@@ -1733,6 +1733,13 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType)
 	C(MC_ADMIN_RELOAD_CONFIG, "Server.ReloadConfig", "Reload Config", MCDT_MACHINE2MACHINE)
 			P(MPT_STR, "szFile")
 
+	C(MC_MATCH_REQUEST_SKILFLAG, "Match.SkillFlag.Request", "Request Skill Flag", MCDT_MACHINE2MACHINE)
+			P(MPT_INT, "nItemID")
+
+	C(MC_MATCH_SKILFLAG_CAP, "Match.SkillFlag.Cap", "Cap SkillFlag", MCDT_MACHINE2MACHINE)
+			P(MPT_UID, "uidPlayer")
+			P(MPT_INT, "nTeam")
+
 	END_CMD_DESC();
 }
 	

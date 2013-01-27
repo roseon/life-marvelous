@@ -106,7 +106,7 @@ void MMatchWorldItemManager::SpawnInfoInit()
 				m_SpawnInfos[i].bUsed = false;
 			}
 		}
-		if (!IsGameRuleCTF(m_pMatchStage->GetStageSetting()->GetGameType())) //disable CTF flags in all other modes.
+		if (!IsGameRuleCTF(m_pMatchStage->GetStageSetting()->GetGameType()) && !IsGameRuleSkillWar(m_pMatchStage->GetStageSetting()->GetGameType())   ) //disable CTF flags in all other modes.
 		{
 			MMatchWorldItemDesc* wi = MGetMatchWorldItemDescMgr()->GetItemDesc(m_SpawnInfos[i].nItemID);
 			if ((wi) && (wi->m_nItemType == WIT_FLAG))

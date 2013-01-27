@@ -403,6 +403,7 @@ protected:
 	void OnNotifyThrowTrapItem(const MUID& uidPlayer, const int nItemID);
 	void OnNotifyActivatedTrapItem(const MUID& uidPlayer, const int nItemID, const MVector3& pos);
 	void OnRequestFlagCap(const MUID& uidPlayer, const int nItemID);
+	void OnRequestSkillFlag(const MUID& uidPlayer, const int nItemID);
 	void OnRequestFlagState(const MUID& uidChar);
 
 	void OnUserWhisper(const MUID& uidComm, char* pszSenderName, char* pszTargetName, char* pszMessage);
@@ -543,6 +544,7 @@ public:
 	void AdminTerminalOutput(const MUID& uidAdmin, const char* szText);
 	bool OnAdminExecute(MAdminArgvInfo* pAI, char* szOut);
 	void ApplyObjectTeamBonus(MMatchObject* pObject, int nAddedExp);
+	void AddEcoins(MMatchObject* pObject, int cantidad);
 	void ProcessPlayerXPBP(MMatchStage* pStage, MMatchObject* pPlayer, int nAddedXP, int nAddedBP);
 	void ProcessCharPlayInfo(MMatchObject* pPlayer);
 	bool DistributeZItem(const MUID& uidPlayer, const unsigned long int nItemID, bool bRentItem, int nRentPeriodHour, int nItemCount);

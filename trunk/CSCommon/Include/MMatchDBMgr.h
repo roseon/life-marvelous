@@ -68,7 +68,7 @@ public:
 	bool GetHwidInfo(unsigned int* Status, const TCHAR* szHwid);//Steven: Hwid
 	bool spBanPC(const int AID, const TCHAR* pReason);
 	bool GetLoginInfo_Netmarble(const TCHAR* szUserID, unsigned int* poutnAID, unsigned int* poutCCode, TCHAR* poutPassword);
-
+	bool AddECoins(const int nAID, const int cantidad);
 	bool UpdateLastConnDate(const TCHAR* szUserID, const TCHAR* szIP);
 	bool CreateHwid(const int AID, const TCHAR* szHwid); //Steven: Hwid
 	bool CreateAccount(const TCHAR* szUserID,					// »ç¿ëÀÚID

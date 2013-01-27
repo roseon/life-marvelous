@@ -165,4 +165,9 @@ inline bool IsGameRuleCTF(MMATCH_GAMETYPE nGameType)
 {
 	return (nGameType == MMATCH_GAMETYPE_CTF);
 }
+
+inline bool IsGameRuleSkillWar(MMATCH_GAMETYPE nGameType)
+{
+	return (nGameType == MMATCH_GAMETYPE_SKILLWAR);
+}
 #endif

@@ -30,6 +30,7 @@
 #include "MMatchRuleBerserker.h"
 #include "MMatchRuleDuel.h"
 #include "MCrashDump.h"
+#include "MMatchRuleClassic.h"
 
 #include "MAsyncDBJob_InsertGamePlayerLog.h"
 
@@ -2200,6 +2201,21 @@ void MMatchServer::ProcessPlayerXPBP(MMatchStage* pStage, MMatchObject* pPlayer,
 	}
 }
 
+
+void MMatchServer::AddEcoins(MMatchObject* pObject, int cantidad){
+
+	if (!IsEnabledObject(pObject)) return;
+	if (cantidad <= 0)
+	{
+		_ASSERT(0);
+		return;
+	}
+
+	if (!m_MatchDBMgr.AddECoins(pObject->GetAccountInfo()->m_nAID,cantidad))
+		{
+			mlog("DB UpdateAccECoins Error : %s\n", pObject->GetCharInfo()->m_szName);
+		}
+}
 // 팀 보너스 적용
 void MMatchServer::ApplyObjectTeamBonus(MMatchObject* pObject, int nAddedExp)
 {
@@ -3092,4 +3108,25 @@ void MMatchServer::OnRequestFlagCap(const MUID& uidPlayer, const int nItemID)
 			}
 		}
 	}
+}
+
+void MMatchServer::OnRequestSkillFlag(const MUID& uidPlayer, const int nItemID)
+{
+	MMatchObject* pObj = GetObject(uidPlayer);
+	if (pObj == NULL) return;
+	MMatchStage* pStage = FindStage(pObj->GetStageUID());
+	if (pStage == NULL) return;
+
+	if(pStage->GetStageSetting())
+	{
+		if(pStage->GetStageSetting()->GetGameType() == MMATCH_GAMETYPE_SKILLWAR)
+		{
+			MMatchRuleTeamSKILLWAR* pRule = (MMatchRuleTeamSKILLWAR*)pStage->GetRule();
+			if(pRule)
+			{
+			pRule->OnObtainWorldItem( pObj, nItemID, NULL );
+			}
+		}
+	}
+
 }
