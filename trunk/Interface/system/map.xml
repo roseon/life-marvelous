@@ -5,7 +5,7 @@
 <MAP id="0" MapName ="Mansion" MapImageName= "map_Mansion.bmp" BannerName = "banner_Mansion.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"></MAP>
 <MAP id="1" MapName ="Prison" MapImageName= "map_Prison.bmp" BannerName = "banner_Prison.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"></MAP>
 <MAP id="2" MapName ="Station" MapImageName= "map_Station.bmp" BannerName = "banner_Station.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"></MAP>
-<MAP id="3" MapName ="Prison II" MapImageName= "map_Prison II.bmp" BannerName = "banner_Prison II.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"  bIsCTFMap="true"></MAP>
+<MAP id="3" MapName ="Prison II" MapImageName= "map_Prison II.bmp" BannerName = "banner_Prison II.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"  bIsGWRMap = "true" bIsCTFMap="true"></MAP>
 <MAP id="4" MapName ="Battle Arena" MapImageName= "map_Battle Arena.bmp" BannerName = "banner_Battle Arena.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"></MAP>
 <MAP id="5" MapName ="Town" MapImageName= "map_Town.bmp" BannerName = "banner_Town.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"></MAP>
 <MAP id="6" MapName ="Dungeon" MapImageName= "map_Dungeon.bmp" BannerName = "banner_Dungeon.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"></MAP>
@@ -28,9 +28,9 @@
 <MAP id="23" MapName ="Halloween Town" MapImageName= "map_Halloween Town.bmp" BannerName = "banner_Halloween Town.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"></MAP>
 <MAP id="24" MapName ="WeaponShop" MapImageName= "map_WeaponShop.bmp" BannerName = "banner_WeaponShop.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"></MAP>
 <MAP id="25" MapName ="Iceworld" MapImageName= "map_Iceworld.bmp" BannerName = "banner_IceWorld.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"></MAP>
-<MAP id="26" MapName ="Hot_Summer" MapImageName= "map_Hot_Summer.bmp" BannerName = "banner_Hot_Summer.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"  bIsCTFMap="true"></MAP>
-<MAP id="27" MapName ="Old_Mansion" MapImageName= "map_Old_Mansion.bmp" BannerName = "banner_Old_Mansion.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"  bIsCTFMap="true"></MAP>
-<MAP id="28" MapName ="Toy_room" MapImageName= "map_Toy_room.bmp" BannerName = "banner_Toy_room.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"  bIsCTFMap="false"></MAP>
+<MAP id="26" MapName ="Hot_Summer" MapImageName= "map_Hot_Summer.bmp" BannerName = "banner_Hot_Summer.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"  bIsAWPMap = "true" bIsCTFMap="true"></MAP>
+<MAP id="27" MapName ="Old_Mansion" MapImageName= "map_Old_Mansion.bmp" BannerName = "banner_Old_Mansion.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"   bIsAWPMap = "true" bIsCTFMap="true"></MAP>
+<MAP id="28" MapName ="Toy_room" MapImageName= "map_Toy_room.bmp" BannerName = "banner_Toy_room.tga" ExpRatio ="1" MaxPlayers ="127" bOnlyDuelMap = "false"  bIsAWPMap = "true" bIsCTFMap="false"></MAP>
 <MAP id="29" MapName ="SkillMapV1" MapImageName= "map_SkillMapV1.bmp" BannerName = "banner_SkillmapV1.tga" ExpRatio ="1" MaxPlayers ="127" bIsSWRMap = "true" ></MAP>
 <MAP id="30" MapName ="SkillMapV2" MapImageName= "map_SkillMapV2.bmp" BannerName = "banner_SkillMapV2.tga" ExpRatio ="1" MaxPlayers ="127" bIsSWRMap = "true" ></MAP>
 <MAP id="31" MapName ="SkillMapV3" MapImageName= "map_SkillMapV3.bmp" BannerName = "banner_SkillMapV3.tga" ExpRatio ="1" MaxPlayers ="127" bIsSWRMap = "true" ></MAP>
