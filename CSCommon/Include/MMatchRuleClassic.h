@@ -40,6 +40,8 @@ public:
 //SKILLWAR 
 class MMatchRuleTeamSKILLWAR : public MMatchRuleTeamDeath {
 public:
+	virtual void OnObtainWorldItem(MMatchObject* pObj, int nItemID, int* pnExtraValues);
+	virtual void RouteAssignCap(MUID& uidBearer,int nTeam);
 	MMatchRuleTeamSKILLWAR(MMatchStage* pStage);
 	virtual ~MMatchRuleTeamSKILLWAR()				{}
 	virtual MMATCH_GAMETYPE GetGameType() { return MMATCH_GAMETYPE_SKILLWAR; }

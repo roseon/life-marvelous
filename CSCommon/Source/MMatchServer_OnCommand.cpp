@@ -1020,6 +1020,18 @@ bool MMatchServer::OnCommand(MCommand* pCommand)
 				OnRequestFlagCap(uidPlayer, nItemID);
 			}
 			break;
+
+		case MC_MATCH_REQUEST_SKILFLAG:
+			{
+				MUID uidPlayer = pCommand->GetSenderUID();
+				int nItemID = 0;
+
+				//pCommand->GetParameter(&uidPlayer, 0, MPT_UID);
+				pCommand->GetParameter(&nItemID, 0, MPT_INT);
+
+				OnRequestSkillFlag(uidPlayer, nItemID);
+			}
+			break;
 		case MC_MATCH_USER_WHERE:
 			{
 				// char szTargetName[MAX_CHARNAME]="";

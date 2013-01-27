@@ -2323,11 +2323,17 @@ void ZCombatInterface::DrawScoreBoardTeam(MDrawContext* pDC)
 
 
 	// Ä³¸¯ÅÍ ¸®½ºÆ®
+	//float testy=0.139f;
 	ZCharacterManager::iterator itor;
 	for (itor = ZGetCharacterManager()->begin();
 		itor != ZGetCharacterManager()->end(); ++itor)
 	{
 		ZCharacter* pCharacter = (*itor).second;
+		//test
+		/*sprintf(szText,"PJ:%s,x:%f,y:%f,z:%f", pCharacter->GetProperty()->GetName(), pCharacter->GetPosition().x,pCharacter->GetPosition().y,pCharacter->GetPosition().z);
+		TextRelative(pDC,0.600f,testy,szText);
+		testy = testy + 0.30f;*/
+		//end test
 
 		if(pCharacter->GetTeamID() == MMT_SPECTATOR) continue;	// ¿ÉÀú¹ö´Â –A´Ù
 

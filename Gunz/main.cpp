@@ -1318,19 +1318,19 @@ int PASCAL WinMain(HINSTANCE this_inst, HINSTANCE prev_inst, LPSTR cmdline, int 
 	SetCurrentDirectory(szModuleFileName);
 
 
-
-#ifndef _GAMEGUARD
-	#ifdef _PUBLISH
-		// 중복 실행 금지
-		Mutex = CreateMutex(NULL, TRUE, "Gunz");
-		if (GetLastError() == ERROR_ALREADY_EXISTS)
-		{
-			zexit(-1);
-			return 0;
-		}
-	#endif
-#endif
-
+//
+//#ifndef _GAMEGUARD
+//	#ifdef _PUBLISH
+//		// 중복 실행 금지
+//		Mutex = CreateMutex(NULL, TRUE, "Gunz");
+//		if (GetLastError() == ERROR_ALREADY_EXISTS)
+//		{
+//			zexit(-1);
+//			return 0;
+//		}
+//	#endif
+//#endif
+//
 
 #ifdef _HSHIELD
 

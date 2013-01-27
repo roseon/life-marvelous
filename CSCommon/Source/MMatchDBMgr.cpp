@@ -96,6 +96,8 @@ TCHAR g_szDB_UPDATE_CHAR_PLAYINFO_LOG[] = _T("{CALL spCharUpdatePlayInfo (%d, %d
 // 인자: Level, CID
 TCHAR g_szDB_UPDATE_CHAR_LEVEL[] = _T("{CALL spUpdateCharLevel (%d, %d)}");
 
+TCHAR g_szDB_UPDATE_ECOINS[] = _T("{CALL [spUpdateAccECoins] (%d, %d)}");
+
 // BP 업데이트
 //TCHAR g_szDB_UPDATE_CHAR_BP[] = _T("UPDATE Character SET BP=BP+(%d) WHERE CID=%d");
 // 인자: BPInc, CID
@@ -1494,6 +1496,29 @@ bool MMatchDBMgr::UpdateCharLevel(const int nCID, const int nLevel)
 	_STATUS_DB_END(14);
 	return true;
 }
+
+
+bool MMatchDBMgr::AddECoins(const int nAID, const int cantidad)
+{
+	_STATUS_DB_START;
+	if (!CheckOpen()) return false;
+
+	CString strSQL;
+
+	try {		
+		strSQL.Format(g_szDB_UPDATE_ECOINS, nAID, cantidad);
+		m_DB.ExecuteSQL( strSQL );
+	} 
+	catch(CDBException* e) {
+
+		ExceptionHandler(strSQL, e);
+		return false;
+	}
+
+	_STATUS_DB_END(14);
+	return true;
+}
+
 
 // bp 업데이트
 bool MMatchDBMgr::UpdateCharBP(const int nCID, const int nBPInc)

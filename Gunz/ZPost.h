@@ -1237,6 +1237,11 @@ inline void ZPostRequestCaptureFlag(const int nItemUID)
 	ZPOSTCMD1(MC_MATCH_REQUEST_FLAG_CAP, MCommandParameterInt(nItemUID));
 }
 
+inline void ZPostRequestSkillFlag(const int nItemUID)
+{
+	ZPOSTCMD1(MC_MATCH_REQUEST_SKILFLAG, MCommandParameterInt(nItemUID));
+}
+
 #endif
 
 
