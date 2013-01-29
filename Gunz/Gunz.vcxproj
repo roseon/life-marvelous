@@ -1348,6 +1348,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ZActionDef.h" />
+    <ClInclude Include="ZAnticheat.h" />
     <ClInclude Include="ZBandiCapturer.h" />
     <ClInclude Include="ZCanvas.h" />
     <ClInclude Include="ZCombatChat.h" />
@@ -1603,6 +1604,7 @@
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ZAnticheat.cpp" />
     <ClCompile Include="ZBandiCapturer.cpp" />
     <ClCompile Include="ZCanvas.cpp" />
     <ClCompile Include="ZCombatChat.cpp" />
