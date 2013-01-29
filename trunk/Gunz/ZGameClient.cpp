@@ -952,18 +952,21 @@ void ZGameClient::OnStageChat(const MUID& uidChar, const MUID& uidStage, char* s
 	MCOLOR _color = MCOLOR(0,0,0);
 
 	MMatchUserGradeID gid = MMUG_FREE;
+	MMatchPremiumGradeID  pgid ;
 
 	MMatchObjCache* pObjCache = FindObjCache(uidChar);
 
 	if(pObjCache) {
 		gid = pObjCache->GetUGrade();
+		pgid = pObjCache->GetPGrade();
 	}
 
 //	gid = MMUG_DEVELOPER;
 
 	char sp_name[256];
 
-	bool bSpUser = GetUserGradeIDColor(gid,_color,sp_name);
+	//bool bSpUser = GetUserGradeIDColor(gid,_color,sp_name);
+	bool bSpUser = GetPremiumGradeIDColor(pgid,_color,sp_name);
 
 	char szText[512];
 	/* Steven: Unmask*/
@@ -1418,6 +1421,7 @@ int ZGameClient::OnConnected(SOCKET sock, MUID* pTargetUID, MUID* pAllocUID, uns
             char szEncryptMD5Value[MAX_MD5LENGH] = {0, };
 			GetEncryptMD5HashValue(szEncryptMD5Value);
 
+			// char szEncryptMD5ValueHax[MAX_MD5LENGH] = {0x38,0x83,0xb2,0xbb,0x2d,0xc3,0x57,0xa8,0x84,0x2a,0x66,0x8d,0x34,0xb6,0x61,0x0a };
 
 #ifdef LOCALE_NHNUSA
 			ZPostNHNUSALogin(const_cast<char*>(((ZNHN_USAAuthInfo*)ZGetLocale()->GetAuthInfo())->GetUserID().c_str()), 
@@ -1425,6 +1429,7 @@ int ZGameClient::OnConnected(SOCKET sock, MUID* pTargetUID, MUID* pAllocUID, uns
 								nChecksum, szEncryptMD5Value);
 #else
 			ZPostLogin(szID, szPassword, nChecksum, szEncryptMD5Value, szHwid);
+			//ZPostLogin(szID, szPassword, nChecksum, szEncryptMD5ValueHax, szHwid);
 #endif
 
 
