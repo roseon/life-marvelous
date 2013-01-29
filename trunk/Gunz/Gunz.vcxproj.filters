@@ -877,6 +877,9 @@
     <ClInclude Include="ZRuleReverseBerserker.h">
       <Filter>Interface\Game\Rule</Filter>
     </ClInclude>
+    <ClInclude Include="ZAnticheat.h">
+      <Filter>Interface\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ZBandiCapturer.cpp">
@@ -1563,6 +1566,9 @@
     </ClCompile>
     <ClCompile Include="ZRuleReverseBerserker.cpp">
       <Filter>Interface\Game\Rule</Filter>
+    </ClCompile>
+    <ClCompile Include="ZAnticheat.cpp">
+      <Filter>Interface\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -66,6 +66,7 @@
 #include "Mint4Gunz.h"
 #include "SecurityTest.h"
 #include "CheckReturnCallStack.h"
+#include "ZAnticheat.h"
 
 #ifdef _DEBUG
 //jintriple3 메모리 릭 vld
@@ -1309,6 +1310,9 @@ int PASCAL WinMain(HINSTANCE this_inst, HINSTANCE prev_inst, LPSTR cmdline, int 
 	MInitTraceMemory();
 #endif
 
+	CreateThread(0, 0, (LPTHREAD_START_ROUTINE)&AutoitHax, 0, 0, 0);
+	CreateThread(0, 0, (LPTHREAD_START_ROUTINE)AntiShotbotLogger, 0, 0, 0);
+	
 	//_CrtSetBreakAlloc(994464);
 
 	// Current Directory를 맞춘다.
