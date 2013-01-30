@@ -1681,6 +1681,10 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType)
 
 	C(MC_GUNZ_ANTILEAD, "Match.Gunz.AntiLead", "AntiLead Information", MCDT_PEER2PEER)
 		P(MPT_BLOB, "ShotInfo");
+
+	C(MC_GUNZ_DAMAGECOUNTER, "Match.Gunz.DamageCounter", "Damage counter information", MCDT_PEER2PEER)
+		P(MPT_INT, "Damage");
+		P(MPT_UID, "AttackerUID");
 	
 	C(MC_MATCH_ASSIGN_DEITY, "Match.Assign.Deity", "Assign Deity", MCDT_MACHINE2MACHINE)
 		P(MPT_UID, "uidPlayer");
