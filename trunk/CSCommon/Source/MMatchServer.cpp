@@ -1243,6 +1243,33 @@ void MMatchServer::OnRun(void)
 		m_objectCommandHistory.Update( nGlobalClock );
 		m_connectionHistory.Update( nGlobalClock );
 	}
+
+	/*ANUNCIOS SEXUALES*/
+	#define MINTERVAL_REQUEST_ANUNCIOS_DB	( 1 * 60 * 1000)//( 2 * 60 * 60 * 1000)	// 2 horas px
+	static unsigned long tmLastRequestAnuncionsDB = nGlobalClock;
+	if (nGlobalClock - tmLastRequestAnuncionsDB > MINTERVAL_REQUEST_ANUNCIOS_DB)
+	{
+		mlog("MMatchServer::GetAnuncios()\n");
+		tmLastRequestAnuncionsDB = nGlobalClock;
+		/*Aca hago toda la wea de bd*/
+		if (!m_MatchDBMgr.GetAnuncios()){
+			LOG(LOG_PROG, "NO SE CARGARON LOS ANUNCIOS");
+			
+		}
+		
+	}
+
+	#define MINTERVAL_LEER_ANUNCIOS	( 1 * 60 * 1000)	// 15 min px
+	static unsigned long tmLastReadAnuncions = nGlobalClock;
+	if (nGlobalClock - tmLastReadAnuncions > MINTERVAL_LEER_ANUNCIOS)
+	{
+		tmLastReadAnuncions = nGlobalClock;
+		/*Aca leo los anuncios sexuales*/
+		mlog("MMatchServer::ANCUNCIO SEXUAL");
+		GetAnuncios();
+		
+	}
+
 	
 //	CheckMemoryCorruption();
 
@@ -1295,6 +1322,31 @@ void MMatchServer::OnRun(void)
 	}
 }
 
+void MMatchServer::GetAnuncios(){
+	if(listAnuncios.size()==0){
+	return;
+	}
+
+	string strAnuncio;
+	for (std::list<string>::iterator it=listAnuncios.begin(); it!=listAnuncios.end(); ++it){
+		strAnuncio= *it;
+		break;
+	}
+
+	mlog("MMatchServer::ANCUNCIO :%s\n",strAnuncio.c_str());
+	
+	//lo mando a todos
+	MMatchServer* pServer = MMatchServer::GetInstance();
+	
+	MCommand* pCmd = pServer->CreateCommand(MC_ADMIN_ANNOUNCE, MUID(0,0));
+	pCmd->AddParameter(new MCmdParamUID(MUID(0,0)));
+	pCmd->AddParameter(new MCmdParamStr(strAnuncio.c_str()));
+	pCmd->AddParameter(new MCmdParamUInt(ZAAT_CHAT));
+	pServer->RouteToAllClient(pCmd);
+	//lo borro
+	 listAnuncios.remove(strAnuncio);
+
+}
 void MMatchServer::UpdateServerLog()
 {
 	if (!IsCreated()) return;
