@@ -403,6 +403,11 @@ inline void ZPostStageState(const MUID& uidChar, const MUID& uidStage, MMatchObj
 	ZPOSTCMD3(CLOAK_CMD_ID(MC_PEER_SHOT_MELEE, 38274), MCommandParameterFloat(ZGetGame()->GetTime()),MCommandParameterPos(pos.x, pos.y, pos.z),MCommandParameterInt(nShot));	\
 }
 
+#define ZPostDamageCounter(/*int*/ Damage, /*MUID*/ AttackerUID) {	\
+ZPOSTCMD2(CLOAK_CMD_ID(MC_GUNZ_DAMAGECOUNTER, 1621), MCommandParameterInt(Damage), MCommandParameterUID(AttackerUID));	\
+}
+
+
 inline void ZPostNPCRangeShot(MUID uidOwner, float fShotTime,rvector &pos, rvector &to,int sel_type)
 {
 	ZPACKEDSHOTINFO info;

@@ -1933,6 +1933,22 @@ bool ZGame::OnCommand_Immidiate(MCommand* pCommand)
 			}
 		}
 		break;
+
+	case MC_GUNZ_DAMAGECOUNTER:
+		{
+			//MCommandParameter* pParam = pCommand->GetParameter(0);
+			//MCommandParameter* pParam2 = pCommand->GetParameter(1);
+			int Damage;
+			MUID AttackerUID;
+			pCommand->GetParameter(&Damage,		0, MPT_INT);
+			pCommand->GetParameter(&AttackerUID, 1, MPT_UID);
+					ZCharacter* pCharacter = (ZCharacter*)ZGetCharacterManager()->Find(AttackerUID);
+
+						pCharacter->GetStatus().CheckCrc();
+						pCharacter->GetStatus().Ref().nDamageCaused += Damage;
+						pCharacter->GetStatus().MakeCrc();
+		}
+		break;
 	case MC_MATCH_STAGE_ENTERBATTLE:
 		{	
 			unsigned char nParam;
@@ -6648,7 +6664,7 @@ void ZGame::AddEffectRoundState(MMATCH_ROUNDSTATE nRoundState, int nArg)
 //	m_pMyCharacter->GetStatus().Ref().nDamageCaused = 0;
 //	m_pMyCharacter->GetStatus().MakeCrc();
 			MMATCH_GAMETYPE TipoJuego = ZGetGameClient()->GetMatchStageSetting()->GetGameType();
-			if(TipoJuego != MMATCH_GAMETYPE_DUEL && TipoJuego != MMATCH_GAMETYPE_DUELTOURNAMENT && TipoJuego != MMATCH_GAMETYPE_QUEST && TipoJuego != MMATCH_GAMETYPE_SURVIVAL ) 
+			if(TipoJuego != MMATCH_GAMETYPE_DUEL && TipoJuego != MMATCH_GAMETYPE_DUELTOURNAMENT && TipoJuego != MMATCH_GAMETYPE_QUEST && TipoJuego != MMATCH_GAMETYPE_SURVIVAL && TipoJuego != MMATCH_GAMETYPE_SKILLWAR ) 
 			{
 				for (ZCharacterManager::iterator itor = m_CharacterManager.begin(); itor != m_CharacterManager.end(); ++itor)
 				{
