@@ -3711,6 +3711,18 @@ void ZMyCharacter::OnDamaged(ZObject* pAttacker, rvector srcPos, ZDAMAGETYPE dam
 	ZCharacter::OnDamaged(pAttacker,srcPos,damageType,weaponType,fDamage*factorTriple,fPiercingRatio,nMeleeType);
 	ZGetScreenEffectManager()->AddAlert(GetPosition(),m_Direction, srcPos);
 
+	if(ZGetGameClient()->GetMatchStageSetting()->GetGameType() != MMATCH_GAMETYPE_QUEST && ZGetGameClient()->GetMatchStageSetting()->GetGameType() != MMATCH_GAMETYPE_SURVIVAL) {
+	if(!pAttacker->IsNPC()) {
+	ZCharacter* pCharacter = (ZCharacter*)ZGetCharacterManager()->Find(pAttacker->GetUID());
+		if(pCharacter != ZGetGame()->m_pMyCharacter) {
+			float addedDamage = fDamage*factorTriple;
+			if(addedDamage > ZGetGame()->m_pMyCharacter->GetHP()+ZGetGame()->m_pMyCharacter->GetAP()) {
+				addedDamage = ZGetGame()->m_pMyCharacter->GetHP()+ZGetGame()->m_pMyCharacter->GetAP();
+			}
+				ZPostDamageCounter(addedDamage, pAttacker->GetUID());
+		}
+	}
+}
 	// 내가 던진 수류탄/로켓
 	if(damageType==ZD_EXPLOSION)
 	{

@@ -669,7 +669,9 @@ bool ZGameAction::ApplyFireEnchantDamage(ZObject* pTarget, ZObject* pOwner, int 
 	bool bObserverTarget = pTarget->GetUID()==ZGetCombatInterface()->GetTargetUID();
 	char* szSoundName = (bObserverTarget) ? "we_enfire_2d" : "we_enfire";
 	ZGetSoundEngine()->PlaySound(szSoundName, soundPos);
-
+	if(ZGetGameClient()->GetMatchStageSetting()->GetGameType() != MMATCH_GAMETYPE_QUEST && ZGetGameClient()->GetMatchStageSetting()->GetGameType() != MMATCH_GAMETYPE_SURVIVAL) {
+		ZPostDamageCounter(nDamage*(nDuration*0.001f), pOwner->GetUID());
+	}
 	pMod->BeginDamage( pOwner, nDamage, nDuration * 0.001f);
 	return true;
 }
@@ -710,7 +712,9 @@ bool ZGameAction::ApplyPoisonEnchantDamage(ZObject* pTarget, ZObject* pOwner, in
 	bool bObserverTarget = pTarget->GetUID()==ZGetCombatInterface()->GetTargetUID();
 	char* szSoundName = (bObserverTarget) ? "we_enpoison_2d" : "we_enpoison";
 	ZGetSoundEngine()->PlaySound(szSoundName, soundPos);
-
+	if(ZGetGameClient()->GetMatchStageSetting()->GetGameType() != MMATCH_GAMETYPE_QUEST && ZGetGameClient()->GetMatchStageSetting()->GetGameType() != MMATCH_GAMETYPE_SURVIVAL) {
+		ZPostDamageCounter(nDamage*(nDuration*0.001f), pOwner->GetUID());
+	}
 	pMod->BeginDamage( pOwner, nDamage, nDuration * 0.001f);
 	return true;
 }
@@ -730,7 +734,9 @@ bool ZGameAction::ApplyLightningEnchantDamage(ZObject* pTarget, ZObject* pOwner,
 	bool bObserverTarget = pTarget->GetUID()==ZGetCombatInterface()->GetTargetUID();
 	char* szSoundName = (bObserverTarget) ? "we_enlight_2d" : "we_enlight";
 	ZGetSoundEngine()->PlaySound(szSoundName, soundPos);
-
+	if(ZGetGameClient()->GetMatchStageSetting()->GetGameType() != MMATCH_GAMETYPE_QUEST && ZGetGameClient()->GetMatchStageSetting()->GetGameType() != MMATCH_GAMETYPE_SURVIVAL) {
+		ZPostDamageCounter(nDamage*(nDuration*0.001f), pOwner->GetUID());
+	}
 	pMod->BeginDamage( pOwner, nDamage, nDuration * 0.001f);
 	return true;
 }
