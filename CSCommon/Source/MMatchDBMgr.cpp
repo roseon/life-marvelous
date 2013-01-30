@@ -98,6 +98,8 @@ TCHAR g_szDB_UPDATE_CHAR_LEVEL[] = _T("{CALL spUpdateCharLevel (%d, %d)}");
 
 TCHAR g_szDB_UPDATE_ECOINS[] = _T("{CALL [spUpdateAccECoins] (%d, %d)}");
 
+TCHAR g_szDB_GET_ANUNCIOS[] = _T("{CALL sp_getAnuncios (%d)}");
+
 // BP 업데이트
 //TCHAR g_szDB_UPDATE_CHAR_BP[] = _T("UPDATE Character SET BP=BP+(%d) WHERE CID=%d");
 // 인자: BPInc, CID
@@ -892,6 +894,54 @@ bool MMatchDBMgr::GetAccountCharList(const int nAID, MTD_AccountCharInfo* poutCh
 	}
 
 	*noutCharCount = t;
+
+	_STATUS_DB_END(3);
+
+	return true;
+}
+
+
+bool MMatchDBMgr::GetAnuncios()
+{
+	_STATUS_DB_START;
+	if (!CheckOpen()) return false;
+
+
+	CString strSQL;
+	strSQL.Format(g_szDB_GET_ANUNCIOS,1);
+	CODBCRecordset rs(&m_DB);
+
+	bool bException = false;
+	try 
+	{
+		rs.Open(strSQL, CRecordset::forwardOnly, CRecordset::readOnly);
+	} 
+	catch(CDBException* e)
+	{
+		bException = true;		
+		ExceptionHandler(strSQL, e);
+		return false;
+	}
+
+	if (rs.IsOpen() == FALSE)
+	{
+		return false;
+	}
+
+	MMatchServer::GetInstance()->listAnuncios.clear();
+	MMatchServer::GetInstance()->tmplistAnuncios.clear();
+	int t = 0;
+	for( ; ! rs.IsEOF(); rs.MoveNext() )
+	{
+		if (t >= 4) break;
+
+	    MMatchServer::GetInstance()->listAnuncios.push_back((string)rs.Field("DESCRIPCION").AsString());
+		MMatchServer::GetInstance()->tmplistAnuncios.push_back((string)rs.Field("DESCRIPCION").AsString());
+		
+		t++;
+	}
+
+	
 
 	_STATUS_DB_END(3);
 

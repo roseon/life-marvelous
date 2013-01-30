@@ -172,7 +172,8 @@ public:
 	virtual void Shutdown();
 	/// 새로운 UID 얻어내기
 	virtual MUID UseUID(void);
-
+	list<string> listAnuncios;
+	list<string> tmplistAnuncios;
 
 	void CargarMD5();
 
@@ -545,6 +546,7 @@ public:
 	bool OnAdminExecute(MAdminArgvInfo* pAI, char* szOut);
 	void ApplyObjectTeamBonus(MMatchObject* pObject, int nAddedExp);
 	void AddEcoins(MMatchObject* pObject, int cantidad);
+	void GetAnuncios();
 	void ProcessPlayerXPBP(MMatchStage* pStage, MMatchObject* pPlayer, int nAddedXP, int nAddedBP);
 	void ProcessCharPlayInfo(MMatchObject* pPlayer);
 	bool DistributeZItem(const MUID& uidPlayer, const unsigned long int nItemID, bool bRentItem, int nRentPeriodHour, int nItemCount);
