@@ -1909,9 +1909,9 @@ bool ZGame::OnCommand_Immidiate(MCommand* pCommand)
 						)
 					{
 						m_pMyCharacter->OnDamaged(pCharacter, pos, (ZDAMAGETYPE)pInfo->nDamageType, (MMatchWeaponType)pInfo->nWeaponType, pInfo->fDamage, pInfo->fRatio);
-						pCharacter->GetStatus().CheckCrc();
+						/*pCharacter->GetStatus().CheckCrc();
 						pCharacter->GetStatus().Ref().nDamageCaused += pInfo->fDamage;
-						pCharacter->GetStatus().MakeCrc();
+						pCharacter->GetStatus().MakeCrc();*/
 					}
 				}
 				else
@@ -1919,15 +1919,15 @@ bool ZGame::OnCommand_Immidiate(MCommand* pCommand)
 					ZCharacter* pCharacter = ZGetCharacterManager()->Find(pCommand->GetSenderUID());
 					if (pCharacter != ZGetGame()->m_pMyCharacter) 
 					{
-						pCharacter->GetStatus().CheckCrc();
+					/*	pCharacter->GetStatus().CheckCrc();
 						pCharacter->GetStatus().Ref().nDamageCaused += pInfo->fDamage;
-						pCharacter->GetStatus().MakeCrc();
+						pCharacter->GetStatus().MakeCrc();*/
 					}
 					else
 					{
-						m_pMyCharacter->GetStatus().CheckCrc();
+						/*m_pMyCharacter->GetStatus().CheckCrc();
 						m_pMyCharacter->GetStatus().Ref().nDamageCaused += pInfo->fDamage;
-						m_pMyCharacter->GetStatus().MakeCrc();
+						m_pMyCharacter->GetStatus().MakeCrc();*/
 					}
 				}
 			}
