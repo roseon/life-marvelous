@@ -2,6 +2,19 @@
 #include "ZTimer.h"
 #include <Windows.h>
 
+typedef unsigned __int8  UI8;
+typedef   signed __int8  SI8;
+typedef unsigned __int16 UI16;
+typedef   signed __int16 SI16;
+typedef unsigned __int32 UI32;
+typedef   signed __int32 SI32;
+typedef unsigned __int64 UI64;
+typedef   signed __int64 SI64;
+
+
+typedef SI32 (NTAPI *PFN_NT_QUERY_PERFORMANCE_COUNTER)(OUT PLARGE_INTEGER PerformanceCounter, OUT PLARGE_INTEGER PerformanceFrequency OPTIONAL);
+PFN_NT_QUERY_PERFORMANCE_COUNTER NtQueryPerformanceCounter;
+
 class ZTimerEvent
 {
 private:
@@ -55,6 +68,11 @@ ZTimer::ZTimer()
 	m_pThistime = new DWORD;
 	m_pLasttime = new DWORD;
 	m_pElapsed = new DWORD;
+	HMODULE Ntdll;
+
+	Ntdll = GetModuleHandleW(L"ntdll.dll");
+	NtQueryPerformanceCounter = (PFN_NT_QUERY_PERFORMANCE_COUNTER) GetProcAddress(Ntdll, "NtQueryPerformanceCounter");
+
 }
 
 ZTimer::~ZTimer()
@@ -83,49 +101,31 @@ void ZTimer::ResetFrame()
 float ZTimer::UpdateFrame()
 {
 	LARGE_INTEGER qwTime;
+	LARGE_INTEGER PerformanceCounter;
 
 	if(!m_bInitialized)
 	{
 		m_bInitialized = true;
 		LARGE_INTEGER qwTicksPerSec;
-		(*m_pbUsingQPF) = QueryPerformanceFrequency( &qwTicksPerSec );
-		if( (*m_pbUsingQPF) )
-		{
-			(*m_pllQPFTicksPerSec) = qwTicksPerSec.QuadPart;
+		(*m_pbUsingQPF) = NtQueryPerformanceCounter( &PerformanceCounter, &qwTicksPerSec );
+		(*m_pllQPFTicksPerSec) = qwTicksPerSec.QuadPart;
 
-			QueryPerformanceCounter( &qwTime );
+		NtQueryPerformanceCounter( &qwTime, &PerformanceCounter );
 
-			(*m_pllLastElapsedTime) = qwTime.QuadPart;
-		}
-		else
-		{
-			(*m_pLasttime) = timeGetTime();
-		}
+		(*m_pllLastElapsedTime) = qwTime.QuadPart;
 	}
 
 	float fElapsed;
 
-	if( (*m_pbUsingQPF) )
-	{
-		QueryPerformanceCounter( &qwTime );
+	NtQueryPerformanceCounter( &qwTime, &PerformanceCounter );
 
-		fElapsed = (float)((double) ( qwTime.QuadPart - (*m_pllLastElapsedTime) ) / (double) (*m_pllQPFTicksPerSec));
-		(*m_pllLastElapsedTime) = qwTime.QuadPart;
-	}
-	else
-	{
-		(*m_pThistime) = timeGetTime();
-		(*m_pElapsed) = (*m_pThistime) - (*m_pLasttime);
-		(*m_pLasttime) = (*m_pThistime);
-
-		fElapsed=.001f*(float)(*m_pElapsed);
-	}
+	fElapsed = (float)((double) ( qwTime.QuadPart - (*m_pllLastElapsedTime) ) / (double) (*m_pllQPFTicksPerSec));
+	(*m_pllLastElapsedTime) = qwTime.QuadPart;
 
 	
 	UpdateEvents();			// 타이머 이벤트들 업데이트
 
 	ShiftFugitiveValues();
-
 	return fElapsed;
 }
 
@@ -210,5 +210,3 @@ void ZTimer::ClearTimerEvent(ZGameTimerEventCallback* fnTimerEventCallback)
 	}
 
 }
-
-

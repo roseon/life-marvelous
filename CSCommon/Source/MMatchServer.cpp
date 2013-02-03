@@ -344,7 +344,7 @@ MMatchServer::MMatchServer(void) : m_pScheduler( 0 ), m_pDTMgr(new MMatchDuelTou
 	SetDefaultChannelName("PUBLIC-");
 
 	m_bCreated = false;
-
+	iniciaAnuncios=false;
 	m_pAuthBuilder = NULL;
 
 	// m_pScheduler = 0;
@@ -1014,6 +1014,7 @@ int MMatchServer::OnConnected(MUID* pTargetUID, MUID* pAllocUID, unsigned int nT
 	//return MCommandCommunicator::OnConnected(pTargetUID, pAllocUID, nTimeStamp, pCommObj);
 }
 
+
 void MMatchServer::OnRun(void)
 {
 //	CheckMemoryCorruption();
@@ -1245,27 +1246,30 @@ void MMatchServer::OnRun(void)
 	}
 
 	/*ANUNCIOS SEXUALES*/
-	#define MINTERVAL_REQUEST_ANUNCIOS_DB	( 1 * 60 * 1000)//( 2 * 60 * 60 * 1000)	// 2 horas px
+	#define MINTERVAL_REQUEST_ANUNCIOS_DB	( 2 * 60 * 60 * 1000)//( 2 * 60 * 60 * 1000)	// 2 horas px
 	static unsigned long tmLastRequestAnuncionsDB = nGlobalClock;
-	if (nGlobalClock - tmLastRequestAnuncionsDB > MINTERVAL_REQUEST_ANUNCIOS_DB)
+	if ((nGlobalClock - tmLastRequestAnuncionsDB > MINTERVAL_REQUEST_ANUNCIOS_DB) || (!iniciaAnuncios))
 	{
-		mlog("MMatchServer::GetAnuncios()\n");
+		LOG(LOG_PROG, "SE CARGARON LOS ANUNCIOS");
 		tmLastRequestAnuncionsDB = nGlobalClock;
+		iniciaAnuncios=true;
 		/*Aca hago toda la wea de bd*/
 		if (!m_MatchDBMgr.GetAnuncios()){
+			
 			LOG(LOG_PROG, "NO SE CARGARON LOS ANUNCIOS");
+			
 			
 		}
 		
 	}
 
-	#define MINTERVAL_LEER_ANUNCIOS	( 1 * 60 * 1000)	// 15 min px
+	#define MINTERVAL_LEER_ANUNCIOS	( 3 * 60 * 1000)	// 15 min px
 	static unsigned long tmLastReadAnuncions = nGlobalClock;
 	if (nGlobalClock - tmLastReadAnuncions > MINTERVAL_LEER_ANUNCIOS)
 	{
 		tmLastReadAnuncions = nGlobalClock;
 		/*Aca leo los anuncios sexuales*/
-		mlog("MMatchServer::ANCUNCIO SEXUAL");
+		//mlog("MMatchServer::ANCUNCIO SEXUAL");
 		GetAnuncios();
 		
 	}
@@ -1323,8 +1327,14 @@ void MMatchServer::OnRun(void)
 }
 
 void MMatchServer::GetAnuncios(){
-	if(listAnuncios.size()==0){
+	if(tmplistAnuncios.size()==0){
 	return;
+	}
+
+
+		
+	if(listAnuncios.size()==0){
+	listAnuncios=tmplistAnuncios;
 	}
 
 	string strAnuncio;
@@ -1333,15 +1343,15 @@ void MMatchServer::GetAnuncios(){
 		break;
 	}
 
-	mlog("MMatchServer::ANCUNCIO :%s\n",strAnuncio.c_str());
+//	mlog("MMatchServer::ANCUNCIO :%s\n",strAnuncio.c_str());
 	
 	//lo mando a todos
 	MMatchServer* pServer = MMatchServer::GetInstance();
 	
-	MCommand* pCmd = pServer->CreateCommand(MC_ADMIN_ANNOUNCE, MUID(0,0));
+	MCommand* pCmd = pServer->CreateCommand(MC_ADMIN_FORUM_ANNOUNCE, MUID(0,0));
 	pCmd->AddParameter(new MCmdParamUID(MUID(0,0)));
 	pCmd->AddParameter(new MCmdParamStr(strAnuncio.c_str()));
-	pCmd->AddParameter(new MCmdParamUInt(ZAAT_CHAT));
+	//pCmd->AddParameter(new MCmdParamUInt(ZAAT_CHAT));
 	pServer->RouteToAllClient(pCmd);
 	//lo borro
 	 listAnuncios.remove(strAnuncio);
@@ -2249,6 +2259,16 @@ void MMatchServer::OnUserWhisper(const MUID& uidComm, char* pszSenderName, char*
 		return;
 	}
 
+	if (pTargetObj->IsBusy())
+	{
+		string status = pTargetObj->GetStatus();
+		MCommand* pCmd = CreateCommand(MC_MATCH_ANNOUNCE, MUID(0,0));
+		pCmd->AddParameter(new MCmdParamUInt(0));
+		pCmd->AddParameter(new MCmdParamStr(status.c_str()));
+		RouteToListener(pObj, pCmd);
+		return;
+	}
+
 	MCommand* pCmd = CreateCommand(MC_MATCH_USER_WHISPER, MUID(0,0));
 	pCmd->AddParameter(new MCmdParamStr(pObj->GetName()));
 	pCmd->AddParameter(new MCmdParamStr(pszTargetName));
@@ -2256,6 +2276,20 @@ void MMatchServer::OnUserWhisper(const MUID& uidComm, char* pszSenderName, char*
 	RouteToListener(pTargetObj, pCmd);
 }
 
+
+void MMatchServer::OnUserStatus(const MUID& uidComm, char* pszStatus)
+{
+	MMatchObject* pObj = GetObject(uidComm);
+	if (!pObj) return;
+
+	if (!stricmp(pszStatus, "off"))
+	{
+		pObj->SetBusy(false, "");
+		return;
+	}
+
+	pObj->SetBusy(true, pszStatus);
+}
 void MMatchServer::OnUserWhere(const MUID& uidComm, char* pszTargetName)
 {
 	if (strlen(pszTargetName) < 2) return;
@@ -2449,6 +2483,17 @@ void MMatchServer::OnChatRoomInvite(const MUID& uidComm, const char* pszTargetNa
 		NotifyMessage(pTargetObj->GetUID(), MATCHNOTIFY_USER_INVITE_IGNORED);
 		return;
 	}
+
+	if (pTargetObj->IsBusy())
+	{
+		string status = pTargetObj->GetStatus();
+		MCommand* pCmd = CreateCommand(MC_MATCH_ANNOUNCE, MUID(0,0));
+		pCmd->AddParameter(new MCmdParamUInt(0));
+		pCmd->AddParameter(new MCmdParamStr(status.c_str()));
+		RouteToListener(pPlayer, pCmd);
+		return;
+	}
+
 
 	MCommand* pCmd = CreateCommand(MC_MATCH_CHATROOM_INVITE, MUID(0,0));
 	pCmd->AddParameter(new MCmdParamStr(pPlayer->GetName()));

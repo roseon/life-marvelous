@@ -72,6 +72,9 @@ public:
 	bool GetAnuncios();
 	bool UpdateLastConnDate(const TCHAR* szUserID, const TCHAR* szIP);
 	bool CreateHwid(const int AID, const TCHAR* szHwid); //Steven: Hwid
+	bool InsertLadderGame(int nCID, const MUID& uidStage);
+	bool GetLadderGame(int nCID, MUID* uidStage);
+	bool RemoveLadderGame(int nCID);
 	bool CreateAccount(const TCHAR* szUserID,					// 사용자ID
 		const TCHAR* szPassword,					// 패스워드
 		const int nCert,							// 실명인증

@@ -95,7 +95,7 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType);
 #define MC_ADMIN_RELOAD_GAMBLEITEM			534		///< 겜블 아이템 정보 다시 읽기.
 #define MC_ADMIN_DUMP_GAMBLEITEM_LOG		535		///< 현제 겜블 아이템 정보를 Log파일에 출력한다.
 #define MC_ADMIN_ASSASIN					536		///< GM이 커맨더가 된다.
-
+#define MC_ADMIN_FORUM_ANNOUNCE				537		
 
 
 // 이벤트 마스터 명령어
@@ -695,6 +695,8 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType);
 #define MC_MATCH_SKILFLAG_CAP				    	50028
 
 #define MC_GUNZ_DAMAGECOUNTER						50029
+#define MC_PLAYER_STATUS							60008
+
 
 #define MC_MATCH_ASSIGN_DEITY						3002
 #define MC_MATCH_ASSIGN_REVERSE_BERSERKER			3003

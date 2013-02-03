@@ -26,6 +26,7 @@ void ZCommandUDPHackShield::Init()
 	AddDeniedCommand(MC_MATCH_RESPONSE_RESULT);
 
 	AddDeniedCommand(MC_ADMIN_ANNOUNCE);
+	AddDeniedCommand(MC_ADMIN_FORUM_ANNOUNCE);
 	AddDeniedCommand(MC_ADMIN_REQUEST_SERVER_INFO);
 	AddDeniedCommand(MC_ADMIN_RESPONSE_SERVER_INFO);
 	AddDeniedCommand(MC_ADMIN_SERVER_HALT);

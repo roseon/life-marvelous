@@ -730,6 +730,17 @@ bool ZGameClient::OnCommand(MCommand* pCommand)
 				OnAdminAnnounce(ZGetStringResManager()->GetStringFromXml(szChat), ZAdminAnnounceType(nMsgType));
 			}
 			break;
+
+		case MC_ADMIN_FORUM_ANNOUNCE:
+			{
+				char szChat[512];
+				unsigned long int nMsgType = 0;
+
+				pCommand->GetParameter(szChat, 1, MPT_STR, sizeof(szChat) );
+
+				OnAdminForumAnnounce(szChat);
+			}
+			break;
 		case MC_MATCH_GAME_LEVEL_UP:
 			{
 				MUID uidChar;

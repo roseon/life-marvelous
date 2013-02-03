@@ -214,6 +214,7 @@ inline MMatchTeam NegativeTeam(MMatchTeam nTeam)
 // string buffer length define.
 
 #define ANNOUNCE_STRING_LEN				64
+#define ANNOUNCE_FORUM_STRING_LEN		256
 #define MSG_STRING_LEN					64
 #define CHAT_STRING_LEN					64
 #define VOTE_DISCUSS_STRING_LEN			64

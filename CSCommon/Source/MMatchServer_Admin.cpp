@@ -71,6 +71,30 @@ void MMatchServer::OnAdminAnnounce(const MUID& uidAdmin, const char* szChat, uns
 }
 
 
+void MMatchServer::OnAdminForumAnnounce(const MUID& uidAdmin, const char* szChat)
+{
+	MMatchObject* pObj = GetObject(uidAdmin);
+	if (pObj == NULL) return;
+
+	// 관리자 권한을 가진 사람이 아니면 연결을 끊는다.
+	if (!IsAdminGrade(pObj))
+	{
+//		DisconnectObject(uidAdmin);		
+		return;
+	}
+
+	char szMsg[256];
+	strcpy(szMsg, szChat);
+	MCommand* pCmd = CreateCommand(MC_ADMIN_FORUM_ANNOUNCE, MUID(0,0));
+	pCmd->AddParameter(new MCmdParamUID(uidAdmin));
+	pCmd->AddParameter(new MCmdParamStr(szMsg));
+
+	RouteToAllClient(pCmd);
+}
+
+
+
+
 
 void MMatchServer::OnAdminRequestServerInfo(const MUID& uidAdmin)
 {
@@ -362,6 +386,7 @@ void MMatchServer::OnStop(const MUID& uidSender, const char* pName)
 		if (pTarget)
 		{
 			MCommand* pCmd = CreateCommand(MC_ADMIN_STOP, MUID(0,0));
+			pCmd->AddParameter(new MCmdParamStr(pName));
 			RouteToListener(pTarget, pCmd);
 		}
 		LogCommand("stop", pObj->GetCharInfo()->m_szName, "");

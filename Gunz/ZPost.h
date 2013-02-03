@@ -75,6 +75,11 @@ inline void ZPostMove(rvector& vPos, rvector& vDir, rvector& vVelocity,
 	ZPOSTCMD5(MC_PEER_MOVE, MCommandParameterPos(vPos.x, vPos.y, vPos.z), MCommandParameterVector(vDir.x, vDir.y, vDir.z), MCommandParameterVector(vVelocity.x, vVelocity.y, vVelocity.z), MCommandParameterInt(int(upper)), MCommandParameterInt(int(lower)));
 }
 
+inline void ZPostUserStatus(char* pszStatus)
+{
+	ZPOSTCMD1(MC_PLAYER_STATUS, MCmdParamStr(pszStatus));//  MCmdParamStatus(pszStatus));
+}
+
 //DLL Injection 핵에서 fShotTime을 조작해 무기의 딜레이 타임을 무시하고 겁나 빠른 속도로 shot이 가능하게 만든다. 
 //정상적인 루틴에서 해당 함수가 불리는 경우를 보면 fShotTime = g_pGame->GetTime()이다. 따라서 파라미터로 fShotTime 을 갖고 있는거보다
 //해당 함수가 불렸을 때 패킷에 g_pGame->GetTime()을 보내는 것으로 대체했다. 

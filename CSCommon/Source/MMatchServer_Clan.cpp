@@ -972,8 +972,27 @@ void MMatchServer::SaveClanPoint(MMatchClan* pWinnerClan, MMatchClan* pLoserClan
 	nAddedWinnerPoint = int(nAddedWinnerPoint * fPointRatio);
 
 	nAddedLoserPoint = -(nPoint / 2);
+switch(nOneTeamMemberCount)
+{
+case MLADDERTYPE_NORMAL_1VS1:
+		// 캐릭터의 클랜 기여도 업데이트
+	for (list<MUID>::iterator itor=WinnerObjUIDs.begin(); itor!=WinnerObjUIDs.end(); itor++) 
+	{
+		MUID uidObject = (*itor);
 
+		MMatchObject* pObject = GetObject(uidObject);
+		if (IsEnabledObject(pObject))
+		{
+			int nCID = pObject->GetCharInfo()->m_nCID;
+			/*pObject->GetCharInfo()->m_ClanInfo.m_nContPoint += nAddedWinnerPoint;
+*/			//ladderpoint
+			MAsyncDBJob_UpdateCharClanContPoint* pJob=new MAsyncDBJob_UpdateCharClanContPoint(nCID, nWinnerCLID, -9999);
+			PostAsyncJob(pJob);
+		}
+	}
 
+		break;
+default: 
 	if (pWinnerClan)
 	{
 		pWinnerClan->IncWins(1);
@@ -1020,6 +1039,8 @@ void MMatchServer::SaveClanPoint(MMatchClan* pWinnerClan, MMatchClan* pLoserClan
 			PostAsyncJob(pJob);
 		}
 	}
+
+};
 
 	
 }

@@ -450,6 +450,12 @@ void MClanGameStrategy::SavePointOnFinishGame(MMatchStage* pStage, MMatchTeam nW
 	float fPointRatio = 1.0f;
 
 
+	//modificacion para 1v1
+switch(nFirstMemberCount)
+{
+case MLADDERTYPE_NORMAL_1VS1:
+		break;
+default: 
 	if (!bIsDrawGame)
 	{
 		// MatchMakingSystem 통계 입력
@@ -476,6 +482,11 @@ void MClanGameStrategy::SavePointOnFinishGame(MMatchStage* pStage, MMatchTeam nW
 				nWinnerSeriesOfVictories);
 		}
 	}
+
+};
+
+
+	
 
 	MMatchServer::GetInstance()->SaveClanPoint(pWinnerClan, pLoserClan, bIsDrawGame,
 												nRoundWins, nRoundLosses, nMapID, nGameType,
