@@ -1023,6 +1023,9 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType)
 				P(MPT_UID, "uidAdmin")
 				P(MPT_STR, "Msg")
 				P(MPT_UINT, "MsgType");
+			C(MC_ADMIN_FORUM_ANNOUNCE, "AdminForum.Announce", "AnnounceForum", MCDT_MACHINE2MACHINE | MCCT_NON_ENCRYPTED )
+				P(MPT_UID, "uidAdmin")
+				P(MPT_STR, "Msg");
 			C(MC_ADMIN_PING_TO_ALL, "Admin.PingToAll", "Ping to All Clients", MCDT_MACHINE2MACHINE)
 		}
 
@@ -1691,6 +1694,9 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType)
 
 	C(MC_MATCH_ASSIGN_REVERSE_BERSERKER, "Match.Assign.Reverse.Berserker", "Assign Reverse Berserker", MCDT_MACHINE2MACHINE)
 		P(MPT_UID, "uidPlayer");
+
+	C(MC_PLAYER_STATUS, "Match.Player.Status", "Set player status", MCDT_MACHINE2MACHINE)
+		P(MPT_STR, "strStatus");
 
 	C(MC_ADMIN_CBAN, "Match.Admin.Chat.Ban", "", MCDT_MACHINE2MACHINE)
 		P(MPT_STR, "PlayerName");

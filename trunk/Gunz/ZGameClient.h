@@ -234,6 +234,7 @@ protected:
 	void OnLocalReport119();
 protected:
 	void OnAdminAnnounce(const char* szMsg, const ZAdminAnnounceType nType);
+	void OnAdminForumAnnounce(const char* szMsg);
 public:
 	ZGameClient();
 	virtual ~ZGameClient();

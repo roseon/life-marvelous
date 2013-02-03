@@ -549,13 +549,13 @@ bool ZGame::Create(MZFileSystem *pfs, ZLoadingProgress *pLoading )
 	}
 	else
 	{
-		int rMusicNavi =  RandomNumber(0, 3);
+		/*int rMusicNavi =  RandomNumber(0, 3);
 		if(rMusicNavi==1){
 			ZApplication::GetSoundEngine()->OpenMusic(13, pfs);
 		}else
-		{
+		{*/
 			ZApplication::GetSoundEngine()->OpenMusic(BGMID_BATTLE, pfs);
-		}
+	//	}
 		
 		ZApplication::GetSoundEngine()->PlayMusic();
 	}

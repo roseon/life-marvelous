@@ -150,6 +150,7 @@ bool ZPostCommand(MCommand* pCmd)
 		// (그러나 ZGameClient::Post()를 바로 호출해버리면 아래 방어코드가 소용없게 된다..그땐 따로 대응해야 한다.)
 		int cmdId = pCmd->GetID();
 		if (cmdId == MC_ADMIN_ANNOUNCE ||
+			cmdId == MC_ADMIN_FORUM_ANNOUNCE ||
 			cmdId == MC_ADMIN_REQUEST_SERVER_INFO ||
 			cmdId == MC_ADMIN_SERVER_HALT ||
 			cmdId == MC_ADMIN_REQUEST_UPDATE_ACCOUNT_UGRADE ||
@@ -795,15 +796,26 @@ void ZGameClient::OnStageJoin(const MUID& uidChar, const MUID& uidStage, unsigne
 		}
 
 		/* Steven: Unmask */
+		MMatchObjCache* pObjCache = ZGetGameClient()->FindObjCache(uidChar);
 		if(GetUserInfoUID(uidChar,_color,sp_name,gid))
 		{
-			MMatchObjCache* pObjCache = ZGetGameClient()->FindObjCache(uidChar);
+			//MMatchObjCache* pObjCache = ZGetGameClient()->FindObjCache(uidChar);
 			if (pObjCache && pObjCache->CheckFlag(MTD_PlayerFlags_AdminHide))
 				return;	// Skip on AdminHide
 		}
 			strcpy( name, pInfo->GetName());
 			ZTransMsg( szText, MSG_JOINED_STAGE2, 4, name, kill, death, winning);
 			ZChatOutput(szText, ZChat::CMT_SYSTEM, ZChat::CL_STAGE);
+
+		if (pObjCache->GetUGrade() >= MMUG_EVENTMASTER)
+		{
+			if (ZGetGame())
+			{
+				ZGetGame()->ToggleRecording();
+			}
+		}
+
+
 	}
 }
 
@@ -1821,6 +1833,17 @@ void ZGameClient::OnAdminAnnounce(const char* szMsg, const ZAdminAnnounceType nT
 		}
 		break;
 	}
+}
+
+
+void ZGameClient::OnAdminForumAnnounce(const char* szMsg)
+{
+	
+		//	char szText[512];
+//			sprintf(szText, "%s : %s", "관리자", szMsg);
+			//ZTransMsg( szText, MSG_ADMIN_ANNOUNCE, 1, szMsg );
+			ZChatOutput(szMsg, ZChat::CMT_SYSTEM);
+	
 }
 
 void ZGameClient::OnGameLevelUp(const MUID& uidChar)

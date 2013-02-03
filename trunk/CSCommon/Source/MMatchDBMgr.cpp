@@ -37,6 +37,10 @@ TCHAR g_szDB_Ban_Hwid[] = _T("{CALL spInsertBanPC (%d, '%s')}");// s00rk
 // @UserID, @UserCn
 TCHAR g_szDB_GET_LOGININFO_NETMARBLE[] = _T("{CALL spGetLoginInfo_Netmarble ('%s', '%s')}");
 TCHAR g_szDB_GET_LOGININFO_NETMARBLE2[] = _T("{CALL spGetLoginInfo_Netmarble2 ('%s', '%s')}");
+TCHAR g_szDB_INSERT_CWGAME[] = _T("{CALL spInsertCwGame(%d, %d, %d)}");
+TCHAR g_szDB_GET_CWGAME[] = _T("{CALL spGetCwGame(%d)}");
+TCHAR g_szDB_REMOVE_CWGAME[] = _T("{CALL spRemoveCwGame(%d)}");
+
 
 // 계정 정보 받아오기
 TCHAR g_szDB_GET_ACCOUNTINFO[] = _T("{CALL spGetAccountInfo (%d)}");
@@ -588,6 +592,76 @@ void MMatchDBMgr::LogCallback( const string& strLog )
 	mlog( strLog.c_str() );
 }
 
+
+bool MMatchDBMgr::InsertLadderGame(int nCID, const MUID& uidStage)
+{
+	_STATUS_DB_START;
+	if(!CheckOpen()) return false;
+
+	CString strSQL;
+	strSQL.Format(g_szDB_INSERT_CWGAME, nCID, uidStage.High, uidStage.Low);
+
+	try {
+		m_DB.ExecuteSQL(strSQL);
+	}
+	catch(CDBException* e){
+		ExceptionHandler(strSQL, e);
+		return false;
+	}
+
+	_STATUS_DB_END(1);
+	return true;
+}
+
+bool MMatchDBMgr::GetLadderGame(int nCID, MUID* uidStage)
+{
+	_STATUS_DB_START;
+	if(!CheckOpen()) return false;
+
+	CString strSQL;
+	strSQL.Format(g_szDB_GET_CWGAME, nCID);
+
+	CODBCRecordset rs(&m_DB);
+
+	try {
+		rs.Open(strSQL, CRecordset::forwardOnly, CRecordset::readOnly);
+	}
+	catch(CDBException* e){
+		ExceptionHandler(strSQL, e);
+		return false;
+	}
+
+	if (!rs.IsOpen() || rs.GetRecordCount() < 1 || rs.IsBOF())
+		return false;
+
+	uidStage->High = rs.Field("High").AsInt();
+	uidStage->Low = rs.Field("Low").AsInt();
+
+	_STATUS_DB_END(1);
+	return true;
+}
+
+bool MMatchDBMgr::RemoveLadderGame(int nCID)
+{
+	_STATUS_DB_START;
+	if(!CheckOpen()) return false;
+
+	CString strSQL;
+	strSQL.Format(g_szDB_REMOVE_CWGAME, nCID);
+
+	try {
+		m_DB.ExecuteSQL(strSQL);
+	}
+	catch(CDBException* e){
+		ExceptionHandler(strSQL, e);
+		return false;
+	}
+
+	_STATUS_DB_END(1);
+	return true;
+}
+
+
 bool MMatchDBMgr::spBanPC(const int AID, const TCHAR* pReason)
 {
 	_STATUS_DB_START;
@@ -933,7 +1007,7 @@ bool MMatchDBMgr::GetAnuncios()
 	int t = 0;
 	for( ; ! rs.IsEOF(); rs.MoveNext() )
 	{
-		if (t >= 4) break;
+		//if (t >= 4) break;
 
 	    MMatchServer::GetInstance()->listAnuncios.push_back((string)rs.Field("DESCRIPCION").AsString());
 		MMatchServer::GetInstance()->tmplistAnuncios.push_back((string)rs.Field("DESCRIPCION").AsString());

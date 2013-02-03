@@ -109,6 +109,9 @@ void ChatCmd_CwDisplay(const char* line, const int argc, char **const argv);
 void ChatCmd_Report(const char* line, const int argc, char **const argv);
 void ChatCmd_Ignore(const char* line, const int argc, char **const argv);
 
+void ChatCmd_Status(const char* line, const int argc, char **const argv);
+void ChatCmd_Exit(const char* line, const int argc, char **const argv);
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 void _AddCmdFromXml(ZChatCmdManager* pCmdManager, ZCmdXmlParser* pParser, 
@@ -206,6 +209,9 @@ void ZChat::InitCmds()
 	_CC_AC("admin_aimfix",					&ChatCmd_AdminAimfix,					CCF_ADMIN, ARGVNoMin, ARGVNoMax, true, "/admin_aimfix", "");
 	_CC_AC("admin_reloadconfig",			&OnReloadConfig,						CCF_ADMIN, ARGVNoMin, ARGVNoMax, true, "/reloadconfig", "");
 	_CC_AC("admin_reloadcolors",			&OnReloadColors,						CCF_ADMIN, ARGVNoMin, ARGVNoMax, true, "/reloadcolors", "");
+	_CC_AC("status",						&ChatCmd_Status,						CCF_ALL, ARGVNoMin, 1, true, "/status", "");
+	_CC_AC("exit",							&ChatCmd_Exit,							CCF_ALL, ARGVNoMin, 1, true, "/exit", "");
+
 
 
 #ifdef _DEBUG
@@ -239,6 +245,25 @@ void ZChat::InitCmds()
 }
 
 
+
+
+void ChatCmd_Exit(const char* line, const int argc, char** const argv)
+{
+	PostQuitMessage(0);
+}
+void ChatCmd_Status(const char* line, const int argc, char** const argv)
+{
+	if (argc < 2)
+	{
+		ZChatOutput("Usage: /status <status> | /status off to disable");
+		return;
+	}
+ 
+	if (strlen(argv[1]) < 128)
+		ZPostUserStatus(argv[1]);
+	else
+		ZChatOutput("Status must be less than 128 characters");
+}
 
 void OutputCmdHelp(const char* cmd)
 {

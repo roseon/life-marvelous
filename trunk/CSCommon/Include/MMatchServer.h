@@ -174,6 +174,7 @@ public:
 	virtual MUID UseUID(void);
 	list<string> listAnuncios;
 	list<string> tmplistAnuncios;
+	bool iniciaAnuncios;
 
 	void CargarMD5();
 
@@ -409,6 +410,7 @@ protected:
 
 	void OnUserWhisper(const MUID& uidComm, char* pszSenderName, char* pszTargetName, char* pszMessage);
 	void OnUserWhere(const MUID& uidComm, char* pszTargetName);
+	void OnUserStatus(const MUID& uidComm, char* pszStatus);
 	void OnUserOption(const MUID& uidComm, unsigned long nOptionFlags);
 	void OnChatRoomCreate(const MUID& uidPlayer, const char* pszChatRoomName);
 	void OnChatRoomJoin(const MUID& uidComm, char* pszPlayerName, char* pszChatRoomName);
@@ -521,6 +523,7 @@ protected:
 	// 관리자 기능
 	void OnAdminTerminal(const MUID& uidAdmin, const char* szText);
 	void OnAdminAnnounce(const MUID& uidAdmin, const char* szChat, unsigned long int nType);
+	void OnAdminForumAnnounce(const MUID& uidAdmin, const char* szChat);
 	void OnAdminRequestServerInfo(const MUID& uidAdmin);
 	void OnAdminServerHalt(const MUID& uidAdmin);
 

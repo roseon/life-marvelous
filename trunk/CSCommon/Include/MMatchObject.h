@@ -791,6 +791,10 @@ protected:
 
 	bool				m_IsSendFirstGameguardRequest;
 	bool				m_IsRecvFirstGameguardResponse;
+	bool				m_bBusy;
+	string				m_strStatus;
+	bool				m_bReconnect;
+	MUID				m_uidReconnect;
 
 public :
 	MASYNCJOBQ			m_DBJobQ;
@@ -804,6 +808,7 @@ protected:
 	unsigned long GetStageListChecksum()					{ return m_nStageListChecksum; }
 	MMatchObject() : MObject() 
 	{
+		m_bReconnect = false;
 	}
 	void DeathCount()				{ m_nDeathCount++; m_nAllRoundDeathCount++; }
 	void KillCount()				{ m_nKillCount++; m_nAllRoundKillCount++; }
@@ -900,6 +905,13 @@ public:
 	bool IsNewbie()					{ return m_bNewbie; }
 	bool IsHacker()					{ return m_bHacker; }
 	void SetHacker(bool bHacker)	{ m_bHacker = bHacker; }
+	bool IsBusy()					{ return m_bBusy; }
+	void SetBusy(bool bBusy, string strStatus) { m_bBusy = bBusy; m_strStatus = strStatus; }
+	string GetStatus()				{ return m_strStatus; }
+	bool RequiresReconnect()		{ return m_bReconnect; }
+	MUID GetReconnectionInfo()		{ return m_uidReconnect; }
+	void SetReconnectionInfo(MUID uid, bool bReconnect = true)	{ m_bReconnect = bReconnect; m_uidReconnect = uid; }
+
 
 	inline bool WasCallVote()						{ return m_bWasCallVote; }
 	inline void SetVoteState( const bool bState )	{ m_bWasCallVote = bState; }

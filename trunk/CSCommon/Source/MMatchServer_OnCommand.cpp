@@ -780,6 +780,20 @@ bool MMatchServer::OnCommand(MCommand* pCommand)
 				OnAdminAnnounce(pCommand->GetSenderUID(), szChat, nMsgType);
 			}
 			break;
+		case MC_ADMIN_FORUM_ANNOUNCE:
+			{
+				MUID uidAdmin;
+				static char szChat[ ANNOUNCE_FORUM_STRING_LEN ];
+				unsigned long int nMsgType = 0;
+
+				pCommand->GetParameter(&uidAdmin, 0, MPT_UID);
+				pCommand->GetParameter(szChat, 1, MPT_STR, ANNOUNCE_FORUM_STRING_LEN );
+			    OnAdminForumAnnounce(pCommand->GetSenderUID(), szChat);
+
+				// OnAdminAnnounce(uidAdmin, szChat, nMsgType);
+				//OnAdminAnnounce(pCommand->GetSenderUID(), szChat, nMsgType);
+			}
+			break;
 		case MC_ADMIN_TERMINAL:
 			{
 				// MUID uidAdmin;
@@ -1458,6 +1472,14 @@ bool MMatchServer::OnCommand(MCommand* pCommand)
 			}
 			break;
 		
+		case MC_PLAYER_STATUS:
+			{
+				char szStatus[128];
+
+				pCommand->GetParameter(szStatus, 0, MPT_STR, 128);
+				OnUserStatus(pCommand->GetSenderUID(), szStatus);
+			}
+			break;
 		case MC_QUEST_REQUEST_NPC_DEAD:
 			{
 				MUID uidKiller, uidNPC;
