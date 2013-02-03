@@ -956,11 +956,11 @@ void MMatchStage::OnFinishGame()
 	for (MUIDRefCache::iterator i=m_ObjUIDCaches.begin(); i!=m_ObjUIDCaches.end(); i++) {
 		MMatchObject* pObj = (MMatchObject*)(*i).second;
 		if (pObj->GetStageState()) pObj->SetStageState(MOSS_NONREADY);
-		if (pObj->RequiresReconnect())
+		/*if (pObj->RequiresReconnect())
 		{
 			pObj->SetReconnectionInfo(MUID(-1,-1), false);
 			MGetMatchServer()->GetDBMgr()->RemoveLadderGame(pObj->GetCharInfo()->m_nCID);
-		}
+		}*/
 		pObj->SetLaunchedGame(false);
 	}
 

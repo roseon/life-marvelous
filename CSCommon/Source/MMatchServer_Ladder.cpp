@@ -101,8 +101,8 @@ void MMatchServer::LadderGameLaunch(MLadderGroup* pGroupA, MLadderGroup* pGroupB
 		MUID uidPlayer = (*i);
 		LadderJoin(uidPlayer, uidStage, MMT_RED);
 		MMatchObject* pObj = GetObject(uidPlayer);
-		if (pObj)
-			m_MatchDBMgr.InsertLadderGame(pObj->GetCharInfo()->m_nCID, uidStage);
+		/*if (pObj)
+			m_MatchDBMgr.InsertLadderGame(pObj->GetCharInfo()->m_nCID, uidStage);*/
 
 	}
 	// B 그룹 입장
@@ -110,9 +110,9 @@ void MMatchServer::LadderGameLaunch(MLadderGroup* pGroupA, MLadderGroup* pGroupB
 	{
 		MUID uidPlayer = (*i);
 		LadderJoin(uidPlayer, uidStage, MMT_BLUE);
-		MMatchObject* pObj = GetObject(uidPlayer);
+		/*MMatchObject* pObj = GetObject(uidPlayer);
 		if (pObj)
-			m_MatchDBMgr.InsertLadderGame(pObj->GetCharInfo()->m_nCID, uidStage);
+			m_MatchDBMgr.InsertLadderGame(pObj->GetCharInfo()->m_nCID, uidStage);*/
 	}
 
 	// Agent 준비

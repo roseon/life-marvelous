@@ -153,19 +153,19 @@ void MAsyncDBJob_GetCharInfo::Run(void* pContext)
 		return;
 	}
 
-	MMatchServer* pServer = MGetMatchServer();
-	MMatchObject* pObj = pServer->GetObject(GetUID());
+	//MMatchServer* pServer = MGetMatchServer();
+	//MMatchObject* pObj = pServer->GetObject(GetUID());
 
-	if (pObj)
-	{
-		int nCid = m_pCharInfo->m_nCID;//pObj->GetCharInfo()->m_nCID;
-		MUID uidStage(-1, -1);
+	//if (pObj)
+	//{
+	//	int nCid = m_pCharInfo->m_nCID;//pObj->GetCharInfo()->m_nCID;
+	//	MUID uidStage(-1, -1);
 
-		if (pServer->GetDBMgr()->GetLadderGame(nCid, &uidStage))
-		{
-			pObj->SetReconnectionInfo(uidStage);
-		}
-	}
+	//	if (pServer->GetDBMgr()->GetLadderGame(nCid, &uidStage))
+	//	{
+	//		pObj->SetReconnectionInfo(uidStage);
+	//	}
+	//}
 
 	SetResult(MASYNC_RESULT_SUCCEED);
 }
