@@ -387,8 +387,8 @@ int MBMatchServer::ValidateStageJoin(const MUID& uidPlayer, const MUID& uidStage
 			}
 		}
 
-		MMatchLadderTeamInfo* pRed = pStage->GetLadderTeam(MMT_RED);
-		MMatchLadderTeamInfo* pBlue = pStage->GetLadderTeam(MMT_BLUE);
+		//MMatchLadderTeamInfo* pRed = pStage->GetLadderTeam(MMT_RED);
+		//MMatchLadderTeamInfo* pBlue = pStage->GetLadderTeam(MMT_BLUE);
 
 		/*MMatchLadderTeamInfo* pRed = pStage->GetLadderTeam(MMT_RED);
 		MMatchLadderTeamInfo* pBlue = pStage->GetLadderTeam(MMT_BLUE);
@@ -398,10 +398,10 @@ int MBMatchServer::ValidateStageJoin(const MUID& uidPlayer, const MUID& uidStage
 			return MERR_CANNOT_JOIN_STAGE_BY_BAN;
 		}
 		*/
-		if (pStage->GetStageType() == MST_LADDER && pObj->GetCharInfo()->m_ClanInfo.m_nClanID != pRed->nCLID && pObj->GetCharInfo()->m_ClanInfo.m_nClanID != pBlue->nCLID && !pObj->RequiresReconnect())
+	/*	if (pStage->GetStageType() == MST_LADDER && pObj->GetCharInfo()->m_ClanInfo.m_nClanID != pRed->nCLID && pObj->GetCharInfo()->m_ClanInfo.m_nClanID != pBlue->nCLID && !pObj->RequiresReconnect())
  		{
  			return MERR_CANNOT_JOIN_STAGE;
- 		}
+ 		}*/
 		// 게임중참가
 		if ((pStage->GetStageSetting()->GetForcedEntry() == false) && 
 			(pStage->GetState() != STAGE_STATE_STANDBY))

@@ -576,13 +576,13 @@ void MMatchDBMgr::ExceptionHandler(CString strSQL, CDBException* e)
 	m_nExceptionCnt++;
 	if( m_nExceptionCnt > 5 )
 	{		
-		Log("%s MMatchDBMgr::ExceptionHandler - Disconnect\n", szTime.GetBuffer());
+		/*Log("%s MMatchDBMgr::ExceptionHandler - Disconnect\n", szTime.GetBuffer());
 		Disconnect();
 
 		Log("%s MMatchDBMgr::ExceptionHandler - Reconnect\n", szTime.GetBuffer());
 		Log("%s MMatchDBMgr::ExceptionHandler - This(%d)\n", szTime.GetBuffer(), this);
 		Connect();
-
+*/
 		m_nExceptionCnt = 0;
 	}
 }

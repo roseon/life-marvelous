@@ -1245,34 +1245,34 @@ void MMatchServer::OnRun(void)
 		m_connectionHistory.Update( nGlobalClock );
 	}
 
-	/*ANUNCIOS SEXUALES*/
-	#define MINTERVAL_REQUEST_ANUNCIOS_DB	( 2 * 60 * 60 * 1000)//( 2 * 60 * 60 * 1000)	// 2 horas px
-	static unsigned long tmLastRequestAnuncionsDB = nGlobalClock;
-	if ((nGlobalClock - tmLastRequestAnuncionsDB > MINTERVAL_REQUEST_ANUNCIOS_DB) || (!iniciaAnuncios))
-	{
-		LOG(LOG_PROG, "SE CARGARON LOS ANUNCIOS");
-		tmLastRequestAnuncionsDB = nGlobalClock;
-		iniciaAnuncios=true;
-		/*Aca hago toda la wea de bd*/
-		if (!m_MatchDBMgr.GetAnuncios()){
-			
-			LOG(LOG_PROG, "NO SE CARGARON LOS ANUNCIOS");
-			
-			
-		}
-		
-	}
+	///*ANUNCIOS SEXUALES*/
+	//#define MINTERVAL_REQUEST_ANUNCIOS_DB	( 2 * 60 * 60 * 1000)//( 2 * 60 * 60 * 1000)	// 2 horas px
+	//static unsigned long tmLastRequestAnuncionsDB = nGlobalClock;
+	//if ((nGlobalClock - tmLastRequestAnuncionsDB > MINTERVAL_REQUEST_ANUNCIOS_DB) || (!iniciaAnuncios))
+	//{
+	//	LOG(LOG_PROG, "SE CARGARON LOS ANUNCIOS");
+	//	tmLastRequestAnuncionsDB = nGlobalClock;
+	//	iniciaAnuncios=true;
+	//	/*Aca hago toda la wea de bd*/
+	//	if (!m_MatchDBMgr.GetAnuncios()){
+	//		
+	//		LOG(LOG_PROG, "NO SE CARGARON LOS ANUNCIOS");
+	//		
+	//		
+	//	}
+	//	
+	//}
 
-	#define MINTERVAL_LEER_ANUNCIOS	( 3 * 60 * 1000)	// 15 min px
-	static unsigned long tmLastReadAnuncions = nGlobalClock;
-	if (nGlobalClock - tmLastReadAnuncions > MINTERVAL_LEER_ANUNCIOS)
-	{
-		tmLastReadAnuncions = nGlobalClock;
-		/*Aca leo los anuncios sexuales*/
-		//mlog("MMatchServer::ANCUNCIO SEXUAL");
-		GetAnuncios();
-		
-	}
+	//#define MINTERVAL_LEER_ANUNCIOS	( 3 * 60 * 1000)	// 15 min px
+	//static unsigned long tmLastReadAnuncions = nGlobalClock;
+	//if (nGlobalClock - tmLastReadAnuncions > MINTERVAL_LEER_ANUNCIOS)
+	//{
+	//	tmLastReadAnuncions = nGlobalClock;
+	//	/*Aca leo los anuncios sexuales*/
+	//	//mlog("MMatchServer::ANCUNCIO SEXUAL");
+	//	GetAnuncios();
+	//	
+	//}
 
 	
 //	CheckMemoryCorruption();
