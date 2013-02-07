@@ -246,18 +246,18 @@ bool MMatchServer::ChannelJoin(const MUID& uidPlayer, const MUID& uidChannel)
 	}
 
 	ChannelResponsePlayerList(uidPlayer, uidChannelTmp, 0);
-	if(pObj->RequiresReconnect())
-	{
-		MUID uidStage = pObj->GetReconnectionInfo();
+	//if(pObj->RequiresReconnect())
+	//{
+	//	MUID uidStage = pObj->GetReconnectionInfo();
 
-		MCommand* pCmd = CreateCommand(MC_MATCH_ANNOUNCE, MUID(0,0));
-		pCmd->AddParameter(new MCmdParamUInt(1));
-		pCmd->AddParameter(new MCmdParamStr("You were in a stage before disconnecting! Rejoining now"));
-		RouteToListener(pObj, pCmd);
+	//	MCommand* pCmd = CreateCommand(MC_MATCH_ANNOUNCE, MUID(0,0));
+	//	pCmd->AddParameter(new MCmdParamUInt(1));
+	//	pCmd->AddParameter(new MCmdParamStr("You were in a stage before disconnecting! Rejoining now"));
+	//	RouteToListener(pObj, pCmd);
 
-		StageJoin(pObj->GetUID(), uidStage);
+	//	StageJoin(pObj->GetUID(), uidStage);
 
-	}
+	//}
 	return true;
 }
 
