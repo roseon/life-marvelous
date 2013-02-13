@@ -471,6 +471,7 @@ MCommand* MMatchServer::CreateCmdMatchResponseLoginFailed(const MUID& uidComm, c
 	pCmd->AddParameter(new MCommandParameterString("Ana"));
 	pCmd->AddParameter(new MCommandParameterUChar((unsigned char)MMUG_FREE));
 	pCmd->AddParameter(new MCommandParameterInt((int)MMPG_FREE));
+	pCmd->AddParameter(new MCommandParameterInt(0));
 	pCmd->AddParameter(new MCommandParameterUID(MUID(0,0)));
 	pCmd->AddParameter(new MCommandParameterBool((bool)MGetServerConfig()->IsEnabledSurvivalMode()));
 	pCmd->AddParameter(new MCommandParameterBool((bool)MGetServerConfig()->IsEnabledDuelTournament()));

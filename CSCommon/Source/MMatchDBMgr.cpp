@@ -1253,7 +1253,7 @@ bool MMatchDBMgr::DeleteCharacter(const int nAID, const int nCharIndex, const TC
 	_STATUS_DB_START;
 
 	if (!CheckOpen()) return false;
-	if(strstr(szCharName, "-") || strstr(szCharName, "'") || strstr(szCharName, "-") || strstr(szCharName, ";") || strstr(szCharName, "}") || strstr(szCharName, "%"))
+	if(strstr(szCharName, "--") || strstr(szCharName, "'") || strstr(szCharName, ";") || strstr(szCharName, "}") || strstr(szCharName, "%"))
 	{
 		return false;
 	}
@@ -1578,7 +1578,7 @@ bool MMatchDBMgr::InsertChatLog(const unsigned long int nCID, const char* szMsg,
 	return true;
 
 	if (!CheckOpen()) return false;
-	if(strstr(szMsg, "-") || strstr(szMsg, "'") || strstr(szMsg, "-") || strstr(szMsg, ";") || strstr(szMsg, "}") || strstr(szMsg, "%"))
+	if(strstr(szMsg, "--") || strstr(szMsg, "'") || strstr(szMsg, ";") || strstr(szMsg, "}") || strstr(szMsg, "%"))
 	{
 		return false;
 	}
@@ -1710,7 +1710,7 @@ bool MMatchDBMgr::InsertCharMakingLog(const unsigned int nAID, const char* szCha
 	_STATUS_DB_START;
 	if (!CheckOpen()) return false;
 
-	if(strstr(szCharName, "-") || strstr(szCharName, "'") || strstr(szCharName, "-") || strstr(szCharName, ";") || strstr(szCharName, "}") || strstr(szCharName, "%"))
+	if(strstr(szCharName, "--") || strstr(szCharName, "'") || strstr(szCharName, ";") || strstr(szCharName, "}") || strstr(szCharName, "%"))
 	{
 		return false;
 	}
@@ -2146,7 +2146,7 @@ bool MMatchDBMgr::GetClanIDFromName(const TCHAR* szClanName, int* poutCLID)
 	_STATUS_DB_START;
 	if (!CheckOpen()) return false;
 
-	if(strstr(szClanName, "-") || strstr(szClanName, "'") || strstr(szClanName, "-") || strstr(szClanName, ";") || strstr(szClanName, "}") || strstr(szClanName, "%"))
+	if(strstr(szClanName, "--") || strstr(szClanName, "'") ||  strstr(szClanName, ";") || strstr(szClanName, "}") || strstr(szClanName, "%"))
 	{
 		return false;
 	}
@@ -2190,7 +2190,7 @@ bool MMatchDBMgr::CreateClan(const TCHAR* szClanName, const int nMasterCID, cons
 	_STATUS_DB_START;
 	if (!CheckOpen()) return false;
 
-	if(strstr(szClanName, "-") || strstr(szClanName, "'") || strstr(szClanName, "-") || strstr(szClanName, ";") || strstr(szClanName, "}") || strstr(szClanName, "%"))
+	if(strstr(szClanName, "--") || strstr(szClanName, "'") ||  strstr(szClanName, ";") || strstr(szClanName, "}") || strstr(szClanName, "%"))
 	{
 		return false;
 	}
@@ -2238,7 +2238,7 @@ bool MMatchDBMgr::ReserveCloseClan(const int nCLID, const TCHAR* szClanName, con
 	_STATUS_DB_START;
 	if (!CheckOpen()) return false;
 
-	if(strstr(szClanName, "-") || strstr(szClanName, "'") || strstr(szClanName, "-") || strstr(szClanName, ";") || strstr(szClanName, "}") || strstr(szClanName, "%"))
+	if(strstr(szClanName, "--") || strstr(szClanName, "'") ||  strstr(szClanName, ";") || strstr(szClanName, "}") || strstr(szClanName, "%"))
 	{
 		return false;
 	}
@@ -2346,7 +2346,7 @@ bool MMatchDBMgr::ExpelClanMember(const int nCLID, const int nAdminGrade, TCHAR*
 	_STATUS_DB_START;
 	if (!CheckOpen()) return false;
 
-	if(strstr(szMember, "-") || strstr(szMember, "'") || strstr(szMember, "-") || strstr(szMember, ";") || strstr(szMember, "}") || strstr(szMember, "%"))
+	if(strstr(szMember, "--") || strstr(szMember, "'") ||  strstr(szMember, ";") || strstr(szMember, "}") || strstr(szMember, "%"))
 	{
 		return false;
 	}
@@ -2618,11 +2618,11 @@ bool MMatchDBMgr::WinTheClanGame(const int nWinnerCLID, const int nLoserCLID, co
 	_STATUS_DB_START;
 	if (!CheckOpen()) return false;
 
-	if(strstr(szWinnerMembers, "-") || strstr(szWinnerMembers, "'") || strstr(szWinnerMembers, "-") || strstr(szWinnerMembers, ";") || strstr(szWinnerMembers, "}") || strstr(szWinnerMembers, "%"))
+	if(strstr(szWinnerMembers, "--") || strstr(szWinnerMembers, "'") || strstr(szWinnerMembers, ";") || strstr(szWinnerMembers, "}") || strstr(szWinnerMembers, "%"))
 	{
 		return false;
 	}
-	if(strstr(szLoserMembers, "-") || strstr(szLoserMembers, "'") || strstr(szLoserMembers, "-") || strstr(szLoserMembers, ";") || strstr(szLoserMembers, "}") || strstr(szLoserMembers, "%"))
+	if(strstr(szLoserMembers, "--") || strstr(szLoserMembers, "'") ||  strstr(szLoserMembers, ";") || strstr(szLoserMembers, "}") || strstr(szLoserMembers, "%"))
 	{
 		return false;
 	}
