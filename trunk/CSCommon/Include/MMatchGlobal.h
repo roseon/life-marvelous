@@ -222,7 +222,7 @@ inline MMatchTeam NegativeTeam(MMatchTeam nTeam)
 // stage
 #define STAGENAME_LENGTH				64	// 방이름 길이
 #define STAGEPASSWD_LENGTH				8	// 패스워드 최대길이
-#define STAGE_QUEST_MAX_PLAYER			8	// 퀘스트 게임모드의 최대인원
+#define STAGE_QUEST_MAX_PLAYER			4	// 퀘스트 게임모드의 최대인원
 #define STAGE_MAX_PLAYERCOUNT			127  // 기본모드(퀘스트, 클래을 제외) 최대 인원. - by SungE 2007-05-14.
 #define STAGE__MAX_ROUND				65535	// 스테이지에서 사용할 수 있는 최대 라운드 수. 이수를 넘을 수 없다. - By SungE 2007-11-07
 // clan
