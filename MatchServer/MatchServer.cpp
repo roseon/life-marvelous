@@ -21,6 +21,7 @@
 #include "MTraceMemory.h"
 #include "MMatchCheckLoopTime.h"
 #include "MMatchStatus.h"
+#include "CrashRpt.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -226,6 +227,9 @@ void CMatchServerApp::HeartBeat()
 
 int CMatchServerApp::Run()
 {
+	 
+
+
 	ASSERT_VALID(this);
 	_AFX_THREAD_STATE* pState = AfxGetThreadState();
 
@@ -258,6 +262,8 @@ int CMatchServerApp::Run()
 			}
 		}
 	}
+
+
 	return 0;
 }
 
