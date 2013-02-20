@@ -10,7 +10,7 @@ class ZWeaponScreenEffect
 private:
 	MMatchWeaponType		m_nWeaponType;
 	MBitmap*				m_pSniferPanel;
-	ZScreenEffect*			m_pSniferPanelEffect;
+	//ZScreenEffect*			m_pSniferPanelEffect;
 	float PrevMouseSens;
 
 

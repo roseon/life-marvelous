@@ -1394,10 +1394,12 @@ void ZMyCharacter::OnGadget_Snifer()
 		if (zStatus.m_bSniferMode)
 		{
 			ci->OnGadget(MWT_SNIFER);
+			ZGetGameInterface()->GetCamera()->m_fDist = 260.0f;
 		}
 		else
 		{
 			ci->OnGadgetOff();
+			ZGetGameInterface()->GetCamera()->m_fDist = 290.0f;
 		}
 	}
 }
@@ -1600,6 +1602,11 @@ void ZMyCharacter::OnChangeWeapon(char* WeaponModelName)
 	if (ci)
 	{
 		ci->OnGadgetOff();
+	}
+
+	if (ZGetGameInterface()->GetCamera()->m_fDist != 290.0f)
+	{
+		ZGetGameInterface()->GetCamera()->m_fDist = 290.0f;
 	}
 
 
