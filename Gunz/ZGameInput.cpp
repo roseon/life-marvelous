@@ -20,7 +20,7 @@
 #include "ZInput.h"
 #include "ZBandiCapturer.h" // µ¿¿µ»ó Ä¸ÃÄ
 
-#include "SnapShot.h"
+//#include "SnapShot.h"
 #include "ZWeaponScreenEffect.h"
 
 #undef _DONOTUSE_DINPUT_MOUSE
@@ -332,7 +332,7 @@ bool ZGameInput::OnEvent(MEvent* pEvent)
 			{
 
 			case VK_SNAPSHOT:
-				blTakeScreenShot();
+			//	blTakeScreenShot();
 				return true;
 
 			case VK_NUMPAD1:
