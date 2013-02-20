@@ -1376,13 +1376,13 @@ void ZMyCharacter::OnGadget_Hanging()
 
 void ZMyCharacter::OnGadget_Snifer()
 {
-	static DWORD lastSnifer = 0;
+	/*static DWORD lastSnifer = 0;
 
 	DWORD current = timeGetTime();
 	DWORD elapsed = current - lastSnifer;
 	if (elapsed < 500) return;
 
-	lastSnifer = current;
+	lastSnifer = current;*/
 
 	ZMyCharaterStatusBitPacking & zStatus = m_statusFlags.Ref();
 
@@ -1464,23 +1464,31 @@ void ZMyCharacter::ProcessGadget()
 
 
 	// Range타입의 무기타입마다 각각의 Gadget을 수행한다
-	if (ZIsActionKeyPressed(ZACTION_USE_WEAPON2))
+	//fix snipa //Andres
+	if(zStatus.m_bRButtonFirstPressed && ZIsActionKeyPressed(ZACTION_USE_WEAPON2))
 	{
-		ZItem* pSelectedItem = GetItems()->GetSelectedWeapon();
-		if (pSelectedItem)
+		MMatchWeaponType type = MWT_NONE;
+
+		ZItem* pSItem = GetItems()->GetSelectedWeapon();
+
+		if(pSItem && pSItem->GetDesc())
+			type = pSItem->GetDesc()->m_nWeaponType.Ref();
+		
+		switch(type)
 		{
-			if(pSelectedItem->GetDesc()) {
-
-				switch (pSelectedItem->GetDesc()->m_nWeaponType.Ref())
-				{
-				case MWT_SNIFER:
-					{
-						OnGadget_Snifer();
-					}
-					break;
-				}
-
+		case MWT_SNIFER :
+			zStatus.m_bSniferMode = !zStatus.m_bSniferMode;
+			ZCombatInterface* ci=ZGetCombatInterface();
+		
+			if (zStatus.m_bSniferMode)
+			{
+				ci->OnGadget(MWT_SNIFER);
 			}
+			else
+			{
+				ci->OnGadgetOff();
+			}
+			break;
 		}
 	}
 
