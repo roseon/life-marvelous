@@ -116,7 +116,7 @@ void ZWeaponScreenEffect::Create()
 	{
 		if (m_pSniferPanel) delete m_pSniferPanel;
 		m_pSniferPanel = new MBitmapR2;
-		((MBitmapR2*)m_pSniferPanel)->Create("snifer.png", RGetDevice(), "CUSTOM/CROSSHAIR/snifer.png");
+		((MBitmapR2*)m_pSniferPanel)->Create("snifer.png", RGetDevice(), "CUSTOM/snifer.png");
 	}
 }
 
