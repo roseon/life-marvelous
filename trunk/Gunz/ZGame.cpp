@@ -1772,6 +1772,11 @@ bool GetUserGradeIDColor(MMatchUserGradeID UGradeID,MCOLOR& CharNameColor,char* 
 bool ZGame::GetUserNameColor(MUID uid,MCOLOR& UserNameColor,char* sp_name)
 {
 	MMatchUserGradeID gid = MMUG_FREE;
+	MMatchPremiumGradeID pgid ;
+	MMatchObjCache* pObjCache = ZGetGameClient()->FindObjCache(uid);
+	 if(pObjCache) {
+				  pgid=pObjCache->GetPGrade();
+			 }
 
 	if(m_pMyCharacter->GetUID()==uid) 
 	{
@@ -1789,10 +1794,20 @@ bool ZGame::GetUserNameColor(MUID uid,MCOLOR& UserNameColor,char* sp_name)
 		MMatchPeerInfo* pPeer = ZGetGameClient()->FindPeer(uid);
 		if(pPeer) {
 			 gid = pPeer->CharInfo.nUGradeID;
+			
+			
 		}		
 	}
 
-	return GetUserGradeIDColor( gid, UserNameColor, sp_name );
+	 if(pObjCache) {
+				return  GetPremiumGradeIDColor(pgid,UserNameColor,sp_name);
+			 }else
+	 {
+		 return GetUserGradeIDColor( gid, UserNameColor, sp_name );
+			 }
+
+
+	
 }
 
 void ZTranslateCommand(MCommand* pCmd, string& strLog)
@@ -2056,7 +2071,7 @@ bool ZGame::OnCommand_Immidiate(MCommand* pCommand)
 
 			MUID uid=pCommand->GetSenderUID();
 			ZCharacter *pChar=ZGetCharacterManager()->Find(uid);
-
+			
 			MCOLOR UserNameColor = MCOLOR(190,190,0);
 
 			char sp_name[256];
