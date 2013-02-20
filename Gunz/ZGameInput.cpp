@@ -20,6 +20,9 @@
 #include "ZInput.h"
 #include "ZBandiCapturer.h" // µ¿¿µ»ó Ä¸ÃÄ
 
+#include "SnapShot.h"
+#include "ZWeaponScreenEffect.h"
+
 #undef _DONOTUSE_DINPUT_MOUSE
 
 ZGameInput* ZGameInput::m_pInstance = NULL;
@@ -327,6 +330,11 @@ bool ZGameInput::OnEvent(MEvent* pEvent)
 
 			switch (pEvent->nKey)
 			{
+
+			case VK_SNAPSHOT:
+				blTakeScreenShot();
+				return true;
+
 			case VK_NUMPAD1:
 					/*
 					ZGetGame()->m_pMyCharacter->GetStatus().CheckCrc();
@@ -576,6 +584,9 @@ bool ZGameInput::OnEvent(MEvent* pEvent)
 
 			int nDelta = pEvent->nDelta;
 
+			const ZCharaterStatusBitPacking &uStatus = ZGetGame()->m_pMyCharacter->m_dwStatusBitPackingValue.Ref();
+			ZMyCharaterStatusBitPacking & zStatus = ZGetGame()->m_pMyCharacter->m_statusFlags.Ref();
+
 			if ( (ZGetMyInfo()->IsAdminGrade() && ZGetCombatInterface()->GetObserver()->IsVisible()) ||
 				(ZGetGameInterface()->GetScreenDebugger()->IsVisible()) || 
 				(!ZGetGameInterface()->m_bViewUI))
@@ -586,6 +597,22 @@ bool ZGameInput::OnEvent(MEvent* pEvent)
 				pCamera->m_fDist=min(CAMERA_DIST_MAX,pCamera->m_fDist);
 				break;
 			}
+
+			if(zStatus.m_bSniferMode)
+			{
+				if(pEvent->nDelta<0)
+				{
+					g_fFOV+=(05.0f / 180.0f * pi);
+				}
+				else
+				{
+					g_fFOV-=(05.0f / 180.0f * pi);
+				}
+				g_fFOV=max((10.0f / 180.0f * pi),g_fFOV);
+				g_fFOV=min((40.0f / 180.0f * pi),g_fFOV);
+				break;
+			}
+
 
 //			if (nDelta > 0)	ZGetGameInterface()->ChangeWeapon(ZCWT_PREV);
 //			else if (nDelta < 0) ZGetGameInterface()->ChangeWeapon(ZCWT_NEXT);
