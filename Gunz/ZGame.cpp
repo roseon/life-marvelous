@@ -2105,7 +2105,8 @@ bool ZGame::OnCommand_Immidiate(MCommand* pCommand)
 						}
 
 						/* Steven: Unmask */
-						if(!ZGetGame()->m_pMyCharacter->IsDie())
+						//if(!ZGetGame()->m_pMyCharacter->IsDie())
+						if(!pChar->IsDie()) // Que muestre (DEAD) SOLO a los MUERTOS
 							sprintf(szTemp, "%s : %s", pChar->GetProperty()->GetName(),szMsg);
 						else
 							sprintf(szTemp, "(DEAD)%s : %s", pChar->GetProperty()->GetName(),szMsg);
@@ -2128,7 +2129,8 @@ bool ZGame::OnCommand_Immidiate(MCommand* pCommand)
 						ZGetSoundEngine()->PlaySound("if_error");
 						char szTemp[256];
 						/* Steven: Unmask */
-						if(!ZGetGame()->m_pMyCharacter->IsDie())
+						//if(!ZGetGame()->m_pMyCharacter->IsDie())
+						if(!pChar->IsDie()) // Que muestre (DEAD) SOLO a los MUERTOS
 							sprintf(szTemp, "(Team)%s : %s", pChar->GetProperty()->GetName(),szMsg);
 						else
 							sprintf(szTemp, "(DEAD)(Team)%s : %s", pChar->GetProperty()->GetName(),szMsg);
