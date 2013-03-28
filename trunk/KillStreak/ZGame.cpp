@@ -68,14 +68,11 @@
 #include "MMatchUtil.h"
 #include "ZReplay.h"
 #include "ZRuleBerserker.h"
-#include "ZRuleDeity.h"
-#include "ZRuleReverseBerserker.h"
 #include "ZRuleDuelTournament.h"
 #include "ZApplication.h"
 #include "ZGameConst.h"
 
 #include "ZRuleDuel.h"
-#include "ZRuleDeathMatch.h"
 #include "ZMyCharacter.h"
 #include "MMatchCRC32XORCache.h"
 #include "MMatchObjCache.h"
@@ -339,25 +336,6 @@ float CalcActualDamage(ZObject* pAttacker, ZObject* pVictim, float fDamage)
 		}
 	}
 
-	
-	if (ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DEITY)
-	{
-		ZRuleDeity* pRule = (ZRuleDeity*)ZGetGame()->GetMatch()->GetRule();
-		if ((pAttacker) && (pAttacker != pVictim) && (pAttacker->GetUID() == pRule->GetDeityUID()))
-		{
-			return fDamage * pRule->GetBonusDamage();
-		}
-	}
-
-	if (ZGetGame()->GetMatch()->GetMatchType() == MMATCH_GAMETYPE_REVERSE_BERSERKER)
-	{
-		ZRuleReverseBerserker* pRule = (ZRuleReverseBerserker*)ZGetGame()->GetMatch()->GetRule();
-		if ((pAttacker) && (pAttacker != pVictim) && (pAttacker->GetUID() == pRule->GetBerserkerUID()))
-		{
-			return fDamage * BERSERKER_DAMAGE_RATIO;			
-		}
-	}
-
 	return fDamage;
 }
 
@@ -541,24 +519,8 @@ bool ZGame::Create(MZFileSystem *pfs, ZLoadingProgress *pLoading )
 	ZApplication::GetSoundEngine()->OpenMusic(BGMID_BATTLE);
 	ZApplication::GetSoundEngine()->PlayMusic();
 #else
-	//PenguinGuy
-	if( ZGetConfiguration()->GetAudio()->bCustomMusic )
-	{
-		ZApplication::GetSoundEngine()->OpenCustomMusicFileByRand();
-		ZApplication::GetSoundEngine()->PlayMusic( false );
-	}
-	else
-	{
-		/*int rMusicNavi =  RandomNumber(0, 3);
-		if(rMusicNavi==1){
-			ZApplication::GetSoundEngine()->OpenMusic(13, pfs);
-		}else
-		{*/
-			ZApplication::GetSoundEngine()->OpenMusic(BGMID_BATTLE, pfs);
-	//	}
-		
-		ZApplication::GetSoundEngine()->PlayMusic();
-	}
+	ZApplication::GetSoundEngine()->OpenMusic(BGMID_BATTLE, pfs);
+	ZApplication::GetSoundEngine()->PlayMusic();
 #endif
 
 	m_CharacterManager.Clear();
@@ -735,6 +697,8 @@ void ZGame::Destroy()
 
 bool ZGame::CreateMyCharacter(MTD_CharInfo* pCharInfo/*, MTD_CharBuffInfo* pCharBuffInfo*/)
 {
+	if (!m_pMyCharacter) return false;
+
 	m_pMyCharacter->Create(pCharInfo/*, pCharBuffInfo*/);
 	m_pMyCharacter->SetVisible(true);
 
@@ -745,7 +709,7 @@ bool ZGame::CreateMyCharacter(MTD_CharInfo* pCharInfo/*, MTD_CharBuffInfo* pChar
 }
 
 bool ZGame::CheckGameReady()
-{	
+{
 	if (GetReadyState() == ZGAME_READYSTATE_RUN) {
 		return true;
 	} else if (GetReadyState() == ZGAME_READYSTATE_INIT) {
@@ -773,15 +737,6 @@ void ZGame::OnGameResponseTimeSync(unsigned int nLocalTimeStamp, unsigned int nG
 
 void ZGame::Update(float fElapsed)
 {
-	if(ZGetGame()->m_pMyCharacter->LastKeyTime + 150000 < timeGetTime() && ZGetGame()->m_pMyCharacter->WarningOutput == true)
-	{
-		ZChatOutput(ZCOLOR_CHAT_SYSTEM_GAME, "AFK ADVERTENCIA: Seras kickeado en 30 segundos.");
-		ZGetGame()->m_pMyCharacter->WarningOutput = false;
-	}else if(ZGetGame()->m_pMyCharacter->LastKeyTime + 180000 < timeGetTime() && ZGetGame()->m_pMyCharacter->AFK == true){
-		ZApplication::GetGameInterface()->ReserveLeaveBattle();
-		ZGetGame()->m_pMyCharacter->AFK = false;
-	}
-	
 	if (CheckGameReady() == false) {
 		OnCameraUpdate(fElapsed);
 		return;
@@ -817,8 +772,7 @@ void ZGame::Update(float fElapsed)
 		PostSyncReport();
 	}
 
-	if (ZGetGameClient()->GetAimfix())
-		AutoAiming();
+
 
 	CheckMyCharDead(fElapsed);
 	if (m_bReserveObserver)
@@ -1514,9 +1468,6 @@ void ZGame::ProcessDelayedCommand()
 			i = m_DelayedCommandList.erase(i);
 			delete pItem->pCommand;
 			delete pItem;
-
-			if (i == m_DelayedCommandList.end())
-				return;
 		}
 	}
 }
@@ -1599,6 +1550,7 @@ void ZGame::OnReplayRun()
 				mlog("[%d LeaveBattleRoom Time:%3.3f]\n", uidChar.Low, m_ReplayLogTime);
 			}
 			break;
+			
 		}
 #endif
 
@@ -1704,79 +1656,40 @@ bool ZGame::OnCommand(MCommand* pCommand)
 
 // 유저 컬러
 
-bool GetPremiumGradeIDColor(MMatchPremiumGradeID PGradeID,MCOLOR& CharNameColor,char* sp_name)
+bool GetUserGradeIDColor(MMatchUserGradeID gid,MCOLOR& UserNameColor,char* sp_name)
 {
-	/*alex color*/
-	switch (PGradeID) 
-	{
-	case MMPG_FREE: 
-	case MMPG_PREMIUM_IP:
-		return false; 
-		break;
-	default:
-		  unsigned char r = ((PGradeID >> 16) & 0xFF) / 1.0;  // Extract the RR byte
-		  unsigned char g = ((PGradeID >> 8) & 0xFF) / 1.0;   // Extract the GG byte
-		  unsigned char b = ((PGradeID) & 0xFF) / 1.0;        // Extract the BB byte
-		  CharNameColor = MCOLOR(r,g, b); 
-		return true;
-		break;
-	}
-	return true; 
-}
+//		 if(gid == MMUG_FREE)			{ UserNameColor = MCOLOR(200,200,200); return true; }// 무료유저
+//	else if(gid == MMUG_REGULAR)		{ UserNameColor = MCOLOR(200,200,200); return true; }// 정액유저
+//	else if(gid == MMUG_CRIMINAL)		{ UserNameColor = MCOLOR(200,200,200); return true; }// 전과자
+//	else if(gid == MMUG_WARNING_1)		{ UserNameColor = MCOLOR(200,200,200); return true; }// 1차경고
+//	else if(gid == MMUG_WARNING_2)		{ UserNameColor = MCOLOR(200,200,200); return true; }// 2차경고
+//	else if(gid == MMUG_WARNING_3)		{ UserNameColor = MCOLOR(200,200,200); return true; }// 3차경고
+//	else if(gid == MMUG_CHAT_LIMITED)	{ UserNameColor = MCOLOR(200,200,200); return true; }// 채팅 금지
+//	else if(gid == MMUG_PENALTY)		{ UserNameColor = MCOLOR(200,200,200); return true; }// 기간 정지
+//	else if(gid == MMUG_BLOCKED)		{ UserNameColor = MCOLOR(200,200,200); return true; }// 사용정지
 
-bool GetUserGradeIDColor(MMatchUserGradeID UGradeID,MCOLOR& CharNameColor,char* sp_name)
-{
-	/* Steven: Ugrade Colour */
-	switch (UGradeID) 
-	{
-	case MMUG_DEVELOPER: 
-		CharNameColor = MCOLOR(255,128, 64); 
-		break;
-	case MMUG_ADMIN:
-		CharNameColor = MCOLOR(255,128, 64); 
-		break;
-/*	case MMUG_DONATER1:
-		CharNameColor = MCOLOR(153,153, 153); 
-		break;
-	case MMUG_DONATER2:
-		CharNameColor = MCOLOR(102,0, 0); 
-		break;
-	case MMUG_DONATER3:
-		CharNameColor = MCOLOR(255,51, 0); 
-		break;
-	case MMUG_DONATER4:
-		CharNameColor = MCOLOR(255,204, 0); 
-		break;
-	case MMUG_DONATER5:
-		CharNameColor = MCOLOR(251,213, 181); 
-		break;
-	case MMUG_DONATER6:
-		CharNameColor = MCOLOR(0,8, 136); 
-		break;
-	case MMUG_DONATER7:
-		CharNameColor = MCOLOR(0,51, 0); 
-		break;
-	case MMUG_DONATER8:
-		CharNameColor = MCOLOR(149,179, 215); 
-		break;
-	case MMUG_DONATER9:
-		CharNameColor = MCOLOR(255,204, 204); 
-		break; */
-	default:
-		return false;
-		break;
+	if(gid == MMUG_DEVELOPER) 
+	{ 
+		UserNameColor = MCOLOR(255,128, 64); 
+		if(sp_name) { 
+			strcpy(sp_name,ZMsg(MSG_WORD_DEVELOPER));
+		}
+		return true; 
 	}
-	return true; 
+	else if(gid == MMUG_ADMIN) {
+		UserNameColor = MCOLOR(255,128, 64); 
+		if(sp_name) { 
+			strcpy(sp_name,ZMsg(MSG_WORD_ADMIN));
+		}
+		return true; 
+	}
+
+	return false;
 }
 
 bool ZGame::GetUserNameColor(MUID uid,MCOLOR& UserNameColor,char* sp_name)
 {
 	MMatchUserGradeID gid = MMUG_FREE;
-	MMatchPremiumGradeID pgid ;
-	MMatchObjCache* pObjCache = ZGetGameClient()->FindObjCache(uid);
-	 if(pObjCache) {
-				  pgid=pObjCache->GetPGrade();
-			 }
 
 	if(m_pMyCharacter->GetUID()==uid) 
 	{
@@ -1794,20 +1707,10 @@ bool ZGame::GetUserNameColor(MUID uid,MCOLOR& UserNameColor,char* sp_name)
 		MMatchPeerInfo* pPeer = ZGetGameClient()->FindPeer(uid);
 		if(pPeer) {
 			 gid = pPeer->CharInfo.nUGradeID;
-			
-			
 		}		
 	}
 
-	 if(pObjCache) {
-				return  GetPremiumGradeIDColor(pgid,UserNameColor,sp_name);
-			 }else
-	 {
-		 return GetUserGradeIDColor( gid, UserNameColor, sp_name );
-			 }
-
-
-	
+	return GetUserGradeIDColor( gid, UserNameColor, sp_name );
 }
 
 void ZTranslateCommand(MCommand* pCmd, string& strLog)
@@ -1887,83 +1790,6 @@ bool ZGame::OnCommand_Immidiate(MCommand* pCommand)
 
 	switch (pCommand->GetID())
 	{
-	case MC_ADMIN_STOP:
-		{
-			ZCharacter* pMyCharacter = ZGetGame()->m_pMyCharacter;
-			pMyCharacter->GetStatus().CheckCrc();
-			pMyCharacter->GetStatus().Ref().nFrozen = !pMyCharacter->GetStatus().Ref().nFrozen;
-			pMyCharacter->GetStatus().MakeCrc();
-			break;
-		}
-	case MC_GUNZ_ANTILEAD:
-		{
-			MCommandParameter* pParam = pCommand->GetParameter(0);
-
-			if (pParam->GetType() != MPT_BLOB)
-				break;
-
-			void* pBlob = pParam->GetPointer();
-			int nSize = MGetBlobArrayCount(pBlob);
-
-			for (int i = 0; i < nSize; ++i)
-			{
-				MTD_ShotInfo* pInfo = (MTD_ShotInfo*)MGetBlobArrayElement(pBlob, i);
-				ZGetGameClient()->GetPeerPacketCrypter().Decrypt((char*)pInfo, sizeof(MTD_ShotInfo));
-			
-				if (m_pMyCharacter && ZGetGameClient()->GetPlayerUID() != pCommand->GetSenderUID())
-				{
-					ZCharacter* pCharacter = ZGetCharacterManager()->Find(pCommand->GetSenderUID());
-					rvector pos;
-					pos.x = pInfo->fPosX;
-					pos.y = pInfo->fPosY;
-					pos.z = pInfo->fPosZ;
-
-
-					if (pCharacter && pInfo->nLowId == ZGetGameClient()->GetPlayerUID().Low 
-						&& !ZGetGame()->GetMatch()->IsTeamPlay() ||  ((m_pMyCharacter->IsTeam(pCharacter) && ZGetGame()->GetMatch()->GetTeamKillEnabled()) || !m_pMyCharacter->IsTeam(pCharacter))
-						)
-					{
-						m_pMyCharacter->OnDamaged(pCharacter, pos, (ZDAMAGETYPE)pInfo->nDamageType, (MMatchWeaponType)pInfo->nWeaponType, pInfo->fDamage, pInfo->fRatio);
-						/*pCharacter->GetStatus().CheckCrc();
-						pCharacter->GetStatus().Ref().nDamageCaused += pInfo->fDamage;
-						pCharacter->GetStatus().MakeCrc();*/
-					}
-				}
-				else
-				{
-					ZCharacter* pCharacter = ZGetCharacterManager()->Find(pCommand->GetSenderUID());
-					if (pCharacter != ZGetGame()->m_pMyCharacter) 
-					{
-					/*	pCharacter->GetStatus().CheckCrc();
-						pCharacter->GetStatus().Ref().nDamageCaused += pInfo->fDamage;
-						pCharacter->GetStatus().MakeCrc();*/
-					}
-					else
-					{
-						/*m_pMyCharacter->GetStatus().CheckCrc();
-						m_pMyCharacter->GetStatus().Ref().nDamageCaused += pInfo->fDamage;
-						m_pMyCharacter->GetStatus().MakeCrc();*/
-					}
-				}
-			}
-		}
-		break;
-
-	case MC_GUNZ_DAMAGECOUNTER:
-		{
-			//MCommandParameter* pParam = pCommand->GetParameter(0);
-			//MCommandParameter* pParam2 = pCommand->GetParameter(1);
-			int Damage;
-			MUID AttackerUID;
-			pCommand->GetParameter(&Damage,		0, MPT_INT);
-			pCommand->GetParameter(&AttackerUID, 1, MPT_UID);
-					ZCharacter* pCharacter = (ZCharacter*)ZGetCharacterManager()->Find(AttackerUID);
-
-						pCharacter->GetStatus().CheckCrc();
-						pCharacter->GetStatus().Ref().nDamageCaused += Damage;
-						pCharacter->GetStatus().MakeCrc();
-		}
-		break;
 	case MC_MATCH_STAGE_ENTERBATTLE:
 		{	
 			unsigned char nParam;
@@ -2147,7 +1973,7 @@ bool ZGame::OnCommand_Immidiate(MCommand* pCommand)
 
 			MUID uid=pCommand->GetSenderUID();
 			ZCharacter *pChar=ZGetCharacterManager()->Find(uid);
-			
+
 			MCOLOR UserNameColor = MCOLOR(190,190,0);
 
 			char sp_name[256];
@@ -2180,16 +2006,13 @@ bool ZGame::OnCommand_Immidiate(MCommand* pCommand)
 							}
 						}
 
-						/* Steven: Unmask */
-						//if(!ZGetGame()->m_pMyCharacter->IsDie())
-						if(!pChar->IsDie()) // Que muestre (DEAD) SOLO a los MUERTOS
-							sprintf(szTemp, "%s : %s", pChar->GetProperty()->GetName(),szMsg);
-						else
-							sprintf(szTemp, "(DEAD)%s : %s", pChar->GetProperty()->GetName(),szMsg);
-						if(bSpUser) 
-						{
+
+						if(bSpUser) {
+							sprintf(szTemp, "%s : %s", sp_name,szMsg);
 							ZChatOutput(UserNameColor, szTemp);
-						}else {
+						}
+						else {
+							sprintf(szTemp, "%s : %s", pChar->GetProperty()->GetName(),szMsg);
 							ZChatOutput(ChatColor, szTemp);
 						}
 					}
@@ -2204,16 +2027,13 @@ bool ZGame::OnCommand_Immidiate(MCommand* pCommand)
 					{
 						ZGetSoundEngine()->PlaySound("if_error");
 						char szTemp[256];
-						/* Steven: Unmask */
-						//if(!ZGetGame()->m_pMyCharacter->IsDie())
-						if(!pChar->IsDie()) // Que muestre (DEAD) SOLO a los MUERTOS
-							sprintf(szTemp, "(Team)%s : %s", pChar->GetProperty()->GetName(),szMsg);
-						else
-							sprintf(szTemp, "(DEAD)(Team)%s : %s", pChar->GetProperty()->GetName(),szMsg);
-						if(bSpUser) 
-						{
+
+						if(bSpUser) {
+							sprintf(szTemp, "(Team)%s : %s", sp_name,szMsg);
 							ZChatOutput(UserNameColor, szTemp);
-						}else {
+						}
+						else {
+							sprintf(szTemp, "(Team)%s : %s", pChar->GetProperty()->GetName(),szMsg);
 							ZChatOutput(TeamChatColor, szTemp);
 						}
 					}
@@ -2825,6 +2645,7 @@ void ZGame::OnPeerHPAPInfo(MCommand *pCommand)
 	pCommand->GetParameter(&fHP, 0, MPT_FLOAT);
 	float fAP=0.0f;
 	pCommand->GetParameter(&fAP, 1, MPT_FLOAT);
+
 	// 옵저브 하고 있을때는 보여주기 위해 hp 정보를 갱신한다.
 	if(ZGetGameInterface()->GetCombatInterface()->GetObserverMode()) {
 		pCharacter->SetHP(fHP);
@@ -3048,7 +2869,7 @@ void ZGame::OnPeerShotSp(MUID& uid, float fShotTime, rvector& pos, rvector& dir,
 	MMatchWeaponType nType = pDesc->m_nWeaponType.Ref();
 	//들고 있는 무기가 로켓 타입인데 
 	if(nType == MWT_ROCKET) {
-		if( type != ZC_WEAPON_SP_ROCKET && type != ZC_WEAPON_SP_ROCKETGRENADE ){	//type이 로켓이 아니면 미스 매치....무시한다. 		
+		if( type != ZC_WEAPON_SP_ROCKET){	//type이 로켓이 아니면 미스 매치....무시한다. 		
 			return;
 		}
 	} else if( nType == MWT_MED_KIT || nType == MWT_REPAIR_KIT || nType == MWT_BULLET_KIT || nType == MWT_FOOD ) {
@@ -3124,15 +2945,7 @@ void ZGame::OnPeerShotSp(MUID& uid, float fShotTime, rvector& pos, rvector& dir,
 
 			velocity	= pOwnerCharacter->GetVelocity()+pOwnerCharacter->m_TargetDir*1200.f;
 			velocity.z	+= 300.f;
-			unsigned long int nID = pDesc->m_nID;
-			if(nID == 405216 || nID == 405217) 
-			{
-				m_WeaponManager.AddMolotov(pos, velocity, pOwnerCharacter);
-			}
-			else
-			{
-				m_WeaponManager.AddGrenade(pos, velocity, pOwnerCharacter);
-			}
+			m_WeaponManager.AddGrenade(pos, velocity, pOwnerCharacter);
 			//m_WeaponManager.AddFlashBang( pos - rvector(10,10,10), velocity, pOwnerCharacter );
 			//m_WeaponManager.AddSmokeGrenade( pos + rvector(10,10,10), velocity, pOwnerCharacter );
 		}
@@ -3144,64 +2957,7 @@ void ZGame::OnPeerShotSp(MUID& uid, float fShotTime, rvector& pos, rvector& dir,
 			//static RealSoundEffectSource* pSES = ZApplication::GetSoundEngine()->GetSES("we_rocket_fire");
 			//if(pSES!=NULL) ZApplication::GetSoundEngine()->PlaySE(pSES, pos.x, pos.y, pos.z ,pOwnerCharacter==m_pMyCharacter);
 
-			//m_WeaponManager.AddRocket(pos, dir, pOwnerCharacter);
-			/*
-			//ini
-			ZPICKINFO pickinfo;
-			MPOINT Cp = ZGetCombatInterface()->GetCrosshairPoint();
-			rvector pos2,dir2;
-			RGetScreenLine(Cp.x,Cp.y,&pos2,&dir2);
-
-			
-
-			//bool bPick = false;
-			ZSkill *sk = new ZSkill();
-
-			if(ZGetGame()->Pick(m_pMyCharacter,pos2,dir2,&pickinfo))
-			{
-				if(pickinfo.pObject)
-				{
-					if (IsPlayerObject(pickinfo.pObject)) {
-						//ZGetCombatInterface()->SetPickTarget(true, (ZCharacter*)pickinfo.pObject);
-						sk->setTarget(pickinfo.pObject->GetUID());
-					}
-				}
-			}
-
-			sk->Init(322,pOwnerCharacter);
-			m_WeaponManager.AddMagic(sk,pos, dir, pOwnerCharacter);
-			//end
-			*/
-			//ZBrain *zb = new ZBrain();
-			
-			//sk->GetTarget();
-		//	zb->GetUseableSkill( &nSkill, &uidTarget, &targetPosition)
-			
-			//			m_WeaponManager.AddFireBall(pos,dir,pOwnerCharacter);
-			//			m_WeaponManager.AddIceMissile(pos,dir,pOwnerCharacter);
-			//			m_WeaponManager.AddMagicMissile(pos,dir,pOwnerCharacter);
-
-			//if (pOwnerCharacter->m_UID == g_pGame->m_pMyCharacter->m_UID) {
-			//	ZItem* pWeapon = pOwnerCharacter->GetItems()->GetSelectedWeapon();
-			//	if ( (pWeapon->GetBulletCurrMagazine() <= 0) && (pWeapon->GetBullet()>0) ) {
-			//		ZPostReload();
-			//	}
-			//}
 			m_WeaponManager.AddRocket(pos, dir, pOwnerCharacter);
-			if(Z_VIDEO_DYNAMICLIGHT) {
-				ZGetStencilLight()->AddLightSource( pos, 2.0f, 100 );
-			}
-		}
-		break;
-	case ZC_WEAPON_SP_ROCKETGRENADE : 
-		{
-			//static RealSoundEffectSource* pSES = ZApplication::GetSoundEngine()->GetSES("rocket_fire");
-			//static RealSoundEffectSource* pSES = ZApplication::GetSoundEngine()->GetSES("we_rocket_fire");
-			//if(pSES!=NULL) ZApplication::GetSoundEngine()->PlaySE(pSES, pos.x, pos.y, pos.z ,pOwnerCharacter==m_pMyCharacter);
-
-			velocity    = pOwnerCharacter->GetVelocity()+pOwnerCharacter->m_TargetDir*1200.f;
-			velocity.z    += 300.f;
-			m_WeaponManager.AddGrenade(pos, velocity, pOwnerCharacter);
 			//			m_WeaponManager.AddFireBall(pos,dir,pOwnerCharacter);
 			//			m_WeaponManager.AddIceMissile(pos,dir,pOwnerCharacter);
 			//			m_WeaponManager.AddMagicMissile(pos,dir,pOwnerCharacter);
@@ -3750,72 +3506,6 @@ void ZGame::OnExplosionMagic(ZWeaponMagic *pWeapon, MUID uidOwner,rvector pos,fl
 	}
 
 	GetWorld()->GetWaters()->CheckSpearing( pos, pos + rvector(0,0,MAX_WATER_DEEP), 500, 0.8f );
-}
-
-void ZGame::OnExplosionSmokeGrenade(MUID uidOwner,rvector pos,float fDamage,float fRange,float fMinDamage,float fKnockBack,MMatchTeam nTeamID)
-{
-	ZObject* pTarget = NULL;
-
-	float fDist,fDamageRange;
-
-	for(ZObjectManager::iterator itor = m_ObjectManager.begin(); itor != m_ObjectManager.end(); ++itor) 
-	{
-		pTarget = (*itor).second;
-
-		bool bReturnValue = !pTarget || pTarget->IsDie();
-		if( !pTarget || pTarget->IsDie())
-			PROTECT_DEBUG_REGISTER(bReturnValue)
-				continue;
-
-		fDist = Magnitude(pos-(pTarget->GetPosition()+rvector(0,0,80)));
-
-		bReturnValue = fDist >=fRange;
-		if(fDist >= fRange)
-			PROTECT_DEBUG_REGISTER(bReturnValue)
-				continue;
-
-		rvector dir=pos-(pTarget->GetPosition()+rvector(0,0,80));
-		Normalize(dir);
-
-
-		if(GetDistance(pos,pTarget->GetPosition()+rvector(0,0,50),pTarget->GetPosition()+rvector(0,0,130))<50)
-		{
-			fDamageRange = 1.f;
-		}
-		else
-		{
-#define MAX_DMG_RANGE	50.f
-			fDamageRange = 1.f - (1.f-fMinDamage)*( max(fDist-MAX_DMG_RANGE,0) / (fRange-MAX_DMG_RANGE));
-		}
-
-
-		ZActor* pATarget = MDynamicCast(ZActor,pTarget);
-
-		bool bPushSkip = false;
-
-		if(pATarget) 
-		{
-			bPushSkip = pATarget->GetNPCInfo()->bNeverPushed;
-		}
-
-		if(bPushSkip==true)
-		{
-			ZGetSoundEngine()->PlaySound("fx_bullethit_mt_met");
-		}
-
-		ZCharacter* pOwnerCharacter = (ZCharacter*) ZGetGame()->m_CharacterManager.Find( uidOwner );
-		if(pOwnerCharacter) 
-		{
-			CheckCombo(pOwnerCharacter, pTarget,!bPushSkip);
-			CheckStylishAction(pOwnerCharacter);
-		}
-
-		ZGameAction* testapplypoison = NULL;
-		testapplypoison->ApplyPoisonEnchantDamage(pTarget, pOwnerCharacter, 9, 1500);
-	}
-
-	GetWorld()->GetWaters()->CheckSpearing( pos, pos + rvector(0,0,MAX_WATER_DEEP), 500, 0.8f );
-
 }
 
 
@@ -4481,15 +4171,8 @@ void ZGame::OnPeerShot_Range_Damaged(ZObject* pOwner, float fShotTime, const rve
 	float fActualDamage = CalcActualDamage(pOwner, pickinfo.pObject, (float)pDesc->m_nDamage.Ref());
 	float fRatio = pItem->GetPiercingRatio( pDesc->m_nWeaponType.Ref(), pickinfo.info.parts );
 	ZDAMAGETYPE dt = (pickinfo.info.parts==eq_parts_head) ? ZD_BULLET_HEADSHOT : ZD_BULLET;
-	
-	if(pickinfo.pObject->IsNPC() == true || ZGetGameClient()->GetMatchStageSetting()->IsAntiLead() == false)
-	{
-		pickinfo.pObject->OnDamaged(pOwner, pOwner->GetPosition(), dt, pDesc->m_nWeaponType.Ref(), fActualDamage, fRatio );
-	}
-	else
-	{
-		((ZCharacter*)(pickinfo.pObject))->OnDamagedAPlayer(pOwner, pOwner->GetPosition(), dt, pDesc->m_nWeaponType.Ref(), fActualDamage, fRatio );
-	}
+
+	pickinfo.pObject->OnDamaged(pOwner, pOwner->GetPosition(), dt, pDesc->m_nWeaponType.Ref(), fActualDamage, fRatio );
 
 	if(pOwner == m_pMyCharacter) 
 	{
@@ -4790,8 +4473,7 @@ void ZGame::OnPeerShot_Shotgun(ZItem *pItem, ZCharacter* pOwnerCharacter, float 
 	Normalize(origdir);
 
 	int nHitCount = 0;
-	vector<MTD_ShotInfo*> vShots;
-	ZPICKINFO pickinfo;
+
 	for(int i=0;i<SHOTGUN_BULLET_COUNT;i++)
 	{
 		dir = origdir;
@@ -4819,16 +4501,14 @@ void ZGame::OnPeerShot_Shotgun(ZItem *pItem, ZCharacter* pOwnerCharacter, float 
 		bool bBulletMark = false;
 		ZTargetType nTargetType = ZTT_OBJECT;
 
+		ZPICKINFO pickinfo;
+
 		memset(&pickinfo,0,sizeof(ZPICKINFO));
 
 		// 총알은 로켓이 통과하는곳도 통과한다
 		const DWORD dwPickPassFlag=RM_FLAG_ADDITIVE | RM_FLAG_HIDE | RM_FLAG_PASSROCKET | RM_FLAG_PASSBULLET;
 		//jintriple3 디버그 레지스터 핵 방어 함수..
-		MTD_ShotInfo* pShotInfo = OnPeerShotgun_Damaged( pOwnerCharacter, fShotTime, pos, dir, pickinfo, dwPickPassFlag, v1, v2, pItem, BulletMarkNormal, bBulletMark, nTargetType, bHitEnemy);
-
-		if (pShotInfo)
-			vShots.push_back(pShotInfo);
-
+		OnPeerShotgun_Damaged( pOwnerCharacter, fShotTime, pos, dir, pickinfo, dwPickPassFlag, v1, v2, pItem, BulletMarkNormal, bBulletMark, nTargetType, bHitEnemy);
 
 /*		if(g_pGame->PickHistory(pOwnerCharacter,fShotTime,pos,pos+10000.f*dir,&pickinfo,dwPickPassFlag))
 		{
@@ -4961,28 +4641,6 @@ void ZGame::OnPeerShot_Shotgun(ZItem *pItem, ZCharacter* pOwnerCharacter, float 
 	
 	}
 
-	if (vShots.size() > 0 && !ZGetGameInterface()->GetCombatInterface()->GetObserverMode())
-	{
-		ZCharacter* pCharacter = ZGetCharacterManager()->Find(MUID(0, vShots[0]->nLowId));
-
-		if (pCharacter && !m_pMyCharacter->IsDie())
-		{
-			if (!GetMatch()->IsTeamPlay())
-				pCharacter->OnDamagedAPlayer(pOwnerCharacter, vShots);
-			else if (GetMatch()->IsTeamPlay() && ZGetGame()->GetMatch()->GetTeamKillEnabled() && pCharacter->IsTeam(m_pMyCharacter))
-				pCharacter->OnDamagedAPlayer(pOwnerCharacter, vShots);
-			else if (GetMatch()->IsTeamPlay() && !pCharacter->IsTeam(m_pMyCharacter))
-				pCharacter->OnDamagedAPlayer(pOwnerCharacter, vShots);
-		}
-
-		for(auto i = vShots.begin(); i != vShots.end(); i++)
-		{
-			auto p = *i;
-			delete p;
-		}
-	}
-
-
 	if(bHitEnemy) {
 		CheckStylishAction(pOwnerCharacter);
 		CheckCombo(pOwnerCharacter, NULL,true);
@@ -5001,7 +4659,6 @@ void ZGame::OnPeerShot_Shotgun(ZItem *pItem, ZCharacter* pOwnerCharacter, float 
 	Normalize(dir);
 
 	ZGetEffectManager()->AddShotgunEffect(const_cast<rvector&>(pos),v[1],dir,pOwnerCharacter);
-	ZGetEffectManager()->AddBloodEffect(const_cast<rvector&>(pos), dir);
 
 	// 총 쏠때 라이트 추가
 	ZCharacter* pChar;
@@ -5029,15 +4686,15 @@ void ZGame::OnPeerShot_Shotgun(ZItem *pItem, ZCharacter* pOwnerCharacter, float 
 }
 
 //jintriple3 디버그 레지스터 해킹 방지 코드 삽입
-MTD_ShotInfo* ZGame::OnPeerShotgun_Damaged(ZObject* pOwner, float fShotTime, const rvector& pos, rvector& dir, ZPICKINFO pickinfo, DWORD dwPickPassFlag, rvector& v1, rvector& v2, ZItem *pItem, rvector& BulletMarkNormal, bool& bBulletMark, ZTargetType& nTargetType, bool& bHitEnemy)
+void ZGame::OnPeerShotgun_Damaged(ZObject* pOwner, float fShotTime, const rvector& pos, rvector& dir, ZPICKINFO pickinfo, DWORD dwPickPassFlag, rvector& v1, rvector& v2, ZItem *pItem, rvector& BulletMarkNormal, bool& bBulletMark, ZTargetType& nTargetType, bool& bHitEnemy)
 {
 	ZCharacter *pTargetCharacter = ZGetGameInterface()->GetCombatInterface()->GetTargetCharacter();
 	bool bReturnValue = !pTargetCharacter;
-	if(!pTargetCharacter)PROTECT_DEBUG_REGISTER(bReturnValue) return NULL;
+	if(!pTargetCharacter)PROTECT_DEBUG_REGISTER(bReturnValue) return;
 	
 	MMatchItemDesc *pDesc = pItem->GetDesc();
 	bReturnValue = !pDesc;
-	if(!pDesc)PROTECT_DEBUG_REGISTER(bReturnValue) { _ASSERT(FALSE); return NULL; }
+	if(!pDesc)PROTECT_DEBUG_REGISTER(bReturnValue) { _ASSERT(FALSE); return; }
 
 	//rvector dir = to - pos;
 
@@ -5052,7 +4709,7 @@ MTD_ShotInfo* ZGame::OnPeerShotgun_Damaged(ZObject* pOwner, float fShotTime, con
 			v2 = pos+dir*10000.f;
 			nTargetType	= ZTT_NOTHING;
 			waterSound = GetWorld()->GetWaters()->CheckSpearing( v1, v2, 250, 0.3, !waterSound );
-			return NULL;
+			return;
 		}
 	}
 		//여기도..
@@ -5076,33 +4733,9 @@ MTD_ShotInfo* ZGame::OnPeerShotgun_Damaged(ZObject* pOwner, float fShotTime, con
 			// 맞는곳 반경 20cm 가 화면에 들어오면 그린다
 			bool bDrawTargetEffects = isInViewFrustum(v2,20.f,RGetViewFrustum());
 			if(bDrawTargetEffects)
-			{
-				rvector pdir = v2-v1;
-				Normalize(pdir);
-
-				int size = 3;
-				bool bDrawFireEffects = isInViewFrustum(v1,100.f,RGetViewFrustum());
-				rvector v[6];
-
-		//		size = GetWeapondummyPos(pOwnerCharacter,v);
-				ZCharacterObject* pCOwnerObject = MDynamicCast(ZCharacterObject, pOwner);
-				if(pCOwnerObject->IsRendered())
-					size = pCOwnerObject->GetWeapondummyPos(v);
-				else
-				{
-					size = 6;
-					v[0] = v[1] = v[2] = v1;
-					v[3] = v[4] = v[5] = v[0];
-				}
-
-
-				MMatchWeaponType wtype = pDesc->m_nWeaponType.Ref();
-				bool bSlugOutput = pDesc->m_bSlugOutput; 
 				ZGetEffectManager()->AddBulletMark(v2,BulletMarkNormal);
-				ZGetEffectManager()->AddShotEffect(&v1, size , v2, BulletMarkNormal, nTargetType, wtype, bSlugOutput, pCOwnerObject,bDrawFireEffects,bDrawTargetEffects);
-			}
 			waterSound = GetWorld()->GetWaters()->CheckSpearing( v1, v2, 250, 0.3, !waterSound );
-			return NULL;
+			return;
 		}
 	}
 	else if( (!pickinfo.pObject) && (!pickinfo.bBspPicked) )
@@ -5110,7 +4743,7 @@ MTD_ShotInfo* ZGame::OnPeerShotgun_Damaged(ZObject* pOwner, float fShotTime, con
 		PROTECT_DEBUG_REGISTER(bReturnValue)
 		{
 			_ASSERT(false);
-			return NULL;
+			return;
 		}
 	}
 
@@ -5133,7 +4766,7 @@ MTD_ShotInfo* ZGame::OnPeerShotgun_Damaged(ZObject* pOwner, float fShotTime, con
 			pObject->OnGuardSuccess();
 			v1 = pos;
 			v2 = pickinfo.info.vOut;
-			return NULL;
+			return;
 		}
 	}
 
@@ -5163,23 +4796,7 @@ MTD_ShotInfo* ZGame::OnPeerShotgun_Damaged(ZObject* pOwner, float fShotTime, con
 	float fRatio = pItem->GetPiercingRatio( pDesc->m_nWeaponType.Ref(), pickinfo.info.parts );
 	ZDAMAGETYPE dt = (pickinfo.info.parts==eq_parts_head) ? ZD_BULLET_HEADSHOT : ZD_BULLET;
 
-	MTD_ShotInfo* pShotInfo = NULL;
-	if(pickinfo.pObject->IsNPC() == true || ZGetGameClient()->GetMatchStageSetting()->IsAntiLead() == false)
-	{
-		pickinfo.pObject->OnDamaged(pOwner, pOwner->GetPosition(), dt, pDesc->m_nWeaponType.Ref(), fActualDamage, fRatio );
-	}
-	else
-	{
-		pShotInfo = new MTD_ShotInfo;
-		pShotInfo->nLowId = pickinfo.pObject->GetUID().Low;
-		pShotInfo->fDamage = fActualDamage;
-		pShotInfo->fPosX = pOwner->GetPosition().x;
-		pShotInfo->fPosY = pOwner->GetPosition().y;
-		pShotInfo->fPosZ = pOwner->GetPosition().z;
-		pShotInfo->fRatio = fRatio;
-		pShotInfo->nDamageType = dt;
-		pShotInfo->nWeaponType = pDesc->m_nWeaponType.Ref();
-	}
+	pObject->OnDamaged(pOwner, pOwner->GetPosition(), dt, pDesc->m_nWeaponType.Ref(), fActualDamage, fRatio );
 
 	if(!m_Match.IsTeamPlay() || (pTargetCharacter->GetTeamID()!=pObject->GetTeamID()))
 	{
@@ -5190,7 +4807,6 @@ MTD_ShotInfo* ZGame::OnPeerShotgun_Damaged(ZObject* pOwner, float fShotTime, con
 	v2 = pickinfo.info.vOut;
 
 	waterSound = GetWorld()->GetWaters()->CheckSpearing( v1, v2, 250, 0.3, !waterSound );
-	return pShotInfo;
 }
 
 
@@ -5431,9 +5047,8 @@ void ZGame::OnPeerDead(const MUID& uidAttacker, const unsigned long int nAttacke
 		}
 
 		pVictim->GetStatus().CheckCrc();
-		if(nVictimExp>=0){
+		
 		pVictim->GetStatus().Ref().AddExp(nVictimExp);
-		}
 		pVictim->GetStatus().Ref().AddDeaths();
 		if (pVictim->GetStatus().Ref().nLife > 0)
 			pVictim->GetStatus().Ref().nLife--;
@@ -5533,6 +5148,12 @@ void ZGame::OnPeerDieMessage(ZCharacter* pVictim, ZCharacter* pAttacker)
 
 	char szAttacker[256];
 	strcpy(szAttacker, pAttacker ? pAttacker->GetUserAndClanName() : szAnonymous);
+	
+	char szVictim2[256];
+	strcpy(szVictim2, pVictim ? pVictim->GetUserName() : szAnonymous)
+	
+	char szAttacker2[256];
+	strcpy(szAttacker2, pAttacker ? pAttacker->GetUserName() : szAnonymous);
 
 	// 자살일 경우
 	if(pAttacker==pVictim)
@@ -5577,14 +5198,26 @@ void ZGame::OnPeerDieMessage(ZCharacter* pVictim, ZCharacter* pAttacker)
 	// 내가 죽였을 때
 	else if (pAttacker == m_pMyCharacter)
 	{
+		char szOutput[256] = "";
+		m_pMyCharacter->GetStatus().CheckCrc();
+		m_pMyCharacter->GetStatus().Ref().nKillStreakCount++;
+		m_pMyCharacter->GetStatus().Ref().nKills2++;
+		m_pMyCharacter->GetStatus().MakeCrc();
 //		sprintf(szMsg, "당신은 %s님으로부터 승리하였습니다.", szVictim );
 		ZTransMsg( szMsg, MSG_GAME_WIN_FROM_WHO, 1, szVictim );
 		ZChatOutput(MCOLOR(0xFF80FFFF), szMsg);
+		if(m_pMyCharacter->GetStatus().Ref().nKillStreakCount > 1 && m_pMyCharacter->GetStatus().Ref().nKillStreakCount < 14)
+			ZPostKillStreak(szAttacker2, m_pMyCharacter->GetStatus().Ref().nKillStreakCount);
 	}
 
 	// 내가 죽었을 때
 	else if (pVictim == m_pMyCharacter)
 	{
+		if(m_pMyCharacter->GetStatus().Ref().nKillStreakCount > 1)
+			ZPostKillStreak(szVictim2, 0, szAttacker2);
+		m_pMyCharacter->GetStatus().CheckCrc();
+		m_pMyCharacter->GetStatus().Ref().nKillStreakCount = 0;
+		m_pMyCharacter->GetStatus().MakeCrc();
 //		sprintf(szMsg, "당신은 %s님에게 패배하였습니다.", szAttacker );
 		ZTransMsg( szMsg, MSG_GAME_LOSE_FROM_WHO, 1, szAttacker );
 		ZChatOutput(MCOLOR(0xFFCF2020), szMsg);
@@ -5666,9 +5299,9 @@ void ZGame::OnPeerSpMotion(MUID& uid,int nMotionType)
 
 		char szSoundName[ 50];
 		if ( pCharacter->GetProperty()->nSex == MMS_MALE)
-			sprintf( szSoundName, "MAL1%d", (RandomNumber(0, 300) % 3) + 1);
+			sprintf( szSoundName, "fx2/MAL1%d", (RandomNumber(0, 300) % 3) + 1);
 		else
-			sprintf( szSoundName, "FEM1%d", (RandomNumber(0, 300) % 3) + 1);
+			sprintf( szSoundName, "fx2/FEM1%d", (RandomNumber(0, 300) % 3) + 1);
 
 		ZGetSoundEngine()->PlaySound( szSoundName, pCharacter->GetPosition());
 	}
@@ -5681,18 +5314,18 @@ void ZGame::OnPeerSpMotion(MUID& uid,int nMotionType)
 		zsl = ZC_STATE_LAUGH;
 
 		if ( pCharacter->GetProperty()->nSex == MMS_MALE)
-			ZGetSoundEngine()->PlaySound( "MAL01", pCharacter->GetPosition());
+			ZGetSoundEngine()->PlaySound( "fx2/MAL01", pCharacter->GetPosition());
 		else
-			ZGetSoundEngine()->PlaySound( "FEM01", pCharacter->GetPosition());
+			ZGetSoundEngine()->PlaySound( "fx2/FEM01", pCharacter->GetPosition());
 	}
 	else if(nMotionType == ZC_SPMOTION_CRY)
 	{
 		zsl = ZC_STATE_CRY;
 
 		if ( pCharacter->GetProperty()->nSex == MMS_MALE)
-			ZGetSoundEngine()->PlaySound( "MAL02", pCharacter->GetPosition());
+			ZGetSoundEngine()->PlaySound( "fx2/MAL02", pCharacter->GetPosition());
 		else
-			ZGetSoundEngine()->PlaySound( "FEM02", pCharacter->GetPosition());
+			ZGetSoundEngine()->PlaySound( "fx2/FEM02", pCharacter->GetPosition());
 	}
 	else if(nMotionType == ZC_SPMOTION_DANCE)
 		zsl = ZC_STATE_DANCE;
@@ -5812,9 +5445,7 @@ void ZGame::OnPeerSpawn(MUID& uid, rvector& pos, rvector& dir)
 
 		ZGetScreenEffectManager()->ReSetHpPanel();// hppanel_ani
 	}
-	pCharacter->GetStatus().CheckCrc();
-	pCharacter->GetStatus().Ref().nDamageCaused = 0;
-	pCharacter->GetStatus().MakeCrc();
+
 #ifndef _PUBLISH
 	char szLog[128];
 	sprintf(szLog, "ZGame::OnPeerSpawn() - %s(%u) Spawned \n", 
@@ -5822,7 +5453,7 @@ void ZGame::OnPeerSpawn(MUID& uid, rvector& pos, rvector& dir)
 	OutputDebugString(szLog);
 #endif
 
-	 if (ZGetGameTypeManager()->IsTeamExtremeGame(GetMatch()->GetMatchType()))
+	if (GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DEATHMATCH_TEAM2)
 		pCharacter->SetInvincibleTime( 5000);
 }
 
@@ -6250,7 +5881,10 @@ m_fTime+=fAvrTimeError*.5f;
 
 void ZGame::AutoAiming()
 {
-
+#ifdef _PUBLISH
+	return;
+#endif
+/*
 	ZCamera* pCamera = ZGetGameInterface()->GetCamera();
 
 	rvector vMyPos = m_pMyCharacter->GetPosition();
@@ -6268,8 +5902,8 @@ void ZGame::AutoAiming()
 
 	//	우선 테스트 모드에서 알지5만..
 
-//	if( strcmp(g_pGame->m_pMyCharacter->GetProperty()->szName,"알지5")!=0 )
-//		return;
+	if( strcmp(g_pGame->m_pMyCharacter->GetProperty()->szName,"알지5")!=0 )
+		return;
 
 	ZCharacter *pCharacter = NULL;
 	rvector pos;
@@ -6291,11 +5925,11 @@ void ZGame::AutoAiming()
 				pCamera->SetDirection(dir);
 			}
 			else {
-//				pCamera->m_bAutoAiming = false;
+				pCamera->m_bAutoAiming = false;
 			}
 		}
 	}
-
+*/
 }
 
 /* 
@@ -6481,40 +6115,9 @@ void ZGame::PostPeerPingInfo()
 	}
 }
 
-bool IsAddressHooked(unsigned long address)
-{
-	BYTE* offsetValue = (BYTE*)address;
-	return (*offsetValue == 0xE8 || *offsetValue == 0xE9 || *offsetValue == 0x7E || *offsetValue == 0x74 || *offsetValue == 0xFF);
-}
-
-bool IsWin8()
-{
-	return true;
-	/*OSVERSIONINFO os;
-	os.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
-	GetVersionEx(&os);
-	if(os.dwMajorVersion < 6 || os.dwMinorVersion < 2)
-		return false;
-	return true;*/
-}
-
 void ZGame::PostSyncReport()
 {
 	DWORD nNowTime = GetTickTime();
-
-	DWORD getTickCount = (DWORD)GetProcAddress(GetModuleHandleA("kernel32.dll"), "GetTickCount");
-	DWORD queryPerformanceCounter = (DWORD)GetProcAddress(GetModuleHandleA("kernel32.dll"), "QueryPerformanceCounter");
-	DWORD timeGetTime = (DWORD)GetProcAddress(GetModuleHandleA("Winmm.dll"), "timeGetTime");
-
-	if(!IsWin8())
-	{
-		if (IsAddressHooked(timeGetTime) || IsAddressHooked(getTickCount) || IsAddressHooked(queryPerformanceCounter) || GetModuleHandleA ("SpeedHack.dll") != NULL || GetModuleHandleA ("MyHookDll.dll") != NULL)
-		{
-			ZApplication::GetGameInterface()->ShowWidget("HackWarnings", true, true);
-
-			ZPostDisconnect();
-		}
-	}
 
 #ifdef _PUBLISH
 	if ((nNowTime - m_nLastTime[ZLASTTIME_SYNC_REPORT]) >= MATCH_CYCLE_CHECK_SPEEDHACK) {
@@ -6743,38 +6346,12 @@ void ZGame::AddEffectRoundState(MMATCH_ROUNDSTATE nRoundState, int nArg)
 		}
 		break;
 	case MMATCH_ROUNDSTATE_PLAY:
-                {
-                        if (GetMatch()->GetMatchType() == MMATCH_GAMETYPE_CTF)
-                        {
-                        ZGetGameInterface()->PlayVoiceSound( VOICE_CTF, 1600);
-                        ZGetScreenEffectManager()->AddScreenEffect("ctf_splash");
-                        }
-                        else
-                        ZGetScreenEffectManager()->AddRock();
-                }
+		{
+			ZGetScreenEffectManager()->AddRock();
+		}
 		break;
 	case MMATCH_ROUNDSTATE_FINISH:
 		{
-
-//	m_pMyCharacter->GetStatus().CheckCrc();
-//	m_pMyCharacter->GetStatus().Ref().nDamageCaused = 0;
-//	m_pMyCharacter->GetStatus().MakeCrc();
-			MMATCH_GAMETYPE TipoJuego = ZGetGameClient()->GetMatchStageSetting()->GetGameType();
-			if(TipoJuego != MMATCH_GAMETYPE_DUEL && TipoJuego != MMATCH_GAMETYPE_DUELTOURNAMENT && TipoJuego != MMATCH_GAMETYPE_QUEST && TipoJuego != MMATCH_GAMETYPE_SURVIVAL && TipoJuego != MMATCH_GAMETYPE_SKILLWAR ) 
-			{
-				for (ZCharacterManager::iterator itor = m_CharacterManager.begin(); itor != m_CharacterManager.end(); ++itor)
-				{
-					ZCharacter* pCharacter = (ZCharacter*)(*itor).second;
-					
-					if(pCharacter->GetTeamID() == ZGetGame()->m_pMyCharacter->GetTeamID()) 
-					{ //HERHEHRHERHEH
-						char FinishStr[512];
-						sprintf(FinishStr, "%s ha hecho %d de damage.", pCharacter->GetCharInfo()->szName, pCharacter->GetStatus().Ref().nDamageCaused);
-						ZChatOutput(MCOLOR(ZCOLOR_CHAT_SYSTEM), FinishStr);
-					}
-				}	
-			}
-
 			if (m_Match.IsTeamPlay())
 			{
 				int nRedTeam, nBlueTeam;
@@ -6786,7 +6363,7 @@ void ZGame::AddEffectRoundState(MMATCH_ROUNDSTATE nRoundState, int nArg)
 				}
 				else if (nArg == MMATCH_ROUNDRESULT_DRAW )
 				{
-					 if (ZGetGameTypeManager()->IsTeamExtremeGame(GetMatch()->GetMatchType()))
+					if (GetMatch()->GetMatchType() == MMATCH_GAMETYPE_DEATHMATCH_TEAM2)
 					{
 						MMatchTeam nMyTeam = (MMatchTeam)m_pMyCharacter->GetTeamID();
 						MMatchTeam nEnemyTeam = (nMyTeam == MMT_BLUE ? MMT_RED : MMT_BLUE);
@@ -7122,19 +6699,6 @@ void ZGame::StartRecording()
 		nWritten = zfwrite(&pDuel->QInfo,sizeof(MTD_DuelQueueInfo),1,m_pReplayFile);
 		if(nWritten==0) goto RECORDING_FAIL;
 	}
-	if(IsGameRuleCTF(ZGetGameClient()->GetMatchStageSetting()->GetGameType()))
-        {
-                ZRuleTeamCTF* pTeamCTF = (ZRuleTeamCTF*)ZGetGameInterface()->GetGame()->GetMatch()->GetRule();
-                nWritten = zfwrite(&pTeamCTF->GetRedCarrier(),sizeof(MUID),1,m_pReplayFile);
-                nWritten = zfwrite(&pTeamCTF->GetBlueCarrier(),sizeof(MUID),1,m_pReplayFile);
-                nWritten = zfwrite(&pTeamCTF->GetRedFlagPos(),sizeof(rvector),1,m_pReplayFile);
-                nWritten = zfwrite(&pTeamCTF->GetBlueFlagPos(),sizeof(rvector),1,m_pReplayFile);
-                int nRedFlagState = (int)pTeamCTF->GetRedFlagState();
-                int nBlueFlagState = (int)pTeamCTF->GetBlueFlagState();
-                nWritten = zfwrite(&nRedFlagState,sizeof(int),1,m_pReplayFile);
-                nWritten = zfwrite(&nBlueFlagState,sizeof(int),1,m_pReplayFile);
-                if(nWritten==0) goto RECORDING_FAIL;
-        }
 	else if (ZGetGameClient()->GetMatchStageSetting()->GetGameType() == MMATCH_GAMETYPE_DUELTOURNAMENT)
 	{
 		int nType = (int)ZGetGameInterface()->GetDuelTournamentType();
@@ -7758,9 +7322,9 @@ bool ZGame::FilterDelayedCommand(MCommand *pCommand)
 				{
 					char szFileName[ 20];
 					if ( pChar->GetProperty()->nSex == MMS_MALE)
-						sprintf( szFileName, "MAL_shot_%02d", nShot);
+						sprintf( szFileName, "fx2/MAL_shot_%02d", nShot);
 					else
-						sprintf( szFileName, "FEM_shot_%02d", nShot);
+						sprintf( szFileName, "fx2/FEM_shot_%02d", nShot);
 
 					ZGetSoundEngine()->PlaySound( szFileName, pChar->GetPosition());
 				}
@@ -7935,12 +7499,6 @@ bool ZGame::OnRuleCommand(MCommand* pCommand)
 	{
 	case MC_MATCH_ASSIGN_COMMANDER:
 	case MC_MATCH_ASSIGN_BERSERKER:
-	case MC_MATCH_FLAG_EFFECT:
-    case MC_MATCH_FLAG_CAP:
-    case MC_MATCH_FLAG_STATE:
-	case MC_MATCH_SKILFLAG_CAP:
-	case MC_MATCH_ASSIGN_DEITY:
-	case MC_MATCH_ASSIGN_REVERSE_BERSERKER:
 	case MC_MATCH_GAME_DEAD:
 	case MC_MATCH_DUEL_QUEUEINFO:
 	case MC_MATCH_DUELTOURNAMENT_GAME_NEXT_MATCH_PLYAERINFO:

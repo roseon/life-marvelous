@@ -1,0 +1,16 @@
+Agregas los sonidos (WAV) a sound/effects y agregas estos nodes al effect.xml
+
+<!--KillStreak-->
+<effect NAME="dominating"		type="1"/>
+<effect NAME="doublekill"		type="1"/>
+<effect NAME="godlike"			type="1"/>
+<effect NAME="killingspree"		type="1"/>
+<effect NAME="legendary"		type="1"/>
+<effect NAME="pentakill"		type="1"/>
+<effect NAME="quadrakill"		type="1"/>
+<effect NAME="rampage"			type="1"/>
+<effect NAME="shutdown"			type="1"/>
+<effect NAME="triplekill"		type="1"/>
+
+P.D. Lo demas ya fue aderido a cada uno de sus respectivos codigos actuales
+simplemente los dejo aqui por cualquier cosa.

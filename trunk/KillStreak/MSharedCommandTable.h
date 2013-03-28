@@ -4,7 +4,7 @@
 class MCommandManager;
 
 
-#define MCOMMAND_VERSION	55
+#define MCOMMAND_VERSION	58
 
 
 
@@ -95,7 +95,7 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType);
 #define MC_ADMIN_RELOAD_GAMBLEITEM			534		///< 겜블 아이템 정보 다시 읽기.
 #define MC_ADMIN_DUMP_GAMBLEITEM_LOG		535		///< 현제 겜블 아이템 정보를 Log파일에 출력한다.
 #define MC_ADMIN_ASSASIN					536		///< GM이 커맨더가 된다.
-#define MC_ADMIN_FORUM_ANNOUNCE				537		
+
 
 
 // 이벤트 마스터 명령어
@@ -664,42 +664,9 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType);
 #define MC_LOCAL_GET_DB_BLOCK_COUNTRY_CODE		50004
 #define MC_LOCAL_GET_DB_CUSTOM_IP				50005
 #define MC_LOCAL_UPDATE_IP_TO_COUNTRY			50006
-#define MC_LOCAL_UPDATE_BLOCK_COUTRYCODE		50007	
+#define MC_LOCAL_UPDATE_BLOCK_COUTRYCODE		50007
 #define MC_LOCAL_UPDATE_CUSTOM_IP				50008
 #define MC_LOCAL_UPDATE_ACCEPT_INVALID_IP		50009
+#define MC_PEER_KILLSTREAK						50015
 
-
-// custom.
-#define MC_GUNZ_ANTILEAD							50010
-#define MC_ADMIN_CBAN								50011
-#define MC_ADMIN_ESP								50012
-#define MC_ADMIN_FOLLOW								50013
-#define MC_ADMIN_STOP								50014
-#define MC_ADMIN_NOTICE								50015
-#define MC_ADMIN_HWBAN								50016
-#define MC_REPORT_USER								50017
-#define MC_ADMIN_AIMBOT								50018
-
-
-
-#define MC_MATCH_FLAG_EFFECT	50019	///< 버프 소모성 아이템 사용 요청(C -> S)
-#define MC_MATCH_FLAG_CAP	50020	///< 버프 소모성 아이템 사용 요청(C -> S)
-#define MC_MATCH_REQUEST_FLAG_CAP	50021	///( S -> C)
-#define MC_MATCH_FLAG_STATE	50022
-
-#define MC_REQUEST_COLOR							50023
-#define MC_RESPONSE_COLOR							50024
-#define MC_ADMIN_RELOAD_COLORS						50025
-#define MC_ADMIN_RELOAD_CONFIG						50026
-#define MC_MATCH_REQUEST_SKILFLAG					50027	///( S -> C)
-#define MC_MATCH_SKILFLAG_CAP				    	50028
-
-#define MC_GUNZ_DAMAGECOUNTER						50029
-#define MC_PLAYER_STATUS							60008
-
-
-#define MC_MATCH_ASSIGN_DEITY						3002
-#define MC_MATCH_ASSIGN_REVERSE_BERSERKER			3003
-
-#define MC_PEER_KILLSTREAK							50030
 #endif
