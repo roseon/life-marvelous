@@ -75,6 +75,11 @@ inline void ZPostMove(rvector& vPos, rvector& vDir, rvector& vVelocity,
 	ZPOSTCMD5(MC_PEER_MOVE, MCommandParameterPos(vPos.x, vPos.y, vPos.z), MCommandParameterVector(vDir.x, vDir.y, vDir.z), MCommandParameterVector(vVelocity.x, vVelocity.y, vVelocity.z), MCommandParameterInt(int(upper)), MCommandParameterInt(int(lower)));
 }
 
+inline void ZPostUserStatus(char* pszStatus)
+{
+	ZPOSTCMD1(MC_PLAYER_STATUS, MCmdParamStr(pszStatus));//  MCmdParamStatus(pszStatus));
+}
+
 //DLL Injection 핵에서 fShotTime을 조작해 무기의 딜레이 타임을 무시하고 겁나 빠른 속도로 shot이 가능하게 만든다. 
 //정상적인 루틴에서 해당 함수가 불리는 경우를 보면 fShotTime = g_pGame->GetTime()이다. 따라서 파라미터로 fShotTime 을 갖고 있는거보다
 //해당 함수가 불렸을 때 패킷에 g_pGame->GetTime()을 보내는 것으로 대체했다. 
@@ -402,6 +407,11 @@ inline void ZPostStageState(const MUID& uidChar, const MUID& uidStage, MMatchObj
 #define ZPostShotMelee(/*rvector&*/ pos, /*int*/ nShot) {	\
 	ZPOSTCMD3(CLOAK_CMD_ID(MC_PEER_SHOT_MELEE, 38274), MCommandParameterFloat(ZGetGame()->GetTime()),MCommandParameterPos(pos.x, pos.y, pos.z),MCommandParameterInt(nShot));	\
 }
+
+#define ZPostDamageCounter(/*int*/ Damage, /*MUID*/ AttackerUID) {	\
+ZPOSTCMD2(CLOAK_CMD_ID(MC_GUNZ_DAMAGECOUNTER, 1621), MCommandParameterInt(Damage), MCommandParameterUID(AttackerUID));	\
+}
+
 
 inline void ZPostNPCRangeShot(MUID uidOwner, float fShotTime,rvector &pos, rvector &to,int sel_type)
 {
@@ -782,9 +792,11 @@ inline void ZPostRequestCreateClan(const MUID& uidChar, const int nRequestID, ch
 								   char** ppMemberCharNames, int nMemberCharNamesCount)
 {
 	if (nMemberCharNamesCount != CLAN_SPONSORS_COUNT) return;
-	ZPOSTCMD7(MC_MATCH_CLAN_REQUEST_CREATE_CLAN, MCmdParamUID(uidChar), MCmdParamInt(nRequestID), MCmdParamStr(szClanName), 
+	/*ZPOSTCMD7(MC_MATCH_CLAN_REQUEST_CREATE_CLAN, MCmdParamUID(uidChar), MCmdParamInt(nRequestID), MCmdParamStr(szClanName), 
 				MCmdParamStr(ppMemberCharNames[0]), MCmdParamStr(ppMemberCharNames[1]),
-				MCmdParamStr(ppMemberCharNames[2]), MCmdParamStr(ppMemberCharNames[3]));
+				MCmdParamStr(ppMemberCharNames[2]), MCmdParamStr(ppMemberCharNames[3]));*/
+	ZPOSTCMD4(MC_MATCH_CLAN_REQUEST_CREATE_CLAN, MCmdParamUID(uidChar), MCmdParamInt(nRequestID), MCmdParamStr(szClanName), 
+				MCmdParamStr(ppMemberCharNames[0]));
 
 }
 
@@ -797,9 +809,11 @@ inline void ZPostAnswerSponsorAgreement(const int nRequestID, const MUID& uidCla
 inline void ZPostRequestAgreedCreateClan(const MUID& uidChar, char* szClanName, char** ppMemberCharNames, int nMemberCharNamesCount)
 {
 	if (nMemberCharNamesCount != CLAN_SPONSORS_COUNT) return;
-	ZPOSTCMD6(MC_MATCH_CLAN_REQUEST_AGREED_CREATE_CLAN, MCmdParamUID(uidChar), MCmdParamStr(szClanName), 
+	/*ZPOSTCMD6(MC_MATCH_CLAN_REQUEST_AGREED_CREATE_CLAN, MCmdParamUID(uidChar), MCmdParamStr(szClanName), 
 				MCmdParamStr(ppMemberCharNames[0]), MCmdParamStr(ppMemberCharNames[1]),
-				MCmdParamStr(ppMemberCharNames[2]), MCmdParamStr(ppMemberCharNames[3]));
+				MCmdParamStr(ppMemberCharNames[2]), MCmdParamStr(ppMemberCharNames[3]));*/
+	ZPOSTCMD3(MC_MATCH_CLAN_REQUEST_AGREED_CREATE_CLAN, MCmdParamUID(uidChar), MCmdParamStr(szClanName), 
+				MCmdParamStr(ppMemberCharNames[0]));
 }
 
 // 클랜 폐쇄 요청
@@ -988,6 +1002,12 @@ inline void ZPostAdminRequestSwitchLadderGame(const MUID& uidChar, bool bEnabled
 
 
 inline void ZPostAdminAnnounce(const MUID& uidChar, char* szMsg, ZAdminAnnounceType nType)
+{
+	ZPOSTCMD3(MC_ADMIN_ANNOUNCE, MCommandParameterUID(uidChar), 
+		MCommandParameterString(szMsg), MCommandParameterUInt(nType));
+}
+
+inline void ZPostAdminMessage(const MUID& uidChar, char* szMsg, ZAdminAnnounceType nType)
 {
 	ZPOSTCMD3(MC_ADMIN_ANNOUNCE, MCommandParameterUID(uidChar), 
 		MCommandParameterString(szMsg), MCommandParameterUInt(nType));
@@ -1220,6 +1240,16 @@ inline void ZPostRequestUseSpendableNormalItem( const MUID& uid )
 inline void ZPostRequestUseSpendableBuffItem( const MUID& uid )
 {
 	ZPOSTCMD1( MC_MATCH_REQUEST_USE_SPENDABLE_BUFF_ITEM, MCmdParamUID(uid) );
+}
+
+inline void ZPostRequestCaptureFlag(const int nItemUID)
+{
+	ZPOSTCMD1(MC_MATCH_REQUEST_FLAG_CAP, MCommandParameterInt(nItemUID));
+}
+
+inline void ZPostRequestSkillFlag(const int nItemUID)
+{
+	ZPOSTCMD1(MC_MATCH_REQUEST_SKILFLAG, MCommandParameterInt(nItemUID));
 }
 
 #endif

@@ -121,9 +121,6 @@ enum ZC_SHOT_SP_TYPE {
 	ZC_WEAPON_SP_POTION,
 	ZC_WEAPON_SP_TRAP,
 	ZC_WEAPON_SP_DYNAMITE,
-
-	//grenade launcher
-	ZC_WEAPON_SP_ROCKETGRENADE,
 	ZC_WEAPON_SP_END,
 };
 
@@ -262,14 +259,10 @@ struct ZCharacterStatus
 	int			nHeadShot;
 	int			nUnbelievable;
 	int			nExp;
-	int			nDamageCaused;
-	int			nDamageTaken;
-	int			nFrozen;
-	float		XTest;
-	float		YTest;
-	float		LineTest;
+	//Andres
 	int			nKillStreakCount;
 	int			nKills2;
+
 	ZCharacterStatus() :	
 							nLife(10),
 							nKills(0),
@@ -283,12 +276,7 @@ struct ZCharacterStatus
 							nHeadShot(0),
 							nUnbelievable(0),
 							nExp(0),
-							nDamageCaused(0),
-							nDamageTaken(0),
-							nFrozen(0),
-							XTest(0.12f),
-							YTest(0.5f),
-							LineTest(0.0f),
+							//Andres
 							nKillStreakCount(0),
 							nKills2(0)
 							{  }
@@ -296,8 +284,6 @@ struct ZCharacterStatus
 	void AddKills(int nAddedKills = 1) { nKills += nAddedKills; }
 	void AddDeaths(int nAddedDeaths = 1) { nDeaths += nAddedDeaths;  }
 	void AddExp(int _nExp=1) { nExp += _nExp; }
-//	void AddDamageCaused(int _nDamage=1) { nDamageCaused += _nDamage; }
-//	void AddDamageTaken(int _nDamage=1) { nDamageTaken += _nDamage; }
 };
 
 // 이것은 캐릭터끼리 주고받는 데이터로 나중에 투표 판정의 근거가 된다.
@@ -789,7 +775,7 @@ public:
 
 	virtual bool IsGuard();
 	virtual void OnMeleeGuardSuccess();
-	
+
 
 	virtual void OnDamagedAnimation(ZObject *pAttacker,int type);
 
@@ -799,8 +785,6 @@ public:
 	virtual void OnKnockback(rvector& dir, float fForce);
 //	virtual void OnDamage(int damage, float fRatio = 1.0f);
 	virtual void OnDamaged(ZObject* pAttacker, rvector srcPos, ZDAMAGETYPE damageType, MMatchWeaponType weaponType, float fDamage, float fPiercingRatio=1.f, int nMeleeType=-1);
-	virtual void OnDamagedAPlayer(ZObject* pAttacker, rvector srcPos, ZDAMAGETYPE damageType, MMatchWeaponType weaponType, float fDamage, float fPiercingRatio=1.f, int nMeleeTpye=-1);
-	virtual void OnDamagedAPlayer(ZObject* pAttacker, vector<MTD_ShotInfo*> vShots);
 	virtual void OnScream();
 
 	int GetDTLastWeekGrade() { return m_MInitialInfo.Ref().nDTLastWeekGrade; }

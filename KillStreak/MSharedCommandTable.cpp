@@ -67,7 +67,6 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType)
 		C(MC_MATCH_LOGIN, "Match.Login", "Login Match Server", MCDT_MACHINE2MACHINE)
 			P(MPT_STR, "UserID");
 			P(MPT_STR, "Password");
-			P(MPT_STR, "Hwid");
 			P(MPT_INT, "CommandVersion");
 			P(MPT_UINT, "nChecksumPack");
 			P(MPT_BLOB,	"EncryptMD5Value");
@@ -77,8 +76,7 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType)
 			P(MPT_CHAR, "ServerMode")
 			P(MPT_STR,	"AccountID")
 			P(MPT_UCHAR, "UGradeID")
-			P(MPT_INT, "PGradeID")
-			P(MPT_INT,	"ECoins")
+			P(MPT_UCHAR, "PGradeID")
 			P(MPT_UID,	"uidPlayer")
 			P(MPT_BOOL,	"bEnabledSurvivalMode")
 			P(MPT_BOOL,	"bEnabledDuelTournament")
@@ -549,7 +547,6 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType)
 
 		C(MC_MATCH_RESPONSE_CHARACTER_ITEMLIST, "Match.ResponseCharacterItemList", "Response Character Item List", MCDT_MACHINE2MACHINE)
 			P(MPT_INT, "Bounty")
-			P(MPT_INT, "ECoins")
 			P(MPT_BLOB, "EquipItemList")		// 장비하고 있는 아이템
 			P(MPT_BLOB, "ItemList");			// 장비한 아이템까지 포함한 갖고있는 아이템
 			P(MPT_BLOB, "GambleItemList")		// 겜블 아이템 목록
@@ -724,9 +721,9 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType)
 			P(MPT_INT, "RequestID")			// 요청ID - 클라이언트가 임의로 결정한다. 자신만 알고 있으면 됨.
 			P(MPT_STR, "ClanName")			// 생성할 클랜 이름
 			P(MPT_STR, "Member1CharName")	// 발기인 캐릭터 이름
-			//P(MPT_STR, "Member2CharName")	// 발기인 캐릭터 이름
-			//P(MPT_STR, "Member3CharName")	// 발기인 캐릭터 이름
-			//P(MPT_STR, "Member4CharName")	// 발기인 캐릭터 이름
+			P(MPT_STR, "Member2CharName")	// 발기인 캐릭터 이름
+			P(MPT_STR, "Member3CharName")	// 발기인 캐릭터 이름
+			P(MPT_STR, "Member4CharName")	// 발기인 캐릭터 이름
         C(MC_MATCH_CLAN_RESPONSE_CREATE_CLAN, "Match.Clan.ResponseCreateClan", "Response Create Clan", MCDT_MACHINE2MACHINE)
 			P(MPT_INT, "Result")
 			P(MPT_INT, "RequestID")			// 요청ID
@@ -744,9 +741,9 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType)
 			P(MPT_UID, "uidChar")	// 요청한 캐릭터 UID
 			P(MPT_STR, "ClanName")	// 생성할 클랜 이름
 			P(MPT_STR, "Member1CharName")	// 발기인 캐릭터 이름
-			//P(MPT_STR, "Member2CharName")	// 발기인 캐릭터 이름
-			//P(MPT_STR, "Member3CharName")	// 발기인 캐릭터 이름
-			//P(MPT_STR, "Member4CharName")	// 발기인 캐릭터 이름
+			P(MPT_STR, "Member2CharName")	// 발기인 캐릭터 이름
+			P(MPT_STR, "Member3CharName")	// 발기인 캐릭터 이름
+			P(MPT_STR, "Member4CharName")	// 발기인 캐릭터 이름
         C(MC_MATCH_CLAN_RESPONSE_AGREED_CREATE_CLAN, "Match.Clan.AgreedResponseCreateClan", "Response Agreed Create Clan", MCDT_MACHINE2MACHINE)
 			P(MPT_INT, "Result")
 		C(MC_MATCH_CLAN_REQUEST_CLOSE_CLAN, "Match.Clan.RequestCloseClan", "Request Close Clan", MCDT_MACHINE2MACHINE)
@@ -1023,9 +1020,6 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType)
 				P(MPT_UID, "uidAdmin")
 				P(MPT_STR, "Msg")
 				P(MPT_UINT, "MsgType");
-			C(MC_ADMIN_FORUM_ANNOUNCE, "AdminForum.Announce", "AnnounceForum", MCDT_MACHINE2MACHINE | MCCT_NON_ENCRYPTED )
-				P(MPT_UID, "uidAdmin")
-				P(MPT_STR, "Msg");
 			C(MC_ADMIN_PING_TO_ALL, "Admin.PingToAll", "Ping to All Clients", MCDT_MACHINE2MACHINE)
 		}
 
@@ -1682,79 +1676,11 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType)
 	C(MC_MATCH_DUELTOURNAMENT_GAME_NEXT_MATCH_PLYAERINFO, "Match.DuelTournament.Game Next Match Player Info", "Duel Tournament Game Next Match Player Info", MCDT_MACHINE2MACHINE)
 		P(MPT_BLOB, "NextMatchPlayerInfo");
 
-	C(MC_GUNZ_ANTILEAD, "Match.Gunz.AntiLead", "AntiLead Information", MCDT_PEER2PEER)
-		P(MPT_BLOB, "ShotInfo");
-
-	C(MC_GUNZ_DAMAGECOUNTER, "Match.Gunz.DamageCounter", "Damage counter information", MCDT_PEER2PEER)
-		P(MPT_INT, "Damage");
-		P(MPT_UID, "AttackerUID");
-	
-	C(MC_MATCH_ASSIGN_DEITY, "Match.Assign.Deity", "Assign Deity", MCDT_MACHINE2MACHINE)
-		P(MPT_UID, "uidPlayer");
-
-	C(MC_MATCH_ASSIGN_REVERSE_BERSERKER, "Match.Assign.Reverse.Berserker", "Assign Reverse Berserker", MCDT_MACHINE2MACHINE)
-		P(MPT_UID, "uidPlayer");
-
-	C(MC_PLAYER_STATUS, "Match.Player.Status", "Set player status", MCDT_MACHINE2MACHINE)
-		P(MPT_STR, "strStatus");
-
-	C(MC_ADMIN_CBAN, "Match.Admin.Chat.Ban", "", MCDT_MACHINE2MACHINE)
-		P(MPT_STR, "PlayerName");
-		P(MPT_STR, "Reason");
-
-	C(MC_ADMIN_ESP, "Match.Admin.Esp", "", MCDT_MACHINE2MACHINE)
-
-	C(MC_ADMIN_FOLLOW, "Match.Admin.Follow", "", MCDT_MACHINE2MACHINE)
-		P(MPT_STR, "PlayerName");	
-
-	C(MC_ADMIN_STOP, "Match.Admin.Stop", "", MCDT_MACHINE2MACHINE)
-		P(MPT_STR, "PlayerName");	
-
-	C(MC_ADMIN_HWBAN, "Match.Admin.HardwareBan", "", MCDT_MACHINE2MACHINE)
-		P(MPT_STR, "PlayerName");
-		P(MPT_STR, "Reason");
-	
-	C(MC_REPORT_USER, "Match.User.Report", "", MCDT_MACHINE2MACHINE)
-		P(MPT_STR, "PlayerName");
-		P(MPT_STR, "Reason");
-	
-	C(MC_ADMIN_AIMBOT, "Match.Admin.Aimbot", "", MCDT_MACHINE2MACHINE)
-
-	C(MC_MATCH_FLAG_EFFECT, "Match.Flag.Effect", "Assign Flag", MCDT_MACHINE2MACHINE)
-			P(MPT_UID, "uidPlayer")
-			P(MPT_INT, "nTeam")
-	C(MC_MATCH_FLAG_CAP, "Match.Flag.Cap", "Cap Flag", MCDT_MACHINE2MACHINE)
-			P(MPT_INT, "nTeam")
-	C(MC_MATCH_REQUEST_FLAG_CAP, "Match.Flag.Request.Cap", "Request Cap Flag", MCDT_MACHINE2MACHINE)
-			P(MPT_INT, "nItemID")
-	C(MC_MATCH_FLAG_STATE, "Match.CTFItemState", "Request State Flag", MCDT_MACHINE2MACHINE)
-			P(MPT_INT, "nItemID")
-			P(MPT_SVECTOR, "Position")
-			P(MPT_INT, "nState")
-			P(MPT_UID, "uidCarrier")
-
-	C(MC_REQUEST_COLOR, "Server.RequestColors", "Request Color", MCDT_MACHINE2MACHINE)
-	
-	C(MC_RESPONSE_COLOR, "Server.ResponseColors", "Response Color", MCDT_MACHINE2MACHINE)
-			P(MPT_BLOB, "ColorInfo")
-
-	C(MC_ADMIN_RELOAD_COLORS, "Server.ReloadColors", "Reload Color", MCDT_MACHINE2MACHINE)
-
-	C(MC_ADMIN_RELOAD_CONFIG, "Server.ReloadConfig", "Reload Config", MCDT_MACHINE2MACHINE)
-			P(MPT_STR, "szFile")
-
-	C(MC_MATCH_REQUEST_SKILFLAG, "Match.SkillFlag.Request", "Request Skill Flag", MCDT_MACHINE2MACHINE)
-			P(MPT_INT, "nItemID")
-
-	C(MC_MATCH_SKILFLAG_CAP, "Match.SkillFlag.Cap", "Cap SkillFlag", MCDT_MACHINE2MACHINE)
-			P(MPT_UID, "uidPlayer")
-			P(MPT_INT, "nTeam")
-
 	C(MC_PEER_KILLSTREAK, "Killstreak", "Killstreak sounds and message.", MCDT_PEER2PEER)
-			P(MPT_STR, "szName")
-			P(MPT_INT, "nKillStreakCount")
-			P(MPT_STR, "szName2"); 
-
+		P(MPT_STR, "szName")
+		P(MPT_INT, "nKillStreakCount")
+		P(MPT_STR, "szName2"); 
+		
 	END_CMD_DESC();
 }
 	
