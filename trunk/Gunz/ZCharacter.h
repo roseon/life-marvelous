@@ -269,7 +269,6 @@ struct ZCharacterStatus
 	float		YTest;
 	float		LineTest;
 	int			nKillStreakCount;
-	int			nKills2;
 	ZCharacterStatus() :	
 							nLife(10),
 							nKills(0),
@@ -289,8 +288,7 @@ struct ZCharacterStatus
 							XTest(0.12f),
 							YTest(0.5f),
 							LineTest(0.0f),
-							nKillStreakCount(0),
-							nKills2(0)
+							nKillStreakCount(0)
 							{  }
 
 	void AddKills(int nAddedKills = 1) { nKills += nAddedKills; }
@@ -713,6 +711,8 @@ public:
 //	void SetSafeFall(int nSafeFall) { m_Property.nSafeFall = nSafeFall; }
 
 	int GetKils() { return GetStatus().Ref().nKills; }
+
+	int GetKillStreaks() { return GetStatus().Ref().nKillStreakCount; }
 
 	bool CheckDrawGrenade();
 
