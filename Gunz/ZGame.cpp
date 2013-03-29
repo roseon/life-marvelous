@@ -1995,15 +1995,13 @@ bool ZGame::OnCommand_Immidiate(MCommand* pCommand)
 			char szName[MAX_CHARNAME_LENGTH];
 			char szName2[MAX_CHARNAME_LENGTH];
 			char szMsg[512];
-			char szVictim[256];
+			char szVictim[MAX_CHARNAME_LENGTH];
 			
-			ZCharacter *pVictim;
-			strcpy(szVictim, pVictim ? pVictim->GetProperty()->GetName() : szAnonymous);
-
 			const MCOLOR StreakColor = MCOLOR(0,246,145);
 
 			pCommand->GetParameter(szName, 0, MPT_STR, MAX_CHARNAME_LENGTH);
 			pCommand->GetParameter(&nKillStreakCount, 1, MPT_INT);
+			pCommand->GetParameter(szVictim, 2, MPT_STR, MAX_CHARNAME_LENGTH);
 			
 			if(nKillStreakCount == 2)
 			{
@@ -2047,22 +2045,17 @@ bool ZGame::OnCommand_Immidiate(MCommand* pCommand)
 			}
 			else if(nKillStreakCount == 0)
 			{
-				pCommand->GetParameter(szName2, 2, MPT_STR, MAX_CHARNAME_LENGTH);
-
-				if(szName2 != "")
-				{
-					MCOLOR StreakColor = MCOLOR(10,45,30);
-					sprintf(szMsg, "%s has stopped %s's killing spree.", szName2, szName);
-					ZApplication::GetSoundEngine()->PlaySound("shutdown");
-				}
+				MCOLOR StreakColor = MCOLOR(10,45,30);
+				sprintf(szMsg, "%s has stopped %s's killing spree.", szName, szVictim);
+				ZApplication::GetSoundEngine()->PlaySound("shutdown");				
 			}
-			else
+			else if(nKillStreakCount > 12 && (nKillStreakCount%2) == 0)
 			{
 				sprintf(szMsg, "%s is legendary!(%i kills)", szName, nKillStreakCount);
 				ZApplication::GetSoundEngine()->PlaySound("legendary");
 			}
-
-			ZChatOutput(StreakColor, szMsg);
+			if(strcmp(szMsg, "") != 0)
+				ZChatOutput(StreakColor, szMsg);
 		}
 		break;
 	case MC_MATCH_RESPONSE_PEERLIST:
@@ -5577,6 +5570,12 @@ void ZGame::OnPeerDieMessage(ZCharacter* pVictim, ZCharacter* pAttacker)
 	// 내가 죽였을 때
 	else if (pAttacker == m_pMyCharacter)
 	{
+		int killz = m_pMyCharacter->GetKillStreaks()+1;
+		m_pMyCharacter->GetStatus().CheckCrc();		
+		m_pMyCharacter->GetStatus().Ref().nKillStreakCount = killz;
+		m_pMyCharacter->GetStatus().MakeCrc();
+
+		ZPostKillStreak(szAttacker , m_pMyCharacter->GetKillStreaks(), szVictim);
 //		sprintf(szMsg, "당신은 %s님으로부터 승리하였습니다.", szVictim );
 		ZTransMsg( szMsg, MSG_GAME_WIN_FROM_WHO, 1, szVictim );
 		ZChatOutput(MCOLOR(0xFF80FFFF), szMsg);
@@ -5585,6 +5584,13 @@ void ZGame::OnPeerDieMessage(ZCharacter* pVictim, ZCharacter* pAttacker)
 	// 내가 죽었을 때
 	else if (pVictim == m_pMyCharacter)
 	{
+		if(m_pMyCharacter->GetKillStreaks() != 0)
+			ZPostKillStreak(szAttacker , m_pMyCharacter->GetKillStreaks(), szVictim);
+
+		m_pMyCharacter->GetStatus().CheckCrc();
+		m_pMyCharacter->GetStatus().Ref().nKillStreakCount = 0;
+		m_pMyCharacter->GetStatus().MakeCrc();
+		
 //		sprintf(szMsg, "당신은 %s님에게 패배하였습니다.", szAttacker );
 		ZTransMsg( szMsg, MSG_GAME_LOSE_FROM_WHO, 1, szAttacker );
 		ZChatOutput(MCOLOR(0xFFCF2020), szMsg);
