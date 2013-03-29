@@ -279,6 +279,20 @@
 	<EFFECT NAME="NAR35"					type="1"/>
 	<EFFECT NAME="NAR36"					type="1"/>
 	
+	
+
+<!--KillStreak-->
+<effect NAME="dominating"		type="1"/>
+<effect NAME="doublekill"		type="1"/>
+<effect NAME="godlike"			type="1"/>
+<effect NAME="killingspree"		type="1"/>
+<effect NAME="legendary"		type="1"/>
+<effect NAME="pentakill"		type="1"/>
+<effect NAME="quadrakill"		type="1"/>
+<effect NAME="rampage"			type="1"/>
+<effect NAME="shutdown"			type="1"/>
+<effect NAME="triplekill"		type="1"/>
+
 
 
 
