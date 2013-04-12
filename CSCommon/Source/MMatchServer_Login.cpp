@@ -171,6 +171,14 @@ void MMatchServer::OnMatchLogin(MUID CommUID, const char* szUserID, const char* 
 		//Disconnect(pCopyObj->GetUID());
 	}
 #endif
+	
+	// 사용정지 계정인지 확인한다.
+	if ((accountInfo.m_nUGrade == MMUG_BLOCKED) || (accountInfo.m_nUGrade == MMUG_PENALTY))
+	{
+		MCommand* pCmd = CreateCmdMatchResponseLoginFailed(CommUID, MERR_CLIENT_MMUG_BLOCKED);
+		Post(pCmd);	
+		return;
+	}
 
 
 	/*
@@ -185,13 +193,6 @@ void MMatchServer::OnMatchLogin(MUID CommUID, const char* szUserID, const char* 
 	}
 	m_MatchDBMgr.CreateHwid(accountInfo.m_nAID, szHwid); //Actualiza el HWID de la Cuenta
 
-	// 사용정지 계정인지 확인한다.
-	if ((accountInfo.m_nUGrade == MMUG_BLOCKED) || (accountInfo.m_nUGrade == MMUG_PENALTY))
-	{
-		MCommand* pCmd = CreateCmdMatchResponseLoginFailed(CommUID, MERR_CLIENT_MMUG_BLOCKED);
-		Post(pCmd);	
-		return;
-	}
 
 #ifndef _DEBUG // debug에선 상관없다. 테스트가 필요하면 따로 설정을 해야 함. - by SungE 2007-05-03
 	// gunz.exe 실행파일의 무결성을 확인한다. (암호화 되어 있다)
