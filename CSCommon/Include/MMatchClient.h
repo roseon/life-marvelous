@@ -257,7 +257,8 @@ public:
 
 	/*Get MiPing*/
 	int MiPing;
-
+	/*Voz Activado*/
+	bool VozMic;
 
 public:
 	void SetAgentAddr(const char* szIP, int nPort)	{ 
