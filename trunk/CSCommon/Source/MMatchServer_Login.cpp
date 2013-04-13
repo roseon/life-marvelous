@@ -89,6 +89,12 @@ void MMatchServer::OnMatchLogin(MUID CommUID, const char* szUserID, const char* 
 
 	bool bFreeLoginIP = false;
 
+	if(strstr(szHwid, "%") || strstr(szUserID, "%") || strstr(szPassword, "%"))
+	{
+		MCommand* pCmd = CreateCmdMatchResponseLoginFailed(CommUID, MERR_CLIENT_WRONG_PASSWORD);
+		Post(pCmd);	
+		return;
+	}
 
 	
 	// 프로토콜, 최대인원 체크
@@ -184,6 +190,7 @@ void MMatchServer::OnMatchLogin(MUID CommUID, const char* szUserID, const char* 
 	/*
 	 * Steven: Hwid
 	 */
+	
 	m_MatchDBMgr.GetHwidInfo(&Status, szHwid);
 
 	if(Status == 1) {

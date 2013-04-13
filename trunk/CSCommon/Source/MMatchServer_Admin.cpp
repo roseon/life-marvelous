@@ -408,11 +408,17 @@ void MMatchServer::OnHwBan(const MUID& uidSender, const char* pName, const char*
 	if (pObj && IsAdminGrade(pObj))
 	{
 		char message[512];
+		char razon[500];
 		if (strstr(pName, "%") || strstr(pReason, "%")) return;
+		if(strlen(pReason) > 500)
+			strcpy_s(razon, 500, pReason);
+		else
+			strcpy(razon, pReason);
 		MMatchObject* pTarget = GetPlayerByName(pName);
 		if(pTarget)
 		{
-			m_MatchDBMgr.spBanPC(pTarget->GetAccountInfo()->m_nAID, pReason);
+			
+			m_MatchDBMgr.spBanPC(pTarget->GetAccountInfo()->m_nAID, razon);
 			Disconnect(pTarget->GetUID());
 			sprintf(message, "%s - %s", pTarget->GetAccountName(), pReason);
 			LogCommand("banpc", pObj->GetCharInfo()->m_szName, message);
