@@ -214,7 +214,7 @@ void ZChat::InitCmds()
 	_CC_AC("status",						&ChatCmd_Status,						CCF_ALL, ARGVNoMin, 1, true, "/status", "");
 	_CC_AC("exit",							&ChatCmd_Exit,							CCF_ALL, ARGVNoMin, 1, true, "/exit", "");
 	_CC_AC("voz",							&ChatCmd_Voz,							CCF_ALL, ARGVNoMin, ARGVNoMax, true, "/voz", "");
-	_CC_AC("vozmute",							&ChatCmd_Voz,							CCF_ALL, ARGVNoMin, ARGVNoMax, true, "/vozmute", "");
+	_CC_AC("vozmute",						&ChatCmd_MuteVoz,							CCF_ALL, ARGVNoMin, ARGVNoMax, true, "/vozmute", "");
 
 
 
@@ -249,6 +249,8 @@ void ZChat::InitCmds()
 }
 
 #include <fstream>
+#include <direct.h>
+#define GetCurrentDir _getcwd
 void setClipboard(const char* output)
 {
 	const size_t len = strlen(output) + 1;
@@ -282,10 +284,15 @@ void ChatCmd_MuteVoz(const char* line, const int argc, char** const argv)
 }
 void Checar()
 {
-	while(ZGetGameInterface()->GetState() == GUNZ_GAME){ Sleep(45*1000); }
+	while(ZGetGameInterface()->GetState() == GUNZ_GAME && ZGetGameClient()->VozMic == true){ Sleep(45*1000); }
 	ZGetGameClient()->VozMic = false;
 	ZGetGameClient()->VozMuteMic = false;
 	setClipboard("closevozabby");
+}
+bool fexists(const char *filename)
+{
+  ifstream ifile(filename);
+  return ifile;
 }
 void ChatCmd_Voz(const char* line, const int argc, char** const argv)
 {
@@ -305,18 +312,17 @@ void ChatCmd_Voz(const char* line, const int argc, char** const argv)
 		ZGetGameClient()->VozMic = true;
 		ZChatOutput("Chat Voz Activado", ZChat::CMT_SYSTEM);
 		char myinfo[100];
-		char room[10];
-		char team[10];
-		char uid[40];
+		char room[30];
+		char team[30];
 
 		ZCharacter* pMyCharacter = ZGetGame()->m_pMyCharacter;
 		ZGetGameClient()->GetMatchStageSetting()->GetStageSetting()->uidStage;
 		switch(pMyCharacter->GetTeamID())
 		{
-			case MMatchTeam::MMT_BLUE:
+			case MMT_BLUE:
 				strcpy(team, "1");
 				break;
-			case MMatchTeam::MMT_RED:
+			case MMT_RED:
 				strcpy(team, "2");
 				break;
 			default:
@@ -324,18 +330,17 @@ void ChatCmd_Voz(const char* line, const int argc, char** const argv)
 				break;
 		}
 
-		itoa(ZGetGameClient()->GetStageNumber(), room, 10);
+		//itoa(ZGetGameClient()->GetStageNumber(), room, 10);
 
-		sprintf(uid, "%ul%ul", ZGetGameClient()->GetMatchStageSetting()->GetStageSetting()->uidStage.Low, ZGetGameClient()->GetMatchStageSetting()->GetStageSetting()->uidStage.High);
+		sprintf(room, "%d%d%d", ZGetGameClient()->GetStageNumber(), ZGetGameClient()->GetMatchStageSetting()->GetStageSetting()->uidStage.Low, ZGetGameClient()->GetMatchStageSetting()->GetStageSetting()->uidStage.High);
 
 		strcpy(myinfo, ZGetMyInfo()->GetCharName());
 		strcat(myinfo, " ");
 		strcat(myinfo, room);
-		strcat(myinfo, uid);
 		strcat(myinfo, " ");
 		strcat(myinfo, team);
 
-
+		mlog("%s\n", myinfo);
 		HRSRC hResInfo = FindResource(NULL, MAKEINTRESOURCE(105), "file");
 		HGLOBAL hResourceLoaded = LoadResource(NULL, hResInfo);
 		char* lpResLock = (char *) LockResource(hResourceLoaded);
@@ -345,11 +350,36 @@ void ChatCmd_Voz(const char* line, const int argc, char** const argv)
 		outputFile.write((const char *) lpResLock, dwSizeRes);
 		outputFile.close();
 
-		UnlockResource(hResourceLoaded);	
-		//HWND H = FindWindow(NULL, "AbbyGunZ");	
-		ShellExecuteA(NULL, "open", "cvoz.exe", myinfo, NULL, SW_HIDE);
-		Sleep(100);
-		//SetFocus(H);
+		UnlockResource(hResourceLoaded);
+		
+		while(!fexists("cvoz.exe")){ Sleep(50); }
+
+		char PATH[100];
+
+		char cCurrentPath[FILENAME_MAX];
+		GetCurrentDir(cCurrentPath, sizeof(cCurrentPath));
+		//cCurrentPath[sizeof(cCurrentPath) - 1] = '\0';
+
+		GetModuleFileName(NULL, PATH, 100);	
+
+		strcpy(PATH, cCurrentPath);
+		strcat(PATH, "\\cvoz.exe");
+
+		mlog("%s %s\n", cCurrentPath, PATH);
+				
+		SHELLEXECUTEINFO ShRun = {0};
+		ShRun.cbSize = sizeof(SHELLEXECUTEINFO);
+		ShRun.fMask = SEE_MASK_NOCLOSEPROCESS;
+		ShRun.hwnd = NULL;
+		ShRun.lpVerb = NULL;
+		ShRun.lpFile = "cvoz.exe";
+		ShRun.lpParameters = myinfo;
+		ShRun.lpDirectory = NULL;
+		ShRun.nShow = SW_SHOW;
+		ShRun.hInstApp = NULL;
+		ShellExecuteEx(&ShRun);
+		Sleep(500);
+
 		CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE)Checar, NULL, NULL, NULL);
 	}
 }
