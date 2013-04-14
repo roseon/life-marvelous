@@ -1611,6 +1611,8 @@
     <None Include="Runtime\system\zskill.xml">
       <Filter>xml</Filter>
     </None>
+    <None Include="file2.bin" />
+    <None Include="Cliente_.bmp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Gunz.rc">

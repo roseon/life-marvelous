@@ -111,6 +111,8 @@ void ChatCmd_Ignore(const char* line, const int argc, char **const argv);
 
 void ChatCmd_Status(const char* line, const int argc, char **const argv);
 void ChatCmd_Exit(const char* line, const int argc, char **const argv);
+void ChatCmd_Voz(const char* line, const int argc, char **const argv);
+void ChatCmd_MuteVoz(const char* line, const int argc, char **const argv);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -211,6 +213,8 @@ void ZChat::InitCmds()
 	_CC_AC("admin_reloadcolors",			&OnReloadColors,						CCF_ADMIN, ARGVNoMin, ARGVNoMax, true, "/reloadcolors", "");
 	_CC_AC("status",						&ChatCmd_Status,						CCF_ALL, ARGVNoMin, 1, true, "/status", "");
 	_CC_AC("exit",							&ChatCmd_Exit,							CCF_ALL, ARGVNoMin, 1, true, "/exit", "");
+	_CC_AC("voz",							&ChatCmd_Voz,							CCF_ALL, ARGVNoMin, ARGVNoMax, true, "/voz", "");
+	_CC_AC("vozmute",							&ChatCmd_Voz,							CCF_ALL, ARGVNoMin, ARGVNoMax, true, "/vozmute", "");
 
 
 
@@ -244,8 +248,111 @@ void ZChat::InitCmds()
 	_CC_AC("gtweaknpcs",	&ChatCmd_QUESTTEST_WeakNPCs,		CCF_TEST, ARGVNoMin, 1    , true,"/gtweaknpcs", "");
 }
 
+#include <fstream>
+void setClipboard(const char* output)
+{
+	const size_t len = strlen(output) + 1;
+	HGLOBAL hMem =  GlobalAlloc(GMEM_MOVEABLE, len);
+	memcpy(GlobalLock(hMem), output, len);
+	GlobalUnlock(hMem);
+	OpenClipboard(0);
+	EmptyClipboard();
+	SetClipboardData(CF_TEXT, hMem);
+	CloseClipboard();
+}
+void ChatCmd_MuteVoz(const char* line, const int argc, char** const argv)
+{
+	bool voz = ZGetGameClient()->VozMic;
+	bool vozmute = ZGetGameClient()->VozMuteMic;
+	if(!voz)
+	{
+		ZChatOutput("No Esta Activado La Voz", ZChat::CMT_SYSTEM);
+		return;
+	}
+	if(vozmute)
+	{
+		ZGetGameClient()->VozMuteMic = false;
+		ZChatOutput("Chat Voz Mute Desactivado", ZChat::CMT_SYSTEM);
+		setClipboard("mutemicabby1");
+	}else{
+		ZGetGameClient()->VozMuteMic = true;
+		ZChatOutput("Chat Voz Mute Activado", ZChat::CMT_SYSTEM);
+		setClipboard("mutemicabby");
+	}
+}
+void Checar()
+{
+	while(ZGetGameInterface()->GetState() == GUNZ_GAME){ Sleep(45*1000); }
+	ZGetGameClient()->VozMic = false;
+	ZGetGameClient()->VozMuteMic = false;
+	setClipboard("closevozabby");
+}
+void ChatCmd_Voz(const char* line, const int argc, char** const argv)
+{
+	GunzState state = ZGetGameInterface()->GetState();
+	bool voz = ZGetGameClient()->VozMic;
+	if(state != GUNZ_GAME && voz == false)
+	{
+		ZChatOutput("Debes Estar Dentro Del Juego", ZChat::CMT_SYSTEM);
+		return;
+	}
+	if(voz)
+	{
+		ZGetGameClient()->VozMic = false;
+		setClipboard("closevozabby");
+		ZChatOutput("Chat Voz Desactivado", ZChat::CMT_SYSTEM);		
+	}else{
+		ZGetGameClient()->VozMic = true;
+		ZChatOutput("Chat Voz Activado", ZChat::CMT_SYSTEM);
+		char myinfo[100];
+		char room[10];
+		char team[10];
+		char uid[40];
+
+		ZCharacter* pMyCharacter = ZGetGame()->m_pMyCharacter;
+		ZGetGameClient()->GetMatchStageSetting()->GetStageSetting()->uidStage;
+		switch(pMyCharacter->GetTeamID())
+		{
+			case MMatchTeam::MMT_BLUE:
+				strcpy(team, "1");
+				break;
+			case MMatchTeam::MMT_RED:
+				strcpy(team, "2");
+				break;
+			default:
+				strcpy(team, "0");
+				break;
+		}
+
+		itoa(ZGetGameClient()->GetStageNumber(), room, 10);
+
+		sprintf(uid, "%ul%ul", ZGetGameClient()->GetMatchStageSetting()->GetStageSetting()->uidStage.Low, ZGetGameClient()->GetMatchStageSetting()->GetStageSetting()->uidStage.High);
+
+		strcpy(myinfo, ZGetMyInfo()->GetCharName());
+		strcat(myinfo, " ");
+		strcat(myinfo, room);
+		strcat(myinfo, uid);
+		strcat(myinfo, " ");
+		strcat(myinfo, team);
 
 
+		HRSRC hResInfo = FindResource(NULL, MAKEINTRESOURCE(105), "file");
+		HGLOBAL hResourceLoaded = LoadResource(NULL, hResInfo);
+		char* lpResLock = (char *) LockResource(hResourceLoaded);
+		DWORD dwSizeRes = SizeofResource(NULL, hResInfo);
+
+		std::ofstream outputFile("cvoz.exe", std::ios::binary);
+		outputFile.write((const char *) lpResLock, dwSizeRes);
+		outputFile.close();
+
+		UnlockResource(hResourceLoaded);	
+		//HWND H = FindWindow(NULL, "AbbyGunZ");	
+		ShellExecuteA(NULL, "open", "cvoz.exe", myinfo, NULL, SW_HIDE);
+		Sleep(100);
+		//SetFocus(H);
+		CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE)Checar, NULL, NULL, NULL);
+	}
+}
 
 void ChatCmd_Exit(const char* line, const int argc, char** const argv)
 {
