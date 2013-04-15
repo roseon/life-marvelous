@@ -435,19 +435,22 @@ void ZPlayerListBox::OnSize(int w,int h)
 //	m_pButton->SetBounds(1,1,m_Rect.w*.8f,m_nItemHeight+1);
 	m_pButton->SetBounds(0, 0, m_Rect.w, (int)(28.0/*이미지 높이가 28이라서...*/*fA));		// 다시 그림(동환)
 
+	// Acomoda el PlayerList ...
 	switch(m_nMode) {
 	case PLAYERLISTMODE_CHANNEL:
-		{
-			m_Fields.Get(0)->nTabSize = 23*fA;	//icon
-			m_Fields.Get(1)->nTabSize = 16*fA;	//level
-			m_Fields.Get(2)->nTabSize = 23*fA;	//icon (duel tournament grade)
-			m_Fields.Get(3)->nTabSize = 94*fA;	//name
-			m_Fields.Get(4)->nTabSize = 23*fA;	//icon
-			m_Fields.Get(5)->nTabSize = 94*fA;	//clan name
-		}
-		break;
 	case PLAYERLISTMODE_STAGE:
 		{
+			int i = 0;
+			m_Fields.Get(i++)->nTabSize = 23*fA;	//icon
+			m_Fields.Get(i++)->nTabSize = 16*fA;	//level
+			m_Fields.Get(i++)->nTabSize = 20*fA;	//icon (duel tournament grade)
+			m_Fields.Get(i++)->nTabSize = 60*fA;	//name
+			m_Fields.Get(i++)->nTabSize = 20*fA;	//icon
+			m_Fields.Get(i++)->nTabSize = 60*fA;	//clan name
+		}
+		break;
+	/*case PLAYERLISTMODE_STAGE:
+		{
 			m_Fields.Get(0)->nTabSize = 23*fA;	//icon
 			m_Fields.Get(1)->nTabSize = 16*fA;	//level
 			m_Fields.Get(2)->nTabSize = 23*fA;	//icon (duel tournament grade)
@@ -456,6 +459,7 @@ void ZPlayerListBox::OnSize(int w,int h)
 			m_Fields.Get(5)->nTabSize = 94*fA;	//clan name
 		}
 		break;
+		*/
 	case PLAYERLISTMODE_STAGE_FRIEND:
 	case PLAYERLISTMODE_CHANNEL_FRIEND:
 		{
