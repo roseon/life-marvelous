@@ -175,8 +175,6 @@ MMatchClient::MMatchClient()
 	m_bEnabledSurvivalMode = false;
 	m_bEnabledDuelTournament = false;
 	MiPing = 0;
-	VozMic = false;
-	VozMuteMic = false;
 
 //	m_SafeUDP.Create(true, MATCHCLIENT_DEFAULT_UDP_PORT);
 }

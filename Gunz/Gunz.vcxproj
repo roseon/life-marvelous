@@ -1867,7 +1867,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Cliente_.bmp" />
     <None Include="file2.bin" />
     <None Include="runtime\shader\skin.vsh" />
     <None Include="runtime\shader\skin1.vsh" />
