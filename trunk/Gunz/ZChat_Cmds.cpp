@@ -698,35 +698,35 @@ void ChatCmd_Clan(const char* line, const int argc, char **const argv)
 		ZCLANCMD GetSubCommand(const char* pszCmd) {
 			GunzState nGameState = ZApplication::GetGameInterface()->GetState();
 
-			if ((stricmp(pszCmd, "»ý¼º") == 0) || (stricmp(pszCmd, "open") == 0))
+			if (stricmp(pszCmd, "open") == 0)
 			{
 				if (nGameState == GUNZ_LOBBY) return ZCLANCMD_CREATE;
 			}
-			else if ((stricmp(pszCmd, "Æó¼â") == 0) || (stricmp(pszCmd, "ÇØÃ¼") == 0) || (stricmp(pszCmd, "close") == 0))
+			else if (stricmp(pszCmd, "close") == 0)
 			{
 				if (nGameState == GUNZ_LOBBY) return ZCLANCMD_CLOSE;
 			}
-			else if ( (stricmp(pszCmd, "ÃÊ´ë") == 0) || (stricmp(pszCmd, "invite") == 0) )
+			else if ( stricmp(pszCmd, "invite") == 0) 
 			{
 				if (nGameState == GUNZ_LOBBY) return ZCLANCMD_JOIN;
 			}
-			else if ( (stricmp(pszCmd, "Å»Åð") == 0) || (stricmp(pszCmd, "leave") == 0) )
+			else if ( stricmp(pszCmd, "leave") == 0)
 			{
 				if (nGameState == GUNZ_LOBBY) return ZCLANCMD_LEAVE;
 			}
-			else if ( (stricmp(pszCmd, "±ÇÇÑº¯°æ") == 0) || (stricmp(pszCmd, "promote") == 0) )
+			else if ( stricmp(pszCmd, "promote") == 0)
 			{
 				if (nGameState == GUNZ_LOBBY) return ZCLANCMD_CHANGE_GRADE;
 			}
-			else if ((stricmp(pszCmd, "°­Á¦Å»Åð") == 0) || (stricmp(pszCmd, "¹æÃâ") == 0) || (stricmp(pszCmd, "dismiss") == 0))
+			else if (stricmp(pszCmd, "dismiss") == 0)
 			{
 				if (nGameState == GUNZ_LOBBY) return ZCLANCMD_EXPEL_MEMBER;
 			}
-			else if ((stricmp(pszCmd, "list") == 0) || (stricmp(pszCmd, "¸ñ·Ï") == 0))
+			else if (stricmp(pszCmd, "list") == 0)
 			{
 				if (nGameState == GUNZ_LOBBY) return ZCLANCMD_LIST;
 			}
-			else if ((stricmp(pszCmd, "msg") == 0) || (stricmp(pszCmd, "Ã¤ÆÃ") == 0))
+			else if (stricmp(pszCmd, "msg") == 0)
 			{
 				return ZCLANCMD_MSG;
 			}
