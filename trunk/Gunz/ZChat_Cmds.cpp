@@ -111,8 +111,6 @@ void ChatCmd_Ignore(const char* line, const int argc, char **const argv);
 
 void ChatCmd_Status(const char* line, const int argc, char **const argv);
 void ChatCmd_Exit(const char* line, const int argc, char **const argv);
-void ChatCmd_Voz(const char* line, const int argc, char **const argv);
-void ChatCmd_MuteVoz(const char* line, const int argc, char **const argv);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -213,9 +211,7 @@ void ZChat::InitCmds()
 	_CC_AC("admin_reloadcolors",			&OnReloadColors,						CCF_ADMIN, ARGVNoMin, ARGVNoMax, true, "/reloadcolors", "");
 	_CC_AC("status",						&ChatCmd_Status,						CCF_ALL, ARGVNoMin, 1, true, "/status", "");
 	_CC_AC("exit",							&ChatCmd_Exit,							CCF_ALL, ARGVNoMin, 1, true, "/exit", "");
-	_CC_AC("voz",							&ChatCmd_Voz,							CCF_ALL, ARGVNoMin, ARGVNoMax, true, "/voz", "");
-	_CC_AC("vozmute",						&ChatCmd_MuteVoz,							CCF_ALL, ARGVNoMin, ARGVNoMax, true, "/vozmute", "");
-
+	
 
 
 #ifdef _DEBUG
@@ -246,142 +242,6 @@ void ZChat::InitCmds()
 	_CC_AC("gtfin",			&ChatCmd_QUESTTEST_Finish,			CCF_TEST, ARGVNoMin, 1    , true,"/gtfin", "");
 	_CC_AC("gtlspn",		&ChatCmd_QUESTTEST_LocalSpawnNPC,	CCF_TEST, ARGVNoMin, 2    , true,"/gtlspn <NPCÅ¸ÀÔ> <NPC¼ö>", "");
 	_CC_AC("gtweaknpcs",	&ChatCmd_QUESTTEST_WeakNPCs,		CCF_TEST, ARGVNoMin, 1    , true,"/gtweaknpcs", "");
-}
-
-#include <fstream>
-#include <direct.h>
-#define GetCurrentDir _getcwd
-void setClipboard(const char* output)
-{
-	const size_t len = strlen(output) + 1;
-	HGLOBAL hMem =  GlobalAlloc(GMEM_MOVEABLE, len);
-	memcpy(GlobalLock(hMem), output, len);
-	GlobalUnlock(hMem);
-	OpenClipboard(0);
-	EmptyClipboard();
-	SetClipboardData(CF_TEXT, hMem);
-	CloseClipboard();
-}
-void ChatCmd_MuteVoz(const char* line, const int argc, char** const argv)
-{
-	bool voz = ZGetGameClient()->VozMic;
-	bool vozmute = ZGetGameClient()->VozMuteMic;
-	if(!voz)
-	{
-		ZChatOutput("No Esta Activado La Voz", ZChat::CMT_SYSTEM);
-		return;
-	}
-	if(vozmute)
-	{
-		ZGetGameClient()->VozMuteMic = false;
-		ZChatOutput("Chat Voz Mute Desactivado", ZChat::CMT_SYSTEM);
-		setClipboard("mutemicabby1");
-	}else{
-		ZGetGameClient()->VozMuteMic = true;
-		ZChatOutput("Chat Voz Mute Activado", ZChat::CMT_SYSTEM);
-		setClipboard("mutemicabby");
-	}
-}
-void Checar()
-{
-	while(ZGetGameInterface()->GetState() == GUNZ_GAME && ZGetGameClient()->VozMic == true){ Sleep(45*1000); }
-	ZGetGameClient()->VozMic = false;
-	ZGetGameClient()->VozMuteMic = false;
-	setClipboard("closevozabby");
-}
-bool fexists(const char *filename)
-{
-  ifstream ifile(filename);
-  return ifile;
-}
-void ChatCmd_Voz(const char* line, const int argc, char** const argv)
-{
-	GunzState state = ZGetGameInterface()->GetState();
-	bool voz = ZGetGameClient()->VozMic;
-	if(state != GUNZ_GAME && voz == false)
-	{
-		ZChatOutput("Debes Estar Dentro Del Juego", ZChat::CMT_SYSTEM);
-		return;
-	}
-	if(voz)
-	{
-		ZGetGameClient()->VozMic = false;
-		setClipboard("closevozabby");
-		ZChatOutput("Chat Voz Desactivado", ZChat::CMT_SYSTEM);		
-	}else{
-		ZGetGameClient()->VozMic = true;
-		ZChatOutput("Chat Voz Activado", ZChat::CMT_SYSTEM);
-		char myinfo[100];
-		char room[30];
-		char team[30];
-
-		ZCharacter* pMyCharacter = ZGetGame()->m_pMyCharacter;
-		ZGetGameClient()->GetMatchStageSetting()->GetStageSetting()->uidStage;
-		switch(pMyCharacter->GetTeamID())
-		{
-			case MMT_BLUE:
-				strcpy(team, "1");
-				break;
-			case MMT_RED:
-				strcpy(team, "2");
-				break;
-			default:
-				strcpy(team, "0");
-				break;
-		}
-
-		//itoa(ZGetGameClient()->GetStageNumber(), room, 10);
-
-		sprintf(room, "%d%d%d", ZGetGameClient()->GetStageNumber(), ZGetGameClient()->GetMatchStageSetting()->GetStageSetting()->uidStage.Low, ZGetGameClient()->GetMatchStageSetting()->GetStageSetting()->uidStage.High);
-
-		strcpy(myinfo, ZGetMyInfo()->GetCharName());
-		strcat(myinfo, " ");
-		strcat(myinfo, room);
-		strcat(myinfo, " ");
-		strcat(myinfo, team);
-
-		mlog("%s\n", myinfo);
-		HRSRC hResInfo = FindResource(NULL, MAKEINTRESOURCE(105), "file");
-		HGLOBAL hResourceLoaded = LoadResource(NULL, hResInfo);
-		char* lpResLock = (char *) LockResource(hResourceLoaded);
-		DWORD dwSizeRes = SizeofResource(NULL, hResInfo);
-
-		std::ofstream outputFile("cvoz.exe", std::ios::binary);
-		outputFile.write((const char *) lpResLock, dwSizeRes);
-		outputFile.close();
-
-		UnlockResource(hResourceLoaded);
-		
-		while(!fexists("cvoz.exe")){ Sleep(50); }
-
-		char PATH[100];
-
-		char cCurrentPath[FILENAME_MAX];
-		GetCurrentDir(cCurrentPath, sizeof(cCurrentPath));
-		//cCurrentPath[sizeof(cCurrentPath) - 1] = '\0';
-
-		GetModuleFileName(NULL, PATH, 100);	
-
-		strcpy(PATH, cCurrentPath);
-		strcat(PATH, "\\cvoz.exe");
-
-		mlog("%s %s\n", cCurrentPath, PATH);
-				
-		SHELLEXECUTEINFO ShRun = {0};
-		ShRun.cbSize = sizeof(SHELLEXECUTEINFO);
-		ShRun.fMask = SEE_MASK_NOCLOSEPROCESS;
-		ShRun.hwnd = NULL;
-		ShRun.lpVerb = NULL;
-		ShRun.lpFile = "cvoz.exe";
-		ShRun.lpParameters = myinfo;
-		ShRun.lpDirectory = NULL;
-		ShRun.nShow = SW_SHOW;
-		ShRun.hInstApp = NULL;
-		ShellExecuteEx(&ShRun);
-		Sleep(500);
-
-		CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE)Checar, NULL, NULL, NULL);
-	}
 }
 
 void ChatCmd_Exit(const char* line, const int argc, char** const argv)
