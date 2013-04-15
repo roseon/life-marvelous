@@ -6772,7 +6772,7 @@ void ZGame::AddEffectRoundState(MMATCH_ROUNDSTATE nRoundState, int nArg)
 				{
 					ZCharacter* pCharacter = (ZCharacter*)(*itor).second;
 					
-					if(pCharacter->GetTeamID() == ZGetGame()->m_pMyCharacter->GetTeamID()) 
+					if(pCharacter->GetTeamID() == ZGetGame()->m_pMyCharacter->GetTeamID() && !pCharacter->IsAdminHide()) 
 					{ //HERHEHRHERHEH
 						char FinishStr[512];
 						sprintf(FinishStr, "%s ha hecho %d de damage.", pCharacter->GetCharInfo()->szName, pCharacter->GetStatus().Ref().nDamageCaused);
