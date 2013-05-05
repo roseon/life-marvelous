@@ -21,9 +21,9 @@
 #define STR_LAUNCHER_EXCUTE_FILENAME		"AbbyLauncher.exe"
 #define STR_PATCHINFO_FILENAME				"patch.xml"
 #define STR_WEBPAGE_URL					    "http://gunz.abbygamerz.net/webgunz/launcher/start.html"
-#define STR_ADDRESS_REAL					"gunz.abbygamerz.net"//"localhost"
+#define STR_ADDRESS_REAL					"abbygunz.net"//"gunz.abbygamerz.net"//"localhost"
 #define STR_ADDRESS_ALPHA					"u-gunz-gm01.alpha-pubgame.ijji.com"
-#define STR_DIRECTORY_REAL					"webgunz/gunzupdate/patch"
+#define STR_DIRECTORY_REAL					"abbygamerz.net/webgunz/webgunz/gunzupdate/patch"//"webgunz/gunzupdate/patch"
 #define STR_DIRECTORY_ALPHA					"client/GunzUpdate"
 #endif LOCALE_NHNUSA
 
@@ -389,6 +389,24 @@ void CNewAppDlg::OnTimer(UINT nIDEvent)
 *************************************************************************************/
 void CNewAppDlg::OnBnClickedStartgame()
 {
+	/*	CString strMessageSecond;
+		strMessageSecond.Format( "./%s", STR_PATCHINFO_FILENAME);*/
+
+
+		//// alex server bypass
+		//bool bRetVal = m_Update.CheckUpdate( strMessageSecond.GetBuffer());
+		//if(bRetVal==false){
+		//	if (AfxMessageBox("No hubo conexion con el servidor, desea continuar?", MB_YESNO | MB_ICONQUESTION) != IDYES)
+		//			{
+		//				m_bSkipUpdate=true;
+		//			}
+
+
+		//	
+		//}
+
+
+
 	// 업데이트 완료 상태이면 게임을 실행시킨다
 	if ( (m_bSkipUpdate == true) || (m_bUpdateComplete == true))
 	{
@@ -483,6 +501,7 @@ UINT ThreadUpdate( LPVOID pParam)
 		// 패치 정보를 받지 못했다면...
 		if ( bRetVal == false)
 		{
+			//pDlg->m_bSkipUpdate == true;
 			// 로그 출력
 			PutLog( "[APP] ERROR - Cannot download patch info file");
 
@@ -843,6 +862,22 @@ LRESULT CNewAppDlg::OnUpdateError( WPARAM wParam, LPARAM lParam)
 	dlg.SetDialog( this, /*Error Report*/ ZGetString( "STR_108"), /*There was an error on the process.  We appologize for your inconvenience.  Please check the error report below and elimate the source or error manually.*/ ZGetString( "STR_109"), m_Update.GetErrorMsg(), MB_OK);
 	this->SetFocus();			// 포커싱 다시 획득
 	int nRetVal = dlg.DoModal();
+
+		CString strMessageSecond;
+		strMessageSecond.Format( "./%s", STR_PATCHINFO_FILENAME);
+
+
+		//// alex server bypass
+		bool bRetVal = m_Update.CheckUpdate( strMessageSecond.GetBuffer());
+		if(bRetVal==false){
+			if (AfxMessageBox("No hubo conexion con el servidor, desea continuar?", MB_YESNO | MB_ICONQUESTION) == IDYES)
+					{
+						m_bSkipUpdate=true;
+						OnBnClickedStartgame();
+						//StartGame();
+					}
+			}
+			
 
 
 	return TRUE;

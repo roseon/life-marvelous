@@ -128,6 +128,7 @@ bool ZFileTransfer::OpenConnection()
 	try
 	{
 		pConnection = m_Session.GetHttpConnection( m_szAddress, (INTERNET_PORT)m_nPort);
+		
 		if ( pConnection != NULL)
 		{
 			// Success
@@ -203,6 +204,7 @@ bool ZFileTransfer::DownloadFile( const char* pszRemoteFileName, const char* psz
 	
 	// Set variables
 	CHttpFile* pFile = NULL;
+	
 	CFile LocalFile;
 	m_bStopDownload = false;
 
@@ -272,6 +274,8 @@ bool ZFileTransfer::DownloadFile( const char* pszRemoteFileName, const char* psz
 	{
 		// Open request
 		pFile = GetConnection()->OpenRequest( CHttpConnection::HTTP_VERB_GET, szFullPathName, NULL, 1, NULL, NULL, INTERNET_FLAG_EXISTING_CONNECT | INTERNET_FLAG_DONT_CACHE | INTERNET_FLAG_NO_AUTO_REDIRECT);
+		//pFile->AddRequestHeaders("User-Agent: Mozilla/5.0\r\n",  HTTP_ADDREQ_FLAG_ADD_IF_NEW);
+
 		if ( !pFile)
 		{
 			str.Format( "[ZFileTransfer] ERROR : Cannot open remote file.");
@@ -347,7 +351,8 @@ bool ZFileTransfer::DownloadFile( const char* pszRemoteFileName, const char* psz
 			// Delete file
 			DeleteFile( pszLocalFileName);
 
-
+			//para que no se cierre
+			//m_bSkipUpdate=true;
 			return false;
 		}
 
