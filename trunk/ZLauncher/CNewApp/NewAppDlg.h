@@ -59,7 +59,7 @@ protected:
 	int				m_nMajorVersion;
 
 	// 업데이트를 건너 뛰는지 확인
-	bool			m_bSkipUpdate;
+	
 
 	// Alpha 모드인지 확인
 	bool			m_bIsAlpha;
@@ -74,7 +74,7 @@ protected:
 public:
 	// 파일 업데이트가 끝났는지 확인
 	bool			m_bUpdateComplete;
-
+	bool			m_bSkipUpdate;
 	//{{AFX_DATA(CNewAppDlg)
 	CDDBButton		m_cStartGame;
 	CDDBButton		m_cStop;
