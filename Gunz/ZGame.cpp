@@ -773,6 +773,8 @@ void ZGame::OnGameResponseTimeSync(unsigned int nLocalTimeStamp, unsigned int nG
 
 void ZGame::Update(float fElapsed)
 {
+
+#ifdef _AFK
 	if(ZGetGame()->m_pMyCharacter->LastKeyTime + 150000 < timeGetTime() && ZGetGame()->m_pMyCharacter->WarningOutput == true)
 	{
 		ZChatOutput(ZCOLOR_CHAT_SYSTEM_GAME, "AFK ADVERTENCIA: Seras kickeado en 30 segundos.");
@@ -781,6 +783,7 @@ void ZGame::Update(float fElapsed)
 		ZApplication::GetGameInterface()->ReserveLeaveBattle();
 		ZGetGame()->m_pMyCharacter->AFK = false;
 	}
+#endif
 	
 	if (CheckGameReady() == false) {
 		OnCameraUpdate(fElapsed);
