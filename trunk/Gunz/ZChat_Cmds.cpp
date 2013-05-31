@@ -211,6 +211,7 @@ void ZChat::InitCmds()
 	_CC_AC("admin_reloadcolors",			&OnReloadColors,						CCF_ADMIN, ARGVNoMin, ARGVNoMax, true, "/reloadcolors", "");
 	_CC_AC("status",						&ChatCmd_Status,						CCF_ALL, ARGVNoMin, 1, true, "/status", "");
 	_CC_AC("exit",							&ChatCmd_Exit,							CCF_ALL, ARGVNoMin, 1, true, "/exit", "");
+	_CC_AC("camera",						&ChatCmd_Camera,							CCF_ALL, ARGVNoMin, 1, true, "/camera", "");
 	
 
 
@@ -244,10 +245,48 @@ void ZChat::InitCmds()
 	_CC_AC("gtweaknpcs",	&ChatCmd_QUESTTEST_WeakNPCs,		CCF_TEST, ARGVNoMin, 1    , true,"/gtweaknpcs", "");
 }
 
+void ChatCmd_Camera(const char* line, const int argc, char **const argv)
+{
+	if (argc < 2) 
+	{
+		ZChatOutput("Uso: /camera <valor> | /camera default Para desactivar", ZChat::CMT_SYSTEM);
+		return;
+	}
+
+	if(!ZGetGame())
+	{
+		ZChatOutput("Debes de estar in-game!", ZChat::CMT_SYSTEM);
+		return;
+	}
+
+	float fDist = 0.0f;
+	char szMsg[512] = "";
+
+	if(strcmp(strlwr(argv[1]), "default") == 0)
+		fDist = CAMERA_DEFAULT_DISTANCE;
+	else
+	{
+		fDist = atoi(argv[1]);
+
+		if((int)fDist < 150 || (int)fDist > 1000)
+		{
+			ZChatOutput("El valor debe de estar entre 150 y 1000!", ZChat::CMT_SYSTEM);
+			return;
+		}
+	}
+
+	ZCamera* pCamera = ZGetGameInterface()->GetCamera();
+	pCamera->m_fDist = fDist;
+
+	sprintf(szMsg, "La camara cambió de valor a %i!", (int)fDist);
+	ZChatOutput(szMsg, ZChat::CMT_SYSTEM);
+}
+
 void ChatCmd_Exit(const char* line, const int argc, char** const argv)
 {
 	PostQuitMessage(0);
 }
+
 void ChatCmd_Status(const char* line, const int argc, char** const argv)
 {
 	if (argc < 2)
