@@ -256,15 +256,7 @@ void MMatchServer::OnAdminRequestKickPlayer(const MUID& uidAdmin, const char* sz
 		pTargetObj->DisconnectHacker( MMHT_COMMAND_BLOCK_BY_ADMIN );
 #else
 		// Notify Message 필요 -> 관리자 전용 - 해결(특별한 메세지 필요 없음)
-		struct tm *current;
-		time_t now;	
-		time(&now);
-		current = localtime(&now);
-
-		FILE *f = fopen("admin_kick.txt", "a+");
-		fprintf(f, "[%s/%s/%s %s:%s:%s] %s Kickeo a %s\n", current->tm_mday, current->tm_mon, current->tm_year, current->tm_hour, 
-			current->tm_min, current->tm_sec, pObj->GetAccountInfo()->m_szUserID, pTargetObj->GetAccountInfo()->m_szUserID);
-		fclose(f);
+		
 		Disconnect(pTargetObj->GetUID());
 #endif
 	} else {
