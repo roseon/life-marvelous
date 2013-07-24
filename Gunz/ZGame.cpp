@@ -3959,7 +3959,7 @@ void ZGame::OnExplosionMagicNonSplash(ZWeaponMagic *pWeapon, MUID uidOwner, MUID
 
 int ZGame::SelectSlashEffectMotion(ZCharacter* pCharacter)
 {
-	if(pCharacter==NULL) return SEM_None;
+	if(pCharacter==NULL || pCharacter->GetSelectItemDesc() == NULL) return SEM_None; 
 
 	// 남녀가 같아졌지만 혹시 또 바뀔지 모르니 놔둔다~~
 
@@ -7637,6 +7637,11 @@ void ZGame::OnPeerBuffInfo(const MUID& uidSender, void* pBlobBuffInfo)
 
 	MTD_BuffInfo* pBuffInfo = NULL;
 	int numElem = MGetBlobArrayCount(pBlobBuffInfo);
+	
+	if (MGetBlobArraySize(pBlobBuffInfo) != (8 + (sizeof(MTD_BuffInfo) * numElem))) {
+        return;
+    }
+
 	for (int i=0; i<numElem; ++i)
 	{
 		pBuffInfo = (MTD_BuffInfo*)MGetBlobArrayElement(pBlobBuffInfo, i);

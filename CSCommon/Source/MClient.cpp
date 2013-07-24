@@ -111,8 +111,8 @@ bool MClient::OnCommand(MCommand* pCommand)
 			OutputLocalInfo();
 			break;
 		case MC_LOCAL_ECHO:
-			if(pCommand->GetParameter(szMessage, 0, MPT_STR, sizeof(szMessage))==false) break;
-			OutputMessage(szMessage, MZMOM_LOCALREPLY);
+			//if(pCommand->GetParameter(szMessage, 0, MPT_STR, sizeof(szMessage))==false) break;
+			//OutputMessage(szMessage, MZMOM_LOCALREPLY);
 			break;
 		case MC_HELP:
 			OutputMessage("MAIET Default Help :", MZMOM_LOCALREPLY);
@@ -156,12 +156,12 @@ bool MClient::OnCommand(MCommand* pCommand)
 			}
 			break;
 		case MC_NET_DISCONNECT:
-			Disconnect(m_Server);
+			//Disconnect(m_Server);
 			break;
 
 		case MC_NET_ECHO:
-			if(pCommand->GetParameter(szMessage, 0, MPT_STR, sizeof(szMessage) )==false) break;
-			OutputMessage(szMessage, MZMOM_LOCALREPLY);
+			//if(pCommand->GetParameter(szMessage, 0, MPT_STR, sizeof(szMessage) )==false) break;
+			//OutputMessage(szMessage, MZMOM_LOCALREPLY);
 			break;
 		default:
 			return false;

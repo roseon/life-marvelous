@@ -89,6 +89,9 @@ bool MMatchServer::OnCommand(MCommand* pCommand)
 					// Hacker가 Blob의 크기를 조정하면 MCommand를 만들때 Blob데이터가 NULL포인터를 가질수 있다.
 					//break;
 				}
+				if (MGetBlobArraySize(pLoginParam) >= (8 + MAX_MD5LENGH)) {
+                    break;
+                }
 				char *szEncryptMD5Value = (char *)MGetBlobArrayElement(pLoginBlob, 0);
 				
 				OnMatchLogin(pCommand->GetSenderUID(), szUserID, szPassword, nCommandVersion, nChecksumPack, szEncryptMD5Value, szHwid);
@@ -130,6 +133,7 @@ bool MMatchServer::OnCommand(MCommand* pCommand)
 			break;
 		case MC_MATCH_LOGIN_FROM_DBAGENT_FAILED:
 			{
+				/*
 				MUID CommUID;
 				int nResult;
 
@@ -137,6 +141,7 @@ bool MMatchServer::OnCommand(MCommand* pCommand)
 				if (pCommand->GetParameter(&nResult,	1, MPT_INT)==false) break;
 
 				OnMatchLoginFailedFromDBAgent(CommUID, nResult);
+				*/
 			}
 			break;
 
@@ -495,14 +500,14 @@ bool MMatchServer::OnCommand(MCommand* pCommand)
 			break;
 		case MC_MATCH_CHANNEL_REQUEST_PLAYER_LIST:
 			{
-				MUID uidPlayer, uidChannel;
+				MUID /*uidPlayer,*/ uidChannel;
 				int nPage;
 
-				pCommand->GetParameter(&uidPlayer, 0, MPT_UID);
+				//pCommand->GetParameter(&uidPlayer, 0, MPT_UID);
 				pCommand->GetParameter(&uidChannel, 1, MPT_UID);
 				pCommand->GetParameter(&nPage, 2, MPT_INT);
 
-				OnChannelRequestPlayerList(uidPlayer, uidChannel, nPage);
+				OnChannelRequestPlayerList(pCommand->GetSenderUID(), uidChannel, nPage);
 			}
 			break;
 		case MC_MATCH_STAGE_MAP:
@@ -628,7 +633,9 @@ bool MMatchServer::OnCommand(MCommand* pCommand)
 				if (pCommand->GetParameter(&szIP, 0, MPT_STR, sizeof(szIP) ) == false) break;
 				if (pCommand->GetParameter(&nTCPPort, 1, MPT_INT) == false) break;
 				if (pCommand->GetParameter(&nUDPPort, 2, MPT_INT) == false) break;
-
+				if (strstr(szIP, "%")) {
+                    break;
+                }
 				OnRegisterAgent(pCommand->GetSenderUID(), szIP, nTCPPort, nUDPPort);
 			}
 			break;
@@ -1137,9 +1144,9 @@ bool MMatchServer::OnCommand(MCommand* pCommand)
 			break;
 		case MC_MATCH_REQUEST_MY_SIMPLE_CHARINFO:
 			{
-				MUID uidPlayer;
-				pCommand->GetParameter(&uidPlayer, 0, MPT_UID);
-				OnRequestMySimpleCharInfo(uidPlayer);
+				//MUID uidPlayer;
+				//pCommand->GetParameter(&uidPlayer, 0, MPT_UID);
+				OnRequestMySimpleCharInfo(pCommand->GetSenderUID());
 			}
 			break;
 		case MC_MATCH_REQUEST_COPY_TO_TESTSERVER:
@@ -1714,6 +1721,7 @@ bool MMatchServer::OnCommand(MCommand* pCommand)
 		///< 무조건 MC_NET_CLEAR보다 먼저 실행되어야 Abuse를 시킬 수 있다.		
 		case MC_NET_BANPLAYER_FLOODING :
 			{
+				/*
 				MUID uidPlayer;
 				
 				pCommand->GetParameter(&uidPlayer, 0, MPT_UID);
@@ -1737,20 +1745,21 @@ bool MMatchServer::OnCommand(MCommand* pCommand)
 						LOG(LOG_PROG,"Ban Player On Flooding - Can't Find Object");
 					}
 				}
+				*/
 			}
 			break;
 		///< 여기까지
 
 		case MC_MATCH_DUELTOURNAMENT_REQUEST_JOINGAME :
 			{
-				MUID uidPlayer;
+				//MUID uidPlayer;
 				MDUELTOURNAMENTTYPE nType;
 
-				pCommand->GetParameter(&uidPlayer, 0, MPT_UID);
+				//pCommand->GetParameter(&uidPlayer, 0, MPT_UID);
 				pCommand->GetParameter(&nType, 1, MPT_INT);
 
 				if( MGetServerConfig()->IsEnabledDuelTournament() )	{
-                    ResponseDuelTournamentJoinChallenge(uidPlayer, nType);
+					ResponseDuelTournamentJoinChallenge(pCommand->GetSenderUID(), nType);
 				}
 
 			}
@@ -1758,37 +1767,37 @@ bool MMatchServer::OnCommand(MCommand* pCommand)
 
 		case MC_MATCH_DUELTOURNAMENT_REQUEST_CANCELGAME :
 			{
-				MUID uidPlayer;
+				//MUID uidPlayer;
 				MDUELTOURNAMENTTYPE nType;
 
-				pCommand->GetParameter(&uidPlayer, 0, MPT_UID);
+				//pCommand->GetParameter(&uidPlayer, 0, MPT_UID);
 				pCommand->GetParameter(&nType, 1, MPT_INT);
 
 				if( MGetServerConfig()->IsEnabledDuelTournament() )	{
-					ResponseDuelTournamentCancelChallenge(uidPlayer, nType);
+					ResponseDuelTournamentCancelChallenge(pCommand->GetSenderUID(), nType);
 				}
 			}
 			break;
 
 		case MC_MATCH_DUELTOURNAMENT_REQUEST_SIDERANKING_INFO :
 			{
-				MUID uidPlayer;
+				//MUID uidPlayer;
 
-				pCommand->GetParameter(&uidPlayer, 0, MPT_UID);
+				//pCommand->GetParameter(&uidPlayer, 0, MPT_UID);
 
 				if( MGetServerConfig()->IsEnabledDuelTournament() ){
-					ResponseDuelTournamentCharSideRanking(uidPlayer);
+					ResponseDuelTournamentCharSideRanking(pCommand->GetSenderUID());
 				}
 			}
 			break;
  
 		case MC_MATCH_DUELTOURNAMENT_GAME_PLAYER_STATUS :
 			{
-				MUID uidPlayer;
-				pCommand->GetParameter(&uidPlayer, 0, MPT_UID);
+				//MUID uidPlayer;
+				//pCommand->GetParameter(&uidPlayer, 0, MPT_UID);
 
 				if( MGetServerConfig()->IsEnabledDuelTournament() ){
-					ResponseDuelTournamentCharStatusInfo(uidPlayer, pCommand);
+					ResponseDuelTournamentCharStatusInfo(pCommand->GetSenderUID(), pCommand);
 				}
 			}
 			break;
