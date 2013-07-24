@@ -231,9 +231,9 @@ bool MServer::OnCommand(MCommand* pCommand)
 
 	case MC_NET_CLEAR:
 		{
-			MUID uid;
-			if (pCommand->GetParameter(&uid, 0, MPT_UID)==false) break;
-			OnNetClear(uid);
+			//MUID uid;
+			//if (pCommand->GetParameter(&uid, 0, MPT_UID)==false) break;
+			OnNetClear(pCommand->GetSenderUID());
 			return true;
 		}
 		break;
