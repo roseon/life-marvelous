@@ -111,6 +111,7 @@ void ChatCmd_Ignore(const char* line, const int argc, char **const argv);
 
 void ChatCmd_Status(const char* line, const int argc, char **const argv);
 void ChatCmd_Exit(const char* line, const int argc, char **const argv);
+void ChatCmd_Camera(const char* line, const int argc, char **const argv);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
