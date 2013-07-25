@@ -737,7 +737,9 @@ bool MMatchDBMgr::GetLoginInfo(const TCHAR* szUserID, unsigned int* poutnAID, TC
 	if (!CheckOpen()) return false;
 
 	CString strSQL;
-	strSQL.Format(g_szDB_GET_LOGININFO, szUserID);
+	string strUserID = m_DBFilter.Filtering( string(szUserID) );
+	strSQL.Format(g_szDB_GET_LOGININFO, &strUserID[0]);
+	//strSQL.Format(g_szDB_GET_LOGININFO, szUserID);
 
 	CODBCRecordset rs(&m_DB);
 
@@ -768,7 +770,9 @@ bool MMatchDBMgr::GetLoginInfo_Netmarble(const TCHAR* szUserID, unsigned int* po
 	if (!CheckOpen()) return false;
 
 	CString strSQL;
-	strSQL.Format(g_szDB_GET_LOGININFO_NETMARBLE2, szUserID, poutPassword);
+	string strUserID = m_DBFilter.Filtering( string(szUserID) );
+    strSQL.Format(g_szDB_GET_LOGININFO_NETMARBLE2, &strUserID[0], poutPassword); 
+	//strSQL.Format(g_szDB_GET_LOGININFO_NETMARBLE2, szUserID, poutPassword);
 
 	CODBCRecordset rs(&m_DB);
 
@@ -809,7 +813,11 @@ bool MMatchDBMgr::CreateAccount(const TCHAR* szUserID,
 	CString strSQL;
 
 	try {		
-		strSQL.Format(g_szDB_CREATE_ACCOUNT, szUserID, szPassword, nCert, szName, nAge, nSex);
+		string strUserID = m_DBFilter.Filtering( string(szUserID) );
+        string strPassword = m_DBFilter.Filtering( string(szPassword) );
+        string strName = m_DBFilter.Filtering( string(szName) );
+        strSQL.Format(g_szDB_CREATE_ACCOUNT, &strUserID[0], &strPassword[0], nCert, &strName[0], nAge, nSex); 
+		//strSQL.Format(g_szDB_CREATE_ACCOUNT, szUserID, szPassword, nCert, szName, nAge, nSex);
 		m_DB.ExecuteSQL( strSQL );
 	} 
 	catch(CDBException* e) {		
@@ -834,7 +842,10 @@ bool MMatchDBMgr::CreateAccount_Netmarble(const TCHAR* szUserID,
 	if (!CheckOpen()) return false;	
 
 	CString strSQL;
-	strSQL.Format(g_szDB_CREATE_ACCOUNT_NETMARBLE, szUserID, szPassword, nAge, nSex, nCCode);
+	string strUserID = m_DBFilter.Filtering( string(szUserID) );
+    string strPassword = m_DBFilter.Filtering( string(szPassword) );    
+    strSQL.Format(g_szDB_CREATE_ACCOUNT_NETMARBLE, &strUserID[0], &strPassword[0], nAge, nSex, nCCode); 
+	//strSQL.Format(g_szDB_CREATE_ACCOUNT_NETMARBLE, szUserID, szPassword, nAge, nSex, nCCode);
 	CODBCRecordset rs(&m_DB);
 
 	try {
@@ -865,7 +876,9 @@ bool MMatchDBMgr::CheckDuplicateCharactername(int* pnOutResult, const TCHAR* szN
 
 
 	try {
-		strSQL.Format( g_szCheckDuplicateCharName, szNewName );
+		string strNewName = m_DBFilter.Filtering( string(szNewName) );
+        strSQL.Format( g_szCheckDuplicateCharName, &strNewName[0] );
+		//strSQL.Format( g_szCheckDuplicateCharName, szNewName );
 		rs.Open(strSQL, CRecordset::forwardOnly, CRecordset::readOnly);
 	}
 	catch (CDBException* e) {		
@@ -902,7 +915,9 @@ bool MMatchDBMgr::CreateCharacter(int* pnOutResult,
 	CODBCRecordset rs(&m_DB);
 
 	try {
-		strSQL.Format(g_szDB_CREATE_CHAR, nAID, nCharIndex, szNewName,  nSex, nHair, nFace, nCostume);
+		string strNewName = m_DBFilter.Filtering( string(szNewName) );
+        strSQL.Format(g_szDB_CREATE_CHAR, nAID, nCharIndex, &strNewName[0],  nSex, nHair, nFace, nCostume); 
+		//strSQL.Format(g_szDB_CREATE_CHAR, nAID, nCharIndex, szNewName,  nSex, nHair, nFace, nCostume);
 		rs.Open(strSQL, CRecordset::forwardOnly, CRecordset::readOnly);
 	} 
 	catch(CDBException* e) {		
@@ -1259,7 +1274,9 @@ bool MMatchDBMgr::DeleteCharacter(const int nAID, const int nCharIndex, const TC
 	}
 
 	CString strSQL;
-	strSQL.Format(g_szDB_DELETE_CHAR, nAID, nCharIndex, szCharName);
+	string strCharName = m_DBFilter.Filtering( string(szCharName) );
+    strSQL.Format(g_szDB_DELETE_CHAR, nAID, nCharIndex, &strCharName[0]); 
+	//strSQL.Format(g_szDB_DELETE_CHAR, nAID, nCharIndex, szCharName);
 
 	CODBCRecordset rs(&m_DB);
 
@@ -1943,7 +1960,9 @@ bool MMatchDBMgr::UpdateLastConnDate(const TCHAR* szUserID, const TCHAR* szIP)
 	CString strSQL;
 
 	try {		
-		strSQL.Format(g_szDB_UPDATE_LAST_CONNDATE, szIP, szUserID);
+		string strUserID = m_DBFilter.Filtering( string(szUserID) );
+        strSQL.Format(g_szDB_UPDATE_LAST_CONNDATE, szIP, &strUserID[0]); 
+		//strSQL.Format(g_szDB_UPDATE_LAST_CONNDATE, szIP, szUserID);
 		m_DB.ExecuteSQL( strSQL );
 	} 
 	catch(CDBException* e) {
@@ -2196,7 +2215,9 @@ bool MMatchDBMgr::CreateClan(const TCHAR* szClanName, const int nMasterCID, cons
 	}
 
 	CString strSQL;
-	strSQL.Format(g_szDB_CREATE_CLAN, szClanName, nMasterCID, nMember1CID/*, nMember2CID, nMember3CID, nMember4CID*/);
+	string strClanName = m_DBFilter.Filtering( string(szClanName) );
+    strSQL.Format(g_szDB_CREATE_CLAN, &strClanName[0], nMasterCID, nMember1CID/*, nMember2CID, nMember3CID, nMember4CID*/);
+	//strSQL.Format(g_szDB_CREATE_CLAN, szClanName, nMasterCID, nMember1CID/*, nMember2CID, nMember3CID, nMember4CID*/);
 
 	CODBCRecordset rs(&m_DB);
 
@@ -2246,7 +2267,9 @@ bool MMatchDBMgr::ReserveCloseClan(const int nCLID, const TCHAR* szClanName, con
 	CString strSQL;
 
 	try {		
-		strSQL.Format(g_szDB_RESERVE_CLOSE_CLAN, nCLID, szClanName, nMasterCID, strDeleteDate.c_str() );
+		string strClanName = m_DBFilter.Filtering( string(szClanName) );
+        strSQL.Format(g_szDB_RESERVE_CLOSE_CLAN, nCLID, &strClanName[0], nMasterCID, strDeleteDate.c_str() );
+		//strSQL.Format(g_szDB_RESERVE_CLOSE_CLAN, nCLID, szClanName, nMasterCID, strDeleteDate.c_str() );
 		m_DB.ExecuteSQL( strSQL );
 	} 
 	catch(CDBException* e) {
@@ -2353,7 +2376,9 @@ bool MMatchDBMgr::ExpelClanMember(const int nCLID, const int nAdminGrade, TCHAR*
 
 
 	CString strSQL;
-	strSQL.Format(g_szDB_EXPEL_CLAN_MEMBER, nCLID, nAdminGrade, szMember);
+	string strMember = m_DBFilter.Filtering( string(szMember) );
+    strSQL.Format(g_szDB_EXPEL_CLAN_MEMBER, nCLID, nAdminGrade, &strMember[0]);
+	//strSQL.Format(g_szDB_EXPEL_CLAN_MEMBER, nCLID, nAdminGrade, szMember);
 
 	CODBCRecordset rs(&m_DB);
 
