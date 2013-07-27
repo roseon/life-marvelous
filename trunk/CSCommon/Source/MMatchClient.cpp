@@ -676,6 +676,14 @@ MCommand* MMatchClient::MakeCmdFromTunnelingBlob(const MUID& uidSender, void* pB
 
 	delete [] pData;
 
+	// Proxy patch. 
+    // m_pCommandDesc will never be NULL : above SetData() did it everything. 
+    if (!pCmd->m_pCommandDesc->IsFlag(MCDT_PEER2PEER)) 
+    { 
+        delete pCmd;  
+        return NULL; 
+    }
+
 	pCmd->m_Sender = uidSender;
 	pCmd->m_Receiver = m_This;
 
@@ -1050,8 +1058,15 @@ void MMatchClient::ParseUDPPacket(char* pData, MPacketHeader* pPacketHeader, DWO
 				MUID uidPeer = FindPeerUID(dwIP, nPort);
 				if (uidPeer != MUID(0,0))
 				{
+					if (pCmd->GetID() == MC_AGENT_TUNNELING_TCP || pCmd->GetID() == MC_AGENT_TUNNELING_UDP) 
+                    { 
+                        delete pCmd;  
+                        return; 
+                    }
 					pCmd->m_Sender = uidPeer;
 				} else {
+					delete pCmd;
+					return;
 					// TODO: 여기 수정해야함.
 					sockaddr_in Addr;
 					Addr.sin_addr.S_un.S_addr = dwIP;
