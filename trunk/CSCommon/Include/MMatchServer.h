@@ -31,8 +31,10 @@
 
 
 #include "MMatchBRMachine.h"
-#include "../Mint2/Include/MTypes.h"
-#include "../cml/Include/MBlobArray.h"
+#include "../../Mint2/Include/MTypes.h"
+#include "../../cml/Include/MBlobArray.h"
+//#include "../Mint2/Include/MTypes.h"
+//#include "../cml/Include/MBlobArray.h"
 
 #include <stdint.h>
 #include <vector>
