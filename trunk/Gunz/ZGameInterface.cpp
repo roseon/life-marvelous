@@ -6700,8 +6700,11 @@ void ZGameInterface::OnResponseServerStatusInfoList( const int nListCount, void*
 	}
 #endif
 
+	if(nListCount > 0)
+		pServerList->SetCurrSel( 0 );
+	else
+		pServerList->SetCurrSel( nCurrSel);
 
-	pServerList->SetCurrSel( nCurrSel);
 
 	m_dwRefreshTime = timeGetTime() + 10000;
 
